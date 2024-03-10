@@ -20,6 +20,7 @@ public class PlayerJumpState : PlayerBaseState
     {
         base.Exit();
         stateMachine.Player.ForceReceiver.Reset();
+        stateMachine.IsJumping = false;
         StopAnimation(stateMachine.Player.AnimationData.JumpParameter);
     }
 
@@ -29,7 +30,6 @@ public class PlayerJumpState : PlayerBaseState
 
         if (stateMachine.Player.Controller.isGrounded)
         {
-            stateMachine.IsJumping = false;
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

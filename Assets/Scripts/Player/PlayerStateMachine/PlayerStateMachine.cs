@@ -8,6 +8,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerRunState RunState { get; set; }
     public PlayerJumpState JumpState { get; set; }
     public PlayerDodgeState DodgeState { get; set; }
+    public PlayerAttackState AttackState { get; set; }
     public Vector2 MovementInput { get; set; }
 
     #region StateCheckcing
@@ -35,6 +36,7 @@ public class PlayerStateMachine : StateMachine
         RunState = new PlayerRunState(this);
         JumpState = new PlayerJumpState(this);
         DodgeState = new PlayerDodgeState(this);
+        AttackState = new PlayerAttackState(this);
 
         MainCameraTransform = Camera.main.transform;
         RotationDamping = 10f;

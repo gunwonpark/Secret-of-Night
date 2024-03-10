@@ -30,6 +30,11 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
+        if (stateMachine.IsAttacking && !stateMachine.IsDodgeing)
+        {
+            Attack();
+            return;
+        }
     }
     protected virtual void AddPlayerActionCallbacks()
     {
@@ -41,7 +46,7 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Dodge.started += OnDodgeStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed += OnAttackPerformed;
+        stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackStarted;
         stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
     }
 
@@ -55,7 +60,7 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Dodge.started -= OnDodgeStarted;
 
-        stateMachine.Player.Input.PlayerActions.Attack.performed -= OnAttackPerformed;
+        stateMachine.Player.Input.PlayerActions.Attack.started -= OnAttackStarted;
         stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
     }
     #region addevent
@@ -79,18 +84,19 @@ public class PlayerBaseState : IState
     }
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
-        if (stateMachine.IsDodgeing == false)
+        if (stateMachine.IsDodgeing == false && stateMachine.IsJumping == false)
         {
             stateMachine.IsDodgeing = true;
             stateMachine.ChangeState(stateMachine.DodgeState);
         }
     }
-    protected virtual void OnAttackPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    protected virtual void OnAttackStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         stateMachine.IsAttacking = true;
     }
     protected virtual void OnAttackCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+        Debug.Log("Att");
         stateMachine.IsAttacking = false;
     }
     protected virtual void OnRunCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -125,6 +131,10 @@ public class PlayerBaseState : IState
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.RotationDamping);
     }
+    private void Attack()
+    {
+        stateMachine.ChangeState(stateMachine.AttackState);
+    }
     private float GetMovementSpeed()
     {
         return stateMachine.MovementSpeed + stateMachine.MovementSpeedModifier;
@@ -136,5 +146,23 @@ public class PlayerBaseState : IState
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Player.Animator.SetBool(animationHash, false);
+    }
+    protected float GetNormalizedTime(Animator animator, string tag)
+    {
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        {
+            return nextInfo.normalizedTime;
+        }
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+        {
+            return currentInfo.normalizedTime;
+        }
+        else
+        {
+            return 0f;
+        }
     }
 }
