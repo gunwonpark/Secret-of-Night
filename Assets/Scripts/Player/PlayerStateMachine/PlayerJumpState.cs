@@ -29,7 +29,6 @@ public class PlayerJumpState : PlayerBaseState
 
         if (stateMachine.Player.Controller.isGrounded)
         {
-            Debug.Log("HI");
             stateMachine.IsJumping = false;
             stateMachine.ChangeState(stateMachine.IdleState);
         }

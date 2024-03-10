@@ -7,12 +7,14 @@ public class PlayerStateMachine : StateMachine
     public PlayerWalkState WalkState { get; set; }
     public PlayerRunState RunState { get; set; }
     public PlayerJumpState JumpState { get; set; }
+    public PlayerDodgeState DodgeState { get; set; }
     public Vector2 MovementInput { get; set; }
 
     #region StateCheckcing
     public bool IsAttacking { get; set; }
     public bool IsRunning { get; set; }
     public bool IsJumping { get; set; }
+    public bool IsDodgeing { get; set; }
     #endregion
 
     public Transform MainCameraTransform { get; set; }
@@ -32,6 +34,7 @@ public class PlayerStateMachine : StateMachine
         WalkState = new PlayerWalkState(this);
         RunState = new PlayerRunState(this);
         JumpState = new PlayerJumpState(this);
+        DodgeState = new PlayerDodgeState(this);
 
         MainCameraTransform = Camera.main.transform;
         RotationDamping = 10f;

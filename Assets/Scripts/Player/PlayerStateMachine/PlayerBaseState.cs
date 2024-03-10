@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBaseState : IState
 {
@@ -38,6 +39,8 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Jump.started += OnJumpStarted;
 
+        stateMachine.Player.Input.PlayerActions.Dodge.started += OnDodgeStarted;
+
         stateMachine.Player.Input.PlayerActions.Attack.performed += OnAttackPerformed;
         stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
     }
@@ -49,6 +52,8 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Run.canceled -= OnRunCanceled;
 
         stateMachine.Player.Input.PlayerActions.Jump.started -= OnJumpStarted;
+
+        stateMachine.Player.Input.PlayerActions.Dodge.started -= OnDodgeStarted;
 
         stateMachine.Player.Input.PlayerActions.Attack.performed -= OnAttackPerformed;
         stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
@@ -72,6 +77,14 @@ public class PlayerBaseState : IState
     {
 
     }
+    private void OnDodgeStarted(InputAction.CallbackContext obj)
+    {
+        if (stateMachine.IsDodgeing == false)
+        {
+            stateMachine.IsDodgeing = true;
+            stateMachine.ChangeState(stateMachine.DodgeState);
+        }
+    }
     protected virtual void OnAttackPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         stateMachine.IsAttacking = true;
@@ -94,23 +107,23 @@ public class PlayerBaseState : IState
     private void Move()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
-        if (stateMachine.Player.Controller.isGrounded)
+        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.IsDodgeing)
         {
-            Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
-            float moveSpeed = GetMovementSpeed();
-            stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+            if (stateMachine.Player.Controller.isGrounded)
+            {
+                Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
+                float moveSpeed = GetMovementSpeed();
+                stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+            }
+            Rotate();
         }
-        Rotate();
     }
     private void Rotate()
     {
-        if (stateMachine.MovementInput != Vector2.zero)
-        {
-            Vector3 lookDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
-            Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-            stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
-                lookRotation, Time.deltaTime * stateMachine.RotationDamping);
-        }
+        Vector3 lookDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+        stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
+            lookRotation, Time.deltaTime * stateMachine.RotationDamping);
     }
     private float GetMovementSpeed()
     {
