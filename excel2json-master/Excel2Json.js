@@ -1,5 +1,4 @@
 /*****
-
 Excel2JSON, Excel - JSON Builder v1.0
 
 You may use/distribute freely under the A-CUP-OF-BEER license.
@@ -41,7 +40,6 @@ IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY 
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
 THE POSSIBILITY OF SUCH DAMAGE.
-
 
 다음의 조건들을 충족시키는 한, 소스형식과 바이너리형식을 통한 
 재배포와 사용은 수정여부에 관계없이 허용된다.
@@ -96,7 +94,7 @@ var g_localConfig = g_scriptFolder + "Excel2Json.config.js";
 // Default Configuration
 // DO NOT CHANGE THIS VALUE, MAKE Excel2Json.config.js FILE AND COPY THESE LINES AND EDIT THEM!!
 var g_sourceFolder = g_scriptFolder;
-var g_targetFolder = "output"; // subdirectory in g_sourceFolder
+var g_targetFolder = "../Assets/Datas"; // subdirectory in g_sourceFolder
 var g_tempSuffix = ".$$$";
 var g_prettyOutput = true; // false for compact
 

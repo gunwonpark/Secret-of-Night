@@ -1,0 +1,33 @@
+
+Loading: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx
+Parse sheet: Sheet1
+Parsing: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx
+------------------------------------------------------------------------------
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+Found object mark: '#FieldMonster[{}]'
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: $key at 1
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: level at 2
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: exp at 3
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: AtkStance at 4
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: HP at 5
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Damage at 6
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Daf at 7
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: DmgSpeed at 8
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: CriDamage at 9
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Speed at 10
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: AtkSpeed at 11
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Range at 12
+Parsing Array Object Table...
