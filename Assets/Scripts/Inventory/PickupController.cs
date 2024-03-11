@@ -5,7 +5,7 @@ public class PickupController : MonoBehaviour
 {
     [SerializeField] private float _range;
     private bool _pickupActivated = false;
-    private RaycastHit hit;
+    private Collider _collider; //충돌체 저장
 
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
@@ -22,7 +22,6 @@ public class PickupController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            CheckItem();
             PickUp();
         }
     }
@@ -30,12 +29,20 @@ public class PickupController : MonoBehaviour
     // 아이템 레이어마스크 검사
     private void CheckItem()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _range, _layerMask))
+        // 구의 형태로 충돌체를 찾음, 자신의 위치로부터 range범위만큼 layerMask에 해당하는 충돌체 정보
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
+        // 충돌체가 하나 이상 있을 때
+        if (colliders.Length > 0)
         {
+            // 충돌체 저장
+            _collider = colliders[0];
             ItemInfoAppear();
         }
         else
+        {
+            _collider = null;
             ItemInfoDisappear();
+        }
     }
 
 
@@ -43,7 +50,7 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = hit.transform.GetComponent<ItemObject>().itemData.name + " 획득하기" + " [E]";
+        _pickupText.text = _collider.transform.GetComponent<ItemObject>().itemData.name + " 획득하기" + " [E]";
     }
 
     private void ItemInfoDisappear()
@@ -54,14 +61,16 @@ public class PickupController : MonoBehaviour
 
     private void PickUp()
     {
-        if (_pickupActivated)
+        if (_pickupActivated && _collider != null)
         {
-            if (hit.transform != null)
+            // 플레이어와 아이템 사이의 거리 계산
+            float distance = Vector3.Distance(transform.position, _collider.transform.position);
+            // 일정 범위 내에 있을 때만 아이템을 획득할 수 있도록 함
+            if (distance <= _range)
             {
-                Debug.Log(hit.transform.name);
-                //ItemObject의 itemData 인수를 넘겨줌
-                _inventory.PickupItem(hit.transform.GetComponent<ItemObject>().itemData);
-                Destroy(hit.transform.gameObject);
+                // ItemObject의 itemData 인수를 넘겨줌
+                _inventory.PickupItem(_collider.transform.GetComponent<ItemObject>().itemData);
+                Destroy(_collider.gameObject);
                 ItemInfoDisappear();
             }
         }
