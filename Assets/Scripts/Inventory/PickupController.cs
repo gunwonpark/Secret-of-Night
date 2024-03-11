@@ -10,6 +10,8 @@ public class PickupController : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
 
+    [SerializeField] private Inventory _inventory;
+
     private void Update()
     {
         CheckItem();
@@ -56,6 +58,9 @@ public class PickupController : MonoBehaviour
         {
             if (hit.transform != null)
             {
+                Debug.Log(hit.transform.name);
+                //ItemObject의 itemData 인수를 넘겨줌
+                _inventory.PickupItem(hit.transform.GetComponent<ItemObject>().itemData);
                 Destroy(hit.transform.gameObject);
                 ItemInfoDisappear();
             }
