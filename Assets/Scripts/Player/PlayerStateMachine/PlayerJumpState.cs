@@ -11,8 +11,10 @@ public class PlayerJumpState : PlayerBaseState
     {
         base.Enter();
         stateMachine.Player.ForceReceiver.Jump(_jumpForce);
-        stateMachine.Player.ForceReceiver.AddForce(new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y)
-            * stateMachine.MovementSpeedModifier);
+        Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
+        moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
+        moveDirection.y = 0;
+        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.MovementSpeedModifier);
         StartAnimation(stateMachine.Player.AnimationData.JumpParameter);
     }
 

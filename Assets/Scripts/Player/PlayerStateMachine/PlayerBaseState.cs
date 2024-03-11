@@ -115,18 +115,19 @@ public class PlayerBaseState : IState
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
         if (stateMachine.MovementInput != Vector2.zero && !stateMachine.IsDodgeing)
         {
+            Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
+            moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
+            moveDirection.y = 0;
             if (stateMachine.Player.Controller.isGrounded)
             {
-                Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
                 float moveSpeed = GetMovementSpeed();
                 stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
             }
-            Rotate();
+            Rotate(moveDirection);
         }
     }
-    private void Rotate()
+    private void Rotate(Vector3 lookDirection)
     {
-        Vector3 lookDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.RotationDamping);
