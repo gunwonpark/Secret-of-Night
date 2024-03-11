@@ -1,3 +1,5 @@
+
+// TODO 공격 모션 수정 요망
 public class PlayerAttackState : PlayerBaseState
 {
     public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
