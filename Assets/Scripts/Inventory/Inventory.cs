@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventoryUI()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             activated = !activated;
 
