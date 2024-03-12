@@ -51,13 +51,13 @@ public class Slot : MonoBehaviour
     }
 
     //아이템이 비워질 때 초기화
-    private void ClearSlot()
+    public void ClearSlot()
     {
         item = null;
         itemCount = 0;
         itemImage.sprite = null;
         ItemImage(0);
 
-        _itemCountText.text = "0";
+        _itemCountText.text = "";
     }
 }

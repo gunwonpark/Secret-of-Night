@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -6,14 +7,22 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
+    [SerializeField] private Slot[] slots; //슬롯들을 배열로 할당
 
-    private Slot[] slots; //슬롯들을 배열로 할당
+
+    // 페이지 넘기기 위한 변수
+    private int _maxSlot = 12;
+    private int _currentPage = 1;
+    private int _totalPage = 3;
+    private int _slotCount;
+
+    public Button rightBtn;
+    public Button leftBtn;
 
     void Start()
     {
-        slots = _slotGrid.GetComponentsInChildren<Slot>();
+        // slots = _slotGrid.GetComponentsInChildren<Slot>();
     }
-
 
     void Update()
     {
@@ -39,6 +48,8 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
+        //마우스 커서 표시
+        Cursor.lockState = CursorLockMode.None;
         _inventoryUI.SetActive(true);
     }
 
@@ -50,6 +61,7 @@ public class Inventory : MonoBehaviour
     //아이템 획득, 같은 이름을 가지고 있는 아이템일 경우에 +1
     public void PickupItem(ItemData _item, int _count = 1)
     {
+        _slotCount = -1;
         //장착 아이템이 아닐경우에만 (장착 아이템은 카운트 x)
         if (ItemType.Equipment != _item.type)
         {
@@ -75,5 +87,63 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+
+    // 다음 슬롯 창
+    private void NextPage()
+    {
+        if (_currentPage == _totalPage)
+        {
+            return;
+        }
+        _currentPage++;
+        Debug.Log(_currentPage + " 페이지");
+
+        //(0~11, 12~23, 24~35번 슬롯)
+        var startIndex = (_currentPage - 1) * _maxSlot;
+        var endIndex = Mathf.Min(startIndex + _maxSlot, slots.Length);
+
+        // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+        }
+
+        leftBtn.gameObject.SetActive(true);
+        rightBtn.gameObject.SetActive(_currentPage < _totalPage);
+    }
+
+    // 이전 슬롯 창
+    private void PrevPage()
+    {
+        if (_currentPage == 1)
+        {
+            return;
+        }
+        _currentPage--;
+        Debug.Log(_currentPage + " 페이지");
+
+        var startIndex = (_currentPage - 1) * _maxSlot;
+        var endIndex = Mathf.Min(startIndex + _maxSlot, slots.Length);
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+        }
+
+        rightBtn.gameObject.SetActive(true);
+        leftBtn.gameObject.SetActive(_currentPage > 1);
+    }
+
+
+    public void NextOnClick()
+    {
+        NextPage();
+    }
+
+    public void PrevOnClick()
+    {
+        PrevPage();
     }
 }
