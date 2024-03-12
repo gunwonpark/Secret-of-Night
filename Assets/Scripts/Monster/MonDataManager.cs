@@ -14,4 +14,8 @@ public class MonDataManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+
+    }
 }

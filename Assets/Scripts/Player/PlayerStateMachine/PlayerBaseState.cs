@@ -96,7 +96,6 @@ public class PlayerBaseState : IState
     }
     protected virtual void OnAttackCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        Debug.Log("Att");
         stateMachine.IsAttacking = false;
     }
     protected virtual void OnRunCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
