@@ -14,7 +14,6 @@ public class Inventory : MonoBehaviour
     private int _maxSlot = 12;
     private int _currentPage = 1;
     private int _totalPage = 3;
-    private int _slotCount;
 
     public Button rightBtn;
     public Button leftBtn;
@@ -38,6 +37,7 @@ public class Inventory : MonoBehaviour
             if (activated)
             {
                 OpenInventory();
+
             }
             else
             {
@@ -48,6 +48,15 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
+        var startIndex = (_currentPage - 1) * _maxSlot;
+        var endIndex = Mathf.Min(startIndex + _maxSlot, slots.Length);
+
+        // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+        }
+
         //마우스 커서 표시
         Cursor.lockState = CursorLockMode.None;
         _inventoryUI.SetActive(true);
@@ -61,7 +70,6 @@ public class Inventory : MonoBehaviour
     //아이템 획득, 같은 이름을 가지고 있는 아이템일 경우에 +1
     public void PickupItem(ItemData _item, int _count = 1)
     {
-        _slotCount = -1;
         //장착 아이템이 아닐경우에만 (장착 아이템은 카운트 x)
         if (ItemType.Equipment != _item.type)
         {
@@ -104,6 +112,8 @@ public class Inventory : MonoBehaviour
         var startIndex = (_currentPage - 1) * _maxSlot;
         var endIndex = Mathf.Min(startIndex + _maxSlot, slots.Length);
 
+        Debug.Log(startIndex);
+        Debug.Log(endIndex);
         // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
         for (int i = 0; i < slots.Length; i++)
         {
