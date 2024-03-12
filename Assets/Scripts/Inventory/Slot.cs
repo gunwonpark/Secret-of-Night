@@ -4,29 +4,26 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public ItemData item;
+    public ItemInstance _itemInstance;
     public Image itemImage;
     public int itemCount;
 
     [SerializeField] private TextMeshProUGUI _itemCountText;
 
-    //아이템 이미지 투명도 조절 (기본 0)
-    private void ItemImage(float _alpha)
+    private void ItemImage(float alpha)
     {
         Color color = itemImage.color;
-        color.a = _alpha;
+        color.a = alpha;
         itemImage.color = color;
     }
 
-    //아이템 슬롯에 추가
-    public void AddItem(ItemData _item, int _count = 1)
+    public void AddItem(ItemInstance ItemInstance, int count = 1)
     {
-        item = _item;
-        itemCount = _count;
-        itemImage.sprite = item.icon;
+        _itemInstance = ItemInstance;
+        itemCount = count;
+        itemImage.sprite = Resources.Load<Sprite>("");
 
-        //장착 아이템이 아니면 카운트
-        if (item.type != ItemType.Equipment)
+        if (_itemInstance.item.Type != "Equipment")
         {
             _itemCountText.text = itemCount.ToString();
         }
@@ -35,13 +32,12 @@ public class Slot : MonoBehaviour
             _itemCountText.text = "0";
         }
 
-        ItemImage(1); //아이템 투명도 1
+        ItemImage(1);
     }
 
-    // 아이템 수량 업데이트
-    public void SlotCount(int _count)
+    public void SlotCount(int count)
     {
-        itemCount += _count;
+        itemCount += count;
         _itemCountText.text = itemCount.ToString();
 
         if (itemCount <= 0)
@@ -50,10 +46,9 @@ public class Slot : MonoBehaviour
         }
     }
 
-    //아이템이 비워질 때 초기화
     public void ClearSlot()
     {
-        item = null;
+        _itemInstance = null;
         itemCount = 0;
         itemImage.sprite = null;
         ItemImage(0);
