@@ -50,7 +50,8 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponent<ItemObject>().itemData.name + " È¹µæÇÏ±â" + " [E]";
+        _pickupText.text = _collider.transform.GetComponent<ItemObject>().item.ItemName + " È¹µæÇÏ±â" + " [E]";
+        // »¡°£»ö Æ÷¼Ç + È¹µæÇÏ±â [E]
     }
 
     private void ItemInfoDisappear()
@@ -69,7 +70,7 @@ public class PickupController : MonoBehaviour
             if (distance <= _range)
             {
                 // ItemObjectÀÇ itemData ÀÎ¼ö¸¦ ³Ñ°ÜÁÜ
-                _inventory.PickupItem(_collider.transform.GetComponent<ItemObject>().itemData);
+                _inventory.PickupItem(_collider.transform.GetComponent<ItemObject>().item);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();
             }

@@ -5,6 +5,8 @@ public class Inventory : MonoBehaviour
 {
     public static bool activated = false; // 인벤토리 활성화 시 다른 입력 못하게
 
+    private Item item;
+
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
     [SerializeField] private Slot[] slots; //슬롯들을 배열로 할당
@@ -20,6 +22,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        //비활성화 상태에서 오브젝트를 못 찾음
         // slots = _slotGrid.GetComponentsInChildren<Slot>();
     }
 
@@ -68,16 +71,16 @@ public class Inventory : MonoBehaviour
     }
 
     //아이템 획득, 같은 이름을 가지고 있는 아이템일 경우에 +1
-    public void PickupItem(ItemData _item, int _count = 1)
+    public void PickupItem(Item _item, int _count = 1)
     {
         //장착 아이템이 아닐경우에만 (장착 아이템은 카운트 x)
-        if (ItemType.Equipment != _item.type)
+        if (_item.Type != "Equip")
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i].item != null)
+                if (slots[i] != null)
                 {
-                    if (slots[i].item.name == _item.name)
+                    if (slots[i].item.ItemName == _item.ItemName)
                     {
                         slots[i].SlotCount(_count);
                         return;
@@ -89,9 +92,9 @@ public class Inventory : MonoBehaviour
         // 같은 이름을 가지고 있는 아이템이 없다면 아이템 추가 (빈 슬롯이 있을 때)
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == null)
+            if (string.IsNullOrEmpty(slots[i].item.ItemName))
             {
-                slots[i].AddItem(_item);
+                slots[i].AddItem(_item, _count);
                 return;
             }
         }

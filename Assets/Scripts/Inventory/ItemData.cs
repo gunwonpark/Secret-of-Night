@@ -13,6 +13,7 @@ public class Item
     public string Description;
 }
 
+//json을 불러오기 위해
 public class ItemInstance
 {
     public Item item;

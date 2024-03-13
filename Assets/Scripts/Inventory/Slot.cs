@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public ItemInstance _itemInstance;
+    public Item item;
     public Image itemImage;
     public int itemCount;
 
@@ -17,13 +17,13 @@ public class Slot : MonoBehaviour
         itemImage.color = color;
     }
 
-    public void AddItem(ItemInstance ItemInstance, int count = 1)
+    public void AddItem(Item _item, int _count = 1)
     {
-        _itemInstance = ItemInstance;
-        itemCount = count;
+        item = _item;
+        itemCount = _count;
         itemImage.sprite = Resources.Load<Sprite>("");
 
-        if (_itemInstance.item.Type != "Equipment")
+        if (_item.Type != "Equipment")
         {
             _itemCountText.text = itemCount.ToString();
         }
@@ -35,9 +35,9 @@ public class Slot : MonoBehaviour
         ItemImage(1);
     }
 
-    public void SlotCount(int count)
+    public void SlotCount(int _count)
     {
-        itemCount += count;
+        itemCount += _count;
         _itemCountText.text = itemCount.ToString();
 
         if (itemCount <= 0)
@@ -48,7 +48,6 @@ public class Slot : MonoBehaviour
 
     public void ClearSlot()
     {
-        _itemInstance = null;
         itemCount = 0;
         itemImage.sprite = null;
         ItemImage(0);
