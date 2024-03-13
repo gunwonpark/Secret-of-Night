@@ -18,6 +18,9 @@ public class MonsterInfo
     public float AtkSpeed;
     public float Range;
 }
+//변하는 데이터 -> HP
+//몬스터cs 상위에 HP만 변할수 있도록 따로 적어둬야함
+//건원님 DataManager에 합쳐보자.
 
 [Serializable]
 public class MonsterDataBase //->실제데이터

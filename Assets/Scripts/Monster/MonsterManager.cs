@@ -20,4 +20,8 @@ public class MonsterManager : MonoBehaviour
     {
         return dataManager.monsterDatabase.GetMonsterInfoByKey(name);
     }
+
+    //몬스터 생성
+    //몬스터 다이
+    //몬스터 스폰
 }

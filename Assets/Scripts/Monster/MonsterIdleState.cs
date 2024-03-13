@@ -1,40 +1,60 @@
-using System;
-using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class MonsterIdleState : IState
 {
-    protected MonsterStateMachine StateMachine;
+    protected MonsterStateMachine stateMachine;
 
     public MonsterIdleState(MonsterStateMachine monsterStateMachine)
     {
-        StateMachine = monsterStateMachine;
+        stateMachine = monsterStateMachine;
 
     }
 
-    public void Enter()
+    public virtual void Enter()
+    {
+        stateMachine.MovementSpeedModifier = 0;
+
+        //[추가] 애니메이션
+    }
+
+    public virtual void Exit()
+    {
+        //[추가] 애니메이션
+    }
+
+    public virtual void HandleInput()
     {
 
     }
 
-    public void Exit()
-    {
-
-    }
-
-    public void HandleInput()
-    {
-
-    }
-
-    public void PhysicsUpdate()
-    {
-
-    }
-
-    void IState.Update()
+    public virtual void Update()
     {
         Move();
+        if (IsInChaseRange())
+        {
+            //stateMachine에 ChasingState추가->건원님에게 물어보기
+            //stateMachine.ChangeState(stateMachine.ChasingState);
+            return;
+        }
     }
+
+    public virtual void PhysicsUpdate()
+    {
+
+    }
+
+    //애니메이션
+
+    //protected void StartAnimation(int animationHash)
+    //{
+    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
+    //}
+
+    //protected void StopAnimation(int animationHash)
+    //{
+    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
+    //}
 
     private void Move()
     {
@@ -44,27 +64,68 @@ public class MonsterIdleState : IState
         Move(movementDirection);
     }
 
-
-    private void Move(Vector3 Direction)
+    protected void ForceMove()//네브메쉬로 수정 고려
     {
-        float movementSpeed = GetMovementSpeed();
+        stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
     }
 
-    private void Rotate(Vector3 Direction)
-    {
 
+    private void Move(Vector3 direction)
+    {
+        float movementSpeed = GetMovementSpeed();
+        stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
+    }
+
+    private void Rotate(Vector3 direction)
+    {
+        if (direction != Vector3.zero)
+        {
+            direction.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+        }
     }
 
     private Vector3 GetMovementDirection()
     {
-        throw new NotImplementedException();
+        return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
     private float GetMovementSpeed()
     {
-        throw new NotImplementedException();
+        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+
+        return movementSpeed;
     }
 
+    //protected float GetNormalizedTime(Animator animator, string tag)
+    //{
+    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+    //    {
+    //        return nextInfo.normalizedTime;
+    //    }
+    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+    //    {
+    //        return currentInfo.normalizedTime;
+    //    }
+    //    else
+    //    {
+    //        return 0f;
+    //    }
+    //}
+
+    //
+    protected bool IsInChaseRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+
+        //[수정]PlayerChasingRange 찾아서 넣기.
+        return playerDistanceSqr <= 0/*stateMachine.FieldMonsters.Data.PlayerChasingRange * stateMachine.FieldMonsters.Data.PlayerChasingRange*/;
+    }
 
 
 }
