@@ -3,9 +3,13 @@ using System.Numerics;
 
 public class MonsterIdleState : IState
 {
-
     protected MonsterStateMachine StateMachine;
 
+    public MonsterIdleState(MonsterStateMachine monsterStateMachine)
+    {
+        StateMachine = monsterStateMachine;
+
+    }
 
     public void Enter()
     {

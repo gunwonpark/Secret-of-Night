@@ -17,7 +17,6 @@ public class MonsterInfo
     public float Speed;
     public float AtkSpeed;
     public float Range;
-
 }
 
 [Serializable]
