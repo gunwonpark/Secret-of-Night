@@ -8,7 +8,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "초급 체력 포션",
-			"Description": "초급 체력 포션으로 사용 시 체력이 5만큼 회복 됩니다."
+			"Description": "초급 체력 포션으로 사용 시 체력이 5만큼 회복 됩니다.",
+			"Link": "Images/Icons/Potion_Health"
 		},
 		{
 			"Name": "BigHPPotion",
@@ -18,7 +19,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "고급 체력 포션",
-			"Description": "-"
+			"Description": "-",
+			"Link": "Images/Icons/Potion_Health"
 		},
 		{
 			"Name": "SmallMPPotion",
@@ -28,7 +30,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "초급 마력 포션",
-			"Description": "초급 마력 포션으로 사용 시 마력이 3만큼 회복 됩니다."
+			"Description": "초급 마력 포션으로 사용 시 마력이 3만큼 회복 됩니다.",
+			"Link": "Images/Icons/Potion_Mana"
 		},
 		{
 			"Name": "BigMPPotion",
@@ -38,7 +41,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "고급 마력 포션",
-			"Description": "-"
+			"Description": "-",
+			"Link": "Images/Icons/Potion_Mana"
 		},
 		{
 			"Name": "SmallSPPotion",
@@ -48,7 +52,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "초급 스태미너 포션",
-			"Description": "초급 스태미너 포션으로 사용 시 스태미너가 5만큼 회복 됩니다."
+			"Description": "초급 스태미너 포션으로 사용 시 스태미너가 5만큼 회복 됩니다.",
+			"Link": "Images/Icons/Potion_Stamina"
 		},
 		{
 			"Name": "BigSPPotion",
@@ -58,7 +63,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "고급 스태미너 포션",
-			"Description": "-"
+			"Description": "-",
+			"Link": "Images/Icons/Potion_Stamina"
 		},
 		{
 			"Name": "SpeedPotion",
@@ -68,7 +74,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "이동속도 포션",
-			"Description": "초급 이동속도 포션으로 사용 시 이동속도가 60초 동안 10% 증가합니다."
+			"Description": "초급 이동속도 포션으로 사용 시 이동속도가 60초 동안 10% 증가합니다.",
+			"Link": "Images/Icons/Potion_Generic"
 		},
 		{
 			"Name": "SwordDefault",
@@ -78,7 +85,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "도토리의 낡은 검",
-			"Description": "토리 왕국에서 아버지에게 물려받은 오래된 낡은 검이다."
+			"Description": "토리 왕국에서 아버지에게 물려받은 오래된 낡은 검이다.",
+			"Link": "Images/Icons/SwordDefault"
 		},
 		{
 			"Name": "SwordF06",
@@ -88,7 +96,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "성기사의 검",
-			"Description": "성기사 단장의 기운이 담겨 있는 견고한 검이다."
+			"Description": "성기사 단장의 기운이 담겨 있는 견고한 검이다.",
+			"Link": "Images/Icons/SwordF06"
 		},
 		{
 			"Name": "SwordDragon",
@@ -98,7 +107,8 @@
 			"Critical": 0,
 			"Money": 100,
 			"ItemName": "드래곤의 검",
-			"Description": "화산 지대에 살고 있는 드래곤의 브레스로 만들어진 신비로운 검이다."
+			"Description": "화산 지대에 살고 있는 드래곤의 브레스로 만들어진 신비로운 검이다.",
+			"Link": "Images/Icons/SwordDragon"
 		}
 	]
 }
