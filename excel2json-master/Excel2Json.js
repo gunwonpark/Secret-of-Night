@@ -94,7 +94,7 @@ var g_localConfig = g_scriptFolder + "Excel2Json.config.js";
 // Default Configuration
 // DO NOT CHANGE THIS VALUE, MAKE Excel2Json.config.js FILE AND COPY THESE LINES AND EDIT THEM!!
 var g_sourceFolder = g_scriptFolder;
-var g_targetFolder = "../Assets/Datas"; // subdirectory in g_sourceFolder
+var g_targetFolder = "../Assets/Resources/Json"; // subdirectory in g_sourceFolder
 var g_tempSuffix = ".$$$";
 var g_prettyOutput = true; // false for compact
 
