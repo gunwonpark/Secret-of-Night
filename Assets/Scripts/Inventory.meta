@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Inventory.meta
 guid: 858bf8e89bf254d43914b69fde96c003
 folderAsset: yes
 DefaultImporter:
+========
+guid: d8a8f0e5a35e6434681138390b1f34f2
+TextScriptImporter:
+>>>>>>>> Dev:Assets/Resources/Json/Items_Data.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
