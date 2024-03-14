@@ -9,6 +9,9 @@ public class MapObjectManager : MonoBehaviour
     public int maxTreePoolSize = 50;
     public GameObject TestTree;
 
+    Vector3 treePoolPos;
+
+
     public IObjectPool<GameObject> TreePool { get; private set; }
 
     private void Awake()
@@ -21,6 +24,8 @@ public class MapObjectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        CreateTree();
     }
 
     // 나무 오브젝트를 오브젝트 풀로 관리하기 위한 코드
@@ -31,7 +36,7 @@ public class MapObjectManager : MonoBehaviour
         for (int i = 0; i < minTreePoolSize; i++)
         {
             NatureTree natureTree = CreateTreePool().GetComponent<NatureTree>();
-            natureTree.TreePool.Release(natureTree.gameObject);
+            /*natureTree.TreePool.Release(natureTree.gameObject);*/
         }
     }
 
@@ -39,8 +44,19 @@ public class MapObjectManager : MonoBehaviour
     private GameObject CreateTreePool()
     // 유니티에서만 제공되는 GameObject 자료형이 있음. 생성,삭제,반환 등의 업무를 처리함.
     {
-        GameObject treePool = Instantiate(TestTree);
-        treePool.GetComponent<NatureTree>().TreePool = TreePool;
+        CameraHandler cameraHandler = GetComponent<CameraHandler>();
+
+        if (cameraHandler != null)
+        {
+            treePoolPos = transform.position + new Vector3(cameraHandler.targetTransform.position.x + 3f, 0, cameraHandler.targetTransform.position.z + 3f);
+        }
+        else
+        {
+            Debug.Log("null임다");
+        }
+
+        GameObject treePool = Instantiate(TestTree, treePoolPos, Quaternion.identity);
+        /*treePool.GetComponent<NatureTree>().TreePool = TreePool;*/
         return treePool;
 
     }
