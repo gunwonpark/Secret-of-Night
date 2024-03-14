@@ -1,29 +1,31 @@
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\BossMonster_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\BossMonster_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\BossMonster_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\BossMonster_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\BossMonster_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\BossMonster_Data.xlsx
 ------------------------------------------------------------------------------
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#BossMonster[{}]'
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: name at 1
+ Key: BossID at 1
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: HP at 2
+ Key: Name at 2
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Damage at 3
+ Key: HP at 3
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Def at 4
+ Key: Damage at 4
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Speed at 5
+ Key: Def at 5
 [BossMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Range at 6
+ Key: MoveSpeed at 6
+[BossMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Range at 7
 Parsing Array Object Table...
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonster_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonster_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonster_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\FieldMonster_Data.xlsx
 ------------------------------------------------------------------------------
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#FieldMonster[{}]'
@@ -55,42 +57,46 @@ Found object mark: '#FieldMonster[{}]'
  Key: Range at 13
 Parsing Array Object Table...
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\Items_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\Items_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\Items_Data.xlsx
 ------------------------------------------------------------------------------
 [Items_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#items[{}]'
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Name at 1
+ Key: ItemID at 1
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Type at 2
+ Key: Name at 2
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Price at 3
+ Key: Type at 3
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Damage at 4
+ Key: Price at 4
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Critical at 5
+ Key: Damage at 5
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Money at 6
+ Key: Critical at 6
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: ItemName at 7
+ Key: Money at 7
 [Items_Data.xlsx(Sheet1): ROW 1]
- Key: Description at 8
+ Key: ItemName at 8
+[Items_Data.xlsx(Sheet1): ROW 1]
+ Key: Description at 9
+[Items_Data.xlsx(Sheet1): ROW 1]
+ Key: IconPath at 10
 Parsing Array Object Table...
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerLevel_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\PlayerLevel_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerLevel_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerLevel_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\PlayerLevel_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\PlayerLevel_Data.xlsx
 ------------------------------------------------------------------------------
 [PlayerLevel_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#PlayerLevel[{}]'
 [PlayerLevel_Data.xlsx(Sheet1): ROW 1]
  Key: Level at 1
 [PlayerLevel_Data.xlsx(Sheet1): ROW 1]
- Key: exp at 2
+ Key: Exp at 2
 [PlayerLevel_Data.xlsx(Sheet1): ROW 1]
  Key: HP at 3
 [PlayerLevel_Data.xlsx(Sheet1): ROW 1]
@@ -99,52 +105,60 @@ Found object mark: '#PlayerLevel[{}]'
  Key: Def at 5
 Parsing Array Object Table...
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerSkill_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\PlayerSkill_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerSkill_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerSkill_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\PlayerSkill_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\PlayerSkill_Data.xlsx
 ------------------------------------------------------------------------------
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#PlayerSkill[{}]'
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: EquipType at 1
+ Key: SkillID at 1
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: DefaultSkill at 2
+ Key: Name at 2
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: DefaultUnlock at 3
+ Key: Description at 3
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: Skill1 at 4
+ Key: SkillType at 4
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: Skill1Unlock at 5
+ Key: DelayTime at 5
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: Skill2 at 6
+ Key: Damage at 6
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
- Key: Skill2Unlock at 7
+ Key: PrefabPath at 7
 Parsing Array Object Table...
 
-Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerStat_Data.xlsx
+Loading: D:\unity\Project_P\excel2json-master\PlayerStat_Data.xlsx
 Parse sheet: Sheet1
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerStat_Data.xlsx.$$$\Sheet1.csv
-Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerStat_Data.xlsx
+Parsing: D:\unity\Project_P\excel2json-master\PlayerStat_Data.xlsx.$$$\Sheet1.csv
+Closing: D:\unity\Project_P\excel2json-master\PlayerStat_Data.xlsx
 ------------------------------------------------------------------------------
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#PlayerStat[{}]'
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: CharacterType at 1
+ Key: CharacterID at 1
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: HP at 2
+ Key: Name at 2
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: MP at 3
+ Key: CharacterType at 3
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: SP at 4
+ Key: HP at 4
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: Damage at 5
+ Key: MP at 5
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: DamageSpeed at 6
+ Key: SP at 6
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: CriDamage at 7
+ Key: Damage at 7
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: Def at 8
+ Key: DamageSpeed at 8
 [PlayerStat_Data.xlsx(Sheet1): ROW 1]
- Key: Speed at 9
+ Key: CriDamage at 9
+[PlayerStat_Data.xlsx(Sheet1): ROW 1]
+ Key: Def at 10
+[PlayerStat_Data.xlsx(Sheet1): ROW 1]
+ Key: MoveSpeed at 11
+[PlayerStat_Data.xlsx(Sheet1): ROW 1]
+ Key: Skills[] at 12
+[PlayerStat_Data.xlsx(Sheet1): ROW 1]
+ Key: PrefabPath at 13
 Parsing Array Object Table...
