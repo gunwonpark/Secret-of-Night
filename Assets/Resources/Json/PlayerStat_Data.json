@@ -1,6 +1,8 @@
 {
 	"PlayerStat": [
 		{
+			"CharacterID": 1,
+			"Name": "M05",
 			"CharacterType": "Warrior",
 			"HP": 20,
 			"MP": 10,
@@ -9,9 +11,17 @@
 			"DamageSpeed": 1,
 			"CriDamage": 0,
 			"Def": 1,
-			"Speed": 1
+			"MoveSpeed": 1,
+			"Skills": [
+				101,
+				102,
+				103
+			],
+			"PrefabPath": "Player/M05"
 		},
 		{
+			"CharacterID": 2,
+			"Name": "F06",
 			"CharacterType": "Magician",
 			"HP": 1,
 			"MP": 1,
@@ -20,7 +30,149 @@
 			"DamageSpeed": 1,
 			"CriDamage": 1,
 			"Def": 1,
-			"Speed": 1
+			"MoveSpeed": 1,
+			"Skills": [
+				101,
+				102,
+				103
+			],
+			"PrefabPath": "Player/M06"
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
+		},
+		{
+			"CharacterID": 0,
+			"Name": 0,
+			"CharacterType": 0,
+			"HP": 0,
+			"MP": 0,
+			"SP": 0,
+			"Damage": 0,
+			"DamageSpeed": 0,
+			"CriDamage": 0,
+			"Def": 0,
+			"MoveSpeed": 0,
+			"Skills": [
+				0
+			],
+			"PrefabPath": 0
 		}
 	]
 }

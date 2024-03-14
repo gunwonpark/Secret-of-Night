@@ -1,16 +1,19 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
     public Item item;
     public Image itemImage;
     public int itemCount;
 
+    public int index;
+
     [SerializeField] private TextMeshProUGUI _itemCountText;
 
-    private void ItemImage(float alpha)
+    public void ItemImage(float alpha)
     {
         Color color = itemImage.color;
         color.a = alpha;
@@ -21,7 +24,7 @@ public class Slot : MonoBehaviour
     {
         item = _item;
         itemCount = _count;
-        itemImage.sprite = Resources.Load<Sprite>("");
+        itemImage.sprite = Resources.Load<Sprite>(_item.IconPath);
 
         if (_item.Type != "Equipment")
         {
@@ -48,10 +51,23 @@ public class Slot : MonoBehaviour
 
     public void ClearSlot()
     {
+        item = null;
         itemCount = 0;
         itemImage.sprite = null;
         ItemImage(0);
 
         _itemCountText.text = "";
+    }
+
+    // 슬롯 클릭시 아이템 정보 보이게
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (item != null)
+            {
+                Inventory.instance.UpdateSelectedItemInfo(item);
+            }
+        }
     }
 }

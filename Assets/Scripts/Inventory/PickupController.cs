@@ -10,8 +10,6 @@ public class PickupController : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
 
-    [SerializeField] private Inventory _inventory;
-
     private void Update()
     {
         CheckItem();
@@ -50,7 +48,7 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponent<ItemObject>().item.ItemName + " È¹µæÇÏ±â" + " [E]";
+        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " È¹µæÇÏ±â" + " [E]";
         // »¡°£»ö Æ÷¼Ç + È¹µæÇÏ±â [E]
     }
 
@@ -70,7 +68,7 @@ public class PickupController : MonoBehaviour
             if (distance <= _range)
             {
                 // ItemObjectÀÇ itemData ÀÎ¼ö¸¦ ³Ñ°ÜÁÜ
-                _inventory.PickupItem(_collider.transform.GetComponent<ItemObject>().item);
+                Inventory.instance.PickupItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();
             }

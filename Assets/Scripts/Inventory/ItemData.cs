@@ -3,6 +3,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Item
 {
+    public int ItemID;
     public string Name;
     public string Type;
     public float Price;
@@ -11,6 +12,7 @@ public class Item
     public int Money;
     public string ItemName;
     public string Description;
+    public string IconPath;
 }
 
 //json을 불러오기 위해
@@ -24,20 +26,20 @@ public class ItemInstance
 public class ItemData
 {
     public List<Item> items;
-    public Dictionary<string, Item> itemDic = new Dictionary<string, Item>();
+    public Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
 
     public void Initialize()
     {
         foreach (Item item in items)
         {
-            itemDic.Add(item.Name, item);
+            itemDic.Add(item.ItemID, item);
         }
     }
 
-    public Item GetItemByKey(string name)
+    public Item GetItemByKey(int _id)
     {
-        if (itemDic.ContainsKey(name)) // 키가 있는지 확인
-            return itemDic[name];
+        if (itemDic.ContainsKey(_id)) // 키가 있는지 확인
+            return itemDic[_id];
 
         return null;
     }
