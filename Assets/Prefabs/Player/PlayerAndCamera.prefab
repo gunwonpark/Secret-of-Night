@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1787812152278943964}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,6 +173,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c99819aacd36ab479fccdbec14db293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerData>k__BackingField:
+    CharacterType: 
+    ID: 0
+    CharacterID: 0
+    Level: 0
+    MaxExp: 0
+    CurExp: 0
+    MaxHP: 0
+    CurHP: 0
+    MaxMP: 0
+    CurMP: 0
+    MaxSP: 0
+    CurSP: 0
+    Damage: 0
+    DamageSpeed: 0
+    CriDamage: 0
+    Def: 0
+    MoveSpeed: 0
   <AnimationData>k__BackingField:
     _walkHash: Walk
     _runHash: Run
@@ -225,7 +243,7 @@ Transform:
   - {fileID: 8818614631435710342}
   - {fileID: 4943347347067724566}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7329075342178133296
 GameObject:

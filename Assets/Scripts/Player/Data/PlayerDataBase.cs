@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PlayerLevelData
 {
     public int Level;
-    public int exp;
+    public int Exp;
     public float HP;
     public float Damage;
     public float Def;
@@ -13,26 +13,30 @@ public class PlayerLevelData
 [System.Serializable]
 public class PlayerSkillData
 {
-    public string EquipType;
-    public string DefaultSkill;
-    public string DefaultUnlock;
-    public string Skill1;
-    public string Skill1Unlock;
-    public string Skill2;
-    public string Skill2Unlock;
+    public int SkillID;
+    public string Name;
+    public string Description;
+    public string SkillType;
+    public int DelayTime;
+    public int Damage;
+    public string PrefabPath;
 }
 [System.Serializable]
 public class PlayerStatData
 {
+    public int CharacterID;
+    public string Name;
     public string CharacterType;
     public float HP;
-    public int MP;
-    public int SP;
+    public float MP;
+    public float SP;
     public float Damage;
     public float DamageSpeed;
     public float CriDamage;
     public float Def;
-    public float Speed;
+    public float MoveSpeed;
+    public int[] Skills;
+    public string PrefabPath;
 }
 
 [System.Serializable]
@@ -49,27 +53,27 @@ public class PlayerLevelDataBase : DataBase<int, PlayerLevelData>
 }
 
 [System.Serializable]
-public class PlayerSkillDataBase : DataBase<string, PlayerSkillData>
+public class PlayerSkillDataBase : DataBase<int, PlayerSkillData>
 {
-    public List<PlayerSkillData> playerSkill;
+    public List<PlayerSkillData> PlayerSkill;
     protected override void LoadData()
     {
-        foreach (PlayerSkillData skillData in playerSkill)
+        foreach (PlayerSkillData skillData in PlayerSkill)
         {
-            data.Add(skillData.EquipType, skillData);
+            data.Add(skillData.SkillID, skillData);
         }
     }
 }
 
 [System.Serializable]
-public class PlayerStatDataBase : DataBase<string, PlayerStatData>
+public class PlayerStatDataBase : DataBase<int, PlayerStatData>
 {
-    public List<PlayerStatData> playerStat;
+    public List<PlayerStatData> PlayerStat;
     protected override void LoadData()
     {
-        foreach (PlayerStatData statData in playerStat)
+        foreach (PlayerStatData statData in PlayerStat)
         {
-            data.Add(statData.CharacterType, statData);
+            data.Add(statData.CharacterID, statData);
         }
     }
 }

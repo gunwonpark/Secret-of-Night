@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public static class Utility
@@ -18,5 +19,14 @@ public static class Utility
         }
         Debug.Log($"There is no file {filename}");
         return default;
+    }
+    public static void SaveToJson<TSave>(TSave data, string jsonDataPath)
+    {
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(jsonDataPath, json);
+    }
+    public static void DeleteJson(string jsonDataPath)
+    {
+        File.Delete(jsonDataPath);
     }
 }
