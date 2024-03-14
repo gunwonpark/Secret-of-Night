@@ -5,13 +5,24 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
-    public Item item;
     public Image itemImage;
     public int itemCount;
+    public TextMeshProUGUI _itemCountText;
+    private ItemSlot curSlot; //현재 슬롯 
+    private Outline _outline; //장착 아이템 테두리
 
     public int index;
+    public bool equipped;
 
-    [SerializeField] private TextMeshProUGUI _itemCountText;
+    private void Awake()
+    {
+        _outline = GetComponent<Outline>();
+    }
+
+    private void OnEnable()
+    {
+        _outline.enabled = equipped;
+    }
 
     public void ItemImage(float alpha)
     {
@@ -20,43 +31,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         itemImage.color = color;
     }
 
-    public void AddItem(Item _item, int _count = 1)
+    public void Set(ItemSlot _slot)
     {
-        item = _item;
-        itemCount = _count;
-        itemImage.sprite = Resources.Load<Sprite>(_item.IconPath);
+        curSlot = _slot;
+        itemImage.sprite = Resources.Load<Sprite>(_slot.item.IconPath);
+        _itemCountText.text = _slot.count > 1 ? _slot.count.ToString() : string.Empty;
 
-        if (_item.Type != "Equipment")
-        {
-            _itemCountText.text = itemCount.ToString();
-        }
-        else
-        {
-            _itemCountText.text = "0";
-        }
-
-        ItemImage(1);
+        ItemImage(1); //아이템 표시하기 위해 투명도 1
     }
 
-    public void SlotCount(int _count)
-    {
-        itemCount += _count;
-        _itemCountText.text = itemCount.ToString();
-
-        if (itemCount <= 0)
-        {
-            ClearSlot();
-        }
-    }
 
     public void ClearSlot()
     {
-        item = null;
-        itemCount = 0;
+        curSlot = null;
         itemImage.sprite = null;
-        ItemImage(0);
+        _itemCountText.text = string.Empty;
 
-        _itemCountText.text = "";
+        ItemImage(0);
     }
 
     // 슬롯 클릭시 아이템 정보 보이게
@@ -64,10 +55,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (item != null)
-            {
-                Inventory.instance.UpdateSelectedItemInfo(item);
-            }
+            Inventory.instance.SelectItem(index);
         }
     }
 }

@@ -10,7 +10,9 @@
 			"Money": 100,
 			"ItemName": "초급 체력 포션",
 			"Description": "초급 체력 포션으로 사용 시 체력이 5만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Health"
+			"IconPath": "Images/Icons/Potion_Health",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/SmallHPPotion"
 		},
 		{
 			"ItemID": 2,
@@ -22,7 +24,9 @@
 			"Money": 100,
 			"ItemName": "고급 체력 포션",
 			"Description": "고급 체력 포션으로 사용 시 체력이 10만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Health"
+			"IconPath": "Images/Icons/Potion_Health",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/BigHPPotion"
 		},
 		{
 			"ItemID": 3,
@@ -34,7 +38,9 @@
 			"Money": 100,
 			"ItemName": "초급 마력 포션",
 			"Description": "초급 마력 포션으로 사용 시 마력이 3만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Mana"
+			"IconPath": "Images/Icons/Potion_Mana",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/SmallMPPotion"
 		},
 		{
 			"ItemID": 4,
@@ -46,7 +52,9 @@
 			"Money": 100,
 			"ItemName": "고급 마력 포션",
 			"Description": "고급 마력 포션으로 사용 시 마력이 7만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Mana"
+			"IconPath": "Images/Icons/Potion_Mana",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/BigMPPotion"
 		},
 		{
 			"ItemID": 5,
@@ -58,7 +66,9 @@
 			"Money": 100,
 			"ItemName": "초급 스태미너 포션",
 			"Description": "초급 스태미너 포션으로 사용 시 스태미너가 5만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Stamina"
+			"IconPath": "Images/Icons/Potion_Stamina",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/SmallSPPotion"
 		},
 		{
 			"ItemID": 6,
@@ -70,7 +80,9 @@
 			"Money": 100,
 			"ItemName": "고급 스태미너 포션",
 			"Description": "고급 스태미너 포션으로 사용 시 스태미너가 10만큼 회복 됩니다.",
-			"IconPath": "Images/Icons/Potion_Stamina"
+			"IconPath": "Images/Icons/Potion_Stamina",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/BigSPPotion"
 		},
 		{
 			"ItemID": 7,
@@ -82,7 +94,9 @@
 			"Money": 100,
 			"ItemName": "이동속도 포션",
 			"Description": "초급 이동속도 포션으로 사용 시 이동속도가 60초 동안 10% 증가합니다.",
-			"IconPath": "Images/Icons/Potion_Generic"
+			"IconPath": "Images/Icons/Potion_Generic",
+			"MaxAmount": 10,
+			"PrefabPath": "Prefabs/Items/SpeedPotion"
 		},
 		{
 			"ItemID": 8,
@@ -94,7 +108,9 @@
 			"Money": 100,
 			"ItemName": "도토리의 낡은 검",
 			"Description": "토리 왕국에서 아버지에게 물려받은 오래된 낡은 검이다.",
-			"IconPath": "Images/Icons/SwordDefault"
+			"IconPath": "Images/Icons/SwordDefault",
+			"MaxAmount": 0,
+			"PrefabPath": 0
 		},
 		{
 			"ItemID": 9,
@@ -106,7 +122,9 @@
 			"Money": 100,
 			"ItemName": "성기사의 검",
 			"Description": "성기사 단장의 기운이 담겨 있는 견고한 검이다.",
-			"IconPath": "Images/Icons/SwordF06"
+			"IconPath": "Images/Icons/SwordF06",
+			"MaxAmount": 0,
+			"PrefabPath": 0
 		},
 		{
 			"ItemID": 10,
@@ -118,7 +136,9 @@
 			"Money": 100,
 			"ItemName": "드래곤의 검",
 			"Description": "화산 지대에 살고 있는 드래곤의 브레스로 만들어진 신비로운 검이다.",
-			"IconPath": "Images/Icons/SwordDragon"
+			"IconPath": "Images/Icons/SwordDragon",
+			"MaxAmount": 0,
+			"PrefabPath": 0
 		}
 	]
 }

@@ -84,6 +84,10 @@ Found object mark: '#items[{}]'
  Key: Description at 9
 [Items_Data.xlsx(Sheet1): ROW 1]
  Key: IconPath at 10
+[Items_Data.xlsx(Sheet1): ROW 1]
+ Key: MaxAmount at 11
+[Items_Data.xlsx(Sheet1): ROW 1]
+ Key: PrefabPath at 12
 Parsing Array Object Table...
 
 Loading: D:\Github\Project_P\excel2json-master\PlayerLevel_Data.xlsx

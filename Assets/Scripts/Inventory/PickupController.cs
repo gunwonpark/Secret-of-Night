@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+
 public class PickupController : MonoBehaviour
 {
     [SerializeField] private float _range;
@@ -68,7 +69,7 @@ public class PickupController : MonoBehaviour
             if (distance <= _range)
             {
                 // ItemObject의 itemData 인수를 넘겨줌
-                Inventory.instance.PickupItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
+                Inventory.instance.AddItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();
             }
