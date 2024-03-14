@@ -22,18 +22,25 @@ public class MonsterAttackState : MonsterIdleState
 
     }
 
-    public override void Update()
+    //public override void Update()
+    //{
+    //    base.Update();
+
+
+
+    //}
+
+    public override void PhysicsUpdate()
     {
-        base.Update();
+        base.PhysicsUpdate();
 
         ForceMove();
 
-        float normalizedTime = 0;/*GetNormalizedTime(stateMachine.Enemy.Animator, "Attack");*/
+        float normalizedTime = 0.1f;/*GetNormalizedTime(stateMachine.Enemy.Animator, "Attack");*/
         if (normalizedTime < 1f)
         {
             if (normalizedTime >= 0 /*stateMachine.FieldMonsters.Data.ForceTransitionTime*/)
                 TryApplyForce();
-
         }
         else
         {
@@ -48,7 +55,6 @@ public class MonsterAttackState : MonsterIdleState
                 return;
             }
         }
-
     }
 
     private void TryApplyForce()
@@ -56,7 +62,7 @@ public class MonsterAttackState : MonsterIdleState
         if (alreadyAppliedForce) return;
         alreadyAppliedForce = true;
 
-        //stateMachine.Enemy.ForceReceiver.Reset();
+        //stateMachine.FieldMonsters.ForceReceiver.Reset();
 
         //stateMachine.Enemy.ForceReceiver.AddForce(stateMachine.Enemy.transform.forward * stateMachine.Enemy.Data.Force);
 

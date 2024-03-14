@@ -13,19 +13,18 @@ public class MonsterStateMachine : StateMachine
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
-    public float RotationDamping { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
 
-    public MonsterStateMachine(FieldMonsters fieldMob)
+    public MonsterStateMachine(FieldMonsters fieldMonster)
     {
-        FieldMonsters = fieldMob;
-        //Target = GameObject.FindGameObjectWithTag("Player").transform;
+        FieldMonsters = fieldMonster;
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        //IdleState = new MonsterIdleState(this);
-        //ChasingState = new MonsterChasingState(this);
-        //AttackState = new MonsterAttackState(this);
+        IdleState = new MonsterIdleState(this);
+        ChasingState = new MonsterChasingState(this);
+        AttackState = new MonsterAttackState(this);
 
-        //MovementSpeed = enemy.Data.GroundedData.BaseSpeed;
+        MovementSpeed = FieldMonsters.myInfo.Speed;
         //RotationDamping = enemy.Data.GroundedData.BaseRotationDamping;
     }
 }

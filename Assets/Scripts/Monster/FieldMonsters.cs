@@ -7,6 +7,7 @@ public class FieldMonsters : MonoBehaviour
     //[field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
+    [field: SerializeField] public float targetRange = 5f;
 
     public MonsterManager monsterManager;
     public string monsterName;// to do 나자신의 이름 가져오게 하기
@@ -25,13 +26,17 @@ public class FieldMonsters : MonoBehaviour
 
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
+        forceReceiver = GetComponent<ForceReceiver>();
+        controller = GetComponent<CharacterController>();
 
-        stateMachine = new MonsterStateMachine(this);
     }
 
     private void Start()
     {
+        monsterName = gameObject.name;
         myInfo = monsterManager.GetMonsterInfoByKey(monsterName);
+
+        stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
     }
 

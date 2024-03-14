@@ -13,7 +13,7 @@ public class MonsterIdleState : IState
 
     public virtual void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0;
+        stateMachine.MovementSpeedModifier = 1;
 
         //[추가] 애니메이션
     }
@@ -30,11 +30,12 @@ public class MonsterIdleState : IState
 
     public virtual void Update()
     {
-        Move();
+
         if (IsInChaseRange())
         {
-            //stateMachine에 ChasingState추가->건원님에게 물어보기
-            //stateMachine.ChangeState(stateMachine.ChasingState);
+            stateMachine.ChangeState(stateMachine.ChasingState);
+            Debug.Log("chasing");
+            Move();
             return;
         }
     }
@@ -56,7 +57,7 @@ public class MonsterIdleState : IState
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
     //}
 
-    private void Move()
+    private void Move()//v
     {
         Vector3 movementDirection = GetMovementDirection();
 
@@ -67,10 +68,11 @@ public class MonsterIdleState : IState
     protected void ForceMove()//네브메쉬로 수정 고려
     {
         stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
+        Debug.Log("Attack");
     }
 
 
-    private void Move(Vector3 direction)
+    private void Move(Vector3 direction)//v
     {
         float movementSpeed = GetMovementSpeed();
         stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
@@ -83,16 +85,16 @@ public class MonsterIdleState : IState
             direction.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+            //stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
 
-    private Vector3 GetMovementDirection()
+    private Vector3 GetMovementDirection()//v
     {
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
-    private float GetMovementSpeed()
+    private float GetMovementSpeed()//v
     {
         float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
@@ -118,13 +120,11 @@ public class MonsterIdleState : IState
     //    }
     //}
 
-    //
-    protected bool IsInChaseRange()
+    protected bool IsInChaseRange()//v
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
 
-        //[수정]PlayerChasingRange 찾아서 넣기.
-        return playerDistanceSqr <= 0/*stateMachine.FieldMonsters.Data.PlayerChasingRange * stateMachine.FieldMonsters.Data.PlayerChasingRange*/;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
     }
 
 
