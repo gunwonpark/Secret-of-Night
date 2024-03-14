@@ -37,10 +37,11 @@ public class MapObjectManager : MonoBehaviour
 
     // 나무 오브젝트 생성
     private GameObject CreateTreePool()
+    // 유니티에서만 제공되는 GameObject 자료형이 있음. 생성,삭제,반환 등의 업무를 처리함.
     {
         GameObject treePool = Instantiate(TestTree);
         treePool.GetComponent<NatureTree>().TreePool = TreePool;
-        return TreePool;
+        return treePool;
 
     }
 
