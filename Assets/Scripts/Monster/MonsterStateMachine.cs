@@ -24,7 +24,7 @@ public class MonsterStateMachine : StateMachine
         ChasingState = new MonsterChasingState(this);
         AttackState = new MonsterAttackState(this);
 
-        MovementSpeed = FieldMonsters.myInfo.Speed;
+        MovementSpeed = FieldMonsters.myInfo.MoveSpeed;
         //RotationDamping = enemy.Data.GroundedData.BaseRotationDamping;
     }
 }

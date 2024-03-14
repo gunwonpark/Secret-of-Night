@@ -5,17 +5,18 @@ using UnityEngine;
 [Serializable]
 public class MonsterInfo
 {
-    public string name;
-    public int level;
-    public float exp;
+    public int MonsterID;
+    public string Name;
+    public int Level;
+    public float Exp;
     public bool AtkStance;
     public float HP;
     public float Damage;
     public float Daf;
     public float DmgSpeed;
     public float CriDamage;
-    public float Speed;
-    public float AtkSpeed;
+    public float MoveSpeed;
+    public float RunSpeed;
     public float Range;
 }
 //변하는 데이터 -> HP
@@ -33,7 +34,7 @@ public class MonsterDataBase //->실제데이터
     {
         foreach (MonsterInfo fieldMonster in FieldMonster)
         {
-            fieldMonDic.Add(fieldMonster.name, fieldMonster);
+            fieldMonDic.Add(fieldMonster.Name, fieldMonster);
         }
     }
 
