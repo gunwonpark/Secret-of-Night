@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
 {
     private bool activated;
     public static Inventory instance;
+    private CameraHandler _camera;
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -38,12 +39,15 @@ public class Inventory : MonoBehaviour
     private int _currentPage = 1;
     private int _totalPage = 3;
 
+    private int curEquipIndex;
+
     public Button rightBtn;
     public Button leftBtn;
 
     private void Awake()
     {
         instance = this;
+        _camera = FindAnyObjectByType<CameraHandler>();
     }
 
     void Start()
@@ -75,11 +79,13 @@ public class Inventory : MonoBehaviour
             if (activated)
             {
                 OpenInventory();
+                _camera.enabled = false; // 카메라 비활성
 
             }
             else
             {
                 CloseInventory();
+                _camera.enabled = true;
             }
         }
     }
@@ -154,19 +160,19 @@ public class Inventory : MonoBehaviour
     }
 
     // 다음페이지
-    public void NextOnClick()
+    public void OnNext()
     {
         NextPage();
     }
 
     // 이전페이지
-    public void PrevOnClick()
+    public void OnPrev()
     {
         PrevPage();
     }
 
     // 나가기
-    public void ExitOnClick()
+    public void OnExit()
     {
         _inventoryUI.SetActive(false);
     }
@@ -237,6 +243,8 @@ public class Inventory : MonoBehaviour
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
         useButton.SetActive(_selectedItem.item.Type == "using");
+        equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[index].equipped);
+        unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[index].equipped);
         dropButton.SetActive(true);
     }
 
@@ -265,7 +273,7 @@ public class Inventory : MonoBehaviour
     }
 
     //현재 선택한 아이템 사용하기
-    public void UseButtonOnClick()
+    public void OnUseButton()
     {
         if (_selectedItem.item.Type == "using")
         {
@@ -276,6 +284,38 @@ public class Inventory : MonoBehaviour
         }
 
         RemoveSelectedItem();
+    }
+
+    // 아이템 장착
+    public void OnEquipBtton()
+    {
+        if (_uiSlots[curEquipIndex].equipped)
+        {
+            UnEquip(curEquipIndex);
+        }
+
+        _uiSlots[_selectedItemIndex].equipped = true;
+        curEquipIndex = _selectedItemIndex;
+        EquipManager.instance.NewEquip(_selectedItem.item);
+        UpdateUI();
+
+        SelectItem(_selectedItemIndex);
+    }
+    void UnEquip(int index)
+    {
+        _uiSlots[index].equipped = false;
+        EquipManager.instance.UnEquip();
+        UpdateUI();
+
+        if (_selectedItemIndex == index)
+        {
+            SelectItem(index);
+        }
+    }
+
+    public void OnUnEquipButton()
+    {
+        UnEquip(_selectedItemIndex);
     }
 
     public void OnDropButton()
@@ -295,9 +335,9 @@ public class Inventory : MonoBehaviour
 
         if (_selectedItem.count <= 0)
         {
-            if (_uiSlots[_selectedItemIndex].equipped)
+            if (_uiSlots[curEquipIndex].equipped) //현재 장착하고 있는 아이템 인덱스에서 확인해야함 (_selectItemIndex 말고!)
             {
-                //장착중이면 해제
+                UnEquip(curEquipIndex);
             }
 
             _selectedItem.item = null;

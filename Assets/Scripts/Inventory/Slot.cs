@@ -37,6 +37,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         itemImage.sprite = Resources.Load<Sprite>(_slot.item.IconPath);
         _itemCountText.text = _slot.count > 1 ? _slot.count.ToString() : string.Empty;
 
+        if (_outline != null)
+        {
+            _outline.enabled = equipped;
+        }
+
         ItemImage(1); //아이템 표시하기 위해 투명도 1
     }
 
