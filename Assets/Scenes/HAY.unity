@@ -661,6 +661,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
+--- !u!95 &1880303334 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 439360375182589427, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
+  m_PrefabInstance: {fileID: 1880303333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2063408637
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +679,7 @@ GameObject:
   - component: {fileID: 2063408642}
   - component: {fileID: 2063408644}
   - component: {fileID: 2063408643}
+  - component: {fileID: 2063408645}
   m_Layer: 0
   m_Name: PlatypusA
   m_TagString: Untagged
@@ -749,10 +755,11 @@ MonoBehaviour:
     CriDamage: 0
     MoveSpeed: 0
     RunSpeed: 0
-    Range: 0
+    Range: 1
   targetRange: 5
   monsterManager: {fileID: 968629442}
   monsterName: PlatypusA
+  monsterAnimation: {fileID: 0}
 --- !u!143 &2063408643
 CharacterController:
   m_ObjectHideFlags: 0
@@ -793,6 +800,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2063408643}
   drag: 0.01
+--- !u!114 &2063408645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063408637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6218bdc86e012e0489cac574cde40a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1880303334}
 --- !u!1 &2103398060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3431177400230823896, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
