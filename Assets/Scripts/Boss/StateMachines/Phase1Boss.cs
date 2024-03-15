@@ -78,7 +78,7 @@ public class Phase1Boss : MonoBehaviour
 
 	void DashTowardsPlayer()
 	{
-		agent.speed = 5f;
+		agent.speed = 3f;
 		agent.SetDestination(playerTransform.position);
 		animator.SetBool("IsDashing", true);
 
