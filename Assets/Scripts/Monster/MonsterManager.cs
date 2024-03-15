@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public DataManager dataManager;
+    public MonsterData dataManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        dataManager = DataManager.Instance;
+        dataManager = MonsterData.Instance;
     }
 
     // Update is called once per frame

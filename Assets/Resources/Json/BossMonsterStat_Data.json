@@ -7,7 +7,7 @@
 			"Damage": 1,
 			"Def": 1,
 			"MoveSpeed": 1,
-			"Range": 0
+			"Range": 1.5
 		},
 		{
 			"BossID": 2,
@@ -16,7 +16,7 @@
 			"Damage": 3,
 			"Def": 2,
 			"MoveSpeed": 1.5,
-			"Range": 0
+			"Range": 1.5
 		}
 	]
 }
