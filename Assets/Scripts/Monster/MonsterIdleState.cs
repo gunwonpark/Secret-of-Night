@@ -1,38 +1,63 @@
-using System;
-using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class MonsterIdleState : IState
 {
+    protected MonsterStateMachine stateMachine;
 
-    protected MonsterStateMachine StateMachine;
+    public MonsterIdleState(MonsterStateMachine monsterStateMachine)
+    {
+        stateMachine = monsterStateMachine;
 
+    }
 
-    public void Enter()
+    public virtual void Enter()
+    {
+        stateMachine.MovementSpeedModifier = 1;
+
+        //[추가] 애니메이션
+    }
+
+    public virtual void Exit()
+    {
+        //[추가] 애니메이션
+    }
+
+    public virtual void HandleInput()
     {
 
     }
 
-    public void Exit()
+    public virtual void Update()
+    {
+
+        if (IsInChaseRange())
+        {
+            stateMachine.ChangeState(stateMachine.ChasingState);
+            Debug.Log("chasing");
+            Move();
+            return;
+        }
+    }
+
+    public virtual void PhysicsUpdate()
     {
 
     }
 
-    public void HandleInput()
-    {
+    //애니메이션
 
-    }
+    //protected void StartAnimation(int animationHash)
+    //{
+    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
+    //}
 
-    public void PhysicsUpdate()
-    {
+    //protected void StopAnimation(int animationHash)
+    //{
+    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
+    //}
 
-    }
-
-    void IState.Update()
-    {
-        Move();
-    }
-
-    private void Move()
+    private void Move()//v
     {
         Vector3 movementDirection = GetMovementDirection();
 
@@ -40,27 +65,67 @@ public class MonsterIdleState : IState
         Move(movementDirection);
     }
 
+    protected void ForceMove()//네브메쉬로 수정 고려
+    {
+        stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
+        Debug.Log("Attack");
+    }
 
-    private void Move(Vector3 Direction)
+
+    private void Move(Vector3 direction)//v
     {
         float movementSpeed = GetMovementSpeed();
+        stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
     }
 
-    private void Rotate(Vector3 Direction)
+    private void Rotate(Vector3 direction)
     {
+        if (direction != Vector3.zero)
+        {
+            direction.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
 
+            //stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+        }
     }
 
-    private Vector3 GetMovementDirection()
+    private Vector3 GetMovementDirection()//v
     {
-        throw new NotImplementedException();
+        return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
-    private float GetMovementSpeed()
+    private float GetMovementSpeed()//v
     {
-        throw new NotImplementedException();
+        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+
+        return movementSpeed;
     }
 
+    //protected float GetNormalizedTime(Animator animator, string tag)
+    //{
+    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+    //    {
+    //        return nextInfo.normalizedTime;
+    //    }
+    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+    //    {
+    //        return currentInfo.normalizedTime;
+    //    }
+    //    else
+    //    {
+    //        return 0f;
+    //    }
+    //}
+
+    protected bool IsInChaseRange()//v
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+
+        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
+    }
 
 
 }
