@@ -1,86 +1,46 @@
 using UnityEngine;
-using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 
 public class MapObjectManager : MonoBehaviour
 {
-    public static MapObjectManager instance;
+    public GameObject magicCircle2;
 
-    public int minTreePoolSize = 20;
-    public int maxTreePoolSize = 50;
-    public GameObject TestTree;
-
-    Vector3 treePoolPos;
-
-
-    public IObjectPool<GameObject> TreePool { get; private set; }
-
-    private void Awake()
+    /*public void BossScene()
     {
-        if (instance == null)
+        if (//플레이어가 위치를 통과하면)
         {
-            instance = this;
+            Debug.Log("지나감");
+            magicCircle2.SetActive(true);
+            mountain05_4.GetComponent<MeshCollider>(false);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }*/
 
-        CreateTree();
-    }
 
-    // 나무 오브젝트를 오브젝트 풀로 관리하기 위한 코드
-    private void CreateTree()
+    private void OnTriggerEnter(Collider other)
     {
-        TreePool = new ObjectPool<GameObject>(CreateTreePool, UseTreePool, ReturnTreePool, DestroyTreePool, true, minTreePoolSize, maxTreePoolSize);
-
-        for (int i = 0; i < minTreePoolSize; i++)
+        /*if (other.gameObject.tag == "BossCheckPoint")
         {
-            NatureTree natureTree = CreateTreePool().GetComponent<NatureTree>();
-            /*natureTree.TreePool.Release(natureTree.gameObject);*/
+            Debug.Log("오로라 출력");
+            magicCircle2.SetActive(true);
+        }*/
+
+        if (other.gameObject.tag == "BossMap")
+        {
+            Debug.Log("보스맵 이동");
+            BossScene();
         }
     }
 
-    // 나무 오브젝트 생성
-    private GameObject CreateTreePool()
-    // 유니티에서만 제공되는 GameObject 자료형이 있음. 생성,삭제,반환 등의 업무를 처리함.
+
+
+    public void BossScene()
     {
-        CameraHandler cameraHandler = GetComponent<CameraHandler>();
-
-        if (cameraHandler != null)
-        {
-            treePoolPos = transform.position + new Vector3(cameraHandler.targetTransform.position.x + 3f, 0, cameraHandler.targetTransform.position.z + 3f);
-        }
-        else
-        {
-            Debug.Log("null임다");
-        }
-
-        GameObject treePool = Instantiate(TestTree, treePoolPos, Quaternion.identity);
-        /*treePool.GetComponent<NatureTree>().TreePool = TreePool;*/
-        return treePool;
-
+        SceneManager.LoadScene("LYS_BossMap");
     }
 
-
-    // 나무 오브젝트 보이도록 구현
-    private void UseTreePool(GameObject treePool)
-    {
-        treePool.SetActive(true);
-    }
-
-
-    // 나무 오브젝트 안보이게 구현 (재사용을 위해서)
-    private void ReturnTreePool(GameObject treePool)
-    {
-        treePool.SetActive(false);
-    }
-
-
-    // 나무 오브젝트 삭제
-    private void DestroyTreePool(GameObject treePool)
-    {
-        Destroy(treePool);
-    }
-
+    /* private void OnCollisionEnter(Collision collision)
+     {
+         Debug.Log("보스맵 이동");
+     }*/
 
 }
