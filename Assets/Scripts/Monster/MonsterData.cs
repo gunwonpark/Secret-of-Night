@@ -49,9 +49,9 @@ public class MonsterDataBase //->실제데이터
     }
 }
 
-public class DataManager : MonoBehaviour
+public class MonsterData : MonoBehaviour
 {
-    public static DataManager Instance;
+    public static MonsterData Instance;
 
     public MonsterDataBase monsterDatabase;
 
