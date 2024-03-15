@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb27bc51496206c46b3da9c99b430427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataManager: {fileID: 1198715820}
+  dataManager: {fileID: 0}
 --- !u!1 &1015847449
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1198715818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354dd27f05ed3b542a1ee6a92efe1023, type: 3}
+  m_Script: {fileID: 11500000, guid: fa6876262c977634eb50b8f4a07d24de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   monsterDatabase:
@@ -757,6 +757,7 @@ MonoBehaviour:
     RunSpeed: 0
     Range: 1
   targetRange: 5
+  rotationDamping: 1
   monsterManager: {fileID: 968629442}
   monsterName: PlatypusA
   monsterAnimation: {fileID: 0}

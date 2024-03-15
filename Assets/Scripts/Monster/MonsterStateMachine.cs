@@ -14,6 +14,7 @@ public class MonsterStateMachine : StateMachine
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
+    public float rotationDamping { get; private set; }
 
     public MonsterStateMachine(FieldMonsters fieldMonster)
     {
@@ -25,6 +26,6 @@ public class MonsterStateMachine : StateMachine
         AttackState = new MonsterAttackState(this);
 
         MovementSpeed = FieldMonsters.myInfo.MoveSpeed;
-        //RotationDamping = enemy.Data.GroundedData.BaseRotationDamping;
+        rotationDamping = fieldMonster.rotationDamping;
     }
 }
