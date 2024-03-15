@@ -289,7 +289,7 @@ public class Inventory : MonoBehaviour
     // 아이템 장착
     public void OnEquipBtton()
     {
-        if (_uiSlots[curEquipIndex].equipped)
+        if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndex로 하면 장비가 이중으로 껴짐
         {
             UnEquip(curEquipIndex);
         }
@@ -335,9 +335,9 @@ public class Inventory : MonoBehaviour
 
         if (_selectedItem.count <= 0)
         {
-            if (_uiSlots[curEquipIndex].equipped) //현재 장착하고 있는 아이템 인덱스에서 확인해야함 (_selectItemIndex 말고!)
+            if (_uiSlots[_selectedItemIndex].equipped) //현재 장착하고 있는 아이템 인덱스에서 확인해야함 (_selectItemIndex)
             {
-                UnEquip(curEquipIndex);
+                UnEquip(_selectedItemIndex);
             }
 
             _selectedItem.item = null;

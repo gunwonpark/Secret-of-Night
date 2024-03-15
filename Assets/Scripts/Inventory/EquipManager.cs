@@ -15,13 +15,17 @@ public class EquipManager : MonoBehaviour
     public void NewEquip(Item item)
     {
         curEquip = Instantiate(item.Prefab, equipParent);
+        curEquip.GetComponent<Collider>().enabled = false;
     }
     public void UnEquip()
     {
         if (curEquip != null)
         {
             Destroy(curEquip.gameObject);
+            curEquip.GetComponent<Collider>().enabled = true;
             curEquip = null;
+
         }
+
     }
 }

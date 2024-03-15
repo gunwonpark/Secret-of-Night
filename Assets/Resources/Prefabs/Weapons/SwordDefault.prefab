@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5898416719926152625}
   - component: {fileID: 3572614699486961579}
   - component: {fileID: 1622035268977584175}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SwordDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,8 +80,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22726583, y: 0.06270471, z: 0.55654514}
-  m_Center: {x: -0.006025672, y: -0.008100688, z: 0.34891796}
+  m_Size: {x: 0.22726583, y: 0.046832193, z: 0.55654514}
+  m_Center: {x: -0.006025672, y: -0.00016442873, z: 0.34891796}
 --- !u!1001 &208370666794943864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053007237682308, guid: 8a09698bb74585849b2373687c60be46, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4961384056340118, guid: 8a09698bb74585849b2373687c60be46, type: 3}
       propertyPath: m_RootOrder

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6204131914184268480}
   - component: {fileID: 508417821155788402}
   - component: {fileID: 3956233216482673828}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SwordDragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,8 +80,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3620216, y: 0.1056343, z: 1.0660223}
-  m_Center: {x: -0.0005835742, y: 0.001951471, z: 0.6132584}
+  m_Size: {x: 0.3620216, y: 0.07639205, z: 1.0660223}
+  m_Center: {x: -0.0005835742, y: -0.004329141, z: 0.6132584}
 --- !u!1001 &6976982122547519239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1403865853215482, guid: ca431500256e58b4c86ed1d87d75bd9e, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4478970288614970, guid: ca431500256e58b4c86ed1d87d75bd9e, type: 3}
       propertyPath: m_RootOrder

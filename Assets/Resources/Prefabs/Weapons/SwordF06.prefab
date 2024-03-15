@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4864753873160645609}
   - component: {fileID: 3351012049496893460}
   - component: {fileID: 7671569573966920405}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SwordF06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28498626, y: 0.08005018, z: 0.6754486}
-  m_Center: {x: 0.003678389, y: 0.0026263706, z: 0.41915908}
+  m_Size: {x: 0.28498626, y: 0.05686237, z: 0.6754486}
+  m_Center: {x: 0.0036783814, y: 0.0010138368, z: 0.41915908}
 --- !u!54 &7671569573966920405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688404288939428, guid: 12e1299649d5d9944bce52ef4021da99, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4362739099824634, guid: 12e1299649d5d9944bce52ef4021da99, type: 3}
       propertyPath: m_RootOrder
