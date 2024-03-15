@@ -9,17 +9,15 @@ public class MonsterChasingState : MonsterIdleState
     {
         stateMachine.MovementSpeedModifier = 1;
         base.Enter();
-        //애니메이션
-        //StartAnimation(stateMachine.Enemy.AnimationData.GroundParameterHash);
-        //StartAnimation(stateMachine.Enemy.AnimationData.RunParameterHash);
+
+        stateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
     }
 
     public override void Exit()
     {
         base.Exit();
-        //애니메이션
-        //StopAnimation(stateMachine.Enemy.AnimationData.GroundParameterHash);
-        //StopAnimation(stateMachine.Enemy.AnimationData.RunParameterHash);
+
+        stateMachine.FieldMonsters.monsterAnimation.StopRunAnimation();
     }
 
     public override void Update()
@@ -28,6 +26,8 @@ public class MonsterChasingState : MonsterIdleState
 
         if (!IsInChaseRange())
         {
+            //[todo]원래위치로 돌아가는 코드
+
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }

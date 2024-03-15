@@ -10,12 +10,15 @@ public class FieldMonsters : MonoBehaviour
     [field: SerializeField] public float targetRange = 5f;
 
     public MonsterManager monsterManager;
-    public string monsterName;// to do 나자신의 이름 가져오게 하기
+
+    public string monsterName;
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public ForceReceiver forceReceiver { get; private set; }
     public CharacterController controller { get; private set; }
+
+    public MonsterAnimation monsterAnimation;
 
     private MonsterStateMachine stateMachine;
 
@@ -28,7 +31,7 @@ public class FieldMonsters : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         forceReceiver = GetComponent<ForceReceiver>();
         controller = GetComponent<CharacterController>();
-
+        monsterAnimation = GetComponent<MonsterAnimation>();
     }
 
     private void Start()
