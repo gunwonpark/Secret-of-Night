@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!143 &49705283 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 6969672690019464994, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
-  m_PrefabInstance: {fileID: 1144984281}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +391,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
   m_PrefabInstance: {fileID: 1598584526}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1144984281
+--- !u!1001 &1158858878
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -404,10 +399,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3431177400230823896, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 4421524394238149436, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
       propertyPath: m_Name
       value: PlayerAndCamera
@@ -458,16 +449,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8818614631435710342, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.92
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818614631435710342, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.17
       objectReference: {fileID: 0}
     - target: {fileID: 8818614631435710342, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.48
+      value: -5.63
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1197916188324178823, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+    - {fileID: 1787812152278943964, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3431177400230823896, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103398067}
+    - targetCorrespondingSourceObject: {fileID: 3431177400230823896, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103398066}
   m_SourcePrefab: {fileID: 100100000, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
 --- !u!1 &1198715818
 GameObject:
@@ -645,6 +648,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 439360375182589427, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f068f02adf31d544841102ab98a4039, type: 2}
     - target: {fileID: 781799219068015372, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
       propertyPath: m_Name
       value: PlatypusA
@@ -654,6 +661,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
+--- !u!95 &1880303334 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 439360375182589427, guid: 5085e0f5fd30d0d4baec5879578bcb74, type: 3}
+  m_PrefabInstance: {fileID: 1880303333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2063408637
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +679,7 @@ GameObject:
   - component: {fileID: 2063408642}
   - component: {fileID: 2063408644}
   - component: {fileID: 2063408643}
+  - component: {fileID: 2063408645}
   m_Layer: 0
   m_Name: PlatypusA
   m_TagString: Untagged
@@ -682,7 +695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063408637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.69, y: -0, z: -7.23}
+  m_LocalPosition: {x: 1.27, y: -0, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -730,21 +743,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myInfo:
-    name: 
-    level: 0
-    exp: 0
+    MonsterID: 0
+    Name: 
+    Level: 0
+    Exp: 0
     AtkStance: 0
     HP: 0
     Damage: 0
     Daf: 0
     DmgSpeed: 0
     CriDamage: 0
-    Speed: 0
-    AtkSpeed: 0
-    Range: 0
+    MoveSpeed: 0
+    RunSpeed: 0
+    Range: 1
   targetRange: 5
   monsterManager: {fileID: 968629442}
   monsterName: PlatypusA
+  monsterAnimation: {fileID: 0}
 --- !u!143 &2063408643
 CharacterController:
   m_ObjectHideFlags: 0
@@ -783,7 +798,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64864c11eda9bdf4185f3648f86320ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 49705283}
+  controller: {fileID: 2063408643}
+  drag: 0.01
+--- !u!114 &2063408645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063408637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6218bdc86e012e0489cac574cde40a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1880303334}
+--- !u!1 &2103398060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3431177400230823896, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+  m_PrefabInstance: {fileID: 1158858878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &2103398065 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 6969672690019464994, guid: 8a806a4526856e548a66f55e6486c8b3, type: 3}
+  m_PrefabInstance: {fileID: 1158858878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2103398066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103398060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35aa027cca8ca74488db1843960777f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerData>k__BackingField:
+    CharacterType: 
+    ID: 0
+    CharacterID: 0
+    Level: 0
+    MaxExp: 0
+    CurExp: 0
+    MaxHP: 0
+    CurHP: 0
+    MaxMP: 0
+    CurMP: 0
+    MaxSP: 0
+    CurSP: 0
+    Damage: 0
+    DamageSpeed: 0
+    CriDamage: 0
+    Def: 0
+    MoveSpeed: 0
+  <AnimationData>k__BackingField:
+    _walkHash: Walk
+    _runHash: Run
+    _idleHash: Idle
+    _jumpHash: Jump
+    _dodgeHash: Dodge
+    _attackHash: Attack
+--- !u!114 &2103398067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103398060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64864c11eda9bdf4185f3648f86320ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 2103398065}
   drag: 0.01
 --- !u!1 &2113870035
 GameObject:

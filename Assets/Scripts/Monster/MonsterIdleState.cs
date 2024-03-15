@@ -15,12 +15,12 @@ public class MonsterIdleState : IState
     {
         stateMachine.MovementSpeedModifier = 1;
 
-        //[추가] 애니메이션
+        stateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
     }
 
     public virtual void Exit()
     {
-        //[추가] 애니메이션
+        stateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
     }
 
     public virtual void HandleInput()
@@ -46,7 +46,6 @@ public class MonsterIdleState : IState
     }
 
     //애니메이션
-
     //protected void StartAnimation(int animationHash)
     //{
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
@@ -126,6 +125,4 @@ public class MonsterIdleState : IState
 
         return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
     }
-
-
 }

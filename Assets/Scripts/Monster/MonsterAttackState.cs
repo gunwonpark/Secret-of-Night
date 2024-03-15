@@ -10,16 +10,15 @@ public class MonsterAttackState : MonsterIdleState
     {
         stateMachine.MovementSpeedModifier = 0;
         base.Enter();
-        //StartAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
-        //StartAnimation(stateMachine.Enemy.AnimationData.BaseAttackParameterHash);
+
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
     }
 
     public override void Exit()
     {
         base.Exit();
-        //StopAnimation(stateMachine.Enemy.AnimationData.AttackParameterHash);
-        //StopAnimation(stateMachine.Enemy.AnimationData.BaseAttackParameterHash);
 
+        stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
     }
 
     //public override void Update()
