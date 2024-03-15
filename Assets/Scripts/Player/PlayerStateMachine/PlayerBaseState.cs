@@ -30,11 +30,6 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
-        if (stateMachine.IsAttacking && !stateMachine.IsDodgeing)
-        {
-            Attack();
-            return;
-        }
     }
     protected virtual void AddPlayerActionCallbacks()
     {
@@ -48,6 +43,13 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Attack.started += OnAttackStarted;
         stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
+        stateMachine.Player.Input.PlayerActions.Skill1.started += OnSkill1Started;
+        stateMachine.Player.Input.PlayerActions.Skill2.started += OnSkill2Started;
+    }
+
+    private void OnSkill2Started(InputAction.CallbackContext obj)
+    {
+        stateMachine.ChangeState(stateMachine.Skill2State);
     }
 
     protected virtual void RemovePlayerActionCallbacks()
@@ -62,8 +64,14 @@ public class PlayerBaseState : IState
 
         stateMachine.Player.Input.PlayerActions.Attack.started -= OnAttackStarted;
         stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
+        stateMachine.Player.Input.PlayerActions.Skill1.started -= OnSkill1Started;
+        stateMachine.Player.Input.PlayerActions.Skill2.started -= OnSkill2Started;
     }
     #region addevent
+    private void OnSkill1Started(InputAction.CallbackContext obj)
+    {
+        stateMachine.ChangeState(stateMachine.Skill1State);
+    }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if (stateMachine.Player.Controller.isGrounded && stateMachine.IsJumping == false)
@@ -78,10 +86,6 @@ public class PlayerBaseState : IState
         stateMachine.IsRunning = true;
     }
 
-    protected virtual void OnMovementCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
-    {
-
-    }
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
         if (stateMachine.IsDodgeing == false && stateMachine.IsJumping == false)
@@ -101,6 +105,10 @@ public class PlayerBaseState : IState
     protected virtual void OnRunCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         stateMachine.IsRunning = false;
+    }
+    protected virtual void OnMovementCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+
     }
     #endregion
     //Read InputActions
@@ -131,13 +139,9 @@ public class PlayerBaseState : IState
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.RotationDamping);
     }
-    private void Attack()
-    {
-        stateMachine.ChangeState(stateMachine.AttackState);
-    }
     private float GetMovementSpeed()
     {
-        return stateMachine.Player.PlayerData.MoveSpeed + stateMachine.MovementSpeedModifier;
+        return stateMachine.Player.PlayerData.MoveSpeed * stateMachine.MovementSpeedModifier;
     }
     protected void StartAnimation(int animationHash)
     {

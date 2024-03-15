@@ -27,6 +27,11 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.Update();
 
+        if (stateMachine.IsAttacking)
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }
         if (stateMachine.MovementInput != Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
