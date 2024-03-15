@@ -1,0 +1,42 @@
+{
+	"PlayerStat": [
+		{
+			"CharacterID": 1,
+			"Name": "M05",
+			"CharacterType": "Warrior",
+			"HP": 20,
+			"MP": 10,
+			"SP": 20,
+			"Damage": 1,
+			"DamageSpeed": 1,
+			"CriDamage": 0,
+			"Def": 1,
+			"MoveSpeed": 1,
+			"Skills": [
+				101,
+				102,
+				103
+			],
+			"PrefabPath": "Player/M05"
+		},
+		{
+			"CharacterID": 2,
+			"Name": "F06",
+			"CharacterType": "Magician",
+			"HP": 1,
+			"MP": 1,
+			"SP": 1,
+			"Damage": 1,
+			"DamageSpeed": 1,
+			"CriDamage": 1,
+			"Def": 1,
+			"MoveSpeed": 1,
+			"Skills": [
+				101,
+				102,
+				103
+			],
+			"PrefabPath": "Player/M06"
+		}
+	]
+}

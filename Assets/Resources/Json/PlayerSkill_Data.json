@@ -1,0 +1,85 @@
+{
+	"PlayerSkill": [
+		{
+			"SkillID": 101,
+			"Name": "Sword1Default",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 1,
+			"Damage": 1,
+			"PrefabPath": "Explosion"
+		},
+		{
+			"SkillID": 102,
+			"Name": "Sword1Skill1",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 50,
+			"Damage": 2,
+			"PrefabPath": "Chargeslashblue"
+		},
+		{
+			"SkillID": 103,
+			"Name": "Sword1Skill2",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 100,
+			"Damage": 3,
+			"PrefabPath": "AoEslashgreen"
+		},
+		{
+			"SkillID": 201,
+			"Name": "Sword2Default",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 1,
+			"Damage": 1,
+			"PrefabPath": "snowhit"
+		},
+		{
+			"SkillID": 202,
+			"Name": "Sword2Skill1",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 50,
+			"Damage": 2,
+			"PrefabPath": "Chargeslashpurple"
+		},
+		{
+			"SkillID": 203,
+			"Name": "Sword2Skill2",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 100,
+			"Damage": 3,
+			"PrefabPath": "AoEslashblue"
+		},
+		{
+			"SkillID": 301,
+			"Name": "Sword3Default",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 1,
+			"Damage": 1,
+			"PrefabPath": "starhit"
+		},
+		{
+			"SkillID": 302,
+			"Name": "Sword3Skill1",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 50,
+			"Damage": 2,
+			"PrefabPath": "Chargeslashred"
+		},
+		{
+			"SkillID": 303,
+			"Name": "Sword3Skill2",
+			"Description": "Test",
+			"SkillType": "Attack",
+			"DelayTime": 100,
+			"Damage": 3,
+			"PrefabPath": "AoEslashorange"
+		}
+	]
+}
