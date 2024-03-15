@@ -27,25 +27,34 @@ public class ItemInstance
 
 
 [System.Serializable]
-public class ItemData
+public class ItemData : DataBase<int, Item>
 {
     public List<Item> items;
-    public Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
 
-    public void Initialize()
+    protected override void LoadData()
     {
         foreach (Item item in items)
         {
-            itemDic.Add(item.ItemID, item);
+            data.Add(item.ItemID, item);
             item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
         }
     }
+    //public Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
 
-    public Item GetItemByKey(int _id)
-    {
-        if (itemDic.ContainsKey(_id)) // 키가 있는지 확인
-            return itemDic[_id];
+    //public void Initialize()
+    //{
+    //    foreach (Item item in items)
+    //    {
+    //        itemDic.Add(item.ItemID, item);
+    //        item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
+    //    }
+    //}
 
-        return null;
-    }
+    //public Item GetItemByKey(int _id)
+    //{
+    //    if (itemDic.ContainsKey(_id)) // 키가 있는지 확인
+    //        return itemDic[_id];
+
+    //    return null;
+    //}
 }

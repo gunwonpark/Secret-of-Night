@@ -15,7 +15,7 @@ public class ItemDataManager : MonoBehaviour
             string json = jsonFile.text;
 
             itemData = JsonUtility.FromJson<ItemData>(json);
-            itemData.Initialize();
+            // itemData.Initialize();
         }
     }
 }

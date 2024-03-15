@@ -7,6 +7,6 @@ public class ItemObject : MonoBehaviour
 
     private void Start()
     {
-        item = ItemDataManager.Instance.itemData.GetItemByKey(Id);
+        item = GameManager.Instance.dataManager.itemData.GetData(Id);
     }
 }
