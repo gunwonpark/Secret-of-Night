@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
+        PlayerData = GameManager.Instance.playerManager.playerData;
     }
 
     private void Update()

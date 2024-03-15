@@ -9,6 +9,8 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState JumpState { get; set; }
     public PlayerDodgeState DodgeState { get; set; }
     public PlayerAttackState AttackState { get; set; }
+    public PlayerSkill1State Skill1State { get; set; }
+    public PlayerSkill2State Skill2State { get; set; }
     public Vector2 MovementInput { get; set; }
 
     #region StateCheckcing
@@ -16,14 +18,15 @@ public class PlayerStateMachine : StateMachine
     public bool IsRunning { get; set; }
     public bool IsJumping { get; set; }
     public bool IsDodgeing { get; set; }
+    public bool DoSkill { get; set; }
     #endregion
 
     public Transform MainCameraTransform { get; set; }
 
     //TODO have to make as DataScripts
     public float MovementSpeedModifier { get; set; }
-    public float walkSpeed = 3.0f;
-    public float runSpeed = 6.0f;
+    public float walkSpeed = 2.0f;
+    public float runSpeed = 4.0f;
     public float RotationDamping { get; set; }
     public float JumpForce { get; set; }
     public PlayerStateMachine(Player player)
@@ -36,6 +39,8 @@ public class PlayerStateMachine : StateMachine
         JumpState = new PlayerJumpState(this);
         DodgeState = new PlayerDodgeState(this);
         AttackState = new PlayerAttackState(this);
+        Skill1State = new PlayerSkill1State(this);
+        Skill2State = new PlayerSkill2State(this);
 
         MainCameraTransform = Camera.main.transform;
         RotationDamping = 10f;
