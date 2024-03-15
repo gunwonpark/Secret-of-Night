@@ -84,7 +84,7 @@ public class MonsterIdleState : IState
             direction.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            //stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.rotationDamping * Time.deltaTime);
         }
     }
 
