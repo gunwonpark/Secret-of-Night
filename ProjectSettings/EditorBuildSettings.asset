@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LYS.unity
-    guid: 8d5ebeef8439ec74990b27b7dc23d79b
+    path: Assets/Scenes/MainScene.unity
+    guid: a656d4cd41c2db245b56f22af1b98a72
   - enabled: 1
     path: Assets/Scenes/LYS_BossMap.unity
     guid: e223ee268b7a44548bf8d2d238acf2fe
