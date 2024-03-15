@@ -5,20 +5,23 @@ using UnityEngine;
 [Serializable]
 public class MonsterInfo
 {
-    public string name;
-    public int level;
-    public float exp;
+    public int MonsterID;
+    public string Name;
+    public int Level;
+    public float Exp;
     public bool AtkStance;
     public float HP;
     public float Damage;
     public float Daf;
     public float DmgSpeed;
     public float CriDamage;
-    public float Speed;
-    public float AtkSpeed;
+    public float MoveSpeed;
+    public float RunSpeed;
     public float Range;
-
 }
+//변하는 데이터 -> HP
+//몬스터cs 상위에 HP만 변할수 있도록 따로 적어둬야함
+//건원님 DataManager에 합쳐보자.
 
 [Serializable]
 public class MonsterDataBase //->실제데이터
@@ -31,7 +34,7 @@ public class MonsterDataBase //->실제데이터
     {
         foreach (MonsterInfo fieldMonster in FieldMonster)
         {
-            fieldMonDic.Add(fieldMonster.name, fieldMonster);
+            fieldMonDic.Add(fieldMonster.Name, fieldMonster);
         }
     }
 
@@ -46,9 +49,9 @@ public class MonsterDataBase //->실제데이터
     }
 }
 
-public class DataManager : MonoBehaviour
+public class MonsterData : MonoBehaviour
 {
-    public static DataManager Instance;
+    public static MonsterData Instance;
 
     public MonsterDataBase monsterDatabase;
 

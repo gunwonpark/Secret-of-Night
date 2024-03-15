@@ -8,6 +8,7 @@ namespace PKW
         public PlayerLevelDataBase playerLevelDataBase;
         public PlayerSkillDataBase playerSkillDataBase;
         public PlayerStatDataBase playerStatDataBase;
+        public BossMonsterStatDatabase bossMonsterStatDatabase;
         #endregion
         public void Initialize()
         {
@@ -17,6 +18,10 @@ namespace PKW
             playerSkillDataBase.Initalize();
             playerStatDataBase = Utility.LoadJson<PlayerStatDataBase>("PlayerStat_Data");
             playerStatDataBase.Initalize();
+
+            bossMonsterStatDatabase = Utility.LoadJson<BossMonsterStatDatabase>("BossMonsterStat_Data");
+            bossMonsterStatDatabase.Initalize();
+            
         }
     }
 }
