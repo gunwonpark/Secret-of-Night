@@ -12,7 +12,7 @@ public class Phase1Boss : MonoBehaviour
 	[Header("MonsterData")]
 	[SerializeField] private BossMonsterGameData bossMonsterData;
 
-	public float dashdistance = 5f;
+	public float dashdistance = 3f;
 
 	private void Awake()
 	{
@@ -27,13 +27,10 @@ public class Phase1Boss : MonoBehaviour
 		{
 			agent.speed = bossMonsterData.MoveSpeed; // 스피드 직접 참조
 		}
-
-
 	}
 
 	private void Update()
-	{
-		
+	{		
 		if (bossMonsterData == null) return;
 
 		float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
@@ -50,7 +47,7 @@ public class Phase1Boss : MonoBehaviour
 				MoveTowardsPlayer(distanceToPlayer);
 				break;
 			case BossState.Dashing:
-				DashTowardsPlayer(distanceToPlayer);
+				DashTowardsPlayer();
 				break;
 
 			case BossState.Attacking:
@@ -62,7 +59,6 @@ public class Phase1Boss : MonoBehaviour
 		}
 	}
 
-
 	void MoveTowardsPlayer(float distanceToPlayer)
 	{
 		if (distanceToPlayer > dashdistance)
@@ -72,50 +68,37 @@ public class Phase1Boss : MonoBehaviour
 		}
 		else if (distanceToPlayer <= dashdistance)
 		{			
-			currentState = BossState.Dashing;
-			Debug.Log("dashstate");
+			currentState = BossState.Dashing;			
 		}
 		else if (distanceToPlayer <= bossMonsterData.Range)
-		{
-			Debug.Log("dd");
+		{			
 			currentState = BossState.Attacking;
 		}
 	}
 
-	void DashTowardsPlayer(float distanceToPlayer)
+	void DashTowardsPlayer()
 	{
-		agent.speed = 10f;
+		agent.speed = 5f;
 		agent.SetDestination(playerTransform.position);
 		animator.SetBool("IsDashing", true);
-		Debug.Log(dashdistance);
-		Debug.Log(distanceToPlayer);
-		Debug.Log(bossMonsterData.Range);
-		if (distanceToPlayer <= bossMonsterData.Range)
-		{
-			
-			animator.SetBool("IsAttack", true);
-		}
+
+		currentState = BossState.Attacking;
 	}
 
 	void AttackPlayer(float distanceToPlayer)
 	{
+		
 		if (distanceToPlayer <= bossMonsterData.Range)
 		{
+			agent.speed = bossMonsterData.MoveSpeed;
+			animator.SetBool("IsRunning", false);
+			animator.SetBool("IsDashing", false);
 			animator.SetBool("IsAttack", true);
 		}
 		else
 		{
 			animator.SetBool("IsAttack", false);
 			currentState = BossState.Moving;
-		}
-	}
-
-	public void TakeDamage(float damage)
-	{
-		bossMonsterData.HP -= damage / bossMonsterData.Def;
-		if (bossMonsterData.HP <= 0)
-		{
-			Die();
 		}
 	}
 
