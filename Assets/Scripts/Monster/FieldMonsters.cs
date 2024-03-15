@@ -38,7 +38,7 @@ public class FieldMonsters : MonoBehaviour
     private void Start()
     {
         monsterName = gameObject.name;
-        myInfo = monsterManager.GetMonsterInfoByKey(monsterName);
+        myInfo = GameManager.Instance.monsterManager.GetMonsterInfoByKey(monsterName);
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);

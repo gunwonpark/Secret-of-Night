@@ -49,28 +49,14 @@ public class MonsterDataBase //->실제데이터
     }
 }
 
-public class MonsterData : MonoBehaviour
+public class MonsterData
 {
-    public static MonsterData Instance;
-
     public MonsterDataBase monsterDatabase;
 
-    private void Awake()
+    public void Initialize()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        DontDestroyOnLoad(this.gameObject);
-
         TextAsset fieldMonData = Resources.Load<TextAsset>("Json/FieldMonster_Data");
         monsterDatabase = JsonUtility.FromJson<MonsterDataBase>(fieldMonData.text);
         monsterDatabase.Initialize();
-    }
-
-    private void Start()
-    {
-
-
     }
 }

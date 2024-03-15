@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private UIManager uiManager;
     public PlayerManager playerManager;
-
+    public MonsterManager monsterManager;
 
     private void Awake()
     {
@@ -32,5 +32,6 @@ public class GameManager : MonoBehaviour
         if (soundManager == null) { soundManager = gameObject.AddComponent<SoundManager>(); }
         if (uiManager == null) { uiManager = gameObject.AddComponent<UIManager>(); }
         if (playerManager == null) { playerManager = gameObject.AddComponent<PlayerManager>(); playerManager.Initialize(1); }
+        if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }
     }
 }
