@@ -21,7 +21,6 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; set; }
 
     //TODO have to make as DataScripts
-    public float MovementSpeed { get; private set; }
     public float MovementSpeedModifier { get; set; }
     public float walkSpeed = 3.0f;
     public float runSpeed = 6.0f;

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // PlayerData need
+    [field: Header("PlayerData")]
+    [field: SerializeField] public PlayerGameData PlayerData { get; set; }
 
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }

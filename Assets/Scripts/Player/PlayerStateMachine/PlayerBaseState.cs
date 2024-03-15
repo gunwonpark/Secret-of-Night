@@ -137,7 +137,7 @@ public class PlayerBaseState : IState
     }
     private float GetMovementSpeed()
     {
-        return stateMachine.MovementSpeed + stateMachine.MovementSpeedModifier;
+        return stateMachine.Player.PlayerData.MoveSpeed + stateMachine.MovementSpeedModifier;
     }
     protected void StartAnimation(int animationHash)
     {
