@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33813002757014000}
   - component: {fileID: 23669302335511380}
   - component: {fileID: 95561907990656292}
-  - component: {fileID: -2299864846247169229}
   m_Layer: 0
   m_Name: Sword_M05
   m_TagString: Untagged
@@ -106,30 +105,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-2299864846247169229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053007237682308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86dbb7c757b61f4d8bb2e980ccb07c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: 8
-  item:
-    ItemID: 0
-    Name: 
-    Type: 
-    Price: 0
-    Damage: 0
-    Critical: 0
-    Money: 0
-    ItemName: 
-    Description: 
-    IconPath: 
-    MaxAmount: 0
-    PrefabPath: 
-    Prefab: {fileID: 0}
