@@ -13,7 +13,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 2,
@@ -28,7 +28,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 3,
@@ -43,7 +43,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 4,
@@ -58,7 +58,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 5,
@@ -73,7 +73,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 6,
@@ -88,7 +88,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		},
 		{
 			"MonsterID": 7,
@@ -103,7 +103,7 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 0
+			"Range": 1
 		}
 	]
 }
