@@ -21,7 +21,7 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        stateMachine.IsDodgeing = false;
+        stateMachine.Player.IsDodgeing = false;
         stateMachine.Player.ForceReceiver.Reset();
         StopAnimation(stateMachine.Player.AnimationData.DodgeParameter);
     }

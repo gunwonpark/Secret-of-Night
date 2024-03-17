@@ -11,7 +11,7 @@ public class PlayerRunState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = stateMachine.runSpeed;
+        stateMachine.Player.MovementSpeedModifier = stateMachine.Player.runSpeed;
         if (stateMachine.MovementInput != Vector2.zero)
             StartAnimation(stateMachine.Player.AnimationData.RunParameter);
     }
@@ -24,7 +24,7 @@ public class PlayerRunState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        if (stateMachine.IsAttacking)
+        if (stateMachine.Player.IsAttacking)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
@@ -33,7 +33,7 @@ public class PlayerRunState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-        else if (!stateMachine.IsRunning)
+        else if (!stateMachine.Player.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
         }

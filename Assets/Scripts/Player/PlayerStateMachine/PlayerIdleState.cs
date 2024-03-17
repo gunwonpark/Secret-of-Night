@@ -10,7 +10,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.Player.MovementSpeedModifier = 0f;
 
         //TODO SceneType에 따라 어떤 Idle 상태인지 결정
 
@@ -27,7 +27,7 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.Update();
 
-        if (stateMachine.IsAttacking)
+        if (stateMachine.Player.IsAttacking)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;

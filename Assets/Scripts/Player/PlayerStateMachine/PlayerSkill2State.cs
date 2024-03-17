@@ -9,8 +9,8 @@ public class PlayerSkill2State : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = 0f;
-        stateMachine.IsAttacking = true;
+        stateMachine.Player.MovementSpeedModifier = 0f;
+        stateMachine.Player.IsAttacking = true;
         int SkillID = GameManager.Instance.dataManager.playerStatDataBase.GetData(stateMachine.Player.PlayerData.CharacterID).Skills[2];
         string path = GameManager.Instance.dataManager.playerSkillDataBase.GetData(SkillID).PrefabPath;
 
@@ -31,7 +31,7 @@ public class PlayerSkill2State : PlayerBaseState
 
         if (normalizedTime > 1f)
         {
-            stateMachine.IsAttacking = false;
+            stateMachine.Player.IsAttacking = false;
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

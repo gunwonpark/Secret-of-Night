@@ -2,11 +2,27 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput), typeof(ForceReceiver))]
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    // PlayerData need
+    #region PlayerData
     [field: Header("PlayerData")]
     [field: SerializeField] public PlayerGameData PlayerData { get; set; }
+    [field: SerializeField] public float MovementSpeedModifier { get; set; }
+    public float walkSpeed = 2.0f;
+    public float runSpeed = 4.0f;
+    public float rotationDamping = 10f;
+    public float jumpForce = 4f;
+    #endregion
+
+    #region StateCheckcing
+    [field: Header("State Check")]
+    [field: SerializeField] public bool IsAttacking { get; set; }
+    [field: SerializeField] public bool IsRunning { get; set; }
+    [field: SerializeField] public bool IsJumping { get; set; }
+    [field: SerializeField] public bool IsDodgeing { get; set; }
+    [field: SerializeField] public bool DoSkill { get; set; }
+    [field: SerializeField] public bool IsGrounded { get; set; }
+    #endregion
 
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }

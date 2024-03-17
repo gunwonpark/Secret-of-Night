@@ -30,6 +30,7 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
+        GroundedCheck();
     }
     protected virtual void AddPlayerActionCallbacks()
     {
@@ -74,37 +75,38 @@ public class PlayerBaseState : IState
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (stateMachine.Player.Controller.isGrounded && stateMachine.IsJumping == false)
+        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
         {
-            stateMachine.IsJumping = true;
+            Debug.Log("What The Fuck");
+            stateMachine.Player.IsJumping = true;
             stateMachine.ChangeState(stateMachine.JumpState);
         }
     }
 
     protected virtual void OnRunStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        stateMachine.IsRunning = true;
+        stateMachine.Player.IsRunning = true;
     }
 
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
-        if (stateMachine.IsDodgeing == false && stateMachine.IsJumping == false)
+        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false)
         {
-            stateMachine.IsDodgeing = true;
+            stateMachine.Player.IsDodgeing = true;
             stateMachine.ChangeState(stateMachine.DodgeState);
         }
     }
     protected virtual void OnAttackStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        stateMachine.IsAttacking = true;
+        stateMachine.Player.IsAttacking = true;
     }
     protected virtual void OnAttackCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        stateMachine.IsAttacking = false;
+        stateMachine.Player.IsAttacking = false;
     }
     protected virtual void OnRunCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        stateMachine.IsRunning = false;
+        stateMachine.Player.IsRunning = false;
     }
     protected virtual void OnMovementCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
@@ -120,12 +122,12 @@ public class PlayerBaseState : IState
     private void Move()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
-        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.IsDodgeing)
+        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing)
         {
             Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
             moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
             moveDirection.y = 0;
-            if (stateMachine.Player.Controller.isGrounded)
+            if (stateMachine.Player.IsGrounded)
             {
                 float moveSpeed = GetMovementSpeed();
                 stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
@@ -137,11 +139,18 @@ public class PlayerBaseState : IState
     {
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
-            lookRotation, Time.deltaTime * stateMachine.RotationDamping);
+            lookRotation, Time.deltaTime * stateMachine.Player.rotationDamping);
+    }
+    private void GroundedCheck()
+    {
+        Vector3 spherePosition = stateMachine.Player.transform.position;
+        spherePosition.y -= -0.14f;
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.28f, LayerMask.GetMask("Default"),
+                QueryTriggerInteraction.Ignore); ;
     }
     private float GetMovementSpeed()
     {
-        return stateMachine.Player.PlayerData.MoveSpeed * stateMachine.MovementSpeedModifier;
+        return stateMachine.Player.PlayerData.MoveSpeed * stateMachine.Player.MovementSpeedModifier;
     }
     protected void StartAnimation(int animationHash)
     {

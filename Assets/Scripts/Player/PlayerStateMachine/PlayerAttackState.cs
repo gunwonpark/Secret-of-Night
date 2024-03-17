@@ -11,7 +11,7 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.Player.MovementSpeedModifier = 0f;
         int SkillID = GameManager.Instance.dataManager.playerStatDataBase.GetData(stateMachine.Player.PlayerData.CharacterID).Skills[0];
         string path = GameManager.Instance.dataManager.playerSkillDataBase.GetData(SkillID).PrefabPath;
 
@@ -33,7 +33,7 @@ public class PlayerAttackState : PlayerBaseState
         float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Attack");
         if (normalizedTime >= 0.9f)
         {
-            if (stateMachine.IsAttacking && !stateMachine.IsDodgeing)
+            if (stateMachine.Player.IsAttacking && !stateMachine.Player.IsDodgeing)
             {
                 stateMachine.ChangeState(stateMachine.AttackState);
             }

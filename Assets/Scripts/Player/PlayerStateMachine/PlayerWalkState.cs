@@ -9,7 +9,7 @@ public class PlayerWalkState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = stateMachine.walkSpeed;
+        stateMachine.Player.MovementSpeedModifier = stateMachine.Player.walkSpeed;
         StartAnimation(stateMachine.Player.AnimationData.WalkParameter);
     }
 
@@ -21,7 +21,7 @@ public class PlayerWalkState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        if (stateMachine.IsAttacking)
+        if (stateMachine.Player.IsAttacking)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
@@ -30,7 +30,7 @@ public class PlayerWalkState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-        else if (stateMachine.IsRunning)
+        else if (stateMachine.Player.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.RunState);
         }

@@ -34,7 +34,6 @@ public class MonsterIdleState : IState
         if (IsInChaseRange())
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
-            Debug.Log("chasing");
             Move();
             return;
         }
@@ -67,7 +66,6 @@ public class MonsterIdleState : IState
     protected void ForceMove()//네브메쉬로 수정 고려
     {
         stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
-        Debug.Log("Attack");
     }
 
 
