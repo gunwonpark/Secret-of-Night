@@ -1,5 +1,3 @@
-using Debug = UnityEngine.Debug;
-
 public class MonsterChasingState : MonsterBaseState
 {
     public MonsterChasingState(MonsterStateMachine stateMachine) : base(stateMachine)
@@ -47,7 +45,6 @@ public class MonsterChasingState : MonsterBaseState
         // if (stateMachine.Target.IsDead) { return false; }
 
         float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        Debug.Log(playerDistanceSqr);
         return playerDistanceSqr <= monsterStateMachine.FieldMonsters.myInfo.Range * monsterStateMachine.FieldMonsters.myInfo.Range;
     }
 

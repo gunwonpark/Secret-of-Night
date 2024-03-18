@@ -26,7 +26,11 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
-
+        if (IsInChaseRange())
+        {
+            monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+            return;
+        }
     }
 
     public virtual void PhysicsUpdate()
@@ -110,7 +114,7 @@ public class MonsterBaseState : IState
     protected bool IsInChaseRange()//v
     {
         float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
-
+        Debug.Log(playerDistanceSqr);
         return playerDistanceSqr <= monsterStateMachine.FieldMonsters.targetRange * monsterStateMachine.FieldMonsters.targetRange;
     }
 }

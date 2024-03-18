@@ -25,12 +25,6 @@ public class MonsterIdleState : MonsterBaseState
     public override void Update()
     {
         base.Update();
-
-        if (IsInChaseRange())
-        {
-            monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
-            return;
-        }
     }
 
     public override void PhysicsUpdate()
@@ -48,51 +42,6 @@ public class MonsterIdleState : MonsterBaseState
     //{
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
     //}
-
-    private void Move()//v
-    {
-        Vector3 movementDirection = GetMovementDirection();
-
-        Rotate(movementDirection);
-        Move(movementDirection);
-    }
-
-    protected void ForceMove()//�׺�޽��� ���� ����
-    {
-        stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
-    }
-
-
-    private void Move(Vector3 direction)//v
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
-    }
-
-    private void Rotate(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            direction.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.rotationDamping * Time.deltaTime);
-        }
-    }
-
-    private Vector3 GetMovementDirection()//v
-    {
-        //Debug.Log(stateMachine.Target.localPosition);
-        //Debug.Log(stateMachine.Target.position);
-        return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
-    }
-
-    private float GetMovementSpeed()//v
-    {
-        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-
-        return movementSpeed;
-    }
 
     //protected float GetNormalizedTime(Animator animator, string tag)
     //{
@@ -112,11 +61,4 @@ public class MonsterIdleState : MonsterBaseState
     //        return 0f;
     //    }
     //}
-
-    protected bool IsInChaseRange()//v
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
-
-        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
-    }
 }
