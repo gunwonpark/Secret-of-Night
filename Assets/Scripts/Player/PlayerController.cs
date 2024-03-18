@@ -66,6 +66,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, 0.14f);
-        Debug.Log(transform.position);
     }
 }
