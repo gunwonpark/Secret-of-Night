@@ -20,19 +20,19 @@ public struct PlayerStat
     public float MoveSpeed;
 }
 /// <summary>
-/// PlayerGameData¸¦ »ı¼º ÇÑ ´ÙÀ½ Initialize¸¦ ÅëÇØ µ¥ÀÌÅÍ¸¦ ºÒ·¯¿À°Å³ª 
-/// ±âº» µ¥ÀÌÅÍ·Î ÃÊ±âÈ­ ÇØµÑ ¼ö ÀÖ´Ù.
+/// PlayerGameDataë¥¼ ìƒì„± í•œ ë‹¤ìŒ Initializeë¥¼ í†µí•´ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¤ê±°ë‚˜ 
+/// ê¸°ë³¸ ë°ì´í„°ë¡œ ì´ˆê¸°í™” í•´ë‘˜ ìˆ˜ ìˆë‹¤.
 /// </summary>
 [System.Serializable]
 public class PlayerGameData
 {
     private string _jsonDataPath;
     private DataManager dataManager;
-
+    //í•œê¸€ì´ ì•ˆë³´ì—¬
     [Header("PlayerInfo")]
     public string CharacterType;
-    public int ID; // ·Î±×ÀÎ ÇÒ¶§ ÇÊ¿äÇÏ¸é »ç¿ëÇÒ ID -> ÇöÀç ¹Ì»ç¿ë
-    public int CharacterID; // Ä³¸¯ÅÍ ID -> ¾î¶² Á¾·ùÀÇ Ä³¸¯ÅÍÀÎÁö °áÁ¤
+    public int ID; // ë¡œê·¸ì¸ í• ë•Œ í•„ìš”í•˜ë©´ ì‚¬ìš©í•  ID -> í˜„ì¬ ë¯¸ì‚¬ìš©
+    public int CharacterID; // ìºë¦­í„° ID -> ì–´ë–¤ ì¢…ë¥˜ì˜ ìºë¦­í„°ì¸ì§€ ê²°ì •
 
     [Header("PlayerStat")]
     public PlayerStat stat = new PlayerStat();
@@ -56,21 +56,21 @@ public class PlayerGameData
         _jsonDataPath = $"{Application.dataPath}/Datas/PlayerData";
     }
     /// <summary>
-    /// ÇöÀç´Â ¾î¶² Á¾·ùÀÇ Ä³¸¯ÅÍÀÎÁö¿¡ µû¶ó µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ ½ÃÄÑÁØ´Ù
+    /// í˜„ì¬ëŠ” ì–´ë–¤ ì¢…ë¥˜ì˜ ìºë¦­í„°ì¸ì§€ì— ë”°ë¼ ë°ì´í„°ë¥¼ ì´ˆê¸°í™” ì‹œì¼œì¤€ë‹¤
     /// </summary>
-    /// <param name="CharacterID">Ä³¸¯ÅÍÀÇ Á¾·ù</param>
+    /// <param name="CharacterID">ìºë¦­í„°ì˜ ì¢…ë¥˜</param>
     public void Initialize(int CharacterID)
     {
         dataManager = GameManager.Instance.dataManager;
         this.CharacterID = CharacterID;
-        // ÆÄÀÏÀÌ ÀÖÀ¸¸é ÆÄÀÏJsonµ¥ÀÌÅÍ ºÒ·¯¿À±â
+        // íŒŒì¼ì´ ìˆìœ¼ë©´ íŒŒì¼Jsonë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
         if (File.Exists(_jsonDataPath))
         {
             string json = File.ReadAllText(_jsonDataPath);
             JsonUtility.FromJsonOverwrite(json, this);
             return;
         }
-        // ÆÄÀÏÀÌ ¾øÀ¸¸é ±âº» µ¥ÀÌÅÍ ºÒ·¯¿À±â
+        // íŒŒì¼ì´ ì—†ìœ¼ë©´ ê¸°ë³¸ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
         LoadDefaultData();
     }
     public void LoadDefaultData()
@@ -108,7 +108,7 @@ public class PlayerGameData
         }
         else if (CurHP < 0)
         {
-            //ÇÃ·¹ÀÌ¾î »ç¸Á
+            //í”Œë ˆì´ì–´ ì‚¬ë§
             CurHP = 0;
         }
     }
