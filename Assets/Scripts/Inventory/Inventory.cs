@@ -180,11 +180,11 @@ public class Inventory : MonoBehaviour
     }
 
     //아이템 추가
-    public void AddItem(Item item)
+    public void AddItem(Item _item)
     {
-        if (item.Type == "using")
+        if (_item.Type == "using")
         {
-            ItemSlot slotStack = GetItemStack(item);
+            ItemSlot slotStack = GetItemStack(_item);
             if (slotStack != null)
             {
                 slotStack.count++;
@@ -197,7 +197,7 @@ public class Inventory : MonoBehaviour
 
         if (emptySlot != null)
         {
-            emptySlot.item = item;
+            emptySlot.item = _item;
             emptySlot.count = 1;
             UpdateUI();
             return;
@@ -206,11 +206,11 @@ public class Inventory : MonoBehaviour
     }
 
     // 아이템 수량 추가
-    private ItemSlot GetItemStack(Item item)
+    private ItemSlot GetItemStack(Item _item)
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == item && slots[i].count < item.MaxAmount)
+            if (slots[i].item == _item && slots[i].count < _item.MaxAmount)
             {
                 return slots[i];
             }
@@ -231,22 +231,22 @@ public class Inventory : MonoBehaviour
     }
 
     //아이템 슬롯 선택시 아이템 설명이 보이게
-    public void SelectItem(int index)
+    public void SelectItem(int _index)
     {
-        if (slots[index].item == null)
+        if (slots[_index].item == null)
         {
             return;
         }
-        _selectedItem = slots[index];
-        _selectedItemIndex = index;
+        _selectedItem = slots[_index];
+        _selectedItemIndex = _index;
         selectedItemName.text = _selectedItem.item.ItemName;
         selectedItemDescription.text = _selectedItem.item.Description;
         //selectedItemStat.text = selectedItem.Price.ToString();      
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
         useButton.SetActive(_selectedItem.item.Type == "using");
-        equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[index].equipped);
-        unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[index].equipped);
+        equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
+        unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
     }
 
@@ -317,16 +317,16 @@ public class Inventory : MonoBehaviour
 
         SelectItem(_selectedItemIndex);
     }
-    void UnEquip(int index)
+    void UnEquip(int _index)
     {
-        _uiSlots[index].equipped = false;
+        _uiSlots[_index].equipped = false;
         GameManager.Instance.equipManager.UnEquip();
         GameManager.Instance.equipManager.UnEquipWeapon(); //기본 공격력으로 돌아가게
         UpdateUI();
 
-        if (_selectedItemIndex == index)
+        if (_selectedItemIndex == _index)
         {
-            SelectItem(index);
+            SelectItem(_index);
         }
     }
 

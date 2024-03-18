@@ -25,7 +25,7 @@ public class EquipManager : MonoBehaviour
     }
 
     // 캐릭터 손에 무기 장착
-    public void NewEquip(Item item)
+    public void NewEquip(Item _item)
     {
         curEquip = Instantiate(item.Prefab, equipParent);
         curEquip.GetComponent<Collider>().enabled = false; // 손에 장착한 무기는 인식 x
@@ -42,10 +42,10 @@ public class EquipManager : MonoBehaviour
     }
 
     // 무기 장착시 공격력 변화
-    public void EquipWeapon(int _id, float damage)
+    public void EquipWeapon(int _id, float _damage)
     {
         _defultDamage = _playerData.Damage;
-        _playerData.Damage = _defultDamage + damage;
+        _playerData.Damage = _defultDamage + _damage;
     }
 
     public void UnEquipWeapon()
