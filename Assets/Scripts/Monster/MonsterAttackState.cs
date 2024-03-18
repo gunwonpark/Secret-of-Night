@@ -1,4 +1,4 @@
-public class MonsterAttackState : MonsterBaseState
+public class MonsterAttackState : MonsterIdleState
 {
     private bool alreadyAppliedForce;
 
@@ -8,25 +8,26 @@ public class MonsterAttackState : MonsterBaseState
 
     public override void Enter()
     {
+        stateMachine.MovementSpeedModifier = 0;
         base.Enter();
-        monsterStateMachine.MovementSpeedModifier = 0;
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
     }
 
-    public override void Update()
-    {
-        base.Update();
+    //public override void Update()
+    //{
+    //    base.Update();
 
 
-    }
+
+    //}
 
     public override void PhysicsUpdate()
     {
@@ -44,12 +45,12 @@ public class MonsterAttackState : MonsterBaseState
         {
             if (IsInChaseRange())
             {
-                monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+                stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
             }
             else
             {
-                monsterStateMachine.ChangeState(monsterStateMachine.IdleState);
+                stateMachine.ChangeState(stateMachine.IdleState);
                 return;
             }
         }

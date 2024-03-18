@@ -1,6 +1,4 @@
-using Debug = UnityEngine.Debug;
-
-public class MonsterChasingState : MonsterBaseState
+public class MonsterChasingState : MonsterIdleState
 {
     public MonsterChasingState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
@@ -9,35 +7,33 @@ public class MonsterChasingState : MonsterBaseState
 
     public override void Enter()
     {
+        stateMachine.MovementSpeedModifier = 1;
         base.Enter();
-        monsterStateMachine.MovementSpeedModifier = 1;
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StopRunAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StopRunAnimation();
     }
 
     public override void Update()
     {
         base.Update();
 
-        Move();
-
         if (!IsInChaseRange())
         {
             //[todo]원래위치로 돌아가는 코드
 
-            monsterStateMachine.ChangeState(monsterStateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
         else if (IsInAttackRange())
         {
-            monsterStateMachine.ChangeState(monsterStateMachine.AttackState);
+            stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
     }
@@ -46,9 +42,9 @@ public class MonsterChasingState : MonsterBaseState
     {
         // if (stateMachine.Target.IsDead) { return false; }
 
-        float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        Debug.Log(playerDistanceSqr);
-        return playerDistanceSqr <= monsterStateMachine.FieldMonsters.myInfo.Range * monsterStateMachine.FieldMonsters.myInfo.Range;
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+
+        return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.Range * stateMachine.FieldMonsters.myInfo.Range;
     }
 
 

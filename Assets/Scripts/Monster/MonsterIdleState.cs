@@ -1,44 +1,50 @@
-public class MonsterIdleState : MonsterBaseState
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
+
+public class MonsterIdleState : IState
 {
+    protected MonsterStateMachine stateMachine;
 
-    public MonsterIdleState(MonsterStateMachine stateMachine) : base(stateMachine)
+    public MonsterIdleState(MonsterStateMachine monsterStateMachine)
+    {
+        stateMachine = monsterStateMachine;
+
+    }
+
+    public virtual void Enter()
+    {
+        stateMachine.MovementSpeedModifier = 1;
+
+        stateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
+    }
+
+    public virtual void Exit()
+    {
+        stateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
+    }
+
+    public virtual void HandleInput()
     {
 
     }
 
-    public override void Enter()
+    public virtual void Update()
     {
-        base.Enter();
-
-        monsterStateMachine.MovementSpeedModifier = 0f;
-
-        monsterStateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-
-        monsterStateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
-    }
-
-    public override void Update()
-    {
-        base.Update();
 
         if (IsInChaseRange())
         {
-            monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+            stateMachine.ChangeState(stateMachine.ChasingState);
+            Move();
             return;
         }
     }
 
-    public override void PhysicsUpdate()
+    public virtual void PhysicsUpdate()
     {
 
     }
 
-    //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
+    //¾Ö´Ï¸ÞÀÌ¼Ç
     //protected void StartAnimation(int animationHash)
     //{
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
@@ -57,7 +63,7 @@ public class MonsterIdleState : MonsterBaseState
         Move(movementDirection);
     }
 
-    protected void ForceMove()//ï¿½×ºï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    protected void ForceMove()//³×ºê¸Þ½¬·Î ¼öÁ¤ °í·Á
     {
         stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
     }
