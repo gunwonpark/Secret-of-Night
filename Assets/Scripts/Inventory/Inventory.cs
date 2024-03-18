@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour
 {
     private bool activated;
     public static Inventory instance;
-    private UseItem useItem;
     private CameraHandler _camera;
 
     [SerializeField] private GameObject _inventoryUI;
@@ -65,6 +64,7 @@ public class Inventory : MonoBehaviour
         }
 
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성화
+
     }
 
     void Update()
@@ -279,14 +279,21 @@ public class Inventory : MonoBehaviour
     {
         if (_selectedItem.item.Type == "using")
         {
-            for (int i = 0; i < _selectedItem.item.Type.Length; i++)
+            switch (_selectedItem.item.ItemID)
             {
-                switch (_selectedItem.item.ItemID)
-                {
-                    case 1:
-                        useItem.SmallHpPotion(_selectedItem.item.Price); break;
+                case 1:
+                    GameManager.Instance.itemManager.SmallHpPotion(_selectedItem.item.Price); break;
+                case 2:
+                    GameManager.Instance.itemManager.BigHpPotion(_selectedItem.item.Price); break;
+                case 3:
+                    GameManager.Instance.itemManager.SmallMpPotion(_selectedItem.item.Price); break;
+                case 4:
+                    GameManager.Instance.itemManager.BigMpPotion(_selectedItem.item.Price); break;
+                case 5:
+                    GameManager.Instance.itemManager.SmallSpPotion(_selectedItem.item.Price); break;
+                case 6:
+                    GameManager.Instance.itemManager.BigSpPotion(_selectedItem.item.Price); break;
 
-                }
             }
         }
 
@@ -299,11 +306,13 @@ public class Inventory : MonoBehaviour
         if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndex로 하면 장비가 이중으로 껴짐
         {
             UnEquip(curEquipIndex);
+            GameManager.Instance.equipManager.UnEquipWeapon(); //기본 공격력으로 돌아가게
         }
 
         _uiSlots[_selectedItemIndex].equipped = true;
         curEquipIndex = _selectedItemIndex;
-        EquipManager.instance.NewEquip(_selectedItem.item);
+        GameManager.Instance.equipManager.NewEquip(_selectedItem.item);
+        GameManager.Instance.equipManager.EquipWeapon(_selectedItem.item.ItemID, _selectedItem.item.Damage); //공격력 증가
         UpdateUI();
 
         SelectItem(_selectedItemIndex);
@@ -311,7 +320,8 @@ public class Inventory : MonoBehaviour
     void UnEquip(int index)
     {
         _uiSlots[index].equipped = false;
-        EquipManager.instance.UnEquip();
+        GameManager.Instance.equipManager.UnEquip();
+        GameManager.Instance.equipManager.UnEquipWeapon(); //기본 공격력으로 돌아가게
         UpdateUI();
 
         if (_selectedItemIndex == index)
