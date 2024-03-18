@@ -1,6 +1,24 @@
 using System.IO;
 using UnityEngine;
 
+[System.Serializable]
+public struct PlayerStat
+{
+    public int Level;
+    public int MaxExp;
+    public int CurExp;
+    public float MaxHP;
+    public float CurHP;
+    public float MaxMP;
+    public float CurMP;
+    public float MaxSP;
+    public float CurSP;
+    public float Damage;
+    public float DamageSpeed;
+    public float CriDamage;
+    public float Def;
+    public float MoveSpeed;
+}
 /// <summary>
 /// PlayerGameData를 생성 한 다음 Initialize를 통해 데이터를 불러오거나 
 /// 기본 데이터로 초기화 해둘 수 있다.
@@ -9,11 +27,15 @@ using UnityEngine;
 public class PlayerGameData
 {
     private string _jsonDataPath;
-    private PKW.DataManager dataManager;
+    private DataManager dataManager;
 
+    [Header("PlayerInfo")]
     public string CharacterType;
     public int ID; // 로그인 할때 필요하면 사용할 ID -> 현재 미사용
     public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
+
+    [Header("PlayerStat")]
+    public PlayerStat stat = new PlayerStat();
     public int Level;
     public int MaxExp;
     public int CurExp;

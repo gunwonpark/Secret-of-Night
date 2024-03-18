@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     [field: Header("PlayerData")]
     [field: SerializeField] public PlayerGameData PlayerData { get; set; }
     [field: SerializeField] public float MovementSpeedModifier { get; set; }
+
     public float walkSpeed = 2.0f;
     public float runSpeed = 4.0f;
     public float rotationDamping = 10f;
     public float jumpForce = 4f;
+    public float dodgeHeihgt = 2.0f;
+    public float dodgeForce = -4.0f;
     #endregion
 
     #region StateCheckcing
@@ -58,5 +61,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, 0.14f);
+        Debug.Log(transform.position);
     }
 }

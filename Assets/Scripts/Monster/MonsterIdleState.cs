@@ -88,6 +88,8 @@ public class MonsterIdleState : IState
 
     private Vector3 GetMovementDirection()//v
     {
+        //Debug.Log(stateMachine.Target.localPosition);
+        //Debug.Log(stateMachine.Target.position);
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 

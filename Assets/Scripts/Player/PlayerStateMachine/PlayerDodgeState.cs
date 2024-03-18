@@ -1,9 +1,7 @@
 public class PlayerDodgeState : PlayerBaseState
 {
-    private float _dodgeHeihgt = 2.0f;
-    private float _dodgeForce = -4.0f;
-    private float _dodgeTime = 0.3f;
-    private float _passedTime = 0.0f;
+
+
     public PlayerDodgeState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
 
@@ -12,9 +10,7 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        _passedTime = 0;
-        stateMachine.Player.ForceReceiver.Jump(_dodgeHeihgt);
-        stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * _dodgeForce);
+        AddDodgeForce();
         StartAnimation(stateMachine.Player.AnimationData.DodgeParameter);
     }
 
@@ -33,5 +29,10 @@ public class PlayerDodgeState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
+    }
+    private void AddDodgeForce()
+    {
+        stateMachine.Player.ForceReceiver.Jump(stateMachine.Player.dodgeHeihgt);
+        stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * stateMachine.Player.dodgeForce);
     }
 }
