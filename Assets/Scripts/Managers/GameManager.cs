@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public MonsterManager monsterManager;
     public ItemManager itemManager;
-    public EquipManager equipManager;
 
     private void Awake()
     {
@@ -36,7 +35,6 @@ public class GameManager : MonoBehaviour
         if (playerManager == null) { playerManager = gameObject.AddComponent<PlayerManager>(); playerManager.Initialize(1); }
         if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }
         if (itemManager == null) { itemManager = gameObject.AddComponent<ItemManager>(); }
-        if (equipManager == null) { equipManager = gameObject.AddComponent<EquipManager>(); }
 
     }
 }
