@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
 {
     private bool activated;
     public static Inventory instance;
+    private UseItem useItem;
     private CameraHandler _camera;
 
     [SerializeField] private GameObject _inventoryUI;
@@ -43,6 +44,7 @@ public class Inventory : MonoBehaviour
 
     public Button rightBtn;
     public Button leftBtn;
+
 
     private void Awake()
     {
@@ -279,7 +281,12 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < _selectedItem.item.Type.Length; i++)
             {
-                //회복,마나,스태미나 스탯변화
+                switch (_selectedItem.item.ItemID)
+                {
+                    case 1:
+                        useItem.SmallHpPotion(_selectedItem.item.Price); break;
+
+                }
             }
         }
 
