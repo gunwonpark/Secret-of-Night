@@ -11,11 +11,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.Player.ForceReceiver.Jump(stateMachine.Player.jumpForce);
-        Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
-        moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
-        moveDirection.y = 0;
-        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.Player.MovementSpeedModifier);
+        AddJumpForce();
         StartAnimation(stateMachine.Player.AnimationData.JumpParameter);
     }
 
@@ -37,5 +33,13 @@ public class PlayerJumpState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
+    }
+    private void AddJumpForce()
+    {
+        stateMachine.Player.ForceReceiver.Jump(stateMachine.Player.jumpForce);
+        Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
+        moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
+        moveDirection.y = 0;
+        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.Player.MovementSpeedModifier);
     }
 }

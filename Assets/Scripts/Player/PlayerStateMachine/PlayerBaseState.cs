@@ -77,7 +77,6 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
         {
-            Debug.Log("What The Fuck");
             stateMachine.Player.IsJumping = true;
             stateMachine.ChangeState(stateMachine.JumpState);
         }
@@ -127,6 +126,7 @@ public class PlayerBaseState : IState
             Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
             moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
             moveDirection.y = 0;
+            moveDirection = moveDirection.normalized;
             if (stateMachine.Player.IsGrounded)
             {
                 float moveSpeed = GetMovementSpeed();
@@ -144,9 +144,8 @@ public class PlayerBaseState : IState
     private void GroundedCheck()
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
-        spherePosition.y -= -0.14f;
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.28f, LayerMask.GetMask("Default"),
-                QueryTriggerInteraction.Ignore); ;
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.14f, LayerMask.GetMask("Default"),
+                QueryTriggerInteraction.Ignore);
     }
     private float GetMovementSpeed()
     {

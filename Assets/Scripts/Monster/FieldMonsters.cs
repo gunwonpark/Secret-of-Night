@@ -10,7 +10,7 @@ public class FieldMonsters : MonoBehaviour
     [field: SerializeField] public float targetRange = 5f;
     [field: SerializeField] public float rotationDamping = 1f;
 
-    public MonsterManager monsterManager;
+    //public MonsterManager monsterManager;
 
     public string monsterName;
 
