@@ -12,7 +12,7 @@ public class ItemManager : MonoBehaviour
         _playerData = GameManager.Instance.playerManager.playerData;
     }
 
-    // ÇÇ È¸º¹
+    // ì²´ë ¥ ì•„ì´í…œ
     public void SmallHpPotion(float _amount)
     {
         _playerData.CurHP = Mathf.Min(_playerData.CurHP + _amount, _playerData.MaxHP);
@@ -23,7 +23,7 @@ public class ItemManager : MonoBehaviour
         _playerData.CurHP = Mathf.Min(_playerData.CurHP + _amount, _playerData.MaxHP);
     }
 
-    // ¸¶³ª È¸º¹
+    // ë§ˆë‚˜ ì•„ì´í…œ
     public void SmallMpPotion(float _amount)
     {
         _playerData.CurMP = Mathf.Min(_playerData.CurMP + _amount, _playerData.MaxMP);
@@ -34,7 +34,7 @@ public class ItemManager : MonoBehaviour
         _playerData.CurMP = Mathf.Min(_playerData.CurMP + _amount, _playerData.MaxMP);
     }
 
-    // ½ºÅ×¹Ì³ª È¸º¹
+    // ìŠ¤í…Œë¯¸ë‚˜ ì•„ì´í…œ
     public void SmallSpPotion(float _amount)
     {
         _playerData.CurSP = Mathf.Min(_playerData.CurSP + _amount, _playerData.MaxSP);
@@ -45,23 +45,23 @@ public class ItemManager : MonoBehaviour
         _playerData.CurSP = Mathf.Min(_playerData.CurSP + _amount, _playerData.MaxSP);
     }
 
-    // ÀÌµ¿¼Óµµ Áõ°¡
+    // ì´ë™ì†ë„ ì•„ì´í…œ
     public void SpeedPotion(float _amount)
     {
-        if (!speedItemInUse) //¾ÆÀÌÅÛ »ç¿ë ÁßÀÌ ¾Æ´Ñ °æ¿ì¿¡¸¸ ¾ÆÀÌÅÛ »ç¿ë
+        if (!speedItemInUse) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         {
             _playerData.MoveSpeed += _amount;
             StartCoroutine(SpeedCoroutine(_amount));
             speedItemInUse = true;
         }
     }
-
+    // ì½”ë£¨í‹´
     IEnumerator SpeedCoroutine(float _amount)
     {
-        Debug.Log("½ºÇÇµå ¾÷ : " + _playerData.MoveSpeed);
-        yield return new WaitForSeconds(5f); //TODO 60ÃÊ·Î ¼öÁ¤
+        Debug.Log("ï¿½ï¿½ï¿½Çµï¿½ ï¿½ï¿½ : " + _playerData.MoveSpeed);
+        yield return new WaitForSeconds(5f); //TODO 60ï¿½Ê·ï¿½ ï¿½ï¿½ï¿½ï¿½
         _playerData.MoveSpeed -= _amount;
-        Debug.Log("Á¾·á : " + _playerData.MoveSpeed);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ : " + _playerData.MoveSpeed);
         speedItemInUse = false;
     }
 }
