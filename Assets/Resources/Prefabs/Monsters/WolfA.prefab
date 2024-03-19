@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7489261640965815999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1, y: 1.879, z: 52.15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90,9 +90,10 @@ MonoBehaviour:
     MoveSpeed: 0
     RunSpeed: 0
     Range: 1
+    PrefabPath: 
+    prefab: {fileID: 0}
   targetRange: 5
   rotationDamping: 1
-  monsterName: 
   monsterAnimation: {fileID: 0}
 --- !u!114 &8814301044560680743
 MonoBehaviour:
