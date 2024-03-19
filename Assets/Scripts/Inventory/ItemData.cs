@@ -39,22 +39,4 @@ public class ItemData : DataBase<int, Item>
             item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
         }
     }
-    //public Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
-
-    //public void Initialize()
-    //{
-    //    foreach (Item item in items)
-    //    {
-    //        itemDic.Add(item.ItemID, item);
-    //        item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
-    //    }
-    //}
-
-    //public Item GetItemByKey(int _id)
-    //{
-    //    if (itemDic.ContainsKey(_id)) // 키가 있는지 확인
-    //        return itemDic[_id];
-
-    //    return null;
-    //}
 }

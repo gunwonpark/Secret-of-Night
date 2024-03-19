@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6373880519648427600}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5024762031745442507
 BoxCollider:
@@ -90,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5661685014677439600}
     m_Modifications:
+    - target: {fileID: -8639789267222352976, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
+      propertyPath: item.Prefab
+      value: 
+      objectReference: {fileID: 2174206054568123717}
     - target: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
       propertyPath: m_Name
       value: Small_Potion_Mana

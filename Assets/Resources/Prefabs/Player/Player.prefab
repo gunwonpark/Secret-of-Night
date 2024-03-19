@@ -1201,6 +1201,7 @@ GameObject:
   - component: {fileID: 4463286794980798020}
   - component: {fileID: 3948663081137326015}
   - component: {fileID: 2048404905943128704}
+  - component: {fileID: 7123990241805567778}
   - component: {fileID: 8931880413131824754}
   m_Layer: 8
   m_Name: Player
@@ -1225,7 +1226,7 @@ Transform:
   - {fileID: 5751550581704196077}
   - {fileID: 5485161305618298594}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &438094870567635642
 CharacterController:
@@ -1377,6 +1378,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
   equipParent: {fileID: 8494233753830201395}
+--- !u!114 &7123990241805567778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713900963015145979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027843d178f07c344a4287307086fd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryUI: {fileID: 0}
+  _slotGrid: {fileID: 0}
+  _uiSlots: []
+  dropPosition: {fileID: 0}
+  selectedItemName: {fileID: 0}
+  selectedItemDescription: {fileID: 0}
+  useButton: {fileID: 0}
+  equipButton: {fileID: 0}
+  unEquipButton: {fileID: 0}
+  dropButton: {fileID: 0}
+  rightBtn: {fileID: 0}
+  leftBtn: {fileID: 0}
 --- !u!114 &8931880413131824754
 MonoBehaviour:
   m_ObjectHideFlags: 0
