@@ -22,10 +22,6 @@ public class MonsterInfo
     public string PrefabPath;
 
     public GameObject prefab;
-    public void Init()
-    {
-        prefab = Resources.Load<GameObject>(PrefabPath);
-    }
 }
 //변하는 데이터 -> HP
 //몬스터cs 상위에 HP만 변할수 있도록 따로 적어둬야함
@@ -42,8 +38,9 @@ public class MonsterDataBase //->실제데이터
     {
         foreach (MonsterInfo fieldMonster in FieldMonster)
         {
-            fieldMonster.Init();
+            //fieldMonster.Init();
             fieldMonDic.Add(fieldMonster.Name, fieldMonster);
+            fieldMonster.prefab = Resources.Load<GameObject>(fieldMonster.PrefabPath);
         }
     }
 

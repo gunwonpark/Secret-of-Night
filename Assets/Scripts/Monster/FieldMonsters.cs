@@ -12,7 +12,7 @@ public class FieldMonsters : MonoBehaviour
 
     //public MonsterManager monsterManager;
 
-    public string monsterName;
+
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -35,10 +35,10 @@ public class FieldMonsters : MonoBehaviour
         monsterAnimation = GetComponent<MonsterAnimation>();
     }
 
-    private void Start()
+    public void Init(MonsterInfo monsterInfo)
     {
-        monsterName = gameObject.name;
-        myInfo = GameManager.Instance.monsterManager.GetMonsterInfoByKey(monsterName);
+
+        myInfo = monsterInfo;
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -46,13 +46,13 @@ public class FieldMonsters : MonoBehaviour
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        stateMachine?.HandleInput();
+        stateMachine?.Update();
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        stateMachine?.PhysicsUpdate();
     }
 
     private void OnDrawGizmos()
