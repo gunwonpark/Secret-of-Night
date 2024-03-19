@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class PlayerCondition : MonoBehaviour
 {
     private PlayerGameData _playerData;
 
@@ -48,7 +48,7 @@ public class ItemManager : MonoBehaviour
     // 이동속도 아이템
     public void SpeedPotion(float _amount)
     {
-        if (!speedItemInUse) //������ ��� ���� �ƴ� ��쿡�� ������ ���
+        if (!speedItemInUse)
         {
             _playerData.MoveSpeed += _amount;
             StartCoroutine(SpeedCoroutine(_amount));
@@ -58,10 +58,10 @@ public class ItemManager : MonoBehaviour
     // 코루틴
     IEnumerator SpeedCoroutine(float _amount)
     {
-        Debug.Log("���ǵ� �� : " + _playerData.MoveSpeed);
-        yield return new WaitForSeconds(5f); //TODO 60�ʷ� ����
+        Debug.Log("스피드 업 : " + _playerData.MoveSpeed);
+        yield return new WaitForSeconds(5f); //TODO 60초로 변경
         _playerData.MoveSpeed -= _amount;
-        Debug.Log("���� : " + _playerData.MoveSpeed);
+        Debug.Log("스피드 다운 : " + _playerData.MoveSpeed);
         speedItemInUse = false;
     }
 }

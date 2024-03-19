@@ -19,15 +19,9 @@ public class Item
     public GameObject Prefab;
 }
 
-//json을 불러오기 위해
-public class ItemInstance
-{
-    public Item item;
-}
-
 
 [System.Serializable]
-public class ItemData : DataBase<int, Item>
+public class ItemDataBase : DataBase<int, Item>
 {
     public List<Item> items;
 
@@ -40,3 +34,4 @@ public class ItemData : DataBase<int, Item>
         }
     }
 }
+

@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     private CameraHandler _camera;
     private EquipController _equipController;
+    private PlayerCondition _playerCondition;
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -52,6 +53,7 @@ public class Inventory : MonoBehaviour
         instance = this;
         _camera = FindObjectOfType<CameraHandler>();
         _equipController = GetComponent<EquipController>();
+        _playerCondition = GetComponent<PlayerCondition>();
     }
 
     void Start()
@@ -285,22 +287,21 @@ public class Inventory : MonoBehaviour
             switch (_selectedItem.item.ItemID)
             {
                 case 1:
-                    GameManager.Instance.itemManager.SmallHpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.SmallHpPotion(_selectedItem.item.Price); break;
                 case 2:
-                    GameManager.Instance.itemManager.BigHpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.BigHpPotion(_selectedItem.item.Price); break;
                 case 3:
-                    GameManager.Instance.itemManager.SmallMpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.SmallMpPotion(_selectedItem.item.Price); break;
                 case 4:
-                    GameManager.Instance.itemManager.BigMpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.BigMpPotion(_selectedItem.item.Price); break;
                 case 5:
-                    GameManager.Instance.itemManager.SmallSpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.SmallSpPotion(_selectedItem.item.Price); break;
                 case 6:
-                    GameManager.Instance.itemManager.BigSpPotion(_selectedItem.item.Price); break;
+                    _playerCondition.BigSpPotion(_selectedItem.item.Price); break;
                 case 7:
-                    if (!GameManager.Instance.itemManager.speedItemInUse) // 중복 사용 방지
+                    if (!_playerCondition.speedItemInUse) // 중복 사용 방지
                     {
-                        GameManager.Instance.itemManager.SpeedPotion(_selectedItem.item.Price);
-
+                        _playerCondition.SpeedPotion(_selectedItem.item.Price);
                     }
                     else
                     {
