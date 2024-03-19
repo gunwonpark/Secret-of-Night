@@ -55,4 +55,12 @@ public class FieldMonsters : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, targetRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 1f);
+    }
 }

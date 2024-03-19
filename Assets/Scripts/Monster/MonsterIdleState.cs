@@ -1,50 +1,38 @@
-using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
-
-public class MonsterIdleState : IState
+public class MonsterIdleState : MonsterBaseState
 {
-    protected MonsterStateMachine stateMachine;
 
-    public MonsterIdleState(MonsterStateMachine monsterStateMachine)
-    {
-        stateMachine = monsterStateMachine;
-
-    }
-
-    public virtual void Enter()
-    {
-        stateMachine.MovementSpeedModifier = 1;
-
-        stateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
-    }
-
-    public virtual void Exit()
-    {
-        stateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
-    }
-
-    public virtual void HandleInput()
+    public MonsterIdleState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
 
     }
 
-    public virtual void Update()
+    public override void Enter()
     {
+        base.Enter();
 
-        if (IsInChaseRange())
-        {
-            stateMachine.ChangeState(stateMachine.ChasingState);
-            Move();
-            return;
-        }
+        monsterStateMachine.MovementSpeedModifier = 0f;
+
+        monsterStateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
     }
 
-    public virtual void PhysicsUpdate()
+    public override void Exit()
+    {
+        base.Exit();
+
+        monsterStateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+    }
+
+    public override void PhysicsUpdate()
     {
 
     }
 
-    //¾Ö´Ï¸ÞÀÌ¼Ç
+    //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     //protected void StartAnimation(int animationHash)
     //{
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
@@ -54,51 +42,6 @@ public class MonsterIdleState : IState
     //{
     //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
     //}
-
-    private void Move()//v
-    {
-        Vector3 movementDirection = GetMovementDirection();
-
-        Rotate(movementDirection);
-        Move(movementDirection);
-    }
-
-    protected void ForceMove()//³×ºê¸Þ½¬·Î ¼öÁ¤ °í·Á
-    {
-        stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
-    }
-
-
-    private void Move(Vector3 direction)//v
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
-    }
-
-    private void Rotate(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            direction.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.rotationDamping * Time.deltaTime);
-        }
-    }
-
-    private Vector3 GetMovementDirection()//v
-    {
-        //Debug.Log(stateMachine.Target.localPosition);
-        //Debug.Log(stateMachine.Target.position);
-        return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
-    }
-
-    private float GetMovementSpeed()//v
-    {
-        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-
-        return movementSpeed;
-    }
 
     //protected float GetNormalizedTime(Animator animator, string tag)
     //{
@@ -118,11 +61,4 @@ public class MonsterIdleState : IState
     //        return 0f;
     //    }
     //}
-
-    protected bool IsInChaseRange()//v
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
-
-        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
-    }
 }
