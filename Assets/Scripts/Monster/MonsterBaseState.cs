@@ -38,7 +38,7 @@ public class MonsterBaseState : IState
 
     }
 
-    //¾Ö´Ï¸ŞÀÌ¼Ç
+    //ì• ë‹ˆë©”ì´ì…˜
     protected void StartAnimation(int animationHash)
     {
         monsterStateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
@@ -57,7 +57,7 @@ public class MonsterBaseState : IState
         Move(movementDirection);
     }
 
-    protected void ForceMove()//³×ºê¸Ş½¬·Î ¼öÁ¤ °í·Á
+    protected void ForceMove()//ë„¤ë¸Œë©”ì‰¬ë¡œ ìˆ˜ì • ê³ ë ¤
     {
         monsterStateMachine.FieldMonsters.controller.Move(monsterStateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
     }
@@ -114,7 +114,7 @@ public class MonsterBaseState : IState
     protected bool IsInChaseRange()//v
     {
         float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        Debug.Log(playerDistanceSqr);
+        //Debug.Log(playerDistanceSqr);
         return playerDistanceSqr <= monsterStateMachine.FieldMonsters.targetRange * monsterStateMachine.FieldMonsters.targetRange;
     }
 }

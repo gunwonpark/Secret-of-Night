@@ -1,35 +1,38 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    //public GameObject movePositionObject;
-    MonsterDataBase monsterData;
+    MonsterManager monsterManager;
+    MonsterSpot[] spotPoint;
 
-    List<Transform> spawnSpotPosition = new List<Transform>();
+    Transform spot;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        // movePositionObject = GetComponentsInChildren<Transform>;
+        monsterManager = GameManager.Instance.monsterManager;
+
+        //내 자식들의 monsterSpot을 가져온다.
+        spotPoint = GetComponentsInChildren<MonsterSpot>();
 
 
-        int spawnSpotNum = gameObject.transform.childCount;
-
-        for (int i = 0; i < spawnSpotNum; i++)
+        for (int i = 0; i < spotPoint.Length; i++)
         {
-            Debug.Log("이름: " + gameObject.transform.GetChild(i).name);
-            Debug.Log("포지션: " + gameObject.transform.GetChild(i).transform.position);
-            Debug.Log("-------------------");
+            //이름 가져오기
+            string name = spotPoint[i].monsterName;
+            MonsterInfo monsterInfo = monsterManager.GetMonsterInfoByKey(name);
 
-            spawnSpotPosition.Add(transform.GetChild(i));
+            spotPoint[i].MonsterSpawn(monsterInfo);
+
+
+
         }
-
-        //몬스터인포기준으로 생성
-
-
     }
 
-    private void SpawnMonster()
+
+
+    // Update is called once per frame
+    void Update()
     {
 
     }
