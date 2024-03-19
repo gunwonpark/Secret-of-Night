@@ -20,10 +20,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
 
-    [SerializeField] private Slot[] _uiSlots; //½½·ÔµéÀ» ¹è¿­·Î ÇÒ´ç
-    public ItemSlot[] slots; // ¾ÆÀÌÅÛ Á¤º¸
+    [SerializeField] private Slot[] _uiSlots; //ìŠ¬ë¡¯ë“¤ì„ ë°°ì—´ë¡œ í• ë‹¹
+    public ItemSlot[] slots; // ì•„ì´í…œ ì •ë³´
 
-    public Transform dropPosition; // ¾ÆÀÌÅÛ µå¶ø À§Ä¡
+    public Transform dropPosition; // ì•„ì´í…œ ë“œë ìœ„ì¹˜
 
     [Header("Selected Item")]
     private ItemSlot _selectedItem;
@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
     public GameObject unEquipButton;
     public GameObject dropButton;
 
-    // ÆäÀÌÁö ³Ñ±â±â À§ÇÑ º¯¼ö
+    // í˜ì´ì§€ ë„˜ê¸°ê¸° ìœ„í•œ ë³€ìˆ˜
     private int _maxSlot = 12;
     private int _currentPage = 1;
     private int _totalPage = 3;
@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
             _uiSlots[i].ClearSlot();
         }
 
-        ClearSeletecItemWindow(); //¾ÆÀÌÅÛ Á¤º¸ º¸¿©ÁÖ´Â ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
+        ClearSeletecItemWindow(); //ì•„ì´í…œ ì •ë³´ ë³´ì—¬ì£¼ëŠ” ì˜¤ë¸Œì íŠ¸ ë¹„í™œì„±í™”
 
     }
 
@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
             if (activated)
             {
                 OpenInventory();
-                _camera.enabled = false; // Ä«¸Ş¶ó ºñÈ°¼º
+                _camera.enabled = false; // ì¹´ë©”ë¼ ë¹„í™œì„±
 
             }
             else
@@ -100,13 +100,13 @@ public class Inventory : MonoBehaviour
         var startIndex = (_currentPage - 1) * _maxSlot;
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
 
-        // ÇöÀç ÆäÀÌÁö¿¡ ÀÖ´Â ½½·Ô¸¸ È°¼ºÈ­ (1~12°³)
+        // í˜„ì¬ í˜ì´ì§€ì— ìˆëŠ” ìŠ¬ë¡¯ë§Œ í™œì„±í™” (1~12ê°œ)
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
         }
 
-        //¸¶¿ì½º Ä¿¼­ Ç¥½Ã
+        //ë§ˆìš°ìŠ¤ ì»¤ì„œ í‘œì‹œ
         Cursor.lockState = CursorLockMode.None;
         _inventoryUI.SetActive(true);
     }
@@ -116,7 +116,7 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(false);
     }
 
-    // ´ÙÀ½ ½½·Ô Ã¢
+    // ë‹¤ìŒ ìŠ¬ë¡¯ ì°½
     private void NextPage()
     {
         if (_currentPage == _totalPage)
@@ -124,15 +124,15 @@ public class Inventory : MonoBehaviour
             return;
         }
         _currentPage++;
-        Debug.Log(_currentPage + " ÆäÀÌÁö");
+        Debug.Log(_currentPage + " í˜ì´ì§€");
 
-        //(0~11, 12~23, 24~35¹ø ½½·Ô)
+        //(0~11, 12~23, 24~35ë²ˆ ìŠ¬ë¡¯)
         var startIndex = (_currentPage - 1) * _maxSlot;
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
 
         Debug.Log(startIndex);
         Debug.Log(endIndex);
-        // ÇöÀç ÆäÀÌÁö¿¡ ÀÖ´Â ½½·Ô¸¸ È°¼ºÈ­ (1~12°³)
+        // í˜„ì¬ í˜ì´ì§€ì— ìˆëŠ” ìŠ¬ë¡¯ë§Œ í™œì„±í™” (1~12ê°œ)
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
@@ -142,7 +142,7 @@ public class Inventory : MonoBehaviour
         rightBtn.gameObject.SetActive(_currentPage < _totalPage);
     }
 
-    // ÀÌÀü ½½·Ô Ã¢
+    // ì´ì „ ìŠ¬ë¡¯ ì°½
     private void PrevPage()
     {
         if (_currentPage == 1)
@@ -150,7 +150,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         _currentPage--;
-        Debug.Log(_currentPage + " ÆäÀÌÁö");
+        Debug.Log(_currentPage + " í˜ì´ì§€");
 
         var startIndex = (_currentPage - 1) * _maxSlot;
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
@@ -164,25 +164,25 @@ public class Inventory : MonoBehaviour
         leftBtn.gameObject.SetActive(_currentPage > 1);
     }
 
-    // ´ÙÀ½ÆäÀÌÁö
+    // ë‹¤ìŒí˜ì´ì§€
     public void OnNext()
     {
         NextPage();
     }
 
-    // ÀÌÀüÆäÀÌÁö
+    // ì´ì „í˜ì´ì§€
     public void OnPrev()
     {
         PrevPage();
     }
 
-    // ³ª°¡±â
+    // ë‚˜ê°€ê¸°
     public void OnExit()
     {
         _inventoryUI.SetActive(false);
     }
 
-    //¾ÆÀÌÅÛ Ãß°¡
+    //ì•„ì´í…œ ì¶”ê°€
     public void AddItem(Item _item)
     {
         if (_item.Type == "using")
@@ -196,7 +196,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        ItemSlot emptySlot = GetEmptySlot(); // ºó ½½·Ô
+        ItemSlot emptySlot = GetEmptySlot(); // ë¹ˆ ìŠ¬ë¡¯
 
         if (emptySlot != null)
         {
@@ -205,10 +205,10 @@ public class Inventory : MonoBehaviour
             UpdateUI();
             return;
         }
-        //²Ë Â÷¸é ¹ö¸®°Ô
+        //ê½‰ ì°¨ë©´ ë²„ë¦¬ê²Œ
     }
 
-    // ¾ÆÀÌÅÛ ¼ö·® Ãß°¡
+    // ì•„ì´í…œ ìˆ˜ëŸ‰ ì¶”ê°€
     private ItemSlot GetItemStack(Item _item)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -233,7 +233,7 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    //¾ÆÀÌÅÛ ½½·Ô ¼±ÅÃ½Ã ¾ÆÀÌÅÛ ¼³¸íÀÌ º¸ÀÌ°Ô
+    //ì•„ì´í…œ ìŠ¬ë¡¯ ì„ íƒì‹œ ì•„ì´í…œ ì„¤ëª…ì´ ë³´ì´ê²Œ
     public void SelectItem(int _index)
     {
         if (slots[_index].item == null)
@@ -246,14 +246,14 @@ public class Inventory : MonoBehaviour
         selectedItemDescription.text = _selectedItem.item.Description;
         //selectedItemStat.text = selectedItem.Price.ToString();      
 
-        // ¿¹½Ã: »ç¿ë ¹öÆ°Àº Ç×»ó È°¼ºÈ­, ÀåÂø ¹öÆ°Àº ÀåÂø °¡´ÉÇÑ °æ¿ì¿¡¸¸ È°¼ºÈ­µÇµµ·Ï ¼³Á¤
+        // ì˜ˆì‹œ: ì‚¬ìš© ë²„íŠ¼ì€ í•­ìƒ í™œì„±í™”, ì¥ì°© ë²„íŠ¼ì€ ì¥ì°© ê°€ëŠ¥í•œ ê²½ìš°ì—ë§Œ í™œì„±í™”ë˜ë„ë¡ ì„¤ì •
         useButton.SetActive(_selectedItem.item.Type == "using");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
     }
 
-    //½½·ÔÀÌ ºñ¿öÁú ¶§
+    //ìŠ¬ë¡¯ì´ ë¹„ì›Œì§ˆ ë•Œ
     private void ClearSeletecItemWindow()
     {
         _selectedItem = null;
@@ -266,7 +266,7 @@ public class Inventory : MonoBehaviour
         dropButton.SetActive(false);
     }
 
-    void UpdateUI() //UI ¾÷µ¥ÀÌÆ®
+    void UpdateUI() //UI ì—…ë°ì´íŠ¸
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -277,7 +277,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //ÇöÀç ¼±ÅÃÇÑ ¾ÆÀÌÅÛ »ç¿ëÇÏ±â
+    //í˜„ì¬ ì„ íƒí•œ ì•„ì´í…œ ì‚¬ìš©í•˜ê¸°
     public void OnUseButton()
     {
         if (_selectedItem.item.Type == "using")
@@ -297,15 +297,15 @@ public class Inventory : MonoBehaviour
                 case 6:
                     GameManager.Instance.itemManager.BigSpPotion(_selectedItem.item.Price); break;
                 case 7:
-                    if (!GameManager.Instance.itemManager.speedItemInUse) // Áßº¹ »ç¿ë ¹æÁö
+                    if (!GameManager.Instance.itemManager.speedItemInUse) // ì¤‘ë³µ ì‚¬ìš© ë°©ì§€
                     {
                         GameManager.Instance.itemManager.SpeedPotion(_selectedItem.item.Price);
 
                     }
                     else
                     {
-                        Debug.Log("ÀÌ¹Ì ¾ÆÀÌÅÛ »ç¿ëÁß");
-                        return; // Áßº¹ »ç¿ëÀÌ¹Ç·Î ÀÌÈÄ ÄÚµå ½ÇÇàÇÏÁö ¾ÊÀ½
+                        Debug.Log("ì´ë¯¸ ì•„ì´í…œ ì‚¬ìš©ì¤‘");
+                        return; // ì¤‘ë³µ ì‚¬ìš©ì´ë¯€ë¡œ ì´í›„ ì½”ë“œ ì‹¤í–‰í•˜ì§€ ì•ŠìŒ
                     }
                     break;
 
@@ -315,19 +315,19 @@ public class Inventory : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    // ¾ÆÀÌÅÛ ÀåÂø
+    // ì•„ì´í…œ ì¥ì°©
     public void OnEquipBtton()
     {
-        if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndex·Î ÇÏ¸é Àåºñ°¡ ÀÌÁßÀ¸·Î ²¸Áü
+        if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndexë¡œ í•˜ë©´ ì¥ë¹„ê°€ ì´ì¤‘ìœ¼ë¡œ ê»´ì§
         {
             UnEquip(curEquipIndex);
-            _equipController.UnEquipWeapon(); //±âº» °ø°İ·ÂÀ¸·Î µ¹¾Æ°¡°Ô
+            _equipController.UnEquipWeapon(); //ê¸°ë³¸ ê³µê²©ë ¥ìœ¼ë¡œ ëŒì•„ê°€ê²Œ
         }
 
         _uiSlots[_selectedItemIndex].equipped = true;
         curEquipIndex = _selectedItemIndex;
         _equipController.NewEquip(_selectedItem.item);
-        _equipController.EquipWeapon(_selectedItem.item.ItemID, _selectedItem.item.Damage); //°ø°İ·Â Áõ°¡
+        _equipController.EquipWeapon(_selectedItem.item.ItemID, _selectedItem.item.Damage); //ê³µê²©ë ¥ ì¦ê°€
         UpdateUI();
 
         SelectItem(_selectedItemIndex);
@@ -336,7 +336,7 @@ public class Inventory : MonoBehaviour
     {
         _uiSlots[_index].equipped = false;
         _equipController.UnEquip();
-        _equipController.UnEquipWeapon(); //±âº» °ø°İ·ÂÀ¸·Î µ¹¾Æ°¡°Ô
+        _equipController.UnEquipWeapon(); //ê¸°ë³¸ ê³µê²©ë ¥ìœ¼ë¡œ ëŒì•„ê°€ê²Œ
         UpdateUI();
 
         if (_selectedItemIndex == _index)
@@ -365,16 +365,16 @@ public class Inventory : MonoBehaviour
     {
         _selectedItem.count--;
 
-        //ÀåÂø¾ÆÀÌÅÛÀº ¼ö·®ÀÌ 0À¸·Î Ç¥½ÃµÇ±â ¶§¹®¿¡
+        //ì¥ì°©ì•„ì´í…œì€ ìˆ˜ëŸ‰ì´ 0ìœ¼ë¡œ í‘œì‹œë˜ê¸° ë•Œë¬¸ì—
         if (_selectedItem.count <= 0)
         {
-            if (_uiSlots[_selectedItemIndex].equipped) //ÇöÀç ÀåÂøÇÏ°í ÀÖ´Â ¾ÆÀÌÅÛ ÀÎµ¦½º¿¡¼­ È®ÀÎÇØ¾ßÇÔ (_selectItemIndex)
+            if (_uiSlots[_selectedItemIndex].equipped) //í˜„ì¬ ì¥ì°©í•˜ê³  ìˆëŠ” ì•„ì´í…œ ì¸ë±ìŠ¤ì—ì„œ í™•ì¸í•´ì•¼í•¨ (_selectItemIndex)
             {
                 UnEquip(_selectedItemIndex);
             }
 
             _selectedItem.item = null;
-            ClearSeletecItemWindow();
+            ClearSeletecItemWindow(); // ì•„ì´í…œ ì„¤ëª… ë¹„ì›Œì§€ê²Œ
         }
 
 
