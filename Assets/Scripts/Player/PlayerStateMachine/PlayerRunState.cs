@@ -12,6 +12,7 @@ public class PlayerRunState : PlayerBaseState
     {
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = stateMachine.Player.runSpeed;
+        //stateMachine.Player.StaminaSystem.OnRunStart();
         if (stateMachine.MovementInput != Vector2.zero)
             StartAnimation(stateMachine.Player.AnimationData.RunParameter);
     }
@@ -38,5 +39,4 @@ public class PlayerRunState : PlayerBaseState
             stateMachine.ChangeState(stateMachine.WalkState);
         }
     }
-
 }

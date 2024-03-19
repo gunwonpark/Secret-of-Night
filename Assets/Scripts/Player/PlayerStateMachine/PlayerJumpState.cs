@@ -40,6 +40,7 @@ public class PlayerJumpState : PlayerBaseState
         Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
         moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
         moveDirection.y = 0;
-        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.Player.MovementSpeedModifier);
+        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.Player.Controller.velocity.magnitude);
+        Debug.Log(stateMachine.Player.Controller.velocity.magnitude);
     }
 }

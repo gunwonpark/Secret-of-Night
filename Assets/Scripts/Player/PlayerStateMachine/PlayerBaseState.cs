@@ -29,8 +29,11 @@ public class PlayerBaseState : IState
     }
     public virtual void Update()
     {
-        Move();
         GroundedCheck();
+        if (!stateMachine.Player.IsTired)
+        {
+            Move();
+        }
     }
     protected virtual void AddPlayerActionCallbacks()
     {
@@ -50,7 +53,10 @@ public class PlayerBaseState : IState
 
     private void OnSkill2Started(InputAction.CallbackContext obj)
     {
-        stateMachine.ChangeState(stateMachine.Skill2State);
+        if (!stateMachine.Player.IsTired)
+        {
+            stateMachine.ChangeState(stateMachine.Skill2State);
+        }
     }
 
     protected virtual void RemovePlayerActionCallbacks()
@@ -71,11 +77,14 @@ public class PlayerBaseState : IState
     #region addevent
     private void OnSkill1Started(InputAction.CallbackContext obj)
     {
-        stateMachine.ChangeState(stateMachine.Skill1State);
+        if (!stateMachine.Player.IsTired)
+        {
+            stateMachine.ChangeState(stateMachine.Skill1State);
+        }
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
+        if (!stateMachine.Player.IsTired && stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
         {
             stateMachine.Player.IsJumping = true;
             stateMachine.ChangeState(stateMachine.JumpState);
@@ -89,7 +98,7 @@ public class PlayerBaseState : IState
 
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
-        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false)
+        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false && !stateMachine.Player.IsTired)
         {
             stateMachine.Player.IsDodgeing = true;
             stateMachine.ChangeState(stateMachine.DodgeState);
@@ -144,7 +153,7 @@ public class PlayerBaseState : IState
     private void GroundedCheck()
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.14f, LayerMask.GetMask("Default"),
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.14f, LayerMask.GetMask("Default") | LayerMask.GetMask("Item"),
                 QueryTriggerInteraction.Ignore);
     }
     private float GetMovementSpeed()

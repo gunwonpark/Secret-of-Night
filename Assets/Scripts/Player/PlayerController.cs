@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public bool IsDodgeing { get; set; }
     [field: SerializeField] public bool DoSkill { get; set; }
     [field: SerializeField] public bool IsGrounded { get; set; }
+    [field: SerializeField] public bool canRun { get; set; }
+    [field: SerializeField] public bool IsTired { get; set; }
     #endregion
 
     [field: Header("Animations")]
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput Input { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
-
+    public StaminaSystem StaminaSystem { get; private set; }
     private PlayerStateMachine stateMachine;
 
     private void Awake()
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        StaminaSystem = GetComponent<StaminaSystem>();
         stateMachine = new PlayerStateMachine(this);
     }
 

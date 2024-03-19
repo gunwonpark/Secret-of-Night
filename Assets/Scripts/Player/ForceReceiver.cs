@@ -12,7 +12,7 @@ public class ForceReceiver : MonoBehaviour
 
     void Update()
     {
-        if (verticalVelocity < 0f && controller.isGrounded)
+        if (controller.isGrounded)
         {
             verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
@@ -20,7 +20,6 @@ public class ForceReceiver : MonoBehaviour
         {
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
-
         impact = Vector3.Lerp(impact, Vector3.zero, drag);
     }
 
