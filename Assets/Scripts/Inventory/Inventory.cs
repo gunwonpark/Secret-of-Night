@@ -12,6 +12,7 @@ public class ItemSlot
 public class Inventory : MonoBehaviour
 {
     private bool activated;
+    private bool _speedItemUse;
     public static Inventory instance;
     private CameraHandler _camera;
     private EquipController _equipController;
@@ -295,8 +296,18 @@ public class Inventory : MonoBehaviour
                     GameManager.Instance.itemManager.SmallSpPotion(_selectedItem.item.Price); break;
                 case 6:
                     GameManager.Instance.itemManager.BigSpPotion(_selectedItem.item.Price); break;
-                    //case 7:
-                    //    GameManager.Instance.itemManager.SpeedPotion(_selectedItem.item.Price); break;
+                case 7:
+                    if (!GameManager.Instance.itemManager.speedItemInUse) // 중복 사용 방지
+                    {
+                        GameManager.Instance.itemManager.SpeedPotion(_selectedItem.item.Price);
+
+                    }
+                    else
+                    {
+                        Debug.Log("이미 아이템 사용중");
+                        return; // 중복 사용이므로 이후 코드 실행하지 않음
+                    }
+                    break;
 
             }
         }
@@ -354,6 +365,7 @@ public class Inventory : MonoBehaviour
     {
         _selectedItem.count--;
 
+        //장착아이템은 수량이 0으로 표시되기 때문에
         if (_selectedItem.count <= 0)
         {
             if (_uiSlots[_selectedItemIndex].equipped) //현재 장착하고 있는 아이템 인덱스에서 확인해야함 (_selectItemIndex)
@@ -364,6 +376,7 @@ public class Inventory : MonoBehaviour
             _selectedItem.item = null;
             ClearSeletecItemWindow();
         }
+
 
         UpdateUI();
     }

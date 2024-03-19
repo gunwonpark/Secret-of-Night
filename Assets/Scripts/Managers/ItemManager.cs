@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
     private PlayerGameData _playerData;
-    private float _time = 60f;
+
+    public bool speedItemInUse = false;
 
     public void Start()
     {
@@ -43,10 +45,23 @@ public class ItemManager : MonoBehaviour
         _playerData.CurSP = Mathf.Min(_playerData.CurSP + _amount, _playerData.MaxSP);
     }
 
-    //public void SpeedPotion(float _amount)
-    //{
-    //    _playerData.MoveSpeed += _amount;
-    //    _time -= Time.deltaTime;
-    //    _playerData.MoveSpeed -= _amount;
-    //}
+    // 이동속도 증가
+    public void SpeedPotion(float _amount)
+    {
+        if (!speedItemInUse) //아이템 사용 중이 아닌 경우에만 아이템 사용
+        {
+            _playerData.MoveSpeed += _amount;
+            StartCoroutine(SpeedCoroutine(_amount));
+            speedItemInUse = true;
+        }
+    }
+
+    IEnumerator SpeedCoroutine(float _amount)
+    {
+        Debug.Log("스피드 업 : " + _playerData.MoveSpeed);
+        yield return new WaitForSeconds(5f); //TODO 60초로 수정
+        _playerData.MoveSpeed -= _amount;
+        Debug.Log("종료 : " + _playerData.MoveSpeed);
+        speedItemInUse = false;
+    }
 }

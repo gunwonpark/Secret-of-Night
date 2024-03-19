@@ -90,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4864753873160645609}
     m_Modifications:
+    - target: {fileID: -4918595177787220371, guid: 12e1299649d5d9944bce52ef4021da99, type: 3}
+      propertyPath: item.Prefab
+      value: 
+      objectReference: {fileID: 4840214454873979137}
     - target: {fileID: 1688404288939428, guid: 12e1299649d5d9944bce52ef4021da99, type: 3}
       propertyPath: m_Name
       value: Sword_F06

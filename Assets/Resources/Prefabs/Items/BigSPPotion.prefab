@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7831549285494172598}
   - component: {fileID: 54788435605965564}
   m_Layer: 6
-  m_Name: 'BigSPPotion '
+  m_Name: BigSPPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6085747986951375160}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7831549285494172598
 BoxCollider:
@@ -90,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1862664331371688573}
     m_Modifications:
+    - target: {fileID: -5279185640072231317, guid: 8a2495c4edb0f7e47b2fd1fcbf66b07c, type: 3}
+      propertyPath: item.Prefab
+      value: 
+      objectReference: {fileID: 770512128047994034}
     - target: {fileID: 146310, guid: 8a2495c4edb0f7e47b2fd1fcbf66b07c, type: 3}
       propertyPath: m_Name
       value: Big_Potion_Stamina
