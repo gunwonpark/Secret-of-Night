@@ -6,7 +6,8 @@ public class MonsterStateMachine : StateMachine
     public MonsterSpot MonsterSpot { get; }
 
     public Transform Target { get; private set; }
-    public Transform MyOriginalTransform { get; private set; }
+    public Vector3 MyOriginalTransform { get; private set; }
+
 
     //state
     public MonsterIdleState IdleState { get; }
@@ -24,7 +25,8 @@ public class MonsterStateMachine : StateMachine
     {
         FieldMonsters = fieldMonster;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
-        //MyOriginalTransform = MonsterSpot.transform;
+        MyOriginalTransform = MonsterSpot.MyOriginalPosition;
+        Debug.Log(MyOriginalTransform);
 
         IdleState = new MonsterIdleState(this);
         ChasingState = new MonsterChasingState(this);
