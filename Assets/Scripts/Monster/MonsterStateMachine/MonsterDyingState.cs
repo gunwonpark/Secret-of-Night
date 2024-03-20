@@ -9,11 +9,10 @@ public class MonsterDyingState : MonsterBaseState
     public override void Enter()
     {
         base.Enter();
-        monsterStateMachine.MovementSpeedModifier = 0;
+        stateMachine.MovementSpeedModifier = 0;
+        stateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
-
-
+        DeleteMonster();
     }
 
     public override void Exit()
@@ -21,5 +20,10 @@ public class MonsterDyingState : MonsterBaseState
         base.Exit();
 
         //destroy
+    }
+
+    void DeleteMonster()
+    {
+
     }
 }

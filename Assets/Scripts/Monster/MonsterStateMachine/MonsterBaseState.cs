@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class MonsterBaseState : IState, IDamageable
+public class MonsterBaseState : IState
 
 {
-    protected MonsterStateMachine monsterStateMachine;
+    protected MonsterStateMachine stateMachine;
 
     public MonsterBaseState(MonsterStateMachine stateMachine)
     {
-        monsterStateMachine = stateMachine;
+        this.stateMachine = stateMachine;
     }
 
     public virtual void Enter()
@@ -29,15 +29,15 @@ public class MonsterBaseState : IState, IDamageable
     {
         //attackStance에 따라 추격할지 말지
         //임시
-        if (monsterStateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1 -> 밑에 else if랑 바꿔야함
+        if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1 -> 밑에 else if랑 바꿔야함
         {
             if (IsInChaseRange())
             {
-                monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+                stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
             }
         }
-        else if (monsterStateMachine.FieldMonsters.myInfo.AtkStance)//
+        else if (stateMachine.FieldMonsters.myInfo.AtkStance)//
         {
             //if (TakeDamage(5))
             //{
@@ -58,12 +58,12 @@ public class MonsterBaseState : IState, IDamageable
     //애니메이션
     protected void StartAnimation(int animationHash)
     {
-        monsterStateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
+        stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
     }
 
     protected void StopAnimation(int animationHash)
     {
-        monsterStateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
+        stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
     }
 
     protected void Move()//v
@@ -76,14 +76,14 @@ public class MonsterBaseState : IState, IDamageable
 
     protected void ForceMove()//네브메쉬로 수정 고려
     {
-        monsterStateMachine.FieldMonsters.controller.Move(monsterStateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
+        stateMachine.FieldMonsters.controller.Move(stateMachine.FieldMonsters.forceReceiver.Movement * Time.deltaTime);
     }
 
 
     private void Move(Vector3 direction)//v
     {
         float movementSpeed = GetMovementSpeed();
-        monsterStateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + monsterStateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
+        stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
     }
 
     private void Rotate(Vector3 direction)
@@ -93,18 +93,18 @@ public class MonsterBaseState : IState, IDamageable
             direction.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            monsterStateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(monsterStateMachine.FieldMonsters.transform.rotation, targetRotation, monsterStateMachine.rotationDamping * Time.deltaTime);
+            stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.rotationDamping * Time.deltaTime);
         }
     }
 
     private Vector3 GetMovementDirection()//v
     {
-        return (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).normalized;
+        return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
     private float GetMovementSpeed()//v
     {
-        float movementSpeed = monsterStateMachine.MovementSpeed * monsterStateMachine.MovementSpeedModifier;
+        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         return movementSpeed;
     }
@@ -130,21 +130,20 @@ public class MonsterBaseState : IState, IDamageable
 
     protected bool IsInChaseRange()//v
     {
-        float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        //Debug.Log(playerDistanceSqr);
-        return playerDistanceSqr <= monsterStateMachine.FieldMonsters.targetRange * monsterStateMachine.FieldMonsters.targetRange;
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
     }
 
     public bool TakeDamage(int Damage)
     {
-        float HP = monsterStateMachine.FieldMonsters.myInfo.HP;
-        float Def = monsterStateMachine.FieldMonsters.myInfo.Daf;
+        float HP = stateMachine.FieldMonsters.myInfo.HP;
+        float Def = stateMachine.FieldMonsters.myInfo.Daf;
         HP -= (Damage - Def);
 
         if (HP < 0)
         {
             HP = 0;
-            monsterStateMachine.ChangeState(monsterStateMachine.DyingState);
+            stateMachine.ChangeState(stateMachine.DyingState);
         }
         return true;
     }

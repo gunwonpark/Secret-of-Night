@@ -3,14 +3,17 @@ using UnityEngine;
 public class MonsterStateMachine : StateMachine
 {
     public FieldMonsters FieldMonsters { get; }
+    public MonsterSpot MonsterSpot { get; }
 
     public Transform Target { get; private set; }
+    public Transform MyOriginalTransform { get; private set; }
 
     //state
     public MonsterIdleState IdleState { get; }
     public MonsterChasingState ChasingState { get; }
     public MonsterAttackState AttackState { get; }
     public MonsterDyingState DyingState { get; }
+    public MonsterPatrolState PatrolState { get; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
@@ -21,6 +24,7 @@ public class MonsterStateMachine : StateMachine
     {
         FieldMonsters = fieldMonster;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
+        MyOriginalTransform = MonsterSpot.transform;
 
         IdleState = new MonsterIdleState(this);
         ChasingState = new MonsterChasingState(this);

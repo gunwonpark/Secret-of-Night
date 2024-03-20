@@ -10,16 +10,16 @@ public class MonsterIdleState : MonsterBaseState
     {
         base.Enter();
 
-        monsterStateMachine.MovementSpeedModifier = 0f;
+        stateMachine.MovementSpeedModifier = 0f;
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StartIdleAnimation();
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        monsterStateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StopIdleAnimation();
     }
 
     public override void Update()
