@@ -11,6 +11,7 @@ public class MonsterChasingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 1;
 
         stateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
+
     }
 
     public override void Exit()
@@ -18,6 +19,7 @@ public class MonsterChasingState : MonsterBaseState
         base.Exit();
 
         stateMachine.FieldMonsters.monsterAnimation.StopRunAnimation();
+
     }
 
     public override void Update()
@@ -32,7 +34,7 @@ public class MonsterChasingState : MonsterBaseState
             //돌아가는 state를 만들어서 position을 원래위치로 잡고 그쪽으로 이동
             //이동이 끝나면  IdleState
 
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.PatrolState);
             return;
         }
         else if (IsInAttackRange())

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MonsterPatrolState : MonsterBaseState
 {
     public MonsterPatrolState(MonsterStateMachine stateMachine) : base(stateMachine)
@@ -13,7 +11,7 @@ public class MonsterPatrolState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0.5f;
         stateMachine.FieldMonsters.monsterAnimation.StartWalkAnimation();
         //기존타겟포지션 저장
-        Vector3 targetPosition = stateMachine.Target.position;
+        //Vector3 targetPosition = stateMachine.Target.position;
     }
 
     public override void Exit()
@@ -26,8 +24,9 @@ public class MonsterPatrolState : MonsterBaseState
     public override void Update()
     {
         base.Update();
+        Move();
 
+        //원래 포지션으로 가면 -> idle State로 바꿈
     }
 
-    //
 }
