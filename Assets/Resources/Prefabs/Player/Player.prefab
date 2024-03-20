@@ -1121,7 +1121,7 @@ Transform:
   - {fileID: 5751550581704196077}
   - {fileID: 5485161305618298594}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &438094870567635642
 CharacterController:
@@ -1174,24 +1174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerData>k__BackingField:
-    CharacterType: 
-    ID: 0
-    CharacterID: 0
-    stat:
-      Level: 0
-      MaxExp: 0
-      CurExp: 0
-      MaxHP: 0
-      CurHP: 0
-      MaxMP: 0
-      CurMP: 0
-      MaxSP: 0
-      CurSP: 0
-      Damage: 0
-      DamageSpeed: 0
-      CriDamage: 0
-      Def: 0
-      MoveSpeed: 0
+    <CharacterType>k__BackingField: 
+    <ID>k__BackingField: 0
+    <CharacterID>k__BackingField: 0
     Level: 0
     MaxExp: 0
     CurExp: 0
@@ -1219,6 +1204,8 @@ MonoBehaviour:
   <IsDodgeing>k__BackingField: 0
   <DoSkill>k__BackingField: 0
   <IsGrounded>k__BackingField: 0
+  <canRun>k__BackingField: 0
+  <IsTired>k__BackingField: 0
   <AnimationData>k__BackingField:
     _walkHash: Walk
     _runHash: Run
@@ -1228,6 +1215,8 @@ MonoBehaviour:
     _attackHash: Attack
     _Skill1: Skill1
     _Skill2: Skill2
+    _Tired: Tired
+    _die: Die
 --- !u!114 &4463286794980798020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,18 +1287,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027843d178f07c344a4287307086fd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryUI: {fileID: 0}
-  _slotGrid: {fileID: 0}
+  _inventoryUI: {fileID: 4598067809455833064}
+  _slotGrid: {fileID: 6937565128547213484}
   _uiSlots: []
-  dropPosition: {fileID: 0}
-  selectedItemName: {fileID: 0}
-  selectedItemDescription: {fileID: 0}
-  useButton: {fileID: 0}
-  equipButton: {fileID: 0}
-  unEquipButton: {fileID: 0}
-  dropButton: {fileID: 0}
-  rightBtn: {fileID: 0}
-  leftBtn: {fileID: 0}
+  dropPosition: {fileID: 2498611766723829418}
+  selectedItemName: {fileID: 3325321328929114241}
+  selectedItemDescription: {fileID: 4001167481022473609}
+  useButton: {fileID: 6669344165477576010}
+  equipButton: {fileID: 3159518621767376619}
+  unEquipButton: {fileID: 935414844702488943}
+  dropButton: {fileID: 5983051134024876254}
+  rightBtn: {fileID: 5805441808422604107}
+  leftBtn: {fileID: 6899142507662528155}
 --- !u!114 &8931880413131824754
 MonoBehaviour:
   m_ObjectHideFlags: 0
