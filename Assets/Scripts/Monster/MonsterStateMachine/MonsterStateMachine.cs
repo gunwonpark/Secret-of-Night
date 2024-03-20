@@ -24,7 +24,7 @@ public class MonsterStateMachine : StateMachine
     {
         FieldMonsters = fieldMonster;
         Target = GameObject.FindGameObjectWithTag("Player").transform;
-        MyOriginalTransform = MonsterSpot.transform;
+        //MyOriginalTransform = MonsterSpot.transform;
 
         IdleState = new MonsterIdleState(this);
         ChasingState = new MonsterChasingState(this);
