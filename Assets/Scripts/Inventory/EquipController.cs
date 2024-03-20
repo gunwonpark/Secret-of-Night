@@ -15,7 +15,7 @@ public class EquipController : MonoBehaviour
     }
 
     // 기본 무기의 정보를 가져와서 장착
-    private void EquipDefaultWeapon()
+    public void EquipDefaultWeapon()
     {
         Item defaultWeapon = GameManager.Instance.dataManager.itemDataBase.GetData(8);
 

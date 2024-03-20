@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     private CameraHandler _camera;
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
+    private PlayerController _playerController;
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -54,6 +55,7 @@ public class Inventory : MonoBehaviour
         _camera = FindObjectOfType<CameraHandler>();
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
+        _playerController = GetComponent<PlayerController>();
     }
 
     void Start()
@@ -89,12 +91,14 @@ public class Inventory : MonoBehaviour
             {
                 OpenInventory();
                 _camera.enabled = false; // 카메라 비활성
+                _playerController.Input.enabled = false; //플레이어 활동 비활성
 
             }
             else
             {
                 CloseInventory();
                 _camera.enabled = true;
+                _playerController.Input.enabled = true;
             }
         }
     }
@@ -322,10 +326,10 @@ public class Inventory : MonoBehaviour
     // 아이템 장착
     public void OnEquipBtton()
     {
-        if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndex로 하면 장비가 이중으로 껴짐
+        //_selectedItemIndex로 하면 장비가 이중으로 껴짐, curEquip에 기본 무기가 장착 되어 있으면 해제
+        if (_uiSlots[curEquipIndex].equipped || _equipController.curEquip != null)
         {
             UnEquip(curEquipIndex);
-
         }
 
         _uiSlots[_selectedItemIndex].equipped = true;
@@ -343,8 +347,9 @@ public class Inventory : MonoBehaviour
         _uiSlots[_index].equipped = false;
 
         _equipController.UnEquip();
-
+        _equipController.EquipDefaultWeapon();
         _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
+
         UpdateUI();
 
         if (_selectedItemIndex == _index)
