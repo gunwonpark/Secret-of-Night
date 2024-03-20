@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
     public PlayerSkillDataBase playerSkillDataBase;
     public PlayerStatDataBase playerStatDataBase;
     public BossMonsterStatDatabase bossMonsterStatDatabase;
-    public ItemData itemData;
+    public ItemDataBase itemDataBase;
     #endregion
 
     public void Initialize()
@@ -23,8 +23,8 @@ public class DataManager : MonoBehaviour
         bossMonsterStatDatabase = Utility.LoadJson<BossMonsterStatDatabase>("BossMonsterStat_Data");
         bossMonsterStatDatabase.Initalize();
 
-        itemData = Utility.LoadJson<ItemData>("Items_Data");
-        itemData.Initalize();
+        itemDataBase = Utility.LoadJson<ItemDataBase>("Items_Data");
+        itemDataBase.Initalize();
 
     }
 }

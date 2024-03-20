@@ -6910,6 +6910,7 @@ GameObject:
   - component: {fileID: 8124391203911004459}
   - component: {fileID: 7822636244012122098}
   - component: {fileID: 3996898734832219667}
+  - component: {fileID: 3940051049796695963}
   - component: {fileID: 2496139572101214158}
   - component: {fileID: 2161785623094304596}
   m_Layer: 0
@@ -7086,6 +7087,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
   equipParent: {fileID: 6528382410756297381}
+--- !u!114 &3940051049796695963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204361375917507577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2956aa8886e5cee4d82174c6e4cf9a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedItemInUse: 0
 --- !u!114 &2496139572101214158
 MonoBehaviour:
   m_ObjectHideFlags: 0
