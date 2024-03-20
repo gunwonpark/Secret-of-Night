@@ -32,17 +32,6 @@ public class MonsterIdleState : MonsterBaseState
 
     }
 
-    //�ִϸ��̼�
-    //protected void StartAnimation(int animationHash)
-    //{
-    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, true);
-    //}
-
-    //protected void StopAnimation(int animationHash)
-    //{
-    //    stateMachine.FieldMonsters.Animator.SetBool(animationHash, false);
-    //}
-
     //protected float GetNormalizedTime(Animator animator, string tag)
     //{
     //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

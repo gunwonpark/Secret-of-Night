@@ -12,8 +12,6 @@ public class FieldMonsters : MonoBehaviour
 
     //public MonsterManager monsterManager;
 
-
-
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
     public ForceReceiver forceReceiver { get; private set; }

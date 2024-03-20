@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class MonsterBaseState : IState
+public class MonsterBaseState : IState, IDamageable
+
 {
     protected MonsterStateMachine monsterStateMachine;
 
@@ -26,11 +27,26 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
-        if (IsInChaseRange())
+        //attackStance에 따라 추격할지 말지
+        //임시
+        if (monsterStateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1 -> 밑에 else if랑 바꿔야함
         {
-            monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+            if (IsInChaseRange())
+            {
+                monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+                return;
+            }
+        }
+        else if (monsterStateMachine.FieldMonsters.myInfo.AtkStance)//
+        {
+            //if (TakeDamage(5))
+            //{
+            //    monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
+            //}
+
             return;
         }
+
     }
 
     public virtual void PhysicsUpdate()
@@ -116,5 +132,19 @@ public class MonsterBaseState : IState
         float playerDistanceSqr = (monsterStateMachine.Target.transform.position - monsterStateMachine.FieldMonsters.transform.position).sqrMagnitude;
         //Debug.Log(playerDistanceSqr);
         return playerDistanceSqr <= monsterStateMachine.FieldMonsters.targetRange * monsterStateMachine.FieldMonsters.targetRange;
+    }
+
+    public bool TakeDamage(int Damage)
+    {
+        float hp = monsterStateMachine.FieldMonsters.myInfo.HP;
+        float Def = monsterStateMachine.FieldMonsters.myInfo.Daf;
+        hp -= (Damage - Def);
+
+        if (hp < 0)
+        {
+            hp = 0;
+            //Die
+        }
+        return true;
     }
 }

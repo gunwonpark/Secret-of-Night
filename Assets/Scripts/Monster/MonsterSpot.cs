@@ -14,12 +14,14 @@ public class MonsterSpot : MonoBehaviour
 
     public void MonsterSpawn(MonsterInfo monsterInfo)
     {
+        //monsterSpawner가 준 내 몬스터 정보
         this.monsterInfo = monsterInfo;
+
         //생성
-        Debug.Log(monsterInfo.Name);
         GameObject go = Instantiate(monsterInfo.prefab, transform);
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
 
+        //fieldMonsters 시작?
         fieldMonsters.Init(monsterInfo);
 
     }
