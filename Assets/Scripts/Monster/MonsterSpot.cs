@@ -18,8 +18,10 @@ public class MonsterSpot : MonoBehaviour
         //생성
         go = Instantiate(monsterInfo.prefab, transform);
 
+        go.GetComponent<FieldMonsters>().SetPosition(transform.position);
+
         MyOriginalPosition = go.transform.position;
-        Debug.Log(MyOriginalPosition);
+        //Debug.Log(MyOriginalPosition);
         //OriginalPosition(MyOriginalPosition);
 
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
@@ -28,8 +30,8 @@ public class MonsterSpot : MonoBehaviour
         fieldMonsters.Init(monsterInfo);
     }
 
-    public void OriginalPosition(Vector3 position)
-    {
+    //public void OriginalPosition(Vector3 position)
+    //{
 
-    }
+    //}
 }
