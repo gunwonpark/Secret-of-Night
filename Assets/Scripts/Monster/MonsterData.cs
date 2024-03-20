@@ -18,27 +18,33 @@ public class MonsterInfo
     public float MoveSpeed;
     public float RunSpeed;
     public float Range;
+
+    public string PrefabPath;
+
+    public GameObject prefab;
 }
-//º¯ÇÏ´Â µ¥ÀÌÅÍ -> HP
-//¸ó½ºÅÍcs »óÀ§¿¡ HP¸¸ º¯ÇÒ¼ö ÀÖµµ·Ï µû·Î Àû¾îµÖ¾ßÇÔ
-//°Ç¿ø´Ô DataManager¿¡ ÇÕÃÄº¸ÀÚ.
+//ë³€í•˜ëŠ” ë°ì´í„° -> HP
+//ëª¬ìŠ¤í„°cs ìƒìœ„ì— HPë§Œ ë³€í• ìˆ˜ ìˆë„ë¡ ë”°ë¡œ ì ì–´ë‘¬ì•¼í•¨
+//ê±´ì›ë‹˜ DataManagerì— í•©ì³ë³´ì.
 
 [Serializable]
-public class MonsterDataBase //->½ÇÁ¦µ¥ÀÌÅÍ
+public class MonsterDataBase //->ì‹¤ì œë°ì´í„°
 {
     public List<MonsterInfo> FieldMonster;
     public Dictionary<string, MonsterInfo> fieldMonDic = new();
 
-    //¸ó½ºÅÍ¸®½ºÆ®¸¦ µñ¼Å³Ê¸®¿¡ Ãß°¡
+    //ëª¬ìŠ¤í„°ë¦¬ìŠ¤íŠ¸ë¥¼ ë”•ì…”ë„ˆë¦¬ì— ì¶”ê°€
     public void Initialize()
     {
         foreach (MonsterInfo fieldMonster in FieldMonster)
         {
+            //fieldMonster.Init();
             fieldMonDic.Add(fieldMonster.Name, fieldMonster);
+            fieldMonster.prefab = Resources.Load<GameObject>(fieldMonster.PrefabPath);
         }
     }
 
-    //ÀÌ¸§À¸·Î ¸ó½ºÅÍÁ¤º¸ ¹İÈ¯
+    //ì´ë¦„ìœ¼ë¡œ ëª¬ìŠ¤í„°ì •ë³´ ë°˜í™˜
     public MonsterInfo GetMonsterInfoByKey(string name)
     {
         if (fieldMonDic.ContainsKey(name))

@@ -35,6 +35,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         curSlot = _slot;
         itemImage.sprite = Resources.Load<Sprite>(_slot.item.IconPath);
+        itemImage.preserveAspect = true; //들어가는 이미지 비율을 부모에 맞게 지정
         _itemCountText.text = _slot.count > 1 ? _slot.count.ToString() : string.Empty;
 
         if (_outline != null)

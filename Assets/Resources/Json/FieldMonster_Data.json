@@ -13,7 +13,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/PlatypusA"
 		},
 		{
 			"MonsterID": 2,
@@ -28,7 +29,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/ChameleonA"
 		},
 		{
 			"MonsterID": 3,
@@ -43,7 +45,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/Meerkat"
 		},
 		{
 			"MonsterID": 4,
@@ -58,7 +61,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/Porcupine"
 		},
 		{
 			"MonsterID": 5,
@@ -73,7 +77,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/Skunk"
 		},
 		{
 			"MonsterID": 6,
@@ -88,7 +93,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/WolfA"
 		},
 		{
 			"MonsterID": 7,
@@ -103,7 +109,8 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"Range": 1
+			"Range": 1,
+			"PrefabPath": "Prefabs/Monsters/BullA"
 		}
 	]
 }

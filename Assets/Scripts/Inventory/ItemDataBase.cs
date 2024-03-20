@@ -16,18 +16,13 @@ public class Item
     public string IconPath;
     public int MaxAmount;
     public string PrefabPath;
+    public int UnlockLevel;
     public GameObject Prefab;
-}
-
-//json을 불러오기 위해
-public class ItemInstance
-{
-    public Item item;
 }
 
 
 [System.Serializable]
-public class ItemData : DataBase<int, Item>
+public class ItemDataBase : DataBase<int, Item>
 {
     public List<Item> items;
 
@@ -39,22 +34,5 @@ public class ItemData : DataBase<int, Item>
             item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
         }
     }
-    //public Dictionary<int, Item> itemDic = new Dictionary<int, Item>();
-
-    //public void Initialize()
-    //{
-    //    foreach (Item item in items)
-    //    {
-    //        itemDic.Add(item.ItemID, item);
-    //        item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
-    //    }
-    //}
-
-    //public Item GetItemByKey(int _id)
-    //{
-    //    if (itemDic.ContainsKey(_id)) // 키가 있는지 확인
-    //        return itemDic[_id];
-
-    //    return null;
-    //}
 }
+
