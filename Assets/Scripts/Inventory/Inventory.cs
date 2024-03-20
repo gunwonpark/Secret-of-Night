@@ -182,6 +182,7 @@ public class Inventory : MonoBehaviour
     public void OnExit()
     {
         _inventoryUI.SetActive(false);
+        _camera.enabled = true;
     }
 
     //아이템 추가
