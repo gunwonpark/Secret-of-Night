@@ -4,140 +4,140 @@ using UnityEngine.AI;
 
 public class Phase1Boss : MonoBehaviour, IDamageable
 {
-	[Header("References")]
-	public BossState currentState = BossState.Idle;
-	public Transform playerTransform;
-	public Animator animator;
-	private NavMeshAgent agent;
-	private SkinnedMeshRenderer[] meshRenderers;
+    [Header("References")]
+    public BossState currentState = BossState.Idle;
+    public Transform playerTransform;
+    public Animator animator;
+    private NavMeshAgent agent;
+    private SkinnedMeshRenderer[] meshRenderers;
 
-	[Header("MonsterData")]
-	[SerializeField] private BossMonsterGameData bossMonsterData;
+    [Header("MonsterData")]
+    [SerializeField] private BossMonsterGameData bossMonsterData;
 
-	public float dashdistance = 3f;
+    public float dashdistance = 3f;
 
-	private void Awake()
-	{
-	}
+    private void Awake()
+    {
+    }
 
-	private void Start()
-	{
-		playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-		animator = GetComponent<Animator>();
-		agent = GetComponent<NavMeshAgent>();
-		meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+    private void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
 
-		int monsterID = 1;
-		bossMonsterData = new BossMonsterGameData(monsterID);
+        int monsterID = 1;
+        bossMonsterData = new BossMonsterGameData(monsterID);
 
-		if (bossMonsterData != null)
-		{
-			agent.speed = bossMonsterData.MoveSpeed; // ½ºÇÇµå Á÷Á¢ ÂüÁ¶
-		}
-		
-	}
+        if (bossMonsterData != null)
+        {
+            agent.speed = bossMonsterData.MoveSpeed; // ìŠ¤í”¼ë“œ ì§ì ‘ ì°¸ì¡°
+        }
 
-	private void Update()
-	{		
-		if (bossMonsterData == null) return;
+    }
 
-		float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+    private void Update()
+    {
+        if (bossMonsterData == null) return;
 
-		switch (currentState)
-		{
-			case BossState.Idle:
-				if (distanceToPlayer > dashdistance)
-				{
-					currentState = BossState.Moving;
-				}
-				break;
-			case BossState.Moving:
-				MoveTowardsPlayer(distanceToPlayer);
-				break;
-			case BossState.Dashing:
-				DashTowardsPlayer();
-				break;
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-			case BossState.Attacking:
-				AttackPlayer(distanceToPlayer);
-				break;
-			case BossState.Dying:
-				// »ç¸Á ·ÎÁ÷ Ã³¸®
-				break;
-		}
-	}
+        switch (currentState)
+        {
+            case BossState.Idle:
+                if (distanceToPlayer > dashdistance)
+                {
+                    currentState = BossState.Moving;
+                }
+                break;
+            case BossState.Moving:
+                MoveTowardsPlayer(distanceToPlayer);
+                break;
+            case BossState.Dashing:
+                DashTowardsPlayer();
+                break;
 
-	void MoveTowardsPlayer(float distanceToPlayer)
-	{
-		if (distanceToPlayer > dashdistance)
-		{
-			agent.SetDestination(playerTransform.position);
-			animator.SetBool("IsRunning", true);
-		}
-		else if (distanceToPlayer <= dashdistance)
-		{			
-			currentState = BossState.Dashing;			
-		}
-		else if (distanceToPlayer <= bossMonsterData.Range)
-		{			
-			currentState = BossState.Attacking;
-		}
-	}
+            case BossState.Attacking:
+                AttackPlayer(distanceToPlayer);
+                break;
+            case BossState.Dying:
+                // ì‚¬ë§ ë¡œì§ ì²˜ë¦¬
+                break;
+        }
+    }
 
-	void DashTowardsPlayer()
-	{
-		agent.speed = 3f;
-		agent.SetDestination(playerTransform.position);
-		animator.SetBool("IsDashing", true);
+    void MoveTowardsPlayer(float distanceToPlayer)
+    {
+        if (distanceToPlayer > dashdistance)
+        {
+            agent.SetDestination(playerTransform.position);
+            animator.SetBool("IsRunning", true);
+        }
+        else if (distanceToPlayer <= dashdistance)
+        {
+            currentState = BossState.Dashing;
+        }
+        else if (distanceToPlayer <= bossMonsterData.Range)
+        {
+            currentState = BossState.Attacking;
+        }
+    }
 
-		currentState = BossState.Attacking;
-	}
+    void DashTowardsPlayer()
+    {
+        agent.speed = 3f;
+        agent.SetDestination(playerTransform.position);
+        animator.SetBool("IsDashing", true);
 
-	void AttackPlayer(float distanceToPlayer)
-	{		
-		
-		if (bossMonsterData.HP <= 5.0f && Random.Range(0, 100) < 25 && distanceToPlayer <= bossMonsterData.Range)
-		{
-			// ³­»ç °ø°Ý ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
-			animator.SetTrigger("ATK4");
-		}
-		else if (distanceToPlayer <= bossMonsterData.Range)
-		{
-			agent.speed = bossMonsterData.MoveSpeed;
-			animator.SetBool("IsRunning", false);
-			animator.SetBool("IsDashing", false);
-			animator.SetBool("IsAttack", true);
-		}
-		else if (distanceToPlayer > bossMonsterData.Range)
-		{			
-			animator.SetBool("IsAttack", false);
-			currentState = BossState.Moving;
-		}		
-	}
+        currentState = BossState.Attacking;
+    }
 
-	public void TakeDamage(int damage)
-	{
-		bossMonsterData.HP -= damage;
-		if (bossMonsterData.HP <= 0)
-			Die();
+    void AttackPlayer(float distanceToPlayer)
+    {
 
-		StartCoroutine(DamageFlash());
-	}
+        if (bossMonsterData.HP <= 5.0f && Random.Range(0, 100) < 25 && distanceToPlayer <= bossMonsterData.Range)
+        {
+            // ë‚œì‚¬ ê³µê²© ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+            animator.SetTrigger("ATK4");
+        }
+        else if (distanceToPlayer <= bossMonsterData.Range)
+        {
+            agent.speed = bossMonsterData.MoveSpeed;
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsDashing", false);
+            animator.SetBool("IsAttack", true);
+        }
+        else if (distanceToPlayer > bossMonsterData.Range)
+        {
+            animator.SetBool("IsAttack", false);
+            currentState = BossState.Moving;
+        }
+    }
 
-	IEnumerator DamageFlash()
-	{
-		for (int x = 0; x < meshRenderers.Length; x++)
-			meshRenderers[x].material.color = new Color(1.0f, 0.6f, 0.6f);
+    public void TakeDamage(float damage)
+    {
+        bossMonsterData.HP -= damage;
+        if (bossMonsterData.HP <= 0)
+            Die();
 
-		yield return new WaitForSeconds(0.1f);
-		for (int x = 0; x < meshRenderers.Length; x++)
-			meshRenderers[x].material.color = Color.white;
-	}
+        StartCoroutine(DamageFlash());
+    }
 
-	void Die()
-	{
-		animator.SetTrigger("Die");
-		agent.isStopped = true;
-		currentState = BossState.Dying;
-	}
+    IEnumerator DamageFlash()
+    {
+        for (int x = 0; x < meshRenderers.Length; x++)
+            meshRenderers[x].material.color = new Color(1.0f, 0.6f, 0.6f);
+
+        yield return new WaitForSeconds(0.1f);
+        for (int x = 0; x < meshRenderers.Length; x++)
+            meshRenderers[x].material.color = Color.white;
+    }
+
+    void Die()
+    {
+        animator.SetTrigger("Die");
+        agent.isStopped = true;
+        currentState = BossState.Dying;
+    }
 }

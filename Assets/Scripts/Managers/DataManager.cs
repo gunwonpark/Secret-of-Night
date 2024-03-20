@@ -25,7 +25,6 @@ public class DataManager : MonoBehaviour
 
         itemData = Utility.LoadJson<ItemData>("Items_Data");
         itemData.Initalize();
-
     }
 }
 

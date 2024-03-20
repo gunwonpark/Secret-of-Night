@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput), typeof(ForceReceiver))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     #region PlayerData
     [field: Header("PlayerData")]
@@ -54,8 +54,9 @@ public class PlayerController : MonoBehaviour
     {
         stateMachine.ChangeState(stateMachine.IdleState);
         PlayerData = GameManager.Instance.playerManager.playerData;
-    }
 
+        PlayerData.OnDie += OnPlayerDie;
+    }
     private void Update()
     {
         stateMachine.HandleInput();
@@ -70,4 +71,18 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, 0.14f);
     }
+
+    public void TakeDamage(float damage)
+    {
+        float finalDamage = damage / PlayerData.Def;
+        PlayerData.HPChange(-finalDamage);
+    }
+
+    private void OnPlayerDie()
+    {
+        Animator.SetTrigger(AnimationData.Die);
+        Debug.Log("PlayerDie");
+        Input.enabled = false;
+    }
+
 }

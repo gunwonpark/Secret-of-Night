@@ -31,8 +31,8 @@ public class StaminaSystem : MonoBehaviour
         }
         else
         {
+            //tired상태가 
             float tired = Mathf.InverseLerp(leastStaminaToRun, 0, player.PlayerData.CurSP);
-            Debug.Log(tired);
             player.MovementSpeedModifier = player.runSpeed * 1 - tired;
             player.Animator.SetFloat(player.AnimationData.Tired, tired);
         }

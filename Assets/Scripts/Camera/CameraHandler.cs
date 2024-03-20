@@ -35,7 +35,6 @@ public class CameraHandler : MonoBehaviour
     {
         input = new PlayerControls();
         input.Player.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-        Cursor.lockState = CursorLockMode.Locked;
         input.Enable();
     }
     private void OnDisable()

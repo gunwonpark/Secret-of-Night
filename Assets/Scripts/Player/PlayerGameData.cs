@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -10,11 +11,11 @@ public class PlayerGameData
 {
     private string _jsonDataPath;
     private DataManager dataManager;
-    //한글이 안보여
-    [Header("PlayerInfo")]
-    public string CharacterType;
-    public int ID; // 로그인 할때 필요하면 사용할 ID -> 현재 미사용
-    public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
+
+    [field: Header("PlayerInfo")]
+    [field: SerializeField] public string CharacterType { get; private set; }
+    [field: SerializeField] public int ID { get; private set; } // 로그인 할때 필요하면 사용할 ID -> 현재 미사용
+    [field: SerializeField] public int CharacterID { get; private set; } // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
 
     [Header("PlayerStat")]
     public int Level;
@@ -32,6 +33,8 @@ public class PlayerGameData
     public float Def;
     public float MoveSpeed;
 
+    // 여기 없어야 되는데 일단 넣어 둡니다
+    public event Action OnDie;
     public PlayerGameData()
     {
         _jsonDataPath = $"{Application.dataPath}/Datas/PlayerData";
@@ -80,7 +83,7 @@ public class PlayerGameData
             }
         }
     }
-    public void HPChange(int change)
+    public void HPChange(float change)
     {
         CurHP += change;
         if (CurHP > MaxHP)
@@ -89,8 +92,9 @@ public class PlayerGameData
         }
         else if (CurHP < 0)
         {
-            //플레이어 사망
             CurHP = 0;
+            //플레이어 사망
+            OnDie?.Invoke();
         }
     }
     public void LevelUp()

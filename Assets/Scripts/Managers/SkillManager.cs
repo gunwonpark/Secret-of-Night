@@ -3,23 +3,41 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    Dictionary<int, PlayerSkillData> useableSkills = new Dictionary<int, PlayerSkillData>();
-    PlayerSkillDataBase playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
+    private PlayerSkillDataBase _playerSkillDataBase;
+    /// <summary>
+    /// 사용 가능한 스킬을 보관해 둔다
+    /// </summary>
+    private Dictionary<int, Skill> _skillList = new Dictionary<int, Skill>();
 
-    public void Initalize()
+    //Player가 생성될때 실행해주면 된다
+    public void Initalize(int id)
     {
-        playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
+        _playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
+        GetSkillListByPlayerID(id);
     }
-    public void AddSkill(int id)
+    private void GetSkillListByPlayerID(int id)
     {
-        useableSkills.Add(id, playerSkillDataBase.GetData(id));
-    }
-    public PlayerSkillData GetSkill(int id)
-    {
-        if (useableSkills.ContainsKey(id))
+        var skillList = GameManager.Instance.dataManager.playerStatDataBase.GetData(id).Skills;
+        foreach (int skillID in skillList)
         {
-            return useableSkills[id];
+            Skill skill = new Skill(skillID);
+            _skillList.Add(skillID, skill);
         }
-        return null;
+    }
+    public void AquireSkill(int id)
+    {
+        if (_skillList.ContainsKey(id) == false)
+            return;
+
+        _skillList[id].Active();
+    }
+    public GameObject GetSkill(int id)
+    {
+        if (_skillList.ContainsKey(id) == false)
+            return null;
+
+        string path = _playerSkillDataBase.GetData(id).PrefabPath;
+
+        return Resources.Load<GameObject>($"Prefabs/Skills/{path}");
     }
 }
