@@ -10,6 +10,7 @@ public class MonsterStateMachine : StateMachine
     public MonsterIdleState IdleState { get; }
     public MonsterChasingState ChasingState { get; }
     public MonsterAttackState AttackState { get; }
+    public MonsterDyingState DyingState { get; }
 
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }

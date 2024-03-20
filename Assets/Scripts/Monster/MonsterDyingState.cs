@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MonsterDyingState : MonoBehaviour
+public class MonsterDyingState : MonsterBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public MonsterDyingState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+        monsterStateMachine.MovementSpeedModifier = 0;
+
+        monsterStateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
+
+
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        //destroy
     }
 }

@@ -43,6 +43,7 @@ public class MonsterBaseState : IState, IDamageable
             //{
             //    monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
             //}
+            //맞고 바로 죽으면 Die
 
             return;
         }
@@ -136,14 +137,14 @@ public class MonsterBaseState : IState, IDamageable
 
     public bool TakeDamage(int Damage)
     {
-        float hp = monsterStateMachine.FieldMonsters.myInfo.HP;
+        float HP = monsterStateMachine.FieldMonsters.myInfo.HP;
         float Def = monsterStateMachine.FieldMonsters.myInfo.Daf;
-        hp -= (Damage - Def);
+        HP -= (Damage - Def);
 
-        if (hp < 0)
+        if (HP < 0)
         {
-            hp = 0;
-            //Die
+            HP = 0;
+            monsterStateMachine.ChangeState(monsterStateMachine.DyingState);
         }
         return true;
     }
