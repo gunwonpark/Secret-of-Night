@@ -323,13 +323,15 @@ public class Inventory : MonoBehaviour
         if (_uiSlots[curEquipIndex].equipped) //_selectedItemIndex로 하면 장비가 이중으로 껴짐
         {
             UnEquip(curEquipIndex);
-            _equipController.UnEquipWeapon(); //기본 공격력으로 돌아가게
+
         }
 
         _uiSlots[_selectedItemIndex].equipped = true;
         curEquipIndex = _selectedItemIndex;
+
         _equipController.NewEquip(_selectedItem.item);
-        _equipController.EquipWeapon(_selectedItem.item.ItemID, _selectedItem.item.Damage); //공격력 증가
+
+        _equipController.EquipWeaponPower(_selectedItem.item.ItemID, _selectedItem.item.Damage); //공격력 증가
         UpdateUI();
 
         SelectItem(_selectedItemIndex);
@@ -337,8 +339,10 @@ public class Inventory : MonoBehaviour
     void UnEquip(int _index)
     {
         _uiSlots[_index].equipped = false;
+
         _equipController.UnEquip();
-        _equipController.UnEquipWeapon(); //기본 공격력으로 돌아가게
+
+        _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
         UpdateUI();
 
         if (_selectedItemIndex == _index)

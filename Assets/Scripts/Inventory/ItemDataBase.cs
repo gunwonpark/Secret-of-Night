@@ -16,6 +16,7 @@ public class Item
     public string IconPath;
     public int MaxAmount;
     public string PrefabPath;
+    public int UnlockLevel;
     public GameObject Prefab;
 }
 

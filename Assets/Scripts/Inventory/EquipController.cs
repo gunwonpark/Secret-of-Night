@@ -14,21 +14,21 @@ public class EquipController : MonoBehaviour
         EquipDefaultWeapon();
     }
 
-    // ±âº» ¹«±âÀÇ Á¤º¸¸¦ °¡Á®¿Í¼­ ÀåÂø
+    // ê¸°ë³¸ ë¬´ê¸°ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ ì¥ì°©
     private void EquipDefaultWeapon()
     {
         Item defaultWeapon = GameManager.Instance.dataManager.itemDataBase.GetData(8);
 
         NewEquip(defaultWeapon);
-        EquipWeapon(defaultWeapon.ItemID, defaultWeapon.Damage);
+        EquipWeaponPower(defaultWeapon.ItemID, defaultWeapon.Damage);
 
     }
 
-    // Ä³¸¯ÅÍ ¼Õ¿¡ ¹«±â ÀåÂø
+    // ìºë¦­í„° ì†ì— ë¬´ê¸° ì¥ì°©
     public void NewEquip(Item _item)
     {
         curEquip = Instantiate(_item.Prefab, equipParent);
-        curEquip.GetComponent<Collider>().enabled = false; // ¼Õ¿¡ ÀåÂøÇÑ ¹«±â´Â ÀÎ½Ä x
+        curEquip.GetComponent<Collider>().enabled = false; // ì†ì— ì¥ì°©í•œ ë¬´ê¸°ëŠ” ì¸ì‹ x
 
     }
     public void UnEquip()
@@ -38,17 +38,18 @@ public class EquipController : MonoBehaviour
             Destroy(curEquip.gameObject);
             curEquip.GetComponent<Collider>().enabled = true;
             curEquip = null;
+
         }
     }
 
-    // ¹«±â ÀåÂø½Ã °ø°İ·Â º¯È­
-    public void EquipWeapon(int _id, float _damage)
+    // ë¬´ê¸° ì¥ì°©ì‹œ ê³µê²©ë ¥ ë³€í™”
+    public void EquipWeaponPower(int _id, float _damage)
     {
         _defultDamage = _playerData.Damage;
         _playerData.Damage = _defultDamage + _damage;
     }
 
-    public void UnEquipWeapon()
+    public void UnEquipWeaponPower()
     {
         _playerData.Damage = _defultDamage;
     }
