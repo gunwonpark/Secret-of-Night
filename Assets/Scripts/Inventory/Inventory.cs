@@ -61,6 +61,8 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(false);
         slots = new ItemSlot[_uiSlots.Length];
 
+        _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i] = new ItemSlot();

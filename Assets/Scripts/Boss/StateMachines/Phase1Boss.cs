@@ -8,12 +8,15 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 	public BossState currentState = BossState.Idle;
 	public Transform playerTransform;
 	public Animator animator;
-	private NavMeshAgent agent;
+    public Texture2D damageTexture;
+    public Texture2D originalTexture;
+    private NavMeshAgent agent;
 	private SkinnedMeshRenderer[] meshRenderers;
 
 	[Header("MonsterData")]
 	[SerializeField] private BossMonsterGameData bossMonsterData;
 
+    public float maxHP;
 	public float dashdistance = 3f;
 
 	private void Awake()
@@ -29,10 +32,11 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 
 		int monsterID = 1;
 		bossMonsterData = new BossMonsterGameData(monsterID);
+        maxHP = bossMonsterData.HP;
 
 		if (bossMonsterData != null)
 		{
-			agent.speed = bossMonsterData.MoveSpeed; // ½ºÇÇµå Á÷Á¢ ÂüÁ¶
+			agent.speed = bossMonsterData.MoveSpeed; // ìŠ¤í”¼ë“œ ì§ì ‘ ì°¸ì¡°
 		}
 		
 	}
@@ -62,7 +66,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 				AttackPlayer(distanceToPlayer);
 				break;
 			case BossState.Dying:
-				// »ç¸Á ·ÎÁ÷ Ã³¸®
+				// ì‚¬ë§ ë¡œì§ ì²˜ë¦¬
 				break;
 		}
 	}
@@ -72,6 +76,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 		if (distanceToPlayer > dashdistance)
 		{
 			agent.SetDestination(playerTransform.position);
+            animator.SetBool("IsDashing", false);
 			animator.SetBool("IsRunning", true);
 		}
 		else if (distanceToPlayer <= dashdistance)
@@ -96,9 +101,9 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 	void AttackPlayer(float distanceToPlayer)
 	{		
 		
-		if (bossMonsterData.HP <= 5.0f && Random.Range(0, 100) < 25 && distanceToPlayer <= bossMonsterData.Range)
+		if (bossMonsterData.HP <= (maxHP*0.5) && Random.Range(0, 100) < 25 && distanceToPlayer <= bossMonsterData.Range)
 		{
-			// ³­»ç °ø°Ý ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+			// ë‚œì‚¬ ê³µê²© ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
 			animator.SetTrigger("ATK4");
 		}
 		else if (distanceToPlayer <= bossMonsterData.Range)
@@ -121,20 +126,22 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 		if (bossMonsterData.HP <= 0)
 			Die();
 
-		StartCoroutine(DamageFlash());
-	}
+        DamageFlash();
+    }
 
-	IEnumerator DamageFlash()
-	{
-		for (int x = 0; x < meshRenderers.Length; x++)
-			meshRenderers[x].material.color = new Color(1.0f, 0.6f, 0.6f);
+    public void DamageFlash()
+    {
+        meshRenderers[0].material.mainTexture = damageTexture;
+        Invoke("ResetTexture", 0.5f);
 
-		yield return new WaitForSeconds(0.1f);
-		for (int x = 0; x < meshRenderers.Length; x++)
-			meshRenderers[x].material.color = Color.white;
-	}
+    }
 
-	void Die()
+    public void ResetTexture()
+    {
+        meshRenderers[0].material.mainTexture = originalTexture;
+    }
+
+    void Die()
 	{
 		animator.SetTrigger("Die");
 		agent.isStopped = true;
