@@ -102,10 +102,8 @@ public class MonsterBaseState : IState
         //stateMachine.FieldMonsters.originalPosition;
         if (!IsInChaseRange())
         {
-            Debug.LogError("error");
             return (stateMachine.FieldMonsters.originalPosition - stateMachine.FieldMonsters.transform.position).normalized;
         }
-        Debug.LogError("error1");
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 

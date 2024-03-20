@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class MonsterPatrolState : MonsterBaseState
 {
     public MonsterPatrolState(MonsterStateMachine stateMachine) : base(stateMachine)
@@ -10,7 +8,6 @@ public class MonsterPatrolState : MonsterBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("patrol");
         stateMachine.MovementSpeedModifier = 0.5f;
         stateMachine.FieldMonsters.monsterAnimation.StartWalkAnimation();
         //기존타겟포지션 저장

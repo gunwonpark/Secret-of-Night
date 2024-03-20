@@ -1,7 +1,3 @@
-
-
-using UnityEngine;
-
 public class MonsterChasingState : MonsterBaseState
 {
     public MonsterChasingState(MonsterStateMachine stateMachine) : base(stateMachine)
@@ -39,7 +35,6 @@ public class MonsterChasingState : MonsterBaseState
             //이동이 끝나면  IdleState
 
             stateMachine.ChangeState(stateMachine.PatrolState);
-            Debug.Log("들어옴");
             return;
         }
         else if (IsInAttackRange())
