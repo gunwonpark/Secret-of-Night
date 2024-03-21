@@ -93,7 +93,7 @@ MonoBehaviour:
     PrefabPath: 
     prefab: {fileID: 0}
   targetRange: 5
-  rotationDamping: 1
+  rotationDamping: 10
   monsterAnimation: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &7053900872533426483

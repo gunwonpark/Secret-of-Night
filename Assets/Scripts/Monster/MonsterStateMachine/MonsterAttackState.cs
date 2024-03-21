@@ -11,7 +11,7 @@ public class MonsterAttackState : MonsterBaseState
         base.Enter();
         stateMachine.MovementSpeedModifier = 0;
 
-        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//->공격할때만
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//[todo]공격할때만
     }
 
     public override void Exit()
