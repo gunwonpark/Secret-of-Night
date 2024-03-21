@@ -8,8 +8,6 @@ public class BossWeapon : MonoBehaviour
     [Header("MonsterData")]
     [SerializeField] private BossMonsterGameData bossMonsterData;
 
-    private float damage = 5;
-
     private List<Collider> alreadyColliderWith = new List<Collider>();
 
     private void OnEnable()
