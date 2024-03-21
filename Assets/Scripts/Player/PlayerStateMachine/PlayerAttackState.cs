@@ -1,9 +1,10 @@
-// TODO °ø°İ ¸ğ¼Ç ¼öÁ¤ ¿ä¸Á
+// TODO ê³µê²© ëª¨ì…˜ ìˆ˜ì • ìš”ë§
 
 using UnityEngine;
 
 public class PlayerAttackState : PlayerBaseState
 {
+
     public PlayerAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
 
@@ -14,8 +15,8 @@ public class PlayerAttackState : PlayerBaseState
         stateMachine.Player.MovementSpeedModifier = 0f;
         int SkillID = GameManager.Instance.dataManager.playerStatDataBase.GetData(stateMachine.Player.PlayerData.CharacterID).Skills[0];
         string path = GameManager.Instance.dataManager.playerSkillDataBase.GetData(SkillID).PrefabPath;
-
-        GameObject go = Resources.Load<GameObject>(path);
+        Debug.Log("Attack");
+        GameObject go = Resources.Load<GameObject>($"Prefabs/Skills/{path}");
         Object.Instantiate(go, stateMachine.Player.transform.position, Quaternion.identity);
         StartAnimation(stateMachine.Player.AnimationData.AttackParameter);
     }
@@ -30,17 +31,9 @@ public class PlayerAttackState : PlayerBaseState
     {
         base.Update();
 
-        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Attack");
-        if (normalizedTime >= 0.9f)
+        if (!stateMachine.Player.IsAttacking)
         {
-            if (stateMachine.Player.IsAttacking && !stateMachine.Player.IsDodgeing)
-            {
-                stateMachine.ChangeState(stateMachine.AttackState);
-            }
-            else
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-            }
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 }

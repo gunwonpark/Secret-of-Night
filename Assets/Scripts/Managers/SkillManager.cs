@@ -31,6 +31,10 @@ public class SkillManager : MonoBehaviour
 
         _skillList[id].Active();
     }
+    public bool IsActive(int id)
+    {
+        return _skillList[id].IsActive;
+    }
     public GameObject GetSkill(int id)
     {
         if (_skillList.ContainsKey(id) == false)

@@ -66,12 +66,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stateMachine.PhysicsUpdate();
     }
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position, 0.14f);
     }
-
+#endif
     public void TakeDamage(float damage)
     {
         float finalDamage = damage / PlayerData.Def;
@@ -84,5 +85,4 @@ public class PlayerController : MonoBehaviour, IDamageable
         Debug.Log("PlayerDie");
         Input.enabled = false;
     }
-
 }
