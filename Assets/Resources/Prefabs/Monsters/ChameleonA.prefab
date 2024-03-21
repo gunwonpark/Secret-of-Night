@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 1458235317183471493}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3415839647858505503
 Rigidbody:
@@ -95,6 +95,7 @@ MonoBehaviour:
   targetRange: 5
   rotationDamping: 1
   monsterAnimation: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6006900878927291009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,8 +129,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.69
-  m_Radius: 0.2
+  m_Height: 2.81
+  m_Radius: 0.31
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -258,15 +259,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
       propertyPath: m_LocalPosition.x
