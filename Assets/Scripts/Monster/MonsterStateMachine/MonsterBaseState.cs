@@ -99,6 +99,11 @@ public class MonsterBaseState : IState
 
     private Vector3 GetMovementDirection()//v
     {
+        //stateMachine.FieldMonsters.originalPosition;
+        if (!IsInChaseRange())
+        {
+            return (stateMachine.FieldMonsters.originalPosition - stateMachine.FieldMonsters.transform.position).normalized;
+        }
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
@@ -108,25 +113,6 @@ public class MonsterBaseState : IState
 
         return movementSpeed;
     }
-
-    //protected float GetNormalizedTime(Animator animator, string tag)
-    //{
-    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
-    //    {
-    //        return nextInfo.normalizedTime;
-    //    }
-    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-    //    {
-    //        return currentInfo.normalizedTime;
-    //    }
-    //    else
-    //    {
-    //        return 0f;
-    //    }
-    //}
 
     protected bool IsInChaseRange()//v
     {
@@ -147,4 +133,22 @@ public class MonsterBaseState : IState
         }
         return true;
     }
+    //protected float GetNormalizedTime(Animator animator, string tag)
+    //{
+    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+    //    {
+    //        return nextInfo.normalizedTime;
+    //    }
+    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+    //    {
+    //        return currentInfo.normalizedTime;
+    //    }
+    //    else
+    //    {
+    //        return 0f;
+    //    }
+    //}
 }

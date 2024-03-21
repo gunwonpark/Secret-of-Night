@@ -44,6 +44,8 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     {
         if (bossMonsterData == null) return;
 
+        transform.LookAt(playerTransform.position);
+
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
         switch (currentState)
