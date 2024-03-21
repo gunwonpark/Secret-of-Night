@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MonsterDyingState : MonsterBaseState
 {
 
@@ -12,8 +14,8 @@ public class MonsterDyingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0;
         stateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
 
-        GameManager.Instance.monsterManager.DestroyMonster();
-        //DeleteMonster();
+        //GameManager.Instance.monsterManager.DestroyMonster();
+        DeleteMonster();
     }
 
     public override void Exit()
@@ -21,8 +23,8 @@ public class MonsterDyingState : MonsterBaseState
         base.Exit();
     }
 
-    //private void DeleteMonster()
-    //{
-    //    Object.Destroy(GameManager.Instance.gameObject, 1f);
-    //}
+    private void DeleteMonster()
+    {
+        Object.Destroy(stateMachine.FieldMonsters.gameObject, 1f);
+    }
 }

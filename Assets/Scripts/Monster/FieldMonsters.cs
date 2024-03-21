@@ -8,7 +8,7 @@ public class FieldMonsters : MonoBehaviour
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
     [field: SerializeField] public float targetRange = 5f;
-    [field: SerializeField] public float rotationDamping = 1f;
+    [field: SerializeField] public float rotationDamping = 10f;
 
     //public MonsterManager monsterManager;
 
