@@ -34,11 +34,10 @@ public class MonsterPatrolState : MonsterBaseState
         Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
 
         float distance = (currentPosition - myOriginalPosition).sqrMagnitude;
-        Debug.Log(currentPosition);
+
         if (distance <= 0.5f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-
     }
 }

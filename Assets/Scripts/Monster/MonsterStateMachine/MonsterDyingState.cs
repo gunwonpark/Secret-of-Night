@@ -12,18 +12,17 @@ public class MonsterDyingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0;
         stateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
 
-        DeleteMonster();
+        GameManager.Instance.monsterManager.DestroyMonster();
+        //DeleteMonster();
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        //destroy
     }
 
-    void DeleteMonster()
-    {
-
-    }
+    //private void DeleteMonster()
+    //{
+    //    Object.Destroy(GameManager.Instance.gameObject, 1f);
+    //}
 }

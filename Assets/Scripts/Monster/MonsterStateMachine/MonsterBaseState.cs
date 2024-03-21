@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterBaseState : IState
+public class MonsterBaseState : IState, IDamageable
 
 {
     protected MonsterStateMachine stateMachine;
@@ -39,12 +39,7 @@ public class MonsterBaseState : IState
         }
         else if (stateMachine.FieldMonsters.myInfo.AtkStance)//
         {
-            //if (TakeDamage(5))
-            //{
-            //    monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
-            //}
-            //맞고 바로 죽으면 Die
-
+            //TakeDamage(5);
             return;
         }
 
@@ -120,8 +115,10 @@ public class MonsterBaseState : IState
         return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
     }
 
-    public bool TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
+        stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
+
         float HP = stateMachine.FieldMonsters.myInfo.HP;
         float Def = stateMachine.FieldMonsters.myInfo.Daf;
         HP -= (Damage - Def);
@@ -131,7 +128,11 @@ public class MonsterBaseState : IState
             HP = 0;
             stateMachine.ChangeState(stateMachine.DyingState);
         }
-        return true;
+        else
+        {
+            stateMachine.ChangeState(stateMachine.ChasingState);
+        }
+        //return true;
     }
     //protected float GetNormalizedTime(Animator animator, string tag)
     //{
