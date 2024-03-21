@@ -59,7 +59,7 @@ public class PlayerCondition : MonoBehaviour
     IEnumerator SpeedCoroutine(float _amount)
     {
         Debug.Log("스피드 업 : " + _playerData.MoveSpeed);
-        yield return new WaitForSeconds(5f); //TODO 60초로 변경
+        yield return new WaitForSeconds(60f);
         _playerData.MoveSpeed -= _amount;
         Debug.Log("스피드 다운 : " + _playerData.MoveSpeed);
         speedItemInUse = false;
