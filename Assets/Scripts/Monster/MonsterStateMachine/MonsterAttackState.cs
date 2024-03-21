@@ -11,7 +11,7 @@ public class MonsterAttackState : MonsterBaseState
         base.Enter();
         stateMachine.MovementSpeedModifier = 0;
 
-        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//->공격할때만
     }
 
     public override void Exit()
@@ -24,6 +24,7 @@ public class MonsterAttackState : MonsterBaseState
     public override void Update()
     {
         base.Update();
+        //공격함수
     }
 
     public override void PhysicsUpdate()
@@ -47,7 +48,7 @@ public class MonsterAttackState : MonsterBaseState
             }
             else
             {
-                stateMachine.ChangeState(stateMachine.IdleState);
+                stateMachine.ChangeState(stateMachine.PatrolState);
                 return;
             }
         }

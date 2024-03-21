@@ -24,6 +24,7 @@ public class DayNightCycle : MonoBehaviour
     [Header("Other Lighting")]
     public AnimationCurve lightingIntensityMultiplier;
     public AnimationCurve reflectionIntensityMultiplier;
+    public float maxNightIntensity = 0.2f; // 밤에 최소한의 밝기
 
     private void Start()
     {
@@ -45,10 +46,18 @@ public class DayNightCycle : MonoBehaviour
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
     {
-        float intensity = intensityCurve.Evaluate(time);
+        float intensity = intensityCurve.Evaluate(time);       
 
         lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * noon * 4.0f;
         lightSource.color = colorGradiant.Evaluate(time);
+        //lightSource.intensity = intensity;
+
+        // 밤에 최소한의 밝기를 보장합니다.
+        if (intensity < maxNightIntensity)
+        {
+            intensity = maxNightIntensity;
+        }
+
         lightSource.intensity = intensity;
 
         GameObject go = lightSource.gameObject;

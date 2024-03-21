@@ -8,7 +8,7 @@ public class FieldMonsters : MonoBehaviour
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
     [field: SerializeField] public float targetRange = 5f;
-    [field: SerializeField] public float rotationDamping = 1f;
+    [field: SerializeField] public float rotationDamping = 10f;
 
     //public MonsterManager monsterManager;
 
@@ -21,6 +21,7 @@ public class FieldMonsters : MonoBehaviour
 
     private MonsterStateMachine stateMachine;
 
+    public Vector3 originalPosition;
 
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class FieldMonsters : MonoBehaviour
     {
         stateMachine?.HandleInput();
         stateMachine?.Update();
+
+        //Debug.Log(originalPosition);
     }
 
     private void FixedUpdate()
@@ -60,5 +63,11 @@ public class FieldMonsters : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 1f);
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        originalPosition = position;
+
     }
 }

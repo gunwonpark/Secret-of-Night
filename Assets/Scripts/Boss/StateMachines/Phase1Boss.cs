@@ -44,6 +44,8 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     {
         if (bossMonsterData == null) return;
 
+        transform.LookAt(playerTransform.position);
+
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
         switch (currentState)
@@ -142,8 +144,11 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 
     void Die()
     {
-        animator.SetTrigger("Die");
-        agent.isStopped = true;
-        currentState = BossState.Dying;
+        if (currentState != BossState.Dying) // 이미 죽은 상태인지 확인
+        {
+            animator.SetTrigger("Die");
+            agent.isStopped = true;
+            currentState = BossState.Dying;            
+        }
     }
 }

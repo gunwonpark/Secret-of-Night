@@ -9,6 +9,7 @@ public class MonsterAnimation : MonoBehaviour
     private static readonly int _Attack = Animator.StringToHash("Attack");
     private static readonly int _Die = Animator.StringToHash("Die");
     private static readonly int _Walk = Animator.StringToHash("Walk");
+    private static readonly int _Damage = Animator.StringToHash("Damage");
 
     private void Awake()
     {
@@ -60,5 +61,9 @@ public class MonsterAnimation : MonoBehaviour
         animator.SetBool(_Walk, false);
     }
 
+    public void StartDamageAnimation()
+    {
+        animator.SetTrigger(_Damage);
+    }
 
 }

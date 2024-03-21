@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonsterBaseState : IState
+public class MonsterBaseState : IState, IDamageable
 
 {
     protected MonsterStateMachine stateMachine;
@@ -38,12 +38,7 @@ public class MonsterBaseState : IState
         }
         else if (stateMachine.FieldMonsters.myInfo.AtkStance)//
         {
-            //if (TakeDamage(5))
-            //{
-            //    monsterStateMachine.ChangeState(monsterStateMachine.ChasingState);
-            //}
-            //맞고 바로 죽으면 Die
-
+            //TakeDamage(5);
             return;
         }
 
@@ -98,6 +93,11 @@ public class MonsterBaseState : IState
 
     private Vector3 GetMovementDirection()//v
     {
+        //stateMachine.FieldMonsters.originalPosition;
+        if (!IsInChaseRange())
+        {
+            return (stateMachine.FieldMonsters.originalPosition - stateMachine.FieldMonsters.transform.position).normalized;
+        }
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
     }
 
@@ -108,6 +108,31 @@ public class MonsterBaseState : IState
         return movementSpeed;
     }
 
+    protected bool IsInChaseRange()//v
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
+    }
+
+    public void TakeDamage(float Damage)
+    {
+        stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
+
+        float HP = stateMachine.FieldMonsters.myInfo.HP;
+        float Def = stateMachine.FieldMonsters.myInfo.Daf;
+        HP -= (Damage - Def);
+
+        if (HP < 0)
+        {
+            HP = 0;
+            stateMachine.ChangeState(stateMachine.DyingState);
+        }
+        else
+        {
+            stateMachine.ChangeState(stateMachine.ChasingState);
+        }
+        //return true;
+    }
     //protected float GetNormalizedTime(Animator animator, string tag)
     //{
     //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -126,24 +151,4 @@ public class MonsterBaseState : IState
     //        return 0f;
     //    }
     //}
-
-    protected bool IsInChaseRange()//v
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
-    }
-
-    public bool TakeDamage(int Damage)
-    {
-        float HP = stateMachine.FieldMonsters.myInfo.HP;
-        float Def = stateMachine.FieldMonsters.myInfo.Daf;
-        HP -= (Damage - Def);
-
-        if (HP < 0)
-        {
-            HP = 0;
-            stateMachine.ChangeState(stateMachine.DyingState);
-        }
-        return true;
-    }
 }

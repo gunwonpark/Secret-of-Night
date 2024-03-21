@@ -11,6 +11,7 @@ public class MonsterChasingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 1;
 
         stateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
+
     }
 
     public override void Exit()
@@ -28,11 +29,7 @@ public class MonsterChasingState : MonsterBaseState
 
         if (!IsInChaseRange())
         {
-            //[todo]원래위치로 돌아가는 코드
-            //돌아가는 state를 만들어서 position을 원래위치로 잡고 그쪽으로 이동
-            //이동이 끝나면  IdleState
-
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.PatrolState);
             return;
         }
         else if (IsInAttackRange())
@@ -49,10 +46,4 @@ public class MonsterChasingState : MonsterBaseState
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
         return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.Range * stateMachine.FieldMonsters.myInfo.Range;
     }
-
-    private void BackToTheOriginalPosition()
-    {
-
-    }
-
 }
