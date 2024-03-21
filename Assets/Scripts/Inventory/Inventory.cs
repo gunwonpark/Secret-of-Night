@@ -193,6 +193,8 @@ public class Inventory : MonoBehaviour
     {
         _inventoryUI.SetActive(false);
         _camera.enabled = true;
+        _playerController.Input.enabled = true;
+        playerLight.SetActive(false);
     }
 
     //아이템 추가
