@@ -149,6 +149,7 @@ public class PlayerBaseState : IState
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.Player.rotationDamping);
+
     }
     private void GroundedCheck()
     {

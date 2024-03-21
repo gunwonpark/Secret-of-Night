@@ -1098,6 +1098,7 @@ GameObject:
   - component: {fileID: 1980962560322570883}
   - component: {fileID: 7123990241805567778}
   - component: {fileID: 8931880413131824754}
+  - component: {fileID: 2498046316838221078}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1121,7 +1122,7 @@ Transform:
   - {fileID: 5751550581704196077}
   - {fileID: 5485161305618298594}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &438094870567635642
 CharacterController:
@@ -1143,12 +1144,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.08
-  m_Radius: 0.23
-  m_SlopeLimit: 45
+  m_Radius: 0.09
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.51, z: 0}
+  m_Center: {x: 0, y: 0.54, z: 0}
 --- !u!114 &4324286509844852867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,6 +1313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicCircle2: {fileID: 0}
+--- !u!114 &2498046316838221078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713900963015145979}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadf9f939dee8694ebb0a3dfc109fc2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaDecreaseRate: 0.1
+  leastStaminaToRun: 7
 --- !u!1 &741219020067011991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7780,7 +7795,7 @@ MonoBehaviour:
   targetTransform: {fileID: 2498611766723829418}
   cameraTransform: {fileID: 8536409294315521415}
   cameraPivotTransform: {fileID: 1822808995511939246}
-  lookSpeed: 0.03
+  lookSpeed: 0.1
   followSpeed: 0.03
   pivotSpeed: 0.03
   minimumPivot: -35
