@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_M05
       objectReference: {fileID: 0}
+    - target: {fileID: 1053007237682308, guid: 8a09698bb74585849b2373687c60be46, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4961384056340118, guid: 8a09698bb74585849b2373687c60be46, type: 3}
       propertyPath: m_RootOrder
       value: 0

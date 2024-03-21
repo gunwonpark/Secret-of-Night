@@ -19,6 +19,8 @@ public class Inventory : MonoBehaviour
     private PlayerCondition _playerCondition;
     private PlayerController _playerController;
 
+    public GameObject playerLight;
+
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
 
@@ -92,6 +94,7 @@ public class Inventory : MonoBehaviour
                 OpenInventory();
                 _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
+                playerLight.SetActive(true);
 
             }
             else
@@ -99,6 +102,7 @@ public class Inventory : MonoBehaviour
                 CloseInventory();
                 _camera.enabled = true;
                 _playerController.Input.enabled = true;
+                playerLight.SetActive(false);
             }
         }
     }
@@ -253,7 +257,6 @@ public class Inventory : MonoBehaviour
         _selectedItemIndex = _index;
         selectedItemName.text = _selectedItem.item.ItemName;
         selectedItemDescription.text = _selectedItem.item.Description;
-        //selectedItemStat.text = selectedItem.Price.ToString();      
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
         useButton.SetActive(_selectedItem.item.Type == "using");
@@ -335,7 +338,7 @@ public class Inventory : MonoBehaviour
         _uiSlots[_selectedItemIndex].equipped = true;
         curEquipIndex = _selectedItemIndex;
 
-        _equipController.NewEquip(_selectedItem.item);
+        _equipController.PlayerNewEquip(_selectedItem.item);
 
         _equipController.EquipWeaponPower(_selectedItem.item.ItemID, _selectedItem.item.Damage); //공격력 증가
         UpdateUI();
@@ -345,9 +348,7 @@ public class Inventory : MonoBehaviour
     void UnEquip(int _index)
     {
         _uiSlots[_index].equipped = false;
-
-        _equipController.UnEquip();
-        _equipController.EquipDefaultWeapon();
+        _equipController.PlayerUnEquip();
         _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
 
         UpdateUI();
@@ -356,6 +357,26 @@ public class Inventory : MonoBehaviour
         {
             SelectItem(_index);
         }
+        //기본 무기는 인벤토리로 들어갈 수 있게
+        if (_equipController.curEquip == null && !DefaultWeaponInInventory())
+        {
+            Item defaultWeapon = GameManager.Instance.dataManager.itemDataBase.GetData(8);
+            // 인벤토리에 기본 무기 추가
+            AddItem(defaultWeapon);
+        }
+    }
+
+    // 기본 무기 인벤토리에 있는지 체크
+    bool DefaultWeaponInInventory()
+    {
+        foreach (ItemSlot slot in slots)
+        {
+            if (slot.item != null && slot.item.ItemID == 8) // 기본 무기의 ID를 확인
+            {
+                return true; // 인벤토리에 기본 무기가 존재함
+            }
+        }
+        return false; // 인벤토리에 기본 무기가 없음
     }
 
     public void OnUnEquipButton()
