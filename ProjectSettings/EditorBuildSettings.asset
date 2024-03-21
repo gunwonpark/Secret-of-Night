@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: a656d4cd41c2db245b56f22af1b98a72
   - enabled: 1
-    path: Assets/Scenes/LYS_BossMap.unity
+    path: Assets/Scenes/BossMap.unity
     guid: e223ee268b7a44548bf8d2d238acf2fe
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a8807a5f14084f440846d3f7ce983a11, type: 2}
