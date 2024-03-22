@@ -44,6 +44,6 @@ public class MonsterChasingState : MonsterBaseState
         // if (stateMachine.Target.IsDead) { return false; }
 
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.Range * stateMachine.FieldMonsters.myInfo.Range;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.AtkRange * stateMachine.FieldMonsters.myInfo.AtkRange;
     }
 }

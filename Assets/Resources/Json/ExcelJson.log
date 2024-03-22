@@ -54,9 +54,13 @@ Found object mark: '#FieldMonster[{}]'
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
  Key: RunSpeed at 12
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Range at 13
+ Key: AtkRange at 13
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
  Key: PrefabPath at 14
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: TargetRange at 15
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: RotationDamping at 16
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx
@@ -90,6 +94,8 @@ Found object mark: '#items[{}]'
  Key: MaxAmount at 11
 [Items_Data.xlsx(Sheet1): ROW 1]
  Key: PrefabPath at 12
+[Items_Data.xlsx(Sheet1): ROW 1]
+ Key: UnlockLevel at 13
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\PlayerLevel_Data.xlsx
