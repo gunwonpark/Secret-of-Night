@@ -15,7 +15,7 @@ public class PlayerSkill1State : PlayerBaseState
         string path = GameManager.Instance.dataManager.playerSkillDataBase.GetData(SkillID).PrefabPath;
 
         GameObject go = Resources.Load<GameObject>($"Prefabs/Skills/{path}");
-        Object.Instantiate(go, stateMachine.Player.transform.position + Vector3.up, Quaternion.identity);
+        Object.Instantiate(go, stateMachine.Player.transform.position + Vector3.up, stateMachine.Player.transform.rotation);
 
         StartAnimation(stateMachine.Player.AnimationData.Skill1);
     }
