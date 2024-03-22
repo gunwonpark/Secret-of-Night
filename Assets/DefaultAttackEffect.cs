@@ -21,12 +21,12 @@ public class DefaultAttackEffect : StateMachineBehaviour
         }
 
         // Check if the animation has reached the desired point and the action hasn't been executed yet
-        if (!_actionExecuted && progressTime >= triggerTimeNormalized)
+        if (!_actionExecuted && animator.transform.GetComponentInParent<PlayerController>().IsAttacking && progressTime >= triggerTimeNormalized)
         {
             // Execute your action here
             Instantiate(GameManager.Instance.skillManager.GetSkill(101), animator.transform.position, Quaternion.identity);
 
-            RaycastHit[] hits = Physics.BoxCastAll(animator.transform.position + Vector3.forward, animator.transform.lossyScale, animator.transform.forward,
+            RaycastHit[] hits = Physics.BoxCastAll(animator.transform.position + Vector3.up / 2, animator.transform.lossyScale, animator.transform.forward,
                 Quaternion.identity, 1f, LayerMask.GetMask("Monster"));
 
             foreach (var hit in hits)
