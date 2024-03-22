@@ -17,7 +17,9 @@ public class MonsterInfo
     public float CriDamage;
     public float MoveSpeed;
     public float RunSpeed;
-    public float Range;
+    public float AtkRange;
+    public float TargetRange;
+    public float RotationDamping;
 
     public string PrefabPath;
 

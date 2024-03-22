@@ -33,8 +33,9 @@ public class MonsterStateMachine : StateMachine
         ChasingState = new MonsterChasingState(this);
         AttackState = new MonsterAttackState(this);
         PatrolState = new MonsterPatrolState(this);
+        DyingState = new MonsterDyingState(this);
 
         MovementSpeed = FieldMonsters.myInfo.MoveSpeed;
-        rotationDamping = fieldMonster.rotationDamping;
+        rotationDamping = fieldMonster.myInfo.RotationDamping;
     }
 }

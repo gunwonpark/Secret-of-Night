@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
-public class FieldMonsters : MonoBehaviour
+public class FieldMonsters : MonoBehaviour, IDamageable
 {
 
-    [field: Header("Animations")]
+    //[field: Header("Animations")]
     //[field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
-    [field: SerializeField] public float targetRange = 5f;
-    [field: SerializeField] public float rotationDamping = 10f;
-
+    //[field: SerializeField] public float targetRange = 5f;
+    //[field: SerializeField] public float rotationDamping = 10f;
+    public float HP = 0;
     //public MonsterManager monsterManager;
 
     public Rigidbody Rigidbody { get; private set; }
@@ -23,6 +24,8 @@ public class FieldMonsters : MonoBehaviour
 
     public Vector3 originalPosition;
 
+    public event Action<float> OnDamage;
+
     private void Awake()
     {
         //AnimationData.Initialize();
@@ -32,12 +35,15 @@ public class FieldMonsters : MonoBehaviour
         forceReceiver = GetComponent<ForceReceiver>();
         controller = GetComponent<CharacterController>();
         monsterAnimation = GetComponent<MonsterAnimation>();
+
     }
 
     public void Init(MonsterInfo monsterInfo)
     {
 
         myInfo = monsterInfo;
+
+        HP = myInfo.HP;
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -59,15 +65,35 @@ public class FieldMonsters : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, targetRange);
+        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
     }
 
     public void SetPosition(Vector3 position)
     {
         originalPosition = position;
+    }
 
+    public void TakeDamage(float Damage)
+    {
+        //stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
+
+        //float HP = stateMachine.FieldMonsters.myInfo.HP;
+        //float Def = stateMachine.FieldMonsters.myInfo.Daf;
+        //HP -= (Damage - Def);
+
+        //if (HP < 0)
+        //{
+        //    HP = 0;
+        //    stateMachine.ChangeState(stateMachine.DyingState);
+        //}
+        //else
+        //{
+        //    stateMachine.ChangeState(stateMachine.ChasingState);
+        //}
+
+        OnDamage?.Invoke(Damage);
     }
 }
