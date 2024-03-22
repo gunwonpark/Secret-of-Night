@@ -10,13 +10,13 @@ public class MapObjectManager : MonoBehaviour
     {
         /*if (other.gameObject.tag == "BossCheckPoint")
         {
-            Debug.Log("¿À·Î¶ó Ãâ·Â");
+            Debug.Log("ì˜¤ë¡œë¼ ì¶œë ¥");
             magicCircle2.SetActive(true);
         }*/
 
         if (other.gameObject.tag == "BossMap")
         {
-            Debug.Log("º¸½º¸Ê ÀÌµ¿");
+            Debug.Log("ë³´ìŠ¤ë§µ ì´ë™");
             BossScene();
         }
     }
@@ -24,7 +24,7 @@ public class MapObjectManager : MonoBehaviour
 
     public void BossScene()
     {
-        SceneManager.LoadScene("LYS_BossMap");
+        SceneManager.LoadScene("BossMap");
     }
 
 }
