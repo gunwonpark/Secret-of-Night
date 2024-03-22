@@ -141,6 +141,7 @@ public class MonsterBaseState : IState, IDamageable
         {
             stateMachine.FieldMonsters.HP = 0;
             stateMachine.ChangeState(stateMachine.DyingState);
+
         }
         else
         {
