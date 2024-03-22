@@ -8,16 +8,17 @@ public class MonsterBaseState : IState, IDamageable
     public MonsterBaseState(MonsterStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
-        stateMachine.FieldMonsters.OnDamage += TakeDamage;
+
     }
 
     public virtual void Enter()
     {
+        stateMachine.FieldMonsters.OnDamage += TakeDamage;
     }
 
     public virtual void Exit()
     {
-
+        stateMachine.FieldMonsters.OnDamage -= TakeDamage;
     }
 
     public virtual void HandleInput()
