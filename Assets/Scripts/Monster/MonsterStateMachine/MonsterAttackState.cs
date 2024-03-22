@@ -25,6 +25,16 @@ public class MonsterAttackState : MonsterBaseState
     {
         base.Update();
         //공격함수
+        if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
+        {
+            //선공X
+            //TakeDamage();
+            if (IsInChaseRange())
+            {
+                stateMachine.ChangeState(stateMachine.ChasingState);
+                return;
+            }
+        }
     }
 
     public override void PhysicsUpdate()

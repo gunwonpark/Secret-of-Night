@@ -8,6 +8,7 @@ public class MonsterBaseState : IState, IDamageable
     public MonsterBaseState(MonsterStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
+        stateMachine.FieldMonsters.OnDamage += TakeDamage;
     }
 
     public virtual void Enter()
@@ -28,17 +29,24 @@ public class MonsterBaseState : IState, IDamageable
     {
         //attackStance에 따라 추격할지 말지
         //임시
-        if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1 -> 밑에 else if랑 바꿔야함
+        //if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
+        //{
+        //    //선공X
+        //    //TakeDamage();
+        //    if (IsInChaseRange())
+        //    {
+        //        stateMachine.ChangeState(stateMachine.ChasingState);
+        //        return;
+        //    }
+        //}
+        if (stateMachine.FieldMonsters.myInfo.AtkStance)
         {
+            //선공0
             if (IsInChaseRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
             }
-        }
-        else if (stateMachine.FieldMonsters.myInfo.AtkStance)//
-        {
-            //TakeDamage(5);
             return;
         }
 
@@ -111,20 +119,27 @@ public class MonsterBaseState : IState, IDamageable
     protected bool IsInChaseRange()//v
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= stateMachine.FieldMonsters.targetRange * stateMachine.FieldMonsters.targetRange;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.TargetRange * stateMachine.FieldMonsters.myInfo.TargetRange;
     }
 
     public void TakeDamage(float Damage)
     {
         stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
 
-        float HP = stateMachine.FieldMonsters.myInfo.HP;
         float Def = stateMachine.FieldMonsters.myInfo.Daf;
-        HP -= (Damage - Def);
 
-        if (HP < 0)
+        float damage = Damage - Def;
+        Debug.Log(damage);
+        if (damage > 0)
         {
-            HP = 0;
+            stateMachine.FieldMonsters.HP -= damage;
+        }
+
+        Debug.Log(stateMachine.FieldMonsters.HP);
+
+        if (stateMachine.FieldMonsters.HP <= 0)
+        {
+            stateMachine.FieldMonsters.HP = 0;
             stateMachine.ChangeState(stateMachine.DyingState);
         }
         else

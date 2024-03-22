@@ -25,6 +25,6 @@ public class MonsterDyingState : MonsterBaseState
 
     private void DeleteMonster()
     {
-        Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 1f);
+        Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
     }
 }
