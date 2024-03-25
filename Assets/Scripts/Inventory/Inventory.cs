@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i] = new ItemSlot();
+            slots[i] = new ItemSlot(); // 슬롯의 요소들을 ItemSlot의 인스턴스로 초기화
             _uiSlots[i].index = i;
             _uiSlots[i].ClearSlot();
         }
@@ -109,13 +109,13 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
-        var startIndex = (_currentPage - 1) * _maxSlot;
-        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
+        var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
+        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
 
         // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
         for (int i = 0; i < _uiSlots.Length; i++)
         {
-            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
         //마우스 커서 표시
@@ -131,7 +131,7 @@ public class Inventory : MonoBehaviour
     // 다음 슬롯 창
     private void NextPage()
     {
-        if (_currentPage == _totalPage)
+        if (_currentPage == _totalPage) // 현재 페이지가 총 페이지와 같을 경우 리턴
         {
             return;
         }
@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour
         }
 
         leftBtn.gameObject.SetActive(true);
-        rightBtn.gameObject.SetActive(_currentPage < _totalPage);
+        rightBtn.gameObject.SetActive(_currentPage < _totalPage); // 현재 페이지가 총 페이지보다 작을 때만 활성화
     }
 
     // 이전 슬롯 창
@@ -173,7 +173,7 @@ public class Inventory : MonoBehaviour
         }
 
         rightBtn.gameObject.SetActive(true);
-        leftBtn.gameObject.SetActive(_currentPage > 1);
+        leftBtn.gameObject.SetActive(_currentPage > 1); // 현재 페이지가 1보다 클 때만 (첫 페이지보다 클 때)
     }
 
     // 다음페이지
@@ -200,7 +200,7 @@ public class Inventory : MonoBehaviour
     //아이템 추가
     public void AddItem(Item _item)
     {
-        if (_item.Type == "using")
+        if (_item.Type == "using") // 소모성 아이템은 수량 체크
         {
             ItemSlot slotStack = GetItemStack(_item);
             if (slotStack != null)
@@ -352,7 +352,7 @@ public class Inventory : MonoBehaviour
         _uiSlots[_index].equipped = false;
         _equipController.PlayerUnEquip();
         _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
-
+        _equipController.EquipDefaultWeapon();
         UpdateUI();
 
         if (_selectedItemIndex == _index)
