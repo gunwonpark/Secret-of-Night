@@ -130,7 +130,7 @@ public class PlayerBaseState : IState
     private void Move()
     {
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
-        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing)
+        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing && !stateMachine.Player.IsJumping)
         {
             Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
             moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
