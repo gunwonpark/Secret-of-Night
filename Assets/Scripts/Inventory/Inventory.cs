@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Slot[] _uiSlots; //슬롯들을 배열로 할당
     public ItemSlot[] slots; // 아이템 정보
 
-    public Transform dropPosition; // 아이템 드랍 위치
+    //public Transform dropPosition; // 아이템 드랍 위치
 
     [Header("Selected Item")]
     private ItemSlot _selectedItem;
@@ -329,7 +329,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 아이템 장착
-    public void OnEquipButton()
+    public void OnEquipBtton()
     {
         //_selectedItemIndex로 하면 장비가 이중으로 껴짐, curEquip에 기본 무기가 장착 되어 있으면 해제
         if (_uiSlots[curEquipIndex].equipped)
@@ -381,8 +381,25 @@ public class Inventory : MonoBehaviour
 
     private void ThrowItem(Item _item)
     {
-        Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+        //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+
+        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 3f); //앞으로 1만큼
+
+        GameObject thrownItem = Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
+
+        // 던지는 힘
+        Rigidbody itemRigidbody = thrownItem.GetComponent<Rigidbody>();
+
+        if (itemRigidbody != null)
+        {
+            // 앞으로 2.5만큼의 힘으로 던지기
+            itemRigidbody.AddForce(transform.forward * 2.5f, ForceMode.Impulse);
+
+            // y 축 방향으로도 던지기 (포물선)
+            itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.Impulse);
+        }
     }
+
 
     private void RemoveSelectedItem()
     {

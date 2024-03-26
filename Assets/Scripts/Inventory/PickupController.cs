@@ -6,7 +6,7 @@ public class PickupController : MonoBehaviour
 {
     [SerializeField] private float _range;
     private bool _pickupActivated = false;
-    private Collider _collider; //Ãæµ¹Ã¼ ÀúÀå
+    private Collider _collider; //ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½
 
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
@@ -25,15 +25,15 @@ public class PickupController : MonoBehaviour
         }
     }
 
-    // ¾ÆÀÌÅÛ ·¹ÀÌ¾î¸¶½ºÅ© °Ë»ç
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾î¸¶ï¿½ï¿½Å© ï¿½Ë»ï¿½
     private void CheckItem()
     {
-        // ±¸ÀÇ ÇüÅÂ·Î Ãæµ¹Ã¼¸¦ Ã£À½, ÀÚ½ÅÀÇ À§Ä¡·ÎºÎÅÍ range¹üÀ§¸¸Å­ layerMask¿¡ ÇØ´çÇÏ´Â Ãæµ¹Ã¼ Á¤º¸
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ Ã£ï¿½ï¿½, ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Îºï¿½ï¿½ï¿½ rangeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ layerMaskï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½
         Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
-        // Ãæµ¹Ã¼°¡ ÇÏ³ª ÀÌ»ó ÀÖÀ» ¶§
+        // ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (colliders.Length > 0)
         {
-            // Ãæµ¹Ã¼ ÀúÀå
+            // ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½
             _collider = colliders[0];
             ItemInfoAppear();
         }
@@ -49,8 +49,8 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " È¹µæÇÏ±â" + " [E]";
-        // »¡°£»ö Æ÷¼Ç + È¹µæÇÏ±â [E]
+        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " È¹ï¿½ï¿½ï¿½Ï±ï¿½" + " [E]";
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + È¹ï¿½ï¿½ï¿½Ï±ï¿½ [E]
     }
 
     private void ItemInfoDisappear()
@@ -63,12 +63,12 @@ public class PickupController : MonoBehaviour
     {
         if (_pickupActivated && _collider != null)
         {
-            // ÇÃ·¹ÀÌ¾î¿Í ¾ÆÀÌÅÛ »çÀÌÀÇ °Å¸® °è»ê
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
             float distance = Vector3.Distance(transform.position, _collider.transform.position);
-            // ÀÏÁ¤ ¹üÀ§ ³»¿¡ ÀÖÀ» ¶§¸¸ ¾ÆÀÌÅÛÀ» È¹µæÇÒ ¼ö ÀÖµµ·Ï ÇÔ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½
             if (distance <= _range)
             {
-                // ItemObjectÀÇ itemData ÀÎ¼ö¸¦ ³Ñ°ÜÁÜ
+                // ItemObjectï¿½ï¿½ itemData ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
                 Inventory.instance.AddItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();

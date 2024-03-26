@@ -56,7 +56,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -80,8 +80,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22726583, y: 0.046832193, z: 1.0240482}
-  m_Center: {x: -0.006025672, y: -0.00016442873, z: 0.5390026}
+  m_Size: {x: 0.22726583, y: 0.08590935, z: 1.0240482}
+  m_Center: {x: -0.006025672, y: -0.01970301, z: 0.5390026}
 --- !u!1001 &9026152508630807897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,4 +186,5 @@ MonoBehaviour:
     IconPath: 
     MaxAmount: 0
     PrefabPath: 
+    UnlockLevel: 0
     Prefab: {fileID: 3134623633459603727}
