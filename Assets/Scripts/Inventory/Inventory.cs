@@ -329,10 +329,10 @@ public class Inventory : MonoBehaviour
     }
 
     // 아이템 장착
-    public void OnEquipBtton()
+    public void OnEquipButton()
     {
         //_selectedItemIndex로 하면 장비가 이중으로 껴짐, curEquip에 기본 무기가 장착 되어 있으면 해제
-        if (_uiSlots[curEquipIndex].equipped || _equipController.curEquip != null)
+        if (_uiSlots[curEquipIndex].equipped)
         {
             UnEquip(curEquipIndex);
         }
@@ -346,44 +346,31 @@ public class Inventory : MonoBehaviour
         UpdateUI();
 
         SelectItem(_selectedItemIndex);
+
     }
     void UnEquip(int _index)
     {
         _uiSlots[_index].equipped = false;
         _equipController.PlayerUnEquip();
-        _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
-        _equipController.EquipDefaultWeapon();
+        _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게        
         UpdateUI();
 
         if (_selectedItemIndex == _index)
         {
             SelectItem(_index);
         }
-        //기본 무기는 인벤토리로 들어갈 수 있게
-        if (_equipController.curEquip == null && !DefaultWeaponInInventory())
-        {
-            Item defaultWeapon = GameManager.Instance.dataManager.itemDataBase.GetData(8);
-            // 인벤토리에 기본 무기 추가
-            AddItem(defaultWeapon);
-        }
     }
 
-    // 기본 무기 인벤토리에 있는지 체크
-    bool DefaultWeaponInInventory()
-    {
-        foreach (ItemSlot slot in slots)
-        {
-            if (slot.item != null && slot.item.ItemID == 8) // 기본 무기의 ID를 확인
-            {
-                return true; // 인벤토리에 기본 무기가 존재함
-            }
-        }
-        return false; // 인벤토리에 기본 무기가 없음
-    }
 
     public void OnUnEquipButton()
     {
         UnEquip(_selectedItemIndex);
+        // 아무것도 장착되어 있지 않다면
+        if (!_uiSlots[curEquipIndex].equipped)
+        {
+            // 현재 선택한 아이템을 기본 무기로 설정하고 장착
+            _equipController.EquipDefaultWeapon();
+        }
     }
 
     public void OnDropButton()

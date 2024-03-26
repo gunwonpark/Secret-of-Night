@@ -11,6 +11,7 @@ public class EquipController : MonoBehaviour
     private void Start()
     {
         _playerData = GameManager.Instance.playerManager.playerData;
+        _defaultDamage = _playerData.Damage;
         EquipDefaultWeapon();
     }
 
@@ -43,7 +44,6 @@ public class EquipController : MonoBehaviour
     // 무기 장착시 공격력 변화
     public void EquipWeaponPower(int _id, float _damage)
     {
-        _defaultDamage = _playerData.Damage;
         _playerData.Damage = _defaultDamage + _damage;
     }
 
