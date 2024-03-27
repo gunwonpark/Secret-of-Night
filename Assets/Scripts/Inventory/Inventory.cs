@@ -383,7 +383,7 @@ public class Inventory : MonoBehaviour
     {
         //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
 
-        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 3f); //앞으로 1만큼
+        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 3f); //앞으로 1.5~3 거리만큼
 
         GameObject thrownItem = Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
 
@@ -393,10 +393,10 @@ public class Inventory : MonoBehaviour
         if (itemRigidbody != null)
         {
             // 앞으로 2.5만큼의 힘으로 던지기
-            itemRigidbody.AddForce(transform.forward * 2.5f, ForceMode.Impulse);
+            itemRigidbody.AddForce(transform.forward * 2.5f, ForceMode.VelocityChange);
 
             // y 축 방향으로도 던지기 (포물선)
-            itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.Impulse);
+            itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
     }
 
