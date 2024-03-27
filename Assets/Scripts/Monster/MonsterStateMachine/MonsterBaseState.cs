@@ -123,7 +123,7 @@ public class MonsterBaseState : IState, IDamageable
         return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.TargetRange * stateMachine.FieldMonsters.myInfo.TargetRange;
     }
 
-    public void TakeDamage(float Damage)
+    public void TakeDamage(float Damage)//Other의 공격력
     {
         stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
 

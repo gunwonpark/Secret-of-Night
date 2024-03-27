@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class MonsterAttackState : MonsterBaseState
 {
     private bool alreadyAppliedForce;
@@ -11,7 +13,9 @@ public class MonsterAttackState : MonsterBaseState
         base.Enter();
         stateMachine.MovementSpeedModifier = 0;
 
-        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//[todo]공격할때만
+        //stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//[todo]공격할때만
+
+        stateMachine.FieldMonsters.OnAttack += NomalAttack;
     }
 
     public override void Exit()
@@ -19,16 +23,17 @@ public class MonsterAttackState : MonsterBaseState
         base.Exit();
 
         stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
+
+        stateMachine.FieldMonsters.OnAttack -= NomalAttack;
     }
 
     public override void Update()
     {
         base.Update();
         //공격함수
+
         if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
         {
-            //선공X
-            //TakeDamage();
             if (IsInChaseRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
@@ -75,4 +80,13 @@ public class MonsterAttackState : MonsterBaseState
 
     }
 
+    public void NomalAttack(GameObject other)
+    {
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
+
+        other.TryGetComponent<IDamageable>(out IDamageable go);
+
+        Debug.Log(stateMachine.FieldMonsters.myInfo.Damage);
+        go.TakeDamage(stateMachine.FieldMonsters.myInfo.Damage);
+    }
 }
