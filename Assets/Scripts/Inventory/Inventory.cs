@@ -11,7 +11,7 @@ public class ItemSlot
 
 public class Inventory : MonoBehaviour
 {
-    private bool activated;
+    public bool activated;
     private bool _speedItemUse;
     public static Inventory instance;
     private CameraHandler _camera;
@@ -23,18 +23,20 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
+    [SerializeField] private GameObject _statInfo; // 스탯 정보 
 
     [SerializeField] private Slot[] _uiSlots; //슬롯들을 배열로 할당
     public ItemSlot[] slots; // 아이템 정보
 
-    public Transform dropPosition; // 아이템 드랍 위치
+    //public Transform dropPosition; // 아이템 드랍 위치
 
     [Header("Selected Item")]
     private ItemSlot _selectedItem;
     private int _selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
-    //public TextMeshProUGUI selectedItemStat;
+    public TextMeshProUGUI selectedItemStatText;
+
     public GameObject useButton;
     public GameObject equipButton;
     public GameObject unEquipButton;
@@ -63,13 +65,15 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         _inventoryUI.SetActive(false);
+        _statInfo.SetActive(false);
+
         slots = new ItemSlot[_uiSlots.Length];
 
         _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
 
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i] = new ItemSlot();
+            slots[i] = new ItemSlot(); // 슬롯의 요소들을 ItemSlot의 인스턴스로 초기화
             _uiSlots[i].index = i;
             _uiSlots[i].ClearSlot();
         }
@@ -109,13 +113,13 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
-        var startIndex = (_currentPage - 1) * _maxSlot;
-        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
+        var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
+        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
 
         // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
         for (int i = 0; i < _uiSlots.Length; i++)
         {
-            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
         //마우스 커서 표시
@@ -123,7 +127,7 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(true);
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
         _inventoryUI.SetActive(false);
     }
@@ -131,7 +135,7 @@ public class Inventory : MonoBehaviour
     // 다음 슬롯 창
     private void NextPage()
     {
-        if (_currentPage == _totalPage)
+        if (_currentPage == _totalPage) // 현재 페이지가 총 페이지와 같을 경우 리턴
         {
             return;
         }
@@ -151,7 +155,7 @@ public class Inventory : MonoBehaviour
         }
 
         leftBtn.gameObject.SetActive(true);
-        rightBtn.gameObject.SetActive(_currentPage < _totalPage);
+        rightBtn.gameObject.SetActive(_currentPage < _totalPage); // 현재 페이지가 총 페이지보다 작을 때만 활성화
     }
 
     // 이전 슬롯 창
@@ -173,7 +177,7 @@ public class Inventory : MonoBehaviour
         }
 
         rightBtn.gameObject.SetActive(true);
-        leftBtn.gameObject.SetActive(_currentPage > 1);
+        leftBtn.gameObject.SetActive(_currentPage > 1); // 현재 페이지가 1보다 클 때만 (첫 페이지보다 클 때)
     }
 
     // 다음페이지
@@ -200,7 +204,7 @@ public class Inventory : MonoBehaviour
     //아이템 추가
     public void AddItem(Item _item)
     {
-        if (_item.Type == "using")
+        if (_item.Type == "using") // 소모성 아이템은 수량 체크
         {
             ItemSlot slotStack = GetItemStack(_item);
             if (slotStack != null)
@@ -212,7 +216,6 @@ public class Inventory : MonoBehaviour
         }
 
         ItemSlot emptySlot = GetEmptySlot(); // 빈 슬롯
-
         if (emptySlot != null)
         {
             emptySlot.item = _item;
@@ -260,11 +263,59 @@ public class Inventory : MonoBehaviour
         selectedItemName.text = _selectedItem.item.ItemName;
         selectedItemDescription.text = _selectedItem.item.Description;
 
+        _statInfo.SetActive(true);
+
+        string statText = "";
+
+        // Determine stat information based on item type and ID
+        switch (_selectedItem.item.Type)
+        {
+            case "using":
+                statText = UsingItemStatText();
+                break;
+            case "Equip":
+                statText = EquipItemStatText();
+                break;
+        }
+
+        selectedItemStatText.text = statText;
+
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
         useButton.SetActive(_selectedItem.item.Type == "using");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
+    }
+    private string UsingItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 1:
+            case 2:
+                return "HP + " + _selectedItem.item.Price;
+            case 3:
+            case 4:
+                return "MP + " + _selectedItem.item.Price;
+            case 5:
+            case 6:
+                return "SP + " + _selectedItem.item.Price;
+            case 7:
+                return "Speed + " + _selectedItem.item.Price;
+            default:
+                return "";
+        }
+    }
+    private string EquipItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 9:
+            case 10:
+            case 11:
+                return "AD + " + _selectedItem.item.Damage;
+            default:
+                return "";
+        }
     }
 
     //슬롯이 비워질 때
@@ -273,6 +324,9 @@ public class Inventory : MonoBehaviour
         _selectedItem = null;
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
+
+        _statInfo.SetActive(false);
+        selectedItemStatText.text = string.Empty;
 
         useButton.SetActive(false);
         equipButton.SetActive(false);
@@ -332,7 +386,7 @@ public class Inventory : MonoBehaviour
     public void OnEquipBtton()
     {
         //_selectedItemIndex로 하면 장비가 이중으로 껴짐, curEquip에 기본 무기가 장착 되어 있으면 해제
-        if (_uiSlots[curEquipIndex].equipped || _equipController.curEquip != null)
+        if (_uiSlots[curEquipIndex].equipped)
         {
             UnEquip(curEquipIndex);
         }
@@ -346,44 +400,31 @@ public class Inventory : MonoBehaviour
         UpdateUI();
 
         SelectItem(_selectedItemIndex);
+
     }
     void UnEquip(int _index)
     {
         _uiSlots[_index].equipped = false;
         _equipController.PlayerUnEquip();
-        _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게
-
+        _equipController.UnEquipWeaponPower(); //기본 공격력으로 돌아가게        
         UpdateUI();
 
         if (_selectedItemIndex == _index)
         {
             SelectItem(_index);
         }
-        //기본 무기는 인벤토리로 들어갈 수 있게
-        if (_equipController.curEquip == null && !DefaultWeaponInInventory())
-        {
-            Item defaultWeapon = GameManager.Instance.dataManager.itemDataBase.GetData(8);
-            // 인벤토리에 기본 무기 추가
-            AddItem(defaultWeapon);
-        }
     }
 
-    // 기본 무기 인벤토리에 있는지 체크
-    bool DefaultWeaponInInventory()
-    {
-        foreach (ItemSlot slot in slots)
-        {
-            if (slot.item != null && slot.item.ItemID == 8) // 기본 무기의 ID를 확인
-            {
-                return true; // 인벤토리에 기본 무기가 존재함
-            }
-        }
-        return false; // 인벤토리에 기본 무기가 없음
-    }
 
     public void OnUnEquipButton()
     {
         UnEquip(_selectedItemIndex);
+        // 아무것도 장착되어 있지 않다면
+        if (!_uiSlots[curEquipIndex].equipped)
+        {
+            // 현재 선택한 아이템을 기본 무기로 설정하고 장착
+            _equipController.EquipDefaultWeapon();
+        }
     }
 
     public void OnDropButton()
@@ -394,8 +435,25 @@ public class Inventory : MonoBehaviour
 
     private void ThrowItem(Item _item)
     {
-        Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+        //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
+
+        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 3f); //앞으로 1.5~3 거리만큼
+
+        GameObject thrownItem = Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
+
+        // 던지는 힘
+        Rigidbody itemRigidbody = thrownItem.GetComponent<Rigidbody>();
+
+        if (itemRigidbody != null)
+        {
+            // 앞으로 2.5만큼의 힘으로 던지기
+            itemRigidbody.AddForce(transform.forward * 2.5f, ForceMode.VelocityChange);
+
+            // y 축 방향으로도 던지기 (포물선)
+            itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
+        }
     }
+
 
     private void RemoveSelectedItem()
     {
