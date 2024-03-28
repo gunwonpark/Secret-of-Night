@@ -17,6 +17,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public Animator Animator { get; private set; }
     public ForceReceiver forceReceiver { get; private set; }
     public CharacterController controller { get; private set; }
+    public BoxCollider attackCollider;
 
     public MonsterAnimation monsterAnimation;
 
@@ -25,6 +26,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public Vector3 originalPosition;
 
     public event Action<float> OnDamage;
+    public event Action<GameObject> OnAttack;
 
     private void Awake()
     {
@@ -35,7 +37,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         forceReceiver = GetComponent<ForceReceiver>();
         controller = GetComponent<CharacterController>();
         monsterAnimation = GetComponent<MonsterAnimation>();
-
+        attackCollider = GetComponent<BoxCollider>();
     }
 
     public void Init(MonsterInfo monsterInfo)
@@ -76,24 +78,15 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         originalPosition = position;
     }
 
+    //base에 있는 takedamage구독
     public void TakeDamage(float Damage)
     {
-        //stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
-
-        //float HP = stateMachine.FieldMonsters.myInfo.HP;
-        //float Def = stateMachine.FieldMonsters.myInfo.Daf;
-        //HP -= (Damage - Def);
-
-        //if (HP < 0)
-        //{
-        //    HP = 0;
-        //    stateMachine.ChangeState(stateMachine.DyingState);
-        //}
-        //else
-        //{
-        //    stateMachine.ChangeState(stateMachine.ChasingState);
-        //}
-
         OnDamage?.Invoke(Damage);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("부딫힘");
+        OnAttack?.Invoke(other.gameObject);
     }
 }
