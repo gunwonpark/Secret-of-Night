@@ -28,12 +28,12 @@ public class PickupController : MonoBehaviour
     // ������ ���̾��ũ �˻�
     private void CheckItem()
     {
-        // ���� ���·� �浹ü�� ã��, �ڽ��� ��ġ�κ��� range������ŭ layerMask�� �ش��ϴ� �浹ü ����
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
-        // �浹ü�� �ϳ� �̻� ���� ��
+
         if (colliders.Length > 0)
         {
-            // �浹ü ����
+
             _collider = colliders[0];
             ItemInfoAppear();
         }
@@ -49,8 +49,8 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " ȹ���ϱ�" + " [E]";
-        // ������ ���� + ȹ���ϱ� [E]
+        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " 획득하기" + " [E]";
+
     }
 
     private void ItemInfoDisappear()
@@ -63,12 +63,11 @@ public class PickupController : MonoBehaviour
     {
         if (_pickupActivated && _collider != null)
         {
-            // �÷��̾�� ������ ������ �Ÿ� ���
+
             float distance = Vector3.Distance(transform.position, _collider.transform.position);
-            // ���� ���� ���� ���� ���� �������� ȹ���� �� �ֵ��� ��
+
             if (distance <= _range)
             {
-                // ItemObject�� itemData �μ��� �Ѱ���
                 Inventory.instance.AddItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();

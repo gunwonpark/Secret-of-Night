@@ -11,7 +11,7 @@ public class ItemSlot
 
 public class Inventory : MonoBehaviour
 {
-    private bool activated;
+    public bool activated;
     private bool _speedItemUse;
     public static Inventory instance;
     private CameraHandler _camera;
@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
+    [SerializeField] private GameObject _statInfo; // 스탯 정보 
 
     [SerializeField] private Slot[] _uiSlots; //슬롯들을 배열로 할당
     public ItemSlot[] slots; // 아이템 정보
@@ -34,7 +35,8 @@ public class Inventory : MonoBehaviour
     private int _selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
-    //public TextMeshProUGUI selectedItemStat;
+    public TextMeshProUGUI selectedItemStatText;
+
     public GameObject useButton;
     public GameObject equipButton;
     public GameObject unEquipButton;
@@ -63,6 +65,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         _inventoryUI.SetActive(false);
+        _statInfo.SetActive(false);
+
         slots = new ItemSlot[_uiSlots.Length];
 
         _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
@@ -123,7 +127,7 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(true);
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
         _inventoryUI.SetActive(false);
     }
@@ -212,7 +216,6 @@ public class Inventory : MonoBehaviour
         }
 
         ItemSlot emptySlot = GetEmptySlot(); // 빈 슬롯
-
         if (emptySlot != null)
         {
             emptySlot.item = _item;
@@ -260,11 +263,59 @@ public class Inventory : MonoBehaviour
         selectedItemName.text = _selectedItem.item.ItemName;
         selectedItemDescription.text = _selectedItem.item.Description;
 
+        _statInfo.SetActive(true);
+
+        string statText = "";
+
+        // Determine stat information based on item type and ID
+        switch (_selectedItem.item.Type)
+        {
+            case "using":
+                statText = UsingItemStatText();
+                break;
+            case "Equip":
+                statText = EquipItemStatText();
+                break;
+        }
+
+        selectedItemStatText.text = statText;
+
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
         useButton.SetActive(_selectedItem.item.Type == "using");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
+    }
+    private string UsingItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 1:
+            case 2:
+                return "HP + " + _selectedItem.item.Price;
+            case 3:
+            case 4:
+                return "MP + " + _selectedItem.item.Price;
+            case 5:
+            case 6:
+                return "SP + " + _selectedItem.item.Price;
+            case 7:
+                return "Speed + " + _selectedItem.item.Price;
+            default:
+                return "";
+        }
+    }
+    private string EquipItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 9:
+            case 10:
+            case 11:
+                return "AD + " + _selectedItem.item.Damage;
+            default:
+                return "";
+        }
     }
 
     //슬롯이 비워질 때
@@ -273,6 +324,9 @@ public class Inventory : MonoBehaviour
         _selectedItem = null;
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
+
+        _statInfo.SetActive(false);
+        selectedItemStatText.text = string.Empty;
 
         useButton.SetActive(false);
         equipButton.SetActive(false);

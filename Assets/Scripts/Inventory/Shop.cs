@@ -1,18 +1,30 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] private ShopSlot[] _slots; // 상점 슬롯들을 저장할 배열
+    public static Shop instance;
+
+    [SerializeField] private ShopSlot[] _uiSlots; // 상점 슬롯들을 저장할 배열
     [SerializeField] private Item[] _items; // 상점에 판매할 아이템 데이터 배열
 
-    private bool _activated;
+    public bool shopActivated;
 
     private CameraHandler _camera;
     private PlayerController _playerController;
 
     [SerializeField] private GameObject _shopUI;
     [SerializeField] private GameObject _slotGrid;
+
+
+    [Header("Selected Item")]
+    [SerializeField] private GameObject _statInfo; // 스탯 정보 
+    private ShopSlot _selectedItem;
+    private int _selectedItemIndex;
+    public TextMeshProUGUI selectedItemName;
+    public TextMeshProUGUI selectedItemDescription;
+    public TextMeshProUGUI selectedItemStatText;
 
     // 페이지 넘기기 위한 변수
     private int _maxSlot = 12;
@@ -22,36 +34,47 @@ public class Shop : MonoBehaviour
     public Button rightBtn;
     public Button leftBtn;
 
+    public GameObject purchaseBtn;
+
     private void Awake()
     {
+        instance = this;
         _camera = FindObjectOfType<CameraHandler>();
         _playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
     {
-        _slots = GetComponentsInChildren<ShopSlot>();
+        _uiSlots = GetComponentsInChildren<ShopSlot>();
 
         _shopUI.SetActive(false);
+
         // 각 상점 슬롯에 아이템 불러오기
         _items = GameManager.Instance.dataManager.itemDataBase.GetAllItems().ToArray();
 
         // 아이템 목록에서 8번째 아이템 제외 (기본아이템)
         _items = RemoveItemAtIndex(_items, 7);
 
-        for (int i = 0; i < _slots.Length; i++)
+        for (int i = 0; i < _uiSlots.Length; i++)
         {
-            // 상점 슬롯에 아이템을 설정
+            // 상점 슬롯에 아이템 넣기
             if (i < _items.Length)
             {
-                _slots[i].ShopSetItem(_items[i]);
+                _uiSlots[i].ShopSetItem(_items[i]);
             }
             else
             {
                 // 빈 아이템으로 슬롯 설정
-                _slots[i].ShopClearSlot();
+                _uiSlots[i].ShopClearSlot();
             }
         }
+
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            _uiSlots[i].shopIndex = i;
+        }
+
+        ClearSeletecItemWindow();
     }
 
     private Item[] RemoveItemAtIndex(Item[] _array, int _index)
@@ -79,10 +102,15 @@ public class Shop : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            _activated = !_activated;
+            shopActivated = !shopActivated;
 
-            if (_activated)
+            if (shopActivated)
             {
+                if (Inventory.instance.activated)
+                {
+                    Inventory.instance.CloseInventory();
+                    Inventory.instance.playerLight.SetActive(false);
+                }
                 OpenShop();
                 _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
@@ -100,20 +128,21 @@ public class Shop : MonoBehaviour
     private void OpenShop()
     {
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
-        var endIndex = Mathf.Min(startIndex + _maxSlot, _slots.Length); // 끝 인덱스 12
+        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
 
         // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
-        for (int i = 0; i < _slots.Length; i++)
+        for (int i = 0; i < _uiSlots.Length; i++)
         {
-            _slots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
+            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
         //마우스 커서 표시
         Cursor.lockState = CursorLockMode.None;
         _shopUI.SetActive(true);
+
     }
 
-    private void CloseShop()
+    public void CloseShop()
     {
         _shopUI.SetActive(false);
     }
@@ -129,12 +158,12 @@ public class Shop : MonoBehaviour
 
         //(0~11, 12~23, 24~35번 슬롯)
         var startIndex = (_currentPage - 1) * _maxSlot;
-        var endIndex = Mathf.Min(startIndex + _maxSlot, _slots.Length);
+        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
 
         // 현재 페이지에 있는 슬롯만 활성화 (1~12개)
-        for (int i = 0; i < _slots.Length; i++)
+        for (int i = 0; i < _uiSlots.Length; i++)
         {
-            _slots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
         }
 
         leftBtn.gameObject.SetActive(true);
@@ -151,11 +180,11 @@ public class Shop : MonoBehaviour
         _currentPage--;
 
         var startIndex = (_currentPage - 1) * _maxSlot;
-        var endIndex = Mathf.Min(startIndex + _maxSlot, _slots.Length);
+        var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length);
 
-        for (int i = 0; i < _slots.Length; i++)
+        for (int i = 0; i < _uiSlots.Length; i++)
         {
-            _slots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
+            _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex);
         }
 
         rightBtn.gameObject.SetActive(true);
@@ -180,5 +209,80 @@ public class Shop : MonoBehaviour
         _shopUI.SetActive(false);
         _camera.enabled = true;
         _playerController.Input.enabled = true;
+    }
+
+    //아이템 슬롯 선택시 아이템 설명이 보이게
+    public void SelectItem(int index)
+    {
+        if (_uiSlots[index].item == null)
+        {
+            return;
+        }
+        _selectedItem = _uiSlots[index];
+        _selectedItemIndex = index;
+        selectedItemName.text = _selectedItem.item.ItemName;
+        selectedItemDescription.text = _selectedItem.item.Description;
+        purchaseBtn.SetActive(true);
+
+        _statInfo.SetActive(true);
+
+        string statText = "";
+
+        // Determine stat information based on item type and ID
+        switch (_selectedItem.item.Type)
+        {
+            case "using":
+                statText = UsingItemStatText();
+                break;
+            case "Equip":
+                statText = EquipItemStatText();
+                break;
+        }
+
+        selectedItemStatText.text = statText;
+    }
+    private string UsingItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 1:
+            case 2:
+                return "HP + " + _selectedItem.item.Price;
+            case 3:
+            case 4:
+                return "MP + " + _selectedItem.item.Price;
+            case 5:
+            case 6:
+                return "SP + " + _selectedItem.item.Price;
+            case 7:
+                return "Speed + " + _selectedItem.item.Price;
+            default:
+                return "";
+        }
+    }
+    private string EquipItemStatText()
+    {
+        switch (_selectedItem.item.ItemID)
+        {
+            case 9:
+            case 10:
+            case 11:
+                return "AD + " + _selectedItem.item.Damage;
+            default:
+                return "";
+        }
+    }
+
+
+    private void ClearSeletecItemWindow()
+    {
+        _selectedItem = null;
+        selectedItemName.text = string.Empty;
+        selectedItemDescription.text = string.Empty;
+        purchaseBtn.SetActive(false);
+
+        _statInfo.SetActive(false);
+        selectedItemStatText.text = string.Empty;
+
     }
 }
