@@ -86,6 +86,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
+        //플레이어 콜라이더만
         Debug.Log("부딫힘");
         OnAttack?.Invoke(other.gameObject);
     }
