@@ -42,6 +42,7 @@ public class Inventory : MonoBehaviour
     public GameObject equipButton;
     public GameObject unEquipButton;
     public GameObject dropButton;
+    public GameObject saleButton;
 
     private int curEquipIndex;
 
@@ -54,8 +55,13 @@ public class Inventory : MonoBehaviour
     public Button rightBtn;
     public Button leftBtn;
 
+    [Header("Pop-Up")]
+    public GameObject popUpUI;
+    public TextMeshProUGUI popUpText;
+
     [Header("Cash")]
     public TextMeshProUGUI cash;
+
 
     private void Awake()
     {
@@ -71,6 +77,7 @@ public class Inventory : MonoBehaviour
     {
         _inventoryUI.SetActive(false);
         _statInfo.SetActive(false);
+        popUpUI.SetActive(false);
 
         slots = new ItemSlot[_uiSlots.Length];
 
@@ -297,6 +304,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
+        saleButton.SetActive(true);
     }
     private string UsingItemStatText()
     {
@@ -344,6 +352,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(false);
         unEquipButton.SetActive(false);
         dropButton.SetActive(false);
+        saleButton.SetActive(false);
     }
 
     void UpdateUI() //UI 업데이트
@@ -467,13 +476,27 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 아이템 판매하기
-    private void SaleItem()
+    public void OnInventoryChackButton()
     {
-        //int money = _selectedItem.item.Money * (int)0.5;
+        popUpUI.SetActive(false);
+    }
+
+
+    // 아이템 판매하기
+    public void SaleItem()
+    {
+        int _money = _selectedItem.item.Money / 2;
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
-            GameManager.Instance.playerManager.playerData.Gold += _selectedItem.item.Money;
+            GameManager.Instance.playerManager.playerData.Gold += _money;
+            CashUpdate();
+            Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
+            RemoveSelectedItem();
+        }
+        else
+        {
+            popUpUI.SetActive(true);
+            popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
     }
 

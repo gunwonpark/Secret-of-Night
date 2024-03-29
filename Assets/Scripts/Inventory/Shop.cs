@@ -41,7 +41,6 @@ public class Shop : MonoBehaviour
     [Header("Pop-Up")]
     public GameObject popUpUI;
     public TextMeshProUGUI popUpText;
-    public Button chackBtn;
 
     private void Awake()
     {
@@ -152,7 +151,6 @@ public class Shop : MonoBehaviour
         //마우스 커서 표시
         Cursor.lockState = CursorLockMode.None;
         _shopUI.SetActive(true);
-
     }
 
     public void CloseShop()
@@ -355,7 +353,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void OnCheckButton()
+    public void OnShopCheckButton()
     {
         popUpUI.SetActive(false);
         popUpText.text = "";
