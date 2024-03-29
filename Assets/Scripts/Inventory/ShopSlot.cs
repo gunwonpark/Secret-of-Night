@@ -6,8 +6,10 @@ public class ShopSlot : MonoBehaviour, IPointerClickHandler
 {
     public Item item; // 아이템 정보
     public Image itemImage; // 아이템 이미지 컴포넌트
+    public Image lockImage;
 
     public int shopIndex;
+    public bool IsLocked;
 
     // 아이템 이미지 투명도 조절
     public void ItemImage(float alpha)
@@ -15,6 +17,14 @@ public class ShopSlot : MonoBehaviour, IPointerClickHandler
         Color color = itemImage.color;
         color.a = alpha;
         itemImage.color = color;
+    }
+
+    //잠금 이미지
+    public void LockImage(float alpha)
+    {
+        Color color = lockImage.color;
+        color.a = alpha;
+        lockImage.color = color;
     }
 
     // 상점 슬롯에 아이템 설정

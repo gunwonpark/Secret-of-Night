@@ -148,7 +148,7 @@
 			"IconPath": "Images/Icons/SwordDragon",
 			"MaxAmount": 0,
 			"PrefabPath": "Prefabs/Weapons/SwordDragon",
-			"UnlockLevel": 6
+			"UnlockLevel": 11
 		},
 		{
 			"ItemID": 11,
