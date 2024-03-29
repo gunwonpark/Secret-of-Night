@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
-        cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
+
     }
 
     void Start()
@@ -78,6 +78,8 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(false);
         _statInfo.SetActive(false);
         popUpUI.SetActive(false);
+
+        cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
 
         slots = new ItemSlot[_uiSlots.Length];
 
