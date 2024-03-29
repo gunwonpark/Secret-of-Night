@@ -8,16 +8,17 @@ public class MonsterBaseState : IState, IDamageable
     public MonsterBaseState(MonsterStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
-        stateMachine.FieldMonsters.OnDamage += TakeDamage;
+
     }
 
     public virtual void Enter()
     {
+        stateMachine.FieldMonsters.OnDamage += TakeDamage;
     }
 
     public virtual void Exit()
     {
-
+        stateMachine.FieldMonsters.OnDamage -= TakeDamage;
     }
 
     public virtual void HandleInput()
@@ -122,7 +123,7 @@ public class MonsterBaseState : IState, IDamageable
         return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.TargetRange * stateMachine.FieldMonsters.myInfo.TargetRange;
     }
 
-    public void TakeDamage(float Damage)
+    public void TakeDamage(float Damage)//Other의 공격력
     {
         stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
 

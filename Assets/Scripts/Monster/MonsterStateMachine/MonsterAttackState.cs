@@ -1,6 +1,9 @@
+using UnityEngine;
+
 public class MonsterAttackState : MonsterBaseState
 {
     private bool alreadyAppliedForce;
+    private bool _attack = false;
 
     public MonsterAttackState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
@@ -12,6 +15,8 @@ public class MonsterAttackState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0;
 
         stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//[todo]공격할때만
+
+        stateMachine.FieldMonsters.OnAttack += NomalAttack;
     }
 
     public override void Exit()
@@ -19,16 +24,18 @@ public class MonsterAttackState : MonsterBaseState
         base.Exit();
 
         stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
+
+        stateMachine.FieldMonsters.OnAttack -= NomalAttack;
     }
 
     public override void Update()
     {
         base.Update();
         //공격함수
+
+
         if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
         {
-            //선공X
-            //TakeDamage();
             if (IsInChaseRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
@@ -40,6 +47,23 @@ public class MonsterAttackState : MonsterBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        float progessiveTime = stateMachine.FieldMonsters.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f;
+        //Debug.Log(progessiveTime);
+        if (progessiveTime < 0.5f)//애니메이션 플레이중
+        {
+            _attack = false;
+            stateMachine.FieldMonsters.attackCollider.enabled = false;
+            //stateMachine.FieldMonsters.OnAttack += NomalAttack;
+
+        }
+
+        if (!_attack && progessiveTime >= 0.5f)//애니메이션 끝났을때
+        {
+            _attack = true;
+            stateMachine.FieldMonsters.attackCollider.enabled = true;
+        }
+
 
         ForceMove();
 
@@ -75,4 +99,13 @@ public class MonsterAttackState : MonsterBaseState
 
     }
 
+    public void NomalAttack(GameObject other)
+    {
+        //stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
+
+        other.TryGetComponent<IDamageable>(out IDamageable go);
+
+        Debug.Log(stateMachine.FieldMonsters.myInfo.Damage);
+        go.TakeDamage(stateMachine.FieldMonsters.myInfo.Damage);
+    }
 }
