@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
         _statInfo.SetActive(false);
         popUpUI.SetActive(false);
 
-        cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
+        CashUpdate();
 
         slots = new ItemSlot[_uiSlots.Length];
 
