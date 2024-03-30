@@ -57,7 +57,11 @@ public class Inventory : MonoBehaviour
 
     [Header("Pop-Up")]
     public GameObject popUpUI;
+    public GameObject checkBtn;
+    public GameObject saleBtn;
+    public GameObject cancleBtn;
     public TextMeshProUGUI popUpText;
+
 
     [Header("Cash")]
     public TextMeshProUGUI cash;
@@ -222,6 +226,8 @@ public class Inventory : MonoBehaviour
         playerLight.SetActive(false);
     }
 
+    // -------------------------------------------------------------------------------
+
     //아이템 추가
     public void AddItem(Item _item)
     {
@@ -368,6 +374,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // -------------------------------------------------------------------------------
+
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
     {
@@ -478,31 +486,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void OnInventoryChackButton()
-    {
-        popUpUI.SetActive(false);
-    }
-
-
-    // 아이템 판매하기
-    public void SaleItem()
-    {
-        int _money = _selectedItem.item.Money / 2;
-        if (!_uiSlots[_selectedItemIndex].equipped)
-        {
-            GameManager.Instance.playerManager.playerData.Gold += _money;
-            CashUpdate();
-            Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-            RemoveSelectedItem();
-        }
-        else
-        {
-            popUpUI.SetActive(true);
-            popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
-        }
-    }
-
-
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
     private void RemoveSelectedItem()
     {
@@ -522,5 +505,53 @@ public class Inventory : MonoBehaviour
         UpdateUI();
     }
 
+
+    // -------------------------------------------------------------------------------
+
+    // 아이템 판매하기
+    public void SaleItem()
+    {
+        int _money = _selectedItem.item.Money / 2;
+        if (!_uiSlots[_selectedItemIndex].equipped)
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(false);
+            saleBtn.SetActive(true);
+            cancleBtn.SetActive(true);// 확인버튼은 가림
+            popUpText.text = _money + "$ 에 판매 \n 하시겠습니까?";
+        }
+        else
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
+            saleBtn.SetActive(false);
+            cancleBtn.SetActive(false);
+            popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
+        }
+    }
+
+    // 팝업 판매 확인 버튼
+    public void OnSaleCheckButton()
+    {
+        int _money = _selectedItem.item.Money / 2;
+        GameManager.Instance.playerManager.playerData.Gold += _money;
+        CashUpdate();
+        Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
+        RemoveSelectedItem();
+        popUpUI.SetActive(false);
+    }
+
+    // 팝업 판매 취소 버튼
+    public void OnSaleCancelButton()
+    {
+        popUpUI.SetActive(false);
+    }
+
+    // 팝업 경고 확인 버튼(잠금 무기 또는 금액 부족 시)
+    public void OnInventoryCheckButton()
+    {
+        popUpUI.SetActive(false);
+
+    }
 
 }
