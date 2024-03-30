@@ -515,15 +515,17 @@ public class Inventory : MonoBehaviour
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
             popUpUI.SetActive(true);
-            checkBtn.SetActive(false);
+            checkBtn.SetActive(false); //확인 버튼 비활성
+
             saleBtn.SetActive(true);
-            cancleBtn.SetActive(true);// 확인버튼은 가림
+            cancleBtn.SetActive(true);
             popUpText.text = _money + "$ 에 판매 \n 하시겠습니까?";
         }
         else
         {
             popUpUI.SetActive(true);
-            checkBtn.SetActive(true);
+            checkBtn.SetActive(true); //확인 버튼 활성
+
             saleBtn.SetActive(false);
             cancleBtn.SetActive(false);
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";

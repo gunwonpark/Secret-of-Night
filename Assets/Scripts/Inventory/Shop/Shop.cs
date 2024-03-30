@@ -40,6 +40,9 @@ public class Shop : MonoBehaviour
 
     [Header("Pop-Up")]
     public GameObject popUpUI;
+    public GameObject checkBtn;
+    public GameObject purchaseCheckBtn;
+    public GameObject purchaseCancleBtn;
     public TextMeshProUGUI popUpText;
 
     private void Awake()
@@ -335,28 +338,56 @@ public class Shop : MonoBehaviour
         {
             if (GameManager.Instance.playerManager.playerData.Gold >= _selectedItem.item.Money)
             {
-                GameManager.Instance.playerManager.playerData.Gold -= _selectedItem.item.Money;
-                Inventory.instance.AddItem(_selectedItem.item);
-                Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
-                cash.text = Inventory.instance.cash.text; // 상점 돈도 업데이트
+                popUpUI.SetActive(true);
+                checkBtn.SetActive(false); //확인 버튼 비활성
+
+                purchaseCheckBtn.SetActive(true);
+                purchaseCancleBtn.SetActive(true);
+                popUpText.text = _selectedItem.item.Money + "$ 에 구매 \n 하시겠습니까?";
             }
             else
             {
                 popUpUI.SetActive(true);
+                checkBtn.SetActive(true); //확인 버튼 활성
+
+                purchaseCheckBtn.SetActive(false);
+                purchaseCancleBtn.SetActive(false);
                 popUpText.text = "소지금이 부족합니다.";
             }
         }
         else
         {
             popUpUI.SetActive(true);
+            checkBtn.SetActive(true); //확인 버튼 활성
+
+            purchaseCheckBtn.SetActive(false);
+            purchaseCancleBtn.SetActive(false);
             popUpText.text = "잠금 아이템 입니다.\n 권장 레벨 :" + _selectedItem.item.UnlockLevel;
         }
     }
 
+
+    // 팝업 구매 확인 버튼
+    public void OnPurchaseCheckButton()
+    {
+        GameManager.Instance.playerManager.playerData.Gold -= _selectedItem.item.Money;
+        Inventory.instance.AddItem(_selectedItem.item);
+        Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
+        cash.text = Inventory.instance.cash.text; // 상점 돈도 업데이트
+
+        popUpUI.SetActive(false);
+    }
+
+    // 팝업 구매 취소 버튼
+    public void OnPurchaseCancelButton()
+    {
+        popUpUI.SetActive(false);
+    }
+
+
+    // 팝업 경고 확인 버튼(잠금 무기 또는 금액 부족 시)
     public void OnShopCheckButton()
     {
         popUpUI.SetActive(false);
-        popUpText.text = "";
     }
-
 }
