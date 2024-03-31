@@ -9,10 +9,10 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState JumpState { get; set; }
     public PlayerDodgeState DodgeState { get; set; }
     public PlayerAttackState AttackState { get; set; }
-    public PlayerSkill1State Skill1State { get; set; }
-    public PlayerSkill2State Skill2State { get; set; }
+    public PlayerSkillState SkillState { get; set; }
     public Vector2 MovementInput { get; set; }
-    public Transform MainCameraTransform { get; set; }
+    public Transform MainCameraTransform { get; private set; }
+    public CameraTPP cameraScript { get; private set; }
 
     //TODO have to make as DataScripts
 
@@ -26,9 +26,9 @@ public class PlayerStateMachine : StateMachine
         JumpState = new PlayerJumpState(this);
         DodgeState = new PlayerDodgeState(this);
         AttackState = new PlayerAttackState(this);
-        Skill1State = new PlayerSkill1State(this);
-        Skill2State = new PlayerSkill2State(this);
+        SkillState = new PlayerSkillState(this);
 
         MainCameraTransform = Camera.main.transform;
+        cameraScript = MainCameraTransform.GetComponent<CameraTPP>();
     }
 }

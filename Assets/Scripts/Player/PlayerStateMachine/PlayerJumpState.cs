@@ -1,9 +1,5 @@
-using UnityEngine;
-
 public class PlayerJumpState : PlayerBaseState
 {
-    private float _jumpTimeout = 0.5f;
-    private float _jumpTimeoutDelta = 0f;
     public PlayerJumpState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -21,15 +17,13 @@ public class PlayerJumpState : PlayerBaseState
         stateMachine.Player.ForceReceiver.Reset();
         stateMachine.Player.IsJumping = false;
         StopAnimation(stateMachine.Player.AnimationData.JumpParameter);
-        _jumpTimeoutDelta = 0;
     }
 
     public override void Update()
     {
         base.Update();
-        _jumpTimeoutDelta += Time.deltaTime;
 
-        if (stateMachine.Player.IsGrounded && _jumpTimeoutDelta >= _jumpTimeout)
+        if (stateMachine.Player.IsGrounded && stateMachine.Player.ForceReceiver.Movement.y < 0f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
@@ -37,10 +31,6 @@ public class PlayerJumpState : PlayerBaseState
     private void AddJumpForce()
     {
         stateMachine.Player.ForceReceiver.Jump(stateMachine.Player.jumpForce);
-        Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
-        moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
-        moveDirection.y = 0;
-        stateMachine.Player.ForceReceiver.AddForce(moveDirection * stateMachine.Player.Controller.velocity.magnitude);
-        Debug.Log(stateMachine.Player.Controller.velocity.magnitude);
+        stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * GetMovementSpeed());
     }
 }

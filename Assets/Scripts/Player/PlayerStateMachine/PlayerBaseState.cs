@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
-    protected Vector3 jumpDirection = Vector3.zero;
+    protected int skillKey = -1;
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         stateMachine = playerStateMachine;
@@ -30,10 +30,7 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         GroundedCheck();
-        if (!stateMachine.Player.IsTired)
-        {
-            Move();
-        }
+        Move();
     }
     protected virtual void AddPlayerActionCallbacks()
     {
@@ -51,13 +48,6 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Skill2.started += OnSkill2Started;
     }
 
-    private void OnSkill2Started(InputAction.CallbackContext obj)
-    {
-        if (!stateMachine.Player.IsTired)
-        {
-            stateMachine.ChangeState(stateMachine.Skill2State);
-        }
-    }
 
     protected virtual void RemovePlayerActionCallbacks()
     {
@@ -77,14 +67,17 @@ public class PlayerBaseState : IState
     #region addevent
     private void OnSkill1Started(InputAction.CallbackContext obj)
     {
-        if (!stateMachine.Player.IsTired)
-        {
-            stateMachine.ChangeState(stateMachine.Skill1State);
-        }
+        skillKey = 1;
+        stateMachine.ChangeState(stateMachine.SkillState);
+    }
+    private void OnSkill2Started(InputAction.CallbackContext obj)
+    {
+        skillKey = 2;
+        stateMachine.ChangeState(stateMachine.SkillState);
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsTired && stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
+        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
         {
             stateMachine.Player.IsJumping = true;
             stateMachine.ChangeState(stateMachine.JumpState);
@@ -98,7 +91,7 @@ public class PlayerBaseState : IState
 
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
-        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false && !stateMachine.Player.IsTired)
+        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false)
         {
             stateMachine.Player.IsDodgeing = true;
             stateMachine.ChangeState(stateMachine.DodgeState);
@@ -129,13 +122,13 @@ public class PlayerBaseState : IState
 
     private void Move()
     {
+        // 움직임이 없는 경우에는 지속적으로 중력값을 받는다
         stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
-        if (stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing && !stateMachine.Player.IsJumping)
+
+        //윰직임이 있는 경우에는
+        if (CanMove())
         {
-            Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
-            moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
-            moveDirection.y = 0;
-            moveDirection = moveDirection.normalized;
+            Vector3 moveDirection = MoveDirection_Ver_Camera();
             if (stateMachine.Player.IsGrounded)
             {
                 float moveSpeed = GetMovementSpeed();
@@ -143,6 +136,25 @@ public class PlayerBaseState : IState
             }
             Rotate(moveDirection);
         }
+    }
+    private bool CanMove()
+    {
+        return stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing && !stateMachine.Player.IsJumping;
+    }
+    // 카메라 방향으로 이동하는 방식
+    private Vector3 MoveDirection_Ver_Camera()
+    {
+        Vector3 moveDirection = stateMachine.MainCameraTransform.right * stateMachine.MovementInput.x;
+        moveDirection += stateMachine.MainCameraTransform.forward * stateMachine.MovementInput.y;
+        moveDirection.y = 0;
+        moveDirection = moveDirection.normalized;
+        return moveDirection;
+    }
+    // 키 입력 방향으로 이동하는 방식
+    private Vector3 MoveDirection_Ver_Key()
+    {
+        Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
+        return moveDirection.normalized;
     }
     private void Rotate(Vector3 lookDirection)
     {
@@ -154,10 +166,10 @@ public class PlayerBaseState : IState
     private void GroundedCheck()
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.14f, LayerMask.GetMask("Default") | LayerMask.GetMask("Item"),
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.14f, stateMachine.Player.GroundLayerMask,
                 QueryTriggerInteraction.Ignore);
     }
-    private float GetMovementSpeed()
+    protected float GetMovementSpeed()
     {
         return stateMachine.Player.PlayerData.MoveSpeed * stateMachine.Player.MovementSpeedModifier;
     }
@@ -169,6 +181,7 @@ public class PlayerBaseState : IState
     {
         stateMachine.Player.Animator.SetBool(animationHash, false);
     }
+
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

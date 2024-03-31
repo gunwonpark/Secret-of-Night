@@ -37,6 +37,5 @@ public class ForceReceiver : MonoBehaviour
     public void Jump(float jumpForce)
     {
         verticalVelocity += jumpForce;
-        Debug.Log(Movement);
     }
 }

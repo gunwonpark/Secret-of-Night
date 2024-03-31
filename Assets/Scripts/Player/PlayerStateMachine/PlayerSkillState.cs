@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerSkill1State : PlayerBaseState
+public class PlayerSkillState : PlayerBaseState
 {
-    public PlayerSkill1State(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerSkillState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 

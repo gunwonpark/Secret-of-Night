@@ -12,13 +12,14 @@ public class PlayerRunState : PlayerBaseState
     {
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = stateMachine.Player.runSpeed;
-        //stateMachine.Player.StaminaSystem.OnRunStart();
+        stateMachine.cameraScript.SetFOV(90f);
         if (stateMachine.MovementInput != Vector2.zero)
             StartAnimation(stateMachine.Player.AnimationData.RunParameter);
     }
     public override void Exit()
     {
         base.Exit();
+        stateMachine.cameraScript.ResetFOV();
         StopAnimation(stateMachine.Player.AnimationData.RunParameter);
     }
 
