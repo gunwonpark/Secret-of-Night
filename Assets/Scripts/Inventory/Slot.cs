@@ -8,8 +8,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public Image itemImage;
     public int itemCount;
     public TextMeshProUGUI _itemCountText;
-    private ItemSlot curSlot; //ÇöÀç ½½·Ô 
-    private Outline _outline; //ÀåÂø ¾ÆÀÌÅÛ Å×µÎ¸®
+    public ItemSlot curSlot; //í˜„ì¬ ìŠ¬ë¡¯ 
+    public Outline _outline; //ì¥ì°© ì•„ì´í…œ í…Œë‘ë¦¬
 
     public int index;
     public bool equipped;
@@ -35,7 +35,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         curSlot = _slot;
         itemImage.sprite = Resources.Load<Sprite>(_slot.item.IconPath);
-        itemImage.preserveAspect = true; //µé¾î°¡´Â ÀÌ¹ÌÁö ºñÀ²À» ºÎ¸ğ¿¡ ¸Â°Ô ÁöÁ¤
+        itemImage.preserveAspect = true; //ë“¤ì–´ê°€ëŠ” ì´ë¯¸ì§€ ë¹„ìœ¨ì„ ë¶€ëª¨ì— ë§ê²Œ ì§€ì •
         _itemCountText.text = _slot.count > 1 ? _slot.count.ToString() : string.Empty;
 
         if (_outline != null)
@@ -43,7 +43,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             _outline.enabled = equipped;
         }
 
-        ItemImage(1); //¾ÆÀÌÅÛ Ç¥½ÃÇÏ±â À§ÇØ Åõ¸íµµ 1
+        ItemImage(1); //ì•„ì´í…œ í‘œì‹œí•˜ê¸° ìœ„í•´ íˆ¬ëª…ë„ 1
     }
 
 
@@ -56,7 +56,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         ItemImage(0);
     }
 
-    // ½½·Ô Å¬¸¯½Ã ¾ÆÀÌÅÛ Á¤º¸ º¸ÀÌ°Ô
+    // ìŠ¬ë¡¯ í´ë¦­ì‹œ ì•„ì´í…œ ì •ë³´ ë³´ì´ê²Œ
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)

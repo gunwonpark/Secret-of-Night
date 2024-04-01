@@ -1,4 +1,3 @@
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -413,6 +412,89 @@ public class Inventory : MonoBehaviour
         RemoveSelectedItem();
     }
 
+
+    // -------------------------------------------------------------------------------
+
+    // 인벤토리 정렬 (버블 정렬) 아이템 수가 적어서 사용 / 많을 경우에 퀵 정렬
+    public void InventorySort()
+    {
+        // 장착된 아이템 슬롯과 정보를 저장
+        bool equipped = _uiSlots[curEquipIndex].equipped;
+        ItemSlot equippedItem = slots[curEquipIndex];
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            for (int j = i + 1; j < slots.Length; j++)
+            {
+                // null이 아니고, 오름차순으로 정렬
+                if (slots[i].item != null && slots[j].item != null &&
+                    slots[i].item.ItemID > slots[j].item.ItemID)
+                {
+                    ItemSlot temp = slots[i];
+                    slots[i] = slots[j];
+                    slots[j] = temp;
+
+                    // 만약 i나 j 중 하나가 장착된 아이템 슬롯일 경우
+                    // 나머지 하나는 장착이 해제되어야 함
+                    if (i == curEquipIndex)
+                    {
+                        curEquipIndex = j;
+                        _uiSlots[i].equipped = false;
+                    }
+                    else if (j == curEquipIndex)
+                    {
+                        curEquipIndex = i;
+                        _uiSlots[j].equipped = false;
+                    }
+
+                }
+            }
+        }
+        UpdateUI();
+
+        // 장착된 아이템 슬롯과 정보를 다시 설정
+        _uiSlots[curEquipIndex].equipped = equipped;
+        slots[curEquipIndex] = equippedItem;
+
+        if (_uiSlots[curEquipIndex].equipped)
+        {
+            _uiSlots[curEquipIndex]._outline.enabled = true;
+        }
+
+        // 선택된 아이템 정보를 업데이트
+        SelectItem(_selectedItemIndex);
+    }
+
+
+    // 인벤토리 빈칸 채우기
+    public void InventoryTrim()
+    {
+        //마지막 슬롯은 검사할 필요가 없기 때문에 -1
+        for (int i = 0; i < slots.Length - 1; i++)
+        {
+            // 현재 슬롯이 비어있고 다음 슬롯에 아이템이 있다면
+            if (slots[i].item == null && slots[i + 1].item != null)
+            {
+                // 현재 슬롯에 다음 슬롯의 아이템을 이동
+                slots[i] = slots[i + 1];
+                slots[i + 1] = new ItemSlot(); // 다음 슬롯을 비워줘야하기 때문에 초기화
+
+                _uiSlots[i].equipped = _uiSlots[i + 1].equipped; // 현재 슬롯의 장착 정보 <- 다음 슬롯 장착 정보 넣기
+                _uiSlots[i + 1].equipped = false; // 뒤에 슬롯은 장착 정보 해제
+                if (i + 1 == curEquipIndex) // 뒤 슬롯이 현재 장착된 상태라면 인덱스 초기화
+                {
+                    curEquipIndex = i;
+                }
+            }
+        }
+
+        UpdateUI(); // UI 업데이트
+        SelectItem(_selectedItemIndex);
+    }
+
+
+    // -------------------------------------------------------------------------------
+
     // 아이템 장착
     public void OnEquipBtton()
     {
@@ -445,7 +527,6 @@ public class Inventory : MonoBehaviour
             SelectItem(_index);
         }
     }
-
 
     public void OnUnEquipButton()
     {
@@ -504,7 +585,6 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
-
 
     // -------------------------------------------------------------------------------
 

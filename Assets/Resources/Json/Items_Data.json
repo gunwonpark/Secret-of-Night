@@ -11,7 +11,7 @@
 			"ItemName": "초급 체력 포션",
 			"Description": "초급 체력 포션으로 사용 시 체력이 5만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Health",
-			"MaxAmount": 10,
+			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/SmallHPPotion",
 			"UnlockLevel": 1
 		},
@@ -26,7 +26,7 @@
 			"ItemName": "고급 체력 포션",
 			"Description": "고급 체력 포션으로 사용 시 체력이 10만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Health",
-			"MaxAmount": 10,
+			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/BigHPPotion",
 			"UnlockLevel": 1
 		},
@@ -41,7 +41,7 @@
 			"ItemName": "초급 마력 포션",
 			"Description": "초급 마력 포션으로 사용 시 마력이 3만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Mana",
-			"MaxAmount": 10,
+			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/SmallMPPotion",
 			"UnlockLevel": 1
 		},
@@ -56,7 +56,7 @@
 			"ItemName": "고급 마력 포션",
 			"Description": "고급 마력 포션으로 사용 시 마력이 7만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Mana",
-			"MaxAmount": 10,
+			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/BigMPPotion",
 			"UnlockLevel": 1
 		},
@@ -71,7 +71,7 @@
 			"ItemName": "초급 스태미너 포션",
 			"Description": "초급 스태미너 포션으로 사용 시 스태미너가 5만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Stamina",
-			"MaxAmount": 10,
+			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/SmallSPPotion",
 			"UnlockLevel": 1
 		},
@@ -86,8 +86,8 @@
 			"ItemName": "고급 스태미너 포션",
 			"Description": "고급 스태미너 포션으로 사용 시 스태미너가 10만큼 회복 됩니다.",
 			"IconPath": "Images/Icons/Potion_Stamina",
-			"MaxAmount": 10,
-			"PrefabPath": "Prefabs/Items/BigSPPotion",
+			"MaxAmount": 99,
+			"PrefabPath": "Prefabs/Items/BigSPPotion ",
 			"UnlockLevel": 1
 		},
 		{
@@ -101,8 +101,8 @@
 			"ItemName": "이동속도 포션",
 			"Description": "초급 이동속도 포션으로 사용 시 이동속도가 60초 동안 1 증가합니다.",
 			"IconPath": "Images/Icons/Potion_Generic",
-			"MaxAmount": 10,
-			"PrefabPath": "Prefabs/Items/SpeedPotion",
+			"MaxAmount": 99,
+			"PrefabPath": "Prefabs/Items/SpeedPotion ",
 			"UnlockLevel": 1
 		},
 		{
@@ -148,7 +148,7 @@
 			"IconPath": "Images/Icons/SwordDragon",
 			"MaxAmount": 0,
 			"PrefabPath": "Prefabs/Weapons/SwordDragon",
-			"UnlockLevel": 11
+			"UnlockLevel": 6
 		},
 		{
 			"ItemID": 11,
