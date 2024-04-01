@@ -177,7 +177,8 @@ public class PlayerBaseState : IState
     private void GroundedCheck()
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, 0.09f, stateMachine.Player.GroundLayerMask,
+
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, stateMachine.Player.Controller.bounds.extents.x, stateMachine.Player.GroundLayerMask,
                 QueryTriggerInteraction.Ignore);
     }
     protected float GetMovementSpeed()
