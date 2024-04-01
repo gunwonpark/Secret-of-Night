@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, 0.14f);
+        Gizmos.DrawSphere(transform.position, 0.09f);
     }
 #endif
     public void TakeDamage(float damage)
