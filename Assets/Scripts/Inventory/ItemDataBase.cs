@@ -34,5 +34,10 @@ public class ItemDataBase : DataBase<int, Item>
             item.Prefab = Resources.Load<GameObject>(item.PrefabPath);
         }
     }
+
+    public List<Item> GetAllItems()
+    {
+        return items;
+    }
 }
 

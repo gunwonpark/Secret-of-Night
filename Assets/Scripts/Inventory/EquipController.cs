@@ -6,11 +6,12 @@ public class EquipController : MonoBehaviour
     public Transform equipParent;
 
     private PlayerGameData _playerData;
-    private float _defultDamage;
+    private float _defaultDamage;
 
     private void Start()
     {
         _playerData = GameManager.Instance.playerManager.playerData;
+        _defaultDamage = _playerData.Damage;
         EquipDefaultWeapon();
     }
 
@@ -21,7 +22,6 @@ public class EquipController : MonoBehaviour
 
         PlayerNewEquip(defaultWeapon);
         EquipWeaponPower(defaultWeapon.ItemID, defaultWeapon.Damage);
-
     }
 
     // 캐릭터 손에 무기 장착
@@ -38,19 +38,17 @@ public class EquipController : MonoBehaviour
         {
             Destroy(curEquip.gameObject);
             curEquip = null;
-
         }
     }
 
     // 무기 장착시 공격력 변화
     public void EquipWeaponPower(int _id, float _damage)
     {
-        _defultDamage = _playerData.Damage;
-        _playerData.Damage = _defultDamage + _damage;
+        _playerData.Damage = _defaultDamage + _damage;
     }
 
     public void UnEquipWeaponPower()
     {
-        _playerData.Damage = _defultDamage;
+        _playerData.Damage = _defaultDamage;
     }
 }
