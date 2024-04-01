@@ -16,7 +16,11 @@ public class CameraTPP : MonoBehaviour
     public float verticalAimingSpeed = 6.0f; // 수직 회전속도
     public float maxVerticalAngle = 30.0f; // 최대 수직각도
     public float minVerticalAngle = -60.0f;// 최소 수직각도
+
+    //smoothDamp
     float angleHVelocity = 0.0f;
+    Vector3 pivotOffsetVelocity = Vector3.zero;
+    Vector3 camOffsetVelocity = Vector3.zero;
     float smoothTime = 0.3f;
 
     private float angleH = 0.0f; // 마우스 이동에 따른 카메라 수평이동 수치
@@ -106,7 +110,6 @@ public class CameraTPP : MonoBehaviour
         angleV = -40f;
         //angleH = Mathf.LerpAngle(angleH, targetHorizontalAngle, Time.deltaTime);
         angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.1f);
-        Debug.Log(targetHorizontalAngle);
         angleH = Mathf.Clamp(angleH, -45f, 45f);
 
         //카메라 회전
@@ -117,14 +120,45 @@ public class CameraTPP : MonoBehaviour
         //setFOV
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime);
 
+        //카메라 충돌처리
+        Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
+        Vector3 noCollisionOffset = targetCamOffset; // 조준할때와 평소에 다르다
+
+        ViewingPosCheck(baseTempPosition + aimRotation * noCollisionOffset,
+             0.7f, ref noCollisionOffset);
+
+
+
         //Reposition Camera
-        smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset,
-            smooth * Time.deltaTime);
-        smoothCamOffset = Vector3.Lerp(smoothCamOffset, targetCamOffset,
-            smooth * Time.deltaTime);
+        smoothPivotOffset = Vector3.SmoothDamp(smoothPivotOffset, targetPivotOffset, ref pivotOffsetVelocity, smoothTime);
+        smoothCamOffset = Vector3.SmoothDamp(smoothCamOffset, noCollisionOffset, ref camOffsetVelocity, smoothTime);
 
         cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
     }
+
+    //player의 pivot position이 발바닭임을 가정한다 deltaPlayerHeight만큼의 위에서 체크    
+    bool ViewingPosCheck(Vector3 checkPos, float deltaPlayerHeight, ref Vector3 offSet)
+    {
+        Vector3 origin = player.position;
+        Debug.DrawRay(origin, checkPos - origin, Color.red);
+        Vector3 direction = checkPos - origin;
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, direction.magnitude))
+        {
+            if (hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
+            {
+                Debug.DrawRay(hit.point, Vector3.up);
+                float dirMag = (checkPos - hit.point).magnitude + 0.1f;
+                offSet.z += dirMag;
+                Debug.Log(dirMag);
+                Debug.Log(offSet.z);
+                offSet.z = Mathf.Clamp(offSet.z, -1000f, 0.3f);
+                return false;
+            }
+        }
+        return true;
+    }
+    //CapsuleCollider을 사용해 플레이어의 목 부분 위치를 가져와 이 지점을 기점으로 카메라와 플레이어 사이의 물체 감지
+
     public float GetCurrentPivotMagnitude(Vector3 finalPivotOffset)
     {
         return Mathf.Abs((finalPivotOffset - smoothPivotOffset).magnitude);
