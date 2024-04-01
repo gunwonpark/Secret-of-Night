@@ -128,11 +128,21 @@ public class PlayerBaseState : IState
         //윰직임이 있는 경우에는
         if (CanMove())
         {
-            Vector3 moveDirection = MoveDirection_Ver_Camera();
+            Vector3 moveDirection = MoveDirection_Ver_Key();
             if (stateMachine.Player.IsGrounded)
             {
                 float moveSpeed = GetMovementSpeed();
                 stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+            }
+            // test
+            if (stateMachine.MovementInput.x != 0)
+            {
+                float temp = stateMachine.MovementInput.y == 0 ? 1 : stateMachine.MovementInput.y;
+                stateMachine.cameraScript.SetAngleH(45 * stateMachine.MovementInput.x * temp);
+            }
+            else
+            {
+                stateMachine.cameraScript.ResetAngleH();
             }
             Rotate(moveDirection);
         }
@@ -151,13 +161,14 @@ public class PlayerBaseState : IState
         return moveDirection;
     }
     // 키 입력 방향으로 이동하는 방식
-    private Vector3 MoveDirection_Ver_Key()
+    private Vector3 MoveDirection_Ver_Key() // test
     {
         Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
         return moveDirection.normalized;
     }
     private void Rotate(Vector3 lookDirection)
     {
+        lookDirection = new Vector3(lookDirection.x, lookDirection.y, Mathf.Abs(lookDirection.z)); // test
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.Player.rotationDamping);
