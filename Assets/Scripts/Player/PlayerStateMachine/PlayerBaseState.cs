@@ -168,7 +168,7 @@ public class PlayerBaseState : IState
     }
     private void Rotate(Vector3 lookDirection)
     {
-        lookDirection = new Vector3(lookDirection.x, lookDirection.y, Mathf.Abs(lookDirection.z)); // test
+        lookDirection = new Vector3(lookDirection.x, lookDirection.y, lookDirection.z); // test
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,
             lookRotation, Time.deltaTime * stateMachine.Player.rotationDamping);

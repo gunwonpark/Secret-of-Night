@@ -105,7 +105,7 @@ public class CameraTPP : MonoBehaviour
         //실험용
         angleV = -40f;
         //angleH = Mathf.LerpAngle(angleH, targetHorizontalAngle, Time.deltaTime);
-        angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.2f);
+        angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.1f);
         Debug.Log(targetHorizontalAngle);
         angleH = Mathf.Clamp(angleH, -45f, 45f);
 
