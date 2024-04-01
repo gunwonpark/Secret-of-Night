@@ -35,6 +35,5 @@ public class GameManager : MonoBehaviour
         if (skillManager == null) { skillManager = gameObject.AddComponent<SkillManager>(); }
         if (playerManager == null) { playerManager = gameObject.AddComponent<PlayerManager>(); playerManager.Initialize(1); }
         if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }
-
     }
 }

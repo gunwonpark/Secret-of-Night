@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
     public PlayerStatDataBase playerStatDataBase;
     public BossMonsterStatDatabase bossMonsterStatDatabase;
     public ItemDataBase itemDataBase;
+
     #endregion
 
     public void Initialize()

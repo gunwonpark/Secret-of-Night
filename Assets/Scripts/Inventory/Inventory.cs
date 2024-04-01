@@ -11,21 +11,22 @@ public class ItemSlot
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
+
     public bool activated;
     private bool _speedItemUse;
-    public static Inventory instance;
+
     private CameraHandler _camera;
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
     private PlayerController _playerController;
 
-    public GameObject playerLight;
-
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
     [SerializeField] private GameObject _statInfo; // 스탯 정보 
+    public GameObject playerLight;
 
-    [SerializeField] private Slot[] _uiSlots; //슬롯들을 배열로 할당
+    public Slot[] _uiSlots; //슬롯들을 배열로 할당
     public ItemSlot[] slots; // 아이템 정보
 
     //public Transform dropPosition; // 아이템 드랍 위치
@@ -41,16 +42,29 @@ public class Inventory : MonoBehaviour
     public GameObject equipButton;
     public GameObject unEquipButton;
     public GameObject dropButton;
+    public GameObject saleButton;
 
+    private int curEquipIndex;
+
+    [Header("Page")]
     // 페이지 넘기기 위한 변수
     private int _maxSlot = 12;
     private int _currentPage = 1;
     private int _totalPage = 3;
 
-    private int curEquipIndex;
-
     public Button rightBtn;
     public Button leftBtn;
+
+    [Header("Pop-Up")]
+    public GameObject popUpUI;
+    public GameObject checkBtn;
+    public GameObject saleBtn;
+    public GameObject cancleBtn;
+    public TextMeshProUGUI popUpText;
+
+
+    [Header("Cash")]
+    public TextMeshProUGUI cash;
 
 
     private void Awake()
@@ -60,12 +74,16 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
+
     }
 
     void Start()
     {
         _inventoryUI.SetActive(false);
         _statInfo.SetActive(false);
+        popUpUI.SetActive(false);
+
+        CashUpdate();
 
         slots = new ItemSlot[_uiSlots.Length];
 
@@ -79,12 +97,18 @@ public class Inventory : MonoBehaviour
         }
 
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성화
+        CashUpdate();
 
     }
 
     void Update()
     {
         OpenInventoryUI();
+    }
+
+    public void CashUpdate()
+    {
+        cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
     }
 
     private void OpenInventoryUI()
@@ -113,6 +137,7 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
+
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
 
@@ -201,6 +226,8 @@ public class Inventory : MonoBehaviour
         playerLight.SetActive(false);
     }
 
+    // -------------------------------------------------------------------------------
+
     //아이템 추가
     public void AddItem(Item _item)
     {
@@ -285,6 +312,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
+        saleButton.SetActive(true);
     }
     private string UsingItemStatText()
     {
@@ -332,6 +360,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(false);
         unEquipButton.SetActive(false);
         dropButton.SetActive(false);
+        saleButton.SetActive(false);
     }
 
     void UpdateUI() //UI 업데이트
@@ -344,6 +373,8 @@ public class Inventory : MonoBehaviour
                 _uiSlots[i].ClearSlot();
         }
     }
+
+    // -------------------------------------------------------------------------------
 
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
@@ -433,6 +464,7 @@ public class Inventory : MonoBehaviour
         RemoveSelectedItem();
     }
 
+    // 아이템 버리기
     private void ThrowItem(Item _item)
     {
         //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
@@ -454,7 +486,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
+    // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
     private void RemoveSelectedItem()
     {
         _selectedItem.count--;
@@ -470,9 +502,58 @@ public class Inventory : MonoBehaviour
             _selectedItem.item = null;
             ClearSeletecItemWindow(); // 아이템 설명 비워지게
         }
-
-
         UpdateUI();
+    }
+
+
+    // -------------------------------------------------------------------------------
+
+    // 아이템 판매하기
+    public void SaleItem()
+    {
+        int _money = _selectedItem.item.Money / 2;
+        if (!_uiSlots[_selectedItemIndex].equipped)
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(false); //확인 버튼 비활성
+
+            saleBtn.SetActive(true);
+            cancleBtn.SetActive(true);
+            popUpText.text = _money + "$ 에 판매 \n 하시겠습니까?";
+        }
+        else
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(true); //확인 버튼 활성
+
+            saleBtn.SetActive(false);
+            cancleBtn.SetActive(false);
+            popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
+        }
+    }
+
+    // 팝업 판매 확인 버튼
+    public void OnSaleCheckButton()
+    {
+        int _money = _selectedItem.item.Money / 2;
+        GameManager.Instance.playerManager.playerData.Gold += _money;
+        CashUpdate();
+        Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
+        RemoveSelectedItem();
+        popUpUI.SetActive(false);
+    }
+
+    // 팝업 판매 취소 버튼
+    public void OnSaleCancelButton()
+    {
+        popUpUI.SetActive(false);
+    }
+
+    // 팝업 경고 확인 버튼(잠금 무기 또는 금액 부족 시)
+    public void OnInventoryCheckButton()
+    {
+        popUpUI.SetActive(false);
+
     }
 
 }
