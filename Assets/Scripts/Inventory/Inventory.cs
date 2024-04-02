@@ -132,11 +132,11 @@ public class Inventory : MonoBehaviour
                 playerLight.SetActive(false);
             }
         }
+
     }
 
-    private void OpenInventory()
+    public void OpenInventory()
     {
-
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
 
@@ -149,6 +149,7 @@ public class Inventory : MonoBehaviour
         //마우스 커서 표시
         Cursor.lockState = CursorLockMode.None;
         _inventoryUI.SetActive(true);
+        ClearSeletecItemWindow();
     }
 
     public void CloseInventory()
@@ -311,7 +312,11 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
-        saleButton.SetActive(true);
+        if (Shop.instance.shopActivated)
+        {
+            saleButton.SetActive(true);
+        }
+
     }
     private string UsingItemStatText()
     {

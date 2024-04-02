@@ -127,11 +127,6 @@ public class Shop : MonoBehaviour
 
             if (shopActivated)
             {
-                if (Inventory.instance.activated)
-                {
-                    Inventory.instance.CloseInventory();
-                    Inventory.instance.playerLight.SetActive(false);
-                }
                 OpenShop();
                 _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
@@ -144,6 +139,26 @@ public class Shop : MonoBehaviour
                 _playerController.Input.enabled = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            shopActivated = !shopActivated;
+
+            if (shopActivated)
+            {
+                Inventory.instance.OpenInventory();
+                _camera.enabled = false; // 카메라 비활성
+                _playerController.Input.enabled = false; //플레이어 활동 비활성
+
+            }
+            else
+            {
+                Inventory.instance.CloseInventory();
+                _camera.enabled = true;
+                _playerController.Input.enabled = true;
+            }
+        }
+
     }
 
     private void OpenShop()
@@ -160,6 +175,7 @@ public class Shop : MonoBehaviour
         //마우스 커서 표시
         Cursor.lockState = CursorLockMode.None;
         _shopUI.SetActive(true);
+        ClearSeletecItemWindow();
     }
 
     public void CloseShop()
