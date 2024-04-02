@@ -13,10 +13,43 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/PlatypusA",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Steak_01",
+				"Steak_02",
+				"Cup",
+				"Log_01",
+				"Soda",
+				"Book_01",
+				"Book_02",
+				"Fish",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.11,
+				0.11,
+				0.11,
+				0.11,
+				0.11,
+				0.11,
+				0.11,
+				0.12,
+				0.11
+			]
 		},
 		{
 			"MonsterID": 2,
@@ -31,10 +64,58 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/ChameleonA",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Steak_01",
+				"Steak_02",
+				"Candle_01",
+				"Candle_02",
+				"Candle_03",
+				"Cup",
+				"Soda",
+				"Book_01",
+				"Book_02",
+				"Fish",
+				"Bread",
+				"Donut_01",
+				"Donut_02",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.07,
+				0.08,
+				0.07,
+				0.07,
+				0.07,
+				0.08
+			]
 		},
 		{
 			"MonsterID": 3,
@@ -49,10 +130,49 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/Meerkat",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Steak_01",
+				"Steak_02",
+				"Candle_01",
+				"Candle_02",
+				"Candle_03",
+				"Cup",
+				"Soda",
+				"Book_01",
+				"Book_02",
+				"Fish",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.09,
+				0.1,
+				0.09
+			]
 		},
 		{
 			"MonsterID": 4,
@@ -67,10 +187,55 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/Porcupine",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Bucket_01",
+				"Plate_01",
+				"Plate_02",
+				"Watermelon",
+				"Banana",
+				"Apple",
+				"Orange",
+				"Book_01",
+				"Book_02",
+				"Fish",
+				"Cake",
+				"Cookie",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.07,
+				0.07,
+				0.07,
+				0.08,
+				0.08,
+				0.08,
+				0.08,
+				0.07,
+				0.07,
+				0.08,
+				0.08,
+				0.08,
+				0.09
+			]
 		},
 		{
 			"MonsterID": 5,
@@ -85,10 +250,64 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/Skunk",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Mushroom_01",
+				"Mushroom_02",
+				"Mushroom_03",
+				"Mushroom_04",
+				"Mushroom_05",
+				"Mushroom_06",
+				"Mushroom_07",
+				"Carrot",
+				"Pumpkin",
+				"Pepper",
+				"Tomato",
+				"Mushroom",
+				"Garlic",
+				"Tomato_03",
+				"Avocado",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.06,
+				0.06,
+				0.06,
+				0.06,
+				0.06,
+				0.06,
+				0.06,
+				0.07,
+				0.06,
+				0.07,
+				0.06,
+				0.06,
+				0.06,
+				0.07,
+				0.07,
+				0.06
+			]
 		},
 		{
 			"MonsterID": 6,
@@ -103,10 +322,37 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/WolfA",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Steak_01",
+				"Steak_02",
+				"FullCup",
+				"Fish",
+				"SmallHPPotion",
+				"SpeedPotion",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.16,
+				0.16,
+				0.16,
+				0.16,
+				0.1,
+				0.1,
+				0.16
+			]
 		},
 		{
 			"MonsterID": 7,
@@ -121,10 +367,313 @@
 			"CriDamage": 0,
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
-			"AtkRange": 1,
+			"AtkRange": 1.6,
 			"PrefabPath": "Prefabs/Monsters/BullA",
 			"TargetRange": 5,
-			"RotationDamping": 10
+			"RotationDamping": 10,
+			"DropItem": [
+				"Pepper",
+				"Broccoli",
+				"Tomato",
+				"Carrot",
+				"Mushroom_01",
+				"Mushroom_02",
+				"Mushroom_03",
+				"Mushroom_04",
+				"Mushroom_05",
+				"Mushroom_06",
+				"Mushroom_07",
+				"Mushroom",
+				"MoneyBag",
+				"Tomato_03",
+				"Grass_01",
+				"SmallMPPotion",
+				"SmallSPPotion",
+				"Gold"
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				10
+			],
+			"Weight": [
+				0.06,
+				0.07,
+				0.06,
+				0.07,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.05,
+				0.07,
+				0.07,
+				0.05,
+				0.05,
+				0.05
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
+		},
+		{
+			"MonsterID": 0,
+			"Name": 0,
+			"Level": 0,
+			"Exp": 0,
+			"AtkStance": 0,
+			"HP": 0,
+			"Damage": 0,
+			"Daf": 0,
+			"DmgSpeed": 0,
+			"CriDamage": 0,
+			"MoveSpeed": 0,
+			"RunSpeed": 0,
+			"AtkRange": 0,
+			"PrefabPath": 0,
+			"TargetRange": 0,
+			"RotationDamping": 0,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weight": [
+				0
+			]
 		}
 	]
 }

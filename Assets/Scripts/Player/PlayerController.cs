@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [field: SerializeField] public PlayerGameData PlayerData { get; set; }
     [field: SerializeField] public float MovementSpeedModifier { get; set; }
 
+    public LayerMask groundLayer;
+    public int GroundLayerMask => groundLayer.value;
+
     public float walkSpeed = 2.0f;
     public float runSpeed = 4.0f;
     public float rotationDamping = 10f;
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, 0.14f);
+        Gizmos.DrawSphere(transform.position, stateMachine.Player.Controller.bounds.extents.x);
     }
 #endif
     public void TakeDamage(float damage)
