@@ -10,7 +10,6 @@ public class Shop : MonoBehaviour
     [SerializeField] private ShopSlot[] _uiSlots; // 상점 슬롯들을 저장할 배열
     [SerializeField] private Item[] _items; // 상점에 판매할 아이템 데이터 배열
 
-    private CameraHandler _camera;
     private PlayerController _playerController;
 
     [Header("Shop UI")]
@@ -54,7 +53,6 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _camera = FindObjectOfType<CameraHandler>();
         _playerController = FindObjectOfType<PlayerController>();
     }
 
@@ -128,14 +126,12 @@ public class Shop : MonoBehaviour
             if (shopActivated)
             {
                 OpenShop();
-                _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
 
             }
             else
             {
                 CloseShop();
-                _camera.enabled = true;
                 _playerController.Input.enabled = true;
             }
         }
@@ -147,14 +143,12 @@ public class Shop : MonoBehaviour
             if (shopActivated)
             {
                 Inventory.instance.OpenInventory();
-                _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
 
             }
             else
             {
                 Inventory.instance.CloseInventory();
-                _camera.enabled = true;
                 _playerController.Input.enabled = true;
             }
         }
@@ -243,7 +237,6 @@ public class Shop : MonoBehaviour
     public void OnExit()
     {
         _shopUI.SetActive(false);
-        _camera.enabled = true;
         _playerController.Input.enabled = true;
     }
 

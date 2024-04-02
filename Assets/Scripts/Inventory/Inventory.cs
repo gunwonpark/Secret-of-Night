@@ -15,7 +15,6 @@ public class Inventory : MonoBehaviour
     public bool activated;
     private bool _speedItemUse;
 
-    private CameraHandler _camera;
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
     private PlayerController _playerController;
@@ -69,7 +68,6 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _camera = FindObjectOfType<CameraHandler>();
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
@@ -119,7 +117,6 @@ public class Inventory : MonoBehaviour
             if (activated)
             {
                 OpenInventory();
-                _camera.enabled = false; // 카메라 비활성
                 _playerController.Input.enabled = false; //플레이어 활동 비활성
                 playerLight.SetActive(true);
 
@@ -127,7 +124,6 @@ public class Inventory : MonoBehaviour
             else
             {
                 CloseInventory();
-                _camera.enabled = true;
                 _playerController.Input.enabled = true;
                 playerLight.SetActive(false);
             }
@@ -221,7 +217,6 @@ public class Inventory : MonoBehaviour
     public void OnExit()
     {
         _inventoryUI.SetActive(false);
-        _camera.enabled = true;
         _playerController.Input.enabled = true;
         playerLight.SetActive(false);
     }
