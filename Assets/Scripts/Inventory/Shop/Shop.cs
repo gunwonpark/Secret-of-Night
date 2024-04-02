@@ -38,12 +38,18 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI cash;
     public GameObject purchaseBtn;
 
+    [Header("PurchasePop-Up")]
+    public GameObject purchasePopUpUI;
+    public TMP_InputField countInput;
+    public GameObject purchaseCheckBtn;
+    public GameObject purchaseCancleBtn;
+    public TextMeshProUGUI ItemNameText;
+
     [Header("Pop-Up")]
     public GameObject popUpUI;
     public GameObject checkBtn;
-    public GameObject purchaseCheckBtn;
-    public GameObject purchaseCancleBtn;
     public TextMeshProUGUI popUpText;
+
 
     private void Awake()
     {
@@ -331,37 +337,26 @@ public class Shop : MonoBehaviour
         }
     }
 
-    // 아이템 구매
+    // 아이템 구매 
     public void PurchaseItem()
     {
         if (_selectedItem != null && !_selectedItem.IsLocked) // 잠기지 않은 아이템만 구매 가능하도록
         {
             if (GameManager.Instance.playerManager.playerData.Gold >= _selectedItem.item.Money)
             {
-                popUpUI.SetActive(true);
-                checkBtn.SetActive(false); //확인 버튼 비활성
+                purchasePopUpUI.SetActive(true); // 구매 팝업
+                ItemNameText.text = _selectedItem.item.ItemName + " : $ " + _selectedItem.item.Money;
 
-                purchaseCheckBtn.SetActive(true);
-                purchaseCancleBtn.SetActive(true);
-                popUpText.text = _selectedItem.item.Money + "$ 에 구매 \n 하시겠습니까?";
             }
             else
             {
-                popUpUI.SetActive(true);
-                checkBtn.SetActive(true); //확인 버튼 활성
-
-                purchaseCheckBtn.SetActive(false);
-                purchaseCancleBtn.SetActive(false);
+                popUpUI.SetActive(true); // 일반 팝업
                 popUpText.text = "소지금이 부족합니다.";
             }
         }
         else
         {
             popUpUI.SetActive(true);
-            checkBtn.SetActive(true); //확인 버튼 활성
-
-            purchaseCheckBtn.SetActive(false);
-            purchaseCancleBtn.SetActive(false);
             popUpText.text = "잠금 아이템 입니다.\n 권장 레벨 :" + _selectedItem.item.UnlockLevel;
         }
     }
@@ -375,13 +370,15 @@ public class Shop : MonoBehaviour
         Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
         cash.text = Inventory.instance.cash.text; // 상점 돈도 업데이트
 
-        popUpUI.SetActive(false);
+        purchasePopUpUI.SetActive(false);
+        ItemNameText.text = "";
     }
 
     // 팝업 구매 취소 버튼
     public void OnPurchaseCancelButton()
     {
-        popUpUI.SetActive(false);
+        purchasePopUpUI.SetActive(false);
+        ItemNameText.text = "";
     }
 
 
@@ -389,5 +386,6 @@ public class Shop : MonoBehaviour
     public void OnShopCheckButton()
     {
         popUpUI.SetActive(false);
+        popUpText.text = "";
     }
 }

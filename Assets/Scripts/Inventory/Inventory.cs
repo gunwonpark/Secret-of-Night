@@ -448,6 +448,19 @@ public class Inventory : MonoBehaviour
                     }
 
                 }
+                // 수량 정렬 / 아이템의 아이디가 같을 때
+                if (slots[i].item != null && slots[j].item != null &&
+                    slots[i].item.ItemID == slots[j].item.ItemID && slots[i].count < slots[i].item.MaxAmount)
+                {
+                    int totalAmount = slots[i].count + slots[j].count;
+                    slots[i].count = Mathf.Min(totalAmount, slots[i].item.MaxAmount);
+                    slots[j].count = totalAmount - slots[i].count;
+                    if (slots[j].count <= 0)
+                    {
+                        slots[j].item = null;
+                    }
+                }
+
             }
         }
         UpdateUI();
