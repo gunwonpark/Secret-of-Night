@@ -1,0 +1,122 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class DialogueHandler : MonoBehaviour
+{
+    [SerializeField] private CanvasGroup dimedCanvasGroup; // 대화창 Dimed CanvasGroup
+    [SerializeField] private TextMeshProUGUI nameText; // 대화창 이름 Text
+    [SerializeField] private TextMeshProUGUI dialogueText; // 대화창 대사 Text
+
+    private List<Dialogue> dialogues = new List<Dialogue>(); // 대화 리스트
+    private int dialogueIndex = 0; // 대화 인덱스
+
+    private void Update()
+    {
+        // F 누르면 CheckDialogue 호출
+        if (IsDialogueActive() && Input.GetKeyDown(KeyCode.F))
+        {
+            CheckDialogue();
+        }
+    }
+
+    // 대화 확인
+    private void CheckDialogue()
+    {
+        dialogueIndex++; // 대화 인덱스 증가
+
+        // dialogues가 남아있다면
+        if (dialogueIndex < dialogues.Count)
+        {
+            ShowDialogue(); // 대화창 표시
+        }
+        else
+        {
+            HideDialogueUI(); // 대화창 UI 숨기기
+
+            Debug.LogWarning("대화 끝, 퀘스트 목표 표시, 바로 퀘스트 완료인지 확인");
+
+            // 퀘스트 목표 표시
+            QuestManager.I.ShowQuestDescription();
+
+            // 바로 퀘스트 완료인지 확인
+            QuestManager.I.CheckDirectQuestClear();
+        }
+
+    }
+
+    // 대화 목록 초기화
+    public void InitDialogues(List<Dialogue> dialogues)
+    {
+        this.dialogues = dialogues; // 대화 리스트 할당
+        dialogueIndex = 0; // 대화 인덱스 초기화
+
+        ShowDialogue(); // 대화창 표시
+
+        Debug.LogWarning("캐릭터 조작 변경 필요");
+    }
+
+    // 대화창 표시
+    private void ShowDialogue()
+    {
+        var dialogue = dialogues[dialogueIndex]; // 현재 대화
+
+        ShowDialogueUI(dialogue.name, dialogue.dialogue); // 대화창 UI 표시
+    }
+
+    // 대화창 UI 표시
+    private void ShowDialogueUI(string name, string dialogue)
+    {
+        nameText.text = name; // 이름 표시
+        dialogueText.text = dialogue; // 대사 표시
+
+        ActiveDialogue(); // 대화창 활성화
+    }
+
+    // 대화창 활성화
+    private void ActiveDialogue()
+    {
+        if (!dimedCanvasGroup.blocksRaycasts)
+        {
+            dimedCanvasGroup.alpha = 1; // Dimed 활성화
+            dimedCanvasGroup.blocksRaycasts = true; // Raycast 활성화
+            dimedCanvasGroup.interactable = true; // 상호작용 활성화
+        }
+    }
+
+    // 대화창 UI 숨기기
+    public void HideDialogueUI()
+    {
+        DeactiveDialogue(); // 대화창 비활성화
+
+        nameText.text = ""; // 이름 초기화
+        dialogueText.text = ""; // 대사 초기화
+    }
+
+    // 대화창 비활성화
+    private void DeactiveDialogue()
+    {
+        if (dimedCanvasGroup.blocksRaycasts)
+        {
+            dimedCanvasGroup.alpha = 0; // Dimed 비활성화
+            dimedCanvasGroup.blocksRaycasts = false; // Raycast 비활성화
+            dimedCanvasGroup.interactable = false; // 상호작용 비활성화
+        }
+    }
+
+    // 대화창 UI가 활성화 상태인지 확인
+    private bool IsDialogueActive()
+    {
+        return dimedCanvasGroup.blocksRaycasts;
+    }
+}
+
+
+[Serializable]
+public class Dialogue
+{
+    public string name; // 이름
+    public string dialogue; // 대사
+}
