@@ -100,7 +100,7 @@ public class CameraTPP : MonoBehaviour
     {
         ResetTargetOffsets();
         //마우스 이동값
-        //angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
+        angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
         angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
 
         //수직 이동 제한

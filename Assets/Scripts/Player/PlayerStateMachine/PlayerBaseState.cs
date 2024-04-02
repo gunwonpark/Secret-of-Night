@@ -135,15 +135,15 @@ public class PlayerBaseState : IState
                 stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
             }
             // test
-            if (stateMachine.MovementInput.x != 0)
-            {
-                float temp = stateMachine.MovementInput.y == 0 ? 1 : stateMachine.MovementInput.y;
-                stateMachine.cameraScript.SetAngleH(45 * stateMachine.MovementInput.x * temp);
-            }
-            else
-            {
-                stateMachine.cameraScript.ResetAngleH();
-            }
+            //if (stateMachine.MovementInput.x != 0)
+            //{
+            //    float temp = stateMachine.MovementInput.y == 0 ? 1 : stateMachine.MovementInput.y;
+            //    stateMachine.cameraScript.SetAngleH(45 * stateMachine.MovementInput.x * temp);
+            //}
+            //else
+            //{
+            //    stateMachine.cameraScript.ResetAngleH();
+            //}
             Rotate(moveDirection);
         }
     }
