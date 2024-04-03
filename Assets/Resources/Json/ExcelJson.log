@@ -61,12 +61,6 @@ Found object mark: '#FieldMonster[{}]'
  Key: TargetRange at 15
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
  Key: RotationDamping at 16
-[FieldMonster_Data.xlsx(Sheet1): ROW 1]
- Key: DropItem[] at 17
-[FieldMonster_Data.xlsx(Sheet1): ROW 1]
- Key: DropItemCount[] at 18
-[FieldMonster_Data.xlsx(Sheet1): ROW 1]
- Key: Weight[] at 19
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx
