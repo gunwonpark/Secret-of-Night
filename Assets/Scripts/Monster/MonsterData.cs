@@ -25,15 +25,13 @@ public class MonsterInfo
 
     public GameObject prefab;
 }
-//변하는 데이터 -> HP
-//몬스터cs 상위에 HP만 변할수 있도록 따로 적어둬야함
 //건원님 DataManager에 합쳐보자.
 
 [Serializable]
 public class MonsterDataBase //->실제데이터
 {
     public List<MonsterInfo> FieldMonster;
-    public Dictionary<string, MonsterInfo> fieldMonDic = new();
+    public Dictionary<int, MonsterInfo> fieldMonDic = new();
 
     //몬스터리스트를 딕셔너리에 추가
     public void Initialize()
@@ -41,17 +39,17 @@ public class MonsterDataBase //->실제데이터
         foreach (MonsterInfo fieldMonster in FieldMonster)
         {
             //fieldMonster.Init();
-            fieldMonDic.Add(fieldMonster.Name, fieldMonster);
+            fieldMonDic.Add(fieldMonster.MonsterID, fieldMonster);
             fieldMonster.prefab = Resources.Load<GameObject>(fieldMonster.PrefabPath);
         }
     }
 
-    //이름으로 몬스터정보 반환
-    public MonsterInfo GetMonsterInfoByKey(string name)
+    //MonsterID로 몬스터정보 반환
+    public MonsterInfo GetMonsterInfoByKey(int MonsterID)
     {
-        if (fieldMonDic.ContainsKey(name))
+        if (fieldMonDic.ContainsKey(MonsterID))
         {
-            return fieldMonDic[name];
+            return fieldMonDic[MonsterID];
         }
         return null;
     }

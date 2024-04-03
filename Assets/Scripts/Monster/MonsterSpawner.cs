@@ -18,13 +18,11 @@ public class MonsterSpawner : MonoBehaviour
         for (int i = 0; i < spotPoint.Length; i++)
         {
             //이름 가져오기
-            string name = spotPoint[i].monsterName;//i번째의 몬스터 이름을
-            MonsterInfo monsterInfo = monsterManager.GetMonsterInfoByKey(name);//여기에 넣어 i번째 몬스터 정보를 가져옴
+            int MonsterID = spotPoint[i].MonsterID;//i번째의 몬스터 이름을
+            MonsterInfo monsterInfo = monsterManager.GetMonsterInfoByKey(MonsterID);//여기에 넣어 i번째 몬스터 정보를 가져옴
 
             //monsterSpot에 정보 넘겨줌
             spotPoint[i].MonsterSpawn(monsterInfo);
         }
     }
-
-
 }

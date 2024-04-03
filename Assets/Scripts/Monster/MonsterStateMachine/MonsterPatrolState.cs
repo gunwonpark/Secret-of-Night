@@ -24,7 +24,6 @@ public class MonsterPatrolState : MonsterBaseState
     {
         base.Update();
         IsInMyPosition();
-        //원래 포지션으로 가면 -> idle State로 바꿈
     }
 
     private void IsInMyPosition()
@@ -35,6 +34,7 @@ public class MonsterPatrolState : MonsterBaseState
 
         float distance = (currentPosition - myOriginalPosition).sqrMagnitude;
 
+        //원래 포지션으로 가면 -> idle State로 바꿈
         if (distance <= 0.5f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
