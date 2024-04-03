@@ -562,7 +562,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 아이템 버리기
-    public void ThrowItem(Item _item)
+    private void ThrowItem(Item _item)
     {
         //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
 
