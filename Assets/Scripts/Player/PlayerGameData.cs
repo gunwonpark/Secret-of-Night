@@ -32,7 +32,7 @@ public class PlayerGameData
     public float CriDamage;
     public float Def;
     public float MoveSpeed;
-    public int Gold = 3000;
+    public int Gold;
     // 여기 없어야 되는데 일단 넣어 둡니다
     public event Action OnDie;
     public PlayerGameData()
@@ -80,6 +80,7 @@ public class PlayerGameData
                 CriDamage = statData.CriDamage;
                 Def = statData.Def;
                 MoveSpeed = statData.MoveSpeed;
+                Gold = statData.Gold;
             }
         }
     }

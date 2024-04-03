@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
-    [SerializeField] private GameObject _statInfo; // 스탯 정보 
+    [SerializeField] private GameObject _statIcon; // 스탯 정보 
     public GameObject playerLight;
 
     public Slot[] _uiSlots; //슬롯들을 배열로 할당
@@ -76,8 +76,19 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        Initialize();
+    }
+
+    void Update()
+    {
+        OpenInventoryUI();
+    }
+
+    //인벤토리 초기화
+    public void Initialize()
+    {
         _inventoryUI.SetActive(false);
-        _statInfo.SetActive(false);
+        _statIcon.SetActive(false);
         popUpUI.SetActive(false);
 
         CashUpdate();
@@ -93,14 +104,7 @@ public class Inventory : MonoBehaviour
             _uiSlots[i].ClearSlot();
         }
 
-        ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성화
-        CashUpdate();
-
-    }
-
-    void Update()
-    {
-        OpenInventoryUI();
+        ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성
     }
 
     public void CashUpdate()
@@ -130,7 +134,6 @@ public class Inventory : MonoBehaviour
         }
 
     }
-
     public void OpenInventory()
     {
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
@@ -285,7 +288,7 @@ public class Inventory : MonoBehaviour
         selectedItemName.text = _selectedItem.item.ItemName;
         selectedItemDescription.text = _selectedItem.item.Description;
 
-        _statInfo.SetActive(true);
+        _statIcon.SetActive(true);
 
         string statText = "";
 
@@ -352,7 +355,7 @@ public class Inventory : MonoBehaviour
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
 
-        _statInfo.SetActive(false);
+        _statIcon.SetActive(false);
         selectedItemStatText.text = string.Empty;
 
         useButton.SetActive(false);

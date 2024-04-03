@@ -37,6 +37,7 @@ public class PlayerStatData
     public float MoveSpeed;
     public int[] Skills;
     public string PrefabPath;
+    public int Gold;
 }
 
 [System.Serializable]

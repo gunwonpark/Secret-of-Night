@@ -17,7 +17,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _slotGrid;
 
     [Header("Selected Item")]
-    [SerializeField] private GameObject _statInfo; // 스탯 정보 
+    [SerializeField] private GameObject _statIcon; // 스탯 정보 
     private ShopSlot _selectedItem;
     private int _selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
@@ -39,7 +39,7 @@ public class Shop : MonoBehaviour
 
     [Header("PurchasePop-Up")]
     public GameObject purchasePopUpUI;
-    public TMP_InputField countInput;
+    public TMP_InputField quantityInput; // 수량 입력
     public GameObject purchaseCheckBtn;
     public GameObject purchaseCancleBtn;
     public TextMeshProUGUI ItemNameText;
@@ -59,7 +59,7 @@ public class Shop : MonoBehaviour
     private void Start()
     {
         _shopUI.SetActive(false);
-        _statInfo.SetActive(false);
+        _statIcon.SetActive(false);
         popUpUI.SetActive(false);
 
         _uiSlots = _slotGrid.GetComponentsInChildren<ShopSlot>();
@@ -91,9 +91,11 @@ public class Shop : MonoBehaviour
         }
 
         ClearSeletecItemWindow();
-        cash.text = Inventory.instance.cash.text; //돈
+
+        cash.text = Inventory.instance.cash.text;
 
     }
+
 
     //기본 아이템 제외 
     private Item[] RemoveItemIndex(Item[] _array, int _index)
@@ -253,7 +255,7 @@ public class Shop : MonoBehaviour
         selectedItemDescription.text = _selectedItem.item.Description;
         purchaseBtn.SetActive(true);
 
-        _statInfo.SetActive(true);
+        _statIcon.SetActive(true);
 
         string statText = "";
 
@@ -309,7 +311,7 @@ public class Shop : MonoBehaviour
         selectedItemDescription.text = string.Empty;
         purchaseBtn.SetActive(false);
 
-        _statInfo.SetActive(false);
+        _statIcon.SetActive(false);
         selectedItemStatText.text = string.Empty;
 
     }
@@ -377,11 +379,12 @@ public class Shop : MonoBehaviour
         GameManager.Instance.playerManager.playerData.Gold -= _selectedItem.item.Money;
         Inventory.instance.AddItem(_selectedItem.item);
         Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
-        cash.text = Inventory.instance.cash.text; // 상점 돈도 업데이트
+        cash.text = Inventory.instance.cash.text;
 
         purchasePopUpUI.SetActive(false);
         ItemNameText.text = "";
     }
+
 
     // 팝업 구매 취소 버튼
     public void OnPurchaseCancelButton()

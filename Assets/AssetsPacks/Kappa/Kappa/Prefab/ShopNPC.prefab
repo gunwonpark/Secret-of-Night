@@ -2919,7 +2919,7 @@ MonoBehaviour:
   _items: []
   _shopUI: {fileID: 5919631222815838581}
   _slotGrid: {fileID: 1645159158067558196}
-  _statInfo: {fileID: 7427296367650555564}
+  _statIcon: {fileID: 7427296367650555564}
   selectedItemName: {fileID: 7519581586313369594}
   selectedItemDescription: {fileID: 3912804741996289820}
   selectedItemStatText: {fileID: 6303542261973055789}
