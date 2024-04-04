@@ -49,6 +49,13 @@ public class DayNightCycle : MonoBehaviour
         
     }
 
+    // 퀘스트 03이 완료되면 호출될 메서드
+    public void OnQuest03Complete()
+    {
+        // 한낮으로 시간을 조정
+        time = startTime;
+    }
+
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
     {
         float intensity = intensityCurve.Evaluate(time);       

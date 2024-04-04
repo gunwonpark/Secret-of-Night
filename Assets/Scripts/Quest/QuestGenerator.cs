@@ -75,7 +75,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest
         {
             questID = 10201,
-            questDescription = "마을 입구 NPC와 대화",
+            questDescription = "하이 하이와 대화",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { name = "여관 NPC(하이하이)", dialogue = "어머~~ 우리마을에 손님은 정말 오랜만이야!! 잘잤니?" },

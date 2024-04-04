@@ -6,10 +6,12 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
+    private Quest03Director quest03Director;
 
     private void Awake()
     {
         I = this;
+        quest03Director = GetComponent<Quest03Director>();
     }
 
     [SerializeField] private DialogueHandler dialogueHandler;
@@ -115,7 +117,7 @@ public class QuestManager : MonoBehaviour
                 // 스킬 보상 처리
                 var skillId = currentQuest.rewardID; // 보상 스킬 ID
                 var skillName = GameManager.Instance.dataManager.playerSkillDataBase.GetData(skillId).Name;
-                Debug.LogWarning($"{skillName} 스킬 확득! (획득 처리 필요)");
+                Debug.LogWarning($"{skillName} 스킬 획득! (획득 처리 필요)");
                 break;
         }
     }
@@ -123,7 +125,7 @@ public class QuestManager : MonoBehaviour
     // 특수 퀘스트 성공
     private void SpecialQuestClear()
     {
-        Debug.LogWarning("특수 퀘스트 성공 (연출 처리 필요)");
+        quest03Director.StartQuestCompleteEffect();
 
         NextQuest(); // 다음 퀘스트로
     }
