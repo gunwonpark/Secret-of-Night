@@ -102,7 +102,7 @@
 			"Description": "초급 이동속도 포션으로 사용 시 이동속도가 60초 동안 1 증가합니다.",
 			"IconPath": "Images/Icons/Potion_Generic",
 			"MaxAmount": 99,
-			"PrefabPath": "Prefabs/Items/SpeedPotion ",
+			"PrefabPath": "Prefabs/Items/SpeedPotion",
 			"UnlockLevel": 1
 		},
 		{

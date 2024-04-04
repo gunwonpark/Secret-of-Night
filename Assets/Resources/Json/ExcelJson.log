@@ -22,6 +22,23 @@ Found object mark: '#BossMonster[{}]'
  Key: Range at 7
 Parsing Array Object Table...
 
+Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonsterSpwan_Data.xlsx
+Parse sheet: Sheet1
+Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonsterSpwan_Data.xlsx.$$$\Sheet1.csv
+Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonsterSpwan_Data.xlsx
+------------------------------------------------------------------------------
+[FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
+Found object mark: '#FieldMonsterSpwan[{}]'
+[FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
+ Key: MonsterMoveZone at 1
+[FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
+ Key: Radius at 2
+[FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
+ Key: MonsterCreateSpot[] at 3
+[FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
+ Key: MonsterID[] at 4
+Parsing Array Object Table...
+
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonster_Data.xlsx
 Parse sheet: Sheet1
 Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\FieldMonster_Data.xlsx.$$$\Sheet1.csv
@@ -61,6 +78,12 @@ Found object mark: '#FieldMonster[{}]'
  Key: TargetRange at 15
 [FieldMonster_Data.xlsx(Sheet1): ROW 1]
  Key: RotationDamping at 16
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: DropItem[] at 17
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: DropItemCount at 18
+[FieldMonster_Data.xlsx(Sheet1): ROW 1]
+ Key: Weigth at 19
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Items_Data.xlsx
@@ -176,22 +199,20 @@ Found object mark: '#PlayerStat[{}]'
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\QuestScript_Data.xlsx
-Parse sheet: Sheet2
-Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\QuestScript_Data.xlsx.$$$\Sheet2.csv
+Parse sheet: Sheet1
+Parsing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\QuestScript_Data.xlsx.$$$\Sheet1.csv
 Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\QuestScript_Data.xlsx
 ------------------------------------------------------------------------------
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
+[QuestScript_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#QuestScript[{}]'
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
- Key: QuestID at 1
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
- Key: QuestOrder at 2
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
- Key: Talker at 3
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
- Key: TalkerKo at 4
-[QuestScript_Data.xlsx(Sheet2): ROW 1]
- Key: Scripts at 5
+[QuestScript_Data.xlsx(Sheet1): ROW 1]
+ Key: DialogueID at 1
+[QuestScript_Data.xlsx(Sheet1): ROW 1]
+ Key: Talker at 2
+[QuestScript_Data.xlsx(Sheet1): ROW 1]
+ Key: TalkerKo at 3
+[QuestScript_Data.xlsx(Sheet1): ROW 1]
+ Key: Scripts at 4
 Parsing Array Object Table...
 
 Loading: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel2json-master\Quest_Data.xlsx
@@ -214,7 +235,11 @@ Found object mark: '#Quest[{}]'
 [Quest_Data.xlsx(Sheet1): ROW 1]
  Key: GoalCount at 6
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: RewardItem at 7
+ Key: RewardID at 7
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: RewardCount at 8
+ Key: RewardItem at 8
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount at 9
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: QuestItemID at 10
 Parsing Array Object Table...
