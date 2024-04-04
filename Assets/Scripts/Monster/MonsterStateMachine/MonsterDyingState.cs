@@ -14,7 +14,6 @@ public class MonsterDyingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0;
         stateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
 
-        //GameManager.Instance.monsterManager.DestroyMonster();
         DeleteMonster();
     }
 
@@ -26,5 +25,7 @@ public class MonsterDyingState : MonsterBaseState
     private void DeleteMonster()
     {
         Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
+        stateMachine.FieldMonsters.dropItem(GameManager.Instance.dataManager.itemDataBase.GetData(1));//GetData부분을 몬스터 전용 드랍아이템으로
+
     }
 }

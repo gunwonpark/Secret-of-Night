@@ -1,17 +1,14 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FieldMonsters : MonoBehaviour, IDamageable
 {
 
-    //[field: Header("Animations")]
-    //[field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
+
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
-    //[field: SerializeField] public float targetRange = 5f;
-    //[field: SerializeField] public float rotationDamping = 10f;
     public float HP = 0;
-    //public MonsterManager monsterManager;
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -30,8 +27,6 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        //AnimationData.Initialize();
-
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
         forceReceiver = GetComponent<ForceReceiver>();
@@ -55,8 +50,6 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     {
         stateMachine?.HandleInput();
         stateMachine?.Update();
-
-        //Debug.Log(originalPosition);
     }
 
     private void FixedUpdate()
@@ -86,8 +79,14 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
-        //플레이어 콜라이더만
-        Debug.Log("부딫힘");
+        //[todo]플레이어 콜라이더만
         OnAttack?.Invoke(other.gameObject);
+    }
+
+    public void dropItem(Item _item)
+    {
+        Vector3 throwPosition = transform.position + transform.forward * Random.Range(0.5f, 0.5f);
+
+        Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
     }
 }
