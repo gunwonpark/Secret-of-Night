@@ -20,6 +20,9 @@ public class MonsterInfo
     public float AtkRange;
     public float TargetRange;
     public float RotationDamping;
+    public int[] DropItem;
+    public int[] DropItemCount;
+    public float[] Weigth;
 
     public string PrefabPath;
 

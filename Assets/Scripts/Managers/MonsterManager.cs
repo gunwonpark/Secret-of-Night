@@ -13,9 +13,4 @@ public class MonsterManager : MonoBehaviour
     {
         return dataManager.monsterDatabase.GetMonsterInfoByKey(MonsterID);
     }
-
-    public void DestroyMonster()
-    {
-        Destroy(gameObject, 1f);
-    }
 }
