@@ -44,7 +44,6 @@ public class DialogueHandler : MonoBehaviour
             // 바로 퀘스트 완료인지 확인
             QuestManager.I.CheckDirectQuestClear();
         }
-
     }
 
     // 대화 목록 초기화
@@ -113,10 +112,10 @@ public class DialogueHandler : MonoBehaviour
     }
 }
 
-
 [Serializable]
 public class Dialogue
 {
+    public int DialogueID; // 대화 번호
     public string name; // 이름
     public string dialogue; // 대사
 }

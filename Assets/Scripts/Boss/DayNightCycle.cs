@@ -42,6 +42,11 @@ public class DayNightCycle : MonoBehaviour
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
 
+        if (time >= 0.8f)
+        {          
+            QuestManager.I.CheckCurrentQuest(10102);
+        }
+        
     }
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
