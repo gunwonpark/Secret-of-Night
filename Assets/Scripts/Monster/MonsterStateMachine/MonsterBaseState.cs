@@ -102,7 +102,7 @@ public class MonsterBaseState : IState, IDamageable
 
     private Vector3 GetMovementDirection()//v
     {
-        //stateMachine.FieldMonsters.originalPosition;
+        //추격범위가 아니면 내 원래포지션(스폰된곳)으로 Direction지정
         if (!IsInChaseRange())
         {
             return (stateMachine.FieldMonsters.originalPosition - stateMachine.FieldMonsters.transform.position).normalized;
@@ -128,44 +128,21 @@ public class MonsterBaseState : IState, IDamageable
         stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
 
         float Def = stateMachine.FieldMonsters.myInfo.Daf;
-
         float damage = Damage - Def;
-        Debug.Log(damage);
+
         if (damage > 0)
         {
             stateMachine.FieldMonsters.HP -= damage;
         }
 
-        Debug.Log(stateMachine.FieldMonsters.HP);
-
         if (stateMachine.FieldMonsters.HP <= 0)
         {
             stateMachine.FieldMonsters.HP = 0;
             stateMachine.ChangeState(stateMachine.DyingState);
-
         }
         else
         {
             stateMachine.ChangeState(stateMachine.ChasingState);
         }
-        //return true;
     }
-    //protected float GetNormalizedTime(Animator animator, string tag)
-    //{
-    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
-    //    {
-    //        return nextInfo.normalizedTime;
-    //    }
-    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-    //    {
-    //        return currentInfo.normalizedTime;
-    //    }
-    //    else
-    //    {
-    //        return 0f;
-    //    }
-    //}
 }

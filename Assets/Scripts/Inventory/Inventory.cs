@@ -411,7 +411,7 @@ public class Inventory : MonoBehaviour
 
             }
         }
-
+        QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
         RemoveSelectedItem();
     }
 

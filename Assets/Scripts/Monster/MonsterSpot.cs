@@ -5,7 +5,7 @@ public class MonsterSpot : MonoBehaviour
     MonsterInfo monsterInfo;
     GameObject go;
 
-    [SerializeField] public string monsterName;
+    [SerializeField] public int MonsterID;
     [SerializeField] int monsterCount;
 
     public Vector3 MyOriginalPosition;
@@ -14,6 +14,7 @@ public class MonsterSpot : MonoBehaviour
     {
         //monsterSpawner가 준 내 몬스터 정보
         this.monsterInfo = monsterInfo;
+        MonsterID = monsterInfo.MonsterID;
 
         //생성
         go = Instantiate(monsterInfo.prefab, transform);
@@ -21,17 +22,10 @@ public class MonsterSpot : MonoBehaviour
         go.GetComponent<FieldMonsters>().SetPosition(transform.position);
 
         MyOriginalPosition = go.transform.position;
-        //Debug.Log(MyOriginalPosition);
-        //OriginalPosition(MyOriginalPosition);
 
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
 
         //fieldMonsters 시작?
         fieldMonsters.Init(monsterInfo);
     }
-
-    //public void OriginalPosition(Vector3 position)
-    //{
-
-    //}
 }

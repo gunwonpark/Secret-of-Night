@@ -42,6 +42,18 @@ public class DayNightCycle : MonoBehaviour
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
 
+        if (time >= 0.8f)
+        {          
+            QuestManager.I.CheckCurrentQuest(10102);
+        }
+        
+    }
+
+    // 퀘스트 03이 완료되면 호출될 메서드
+    public void OnQuest03Complete()
+    {
+        // 한낮으로 시간을 조정
+        time = startTime;
     }
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)

@@ -9,13 +9,8 @@ public class MonsterManager : MonoBehaviour
         dataManager = new MonsterData();
         dataManager.Initialize();
     }
-    public MonsterInfo GetMonsterInfoByKey(string name)
+    public MonsterInfo GetMonsterInfoByKey(int MonsterID)
     {
-        return dataManager.monsterDatabase.GetMonsterInfoByKey(name);
-    }
-
-    public void DestroyMonster()
-    {
-        Destroy(gameObject, 1f);
+        return dataManager.monsterDatabase.GetMonsterInfoByKey(MonsterID);
     }
 }

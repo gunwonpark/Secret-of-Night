@@ -14,7 +14,7 @@ public class MonsterAttackState : MonsterBaseState
         base.Enter();
         stateMachine.MovementSpeedModifier = 0;
 
-        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();//[todo]공격할때만
+        stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
 
         stateMachine.FieldMonsters.OnAttack += NomalAttack;
     }
@@ -31,10 +31,9 @@ public class MonsterAttackState : MonsterBaseState
     public override void Update()
     {
         base.Update();
-        //공격함수
 
-
-        if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
+        //선공몬스터가 아닐때
+        if (stateMachine.FieldMonsters.myInfo.AtkStance == false)
         {
             if (IsInChaseRange())
             {
@@ -49,13 +48,10 @@ public class MonsterAttackState : MonsterBaseState
         base.PhysicsUpdate();
 
         float progessiveTime = stateMachine.FieldMonsters.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f;
-        //Debug.Log(progessiveTime);
         if (progessiveTime < 0.5f)//애니메이션 플레이중
         {
             _attack = false;
             stateMachine.FieldMonsters.attackCollider.enabled = false;
-            //stateMachine.FieldMonsters.OnAttack += NomalAttack;
-
         }
 
         if (!_attack && progessiveTime >= 0.5f)//애니메이션 끝났을때
@@ -99,13 +95,12 @@ public class MonsterAttackState : MonsterBaseState
 
     }
 
+    //기본공격
     public void NomalAttack(GameObject other)
     {
-        //stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
-
+        //other의 IDamageable
         other.TryGetComponent<IDamageable>(out IDamageable go);
-
-        Debug.Log(stateMachine.FieldMonsters.myInfo.Damage);
+        //데미지 넣어줌
         go.TakeDamage(stateMachine.FieldMonsters.myInfo.Damage);
     }
 }

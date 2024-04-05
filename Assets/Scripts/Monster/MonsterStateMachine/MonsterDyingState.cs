@@ -14,7 +14,6 @@ public class MonsterDyingState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0;
         stateMachine.FieldMonsters.monsterAnimation.StartDieAnimation();
 
-        //GameManager.Instance.monsterManager.DestroyMonster();
         DeleteMonster();
     }
 
@@ -26,5 +25,11 @@ public class MonsterDyingState : MonsterBaseState
     private void DeleteMonster()
     {
         Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
+
+        for (int i = 1; i < stateMachine.FieldMonsters.myInfo.DropItem.Length; i++)
+        {
+            stateMachine.FieldMonsters.dropItem(GameManager.Instance.dataManager.itemDataBase.GetData(stateMachine.FieldMonsters.myInfo.DropItem[i]));
+        }
+
     }
 }
