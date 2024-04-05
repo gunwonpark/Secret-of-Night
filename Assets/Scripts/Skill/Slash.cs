@@ -11,5 +11,7 @@ public class Slash : MonoBehaviour
             _isTakeDamage = true;
             go.TakeDamage(10);
         }
+
+        Debug.Log($"Damage Take {other.name}");
     }
 }

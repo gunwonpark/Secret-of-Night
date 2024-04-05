@@ -12,3 +12,9 @@ public enum BossState
     Dashing,
     Dying
 }
+
+public enum UIEvent
+{
+    Click,
+    Drag
+}
