@@ -62,7 +62,7 @@ public class DialogueHandler : MonoBehaviour
     {
         var dialogue = dialogues[dialogueIndex]; // 현재 대화
 
-        ShowDialogueUI(dialogue.name, dialogue.dialogue); // 대화창 UI 표시
+        ShowDialogueUI(dialogue.TalkerKo, dialogue.Scripts); // 대화창 UI 표시
     }
 
     // 대화창 UI 표시
@@ -116,6 +116,7 @@ public class DialogueHandler : MonoBehaviour
 public class Dialogue
 {
     public int DialogueID; // 대화 번호
-    public string name; // 이름
-    public string dialogue; // 대사
+    public string Talker;
+    public string TalkerKo; // 이름
+    public string Scripts; // 대사
 }

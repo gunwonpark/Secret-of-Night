@@ -21,7 +21,7 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests; // 퀘스트 리스트
     private int questIndex = 0; // 퀘스트 인덱스
-    private Quest currentQuest; // 현재 퀘스트
+    public Quest currentQuest; // 현재 퀘스트
 
     private void Start()
     {
@@ -37,17 +37,17 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
-        // G 누르면 퀘스트 클리어 (테스트용)
-        if (Input.GetKeyDown(KeyCode.G))
+        // H키 누르면 퀘스트 클리어 (테스트용)
+        if (Input.GetKeyDown(KeyCode.H))
         {
             QuestClear(); // 퀘스트 클리어
         }
 
-        // H 누르면 다음 퀘스트 보이기 (테스트용)
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            InitDialogues(); // 대화 목록 초기화
-        }
+        //// H 누르면 다음 퀘스트 보이기 (테스트용)
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    InitDialogues(); // 대화 목록 초기화
+        //}
     }
 
     // 현재 퀘스트 설정
