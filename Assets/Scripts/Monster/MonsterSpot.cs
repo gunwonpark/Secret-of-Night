@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class MonsterSpot : MonoBehaviour
 {
     MonsterInfo monsterInfo;
@@ -28,4 +30,6 @@ public class MonsterSpot : MonoBehaviour
         //fieldMonsters 시작?
         fieldMonsters.Init(monsterInfo);
     }
+
+
 }
