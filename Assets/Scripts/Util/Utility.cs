@@ -4,11 +4,11 @@ using UnityEngine;
 public static class Utility
 {
     /// <summary>
-    /// JsonÀ» ÆÄ½Ì ÇÏ¿© ºÒ·¯¿À´Â ÇÔ¼ö ÀÔ´Ï´Ù
+    /// Jsonì„ íŒŒì‹± í•˜ì—¬ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜ ì…ë‹ˆë‹¤
     /// </summary>
-    /// <typeparam name="TLoad">µ¥ÀÌÅÍ º£ÀÌ½º ÀÌ¸§</typeparam>
+    /// <typeparam name="TLoad">ë°ì´í„° ë² ì´ìŠ¤ ì´ë¦„</typeparam>
     /// <param name="filename"></param>
-    /// <returns>ÆÄ½ÌµÈ µ¥ÀÌÅÍ º£ÀÌ½º</returns>
+    /// <returns>íŒŒì‹±ëœ ë°ì´í„° ë² ì´ìŠ¤</returns>
     public static TLoad LoadJson<TLoad>(string filename)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>($"Json/{filename}");
@@ -28,5 +28,44 @@ public static class Utility
     public static void DeleteJson(string jsonDataPath)
     {
         File.Delete(jsonDataPath);
+    }
+    public static T GetOrAddComponent<T>(this GameObject go) where T : Component
+    {
+        T component = go.GetComponent<T>();
+        if (component == null)
+            component = go.AddComponent<T>();
+        return component;
+    }
+    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
+    {
+        if (go == null) return null;
+
+        if (recursive)
+        {
+            foreach (T component in go.GetComponentsInChildren<T>())
+            {
+                if (component.name == name)
+                {
+                    return component;
+                }
+            }
+        }
+        else
+        {
+            Transform transform = go.transform.Find(name);
+            if (transform != null)
+            {
+                return transform.GetComponent<T>();
+            }
+        }
+        return null;
+    }
+    // GameObjectëŠ” Copmonentê°€ ì•„ë‹ˆê¸° ë•Œë¬¸ì—
+    public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
+    {
+        Transform transform = FindChild<Transform>(go, name, recursive);
+        if (transform != null)
+            return transform.gameObject;
+        return null;
     }
 }
