@@ -227,28 +227,51 @@ public class Inventory : MonoBehaviour
     // -------------------------------------------------------------------------------
 
     //아이템 추가
-    public void AddItem(Item _item)
+    public void AddItem(Item _item, int _quantity)
     {
         if (_item.Type == "using") // 소모성 아이템은 수량 체크
         {
-            ItemSlot slotStack = GetItemStack(_item);
-            if (slotStack != null)
+            for (int i = 0; i < _quantity; i++)
             {
-                slotStack.count++;
-                UpdateUI();
-                return;
+                ItemSlot slotStack = GetItemStack(_item);
+                if (slotStack != null)
+                {
+                    slotStack.count++;
+                }
+                else
+                {
+                    ItemSlot emptySlot = GetEmptySlot();
+                    if (emptySlot != null)
+                    {
+                        emptySlot.item = _item;
+                        emptySlot.count = 1;
+                    }
+                    else
+                    {
+                        ThrowItem(_item);
+                    }
+                }
             }
         }
-
-        ItemSlot emptySlot = GetEmptySlot(); // 빈 슬롯
-        if (emptySlot != null)
+        else if (_item.Type == "Equip") // 장착 아이템은 수량 누적 x
         {
-            emptySlot.item = _item;
-            emptySlot.count = 1;
-            UpdateUI();
-            return;
+            for (int i = 0; i < _quantity; i++)
+            {
+                ItemSlot emptySlot = GetEmptySlot();
+                if (emptySlot != null)
+                {
+                    emptySlot.item = _item;
+                    emptySlot.count = 1;
+                }
+                else
+                {
+                    ThrowItem(_item);
+                }
+            }
+
         }
-        //꽉 차면 버리게
+
+        UpdateUI();
     }
 
     // 아이템 수량 추가
