@@ -24,7 +24,7 @@ public class DefaultAttackEffect : StateMachineBehaviour
         if (!_actionExecuted && animator.transform.GetComponentInParent<PlayerController>().IsAttacking && progressTime >= triggerTimeNormalized)
         {
             // Execute your action here
-            Instantiate(GameManager.Instance.skillManager.GetSkill(101), animator.transform.position, Quaternion.identity);
+            //Instantiate(GameManager.Instance.skillManager.GetSkill(101), animator.transform.position, Quaternion.identity);
 
             RaycastHit[] hits = Physics.BoxCastAll(animator.transform.position + Vector3.up / 2, animator.transform.lossyScale, animator.transform.forward,
                 Quaternion.identity, 1f, LayerMask.GetMask("Monster"));

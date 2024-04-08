@@ -35,6 +35,7 @@ public class PlayerGameData
     public int Gold;
     // 여기 없어야 되는데 일단 넣어 둡니다
     public event Action OnDie;
+    public event Action OnLevelUp;
     public PlayerGameData()
     {
         _jsonDataPath = $"{Application.dataPath}/Datas/PlayerData";
@@ -114,6 +115,8 @@ public class PlayerGameData
             Damage += playerLevelData.Damage;
             Def += playerLevelData.Def;
         }
+
+        OnLevelUp?.Invoke();
         SaveData();
     }
 
