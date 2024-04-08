@@ -12,3 +12,11 @@ public enum BossState
     Dashing,
     Dying
 }
+
+public enum RewardType
+{
+    None,
+    Item,
+    Exp,
+    Skill
+}

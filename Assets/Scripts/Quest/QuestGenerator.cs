@@ -20,7 +20,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { name = "주인공", dialogue = "(꼬르륵..)" },
                 new Dialogue { name = "주인공", dialogue = "(일단 배가 너무 고파..이 주변에 먹을 만한 것이 있을까?)" }
             },
-            isContinue = true
+            isContinue = true,
+            neededId = 1
         };
         tempQuests.Add(newQuest);
 
@@ -34,9 +35,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { name = "주인공", dialogue = "(배도 채웠고..계속 여기 있을 수는 없으니 좀 둘러봐야겠어.)" }
             },
             isContinue = true,
-            rewardType = RewardType.Item,
-            rewardID = 1,
-            rewardCount = 1,
+            
 
         };
         tempQuests.Add(newQuest);
@@ -51,6 +50,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { name = "주인공", dialogue = "(마을이면 좋을텐데.. 일단 가보자)" }
             },
             isContinue = true,
+            rewardType = RewardType.Item,
+            rewardID = 1,
+            rewardCount = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -73,7 +75,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest
         {
             questID = 10201,
-            questDescription = "마을 입구 NPC와 대화",
+            questDescription = "하이 하이와 대화",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { name = "여관 NPC(하이하이)", dialogue = "어머~~ 우리마을에 손님은 정말 오랜만이야!! 잘잤니?" },

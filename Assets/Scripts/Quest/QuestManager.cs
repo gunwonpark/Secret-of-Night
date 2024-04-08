@@ -6,10 +6,12 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
+    private Quest03Director quest03Director;
 
     private void Awake()
     {
         I = this;
+        quest03Director = GetComponent<Quest03Director>();
     }
 
     [SerializeField] private DialogueHandler dialogueHandler;
@@ -78,7 +80,6 @@ public class QuestManager : MonoBehaviour
         questDescriptionText.text = ""; // 퀘스트 설명 숨기기
     }
 
-
     // 퀘스트 성공
     public void QuestClear()
     {
@@ -116,7 +117,7 @@ public class QuestManager : MonoBehaviour
                 // 스킬 보상 처리
                 var skillId = currentQuest.rewardID; // 보상 스킬 ID
                 var skillName = GameManager.Instance.dataManager.playerSkillDataBase.GetData(skillId).Name;
-                Debug.LogWarning($"{skillName} 스킬 확득! (획득 처리 필요)");
+                Debug.LogWarning($"{skillName} 스킬 획득! (획득 처리 필요)");
                 break;
         }
     }
@@ -124,7 +125,7 @@ public class QuestManager : MonoBehaviour
     // 특수 퀘스트 성공
     private void SpecialQuestClear()
     {
-        Debug.LogWarning("특수 퀘스트 성공 (연출 처리 필요)");
+        quest03Director.StartQuestCompleteEffect();
 
         NextQuest(); // 다음 퀘스트로
     }
@@ -169,6 +170,8 @@ public class QuestManager : MonoBehaviour
         // 현재 퀘스트의 questID와 id가 같다면
         if (currentQuest.questID == id)
             QuestClear(); // 퀘스트 클리어
+        else if (currentQuest.neededId == id)
+            QuestClear();
     }
 
     // 바로 퀘스트 완료인지 확인
@@ -184,25 +187,17 @@ public class QuestManager : MonoBehaviour
 [Serializable]
 public class Quest
 {
-    public int questID; // 퀘스트 ID (1AABB - AA: 챕터 번호, BB: 퀘스트 번호)
+    public int questID; // 퀘스트 ID (1ABB - A: 챕터 번호, BB: 퀘스트 번호)
+    public int neededId; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
+    public string QuestTitle;
     public string questDescription; // 퀘스트 설명
-    public List<Dialogue> dialogues; // 대화 리스트
+    public string QuestGoal;
+    public int neededCount; // GoalCount 필요한 개수
     public RewardType rewardType; // 보상 타입
     public int rewardID; // 보상 ID
     public int rewardCount; // 보상 개수
 
     public bool isContinue; // 이어서 퀘스트 진행 여부
-
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
-
-    public int neededId; // 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
-    public int neededCount; // 필요한 개수
-}
-
-// 보상 타입
-public enum RewardType
-{
-    None,
-    Item,
-    Skill
+    public List<Dialogue> dialogues; // 대화 리스트
 }
