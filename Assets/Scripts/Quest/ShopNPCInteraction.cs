@@ -49,7 +49,7 @@ public class ShopNPCInteraction : MonoBehaviour
     public void Dialogue()
     {
         QuestManager.I.CheckCurrentQuest(questID); // 현재 퀘스트 확인
-        if (QuestManager.I.currentQuest.questID == questID)
+        if (QuestManager.I.currentQuest.QuestID == questID)
         {
             interactionPopup.SetActive(false);
         }              

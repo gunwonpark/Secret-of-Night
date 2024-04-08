@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         quests = questGenerator.tempQuests; // 전체 퀘스트 리스트 설정 (임시)
-        quests.Sort((x, y) => x.questID.CompareTo(y.questID)); // 퀘스트 ID 순으로 정렬
+        quests.Sort((x, y) => x.QuestID.CompareTo(y.QuestID)); // 퀘스트 ID 순으로 정렬
 
         questIndex = 0; // 퀘스트 인덱스 초기화
 
@@ -71,7 +71,7 @@ public class QuestManager : MonoBehaviour
     // 퀘스트 설명 표시
     public void ShowQuestDescription()
     {
-        questDescriptionText.text = currentQuest.questDescription; // 퀘스트 설명 표시
+        questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
     }
 
     // 퀘스트 설명 숨기기
@@ -88,7 +88,7 @@ public class QuestManager : MonoBehaviour
             RewardProcess(); // 보상 처리
 
         // 연출 같은 특수 퀘스트 성공 처리
-        if (currentQuest.questID == 10104)
+        if (currentQuest.QuestID == 1004)
         {
             SpecialQuestClear(); // 특수 퀘스트 성공
         }
@@ -105,8 +105,8 @@ public class QuestManager : MonoBehaviour
         {
             case RewardType.Item:
                 // 아이템 보상 처리
-                var itemId = currentQuest.rewardID; // 보상 아이템 ID
-                var itemCount = currentQuest.rewardCount; // 보상 아이템 개수
+                var itemId = currentQuest.RewardID; // 보상 아이템 ID
+                var itemCount = currentQuest.RewardCount; // 보상 아이템 개수
 
                 Item item = GameManager.Instance.dataManager.itemDataBase.GetData(itemId);
 
@@ -115,7 +115,7 @@ public class QuestManager : MonoBehaviour
 
             case RewardType.Skill:
                 // 스킬 보상 처리
-                var skillId = currentQuest.rewardID; // 보상 스킬 ID
+                var skillId = currentQuest.RewardID; // 보상 스킬 ID
                 var skillName = GameManager.Instance.dataManager.playerSkillDataBase.GetData(skillId).Name;
                 Debug.LogWarning($"{skillName} 스킬 획득! (획득 처리 필요)");
                 break;
@@ -152,12 +152,12 @@ public class QuestManager : MonoBehaviour
     public void CheckCount(int id)
     {
         // 현재 퀘스트의 neededId와 id가 같다면
-        if (currentQuest.neededId == id)
+        if (currentQuest.QuestItemID == id)
         {
-            currentQuest.neededCount--; // 필요한 개수 감소
+            currentQuest.GoalCount--; // 필요한 개수 감소
 
             // 필요한 개수가 0이 됐으면
-            if (currentQuest.neededCount <= 0)
+            if (currentQuest.GoalCount <= 0)
             {
                 QuestClear(); // 퀘스트 클리어
             }
@@ -168,9 +168,9 @@ public class QuestManager : MonoBehaviour
     public void CheckCurrentQuest(int id)
     {
         // 현재 퀘스트의 questID와 id가 같다면
-        if (currentQuest.questID == id)
+        if (currentQuest.QuestID == id)
             QuestClear(); // 퀘스트 클리어
-        else if (currentQuest.neededId == id)
+        else if (currentQuest.QuestItemID == id)
             QuestClear();
     }
 
@@ -187,17 +187,33 @@ public class QuestManager : MonoBehaviour
 [Serializable]
 public class Quest
 {
-    public int questID; // 퀘스트 ID (1ABB - A: 챕터 번호, BB: 퀘스트 번호)
-    public int neededId; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
+    public int QuestID; // 퀘스트 ID (1ABB - A: 챕터 번호, BB: 퀘스트 번호)
+    public int QuestType;
     public string QuestTitle;
-    public string questDescription; // 퀘스트 설명
+    public string Description; // 퀘스트 설명
     public string QuestGoal;
-    public int neededCount; // GoalCount 필요한 개수
+    public int GoalCount; // GoalCount 필요한 개수
+    public int RewardID; // 보상 ID
+    public int RewardCount; // 보상 개수
+    public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)    
+    
     public RewardType rewardType; // 보상 타입
-    public int rewardID; // 보상 ID
-    public int rewardCount; // 보상 개수
-
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
     public List<Dialogue> dialogues; // 대화 리스트
+
+    public Quest(QuestData quest)
+    {
+        QuestID = quest.QuestID;
+        QuestType = quest.QuestType;
+        QuestTitle = quest.QuestTitle;
+        Description = quest.Description;
+        QuestGoal = quest.QuestGoal;
+        GoalCount = quest.GoalCount;
+        RewardID = quest.RewardID;
+        RewardCount = quest.RewardCount;
+        QuestItemID = quest.QuestItemID;
+    }
+
+    public Quest() { }
 }

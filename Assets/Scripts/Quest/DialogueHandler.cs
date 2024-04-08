@@ -119,4 +119,14 @@ public class Dialogue
     public string Talker;
     public string TalkerKo; // 이름
     public string Scripts; // 대사
+
+    public Dialogue(DialogueData dialogue)
+    {
+        DialogueID = dialogue.DialogueID;
+        Talker = dialogue.Talker;
+        TalkerKo = dialogue.TalkerKo;
+        Scripts = dialogue.Scripts;
+    }
+
+    public Dialogue() { }
 }
