@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public DataManager dataManager;
     //private ResourceManager resourceManager;
     private SoundManager soundManager;
-    private UIManager uiManager;
+    public UIManager uiManager;
     public PlayerManager playerManager;
     public MonsterManager monsterManager;
     public SkillManager skillManager;

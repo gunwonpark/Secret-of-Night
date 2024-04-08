@@ -1,16 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIBase : MonoBehaviour
 {
-    void Start()
+    public virtual void Initialize()
     {
-        
-    }
 
-    void Update()
-    {
-        
     }
 }

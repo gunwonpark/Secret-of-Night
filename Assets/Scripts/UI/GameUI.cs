@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUI : MonoBehaviour
+public class GameUI : UIBase
 {
     [Header("Buff System")]
     public RectTransform prefab;

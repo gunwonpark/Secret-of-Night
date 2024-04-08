@@ -20,4 +20,8 @@ public class TimelineController : MonoBehaviour
             camera.SetActive(false);
         }
     }
+    private void OnDestroy()
+    {
+        director.stopped -= OnDirectorStopped;
+    }
 }
