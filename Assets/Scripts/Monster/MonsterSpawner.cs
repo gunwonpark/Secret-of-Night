@@ -17,7 +17,6 @@ public class CircleInfo
     //각 원에 스폰될 몬스터를 ID로 분류하여 넣어주기
     public void AddMonsterInfo(MonsterInfo ID)
     {
-        int monsterNumber;
         monsterID.Add(ID);
     }
 }
@@ -25,19 +24,30 @@ public class CircleInfo
 public class MonsterSpawner : MonoBehaviour
 {
     MonsterManager monsterManager;
-
     MonsterInfo monsterInfo;
+    GameObject go;
 
-    public List<CircleInfo> MonsterSpot = new List<CircleInfo>();
-    public int monsterNumber = 10;//각 몬스터 개체수
+    //MonsterSpot[] spotPoint;//가져온 monsterSpot들의 배열
+    public List<CircleInfo> MonsterSpot = new List<CircleInfo>();//스팟리스트
+
+    int monsterNumber;
+    int maxMonsterNumber = 70;//[todo]각 몬스터 개체수
 
     void Start()
     {
         //GetMonsterInfoByKey메서드를 가져오기 위해 몬스터매니저도 가져옴
         monsterManager = GameManager.Instance.monsterManager;
 
+        //내 자식들의 monsterSpot을 가져온다.
+        // spotPoint = GetComponentsInChildren<MonsterSpot>();
+
         AddInfo();
 
+        SpawnAllMonster();
+    }
+
+    private void Update()
+    {
         StartCoroutine(SpawnMonster());
     }
 
@@ -47,26 +57,63 @@ public class MonsterSpawner : MonoBehaviour
         MonsterSpot.Add(new CircleInfo(center, radius));
     }
 
+    private void SpawnAllMonster()
+    {
+        foreach (CircleInfo circle in MonsterSpot)
+        {
+            //원안의 몬스터들
+            foreach (MonsterInfo monster in circle.monsterID)
+            {
+                if (monsterNumber < maxMonsterNumber)
+                {
+                    Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
+                    spawnPoint.y = circle.center.y; // y 값을 원래y값으로 설정
+                    go = Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
+                    go.GetComponent<FieldMonsters>().SetPosition(go.transform.position);
+                    monsterNumber++;
+
+                    //몬스터 정보 넣어줌
+                    FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
+                    fieldMonster.Init(monster);
+
+                    Debug.Log(monsterNumber);
+                    Debug.Log(spawnPoint);
+                }
+            }
+        }
+    }
+
     IEnumerator SpawnMonster()
     {
-        while (true)//[todo]각 원의 몬스터 개체수가 꽉 차지 않았을때
+        while (true)//[todo]각 몬스터 개체수가 10일때까지
         {
             // 각 원의 스폰지점
             foreach (CircleInfo circle in MonsterSpot)
             {
+                //원안의 몬스터들
                 foreach (MonsterInfo monster in circle.monsterID)
                 {
-                    Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
-                    spawnPoint.y = 0f; // y 값을 0으로 설정
-                    Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
+                    if (monsterNumber < maxMonsterNumber)
+                    {
+                        Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
+                        spawnPoint.y = circle.center.y; // y 값을 원래y값으로 설정
+                        go = Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
+                        monsterNumber++;
+
+                        //몬스터 정보 넣어줌
+                        FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
+                        fieldMonster.Init(monster);
+
+                        Debug.Log(monsterNumber);
+                        Debug.Log(spawnPoint);
+                    }
                 }
-                // Debug.Log(spawnPoint);
             }
             yield return new WaitForSeconds(3f); // 3초 마다 1개씩
         }
     }
 
-    Vector3 GetRandomPointInCircle(Vector3 center, float radius)
+    public Vector3 GetRandomPointInCircle(Vector3 center, float radius)
     {
         //[todo]랜덤지점에 뭐가 없을때만 반환
         float angle = Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성
@@ -90,14 +137,14 @@ public class MonsterSpawner : MonoBehaviour
     {
         //스팟추가
         //[todo]스팟은 맵에 추가
-        AddMonsterSpot(new Vector3(3.2f, 0f, 69f), 30f);
-        AddMonsterSpot(new Vector3(-58.9f, 0f, 121.8f), 30f);
-        AddMonsterSpot(new Vector3(50.3f, 0f, 118.1f), 15f);
-        AddMonsterSpot(new Vector3(84.6f, 0f, 180.3f), 15f);
-        AddMonsterSpot(new Vector3(98.7f, 0f, 94.5f), 20f);
-        AddMonsterSpot(new Vector3(116.6f, 0f, 170.8f), 35f);
-        AddMonsterSpot(new Vector3(66.8f, 0f, 247.5f), 20f);
-        AddMonsterSpot(new Vector3(31.7f, 0f, 292.1f), 30f);
+        AddMonsterSpot(new Vector3(3.2f, 3f, 69f), 30f);
+        AddMonsterSpot(new Vector3(-58.9f, 3f, 121.8f), 30f);
+        AddMonsterSpot(new Vector3(50.3f, 3f, 118.1f), 15f);
+        AddMonsterSpot(new Vector3(84.6f, 5f, 180.3f), 15f);
+        AddMonsterSpot(new Vector3(98.7f, 12f, 94.5f), 20f);
+        AddMonsterSpot(new Vector3(116.6f, 12f, 170.8f), 35f);
+        AddMonsterSpot(new Vector3(66.8f, 7f, 247.5f), 20f);
+        AddMonsterSpot(new Vector3(31.7f, 7f, 292.1f), 30f);
 
         //각 스팟 몬스터 정보 추가
         MonsterSpot[0].AddMonsterInfo(monsterManager.GetMonsterInfoByKey(2));

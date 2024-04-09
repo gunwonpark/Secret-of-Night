@@ -17,10 +17,9 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public BoxCollider attackCollider;
 
     public MonsterAnimation monsterAnimation;
-
     private MonsterStateMachine stateMachine;
-
     public ItemDataBase itemDataBase;
+    public MonsterSpawner monsterSpawner;
 
     public Vector3 originalPosition;
 
@@ -45,6 +44,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         HP = myInfo.HP;
 
         itemDataBase = GameManager.Instance.dataManager.itemDataBase;
+        monsterSpawner = GameManager.Instance.monsterManager.monsterSpawner;
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -70,7 +70,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
     }
 
-    public void SetPosition(Vector3 position)
+    public void SetPosition(Vector3 position)//[todo] 새로운 무브포지션으로 지정.
     {
         originalPosition = position;
     }
