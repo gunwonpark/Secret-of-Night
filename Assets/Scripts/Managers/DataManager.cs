@@ -9,6 +9,8 @@ public class DataManager : MonoBehaviour
     public PlayerStatDataBase playerStatDataBase;
     public BossMonsterStatDatabase bossMonsterStatDatabase;
     public ItemDataBase itemDataBase;
+    public MonsterDataBase monsterDataBase;
+    public MonsterSpawnDatabase monsterSpawnDatabase;
 
     #endregion
 
@@ -27,6 +29,8 @@ public class DataManager : MonoBehaviour
         itemDataBase = Utility.LoadJson<ItemDataBase>("Items_Data");
         itemDataBase.Initalize();
 
+        monsterSpawnDatabase = Utility.LoadJson<MonsterSpawnDatabase>("FieldMonsterSpwan_Data");
+        monsterSpawnDatabase.Initalize();
     }
 }
 
