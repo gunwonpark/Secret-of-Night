@@ -71,8 +71,9 @@ public class Inventory : MonoBehaviour
 
 
     //상점에서 판매하기 G키 이벤트로 델리게이트 사용
-    public delegate void InventoryCloseEvent();
-    public static event InventoryCloseEvent OnInventoryClose;
+    public delegate void InventoryEvent();
+    public static event InventoryEvent OnInventoryClose;
+    public static event InventoryEvent OnInventoryOpen;
 
 
     private void Awake()
@@ -158,11 +159,14 @@ public class Inventory : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         _inventoryUI.SetActive(true);
         ClearSeletecItemWindow();
+
+        OnInventoryOpen?.Invoke(); // NPC G키 비활성화
     }
 
     public void CloseInventory()
     {
         _inventoryUI.SetActive(false);
+        OnInventoryClose.Invoke();
     }
 
     // 다음 슬롯 창

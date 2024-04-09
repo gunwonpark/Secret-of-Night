@@ -23,6 +23,7 @@ public class ShopNPCInteraction : MonoBehaviour
     void Start()
     {
         _shop = GetComponent<Shop>();
+        Inventory.OnInventoryOpen += OnInventoryOpen;
         Inventory.OnInventoryClose += OnInventoryClosed;
         Shop.OnShopClose += OnShopClose;
     }
@@ -111,6 +112,10 @@ public class ShopNPCInteraction : MonoBehaviour
         _activate = false;
     }
 
+    private void OnInventoryOpen()
+    {
+        _activate = false;
+    }
     private void OnInventoryClosed()
     {
         // 인벤토리가 닫힐 때 _activate 변수 다시 활성화
