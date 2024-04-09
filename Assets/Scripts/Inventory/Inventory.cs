@@ -12,12 +12,12 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public bool activated;
+    [HideInInspector] public bool activated;
     private bool _speedItemUse;
 
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
-    private PlayerController _playerController;
+    [HideInInspector] public PlayerController _playerController;
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -56,13 +56,23 @@ public class Inventory : MonoBehaviour
     [Header("Pop-Up")]
     public GameObject popUpUI;
     public GameObject checkBtn;
-    public GameObject saleBtn;
-    public GameObject cancleBtn;
     public TextMeshProUGUI popUpText;
-
 
     [Header("Cash")]
     public TextMeshProUGUI cash;
+
+    [Header("SalePop-Up")]
+    public GameObject salePopUpUI;
+    public TMP_InputField quantityInput; // 수량 입력
+    private int _currentQuantity;
+    public GameObject saleCheckBtn;
+    public GameObject saleCancleBtn;
+    public TextMeshProUGUI ItemNameText;
+
+
+    //상점에서 판매하기 G키 이벤트로 델리게이트 사용
+    public delegate void InventoryCloseEvent();
+    public static event InventoryCloseEvent OnInventoryClose;
 
 
     private void Awake()
@@ -71,7 +81,6 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
-
     }
 
     void Start()
@@ -222,7 +231,10 @@ public class Inventory : MonoBehaviour
         _inventoryUI.SetActive(false);
         _playerController.Input.enabled = true;
         playerLight.SetActive(false);
+
+        OnInventoryClose?.Invoke();
     }
+
 
     // -------------------------------------------------------------------------------
 
@@ -333,7 +345,7 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
-        if (Shop.instance.shopActivated)
+        if (activated)
         {
             saleButton.SetActive(true);
         }
@@ -627,26 +639,36 @@ public class Inventory : MonoBehaviour
 
     // -------------------------------------------------------------------------------
 
+    public void QuantityInput()
+    {
+        ItemNameText.text = _selectedItem.item.ItemName;
+
+        if (!string.IsNullOrEmpty(quantityInput.text))
+        {
+            _currentQuantity = int.Parse(quantityInput.text);
+            int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
+            ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice + "\n 50% 가격으로 판매";
+        }
+        else
+        {
+            _currentQuantity = 1;
+        }
+    }
+
     // 아이템 판매하기
     public void SaleItem()
     {
-        int _money = _selectedItem.item.Money / 2;
+        QuantityInput();
+        int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
-            popUpUI.SetActive(true);
-            checkBtn.SetActive(false); //확인 버튼 비활성
+            salePopUpUI.SetActive(true);
 
-            saleBtn.SetActive(true);
-            cancleBtn.SetActive(true);
-            popUpText.text = _money + "$ 에 판매 \n 하시겠습니까?";
         }
         else
         {
             popUpUI.SetActive(true);
-            checkBtn.SetActive(true); //확인 버튼 활성
 
-            saleBtn.SetActive(false);
-            cancleBtn.SetActive(false);
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
     }
@@ -654,24 +676,24 @@ public class Inventory : MonoBehaviour
     // 팝업 판매 확인 버튼
     public void OnSaleCheckButton()
     {
-        int _money = _selectedItem.item.Money / 2;
-        GameManager.Instance.playerManager.playerData.Gold += _money;
+        int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
+        GameManager.Instance.playerManager.playerData.Gold += totalPrice;
         CashUpdate();
         Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
         RemoveSelectedItem();
-        popUpUI.SetActive(false);
+        salePopUpUI.SetActive(false);
     }
 
     // 팝업 판매 취소 버튼
     public void OnSaleCancelButton()
     {
-        popUpUI.SetActive(false);
+        salePopUpUI.SetActive(false);
     }
 
     // 팝업 경고 확인 버튼(잠금 무기 또는 금액 부족 시)
     public void OnInventoryCheckButton()
     {
-        popUpUI.SetActive(false);
+        salePopUpUI.SetActive(false);
 
     }
 

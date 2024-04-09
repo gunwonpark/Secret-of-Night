@@ -10,8 +10,6 @@ public class Shop : MonoBehaviour
     [SerializeField] private ShopSlot[] _uiSlots; // 상점 슬롯들을 저장할 배열
     [SerializeField] private Item[] _items; // 상점에 판매할 아이템 데이터 배열
 
-    private PlayerController _playerController;
-
     [Header("Shop UI")]
     [SerializeField] private GameObject _shopUI;
     [SerializeField] private GameObject _slotGrid;
@@ -50,11 +48,13 @@ public class Shop : MonoBehaviour
     public GameObject checkBtn;
     public TextMeshProUGUI popUpText;
 
+    //상점에서 구매하기 G키 이벤트로 델리게이트 사용
+    public delegate void ShopCloseEvent();
+    public static event ShopCloseEvent OnShopClose;
 
     private void Awake()
     {
         instance = this;
-        _playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
@@ -95,6 +95,8 @@ public class Shop : MonoBehaviour
 
         CashUpdate();
 
+        GameManager.Instance.playerManager.playerData.OnLevelUp += UnLockItem;
+
     }
 
     public void CashUpdate()
@@ -119,50 +121,8 @@ public class Shop : MonoBehaviour
         return newArray;
     }
 
-    void Update()
-    {
-        OpenShopUI();
-    }
 
-    private void OpenShopUI()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            shopActivated = !shopActivated;
-
-            if (shopActivated)
-            {
-                OpenShop();
-                _playerController.Input.enabled = false; //플레이어 활동 비활성
-
-            }
-            else
-            {
-                CloseShop();
-                _playerController.Input.enabled = true;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            shopActivated = !shopActivated;
-
-            if (shopActivated)
-            {
-                Inventory.instance.OpenInventory();
-                _playerController.Input.enabled = false; //플레이어 활동 비활성
-
-            }
-            else
-            {
-                Inventory.instance.CloseInventory();
-                _playerController.Input.enabled = true;
-            }
-        }
-
-    }
-
-    private void OpenShop()
+    public void OpenShop()
     {
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
@@ -244,8 +204,13 @@ public class Shop : MonoBehaviour
     public void OnExit()
     {
         _shopUI.SetActive(false);
-        _playerController.Input.enabled = true;
+        Inventory.instance._playerController.Input.enabled = true;
+        shopActivated = false;
+
+        OnShopClose?.Invoke();
     }
+
+    //---------------------------------------------------------------------------------------
 
     //아이템 슬롯 선택시 아이템 설명이 보이게
     public void SelectItem(int index)
@@ -321,6 +286,8 @@ public class Shop : MonoBehaviour
 
     }
 
+    //--------------------------------------------------------------------------------------
+
     //아이템 잠금
     private void LockItem()
     {
@@ -353,8 +320,13 @@ public class Shop : MonoBehaviour
         }
     }
 
+    // --------------------------------------------------------------------------------
+
+    //수량 입력
     public void QuantityInput()
     {
+        ItemNameText.text = _selectedItem.item.ItemName; // 수량 입력 전에 아이템 이름
+
         if (!string.IsNullOrEmpty(quantityInput.text))
         {
             _currentQuantity = int.Parse(quantityInput.text);
