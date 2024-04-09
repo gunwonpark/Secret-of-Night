@@ -59,21 +59,21 @@ public class MonsterSpawner : MonoBehaviour
 
     private void SpawnAllMonster()
     {
-        foreach (CircleInfo circle in MonsterSpot)
+        while (monsterNumber < maxMonsterNumber)
         {
-            //원안의 몬스터들
-            foreach (MonsterInfo monster in circle.monsterID)
+            foreach (CircleInfo circle in MonsterSpot)
             {
-                if (monsterNumber < maxMonsterNumber)
+                //원안의 몬스터들
+                foreach (MonsterInfo monster in circle.monsterID)
                 {
                     Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
                     spawnPoint.y = circle.center.y; // y 값을 원래y값으로 설정
                     go = Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
-                    go.GetComponent<FieldMonsters>().SetPosition(go.transform.position);
                     monsterNumber++;
 
                     //몬스터 정보 넣어줌
                     FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
+                    fieldMonster.SetPosition(spawnPoint);//포지션 전달
                     fieldMonster.Init(monster);
 
                     Debug.Log(monsterNumber);
@@ -85,7 +85,7 @@ public class MonsterSpawner : MonoBehaviour
 
     IEnumerator SpawnMonster()
     {
-        while (true)//[todo]각 몬스터 개체수가 10일때까지
+        while (monsterNumber < maxMonsterNumber)//[todo]각 몬스터 개체수가 10일때까지
         {
             // 각 원의 스폰지점
             foreach (CircleInfo circle in MonsterSpot)
@@ -93,20 +93,18 @@ public class MonsterSpawner : MonoBehaviour
                 //원안의 몬스터들
                 foreach (MonsterInfo monster in circle.monsterID)
                 {
-                    if (monsterNumber < maxMonsterNumber)
-                    {
-                        Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
-                        spawnPoint.y = circle.center.y; // y 값을 원래y값으로 설정
-                        go = Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
-                        monsterNumber++;
+                    Vector3 spawnPoint = GetRandomPointInCircle(circle.center, circle.radius);
+                    spawnPoint.y = circle.center.y; // y 값을 원래y값으로 설정
+                    go = Instantiate(monster.prefab, spawnPoint, Quaternion.identity);
+                    monsterNumber++;
 
-                        //몬스터 정보 넣어줌
-                        FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
-                        fieldMonster.Init(monster);
+                    //몬스터 정보 넣어줌
+                    FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
+                    fieldMonster.SetPosition(spawnPoint);
+                    fieldMonster.Init(monster);
 
-                        Debug.Log(monsterNumber);
-                        Debug.Log(spawnPoint);
-                    }
+                    Debug.Log(monsterNumber);
+                    Debug.Log(spawnPoint);
                 }
             }
             yield return new WaitForSeconds(3f); // 3초 마다 1개씩
