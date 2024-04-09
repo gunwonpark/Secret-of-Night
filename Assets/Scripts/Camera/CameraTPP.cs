@@ -149,8 +149,8 @@ public class CameraTPP : MonoBehaviour
                 Debug.DrawRay(hit.point, Vector3.up);
                 float dirMag = (checkPos - hit.point).magnitude + 0.1f;
                 offSet.z += dirMag;
-                Debug.Log(dirMag);
-                Debug.Log(offSet.z);
+                //Debug.Log(dirMag);
+                //Debug.Log(offSet.z);
                 offSet.z = Mathf.Clamp(offSet.z, -1000f, 0.3f);
                 return false;
             }

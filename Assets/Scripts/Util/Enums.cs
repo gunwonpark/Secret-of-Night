@@ -20,3 +20,8 @@ public enum RewardType
     Exp,
     Skill
 }
+
+public enum UIEvent
+{
+    Click,
+}

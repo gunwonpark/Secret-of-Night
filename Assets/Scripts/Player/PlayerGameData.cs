@@ -9,13 +9,20 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerGameData
 {
-    private string _jsonDataPath;
+
     private DataManager dataManager;
+    public string JsonDataPath => $"{Application.dataPath}/Datas/PlayerData_{SlotNumber}";
+
+    [Header("PlayInfo")]
+    public int SlotNumber;
+    public string SaveTime;
+    public string ChapterInfo;
 
     [field: Header("PlayerInfo")]
-    [field: SerializeField] public string CharacterType { get; private set; }
-    [field: SerializeField] public int ID { get; private set; } // 로그인 할때 필요하면 사용할 ID -> 현재 미사용
-    [field: SerializeField] public int CharacterID { get; private set; } // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
+    public string CharacterType;
+    public int ID;  // 로그인 할때 필요하면 사용할 ID -> 현재 미사용
+    public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
+    public string CharacterName; // 플레이어 이름    
 
     [Header("PlayerStat")]
     public int Level;
@@ -38,20 +45,18 @@ public class PlayerGameData
     public event Action OnLevelUp;
     public PlayerGameData()
     {
-        _jsonDataPath = $"{Application.dataPath}/Datas/PlayerData";
     }
     /// <summary>
     /// 현재는 어떤 종류의 캐릭터인지에 따라 데이터를 초기화 시켜준다
     /// </summary>
     /// <param name="CharacterID">캐릭터의 종류</param>
-    public void Initialize(int CharacterID)
+    public void Initialize()
     {
         dataManager = GameManager.Instance.dataManager;
-        this.CharacterID = CharacterID;
         // 파일이 있으면 파일Json데이터 불러오기
-        if (File.Exists(_jsonDataPath))
+        if (File.Exists(JsonDataPath))
         {
-            string json = File.ReadAllText(_jsonDataPath);
+            string json = File.ReadAllText(JsonDataPath);
             JsonUtility.FromJsonOverwrite(json, this);
             return;
         }
@@ -63,6 +68,14 @@ public class PlayerGameData
         //defualtDataSetting
         if (dataManager != null)
         {
+            //게임 정보 초기화
+            CharacterID = 1; // 캐릭터 선택 창이 아직 존재 하지 않는다
+            ChapterInfo = "튜토리얼";
+
+            //캐릭터 정보 초기화
+            CharacterName = "Unknown";
+
+            //stat 초기화
             PlayerStatData statData = dataManager.playerStatDataBase.GetData(CharacterID);
             Level = 1;
             CurExp = 0;
@@ -122,12 +135,17 @@ public class PlayerGameData
 
     public void SaveData()
     {
-        Utility.SaveToJson(this, _jsonDataPath);
+        SaveTime = DateTime.Now.ToString();
+        Utility.SaveToJson(this, JsonDataPath);
+    }
+    public void LoadSavedData()
+    {
+        Utility.LoadJson<PlayerGameData>(JsonDataPath);
     }
 
     public void DeleteData()
     {
-        Utility.DeleteJson(_jsonDataPath);
+        Utility.DeleteJson(JsonDataPath);
     }
 }
 

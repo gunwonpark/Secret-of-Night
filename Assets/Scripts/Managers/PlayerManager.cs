@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public PlayerGameData playerData;
+    public Dictionary<int, PlayerGameData> playerDatas = new Dictionary<int, PlayerGameData>(); // 불러오기 데이터 캐싱용
 
     private PlayerSkillDataBase _playerSkillDataBase;
     private PlayerStatDataBase _playerStatDataBase;
@@ -18,12 +19,11 @@ public class PlayerManager : MonoBehaviour
         if (playerData == null)
         {
             playerData = new PlayerGameData();
-            playerData.Initialize(CharacterID);
+            playerData.Initialize();
         }
 
         GetSkillListByPlayerID(CharacterID);
     }
-
 
     #region Player Skill
     //플레이어가 소지 할 수 있는 스킬 리스트를 받아온다

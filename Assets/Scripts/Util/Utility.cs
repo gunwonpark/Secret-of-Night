@@ -9,14 +9,26 @@ public static class Utility
     /// <typeparam name="TLoad">데이터 베이스 이름</typeparam>
     /// <param name="filename"></param>
     /// <returns>파싱된 데이터 베이스</returns>
-    public static TLoad LoadJson<TLoad>(string filename)
+    public static TLoad LoadJson<TLoad>(string filename, bool IsInResources = true)
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>($"Json/{filename}");
-        if (jsonFile != null)
+        if (IsInResources)
         {
-            string json = jsonFile.text;
-            return JsonUtility.FromJson<TLoad>(json);
+            TextAsset jsonFile = Resources.Load<TextAsset>($"Json/{filename}");
+            if (jsonFile != null)
+            {
+                string json = jsonFile.text;
+                return JsonUtility.FromJson<TLoad>(json);
+            }
         }
+        else
+        {
+            string data = File.ReadAllText(filename);
+            if (data != null)
+            {
+                return JsonUtility.FromJson<TLoad>(filename);
+            }
+        }
+
         Debug.Log($"There is no file {filename}");
         return default;
     }

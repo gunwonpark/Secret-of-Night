@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Skill : MonoBehaviour
+public class Skill
 {
     [SerializeField] private bool _isActive;
     public PlayerSkillData PlayerSkillData { get; private set; }
