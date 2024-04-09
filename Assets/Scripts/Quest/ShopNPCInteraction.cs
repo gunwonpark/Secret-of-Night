@@ -112,6 +112,7 @@ public class ShopNPCInteraction : MonoBehaviour
         _activate = false;
     }
 
+    //------------------------------------------------
     private void OnInventoryOpen()
     {
         _activate = false;

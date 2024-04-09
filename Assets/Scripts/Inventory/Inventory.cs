@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI ItemNameText;
 
 
-    //상점에서 판매하기 G키 이벤트로 델리게이트 사용
+    //상점에서 판매하기 G키 활성화를 이벤트로 델리게이트 사용
     public delegate void InventoryEvent();
     public static event InventoryEvent OnInventoryClose;
     public static event InventoryEvent OnInventoryOpen;
@@ -672,6 +672,7 @@ public class Inventory : MonoBehaviour
         else
         {
             popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
 
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
@@ -681,11 +682,22 @@ public class Inventory : MonoBehaviour
     public void OnSaleCheckButton()
     {
         int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
-        GameManager.Instance.playerManager.playerData.Gold += totalPrice;
-        CashUpdate();
-        Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-        RemoveSelectedItem();
-        salePopUpUI.SetActive(false);
+        if (_selectedItem.count >= _currentQuantity)
+        {
+            GameManager.Instance.playerManager.playerData.Gold += totalPrice;
+            CashUpdate();
+            Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
+            RemoveSelectedItem();
+            salePopUpUI.SetActive(false);
+        }
+        else
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
+
+            popUpText.text = "해당 개수 내에서만 \n 판매 가능합니다.";
+        }
+
     }
 
     // 팝업 판매 취소 버튼
@@ -698,6 +710,7 @@ public class Inventory : MonoBehaviour
     public void OnInventoryCheckButton()
     {
         salePopUpUI.SetActive(false);
+        popUpUI.SetActive(false);
 
     }
 
