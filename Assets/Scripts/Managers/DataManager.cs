@@ -29,13 +29,11 @@ public class DataManager : MonoBehaviour
         itemDataBase = Utility.LoadJson<ItemDataBase>("Items_Data");
         itemDataBase.Initalize();
 
-        //questDataBase = Utility.LoadJson<QuestDataBase>("Quest_Data");
-        //questDataBase.Initalize();
+        questDataBase = Utility.LoadJson<QuestDataBase>("Quest_Data");
+        questDataBase.Initalize();
 
-        //dialogueDataBase = Utility.LoadJson<DialogueDataBase>("QuestScript_Data");
-        //dialogueDataBase.Initalize();
-
-
+        dialogueDataBase = Utility.LoadJson<DialogueDataBase>("QuestScript_Data");
+        dialogueDataBase.Initalize();
     }
 }
 

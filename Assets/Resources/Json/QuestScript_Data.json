@@ -1,0 +1,364 @@
+{
+	"QuestScript": [
+		{
+			"DialogueID": 100101,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "여긴.. 어디지?"
+		},
+		{
+			"DialogueID": 100102,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "꽤 오랫동안 잔 것 같은데 이곳은 기억이 나지 않아.."
+		},
+		{
+			"DialogueID": 100103,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "(꼬르륵..)"
+		},
+		{
+			"DialogueID": 100104,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "일단 배가 너무 고파.. 이 주변에 먹을 만한 것이 있을까?"
+		},
+		{
+			"DialogueID": 100201,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "버섯이 꽤 맛있는걸!"
+		},
+		{
+			"DialogueID": 100202,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "배도 채웠고.."
+		},
+		{
+			"DialogueID": 100203,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "계속 여기 있을 수는 없으니 좀 둘러봐야겠어."
+		},
+		{
+			"DialogueID": 100301,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "저 멀리 불빛이 보이는 것 같아!"
+		},
+		{
+			"DialogueID": 100302,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "마을이면 좋을 텐데.. 일단 가보자."
+		},
+		{
+			"DialogueID": 100401,
+			"Talker": "Aman",
+			"TalkerKo": "???",
+			"Scripts": "어!? 거기 누구야!"
+		},
+		{
+			"DialogueID": 100402,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "(응..? 사람의 형상이 아닌 것 같은데..?)"
+		},
+		{
+			"DialogueID": 100403,
+			"Talker": "Player",
+			"TalkerKo": "플레이어",
+			"Scripts": "아.. 안녕하세요. 불빛이 보여서왔어요.. 길을 잃었습니다."
+		},
+		{
+			"DialogueID": 100404,
+			"Talker": "Aman",
+			"TalkerKo": "???",
+			"Scripts": "우리 마을은 길 잃은 나그네를 그냥 보내는 박한 마을이 아니야! 어서 들어와~"
+		},
+		{
+			"DialogueID": 100501,
+			"Talker": "Aman",
+			"TalkerKo": "???",
+			"Scripts": "\t어머~~ 우리 마을에 손님은 정말 오랜만이야!! 잘 잤니?\t\t"
+		},
+		{
+			"DialogueID": 100502,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "아 참! 내 소개를 하는 걸 깜빡했네~ 나는 하이하이라고 해. 너는 이름이 뭐야?"
+		},
+		{
+			"DialogueID": 100503,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저는 도토리라고 합니다."
+		},
+		{
+			"DialogueID": 100504,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "어젯밤에 신세 많이 졌습니다."
+		},
+		{
+			"DialogueID": 100505,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "아니야 아니야~ 새로운 사람은 늘 환영이란다!"
+		},
+		{
+			"DialogueID": 100506,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "우리 마을의 촌장님이 널 보고 싶어 하시는데 한번 가볼래?"
+		},
+		{
+			"DialogueID": 100601,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "안녕하세요 촌장님. 저를 보고 싶어 하신다고 해서 왔어요."
+		},
+		{
+			"DialogueID": 100602,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(촌장도 사람의 형상이 아니다. 확실히 이상해)"
+		},
+		{
+			"DialogueID": 100603,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "안녕하신가 젊으니 허허. 나는 이 마을의 촌장 구리구리라고 하네."
+		},
+		{
+			"DialogueID": 100604,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "정말 오랜만에 마을에 손님이 찾아와 한번 보고 싶었네."
+		},
+		{
+			"DialogueID": 100605,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아 그렇군요."
+		},
+		{
+			"DialogueID": 100606,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "다른 주민들도 보고 싶어 하는 것 같은데 마을을 둘러보면서 주민들과 이야기를 나눠 보는 것이 어떻겠나?"
+		},
+		{
+			"DialogueID": 100607,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "게로게로가 자네에게 관심이 많아 보이던데 이야기를 나눠 보시게."
+		},
+		{
+			"DialogueID": 100701,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "안녕! 게로게로..?"
+		},
+		{
+			"DialogueID": 100702,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "안녀어어엉~~~! 내가 바로 게로게로야!"
+		},
+		{
+			"DialogueID": 100703,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "이렇게 만난 것도 인연인데 서리서리 놀리러 가지 않을래?"
+		},
+		{
+			"DialogueID": 100704,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "서리서리가 어제 버섯을 캐왔는데 내가 몰래 다 먹어서 지금쯤 엄청 씩씩대고 있을 거야"
+		},
+		{
+			"DialogueID": 100705,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "지금이 놀려먹을 시점이라고!!"
+		},
+		{
+			"DialogueID": 100706,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "어.. 음.. 앗! 나 갑자기 상점에 볼일이 있어서 가볼게!"
+		},
+		{
+			"DialogueID": 100801,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "휴.. 아! 안녕하세요! 여긴 상점인가 봐요?"
+		},
+		{
+			"DialogueID": 100802,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "안녕하세요~ 저는 상점 주인인 뽀롱뽀롱이에요!"
+		},
+		{
+			"DialogueID": 100803,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "어제 오셨다던 용사님이시군요!"
+		},
+		{
+			"DialogueID": 100804,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저는 용사가 아니라 하루 묵게 된…"
+		},
+		{
+			"DialogueID": 100805,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "저는 마을에서 여러 가지 물건을 사고팔고 있어요~ 많이 들러주세요!"
+		},
+		{
+			"DialogueID": 100806,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "앗 서리서리 안녕~?\t\t\t"
+		},
+		{
+			"DialogueID": 100901,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "씨익씨익 누가 내 버섯을 다 먹었어!!"
+		},
+		{
+			"DialogueID": 100902,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "뽀롱뽀롱은 알아??"
+		},
+		{
+			"DialogueID": 100903,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "어머 누가 그런 짓을 했니? 버섯이라면 하나에 10원에 팔 수 있었을 텐데."
+		},
+		{
+			"DialogueID": 100904,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "내 버섯 가져간 놈 잡히기만 해봐! 어? 너는 못 보던 얼굴인데?"
+		},
+		{
+			"DialogueID": 100905,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아.. 안녕?"
+		},
+		{
+			"DialogueID": 100906,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "설마 내 버섯에 손을 댄 사람이 너야!???"
+		},
+		{
+			"DialogueID": 100907,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "난 아니야!"
+		},
+		{
+			"DialogueID": 100908,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "버섯 도둑을 찾으러 이만 가봐야겠어. 잡히면 가만두지 않을 거야!"
+		},
+		{
+			"DialogueID": 100909,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 100910,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "….."
+		},
+		{
+			"DialogueID": 100911,
+			"Talker": "BorongBorong",
+			"TalkerKo": "뽀롱뽀롱",
+			"Scripts": "호호.. 늘 있는 일이니까 신경 쓰지 않아도 돼! 만나서 반가웠어."
+		},
+		{
+			"DialogueID": 100912,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "네. 안녕히 계세요."
+		},
+		{
+			"DialogueID": 101001,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(앗 이 개구리.. 아니 이 사람은 좀 바보같이 생겼어..!)"
+		},
+		{
+			"DialogueID": 101002,
+			"Talker": "buggubuggu",
+			"TalkerKo": "부꾸부꾸",
+			"Scripts": "부꾸~부꾸~내 이름은 부꾸부꾸~"
+		},
+		{
+			"DialogueID": 101003,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "안녕! 부꾸부꾸?"
+		},
+		{
+			"DialogueID": 101004,
+			"Talker": "buggubuggu",
+			"TalkerKo": "부꾸부꾸",
+			"Scripts": "안녕! 내 이름을 어떻게 알았어? 너는 음.. 게로게로구나!"
+		},
+		{
+			"DialogueID": 101005,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "엥 난 어제 왔는걸? 게로게로는 저쪽에 있잖아."
+		},
+		{
+			"DialogueID": 101006,
+			"Talker": "buggubuggu",
+			"TalkerKo": "부꾸부꾸",
+			"Scripts": "아 맞다! 게로게로는 저기 있지!"
+		},
+		{
+			"DialogueID": 101007,
+			"Talker": "buggubuggu",
+			"TalkerKo": "부꾸부꾸",
+			"Scripts": "….. 안녕? 내 이름은 부꾸부꾸~"
+		},
+		{
+			"DialogueID": 101008,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "응.. 안녕.."
+		},
+		{
+			"DialogueID": 101009,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "여기 주민들 상태가 좀 이상해."
+		},
+		{
+			"DialogueID": 101010,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님한테 돌아가야겠어."
+		}
+	]
+}
