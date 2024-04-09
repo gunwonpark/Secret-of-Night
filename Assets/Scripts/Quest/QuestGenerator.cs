@@ -11,8 +11,8 @@ public class QuestGenerator : MonoBehaviour
     {
         var newQuest = new Quest
         {
-            questID = 10101,
-            questDescription = "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
+            QuestID = 1001,
+            Description = "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(여긴.. 어디지?)" },
@@ -21,14 +21,14 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(일단 배가 너무 고파..이 주변에 먹을 만한 것이 있을까?)" }
             },
             isContinue = true,
-            neededId = 1
+            QuestItemID = 1
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
-            questID = 10102,
-            questDescription = "주변을 둘러보자<이동>",
+            QuestID = 1002,
+            Description = "주변을 둘러보자<이동>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(버섯이 꽤 맛있는걸!)" },
@@ -42,8 +42,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10103,
-            questDescription = "묵을 만한 곳을 찾아보자<마을 발견>",
+            QuestID = 1003,
+            Description = "묵을 만한 곳을 찾아보자<마을 발견>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(저 멀리 불빛이 보이는 것 같아!)" },
@@ -51,15 +51,15 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             rewardType = RewardType.Item,
-            rewardID = 1,
-            rewardCount = 1,
+            RewardID = 1,
+            RewardCount = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
-            questID = 10104,
-            questDescription = "마을 입구 NPC와 대화",
+            QuestID = 1004,
+            Description = "마을 입구 NPC와 대화",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "NPC", Scripts = "어!? 거기 누구야!" },
@@ -75,8 +75,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10105,
-            questDescription = "촌장에게<촌장에게 말 걸기>",
+            QuestID = 1005,
+            Description = "촌장에게<촌장에게 말 걸기>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "여관 NPC(하이하이)", Scripts = "어머~~ 우리마을에 손님은 정말 오랜만이야!! 잘잤니?" },
@@ -91,8 +91,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10106,
-            questDescription = "게로게로에게<게로게로에게 말 걸기>",
+            QuestID = 1006,
+            Description = "게로게로에게<게로게로에게 말 걸기>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "안녕하세요 촌장님. 저를 보고 싶어 하신다고 해서 왔어요." },
@@ -107,8 +107,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10107,
-            questDescription = "뽀롱뽀롱에게<뽀롱뽀롱에게 말 걸기>",
+            QuestID = 1007,
+            Description = "뽀롱뽀롱에게<뽀롱뽀롱에게 말 걸기>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "안녕! 게로게로..?" },
@@ -124,8 +124,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10108,
-            questDescription = "서리서리에게<서리서리에게 말 걸기>",
+            QuestID = 1008,
+            Description = "서리서리에게<서리서리에게 말 걸기>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "휴.. 아! 안녕하세요! 여긴 상점인가 봐요?" },
@@ -141,8 +141,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest
         {
-            questID = 10109,
-            questDescription = "서리서리, 뽀롱뽀롱과 대화나누기",
+            QuestID = 1009,
+            Description = "서리서리, 뽀롱뽀롱과 대화나누기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "서리서리", Scripts = "씨익씨익 누가 내 버섯을 다 먹었어!!" },
