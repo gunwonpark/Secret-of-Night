@@ -1,25 +1,36 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class SpawnData
 {
     public int SpotID;
-    public Vector3 MonsterSpot;
+    public float[] MonsterSpot;
     public float Radius;
     public int[] MonsterID;
 
+    public Vector3 spotVector;
+
     public GameObject Prefab;
+
+    public void init()
+    {
+        spotVector = new Vector3(MonsterSpot[0], MonsterSpot[1], MonsterSpot[2]);
+    }
 }
 
-//[SerializeField]
-//public class MonsterSpawnDatabase : DataBase<int, SpawnData>
-//{
-//    public List<SpawnData> SpawnData;
+[Serializable]
+public class MonsterSpawnDatabase : DataBase<int, SpawnData>
+{
+    public List<SpawnData> FieldMonsterSpwan;
 
-//    protected override void LoadData()
-//    {
-//        foreach (SpawnData spanData in SpawnData)
-//        {
-//            data.Add(spanData.SpotID, spanData);
-//        }
-//    }
-//}
+    protected override void LoadData()
+    {
+        foreach (SpawnData spawnData in FieldMonsterSpwan)
+        {
+            data.Add(spawnData.SpotID, spawnData);
+            spawnData.init();
+        }
+    }
+}

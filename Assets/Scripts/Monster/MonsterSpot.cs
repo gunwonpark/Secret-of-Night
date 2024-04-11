@@ -4,32 +4,24 @@ using UnityEngine;
 
 public class MonsterSpot : MonoBehaviour
 {
-    //MonsterInfo monsterInfo;
-    //GameObject go;
+    public MonsterManager manager;
+    public SpawnData spawnData;
 
-    //[SerializeField] public int MonsterID;
-    //[SerializeField] int monsterCount;
+    public void Initialize(MonsterManager manager, SpawnData spawnData)
+    {
+        this.manager = manager;
+        this.spawnData = spawnData;
 
-    //public Vector3 MyOriginalPosition;
+        transform.position = spawnData.spotVector;
+    }
 
-    //public void MonsterSpawn(MonsterInfo monsterInfo)
-    //{
-    //    //monsterSpawner가 준 내 몬스터 정보
-    //    this.monsterInfo = monsterInfo;
-    //    MonsterID = monsterInfo.MonsterID;
-
-    //    //생성
-    //    go = Instantiate(monsterInfo.prefab, transform);
-
-    //    go.GetComponent<FieldMonsters>().SetPosition(transform.position);
-
-    //    MyOriginalPosition = go.transform.position;
-
-    //    FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
-
-    //    //fieldMonsters 시작?
-    //    fieldMonsters.Init(monsterInfo);
-    //}
-
-
+    public Vector3 GetRandomPointInCircle(Vector3 center, float radius)//랜덤한 스폰지점
+    {
+        //[todo]랜덤지점에 뭐가 없을때만 반환
+        float angle = Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성
+        float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * radius; // 랜덤한 거리 생성
+        float x = center.x + distance * Mathf.Cos(angle); // x 좌표 계산
+        float z = center.z + distance * Mathf.Sin(angle); // z 좌표 계산
+        return new Vector3(x, center.y, z); // 랜덤 지점 반환
+    }
 }
