@@ -2,24 +2,36 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public MonsterData dataManager;
-    public MonsterSpawner monsterSpawner;
+    public MonsterData monsterData;
+    public MonsterSpawnDatabase spawnDatabase;
+    public DataManager dataManager;
 
     public void Initialize()
     {
-        dataManager = new MonsterData();
-        dataManager.Initialize();
+        monsterData = new MonsterData();
+        monsterData.Initialize();
 
+        dataManager = GameManager.Instance.dataManager;
 
-    }
+        spawnDatabase = dataManager.monsterSpawnDatabase;
 
-    private void Awake()
-    {
-        monsterSpawner = gameObject.AddComponent<MonsterSpawner>();
+        CreatMonsterSpot();
     }
 
     public MonsterInfo GetMonsterInfoByKey(int MonsterID)
     {
-        return dataManager.monsterDatabase.GetMonsterInfoByKey(MonsterID);
+        return monsterData.monsterDatabase.GetMonsterInfoByKey(MonsterID);
+    }
+
+    public void CreatMonsterSpot()
+    {
+        foreach (SpawnData data in spawnDatabase.FieldMonsterSpwan)
+        {
+            GameObject go = new GameObject();
+
+            MonsterSpot monsterSpot = go.AddComponent<MonsterSpot>();
+
+            monsterSpot.Initialize(this, data);
+        }
     }
 }

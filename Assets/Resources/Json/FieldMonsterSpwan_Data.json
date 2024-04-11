@@ -2,7 +2,11 @@
 	"FieldMonsterSpwan": [
 		{
 			"SpotID": 1,
-			"MonsterSpot": "3.2,3,69",
+			"MonsterSpot": [
+				3.2,
+				3,
+				69
+			],
 			"Radius": 30,
 			"MonsterID": [
 				2,
@@ -12,7 +16,11 @@
 		},
 		{
 			"SpotID": 2,
-			"MonsterSpot": "-58.9,3,121.8",
+			"MonsterSpot": [
+				-58.9,
+				3,
+				121.8
+			],
 			"Radius": 30,
 			"MonsterID": [
 				2,
@@ -22,7 +30,11 @@
 		},
 		{
 			"SpotID": 3,
-			"MonsterSpot": "50.3,3,118.1",
+			"MonsterSpot": [
+				50.3,
+				3,
+				118.1
+			],
 			"Radius": 15,
 			"MonsterID": [
 				1,
@@ -32,7 +44,11 @@
 		},
 		{
 			"SpotID": 4,
-			"MonsterSpot": "84.6,5,180.3",
+			"MonsterSpot": [
+				84.6,
+				5,
+				180.3
+			],
 			"Radius": 15,
 			"MonsterID": [
 				1,
@@ -42,7 +58,11 @@
 		},
 		{
 			"SpotID": 5,
-			"MonsterSpot": "98.7,12,94.5",
+			"MonsterSpot": [
+				98.7,
+				12,
+				94.5
+			],
 			"Radius": 20,
 			"MonsterID": [
 				7
@@ -50,7 +70,11 @@
 		},
 		{
 			"SpotID": 6,
-			"MonsterSpot": "116.6,12,170.8",
+			"MonsterSpot": [
+				116.6,
+				12,
+				170.8
+			],
 			"Radius": 35,
 			"MonsterID": [
 				7
@@ -58,7 +82,11 @@
 		},
 		{
 			"SpotID": 7,
-			"MonsterSpot": "66.8,7,247.5",
+			"MonsterSpot": [
+				66.8,
+				7,
+				247.5
+			],
 			"Radius": 20,
 			"MonsterID": [
 				5
@@ -66,7 +94,11 @@
 		},
 		{
 			"SpotID": 8,
-			"MonsterSpot": "31.7,7,292.1",
+			"MonsterSpot": [
+				31.7,
+				7,
+				292.1
+			],
 			"Radius": 30,
 			"MonsterID": [
 				6
