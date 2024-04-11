@@ -98,10 +98,6 @@ public class PlayerGameData
                 Def = statData.Def;
                 MoveSpeed = statData.MoveSpeed;
                 Gold = statData.Gold;
-#if UNITY_EDITOR
-                if (Gold == 0)
-                    Gold = 1000;
-#endif
             }
         }
     }

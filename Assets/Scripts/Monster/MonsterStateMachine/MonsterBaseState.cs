@@ -91,9 +91,9 @@ public class MonsterBaseState : IState, IDamageable
 
     private void Rotate(Vector3 direction)
     {
-        direction.y = 0;
         if (direction != Vector3.zero)
         {
+            direction.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
             stateMachine.FieldMonsters.transform.rotation = Quaternion.Slerp(stateMachine.FieldMonsters.transform.rotation, targetRotation, stateMachine.rotationDamping * Time.deltaTime);
