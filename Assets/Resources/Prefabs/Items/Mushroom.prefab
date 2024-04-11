@@ -90,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4747670426036019294}
     m_Modifications:
+    - target: {fileID: 1421585447108529510, guid: 4b8005b48e60b6741adac3c5d0e1638a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8702827514637179468, guid: 4b8005b48e60b6741adac3c5d0e1638a, type: 3}
       propertyPath: m_Name
       value: Mushroom

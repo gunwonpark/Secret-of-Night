@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Steak_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4977254191767385161, guid: 59302acc2f389e14881279578b78a889, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

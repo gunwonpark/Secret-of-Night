@@ -90,6 +90,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4747670426036019294}
     m_Modifications:
+    - target: {fileID: 5969578453134023886, guid: e4976432fcd76624bba1a1b6e0518659, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8947943284378507254, guid: e4976432fcd76624bba1a1b6e0518659, type: 3}
       propertyPath: m_Name
       value: Book_01

@@ -122,13 +122,13 @@ public class ShopNPCInteraction : MonoBehaviour
     private void OnInventoryOpen()
     {
         _GKeyActivate = false;
-        Inventory.instance.npcInteraction = false;
     }
     private void OnInventoryClosed()
     {
         // 인벤토리가 닫힐 때 _activate 변수 다시 활성화
         _GKeyActivate = true;
         Inventory.instance.npcInteraction = false;
+        Inventory.instance.sale_Inventory = false;
     }
 
     private void OnShopClose()
