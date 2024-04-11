@@ -44,6 +44,7 @@ public class PlayerGameData
     public event Action OnDie;
     public event Action OnHPChange;
     public event Action OnMPChange;
+    public event Action OnSPChange;
     public event Action OnLevelUp;
     public PlayerGameData()
     {
@@ -113,7 +114,7 @@ public class PlayerGameData
             //플레이어 사망
             OnDie?.Invoke();
         }
-        OnHPChange.Invoke();
+        OnHPChange?.Invoke();
     }
     public void MPChange(float amount)
     {
@@ -126,7 +127,20 @@ public class PlayerGameData
         {
             CurMP = 0;
         }
-        OnMPChange.Invoke();
+        OnMPChange?.Invoke();
+    }
+    public void SPChange(float amount)
+    {
+        CurSP += amount;
+        if (CurSP > MaxSP)
+        {
+            CurSP = MaxSP;
+        }
+        else if (CurSP < 0)
+        {
+            CurSP = 0;
+        }
+        OnSPChange?.Invoke();
     }
     public void LevelUp()
     {
@@ -148,7 +162,12 @@ public class PlayerGameData
         OnLevelUp?.Invoke();
         SaveData();
     }
-
+    public void ResetStatus()
+    {
+        CurHP = MaxHP;
+        CurMP = MaxMP;
+        CurSP = MaxMP;
+    }
     public void SaveData()
     {
         SaveTime = DateTime.Now.ToString();

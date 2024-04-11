@@ -11,17 +11,20 @@ public class CameraTPP : MonoBehaviour
     public Vector3 pivotOffset = new Vector3(0.0f, 1.05f, -1.04f);
     public Vector3 camOffset = new Vector3(0.4f, 0.5f, -2.0f);
 
+    [Header("카메라 회전 관련")]
     public float smooth = 10f; // 카메라 반응속도
     public float horizontalAimingSpeed = 6.0f; // 수평 회전속도
     public float verticalAimingSpeed = 6.0f; // 수직 회전속도
     public float maxVerticalAngle = 30.0f; // 최대 수직각도
     public float minVerticalAngle = -60.0f;// 최소 수직각도
 
+    [Header("카메라 움직임 관련")]
     //smoothDamp
+    [SerializeField] private float smoothTime = 0.3f;
     float angleHVelocity = 0.0f;
     Vector3 pivotOffsetVelocity = Vector3.zero;
     Vector3 camOffsetVelocity = Vector3.zero;
-    float smoothTime = 0.3f;
+
 
     private float angleH = 0.0f; // 마우스 이동에 따른 카메라 수평이동 수치
     private float angleV = 0.0f; // 마우스 이동에 따른 카메라 수직이동 수치
@@ -130,6 +133,9 @@ public class CameraTPP : MonoBehaviour
 
 
         //Reposition Camera
+        //smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
+        //smoothCamOffset = Vector3.Lerp(smoothCamOffset, targetCamOffset,smooth * Time.deltaTime);
+
         smoothPivotOffset = Vector3.SmoothDamp(smoothPivotOffset, targetPivotOffset, ref pivotOffsetVelocity, smoothTime);
         smoothCamOffset = Vector3.SmoothDamp(smoothCamOffset, noCollisionOffset, ref camOffsetVelocity, smoothTime);
 

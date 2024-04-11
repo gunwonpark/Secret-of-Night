@@ -53,10 +53,10 @@ public class Phase1Boss : MonoBehaviour, IDamageable
         if (bossMonsterData == null) return;
 
 
-        if(currentState != BossState.Dying)
+        if (currentState != BossState.Dying)
         {
             transform.LookAt(playerTransform.position);
-        }        
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
@@ -81,7 +81,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
             case BossState.Dying:
                 // 사망 로직 처리
                 break;
-        }        
+        }
     }
 
     void MoveTowardsPlayer(float distanceToPlayer)
@@ -107,7 +107,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
         agent.speed = 3f;
         agent.SetDestination(playerTransform.position);
         animator.SetBool("IsDashing", true);
-        
+
         currentState = BossState.Attacking;
     }
 
@@ -125,7 +125,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     {
         if (distanceToPlayer <= bossMonsterData.Range)
         {
-            agent.speed = bossMonsterData.MoveSpeed;            
+            agent.speed = bossMonsterData.MoveSpeed;
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsDashing", false);
             animator.SetBool("IsAttack", true);
@@ -154,8 +154,8 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     {
         bossMonsterData.HP -= damage;
         if (bossMonsterData.HP <= 0)
-        { 
-            Die(); 
+        {
+            Die();
         }
         aic.Create(false);
 
@@ -201,7 +201,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
         {
             animator.SetTrigger("Die");
             agent.isStopped = true;
-            currentState = BossState.Dying;            
+            currentState = BossState.Dying;
         }
     }
 }

@@ -95,7 +95,10 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        stateMachine.Player.IsRunning = true;
+        if (!stateMachine.Player.IsTired)
+        {
+            stateMachine.Player.IsRunning = true;
+        }
     }
 
     private void OnDodgeStarted(InputAction.CallbackContext obj)
@@ -187,7 +190,7 @@ public class PlayerBaseState : IState
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
 
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition, stateMachine.Player.Controller.bounds.extents.x, stateMachine.Player.GroundLayerMask,
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition + Vector3.up * stateMachine.Player.Controller.bounds.extents.x * 0.5f, stateMachine.Player.Controller.bounds.extents.x, stateMachine.Player.GroundLayerMask,
                 QueryTriggerInteraction.Ignore);
     }
     protected float GetMovementSpeed()

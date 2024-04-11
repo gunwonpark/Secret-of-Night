@@ -1,3 +1,5 @@
+using System;
+
 public abstract class StateMachine
 {
     protected IState currentState;
@@ -22,6 +24,11 @@ public abstract class StateMachine
     public void PhysicsUpdate()
     {
         currentState?.PhysicsUpdate();
+    }
+
+    public Type GetCurrentState()
+    {
+        return currentState?.GetType();
     }
 }
 

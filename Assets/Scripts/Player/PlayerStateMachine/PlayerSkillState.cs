@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlayerSkillState : PlayerBaseState
 {
     public PlayerSkillState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -11,8 +9,7 @@ public class PlayerSkillState : PlayerBaseState
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = 0f;
 
-        Object.Instantiate(GameManager.Instance.playerManager.GetSkillEffect(skillKey + 100),
-            stateMachine.Player.transform.position + Vector3.up, stateMachine.Player.transform.rotation);
+        //Object.Instantiate(GameManager.Instance.playerManager.GetSkillEffect(skillKey + 100),stateMachine.Player.transform.position + Vector3.up, stateMachine.Player.transform.rotation);
 
         StartAnimation(stateMachine.Player.AnimationData.Skill1);
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, stateMachine.Player.Controller.bounds.extents.x);
+        Gizmos.DrawSphere(transform.position + Vector3.up * stateMachine.Player.Controller.bounds.extents.x * 0.5f, stateMachine.Player.Controller.bounds.extents.x);
     }
 #endif
     public void TakeDamage(float damage)
@@ -86,5 +87,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         Animator.SetTrigger(AnimationData.Die);
         Debug.Log("PlayerDie");
         Input.enabled = false;
+    }
+
+    public Type GetCurrentState()
+    {
+        return stateMachine?.GetCurrentState();
     }
 }
