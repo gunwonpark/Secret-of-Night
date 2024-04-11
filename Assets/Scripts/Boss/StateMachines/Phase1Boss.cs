@@ -12,7 +12,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     public Texture2D originalTexture;
     private NavMeshAgent agent;
     private SkinnedMeshRenderer[] meshRenderers;
-    SMRAfterImageCreator aic;
+    SMRAfterImageCreator aic;   
 
     [Header("MonsterData")]
     [SerializeField] private BossMonsterGameData bossMonsterData;
@@ -24,10 +24,6 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 
     private float actualSlowMotionCharge = 0f;
     private float maxSlowMotionCharge = 100f;
-
-    private void Awake()
-    {
-    }
 
     private void Start()
     {
@@ -81,7 +77,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
             case BossState.Dying:
                 // 사망 로직 처리
                 break;
-        }        
+        }                 
     }
 
     void MoveTowardsPlayer(float distanceToPlayer)

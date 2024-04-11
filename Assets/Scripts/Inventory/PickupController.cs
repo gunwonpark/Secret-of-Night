@@ -68,7 +68,7 @@ public class PickupController : MonoBehaviour
 
             if (distance <= _range)
             {
-                Inventory.instance.AddItem(_collider.transform.GetComponentInChildren<ItemObject>().item);
+                Inventory.instance.AddItem(_collider.transform.GetComponentInChildren<ItemObject>().item, 1);
                 Destroy(_collider.gameObject);
                 ItemInfoDisappear();
             }

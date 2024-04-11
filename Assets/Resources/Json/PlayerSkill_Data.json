@@ -2,30 +2,30 @@
 	"PlayerSkill": [
 		{
 			"SkillID": 101,
-			"Name": "Sword1Default",
+			"Name": "Snow slash",
 			"Description": "Test",
 			"SkillType": "Attack",
 			"DelayTime": 1,
 			"Damage": 1,
-			"PrefabPath": "Explosion"
+			"PrefabPath": "Snow slash"
 		},
 		{
 			"SkillID": 102,
-			"Name": "Sword1Skill1",
+			"Name": "Charge slash blue",
 			"Description": "Test",
 			"SkillType": "Attack",
 			"DelayTime": 50,
 			"Damage": 2,
-			"PrefabPath": "Chargeslashblue"
+			"PrefabPath": "Charge slash blue"
 		},
 		{
 			"SkillID": 103,
-			"Name": "Sword1Skill2",
+			"Name": "AoE slash blue",
 			"Description": "Test",
 			"SkillType": "Attack",
 			"DelayTime": 100,
 			"Damage": 3,
-			"PrefabPath": "AoEslashgreen"
+			"PrefabPath": "AoE slash blue"
 		},
 		{
 			"SkillID": 201,

@@ -10,18 +10,16 @@ public class PlayerSkillState : PlayerBaseState
     {
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = 0f;
-        stateMachine.Player.IsAttacking = true;
-        int SkillID = GameManager.Instance.dataManager.playerStatDataBase.GetData(stateMachine.Player.PlayerData.CharacterID).Skills[1];
-        string path = GameManager.Instance.dataManager.playerSkillDataBase.GetData(SkillID).PrefabPath;
 
-        GameObject go = Resources.Load<GameObject>($"Prefabs/Skills/{path}");
-        Object.Instantiate(go, stateMachine.Player.transform.position + Vector3.up, stateMachine.Player.transform.rotation);
+        Object.Instantiate(GameManager.Instance.playerManager.GetSkillEffect(skillKey + 100),
+            stateMachine.Player.transform.position + Vector3.up, stateMachine.Player.transform.rotation);
 
         StartAnimation(stateMachine.Player.AnimationData.Skill1);
     }
     public override void Exit()
     {
         base.Exit();
+        stateMachine.Player.DoSkill = false;
         StopAnimation(stateMachine.Player.AnimationData.Skill1);
     }
     public override void Update()
@@ -31,7 +29,6 @@ public class PlayerSkillState : PlayerBaseState
 
         if (normalizedTime > 1f)
         {
-            stateMachine.Player.IsAttacking = false;
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

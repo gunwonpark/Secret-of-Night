@@ -10,8 +10,6 @@ public class Shop : MonoBehaviour
     [SerializeField] private ShopSlot[] _uiSlots; // 상점 슬롯들을 저장할 배열
     [SerializeField] private Item[] _items; // 상점에 판매할 아이템 데이터 배열
 
-    private PlayerController _playerController;
-
     [Header("Shop UI")]
     [SerializeField] private GameObject _shopUI;
     [SerializeField] private GameObject _slotGrid;
@@ -40,6 +38,7 @@ public class Shop : MonoBehaviour
     [Header("PurchasePop-Up")]
     public GameObject purchasePopUpUI;
     public TMP_InputField quantityInput; // 수량 입력
+    private int _currentQuantity;
     public GameObject purchaseCheckBtn;
     public GameObject purchaseCancleBtn;
     public TextMeshProUGUI ItemNameText;
@@ -49,11 +48,13 @@ public class Shop : MonoBehaviour
     public GameObject checkBtn;
     public TextMeshProUGUI popUpText;
 
+    //상점에서 구매하기 G키 이벤트로 델리게이트 사용
+    public delegate void ShopCloseEvent();
+    public static event ShopCloseEvent OnShopClose;
 
     private void Awake()
     {
         instance = this;
-        _playerController = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
@@ -92,10 +93,16 @@ public class Shop : MonoBehaviour
 
         ClearSeletecItemWindow();
 
-        cash.text = Inventory.instance.cash.text;
+        CashUpdate();
+
+        GameManager.Instance.playerManager.playerData.OnLevelUp += UnLockItem;
 
     }
 
+    public void CashUpdate()
+    {
+        cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
+    }
 
     //기본 아이템 제외 
     private Item[] RemoveItemIndex(Item[] _array, int _index)
@@ -114,50 +121,8 @@ public class Shop : MonoBehaviour
         return newArray;
     }
 
-    void Update()
-    {
-        OpenShopUI();
-    }
 
-    private void OpenShopUI()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            shopActivated = !shopActivated;
-
-            if (shopActivated)
-            {
-                OpenShop();
-                _playerController.Input.enabled = false; //플레이어 활동 비활성
-
-            }
-            else
-            {
-                CloseShop();
-                _playerController.Input.enabled = true;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            shopActivated = !shopActivated;
-
-            if (shopActivated)
-            {
-                Inventory.instance.OpenInventory();
-                _playerController.Input.enabled = false; //플레이어 활동 비활성
-
-            }
-            else
-            {
-                Inventory.instance.CloseInventory();
-                _playerController.Input.enabled = true;
-            }
-        }
-
-    }
-
-    private void OpenShop()
+    public void OpenShop()
     {
         var startIndex = (_currentPage - 1) * _maxSlot; // 시작 인덱스 0
         var endIndex = Mathf.Min(startIndex + _maxSlot, _uiSlots.Length); // 끝 인덱스 12
@@ -239,8 +204,13 @@ public class Shop : MonoBehaviour
     public void OnExit()
     {
         _shopUI.SetActive(false);
-        _playerController.Input.enabled = true;
+        Inventory.instance._playerController.Input.enabled = true;
+        shopActivated = false;
+
+        OnShopClose?.Invoke();
     }
+
+    //---------------------------------------------------------------------------------------
 
     //아이템 슬롯 선택시 아이템 설명이 보이게
     public void SelectItem(int index)
@@ -316,13 +286,15 @@ public class Shop : MonoBehaviour
 
     }
 
+    //--------------------------------------------------------------------------------------
+
     //아이템 잠금
     private void LockItem()
     {
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             //item 배열의 길이를 넘지 않는 내에서 접근 가능하게
-            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level <= _items[i].UnlockLevel)
+            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level < _items[i].UnlockLevel)
             {
                 _uiSlots[i].LockImage(1);
                 _uiSlots[i].IsLocked = true;
@@ -339,29 +311,51 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             //item 배열의 길이를 넘지 않는 내에서 접근 가능하게
-            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level <= _items[i].UnlockLevel)
+            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level >= _items[i].UnlockLevel)
             {
                 _uiSlots[i].LockImage(0);
-                _uiSlots[i].IsLocked = true;
+                _uiSlots[i].IsLocked = false;
             }
 
+        }
+    }
+
+    // --------------------------------------------------------------------------------
+
+    //수량 입력
+    public void QuantityInput()
+    {
+        ItemNameText.text = _selectedItem.item.ItemName; // 수량 입력 전에 아이템 이름
+
+        if (!string.IsNullOrEmpty(quantityInput.text))
+        {
+            _currentQuantity = int.Parse(quantityInput.text);
+            int totalPrice = _selectedItem.item.Money * _currentQuantity;
+            ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
+        }
+        else
+        {
+            _currentQuantity = 1;
         }
     }
 
     // 아이템 구매 
     public void PurchaseItem()
     {
+        QuantityInput();
+
         if (_selectedItem != null && !_selectedItem.IsLocked) // 잠기지 않은 아이템만 구매 가능하도록
         {
-            if (GameManager.Instance.playerManager.playerData.Gold >= _selectedItem.item.Money)
+            int totalPrice = _selectedItem.item.Money * _currentQuantity;
+            if (GameManager.Instance.playerManager.playerData.Gold >= totalPrice)
             {
                 purchasePopUpUI.SetActive(true); // 구매 팝업
-                ItemNameText.text = _selectedItem.item.ItemName + " : $ " + _selectedItem.item.Money;
 
             }
             else
             {
-                popUpUI.SetActive(true); // 일반 팝업
+                // 소지금이 부족한 경우 처리
+                popUpUI.SetActive(true);
                 popUpText.text = "소지금이 부족합니다.";
             }
         }
@@ -376,13 +370,24 @@ public class Shop : MonoBehaviour
     // 팝업 구매 확인 버튼
     public void OnPurchaseCheckButton()
     {
-        GameManager.Instance.playerManager.playerData.Gold -= _selectedItem.item.Money;
-        Inventory.instance.AddItem(_selectedItem.item);
-        Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
-        cash.text = Inventory.instance.cash.text;
-
-        purchasePopUpUI.SetActive(false);
-        ItemNameText.text = "";
+        QuantityInput();
+        int totalPrice = _selectedItem.item.Money * _currentQuantity;
+        if (GameManager.Instance.playerManager.playerData.Gold >= totalPrice)
+        {
+            GameManager.Instance.playerManager.playerData.Gold -= totalPrice;
+            Inventory.instance.AddItem(_selectedItem.item, _currentQuantity);
+            Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
+            CashUpdate();
+            quantityInput.text = string.Format("1");
+            purchasePopUpUI.SetActive(false);
+            ItemNameText.text = "";
+        }
+        else
+        {
+            // 소지금이 부족한 경우 처리
+            popUpUI.SetActive(true);
+            popUpText.text = "소지금이 부족합니다.";
+        }
     }
 
 
@@ -390,6 +395,7 @@ public class Shop : MonoBehaviour
     public void OnPurchaseCancelButton()
     {
         purchasePopUpUI.SetActive(false);
+        quantityInput.text = string.Format("1");
         ItemNameText.text = "";
     }
 
@@ -398,6 +404,7 @@ public class Shop : MonoBehaviour
     public void OnShopCheckButton()
     {
         popUpUI.SetActive(false);
+        quantityInput.text = string.Format("1");
         popUpText.text = "";
     }
 }

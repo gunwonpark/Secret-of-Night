@@ -67,13 +67,22 @@ public class PlayerBaseState : IState
     #region addevent
     private void OnSkill1Started(InputAction.CallbackContext obj)
     {
-        skillKey = 1;
-        stateMachine.ChangeState(stateMachine.SkillState);
+        if (stateMachine.Player.DoSkill == false)
+        {
+            stateMachine.Player.DoSkill = true;
+            skillKey = 1;
+            stateMachine.ChangeState(stateMachine.SkillState);
+        }
+
     }
     private void OnSkill2Started(InputAction.CallbackContext obj)
     {
-        skillKey = 2;
-        stateMachine.ChangeState(stateMachine.SkillState);
+        if (stateMachine.Player.DoSkill == false)
+        {
+            stateMachine.Player.DoSkill = true;
+            skillKey = 2;
+            stateMachine.ChangeState(stateMachine.SkillState);
+        }
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
