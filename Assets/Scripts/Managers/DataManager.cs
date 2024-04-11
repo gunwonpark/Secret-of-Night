@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
     public ItemDataBase itemDataBase;
     public QuestDataBase questDataBase;
     public DialogueDataBase dialogueDataBase;
+    public MonsterSpawnDatabase monsterSpawnDatabase;
 
     #endregion
 
@@ -34,6 +35,9 @@ public class DataManager : MonoBehaviour
 
         dialogueDataBase = Utility.LoadJson<DialogueDataBase>("QuestScript_Data");
         dialogueDataBase.Initalize();
+
+        monsterSpawnDatabase = Utility.LoadJson<MonsterSpawnDatabase>("FieldMonsterSpwan_Data");
+        monsterSpawnDatabase.Initalize();
     }
 }
 

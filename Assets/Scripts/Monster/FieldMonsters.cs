@@ -17,8 +17,9 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public BoxCollider attackCollider;
 
     public MonsterAnimation monsterAnimation;
-
     private MonsterStateMachine stateMachine;
+    public ItemDataBase itemDataBase;
+    public MonsterSpawner monsterSpawner;
 
     public Vector3 originalPosition;
 
@@ -41,6 +42,9 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         myInfo = monsterInfo;
 
         HP = myInfo.HP;
+
+        itemDataBase = GameManager.Instance.dataManager.itemDataBase;
+        monsterSpawner = GameManager.Instance.monsterManager.monsterSpawner;
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -66,7 +70,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
     }
 
-    public void SetPosition(Vector3 position)
+    public void SetPosition(Vector3 position)//[todo] 새로운 무브포지션으로 지정.
     {
         originalPosition = position;
     }
@@ -89,4 +93,28 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
         Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
     }
+
+    public void DropData()
+    {
+        //int count;
+
+        //float itemWeight = 1;
+        //float _weigth = 0;
+
+        //for (int j = 0; j < myInfo.Weigth.Length; j++)
+        //{
+        //    if (i == j)
+        //    {
+        //        _weigth = j;
+
+        //    }
+        //}
+
+        for (int i = 0; i < myInfo.DropItem.Length; i++)//랜덤으로 해야할것같음
+        {
+            dropItem(itemDataBase.GetData(myInfo.DropItem[i]));
+
+        }
+    }
+
 }
