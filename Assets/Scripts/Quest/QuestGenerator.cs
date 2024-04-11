@@ -5,38 +5,33 @@ using UnityEngine;
 
 public class QuestGenerator : MonoBehaviour
 {
-    public List<Quest> tempQuests = new List<Quest>();
+    public List<Quest> tempQuests = new List<Quest>();    
 
     private void Awake()
-    {
-        var newQuest = new Quest
-        {
-            QuestID = 1001,
-            Description = "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
+    {        
+        var newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1001))
+        {            
+            // "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "(여긴.. 어디지?)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(꽤 오랫동안 잔 것 같은데 이곳은 기억이 나지 않아..)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(꼬르륵..)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(일단 배가 너무 고파..이 주변에 먹을 만한 것이 있을까?)" }
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100101)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100102)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100103)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
-            isContinue = true,
-            QuestItemID = 1
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
-        {
-            QuestID = 1002,
-            Description = "주변을 둘러보자<이동>",
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1002))
+        {            
+            // Description = "주변을 둘러보자<이동>",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "(버섯이 꽤 맛있는걸!)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(배도 채웠고..계속 여기 있을 수는 없으니 좀 둘러봐야겠어.)" }
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100202)),
             },
             isContinue = true,
-            
-
         };
         tempQuests.Add(newQuest);
 
