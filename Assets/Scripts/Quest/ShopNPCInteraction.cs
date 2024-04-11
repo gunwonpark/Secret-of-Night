@@ -17,20 +17,22 @@ public class ShopNPCInteraction : MonoBehaviour
     private Shop _shop;
 
     private bool isInRange = false; // 플레이어가 일정 범위 내에 있는지 여부
-    private bool _activate = true; // 대화, 구매, 판매시 G키 비활성화 시키게
+    private bool _GKeyActivate = true; // 대화, 구매, 판매시 G키 비활성화 시키게
 
 
     void Start()
     {
         _shop = GetComponent<Shop>();
+        Inventory.OnInventoryOpen += OnInventoryOpen;
         Inventory.OnInventoryClose += OnInventoryClosed;
         Shop.OnShopClose += OnShopClose;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(interactionKey) && isInRange && _activate)
+        if (Input.GetKeyDown(interactionKey) && isInRange && _GKeyActivate)
         {
             OpenInteractionPopup();
+
         }
     }
 
@@ -54,6 +56,7 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         // 팝업 창을 활성화하여 보이게 함
         interactionPopup.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
 
         talkBtn.SetActive(true);
         tradeBtn.SetActive(true);
@@ -61,7 +64,6 @@ public class ShopNPCInteraction : MonoBehaviour
         saleBtn.SetActive(false);
         talktext.text = "안녕! 주인공! 오늘은 무슨 일로 왔어?";
 
-        Cursor.lockState = CursorLockMode.None;
     }
 
     // 팝업 창에서 호출되는 메서드 (예: '닫기' 버튼을 눌렀을 때)
@@ -69,7 +71,9 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         // 팝업 창을 비활성화하여 가리기
         interactionPopup.SetActive(false);
-        _activate = false;
+        _GKeyActivate = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // 대화 버튼을 눌렀을때 호출되는 메서드
@@ -94,32 +98,39 @@ public class ShopNPCInteraction : MonoBehaviour
     public void OnBuyClick()
     {
         _shop.OpenShop();
+        Cursor.lockState = CursorLockMode.None;  //마우스 커서 표시
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
         _shop.shopActivated = true;
-
-        _activate = false;
+        _GKeyActivate = false;
     }
 
     public void OnSaleClick()
     {
         Inventory.instance.OpenInventory();
+        Cursor.lockState = CursorLockMode.None;
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
         Inventory.instance.activated = true;
 
-        _activate = false;
+        _GKeyActivate = false;
     }
 
+    //------------------------------------------------
+    // _activate는 인벤토리 또는 상점이 열려있을 때 대화창이 활성화 되지 않게 
+    private void OnInventoryOpen()
+    {
+        _GKeyActivate = false;
+    }
     private void OnInventoryClosed()
     {
         // 인벤토리가 닫힐 때 _activate 변수 다시 활성화
-        _activate = true;
+        _GKeyActivate = true;
     }
 
     private void OnShopClose()
     {
-        _activate = true;
+        _GKeyActivate = true;
     }
 
 }

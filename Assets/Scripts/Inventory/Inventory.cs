@@ -70,9 +70,10 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI ItemNameText;
 
 
-    //상점에서 판매하기 G키 이벤트로 델리게이트 사용
-    public delegate void InventoryCloseEvent();
-    public static event InventoryCloseEvent OnInventoryClose;
+    //상점에서 판매하기 G키 활성화를 이벤트로 델리게이트 사용
+    public delegate void InventoryEvent();
+    public static event InventoryEvent OnInventoryClose;
+    public static event InventoryEvent OnInventoryOpen;
 
 
     private void Awake()
@@ -154,15 +155,18 @@ public class Inventory : MonoBehaviour
             _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
-        //마우스 커서 표시
-        Cursor.lockState = CursorLockMode.None;
+
         _inventoryUI.SetActive(true);
         ClearSeletecItemWindow();
+        Cursor.lockState = CursorLockMode.None; //마우스 커서 표시 
+        OnInventoryOpen?.Invoke(); // NPC G키 비활성화
     }
 
     public void CloseInventory()
     {
         _inventoryUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        OnInventoryClose.Invoke();
     }
 
     // 다음 슬롯 창
@@ -229,9 +233,9 @@ public class Inventory : MonoBehaviour
     public void OnExit()
     {
         _inventoryUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
         _playerController.Input.enabled = true;
         playerLight.SetActive(false);
-
         OnInventoryClose?.Invoke();
     }
 
@@ -241,7 +245,7 @@ public class Inventory : MonoBehaviour
     //아이템 추가
     public void AddItem(Item _item, int _quantity)
     {
-        if (_item.Type == "using") // 소모성 아이템은 수량 체크
+        if (_item.Type == "using" || _item.Type == "Ect") // 소모성 아이템은 수량 체크
         {
             for (int i = 0; i < _quantity; i++)
             {
@@ -331,7 +335,10 @@ public class Inventory : MonoBehaviour
         switch (_selectedItem.item.Type)
         {
             case "using":
-                statText = UsingItemStatText();
+                statText = UsingAndEctItemStatText();
+                break;
+            case "Ect":
+                statText = UsingAndEctItemStatText();
                 break;
             case "Equip":
                 statText = EquipItemStatText();
@@ -341,7 +348,7 @@ public class Inventory : MonoBehaviour
         selectedItemStatText.text = statText;
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
-        useButton.SetActive(_selectedItem.item.Type == "using");
+        useButton.SetActive(_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Ect");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
@@ -351,7 +358,7 @@ public class Inventory : MonoBehaviour
         }
 
     }
-    private string UsingItemStatText()
+    private string UsingAndEctItemStatText()
     {
         switch (_selectedItem.item.ItemID)
         {
@@ -366,6 +373,14 @@ public class Inventory : MonoBehaviour
                 return "SP + " + _selectedItem.item.Price;
             case 7:
                 return "Speed + " + _selectedItem.item.Price;
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+                return "Quest";
+
             default:
                 return "";
         }
@@ -648,6 +663,10 @@ public class Inventory : MonoBehaviour
             _currentQuantity = int.Parse(quantityInput.text);
             int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
             ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice + "\n 50% 가격으로 판매";
+            if (_selectedItem.item.Type == "Ect")
+            {
+                ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
+            }
         }
         else
         {
@@ -668,6 +687,7 @@ public class Inventory : MonoBehaviour
         else
         {
             popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
 
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
@@ -677,11 +697,22 @@ public class Inventory : MonoBehaviour
     public void OnSaleCheckButton()
     {
         int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
-        GameManager.Instance.playerManager.playerData.Gold += totalPrice;
-        CashUpdate();
-        Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-        RemoveSelectedItem();
-        salePopUpUI.SetActive(false);
+        if (_selectedItem.count >= _currentQuantity)
+        {
+            GameManager.Instance.playerManager.playerData.Gold += totalPrice;
+            CashUpdate();
+            Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
+            RemoveSelectedItem();
+            salePopUpUI.SetActive(false);
+        }
+        else
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
+
+            popUpText.text = "해당 개수 내에서만 \n 판매 가능합니다.";
+        }
+
     }
 
     // 팝업 판매 취소 버튼
@@ -694,6 +725,7 @@ public class Inventory : MonoBehaviour
     public void OnInventoryCheckButton()
     {
         salePopUpUI.SetActive(false);
+        popUpUI.SetActive(false);
 
     }
 
