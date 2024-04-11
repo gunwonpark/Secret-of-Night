@@ -7,7 +7,7 @@ public class QuestGenerator : MonoBehaviour
 {
     public List<Quest> tempQuests = new List<Quest>();    
 
-    private void Awake()
+    private void Start()
     {        
         var newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1001))
         {            
@@ -397,7 +397,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "미어캣을 잡아봐." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "네 스승님!" },                
             },
-            isDirectClear = true,
+            QuestItemID = 1,
+            GoalCount = 10,
         };
         tempQuests.Add(newQuest);
 
@@ -415,7 +416,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "다음은 고슴도치다. 얼른 움직여." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "ㄴ..넵!" },                
             },
-            isContinue = true,
+            QuestItemID = 4,
+            GoalCount = 10,
         };
         tempQuests.Add(newQuest);
 
@@ -434,7 +436,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "넵 알겠습니다." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(대단한 게 뭐지...? 조금만 더 힘내보자)" },                
             },
-            isContinue = true,
+            QuestItemID = 5,
+            GoalCount = 10,
         };
         tempQuests.Add(newQuest);
 
@@ -454,7 +457,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "뭐야? 이 몸처럼 강해지고 싶은게 아닌가?" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "ㅇ..아닙니다! 다녀 오겠습니다." },
             },
-            isContinue = true,
+            QuestItemID = 6,
+            GoalCount = 5,
         };
         tempQuests.Add(newQuest);
 
@@ -475,7 +479,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다! 집을 부수는 황소는 제가 모조리 잡겠습니다!" },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "그래 내 제자여. 다녀오도록." },      
             },
-            isContinue = true,
+            QuestItemID = 7,
+            GoalCount = 3,
         };
         tempQuests.Add(newQuest);
 

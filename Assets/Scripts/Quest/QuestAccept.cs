@@ -1,17 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestAccept : MonoBehaviour
 {
     [SerializeField] private float interactionRange = 3f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
-    public int questID; // 퀘스트 ID
+    public List<int> questID; // 퀘스트 ID
 
     private void Update()
     {                   
         if (Input.GetKeyDown(interactionKey) && IsPlayerInRange())
         {
-            QuestManager.I.AcceptQuest(questID);
-            
+            foreach (int id in questID)
+            {
+                QuestManager.I.AcceptQuest(id);
+            }                       
         }
     }
 

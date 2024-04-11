@@ -49,6 +49,8 @@ public class QuestManager : MonoBehaviour
         {
             InitDialogues(); // 대화 목록 초기화
         }
+
+        //Inventory.instance.QuastItemCheck(currentQuest.QuestItemID, currentQuest.GoalCount);
     }
 
     // 현재 퀘스트 설정
