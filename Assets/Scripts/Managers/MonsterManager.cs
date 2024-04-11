@@ -9,7 +9,15 @@ public class MonsterManager : MonoBehaviour
     {
         dataManager = new MonsterData();
         dataManager.Initialize();
+
+
     }
+
+    private void Awake()
+    {
+        monsterSpawner = gameObject.AddComponent<MonsterSpawner>();
+    }
+
     public MonsterInfo GetMonsterInfoByKey(int MonsterID)
     {
         return dataManager.monsterDatabase.GetMonsterInfoByKey(MonsterID);

@@ -76,6 +76,9 @@ public class MonsterSpawner : MonoBehaviour
                     fieldMonster.SetPosition(spawnPoint);//포지션 전달
                     fieldMonster.Init(monster);
 
+                    fieldMonster.circlePosition = circle.center;
+                    fieldMonster.circleRadius = circle.radius;
+
                     Debug.Log(monsterNumber);
                     Debug.Log(spawnPoint);
                 }
@@ -103,6 +106,9 @@ public class MonsterSpawner : MonoBehaviour
                     fieldMonster.SetPosition(spawnPoint);
                     fieldMonster.Init(monster);
 
+                    fieldMonster.circlePosition = circle.center;
+                    fieldMonster.circleRadius = circle.radius;
+
                     Debug.Log(monsterNumber);
                     Debug.Log(spawnPoint);
                 }
@@ -111,7 +117,7 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    public Vector3 GetRandomPointInCircle(Vector3 center, float radius)
+    public Vector3 GetRandomPointInCircle(Vector3 center, float radius)//랜덤한 스폰지점
     {
         //[todo]랜덤지점에 뭐가 없을때만 반환
         float angle = Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성

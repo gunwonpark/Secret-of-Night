@@ -22,6 +22,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public MonsterSpawner monsterSpawner;
 
     public Vector3 originalPosition;
+    public Vector3 circlePosition;
+    public float circleRadius;
 
     public event Action<float> OnDamage;
     public event Action<GameObject> OnAttack;
@@ -70,9 +72,16 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
     }
 
-    public void SetPosition(Vector3 position)//[todo] 새로운 무브포지션으로 지정.
+    public void SetPosition(Vector3 position)//처음 스폰 포지션 설정
     {
         originalPosition = position;
+    }
+
+    public Vector3 GetNewMovePoint()//랜덤한 무브지점
+    {
+        Vector3 movePoint = monsterSpawner.GetRandomPointInCircle(circlePosition, circleRadius);
+
+        return movePoint;
     }
 
     //base에 있는 takedamage구독
