@@ -1330,7 +1330,7 @@ Transform:
   - {fileID: 4124938565198718895}
   - {fileID: 4124938565198718949}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4124938565189388391
 Animator:
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionKey: 103
   interactionPopup: {fileID: 0}
-  questID: 10107
+  questID: 1007
   talkBtn: {fileID: 0}
   tradeBtn: {fileID: 0}
   buyBtn: {fileID: 0}
