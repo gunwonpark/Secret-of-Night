@@ -44,7 +44,7 @@ public class DayNightCycle : MonoBehaviour
 
         if (time >= 0.8f)
         {          
-            QuestManager.I.CheckCurrentQuest(10102);
+            QuestManager.I.CheckCurrentQuest(1002);
         }
         
     }

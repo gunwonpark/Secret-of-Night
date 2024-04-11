@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
     public ItemDataBase itemDataBase;
     public QuestDataBase questDataBase;
     public DialogueDataBase dialogueDataBase;
+    //public MonsterSpawnDatabase monsterSpawnDatabase;
 
     #endregion
 
@@ -29,13 +30,14 @@ public class DataManager : MonoBehaviour
         itemDataBase = Utility.LoadJson<ItemDataBase>("Items_Data");
         itemDataBase.Initalize();
 
-        //questDataBase = Utility.LoadJson<QuestDataBase>("Quest_Data");
-        //questDataBase.Initalize();
+        questDataBase = Utility.LoadJson<QuestDataBase>("Quest_Data");
+        questDataBase.Initalize();
 
-        //dialogueDataBase = Utility.LoadJson<DialogueDataBase>("QuestScript_Data");
-        //dialogueDataBase.Initalize();
+        dialogueDataBase = Utility.LoadJson<DialogueDataBase>("QuestScript_Data");
+        dialogueDataBase.Initalize();
 
-
+        //monsterSpawnDatabase = Utility.LoadJson<MonsterSpawnDatabase>("FieldMonsterSpwan_Data");
+        //monsterSpawnDatabase.Initalize();
     }
 }
 

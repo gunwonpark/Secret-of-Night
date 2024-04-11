@@ -1,12 +1,9 @@
 {
 	"FieldMonsterSpwan": [
 		{
-			"MonsterMoveZone": "3.2,69",
+			"SpotID": 1,
+			"MonsterSpot": "3.2,3,69",
 			"Radius": 30,
-			"MonsterCreateSpot": [
-				12.6,
-				83
-			],
 			"MonsterID": [
 				2,
 				8,
@@ -14,12 +11,9 @@
 			]
 		},
 		{
-			"MonsterMoveZone": "3.2,69",
+			"SpotID": 2,
+			"MonsterSpot": "-58.9,3,121.8",
 			"Radius": 30,
-			"MonsterCreateSpot": [
-				25.4,
-				71
-			],
 			"MonsterID": [
 				2,
 				8,
@@ -27,77 +21,9 @@
 			]
 		},
 		{
-			"MonsterMoveZone": "3.2,69",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				-3.5,
-				57.2
-			],
-			"MonsterID": [
-				2,
-				8,
-				3
-			]
-		},
-		{
-			"MonsterMoveZone": "3.2,69",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				-14,
-				72.5
-			],
-			"MonsterID": [
-				2,
-				8,
-				3
-			]
-		},
-		{
-			"MonsterMoveZone": "-58.9,121.8",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				-73.4,
-				131.4
-			],
-			"MonsterID": [
-				2,
-				8,
-				3
-			]
-		},
-		{
-			"MonsterMoveZone": "-58.9,121.8",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				-47.5,
-				136
-			],
-			"MonsterID": [
-				2,
-				8,
-				3
-			]
-		},
-		{
-			"MonsterMoveZone": "-58.9,121.8",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				-56.5,
-				104.7
-			],
-			"MonsterID": [
-				2,
-				8,
-				3
-			]
-		},
-		{
-			"MonsterMoveZone": "50.3,118.1",
+			"SpotID": 3,
+			"MonsterSpot": "50.3,3,118.1",
 			"Radius": 15,
-			"MonsterCreateSpot": [
-				48.3,
-				101.8
-			],
 			"MonsterID": [
 				1,
 				2,
@@ -105,51 +31,9 @@
 			]
 		},
 		{
-			"MonsterMoveZone": "50.3,118.1",
+			"SpotID": 4,
+			"MonsterSpot": "84.6,5,180.3",
 			"Radius": 15,
-			"MonsterCreateSpot": [
-				66.4,
-				111.2
-			],
-			"MonsterID": [
-				1,
-				2,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "50.3,118.1",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				64.5,
-				133.7
-			],
-			"MonsterID": [
-				1,
-				2,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "50.3,118.1",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				46.1,
-				149.5
-			],
-			"MonsterID": [
-				1,
-				2,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "84.6,180.3",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				84.6,
-				163.6
-			],
 			"MonsterID": [
 				1,
 				3,
@@ -157,227 +41,33 @@
 			]
 		},
 		{
-			"MonsterMoveZone": "84.6,180.3",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				72.8,
-				186.3
-			],
-			"MonsterID": [
-				1,
-				3,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "84.6,180.3",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				83.6,
-				202.7
-			],
-			"MonsterID": [
-				1,
-				3,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "84.6,180.3",
-			"Radius": 15,
-			"MonsterCreateSpot": [
-				96.8,
-				186.3
-			],
-			"MonsterID": [
-				1,
-				3,
-				4
-			]
-		},
-		{
-			"MonsterMoveZone": "98.7,94.5",
+			"SpotID": 5,
+			"MonsterSpot": "98.7,12,94.5",
 			"Radius": 20,
-			"MonsterCreateSpot": [
-				103.1,
-				111.2
-			],
 			"MonsterID": [
 				7
 			]
 		},
 		{
-			"MonsterMoveZone": "98.7,94.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				112.8,
-				89.1
-			],
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"MonsterMoveZone": "98.7,94.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				95.9,
-				65.6
-			],
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"MonsterMoveZone": "116.6,170.8",
+			"SpotID": 6,
+			"MonsterSpot": "116.6,12,170.8",
 			"Radius": 35,
-			"MonsterCreateSpot": [
-				108.9,
-				147.4
-			],
 			"MonsterID": [
 				7
 			]
 		},
 		{
-			"MonsterMoveZone": "116.6,170.8",
-			"Radius": 35,
-			"MonsterCreateSpot": [
-				135.5,
-				166.4
-			],
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"MonsterMoveZone": "116.6,170.8",
-			"Radius": 35,
-			"MonsterCreateSpot": [
-				117.6,
-				186.3
-			],
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"MonsterMoveZone": "116.6,170.8",
-			"Radius": 35,
-			"MonsterCreateSpot": [
-				117.6,
-				204.3
-			],
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"MonsterMoveZone": "66.8,247.5",
+			"SpotID": 7,
+			"MonsterSpot": "66.8,7,247.5",
 			"Radius": 20,
-			"MonsterCreateSpot": [
-				51.1,
-				244.7
-			],
 			"MonsterID": [
 				5
 			]
 		},
 		{
-			"MonsterMoveZone": "66.8,247.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				51.9,
-				262.9
-			],
-			"MonsterID": [
-				5
-			]
-		},
-		{
-			"MonsterMoveZone": "66.8,247.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				71,
-				261.2
-			],
-			"MonsterID": [
-				5
-			]
-		},
-		{
-			"MonsterMoveZone": "66.8,247.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				90.4,
-				234.7
-			],
-			"MonsterID": [
-				5
-			]
-		},
-		{
-			"MonsterMoveZone": "66.8,247.5",
-			"Radius": 20,
-			"MonsterCreateSpot": [
-				70.1,
-				227.2
-			],
-			"MonsterID": [
-				5
-			]
-		},
-		{
-			"MonsterMoveZone": "31.7,292.1",
+			"SpotID": 8,
+			"MonsterSpot": "31.7,7,292.1",
 			"Radius": 30,
-			"MonsterCreateSpot": [
-				37.8,
-				277.7
-			],
-			"MonsterID": [
-				6
-			]
-		},
-		{
-			"MonsterMoveZone": "31.7,292.1",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				59.4,
-				294.3
-			],
-			"MonsterID": [
-				6
-			]
-		},
-		{
-			"MonsterMoveZone": "31.7,292.1",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				51.5,
-				310.8
-			],
-			"MonsterID": [
-				6
-			]
-		},
-		{
-			"MonsterMoveZone": "31.7,292.1",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				28.3,
-				310.8
-			],
-			"MonsterID": [
-				6
-			]
-		},
-		{
-			"MonsterMoveZone": "31.7,292.1",
-			"Radius": 30,
-			"MonsterCreateSpot": [
-				12.1,
-				294.3
-			],
 			"MonsterID": [
 				6
 			]

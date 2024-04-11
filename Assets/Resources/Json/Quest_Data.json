@@ -1,0 +1,28 @@
+{
+	"Quest": [
+		{
+			"QuestID": 1001,
+			"QuestType": 0,
+			"QuestTitle": "수련 생활 (1)",
+			"Description": "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
+			"QuestGoal": "<버섯 1개 획득 및 사용>",
+			"GoalCount": 1,
+			"RewardID": 1,
+			"RewardItem": "초급체력포션",
+			"RewardCount": 1,
+			"QuestItemID": 16
+		},
+		{
+			"QuestID": 1002,
+			"QuestType": 0,
+			"QuestTitle": "수련 생활 (2)",
+			"Description": "주변을 둘러보자<이동>",
+			"QuestGoal": "<이동>",
+			"GoalCount": 0,
+			"RewardID": 3,
+			"RewardItem": "초급마력포션",
+			"RewardCount": 1,
+			"QuestItemID": 0
+		}
+	]
+}

@@ -25,6 +25,7 @@ public class MonsterIdleState : MonsterBaseState
     public override void Update()
     {
         base.Update();
+        stateMachine.ChangeState(stateMachine.PatrolState);
     }
 
     public override void PhysicsUpdate()

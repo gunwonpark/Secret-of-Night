@@ -30,11 +30,11 @@ Closing: C:\Users\USER\Desktop\unity\TeamProject\05TeamProject14\Project_P\excel
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
 Found object mark: '#FieldMonsterSpwan[{}]'
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
- Key: MonsterMoveZone at 1
+ Key: SpotID at 1
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
- Key: Radius at 2
+ Key: MonsterSpot at 2
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
- Key: MonsterCreateSpot[] at 3
+ Key: Radius at 3
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
  Key: MonsterID[] at 4
 Parsing Array Object Table...
