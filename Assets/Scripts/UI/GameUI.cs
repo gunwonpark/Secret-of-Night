@@ -19,6 +19,7 @@ public class GameUI : UIBase
         playerData = GameManager.Instance.playerManager.playerData;
         playerData.OnHPChange += UpdateHP;
         playerData.OnMPChange += UpdateMP;
+        playerData.OnSPChange += UpdateSP;
     }
 
     private void UpdateHP()
@@ -28,6 +29,10 @@ public class GameUI : UIBase
     private void UpdateMP()
     {
         _mpImage.fillAmount = playerData.CurMP / playerData.MaxMP;
+    }
+    private void UpdateSP()
+    {
+        _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
     }
     #region BuffSystem
     [Header("Buff System")]
@@ -72,5 +77,6 @@ public class GameUI : UIBase
     {
         playerData.OnHPChange -= UpdateHP;
         playerData.OnMPChange -= UpdateMP;
+        playerData.OnSPChange -= UpdateSP;
     }
 }
