@@ -27,5 +27,6 @@ public class MonsterDyingState : MonsterBaseState
         Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
         stateMachine.FieldMonsters.DropData();
 
+        QuestManager.I.CheckCount(stateMachine.FieldMonsters.myInfo.MonsterID);
     }
 }
