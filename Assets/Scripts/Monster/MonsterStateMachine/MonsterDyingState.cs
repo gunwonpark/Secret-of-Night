@@ -31,5 +31,6 @@ public class MonsterDyingState : MonsterBaseState
             stateMachine.FieldMonsters.dropItem(GameManager.Instance.dataManager.itemDataBase.GetData(stateMachine.FieldMonsters.myInfo.DropItem[i]));
         }
 
+        QuestManager.I.CheckCount(stateMachine.FieldMonsters.myInfo.MonsterID);
     }
 }

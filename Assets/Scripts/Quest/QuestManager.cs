@@ -7,6 +7,7 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
     private Quest03Director quest03Director;
+    public GameObject questPopup;    
 
     private void Awake()
     {
@@ -43,11 +44,11 @@ public class QuestManager : MonoBehaviour
             QuestClear(); // 퀘스트 클리어
         }
 
-        //// H 누르면 다음 퀘스트 보이기 (테스트용)
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    InitDialogues(); // 대화 목록 초기화
-        //}
+        // H 누르면 다음 퀘스트 보이기 (테스트용)
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            InitDialogues(); // 대화 목록 초기화
+        }
     }
 
     // 현재 퀘스트 설정
@@ -63,7 +64,7 @@ public class QuestManager : MonoBehaviour
     }
 
     // 대화 목록 초기화
-    private void InitDialogues()
+    public void InitDialogues()
     {
         dialogueHandler.InitDialogues(currentQuest.dialogues); // 대화 목록 초기화
     }
@@ -95,7 +96,7 @@ public class QuestManager : MonoBehaviour
         else
         {
             NextQuest(); // 다음 퀘스트로
-        }
+        }        
     }
 
     // 보상 처리
@@ -109,8 +110,7 @@ public class QuestManager : MonoBehaviour
                 var itemCount = currentQuest.RewardCount; // 보상 아이템 개수
 
                 Item item = GameManager.Instance.dataManager.itemDataBase.GetData(itemId);
-
-                Debug.LogWarning($"{item.ItemName} {itemCount}개 획득! (획득 처리 필요)");
+                Inventory.instance.AddItem(item, itemCount);
                 break;
 
             case RewardType.Skill:
@@ -139,12 +139,12 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.isContinue)
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
-            InitDialogues(); // 대화 목록 초기화
+            InitDialogues(); // 대화 목록 초기화            
         }
         else
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
-            HideQuestDescription(); // 퀘스트 설명 숨기기
+            HideQuestDescription(); // 퀘스트 설명 숨기기            
         }
     }
 
@@ -174,12 +174,28 @@ public class QuestManager : MonoBehaviour
             QuestClear();
     }
 
+    public void AcceptQuest(int id)
+    {
+        if (currentQuest.QuestID == id)
+            InitDialogues();
+    }
+
     // 바로 퀘스트 완료인지 확인
     public void CheckDirectQuestClear()
     {
         // 바로 퀘스트 클리어인 경우
         if (currentQuest.isDirectClear)
             QuestClear(); // 퀘스트 클리어
+    }
+
+    public void OnClickQuestPopup()
+    {
+        questPopup.SetActive(true);
+    }
+
+    public void OnExitQuestPopup()
+    {
+        questPopup.SetActive(false);
     }
 }
 
@@ -197,7 +213,7 @@ public class Quest
     public string RewardItem;
     public int RewardCount; // 보상 개수
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)    
-    
+
     public RewardType rewardType; // 보상 타입
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
