@@ -66,7 +66,7 @@ public class Shop : MonoBehaviour
         _uiSlots = _slotGrid.GetComponentsInChildren<ShopSlot>();
 
         // 각 상점 슬롯에 아이템 불러오기
-        _items = GameManager.Instance.dataManager.itemDataBase.GetAllItems().ToArray();
+        _items = GameManager.Instance.dataManager.itemDataBase.GetItems(1, 11).ToArray();
 
         // 아이템 목록에서 8번째 아이템 제외 (기본아이템)
         _items = RemoveItemIndex(_items, 7);
@@ -133,15 +133,8 @@ public class Shop : MonoBehaviour
             _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
-        //마우스 커서 표시
-        Cursor.lockState = CursorLockMode.None;
         _shopUI.SetActive(true);
         ClearSeletecItemWindow();
-    }
-
-    public void CloseShop()
-    {
-        _shopUI.SetActive(false);
     }
 
     // 다음 슬롯 창
@@ -204,6 +197,7 @@ public class Shop : MonoBehaviour
     public void OnExit()
     {
         _shopUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         Inventory.instance._playerController.Input.enabled = true;
         shopActivated = false;
 
