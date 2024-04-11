@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public PlayerGameData playerData;
+
+    public int maxSlotDataNumber => 5;
     public Dictionary<int, PlayerGameData> playerDatas = new Dictionary<int, PlayerGameData>(); // 불러오기 데이터 캐싱용
 
     private PlayerSkillDataBase _playerSkillDataBase;

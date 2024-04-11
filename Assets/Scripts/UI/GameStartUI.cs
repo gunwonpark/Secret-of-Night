@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,17 +45,18 @@ public class GameStartUI : UIBase
         if (GameManager.Instance.playerManager.playerDatas != null)
         {
             _loadButton.gameObject.SetActive(true);
-            _continueButton.gameObject.SetActive(true);
             _loadButton.onClick.AddListener(OnLoadButtonClick);
-
+            _continueButton.gameObject.SetActive(true);
+            _continueButton.onClick.AddListener(OnContinueButtonClick);
         }
         else
         {
             // 데이터가 없는경우 게임 시작 Button
             _gameStartButton.gameObject.SetActive(true);
             _gameStartButton.onClick.AddListener(OnGameStartButtonClick);
-
         }
+
+        _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
     }
     void OnGameStartButtonClick()
     {
@@ -67,6 +69,37 @@ public class GameStartUI : UIBase
     }
     void OnContinueButtonClick()
     {
+        int lastestData = FindLastestData();
+        if (lastestData == -1)
+        {
+            Debug.Log("There is no Data");
+            return;
+        }
 
+        GameManager.Instance.playerManager.Init(lastestData);
+        SceneManager.LoadScene("MainScene");
+    }
+    int FindLastestData()
+    {
+        int lastestData = -1;
+        DateTime data = DateTime.MinValue;
+
+        for (int i = 0; i < GameManager.Instance.playerManager.maxSlotDataNumber; i++)
+        {
+            if (GameManager.Instance.playerManager.playerDatas.ContainsKey(i))
+            {
+                if (DateTime.Parse(GameManager.Instance.playerManager.playerDatas[i].SaveTime) > data)
+                {
+                    data = DateTime.Parse(GameManager.Instance.playerManager.playerDatas[i].SaveTime);
+                    lastestData = i;
+                }
+            }
+        }
+
+        return lastestData;
+    }
+    void OnGameEndButtonClick()
+    {
+        Application.Quit();
     }
 }

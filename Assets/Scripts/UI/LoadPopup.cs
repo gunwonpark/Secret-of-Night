@@ -6,15 +6,15 @@ public class LoadPopup : UIBase
     [SerializeField] private Transform _slotRoot;
 
     private List<CharacterSlot> slots;
-    private int _defaultSlotNumber = 5;
+
     private void Awake()
     {
-        slots = new(_defaultSlotNumber);
+        slots = new(GameManager.Instance.playerManager.maxSlotDataNumber);
     }
     private void Start()
     {
         // 슬록을 5개 정도 생성한다
-        for (int i = 0; i < _defaultSlotNumber; i++)
+        for (int i = 0; i < GameManager.Instance.playerManager.maxSlotDataNumber; i++)
         {
             CreateCharacterSlot(i);
         }

@@ -42,6 +42,8 @@ public class PlayerGameData
     public int Gold;
     // 여기 없어야 되는데 일단 넣어 둡니다
     public event Action OnDie;
+    public event Action OnHPChange;
+    public event Action OnMPChange;
     public event Action OnLevelUp;
     public PlayerGameData()
     {
@@ -111,6 +113,20 @@ public class PlayerGameData
             //플레이어 사망
             OnDie?.Invoke();
         }
+        OnHPChange.Invoke();
+    }
+    public void MPChange(float amount)
+    {
+        CurMP += amount;
+        if (CurMP > MaxMP)
+        {
+            CurMP = MaxMP;
+        }
+        else if (CurMP < 0)
+        {
+            CurMP = 0;
+        }
+        OnMPChange.Invoke();
     }
     public void LevelUp()
     {
