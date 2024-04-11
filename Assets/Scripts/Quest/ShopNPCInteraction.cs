@@ -19,7 +19,6 @@ public class ShopNPCInteraction : MonoBehaviour
     private bool isInRange = false; // 플레이어가 일정 범위 내에 있는지 여부
     private bool _GKeyActivate = true; // 대화, 구매, 판매시 G키 비활성화 시키게
 
-
     void Start()
     {
         _shop = GetComponent<Shop>();
@@ -57,6 +56,7 @@ public class ShopNPCInteraction : MonoBehaviour
         // 팝업 창을 활성화하여 보이게 함
         interactionPopup.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Inventory.instance.npcInteraction = true;
 
         talkBtn.SetActive(true);
         tradeBtn.SetActive(true);
@@ -71,6 +71,7 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         // 팝업 창을 비활성화하여 가리기
         interactionPopup.SetActive(false);
+        Inventory.instance.npcInteraction = false;
         _GKeyActivate = false;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -112,25 +113,28 @@ public class ShopNPCInteraction : MonoBehaviour
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
         Inventory.instance.activated = true;
-
+        Inventory.instance.sale_Inventory = true; //판매하는 인벤토리 활성화
         _GKeyActivate = false;
     }
 
     //------------------------------------------------
-    // _activate는 인벤토리 또는 상점이 열려있을 때 대화창이 활성화 되지 않게 
+    // _GKeyActivate는 인벤토리 또는 상점이 열려있을 때 대화창이 활성화 되지 않게 
     private void OnInventoryOpen()
     {
         _GKeyActivate = false;
+        Inventory.instance.npcInteraction = false;
     }
     private void OnInventoryClosed()
     {
         // 인벤토리가 닫힐 때 _activate 변수 다시 활성화
         _GKeyActivate = true;
+        Inventory.instance.npcInteraction = false;
     }
 
     private void OnShopClose()
     {
         _GKeyActivate = true;
+        Inventory.instance.npcInteraction = false;
     }
 
 }

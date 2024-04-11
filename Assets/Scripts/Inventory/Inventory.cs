@@ -12,8 +12,10 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    [HideInInspector] public bool activated;
-    private bool _speedItemUse;
+    [HideInInspector] public bool activated; // 인벤 활성화
+    private bool _speedItemUse; // 스피드 아이템 활성화
+    [HideInInspector] public bool sale_Inventory; // 판매용 인벤토리 활성화
+    public bool npcInteraction = false; // npc와 대화 활성화
 
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
@@ -128,18 +130,21 @@ public class Inventory : MonoBehaviour
         {
             activated = !activated;
 
-            if (activated)
+            if (!npcInteraction)
             {
-                OpenInventory();
-                _playerController.Input.enabled = false; //플레이어 활동 비활성
-                playerLight.SetActive(true);
+                if (activated)
+                {
+                    OpenInventory();
+                    _playerController.Input.enabled = false; //플레이어 활동 비활성
+                    playerLight.SetActive(true);
 
-            }
-            else
-            {
-                CloseInventory();
-                _playerController.Input.enabled = true;
-                playerLight.SetActive(false);
+                }
+                else
+                {
+                    CloseInventory();
+                    _playerController.Input.enabled = true;
+                    playerLight.SetActive(false);
+                }
             }
         }
 
@@ -352,12 +357,13 @@ public class Inventory : MonoBehaviour
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
         dropButton.SetActive(true);
-        if (activated)
+        if (sale_Inventory == true)
         {
             saleButton.SetActive(true);
         }
 
     }
+
     private string UsingAndEctItemStatText()
     {
         switch (_selectedItem.item.ItemID)
@@ -460,9 +466,23 @@ public class Inventory : MonoBehaviour
                     break;
 
             }
+            RemoveSelectedItem(1);
         }
-        QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
-        RemoveSelectedItem();
+
+        else if (QuestManager.I.currentQuest.QuestID == 1001 && _selectedItem.item.ItemID == 16)
+        {
+            QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
+            RemoveSelectedItem(1);
+        }
+
+        else if (_selectedItem.item.Type == "Ect")
+        {
+            popUpUI.SetActive(true);
+            checkBtn.SetActive(true);
+
+            popUpText.text = "퀘스트 아이템은 \n 사용할 수 없습니다.";
+        }
+
     }
 
 
@@ -608,7 +628,7 @@ public class Inventory : MonoBehaviour
     public void OnDropButton()
     {
         ThrowItem(_selectedItem.item);
-        RemoveSelectedItem();
+        RemoveSelectedItem(1);
     }
 
     // 아이템 버리기
@@ -634,9 +654,9 @@ public class Inventory : MonoBehaviour
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
-    private void RemoveSelectedItem()
+    private void RemoveSelectedItem(int quantity)
     {
-        _selectedItem.count--;
+        _selectedItem.count -= quantity;
 
         //장착아이템은 수량이 0으로 표시되기 때문에
         if (_selectedItem.count <= 0)
@@ -702,7 +722,7 @@ public class Inventory : MonoBehaviour
             GameManager.Instance.playerManager.playerData.Gold += totalPrice;
             CashUpdate();
             Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-            RemoveSelectedItem();
+            RemoveSelectedItem(_currentQuantity);
             salePopUpUI.SetActive(false);
         }
         else
@@ -729,4 +749,17 @@ public class Inventory : MonoBehaviour
 
     }
 
+
+    //---------------------------------------------------------------------------
+
+    //public void QuastItemCheck(int itemID, int quantity)
+    //{
+    //    for (int i = 0; i < _uiSlots.Length; i++)
+    //    {
+    //        if (itemID == slots[i].item.ItemID && slots[i].count == quantity)
+    //        {
+
+    //        }
+    //    }
+    //}
 }
