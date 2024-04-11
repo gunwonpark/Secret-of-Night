@@ -31,6 +31,8 @@ public class Shop : MonoBehaviour
     public Button rightBtn;
     public Button leftBtn;
 
+    public Button exitBtn;
+
     [Header("Cash")]
     public TextMeshProUGUI cash;
     public GameObject purchaseBtn;
@@ -55,9 +57,16 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
     }
 
     private void Start()
+    {
+        Initalize();
+        ButtonEvent();
+    }
+
+    private void Initalize()
     {
         _shopUI.SetActive(false);
         _statIcon.SetActive(false);
@@ -96,9 +105,22 @@ public class Shop : MonoBehaviour
         CashUpdate();
 
         GameManager.Instance.playerManager.playerData.OnLevelUp += UnLockItem;
-
     }
 
+    private void ButtonEvent()
+    {
+        Button B_purchaseBtn = purchaseBtn.GetComponent<Button>();
+        Button B_purchaseCheckBtn = purchaseCheckBtn.GetComponent<Button>();
+        Button B_purchaseCancleBtn = purchaseCancleBtn.GetComponent<Button>();
+        Button B_checkBtn = checkBtn.GetComponent<Button>();
+        B_purchaseBtn.onClick.AddListener(PurchaseItem);
+        B_purchaseCheckBtn.onClick.AddListener(OnPurchaseCheckButton);
+        B_purchaseCancleBtn.onClick.AddListener(OnPurchaseCancelButton);
+        B_checkBtn.onClick.AddListener(OnShopCheckButton);
+        rightBtn.onClick.AddListener(OnNext);
+        leftBtn.onClick.AddListener(OnPrev);
+        exitBtn.onClick.AddListener(OnExit);
+    }
     public void CashUpdate()
     {
         cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();

@@ -54,6 +54,7 @@ public class Inventory : MonoBehaviour
 
     public Button rightBtn;
     public Button leftBtn;
+    public Button exitBtn;
 
     [Header("Pop-Up")]
     public GameObject popUpUI;
@@ -89,6 +90,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         Initialize();
+        ButtonEvent();
     }
 
     void Update()
@@ -119,6 +121,29 @@ public class Inventory : MonoBehaviour
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성
     }
 
+
+    private void ButtonEvent()
+    {
+        Button B_useBtn = useButton.GetComponent<Button>();
+        Button B_equipBtn = equipButton.GetComponent<Button>();
+        Button B_unEquipBtn = unEquipButton.GetComponent<Button>();
+        Button B_dropBtn = dropButton.GetComponent<Button>();
+        Button B_saleBtn = saleButton.GetComponent<Button>();
+        Button B_checkBtn = checkBtn.GetComponent<Button>();
+        Button B_saleCheckBtn = saleCheckBtn.GetComponent<Button>();
+        Button B__saleCancleBtn = saleCancleBtn.GetComponent<Button>();
+        B_useBtn.onClick.AddListener(OnUseButton);
+        B_equipBtn.onClick.AddListener(OnEquipBtton);
+        B_unEquipBtn.onClick.AddListener(OnUnEquipButton);
+        B_dropBtn.onClick.AddListener(OnDropButton);
+        B_saleBtn.onClick.AddListener(SaleItem);
+        B_checkBtn.onClick.AddListener(OnInventoryCheckButton);
+        B_saleCheckBtn.onClick.AddListener(OnSaleCheckButton);
+        B__saleCancleBtn.onClick.AddListener(OnSaleCancelButton);
+        rightBtn.onClick.AddListener(OnNext);
+        leftBtn.onClick.AddListener(OnPrev);
+        exitBtn.onClick.AddListener(OnExit);
+    }
     public void CashUpdate()
     {
         cash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
@@ -706,6 +731,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            salePopUpUI.SetActive(false);
             popUpUI.SetActive(true);
             checkBtn.SetActive(true);
 
@@ -727,6 +753,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            salePopUpUI.SetActive(false);
             popUpUI.SetActive(true);
             checkBtn.SetActive(true);
 

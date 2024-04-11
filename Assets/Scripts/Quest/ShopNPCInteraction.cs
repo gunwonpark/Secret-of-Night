@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopNPCInteraction : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ShopNPCInteraction : MonoBehaviour
     public GameObject tradeBtn;
     public GameObject buyBtn;
     public GameObject saleBtn;
+    public Button exitBtn;
 
     public TextMeshProUGUI talktext;
 
@@ -25,6 +27,8 @@ public class ShopNPCInteraction : MonoBehaviour
         Inventory.OnInventoryOpen += OnInventoryOpen;
         Inventory.OnInventoryClose += OnInventoryClosed;
         Shop.OnShopClose += OnShopClose;
+
+        ButtonEvent();
     }
     private void Update()
     {
@@ -72,7 +76,7 @@ public class ShopNPCInteraction : MonoBehaviour
         // 팝업 창을 비활성화하여 가리기
         interactionPopup.SetActive(false);
         Inventory.instance.npcInteraction = false;
-        _GKeyActivate = false;
+        _GKeyActivate = true;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -87,6 +91,19 @@ public class ShopNPCInteraction : MonoBehaviour
         }
     }
 
+    private void ButtonEvent()
+    {
+        Button B_talkBtn = talkBtn.GetComponent<Button>();
+        Button B_tradeBtn = tradeBtn.GetComponent<Button>();
+        Button B_buyBtn = buyBtn.GetComponent<Button>();
+        Button B_saleBtn = saleBtn.GetComponent<Button>();
+        //B_talkBtn.onClick.AddListener()
+        B_tradeBtn.onClick.AddListener(OnTradeClick);
+        B_buyBtn.onClick.AddListener(OnBuyClick);
+        B_saleBtn.onClick.AddListener(OnSaleClick);
+        exitBtn.onClick.AddListener(CloseInteractionPopup);
+
+    }
     public void OnTradeClick()
     {
         talktext.text = "거래? 구매할래 판매할래?";
