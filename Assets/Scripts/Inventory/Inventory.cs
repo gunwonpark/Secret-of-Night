@@ -56,6 +56,9 @@ public class Inventory : MonoBehaviour
     public Button leftBtn;
     public Button exitBtn;
 
+    public Button sortBtn;
+    public Button trimBtn;
+
     [Header("Pop-Up")]
     public GameObject popUpUI;
     public GameObject checkBtn;
@@ -143,6 +146,8 @@ public class Inventory : MonoBehaviour
         rightBtn.onClick.AddListener(OnNext);
         leftBtn.onClick.AddListener(OnPrev);
         exitBtn.onClick.AddListener(OnExit);
+        sortBtn.onClick.AddListener(InventorySort);
+        trimBtn.onClick.AddListener(InventoryTrim);
     }
     public void CashUpdate()
     {
