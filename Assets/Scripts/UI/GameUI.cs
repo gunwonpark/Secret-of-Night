@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ public class GameUI : UIBase
     private void Start()
     {
         playerData = GameManager.Instance.playerManager.playerData;
+
+        GameManager.Instance.inputManager.UIActions.Option.started += ToggleUI;
 
         //Status Change
         playerData.OnHPChange += UpdateHP;
@@ -66,18 +69,34 @@ public class GameUI : UIBase
     {
         _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
     }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleUI();
-        }
-    }
     private void ToggleUI()
     {
         bool toggle = _gamePlayUI.activeInHierarchy;
         _gamePlayUI.SetActive(!toggle);
         _gameEndUI.SetActive(toggle);
+        if (toggle)
+        {
+            GameManager.Instance.inputManager.EnablePlayerAction();
+        }
+        else
+        {
+            GameManager.Instance.inputManager.DisablePlayerAction();
+        }
+    }
+    private void ToggleUI(InputAction.CallbackContext obj)
+    {
+        bool toggle = _gamePlayUI.activeInHierarchy;
+        _gamePlayUI.SetActive(!toggle);
+        _gameEndUI.SetActive(toggle);
+
+        if (toggle)
+        {
+            GameManager.Instance.inputManager.EnablePlayerAction();
+        }
+        else
+        {
+            GameManager.Instance.inputManager.DisablePlayerAction();
+        }
     }
     #region BuffSystem
     [Header("Buff System")]

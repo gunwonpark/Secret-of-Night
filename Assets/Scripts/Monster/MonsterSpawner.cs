@@ -42,12 +42,7 @@ public class MonsterSpawner : MonoBehaviour
         // spotPoint = GetComponentsInChildren<MonsterSpot>();
 
         AddInfo();
-
-        SpawnAllMonster();
-    }
-
-    private void Update()
-    {
+        Debug.Log(this.name);
         StartCoroutine(SpawnMonster());
     }
 

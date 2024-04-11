@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         stateMachine.ChangeState(stateMachine.IdleState);
         PlayerData = GameManager.Instance.playerManager.playerData;
         PlayerData.OnDie += OnPlayerDie;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void Update()
     {

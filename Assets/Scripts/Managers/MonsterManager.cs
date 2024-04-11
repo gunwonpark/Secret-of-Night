@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
-        monsterSpawner = gameObject.AddComponent<MonsterSpawner>();
+        if (SceneManager.GetActiveScene().name == "MainScene")
+            monsterSpawner = gameObject.AddComponent<MonsterSpawner>();
     }
 
     public MonsterInfo GetMonsterInfoByKey(int MonsterID)
