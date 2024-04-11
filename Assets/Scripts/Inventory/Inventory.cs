@@ -715,7 +715,8 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            _currentQuantity = 1;
+            _currentQuantity = 0;
+            quantityInput.text = string.Format("0");
         }
     }
 
@@ -723,21 +724,19 @@ public class Inventory : MonoBehaviour
     public void SaleItem()
     {
         QuantityInput();
-        int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
             salePopUpUI.SetActive(true);
-
         }
         else
         {
             salePopUpUI.SetActive(false);
             popUpUI.SetActive(true);
             checkBtn.SetActive(true);
-
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
     }
+
 
     // 팝업 판매 확인 버튼
     public void OnSaleCheckButton()
@@ -748,8 +747,8 @@ public class Inventory : MonoBehaviour
             GameManager.Instance.playerManager.playerData.Gold += totalPrice;
             CashUpdate();
             Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-            RemoveSelectedItem(_currentQuantity);
             salePopUpUI.SetActive(false);
+            RemoveSelectedItem(_currentQuantity);
         }
         else
         {
