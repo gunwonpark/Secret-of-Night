@@ -110,7 +110,7 @@ public class CameraTPP : MonoBehaviour
         //angleV = -40f;
         //angleH = Mathf.LerpAngle(angleH, targetHorizontalAngle, Time.deltaTime);
         angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.1f);
-        angleH = Mathf.Clamp(angleH, -45f, 45f);
+        //angleH = Mathf.Clamp(angleH, -45f, 45f);
 
         //카메라 회전
         Quaternion camYRotation = Quaternion.Euler(0.0f, angleH, 0.0f);

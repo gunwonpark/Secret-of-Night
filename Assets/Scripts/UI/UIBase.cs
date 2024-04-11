@@ -8,7 +8,7 @@ public abstract class UIBase : MonoBehaviour
 
     }
 
-    public void BindEvent(GameObject go, Action action, UIEvent type = UIEvent.Click)
+    public static void BindEvent(GameObject go, Action action, UIEvent type = UIEvent.Click)
     {
         UIEventHandler evt = Utility.GetOrAddComponent<UIEventHandler>(go);
 

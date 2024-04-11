@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -41,13 +42,6 @@ public static class Utility
     {
         File.Delete(jsonDataPath);
     }
-    public static T GetOrAddComponent<T>(this GameObject go) where T : Component
-    {
-        T component = go.GetComponent<T>();
-        if (component == null)
-            component = go.AddComponent<T>();
-        return component;
-    }
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (go == null) return null;
@@ -79,5 +73,18 @@ public static class Utility
         if (transform != null)
             return transform.gameObject;
         return null;
+    }
+
+    //Extension
+    public static T GetOrAddComponent<T>(this GameObject go) where T : Component
+    {
+        T component = go.GetComponent<T>();
+        if (component == null)
+            component = go.AddComponent<T>();
+        return component;
+    }
+    public static void BindEvent(this GameObject go, Action action, UIEvent type = UIEvent.Click)
+    {
+        UIBase.BindEvent(go, action, type);
     }
 }

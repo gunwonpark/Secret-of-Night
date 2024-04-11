@@ -27,8 +27,6 @@ public class LoadPopup : UIBase
         if (GameManager.Instance.playerManager.playerDatas.ContainsKey(slotNumber))
         {
             slots.Add(GameManager.Instance.uiManager.MakeSubItem<CharacterSlot>(parent: _slotRoot));
-            slots[slotNumber].SetSlotNumber(slotNumber);
-            slots[slotNumber].Initialize();
         }
         //데이터가 없는경우 빈 슬록을 불러온다
         else
@@ -36,5 +34,7 @@ public class LoadPopup : UIBase
             slots.Add(GameManager.Instance.uiManager.MakeSubItem<CharacterSlot>("EmptySlot", _slotRoot));
         }
 
+        slots[slotNumber].SetSlotNumber(slotNumber);
+        slots[slotNumber].Initialize();
     }
 }

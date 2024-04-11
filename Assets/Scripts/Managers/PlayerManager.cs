@@ -22,13 +22,22 @@ public class PlayerManager : MonoBehaviour
             playerData.Initialize();
         }
 
-        GetSkillListByPlayerID(CharacterID);
+        InitSkillListByPlayerID(CharacterID);
+    }
+
+    //test용
+    public void Init(int slotNumber)
+    {
+        playerData = playerDatas[slotNumber];
     }
 
     #region Player Skill
     //플레이어가 소지 할 수 있는 스킬 리스트를 받아온다
-    private void GetSkillListByPlayerID(int id)
+    private void InitSkillListByPlayerID(int id)
     {
+        if (_playerSkillList.Count != 0)
+            return;
+
         var skillList = _playerStatDataBase.GetData(id).Skills;
         foreach (int skillID in skillList)
         {

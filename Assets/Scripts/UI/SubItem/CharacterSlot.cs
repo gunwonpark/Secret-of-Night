@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterSlot : UIBase
@@ -24,7 +25,27 @@ public class CharacterSlot : UIBase
             _saveDateText.text = data.SaveTime.ToString();
 
             // 캐릭터의 Type나 ID에 따른 스프라이트 이미지도 있어야 된다
+
+            this.gameObject.BindEvent(OnCharacterSlotClick);
         }
+        else
+        {
+            this.gameObject.BindEvent(OnEmptySlotClick);
+        }
+
+    }
+
+    private void OnCharacterSlotClick()
+    {
+        GameManager.Instance.playerManager.Init(_slotNumber);
+        SceneManager.LoadScene("MainScene");
+    }
+    private void OnEmptySlotClick()
+    {
+        SceneManager.LoadScene("MainScene");
+        GameManager.Instance.playerManager.Initialize(1);
+        GameManager.Instance.playerManager.playerDatas.Add(_slotNumber, GameManager.Instance.playerManager.playerData);
+        GameManager.Instance.playerManager.Init(_slotNumber);
     }
 
     internal void SetSlotNumber(int slotNumber)
