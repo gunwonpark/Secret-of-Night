@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUI : UIBase
 {
     //캐싱용
     private PlayerGameData playerData;
+    public GameObject _gamePlayUI;
 
     [Header("Status")]
     [SerializeField] private Image _hpImage;
@@ -14,12 +16,42 @@ public class GameUI : UIBase
     [Header("Stamina")]
     [SerializeField] private Image _staminaImage;
 
+    [Header("GameEndUI")]
+    [SerializeField] private GameObject _gameEndUI;
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private Button _gameOutButton;
+    [SerializeField] private Button _gameEndButton;
     private void Start()
     {
         playerData = GameManager.Instance.playerManager.playerData;
+
+        //Status Change
         playerData.OnHPChange += UpdateHP;
         playerData.OnMPChange += UpdateMP;
         playerData.OnSPChange += UpdateSP;
+
+        //GameEndUI
+        _continueButton.onClick.AddListener(OnContinueButtonClick);
+        _gameOutButton.onClick.AddListener(OnGameOutButtonClick);
+        _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
+        _gameEndUI.SetActive(false);
+    }
+
+    private void OnContinueButtonClick()
+    {
+        ToggleUI();
+        Debug.Log("Hello");
+    }
+    private void OnGameOutButtonClick()
+    {
+        SceneManager.LoadScene("GameStartScene");
+        Debug.Log("Hi");
+    }
+    private void OnGameEndButtonClick()
+    {
+        GameManager.Instance.playerManager.playerData.SaveData();
+        Debug.Log("Hello!!");
+        Application.Quit();
     }
 
     private void UpdateHP()
@@ -33,6 +65,19 @@ public class GameUI : UIBase
     private void UpdateSP()
     {
         _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleUI();
+        }
+    }
+    private void ToggleUI()
+    {
+        bool toggle = _gamePlayUI.activeInHierarchy;
+        _gamePlayUI.SetActive(!toggle);
+        _gameEndUI.SetActive(toggle);
     }
     #region BuffSystem
     [Header("Buff System")]

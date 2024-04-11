@@ -232,6 +232,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "e13a1729-e227-43f7-9bdf-203d204a4417",
+            "actions": [
+                {
+                    "name": "Option",
+                    "type": "Button",
+                    "id": "95121da2-f25f-4dcb-a922-4b1fd91bb8ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1b3bbd0b-5a1c-4ef8-85e8-2f5aac27ba08",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Option",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

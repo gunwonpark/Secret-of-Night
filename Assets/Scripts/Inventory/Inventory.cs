@@ -69,12 +69,9 @@ public class Inventory : MonoBehaviour
     public GameObject saleCancleBtn;
     public TextMeshProUGUI ItemNameText;
 
-
     //상점에서 판매하기 G키 이벤트로 델리게이트 사용
     public delegate void InventoryCloseEvent();
     public static event InventoryCloseEvent OnInventoryClose;
-
-
     private void Awake()
     {
         instance = this;
@@ -82,12 +79,10 @@ public class Inventory : MonoBehaviour
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
     }
-
     void Start()
     {
         Initialize();
     }
-
     void Update()
     {
         OpenInventoryUI();

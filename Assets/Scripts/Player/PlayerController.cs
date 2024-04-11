@@ -72,8 +72,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if (Controller == null)
+            return;
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position + Vector3.up * stateMachine.Player.Controller.bounds.extents.x * 0.5f, stateMachine.Player.Controller.bounds.extents.x);
+        Gizmos.DrawSphere(transform.position + Vector3.up * Controller.bounds.extents.x * 0.5f, Controller.bounds.extents.x);
     }
 #endif
     public void TakeDamage(float damage)

@@ -4,6 +4,7 @@ public class PlayerInput : MonoBehaviour
 {
     public PlayerControls InputActions { get; private set; }
     public PlayerControls.PlayerActions PlayerActions { get; private set; }
+    public PlayerControls.UIActions UIActions { get; private set; }
 
     private void Awake()
     {
@@ -14,7 +15,6 @@ public class PlayerInput : MonoBehaviour
     //아직 어디서 할지 모르겠지만 Debuging용입니다
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleInput();

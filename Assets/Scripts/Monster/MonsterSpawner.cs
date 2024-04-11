@@ -24,5 +24,7 @@ public class MonsterSpawner : MonoBehaviour
             //monsterSpot에 정보 넘겨줌
             spotPoint[i].MonsterSpawn(monsterInfo);
         }
+
+        monsterManager.spotPoint = spotPoint;
     }
 }
