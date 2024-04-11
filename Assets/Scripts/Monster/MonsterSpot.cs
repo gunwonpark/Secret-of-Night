@@ -8,9 +8,6 @@ public class MonsterSpot : MonoBehaviour
     public SpawnData spawnData;
     public MonsterInfo monsterInfo;
 
-    int monsterNumber;
-    int maxMonsterNumber = 10;
-
     public void Initialize(MonsterManager manager, SpawnData spawnData)
     {
         this.manager = manager;
@@ -21,33 +18,26 @@ public class MonsterSpot : MonoBehaviour
 
     private void Start()
     {
-        //SpawnAllMonster();
+        SpawnAllMonster();
     }
 
     public void SpawnAllMonster()
     {
-        if (monsterNumber <= maxMonsterNumber)
+        for (int i = 0; i < spawnData.MonsterID.Length; i++)
         {
-            for (int i = 0; i <= spawnData.MonsterID.Length; i++)
-            {
-                int ID = spawnData.MonsterID[i];
+            int ID = spawnData.MonsterID[i];//i번째 몬스터 숫자가 ID
 
-                monsterInfo = manager.monsterData.monsterDatabase.GetMonsterInfoByKey(ID);//몬스터 정보 불러오기
-                Vector3 spawnPoint = GetRandomPointInCircle(spawnData.spotVector, spawnData.Radius);
-                spawnPoint.y = spawnData.spotVector.y;
-                GameObject go = Instantiate(monsterInfo.prefab, spawnPoint, Quaternion.identity);
-                monsterNumber++;
+            monsterInfo = manager.monsterData.monsterDatabase.GetMonsterInfoByKey(ID);//몬스터 정보 불러오기
+            Vector3 spawnPoint = GetRandomPointInCircle(spawnData.spotVector, spawnData.Radius);//랜덤 포지션 계산
+            spawnPoint.y = spawnData.spotVector.y;//y값은 그대로
+            GameObject go = Instantiate(monsterInfo.prefab, spawnPoint, Quaternion.identity);//몬스터 생성
 
-                FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
-                fieldMonster.SetPosition(spawnPoint);//포지션 전달
-                fieldMonster.Init(monsterInfo);
+            FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();
+            fieldMonster.SetPosition(spawnPoint);//포지션 전달
+            fieldMonster.Init(monsterInfo);
 
-                fieldMonster.circlePosition = transform.position;
-                fieldMonster.circleRadius = spawnData.Radius;
-
-                Debug.Log(monsterNumber);
-                Debug.Log(spawnPoint);
-            }
+            fieldMonster.circlePosition = transform.position;
+            fieldMonster.circleRadius = spawnData.Radius;
         }
     }
 

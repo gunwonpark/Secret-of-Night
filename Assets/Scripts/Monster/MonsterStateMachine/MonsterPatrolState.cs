@@ -12,7 +12,7 @@ public class MonsterPatrolState : MonsterBaseState
         base.Enter();
         stateMachine.MovementSpeedModifier = 0.5f;
         stateMachine.FieldMonsters.monsterAnimation.StartWalkAnimation();
-        Patrol();
+        //Patrol();
     }
 
     public override void Exit()
@@ -42,13 +42,13 @@ public class MonsterPatrolState : MonsterBaseState
         }
     }
 
-    private void Patrol()
-    {
-        Move();
-        Vector3 PatrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
-        Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
+    //private void Patrol()
+    //{
+    //    Move();
+    //    Vector3 PatrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
+    //    Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
 
-        float distance = (currentPosition - PatrolPosition).sqrMagnitude;
-    }
+    //    float distance = (currentPosition - PatrolPosition).sqrMagnitude;
+    //}
 
 }

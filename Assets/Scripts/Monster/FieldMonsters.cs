@@ -19,7 +19,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public MonsterAnimation monsterAnimation;
     private MonsterStateMachine stateMachine;
     public ItemDataBase itemDataBase;
-    public MonsterSpawner monsterSpawner;
+    public MonsterSpot monsterSpot;
 
     public Vector3 originalPosition;
     public Vector3 circlePosition;
@@ -37,7 +37,6 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         monsterAnimation = GetComponent<MonsterAnimation>();
         attackCollider = GetComponent<BoxCollider>();
 
-        //monsterSpawner = gameObject.AddComponent<MonsterSpawner>();
     }
 
     public void Init(MonsterInfo monsterInfo)
@@ -80,7 +79,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public Vector3 GetNewMovePoint()//랜덤한 무브지점
     {
-        Vector3 movePoint = monsterSpawner.GetRandomPointInCircle(circlePosition, circleRadius);
+        Vector3 movePoint = monsterSpot.GetRandomPointInCircle(circlePosition, circleRadius);
 
         return movePoint;
     }
