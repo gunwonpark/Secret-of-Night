@@ -84,8 +84,6 @@ public class MonsterSpawner : MonoBehaviour
                 }
             }
         }
-
-        monsterManager.spotPoint = spotPoint;
     }
 
     IEnumerator SpawnMonster()
