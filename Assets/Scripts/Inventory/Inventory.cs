@@ -321,7 +321,7 @@ public class Inventory : MonoBehaviour
             }
 
         }
-
+        QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);        
         UpdateUI();
     }
 
@@ -777,19 +777,18 @@ public class Inventory : MonoBehaviour
     {
         salePopUpUI.SetActive(false);
         popUpUI.SetActive(false);
-
     }
 
     //---------------------------------------------------------------------------
 
-    //public void QuastItemCheck(int itemID, int quantity)
-    //{
-    //    for (int i = 0; i < _uiSlots.Length; i++)
-    //    {
-    //        if (itemID == slots[i].item.ItemID && slots[i].count == quantity)
-    //        {
-    //            QuestManager.I.QuestClear();
-    //        }
-    //    }
-    //}
+    public void QuestItemCheck(int itemID, int quantity)
+    {
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (itemID == slots[i].item.ItemID && slots[i].count == quantity)
+            {
+                QuestManager.I.QuestClear();
+            }
+        }
+    }
 }
