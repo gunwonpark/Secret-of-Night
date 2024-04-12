@@ -85,6 +85,12 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         return movePoint;
     }
 
+    public void OffCollider()
+    {
+        stateMachine.FieldMonsters.controller.enabled = false;
+        stateMachine.FieldMonsters.attackCollider.enabled = false;
+    }
+
     //base에 있는 takedamage구독
     public void TakeDamage(float Damage)
     {
