@@ -325,7 +325,7 @@ public class Inventory : MonoBehaviour
         }
         if (QuestManager.I.currentQuest.QuestType == 3)
         {
-            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID,QuestManager.I.currentQuest.GoalCount);
+            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
     }
@@ -530,26 +530,6 @@ public class Inventory : MonoBehaviour
         // 장착된 아이템 슬롯과 정보를 저장
         bool equipped = _uiSlots[curEquipIndex].equipped;
         ItemSlot equippedItem = slots[curEquipIndex];
-
-        //빈 슬롯
-        //마지막 슬롯은 검사할 필요가 없기 때문에 -1
-        for (int i = 0; i < slots.Length - 1; i++)
-        {
-            // 현재 슬롯이 비어있고 다음 슬롯에 아이템이 있다면
-            if (slots[i].item == null && slots[i + 1].item != null)
-            {
-                // 현재 슬롯에 다음 슬롯의 아이템을 이동
-                slots[i] = slots[i + 1];
-                slots[i + 1] = new ItemSlot(); // 다음 슬롯을 비워줘야하기 때문에 초기화
-
-                _uiSlots[i].equipped = _uiSlots[i + 1].equipped; // 현재 슬롯의 장착 정보 <- 다음 슬롯 장착 정보 넣기
-                _uiSlots[i + 1].equipped = false; // 뒤에 슬롯은 장착 정보 해제
-                if (i + 1 == curEquipIndex) // 뒤 슬롯이 현재 장착된 상태라면 인덱스 초기화
-                {
-                    curEquipIndex = i;
-                }
-            }
-        }
 
         // 아이디 순으로 정렬
         for (int i = 0; i < slots.Length; i++)
@@ -817,16 +797,15 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < _uiSlots.Length; i++)
         {
-            if(slots[i].item != null)
+            if (slots[i].item != null)
             {
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
                     QuestManager.I.QuestClear();
-                    RemoveSelectedItem(quantity);
                     slots[i].count -= quantity;
                     slots[i].item = null;
                 }
-            }                       
+            }
         }
     }
 }
