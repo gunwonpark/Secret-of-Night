@@ -11,6 +11,7 @@ public class CameraTPP : MonoBehaviour
     public Vector3 pivotOffset = new Vector3(0.0f, 1.05f, -1.04f);
     public Vector3 camOffset = new Vector3(0.4f, 0.5f, -2.0f);
 
+    private Vector2 mousePos;
     [Header("카메라 회전 관련")]
     public float smooth = 10f; // 카메라 반응속도
     public float horizontalAimingSpeed = 6.0f; // 수평 회전속도
@@ -68,7 +69,10 @@ public class CameraTPP : MonoBehaviour
         ResetFOV();
         ResetMaxVerticalAngle();
     }
-
+    private void Start()
+    {
+        GameManager.Instance.inputManager.PlayerActions.Camera.performed += i => mousePos = i.ReadValue<Vector2>();
+    }
     public void ResetTargetOffsets()
     {
         targetPivotOffset = pivotOffset;
@@ -103,7 +107,7 @@ public class CameraTPP : MonoBehaviour
     {
         ResetTargetOffsets();
         //마우스 이동값
-        Vector2 mousePos = GameManager.Instance.inputManager.PlayerActions.Camera.ReadValue<Vector2>();
+
         angleH += Mathf.Clamp(mousePos.x, -1f, 1f) * horizontalAimingSpeed;
         angleV += Mathf.Clamp(mousePos.y, -1f, 1f) * verticalAimingSpeed;
 
@@ -113,7 +117,7 @@ public class CameraTPP : MonoBehaviour
         //실험용
         //angleV = -40f;
         //angleH = Mathf.LerpAngle(angleH, targetHorizontalAngle, Time.deltaTime);
-        angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.1f);
+        //angleH = Mathf.SmoothDampAngle(angleH, targetHorizontalAngle, ref angleHVelocity, smooth * 0.1f);
         //angleH = Mathf.Clamp(angleH, -45f, 45f);
 
         //카메라 회전

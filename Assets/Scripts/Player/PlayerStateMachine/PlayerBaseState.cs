@@ -140,7 +140,7 @@ public class PlayerBaseState : IState
         //윰직임이 있는 경우에는
         if (CanMove())
         {
-            Vector3 moveDirection = MoveDirection_Ver_Key();
+            Vector3 moveDirection = MoveDirection_Ver_Camera();
             if (stateMachine.Player.IsGrounded)
             {
                 float moveSpeed = GetMovementSpeed();
