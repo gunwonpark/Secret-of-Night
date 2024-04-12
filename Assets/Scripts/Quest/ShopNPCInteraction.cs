@@ -83,7 +83,7 @@ public class ShopNPCInteraction : MonoBehaviour
 
     // 대화 버튼을 눌렀을때 호출되는 메서드
     public void Dialogue()
-    {         
+    {
         if (QuestManager.I.currentQuest.QuestID == questID)
         {
             QuestManager.I.CheckCurrentQuest(questID);
@@ -97,7 +97,7 @@ public class ShopNPCInteraction : MonoBehaviour
         Button B_tradeBtn = tradeBtn.GetComponent<Button>();
         Button B_buyBtn = buyBtn.GetComponent<Button>();
         Button B_saleBtn = saleBtn.GetComponent<Button>();
-        //B_talkBtn.onClick.AddListener()
+        B_talkBtn.onClick.AddListener(Dialogue);
         B_tradeBtn.onClick.AddListener(OnTradeClick);
         B_buyBtn.onClick.AddListener(OnBuyClick);
         B_saleBtn.onClick.AddListener(OnSaleClick);
