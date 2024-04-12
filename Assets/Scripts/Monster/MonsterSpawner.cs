@@ -45,7 +45,7 @@ public class MonsterSpawner : MonoBehaviour
 
         SpawnAllMonster();
     }
-
+    
     private void Update()
     {
         StartCoroutine(SpawnMonster());

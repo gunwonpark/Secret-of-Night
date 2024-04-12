@@ -74,7 +74,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Camera"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""7bacd5ec-98ad-495a-981c-457dd284206a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

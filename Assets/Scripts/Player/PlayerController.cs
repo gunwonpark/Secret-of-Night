@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
     public Animator Animator { get; private set; }
-    public PlayerInput Input { get; private set; }
+    public InputManager Input => GameManager.Instance.inputManager;
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public StaminaSystem StaminaSystem { get; private set; }
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         AnimationData = new PlayerAnimationData();
 
         Animator = GetComponentInChildren<Animator>();
-        Input = GetComponent<PlayerInput>();
+        //Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         StaminaSystem = GetComponent<StaminaSystem>();
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (Controller == null)
             return;
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position + Vector3.up * Controller.bounds.extents.x * 0.5f, Controller.bounds.extents.x);
+        Gizmos.DrawSphere(transform.position + Vector3.up * Controller.bounds.extents.x * 0.5f, Controller.bounds.extents.x + Controller.skinWidth);
     }
 #endif
     public void TakeDamage(float damage)
