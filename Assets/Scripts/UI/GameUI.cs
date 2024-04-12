@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,14 +9,24 @@ public class GameUI : UIBase
 {
     //캐싱용
     private PlayerGameData playerData;
-    public GameObject _gamePlayUI;
 
-    [Header("Status")]
-    [SerializeField] private Image _hpImage;
-    [SerializeField] private Image _mpImage;
+    [Header("GamePlayUI")]
+    [SerializeField] private GameObject _gamePlayUI;
+    [SerializeField] private GameObject _timer;
+
+    [Header("PlayerStatus")]
+    [SerializeField] private Image _playerHPImage;
+    [SerializeField] private Image _playerMPImage;
 
     [Header("Stamina")]
     [SerializeField] private Image _staminaImage;
+
+    [Header("BossInfo")]
+    [SerializeField] private GameObject _bossInfo;
+    [SerializeField] private Image _bossHPImage;
+    [SerializeField] private TextMeshProUGUI _bossHPText;
+    [SerializeField] private TextMeshProUGUI _bossName;
+    private Phase1Boss _boss;
 
     [Header("GameEndUI")]
     [SerializeField] private GameObject _gameEndUI;
@@ -23,7 +35,17 @@ public class GameUI : UIBase
     [SerializeField] private Button _gameEndButton;
     private void Start()
     {
+        GameManager.Instance.inputManager.UIActions.Option.started += ToggleUI;
+        GameManager.Instance.playerManager.playerData.OnDie += OpenGameOverPopup;
         playerData = GameManager.Instance.playerManager.playerData;
+
+        //BossSetting
+        if (SceneManager.GetActiveScene().name == "BossMap")
+        {
+            _bossInfo.SetActive(true);
+            _timer.SetActive(false);
+            BossScene.OnBossSpawned.AddListener(SetBossUI);
+        }
 
         //Status Change
         playerData.OnHPChange += UpdateHP;
@@ -35,6 +57,26 @@ public class GameUI : UIBase
         _gameOutButton.onClick.AddListener(OnGameOutButtonClick);
         _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
         _gameEndUI.SetActive(false);
+    }
+
+    private void OpenGameOverPopup()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<GameOverPopup>();
+        GameManager.Instance.playerManager.playerData.OnDie -= OpenGameOverPopup;
+    }
+
+    private void Update()
+    {
+        if (_boss == null)
+            return;
+
+        _bossHPImage.fillAmount = _boss.bossMonsterData.HP / _boss.maxHP;
+        _bossHPText.text = $"{_boss.bossMonsterData.HP} / {_boss.maxHP}";
+    }
+    private void SetBossUI(Phase1Boss boss)
+    {
+        _boss = boss;
+        _bossName.text = _boss.bossMonsterData.Name;
     }
 
     private void OnContinueButtonClick()
@@ -56,28 +98,47 @@ public class GameUI : UIBase
 
     private void UpdateHP()
     {
-        _hpImage.fillAmount = playerData.CurHP / playerData.MaxHP;
+        _playerHPImage.fillAmount = playerData.CurHP / playerData.MaxHP;
     }
     private void UpdateMP()
     {
-        _mpImage.fillAmount = playerData.CurMP / playerData.MaxMP;
+        _playerMPImage.fillAmount = playerData.CurMP / playerData.MaxMP;
     }
     private void UpdateSP()
     {
         _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
     }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleUI();
-        }
-    }
+
     private void ToggleUI()
     {
         bool toggle = _gamePlayUI.activeInHierarchy;
         _gamePlayUI.SetActive(!toggle);
         _gameEndUI.SetActive(toggle);
+
+        if (!toggle)
+        {
+            GameManager.Instance.inputManager.EnablePlayerAction();
+        }
+        else
+        {
+            GameManager.Instance.inputManager.DisablePlayerAction();
+        }
+    }
+    private void ToggleUI(InputAction.CallbackContext obj)
+    {
+        bool toggle = _gamePlayUI.activeInHierarchy;
+        _gamePlayUI.SetActive(!toggle);
+        _gameEndUI.SetActive(toggle);
+
+        Debug.Log(!toggle);
+        if (!toggle)
+        {
+            GameManager.Instance.inputManager.EnablePlayerAction();
+        }
+        else
+        {
+            GameManager.Instance.inputManager.DisablePlayerAction();
+        }
     }
     #region BuffSystem
     [Header("Buff System")]
@@ -123,5 +184,8 @@ public class GameUI : UIBase
         playerData.OnHPChange -= UpdateHP;
         playerData.OnMPChange -= UpdateMP;
         playerData.OnSPChange -= UpdateSP;
+
+        GameManager.Instance.inputManager.UIActions.Option.started -= ToggleUI;
+        BossScene.OnBossSpawned.RemoveListener(SetBossUI);
     }
 }

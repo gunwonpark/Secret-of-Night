@@ -103,8 +103,9 @@ public class CameraTPP : MonoBehaviour
     {
         ResetTargetOffsets();
         //마우스 이동값
-        angleH += Mathf.Clamp(Input.GetAxis("Mouse X"), -1f, 1f) * horizontalAimingSpeed;
-        angleV += Mathf.Clamp(Input.GetAxis("Mouse Y"), -1f, 1f) * verticalAimingSpeed;
+        Vector2 mousePos = GameManager.Instance.inputManager.PlayerActions.Camera.ReadValue<Vector2>();
+        angleH += Mathf.Clamp(mousePos.x, -1f, 1f) * horizontalAimingSpeed;
+        angleV += Mathf.Clamp(mousePos.y, -1f, 1f) * verticalAimingSpeed;
 
         //수직 이동 제한
         angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticalAngle);

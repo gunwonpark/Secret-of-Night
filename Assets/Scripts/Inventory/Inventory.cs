@@ -323,7 +323,6 @@ public class Inventory : MonoBehaviour
             }
 
         }
-        //QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);        
         UpdateUI();
     }
 
