@@ -23,6 +23,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 1,
             RewardCount = 10,
+            QuestType =2,
         };
         tempQuests.Add(newQuest);
 
@@ -257,14 +258,16 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "촌장님! 마을 밖에 동물들이.." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "자네들 돌아왔구먼! 지금 큰일이 생겼네!" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "무슨 일이죠?" },
-                new Dialogue { TalkerKo = "촌장", Scripts =  "부꾸부꾸가 마을 안에서 보이지 않아! 마을 밖으론 절대 나가지 않는 아이인데.." },
+                new Dialogue { TalkerKo = "촌장", Scripts = "부꾸부꾸가 마을 안에서 보이지 않아! 마을 밖으론 절대 나가지 않는 아이인데.." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "젊은이! 부탁을 계속해서 미안하네만 부꾸부꾸를 좀 찾아주지 않겠나?" },
                 new Dialogue { TalkerKo = "촌장", Scripts = "순찰을 보내기 전에 부꾸부꾸의 애착 가방이 없어졌단 소리를 했던 것 같네." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "뜬금없이 카멜레온 이야기도 했던 것 같고.." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "부꾸부꾸는 오렌지를 좋아하니 한번 갖고 가보게나." },                
+                new Dialogue { TalkerKo = "촌장", Scripts = "부꾸부꾸는 오렌지를 좋아하니 한번 갖고 가보게나." },
             },
-            isDirectClear = true,
             isContinue = true,
+            QuestType = 3,
+            QuestItemID = 13,
+            GoalCount = 10,
         };
         tempQuests.Add(newQuest);
 
