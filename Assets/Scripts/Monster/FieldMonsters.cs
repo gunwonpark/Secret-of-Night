@@ -9,6 +9,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
     public float HP = 0;
+    //public Dictionary<int, float> itemWeight = new();
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -112,25 +113,37 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void DropData()
     {
-        //int count;
+        float totalWeight = 0f;
+        float randomWeight;
+        float accumulatedWeight = 0f;
+        int selectItem;
 
-        //float itemWeight = 1;
-        //float _weigth = 0;
 
-        //for (int j = 0; j < myInfo.Weigth.Length; j++)
+        //딕셔너리 추가
+        //for (int i = 0; i < myInfo.DropItem.Length; i++)
         //{
-        //    if (i == j)
-        //    {
-        //        _weigth = j;
+        //    int dropitem = myInfo.DropItem[i];
+        //    float weight = myInfo.Weigth[i];
 
-        //    }
+        //    itemWeight.Add(dropitem, weight);
         //}
 
-        for (int i = 0; i < myInfo.DropItem.Length; i++)//랜덤으로 해야할것같음
+        //전체가중치 합 계산
+        foreach (float weight in myInfo.Weigth)
         {
-            dropItem(itemDataBase.GetData(myInfo.DropItem[i]));
+            totalWeight += weight;
+        }
+        randomWeight = Random.Range(0f, totalWeight);//랜덤으로 뽑은 가중치값
 
+        for (int i = 0; i < myInfo.DropItem.Length; i++)
+        {
+            accumulatedWeight += myInfo.Weigth[i];//i번째까지 가중치의 합
+            if (randomWeight <= accumulatedWeight)//랜덤가중치값보다 커지면
+            {
+                selectItem = myInfo.DropItem[i];
+                dropItem(itemDataBase.GetData(selectItem));
+                break;
+            }
         }
     }
-
 }
