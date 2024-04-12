@@ -28,18 +28,6 @@ public class MonsterBaseState : IState, IDamageable
 
     public virtual void Update()
     {
-        //attackStance에 따라 추격할지 말지
-        //임시
-        //if (stateMachine.FieldMonsters.myInfo.AtkStance == false)//false가 0, true가 1
-        //{
-        //    //선공X
-        //    //TakeDamage();
-        //    if (IsInChaseRange())
-        //    {
-        //        stateMachine.ChangeState(stateMachine.ChasingState);
-        //        return;
-        //    }
-        //}
         if (stateMachine.FieldMonsters.myInfo.AtkStance)
         {
             //선공0
@@ -50,7 +38,6 @@ public class MonsterBaseState : IState, IDamageable
             }
             return;
         }
-
     }
 
     public virtual void PhysicsUpdate()
@@ -102,12 +89,12 @@ public class MonsterBaseState : IState, IDamageable
 
     private Vector3 GetMovementDirection()//v
     {
-        //추격범위가 아니면 내 원래포지션(스폰된곳)으로 Direction지정
-        if (!IsInChaseRange())
+        if (stateMachine.patrolPosition != Vector3.zero)
         {
-            return (stateMachine.FieldMonsters.originalPosition - stateMachine.FieldMonsters.transform.position).normalized;
+            return (stateMachine.patrolPosition - stateMachine.FieldMonsters.transform.position).normalized;
         }
         return (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).normalized;
+
     }
 
     private float GetMovementSpeed()//v
