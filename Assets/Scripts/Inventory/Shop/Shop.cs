@@ -351,7 +351,8 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            _currentQuantity = 1;
+            _currentQuantity = 0;
+            quantityInput.text = string.Format("0");
         }
     }
 
@@ -394,7 +395,7 @@ public class Shop : MonoBehaviour
             Inventory.instance.AddItem(_selectedItem.item, _currentQuantity);
             Inventory.instance.CashUpdate(); // 차감된 돈 인벤토리에 업데이트
             CashUpdate();
-            quantityInput.text = string.Format("1");
+            quantityInput.text = string.Format("0");
             purchasePopUpUI.SetActive(false);
             ItemNameText.text = "";
         }
@@ -411,7 +412,7 @@ public class Shop : MonoBehaviour
     public void OnPurchaseCancelButton()
     {
         purchasePopUpUI.SetActive(false);
-        quantityInput.text = string.Format("1");
+        quantityInput.text = string.Format("0");
         ItemNameText.text = "";
     }
 
@@ -420,7 +421,7 @@ public class Shop : MonoBehaviour
     public void OnShopCheckButton()
     {
         popUpUI.SetActive(false);
-        quantityInput.text = string.Format("1");
+        quantityInput.text = string.Format("0");
         popUpText.text = "";
     }
 }

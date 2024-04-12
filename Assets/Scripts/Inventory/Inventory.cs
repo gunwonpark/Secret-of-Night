@@ -56,6 +56,9 @@ public class Inventory : MonoBehaviour
     public Button leftBtn;
     public Button exitBtn;
 
+    public Button sortBtn;
+    public Button trimBtn;
+
     [Header("Pop-Up")]
     public GameObject popUpUI;
     public GameObject checkBtn;
@@ -143,6 +146,8 @@ public class Inventory : MonoBehaviour
         rightBtn.onClick.AddListener(OnNext);
         leftBtn.onClick.AddListener(OnPrev);
         exitBtn.onClick.AddListener(OnExit);
+        sortBtn.onClick.AddListener(InventorySort);
+        trimBtn.onClick.AddListener(InventoryTrim);
     }
     public void CashUpdate()
     {
@@ -316,7 +321,7 @@ public class Inventory : MonoBehaviour
             }
 
         }
-
+        QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);        
         UpdateUI();
     }
 
@@ -715,7 +720,8 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            _currentQuantity = 1;
+            _currentQuantity = 0;
+            quantityInput.text = string.Format("0");
         }
     }
 
@@ -723,21 +729,19 @@ public class Inventory : MonoBehaviour
     public void SaleItem()
     {
         QuantityInput();
-        int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
             salePopUpUI.SetActive(true);
-
         }
         else
         {
             salePopUpUI.SetActive(false);
             popUpUI.SetActive(true);
             checkBtn.SetActive(true);
-
             popUpText.text = "장착중인 무기는 \n 판매할 수 없습니다.";
         }
     }
+
 
     // 팝업 판매 확인 버튼
     public void OnSaleCheckButton()
@@ -748,8 +752,8 @@ public class Inventory : MonoBehaviour
             GameManager.Instance.playerManager.playerData.Gold += totalPrice;
             CashUpdate();
             Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
-            RemoveSelectedItem(_currentQuantity);
             salePopUpUI.SetActive(false);
+            RemoveSelectedItem(_currentQuantity);
         }
         else
         {
@@ -773,19 +777,19 @@ public class Inventory : MonoBehaviour
     {
         salePopUpUI.SetActive(false);
         popUpUI.SetActive(false);
-
     }
 
     //---------------------------------------------------------------------------
 
-    //public void QuastItemCheck(int itemID, int quantity)
-    //{
-    //    for (int i = 0; i < _uiSlots.Length; i++)
-    //    {
-    //        if (itemID == slots[i].item.ItemID && slots[i].count == quantity)
-    //        {
-    //            QuestManager.I.QuestClear();
-    //        }
-    //    }
-    //}
+    public void QuestItemCheck(int itemID, int quantity)
+    {
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (itemID == slots[i].item.ItemID && slots[i].count >= quantity) 
+            {
+                QuestManager.I.QuestClear();
+                RemoveSelectedItem(quantity);
+            }
+        }
+    }
 }

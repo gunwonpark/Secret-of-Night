@@ -32,7 +32,7 @@ Found object mark: '#FieldMonsterSpwan[{}]'
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
  Key: SpotID at 1
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
- Key: MonsterSpot at 2
+ Key: MonsterSpot[] at 2
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]
  Key: Radius at 3
 [FieldMonsterSpwan_Data.xlsx(Sheet1): ROW 1]

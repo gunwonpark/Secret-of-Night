@@ -83,10 +83,10 @@ public class ShopNPCInteraction : MonoBehaviour
 
     // 대화 버튼을 눌렀을때 호출되는 메서드
     public void Dialogue()
-    {
-        QuestManager.I.CheckCurrentQuest(questID); // 현재 퀘스트 확인
+    {         
         if (QuestManager.I.currentQuest.QuestID == questID)
         {
+            QuestManager.I.CheckCurrentQuest(questID);
             interactionPopup.SetActive(false);
         }
     }
