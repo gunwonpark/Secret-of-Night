@@ -36,7 +36,7 @@ public class GameUI : UIBase
     private void Start()
     {
         GameManager.Instance.inputManager.UIActions.Option.started += ToggleUI;
-
+        GameManager.Instance.playerManager.playerData.OnDie += OpenGameOverPopup;
         playerData = GameManager.Instance.playerManager.playerData;
 
         //BossSetting
@@ -58,6 +58,13 @@ public class GameUI : UIBase
         _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
         _gameEndUI.SetActive(false);
     }
+
+    private void OpenGameOverPopup()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<GameOverPopup>();
+        GameManager.Instance.playerManager.playerData.OnDie -= OpenGameOverPopup;
+    }
+
     private void Update()
     {
         if (_boss == null)
