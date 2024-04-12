@@ -120,6 +120,7 @@ public class Shop : MonoBehaviour
         rightBtn.onClick.AddListener(OnNext);
         leftBtn.onClick.AddListener(OnPrev);
         exitBtn.onClick.AddListener(OnExit);
+        quantityInput.onValueChanged.AddListener(QuantityInput);
     }
     public void CashUpdate()
     {
@@ -339,27 +340,27 @@ public class Shop : MonoBehaviour
     // --------------------------------------------------------------------------------
 
     //수량 입력
-    public void QuantityInput()
+    public void QuantityInput(string text)
     {
         ItemNameText.text = _selectedItem.item.ItemName; // 수량 입력 전에 아이템 이름
 
-        if (!string.IsNullOrEmpty(quantityInput.text))
+        if (!string.IsNullOrEmpty(text))
         {
-            _currentQuantity = int.Parse(quantityInput.text);
+            _currentQuantity = int.Parse(text);
             int totalPrice = _selectedItem.item.Money * _currentQuantity;
             ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
         }
         else
         {
             _currentQuantity = 0;
-            quantityInput.text = string.Format("0");
+            text = string.Format("0");
         }
     }
 
     // 아이템 구매 
     public void PurchaseItem()
     {
-        QuantityInput();
+        QuantityInput(quantityInput.text);
 
         if (_selectedItem != null && !_selectedItem.IsLocked) // 잠기지 않은 아이템만 구매 가능하도록
         {
@@ -387,7 +388,7 @@ public class Shop : MonoBehaviour
     // 팝업 구매 확인 버튼
     public void OnPurchaseCheckButton()
     {
-        QuantityInput();
+        QuantityInput(quantityInput.text);
         int totalPrice = _selectedItem.item.Money * _currentQuantity;
         if (GameManager.Instance.playerManager.playerData.Gold >= totalPrice)
         {

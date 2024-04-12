@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
     public Button exitBtn;
 
     public Button sortBtn;
-    public Button trimBtn;
+    private Button trimBtn;
 
     [Header("Pop-Up")]
     public GameObject popUpUI;
@@ -147,7 +147,9 @@ public class Inventory : MonoBehaviour
         leftBtn.onClick.AddListener(OnPrev);
         exitBtn.onClick.AddListener(OnExit);
         sortBtn.onClick.AddListener(InventorySort);
-        trimBtn.onClick.AddListener(InventoryTrim);
+        //trimBtn.onClick.AddListener(InventoryTrim);
+        quantityInput.onValueChanged.AddListener(QuantityInput);
+
     }
     public void CashUpdate()
     {
@@ -321,7 +323,7 @@ public class Inventory : MonoBehaviour
             }
 
         }
-        QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);        
+        //QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);        
         UpdateUI();
     }
 
@@ -513,6 +515,7 @@ public class Inventory : MonoBehaviour
             popUpText.text = "퀘스트 아이템은 \n 사용할 수 없습니다.";
         }
 
+        InventoryTrim();
     }
 
 
@@ -525,6 +528,27 @@ public class Inventory : MonoBehaviour
         bool equipped = _uiSlots[curEquipIndex].equipped;
         ItemSlot equippedItem = slots[curEquipIndex];
 
+        //빈 슬롯
+        //마지막 슬롯은 검사할 필요가 없기 때문에 -1
+        for (int i = 0; i < slots.Length - 1; i++)
+        {
+            // 현재 슬롯이 비어있고 다음 슬롯에 아이템이 있다면
+            if (slots[i].item == null && slots[i + 1].item != null)
+            {
+                // 현재 슬롯에 다음 슬롯의 아이템을 이동
+                slots[i] = slots[i + 1];
+                slots[i + 1] = new ItemSlot(); // 다음 슬롯을 비워줘야하기 때문에 초기화
+
+                _uiSlots[i].equipped = _uiSlots[i + 1].equipped; // 현재 슬롯의 장착 정보 <- 다음 슬롯 장착 정보 넣기
+                _uiSlots[i + 1].equipped = false; // 뒤에 슬롯은 장착 정보 해제
+                if (i + 1 == curEquipIndex) // 뒤 슬롯이 현재 장착된 상태라면 인덱스 초기화
+                {
+                    curEquipIndex = i;
+                }
+            }
+        }
+
+        // 아이디 순으로 정렬
         for (int i = 0; i < slots.Length; i++)
         {
             for (int j = i + 1; j < slots.Length; j++)
@@ -561,6 +585,7 @@ public class Inventory : MonoBehaviour
                     if (slots[j].count <= 0)
                     {
                         slots[j].item = null;
+
                     }
                 }
 
@@ -659,6 +684,7 @@ public class Inventory : MonoBehaviour
     {
         ThrowItem(_selectedItem.item);
         RemoveSelectedItem(1);
+        InventoryTrim();
     }
 
     // 아이템 버리기
@@ -704,11 +730,11 @@ public class Inventory : MonoBehaviour
 
     // -------------------------------------------------------------------------------
 
-    public void QuantityInput()
+    public void QuantityInput(string text)
     {
         ItemNameText.text = _selectedItem.item.ItemName;
 
-        if (!string.IsNullOrEmpty(quantityInput.text))
+        if (!string.IsNullOrEmpty(text))
         {
             _currentQuantity = int.Parse(quantityInput.text);
             int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
@@ -721,14 +747,14 @@ public class Inventory : MonoBehaviour
         else
         {
             _currentQuantity = 0;
-            quantityInput.text = string.Format("0");
+            text = string.Format("0");
         }
     }
 
     // 아이템 판매하기
     public void SaleItem()
     {
-        QuantityInput();
+        QuantityInput(quantityInput.text);
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
             salePopUpUI.SetActive(true);
@@ -746,6 +772,8 @@ public class Inventory : MonoBehaviour
     // 팝업 판매 확인 버튼
     public void OnSaleCheckButton()
     {
+        QuantityInput(quantityInput.text);
+
         int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
         if (_selectedItem.count >= _currentQuantity)
         {
@@ -754,6 +782,7 @@ public class Inventory : MonoBehaviour
             Shop.instance.cash.text = cash.text; //인벤토리 소지금 업데이트 후 상점 소지금 업데이트
             salePopUpUI.SetActive(false);
             RemoveSelectedItem(_currentQuantity);
+            InventoryTrim();
         }
         else
         {
@@ -781,15 +810,15 @@ public class Inventory : MonoBehaviour
 
     //---------------------------------------------------------------------------
 
-    public void QuestItemCheck(int itemID, int quantity)
-    {
-        for (int i = 0; i < _uiSlots.Length; i++)
-        {
-            if (itemID == slots[i].item.ItemID && slots[i].count >= quantity) 
-            {
-                QuestManager.I.QuestClear();
-                RemoveSelectedItem(quantity);
-            }
-        }
-    }
+    //public void QuestItemCheck(int itemID, int quantity)
+    //{
+    //    for (int i = 0; i < _uiSlots.Length; i++)
+    //    {
+    //        if (itemID == slots[i].item.ItemID && slots[i].count >= quantity) 
+    //        {
+    //            QuestManager.I.QuestClear();
+    //            RemoveSelectedItem(quantity);
+    //        }
+    //    }
+    //}
 }
