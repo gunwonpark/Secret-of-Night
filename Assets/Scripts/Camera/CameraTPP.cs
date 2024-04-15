@@ -14,8 +14,8 @@ public class CameraTPP : MonoBehaviour
     private Vector2 mousePos;
     [Header("카메라 회전 관련")]
     public float smooth = 10f; // 카메라 반응속도
-    public float horizontalAimingSpeed = 6.0f; // 수평 회전속도
-    public float verticalAimingSpeed = 6.0f; // 수직 회전속도
+    public float horizontalAimingSpeed = 4.0f; // 수평 회전속도
+    public float verticalAimingSpeed = 4.0f; // 수직 회전속도
     public float maxVerticalAngle = 30.0f; // 최대 수직각도
     public float minVerticalAngle = -60.0f;// 최소 수직각도
 
@@ -43,6 +43,7 @@ public class CameraTPP : MonoBehaviour
     private float targetFOV; // 타켓 시야값
     private float targetMaxVerticalAngle;// 카메라 수직 최대각도
     private float targetHorizontalAngle;
+    [SerializeField] private LayerMask layerMask;
     public float GetH => angleH;
 
     private void Awake()
@@ -153,7 +154,7 @@ public class CameraTPP : MonoBehaviour
         Vector3 origin = player.position;
         Debug.DrawRay(origin, checkPos - origin, Color.red);
         Vector3 direction = checkPos - origin;
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, direction.magnitude))
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, direction.magnitude, layerMask))
         {
             if (hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
             {
