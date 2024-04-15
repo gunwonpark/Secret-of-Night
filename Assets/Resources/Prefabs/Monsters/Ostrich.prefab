@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 5034889612041918408}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1429001367794779918
 Rigidbody:
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64864c11eda9bdf4185f3648f86320ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 8752072509879751266}
   drag: 0.01
 --- !u!143 &8752072509879751266
 CharacterController:
