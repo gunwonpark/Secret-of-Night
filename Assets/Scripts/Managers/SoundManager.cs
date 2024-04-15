@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private AudioSource _bgm;
+    public void SetMasterVolume(float volume)
     {
-        
+        _audioMixer.SetFloat("Master", 20 * Mathf.Log10(volume));
     }
-
-    // Update is called once per frame
-    void Update()
+    public void PlayBGM(AudioClip bgm)
     {
-        
+        _bgm.clip = bgm;
+        _bgm.loop = true;
+        _bgm.volume = 1.0f;
+        _bgm.Play();
     }
 }
