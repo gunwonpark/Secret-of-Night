@@ -25,3 +25,10 @@ public enum UIEvent
 {
     Click,
 }
+
+public enum QuestStatus
+{
+    Wait,
+    Progress,
+    Complete,    
+}

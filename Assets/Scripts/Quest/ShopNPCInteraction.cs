@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,9 @@ public class ShopNPCInteraction : MonoBehaviour
 {
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private GameObject interactionPopup; // 팝업 창
-    [SerializeField] private int questID; // 퀘스트 ID
+    [SerializeField] private List<int> questID; // 퀘스트 ID
 
-
+    public GameObject exclamationMark;
     public GameObject talkBtn;
     public GameObject tradeBtn;
     public GameObject buyBtn;
@@ -38,6 +39,23 @@ public class ShopNPCInteraction : MonoBehaviour
             OpenInteractionPopup();
 
         }
+
+        switch (QuestManager.I.currentQuest.Queststatus)
+        {
+            case QuestStatus.Progress:
+                foreach (int id in questID)
+                {
+                    if (QuestManager.I.currentQuest.QuestID == id)
+                    {
+                        exclamationMark.SetActive(true);
+                    }
+                }
+                break;
+            case QuestStatus.Complete:
+                exclamationMark.SetActive(false);
+                break;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,26 +108,30 @@ public class ShopNPCInteraction : MonoBehaviour
     // 대화 버튼을 눌렀을때 호출되는 메서드
     public void Dialogue()
     {
-        if (QuestManager.I.currentQuest.QuestID == questID)
+        foreach (int id in questID)
         {
-            QuestManager.I.CheckCurrentQuest(questID);
-            interactionPopup.SetActive(false);
-        }
-        else
-        {
-            int randomtalk = Random.Range(0, 3);
-            switch (randomtalk)
+            if (QuestManager.I.currentQuest.QuestID == id)
             {
-                case 0:
-                    talktext.text = "오늘 신상품이 들어왔어 구경해봐!"; break;
-                case 1:
-                    talktext.text = "날씨가 참 좋지? 그럴 땐 우리 가게에서 쇼핑이 딱이지!"; break;
-                case 2:
-                    talktext.text = "우리 가게 단골은 촌장님이야."; break;
+                QuestManager.I.CheckCurrentQuest(id);
+                interactionPopup.SetActive(false);
             }
 
+            else
+            {
+                int randomtalk = Random.Range(0, 3);
+                switch (randomtalk)
+                {
+                    case 0:
+                        talktext.text = "오늘 신상품이 들어왔어 구경해봐!"; break;
+                    case 1:
+                        talktext.text = "날씨가 참 좋지? 그럴 땐 우리 가게에서 쇼핑이 딱이지!"; break;
+                    case 2:
+                        talktext.text = "우리 가게 단골은 촌장님이야."; break;
+                }
+            }
         }
-    }
+    }       
+    
 
     private void ButtonEvent()
     {
