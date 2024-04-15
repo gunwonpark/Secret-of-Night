@@ -31,9 +31,12 @@ public class DefaultAttackEffect : StateMachineBehaviour
 
             foreach (var hit in hits)
             {
-                Debug.Log(hit.transform.name);
-                hit.transform.GetComponent<IDamageable>()?.TakeDamage(GameManager.Instance.dataManager.playerSkillDataBase.GetData(101).Damage
-                    + GameManager.Instance.playerManager.playerData.Damage);
+                if (hit.collider.isTrigger != true)
+                {
+                    Debug.Log(hit.transform.name);
+                    hit.transform.GetComponent<IDamageable>()?.TakeDamage(GameManager.Instance.dataManager.playerSkillDataBase.GetData(101).Damage
+                        + GameManager.Instance.playerManager.playerData.Damage);
+                }
             }
             _actionExecuted = true; // Set flag to prevent repeated execution
         }
