@@ -42,11 +42,13 @@ public class DayNightCycle : MonoBehaviour
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
 
-        if (time >= 0.8f)
-        {          
-            QuestManager.I.CheckCurrentQuest(1002);
-        }
-        
+        if (QuestManager.I.currentQuest.QuestID == 1002)
+        {
+            if (time > 0.8f)
+            {
+                QuestManager.I.CheckCurrentQuest(1002);
+            }
+        }       
     }
 
     // 퀘스트 03이 완료되면 호출될 메서드

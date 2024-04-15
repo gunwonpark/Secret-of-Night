@@ -136,9 +136,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어제 오셨다던 용사님이시군요!" },
                 new Dialogue { TalkerKo = "주인공", Scripts =  "(응..? 내가 언제 용사가 된 거지)" },
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "저는 마을에서 여러 가지 물건을 사고팔고 있어요~ 많이 들러주세요!" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" }
+                
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -148,6 +149,7 @@ public class QuestGenerator : MonoBehaviour
             Description = "서리서리, 뽀롱뽀롱과 대화나누기",
             dialogues = new List<Dialogue>
             {
+                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "씨익씨익 누가 내 버섯을 다 먹었어!!" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "뽀롱뽀롱은 알아??" },
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어머 누가 그런 짓을 했니? 버섯이라면 하나에 10원에 팔 수 있었을 텐데" },
@@ -214,8 +216,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(뭐야 저 무관심한 말투는..)" },                
             },
-            isDirectClear = true,
+            isDirectClear = true,   // 정해진 위치 (퀘스트용 스컹크가 있는 위치) 에 도착하면 클리어되게 변경 필요
             isContinue = true,
+            // 따라가는 연출 필요
         };
         tempQuests.Add(newQuest);
 
@@ -231,9 +234,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "괜찮아 보이는데?" },
                 new Dialogue { TalkerKo = "띠리띠리", Scripts =  "(스컹크가 갑자기 공격을 해온다) 앗! 아파! 왜 이러는 거야!" },
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "너! 보고만 있지 말고 어떻게 좀 해봐!" },                
-            },
-            isDirectClear = true,
+            },            
             isContinue= true,
+            QuestItemID = 10,
+            GoalCount = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -274,7 +278,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest
         {
             QuestID = 1016,
-            Description = "사라진 부꾸부꾸<부꾸부꾸를 찾아라>",
+            Description = "사라진 부꾸부꾸<부꾸부꾸를 찾아라> 카멜레온 10마리 처치",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "앗 저쪽에서 부꾸부꾸의 소리가 들리는 것 같아!" },
@@ -400,7 +404,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "미어캣을 잡아봐." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "네 스승님!" },                
             },
-            QuestItemID = 1,
+            QuestItemID = 3,
             GoalCount = 10,
         };
         tempQuests.Add(newQuest);
@@ -530,10 +534,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "게로게로가 내 버섯을 훔쳐먹어서..(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "그냥 평소처럼 화를 조금 냈어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "게로게로는 원래 화를 내도 변함없이 날 놀리고 다녔는데(훌쩍)" },
-                new Dialogue { TalkerKo = "서리서리", Scripts =  "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
+                new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },                
             },
             isContinue = true,
+            // 케이크 10개와 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);
 
@@ -550,8 +555,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts =  "!?" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "방금 게로게로의 목소리가 들린 것 같아" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "근데 방향이..부끄부끄가 사라졌었던 곳이 잖아!?" },                
-            },
-            isContinue = true,
+            },            
+            QuestItemID = 6,
+            GoalCount= 10,
         };
         tempQuests.Add(newQuest);
 
@@ -587,6 +593,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다. (이 마을에서 이상한 일이 벌어지고 있는 것이 분명해)" },                
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -606,6 +613,12 @@ public class QuestGenerator : MonoBehaviour
                 
             },
             isContinue = true,
+            rewardType = RewardType.Item,
+            QuestType = 3,
+            RewardID =  16,
+            RewardCount = 10,
+            QuestItemID = 14,
+            GoalCount = 10,
         };
         tempQuests.Add(newQuest);
 
@@ -623,8 +636,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "어떻게 된 일이죠?" },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "녀석을 잠재웠다. 내 할일은 끝났으니 뒷일을 책임지도록." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(스승님이 뭔가를 알고 계신걸까?)" },                
-            },
-            isContinue = true,
+            },            
+            // QuestItemID = 당근, 도넛
+            // GoalCount = 10, 5
         };
         tempQuests.Add(newQuest);
 
@@ -652,9 +666,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "저..촌장님! 마을내에서 일어나는 사건들에 대해 아시는 것이 없습니까?" },
                 new Dialogue { TalkerKo = "촌장", Scripts = "허허이 생각을 해보겠네. 음료수라도 마시면서 대화를 나누지 않겠는가?" },
                 new Dialogue { TalkerKo = "촌장", Scripts = "조금 춥기도 하니 땔감도 좀 구해다 주게." },
-            },
-                
+            },                
             isContinue = true,
+            // QuestItemID = 음료수, 나무
+            // 촌장과 상호작용
+
         };
         tempQuests.Add(newQuest);
 
@@ -672,6 +688,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "그리고 여관으로 돌아가는 길이면 이것을 좀 전해주겠나?" },                
             },
             isContinue = true,
+            // 보상: 하이하이 여관의 맥주컵
         };
         tempQuests.Add(newQuest);
 
@@ -689,9 +706,12 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = " (말이 너무 많다..) 네~! 그나저나 혹시 최근들어 이상한걸 보셨다거나..뭐 그런 적ㅇ.." },
                 new Dialogue { TalkerKo = "하이하이", Scripts = "글세 말하다 보면 있었을지도? 그나저나 배 안고프니? 특별히 맛있는 것을 해줄게!" },
                 new Dialogue { TalkerKo = "하이하이", Scripts = " 준비하는 동안 생선을 몇마리 구해다 줄래?" },
-                new Dialogue { TalkerKo = "하이하이", Scripts = "이왕이면 다른 맥주컵도 같이 가져와줘~ 부탁할께!" },
+                new Dialogue { TalkerKo = "하이하이", Scripts = "이왕이면 다른 맥주컵도 같이 가져와줘~ 부탁할께!" },                
             },
             isContinue = true,
+            // 생선 10개
+            // 맥주컵 5개
+            // 하이하이와 상호작용
         };
         tempQuests.Add(newQuest);
 
@@ -713,7 +733,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(...피곤하다) 내일은 띠리띠리가 괜찮은지 가봐야겠어요." },
                 new Dialogue { TalkerKo = "하이하이", Scripts = "(조잘조잘..) 어머 그러면 저번에 띠리띠리가 맡겨놓은 당근 좀 같이 가져다줄래?" },
             },
-            isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -733,6 +753,7 @@ public class QuestGenerator : MonoBehaviour
                 
             },
             isContinue = true,
+            // 보상 당근 5개
         };
         tempQuests.Add(newQuest);
 
@@ -750,6 +771,8 @@ public class QuestGenerator : MonoBehaviour
                 
             },
             isContinue = true,
+            // 생선 10개
+            // 하이하이의 주방그릇 1개
         };
         tempQuests.Add(newQuest);
 
@@ -764,8 +787,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "하이하이", Scripts = "어머어머 여긴 어디야..? 무서워.." },
                 new Dialogue { TalkerKo = "", Scripts = "하이하이는 기절했다." },
                 new Dialogue { TalkerKo = "주인공", Scripts =  "(이 장소에 확실히 뭔가 있어!  일단 하이하이를 마을로 데려가자)" },              
-            },
-            isContinue = true,
+            },            
+            //스컹크 20마리 처치
         };
         tempQuests.Add(newQuest);
 
@@ -796,6 +819,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts =  "그 대신 버섯을 좀 가져와 줘!" },                
             },
             isContinue = true,
+            // 버섯 10개, 서리서리와 상호작용
         };
         tempQuests.Add(newQuest);
 
@@ -818,6 +842,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "?" },
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -835,6 +860,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "", Scripts = "서리서리가 갑자기 공격을 해온다." },              
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -851,6 +877,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(거친 숨을 쉬며)하아하아 서리서리.." },
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -887,6 +914,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "내가 자네를 너무 믿었구만.. 그런 실없는 이야기일 줄이야.. 우리마을에서 나가주게!" },
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -953,6 +981,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "", Scripts = "촌장을 매정하게 가버린다." },
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
@@ -966,6 +995,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "촌장님을 설득하기 위해 뭐라도 해야겠어!" },                
             },
             isContinue = true,
+            // 음료수 10개, 맥주컵 1개 나무 5개, 촌장과 상호작용
         };
         tempQuests.Add(newQuest);
 
@@ -982,6 +1012,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts =  "(부족한걸까..뭔가 마을을 위한 것을 해야겠어)" },                
             },
             isContinue = true,
+            isDirectClear=true,
         };
         tempQuests.Add(newQuest);
 
@@ -995,6 +1026,12 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(마을의 안전을 위해 동물들을 진정시켜야겠어)" },
             },
             isContinue = true,
+            // 오리너구리 10마리
+            // 카멜레온 10마리
+            // 미어캣 10말
+            //고슴도치 10마리
+            // 스컹크 10마리
+            // 촌장과 상호작용
         };
         tempQuests.Add(newQuest);
 
@@ -1010,6 +1047,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "..." },             
             },
             isContinue = true,
+            // 늑대 20, 황소 20
         };
         tempQuests.Add(newQuest);
 

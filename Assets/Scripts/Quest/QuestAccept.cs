@@ -6,6 +6,7 @@ public class QuestAccept : MonoBehaviour
     [SerializeField] private float interactionRange = 3f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     public List<int> questID; // 퀘스트 ID
+    public GameObject questionMark;
 
     private void Update()
     {                   
@@ -13,8 +14,24 @@ public class QuestAccept : MonoBehaviour
         {
             foreach (int id in questID)
             {
-                QuestManager.I.AcceptQuest(id);
+                QuestManager.I.AcceptQuest(id);               
             }                       
+        }
+
+        switch (QuestManager.I.currentQuest.Queststatus)
+        {
+            case QuestStatus.Wait:
+                foreach (int id in questID)
+                {
+                    if (QuestManager.I.currentQuest.QuestID == id)
+                    {
+                        questionMark.SetActive(true);
+                    }
+                }
+                break;
+            case QuestStatus.Progress:
+                questionMark.SetActive(false);
+                break;
         }
     }
 

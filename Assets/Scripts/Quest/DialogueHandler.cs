@@ -35,8 +35,9 @@ public class DialogueHandler : MonoBehaviour
         else
         {
             HideDialogueUI(); // 대화창 UI 숨기기
+            QuestManager.I.currentQuest.Queststatus = QuestStatus.Progress;
 
-            Debug.LogWarning("대화 끝, 퀘스트 목표 표시, 바로 퀘스트 완료인지 확인");
+            Debug.Log("대화 끝, 퀘스트 목표 표시, 바로 퀘스트 완료인지 확인");
 
             // 퀘스트 목표 표시
             QuestManager.I.ShowQuestDescription();
@@ -54,7 +55,7 @@ public class DialogueHandler : MonoBehaviour
 
         ShowDialogue(); // 대화창 표시
 
-        Debug.LogWarning("캐릭터 조작 변경 필요");
+        Debug.Log("캐릭터 조작 변경 필요");
     }
 
     // 대화창 표시

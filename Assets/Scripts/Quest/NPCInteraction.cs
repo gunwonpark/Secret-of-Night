@@ -6,6 +6,9 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private float interactionRange = 3f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private List<int> questID; // 퀘스트 ID
+    public GameObject exclamationMark;
+    public string npcName;
+   
 
     private void Update()
     {
@@ -14,10 +17,34 @@ public class NPCInteraction : MonoBehaviour
         {            
             foreach (int ID in questID)
             {
-                QuestManager.I.CheckCurrentQuest(ID); // 현재 퀘스트 확인  
+                QuestManager.I.CheckCurrentQuest(ID);                
             }                     
         }
-        
+
+        switch (QuestManager.I.currentQuest.Queststatus)
+        {
+            case QuestStatus.Progress:
+                foreach (int id in questID)
+                {
+                    if (QuestManager.I.currentQuest.QuestID == id)
+                    {
+                        exclamationMark.SetActive(true);
+                    }
+                }
+                break;
+            case QuestStatus.Complete:
+                exclamationMark.SetActive(false);
+                break;
+        }
+
+        if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
+        {
+            transform.position = new Vector3(-9.015747f, 0.5064697f, 131.2097f);
+        }
+        if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
+        {
+            transform.position = new Vector3(11.20499f, 0.8099976f, 137.0612f);
+        }
     }
 
     // 플레이어가 일정 범위 내에 있는지 확인하는 메서드
