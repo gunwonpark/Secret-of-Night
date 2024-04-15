@@ -8,6 +8,7 @@ public class ShopNPCInteraction : MonoBehaviour
     [SerializeField] private GameObject interactionPopup; // 팝업 창
     [SerializeField] private int questID; // 퀘스트 ID
 
+
     public GameObject talkBtn;
     public GameObject tradeBtn;
     public GameObject buyBtn;
@@ -59,7 +60,9 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         // 팝업 창을 활성화하여 보이게 함
         interactionPopup.SetActive(true);
+
         Cursor.lockState = CursorLockMode.None;
+        Inventory.instance._playerController.Input.enabled = false;
         Inventory.instance.npcInteraction = true;
 
         talkBtn.SetActive(true);
@@ -75,10 +78,13 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         // 팝업 창을 비활성화하여 가리기
         interactionPopup.SetActive(false);
+
+        Inventory.instance._playerController.Input.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
         Inventory.instance.npcInteraction = false;
         _GKeyActivate = true;
 
-        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // 대화 버튼을 눌렀을때 호출되는 메서드
@@ -88,6 +94,20 @@ public class ShopNPCInteraction : MonoBehaviour
         {
             QuestManager.I.CheckCurrentQuest(questID);
             interactionPopup.SetActive(false);
+        }
+        else
+        {
+            int randomtalk = Random.Range(0, 3);
+            switch (randomtalk)
+            {
+                case 0:
+                    talktext.text = "오늘 신상품이 들어왔어 구경해봐!"; break;
+                case 1:
+                    talktext.text = "날씨가 참 좋지? 그럴 땐 우리 가게에서 쇼핑이 딱이지!"; break;
+                case 2:
+                    talktext.text = "우리 가게 단골은 촌장님이야."; break;
+            }
+
         }
     }
 
@@ -111,6 +131,8 @@ public class ShopNPCInteraction : MonoBehaviour
         tradeBtn.SetActive(false);
         buyBtn.SetActive(true);
         saleBtn.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void OnBuyClick()

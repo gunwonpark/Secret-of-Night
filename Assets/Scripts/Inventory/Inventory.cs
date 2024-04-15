@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public bool activated; // 인벤 활성화
     private bool _speedItemUse; // 스피드 아이템 활성화
     [HideInInspector] public bool sale_Inventory; // 판매용 인벤토리 활성화
-    public bool npcInteraction = false; // npc와 대화 활성화
+    [HideInInspector] public bool npcInteraction = false; // npc와 대화 활성화
 
     private EquipController _equipController;
     private PlayerCondition _playerCondition;
@@ -162,7 +162,7 @@ public class Inventory : MonoBehaviour
         {
             activated = !activated;
 
-            if (!npcInteraction)
+            if (!npcInteraction) // 대화중에는 인벤토리 안열리게
             {
                 if (activated)
                 {
@@ -282,7 +282,7 @@ public class Inventory : MonoBehaviour
     //아이템 추가
     public void AddItem(Item _item, int _quantity)
     {
-        if (_item.Type == "using" || _item.Type == "Ect") // 소모성 아이템은 수량 체크
+        if (_item.Type == "using" || _item.Type == "Etc") // 소모성 아이템은 수량 체크
         {
             for (int i = 0; i < _quantity; i++)
             {
@@ -377,7 +377,7 @@ public class Inventory : MonoBehaviour
             case "using":
                 statText = UsingAndEctItemStatText();
                 break;
-            case "Ect":
+            case "Etc":
                 statText = UsingAndEctItemStatText();
                 break;
             case "Equip":
@@ -388,13 +388,27 @@ public class Inventory : MonoBehaviour
         selectedItemStatText.text = statText;
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
-        useButton.SetActive(_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Ect");
+        useButton.SetActive(_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
-        dropButton.SetActive(true);
-        if (sale_Inventory == true)
+
+        // 퀘스트 아이템은 판매, 버리기 비활성화
+        if (_selectedItem.item.Type != "Etc")
+        {
+            dropButton.SetActive(true);
+        }
+        else
+        {
+            dropButton.SetActive(false);
+        }
+
+        if (sale_Inventory == true && _selectedItem.item.Type != "Etc")
         {
             saleButton.SetActive(true);
+        }
+        else
+        {
+            saleButton.SetActive(false);
         }
 
     }
@@ -414,12 +428,7 @@ public class Inventory : MonoBehaviour
                 return "SP + " + _selectedItem.item.Price;
             case 7:
                 return "Speed + " + _selectedItem.item.Price;
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
+            case int id when id >= 12 && id <= 26:
                 return "Quest";
 
             default:
@@ -504,18 +513,18 @@ public class Inventory : MonoBehaviour
             RemoveSelectedItem(1);
         }
 
-        else if (QuestManager.I.currentQuest.QuestType == 2 && _selectedItem.item.Type == "Ect")
+        else if (QuestManager.I.currentQuest.QuestType == 2 && _selectedItem.item.Type == "Etc")
         {
             QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
             RemoveSelectedItem(1);
         }
 
-        else if (_selectedItem.item.Type == "Ect")
+        else if (_selectedItem.item.Type == "Etc")
         {
             popUpUI.SetActive(true);
             checkBtn.SetActive(true);
 
-            popUpText.text = "퀘스트 아이템은 \n 사용할 수 없습니다.";
+            popUpText.text = "퀘스트에서만 \n 사용할 수 있습니다.";
         }
 
         InventoryTrim();
@@ -675,7 +684,7 @@ public class Inventory : MonoBehaviour
     {
         //Instantiate(_item.Prefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360f));
 
-        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 3f); //앞으로 1.5~3 거리만큼
+        Vector3 throwPosition = transform.position + transform.forward * Random.Range(1.5f, 2f); //앞으로 1.5~3 거리만큼
 
         GameObject thrownItem = Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
 
@@ -722,7 +731,7 @@ public class Inventory : MonoBehaviour
             _currentQuantity = int.Parse(quantityInput.text);
             int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
             ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice + "\n 50% 가격으로 판매";
-            if (_selectedItem.item.Type == "Ect")
+            if (_selectedItem.item.Type == "Etc")
             {
                 ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
             }
