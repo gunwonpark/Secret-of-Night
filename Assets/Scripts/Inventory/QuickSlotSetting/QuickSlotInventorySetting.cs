@@ -29,10 +29,10 @@ public class QuickSlotInventorySetting : MonoBehaviour
         exitButton.onClick.AddListener(OnExit);
     }
 
-    private void Update()
-    {
-        OpenQuickInventoryUI();
-    }
+    //private void Update()
+    //{
+    //    OpenQuickInventoryUI();
+    //}
 
     private void Initalize()
     {
@@ -51,31 +51,33 @@ public class QuickSlotInventorySetting : MonoBehaviour
     }
 
 
-    private void OpenQuickInventoryUI()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            activate = !activate;
+    //private void OpenQuickInventoryUI()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.X))
+    //    {
+    //        activate = !activate;
 
-            if (activate)
-            {
-                OpenQuickInventory();
-                Cursor.visible = true;
-                Inventory.instance._playerController.Input.enabled = false;
-            }
-            else
-            {
-                _quickInventoryUI.SetActive(false);
-                Cursor.visible = false;
-                Inventory.instance._playerController.Input.enabled = true;
-            }
-        }
-    }
+    //        if (activate)
+    //        {
+    //            OpenQuickInventory();
+    //            Cursor.visible = true;
+    //            Inventory.instance._playerController.Input.enabled = false;
+    //        }
+    //        else
+    //        {
+    //            _quickInventoryUI.SetActive(false);
+    //            Cursor.visible = false;
+    //            Inventory.instance._playerController.Input.enabled = true;
+    //        }
+    //    }
+    //}
 
-    private void OpenQuickInventory()
+    public void OpenQuickInventory()
     {
         _quickInventoryUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Inventory.instance._playerController.Input.enabled = false;
 
     }
 

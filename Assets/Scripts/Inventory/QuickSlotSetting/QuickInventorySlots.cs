@@ -64,7 +64,7 @@ public class QuickInventorySlots : MonoBehaviour, IPointerClickHandler
             Debug.Log("더블클릭");
             // 퀵슬롯에 저장하는 코드 추가
 
-            if (curSlot.item != null)
+            if (curSlot.item != null && _quickSlotInventory.slots[_quickSlotInventory._selectedItemIndex].item == null)
             {
                 _quickSlotInventory.AddItem(curSlot.item, curSlot.count);
                 _quickSlotIventorySetting.RemoveSelectedItem();
