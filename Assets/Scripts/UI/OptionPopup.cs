@@ -1,6 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+
+public enum Sound
+{
+    Master,
+    BGM,
+    SFX
+}
 
 public class OptionPopup : MonoBehaviour
 {
@@ -20,31 +28,73 @@ public class OptionPopup : MonoBehaviour
 
     private void Start()
     {
-        _masterVolumeRightButton.onClick.AddListener(OnClickVolumeRightButton);
-        _masterVolumeLeftButton.onClick.AddListener(OnClickVolumeLeftButton);
-        _masterVolumeImage.fillAmount = 0f;
-        SetMasterVolume(Remap(_masterVolumeImage.fillAmount));
+        _masterVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.Master));
+        _masterVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.Master));
+        _bgmVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.BGM));
+        _bgmVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.BGM));
+        _sfxVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.SFX));
+        _sfxVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.SFX));
+
+        SetInitialFillAmount(Sound.Master, _masterVolumeImage);
+        SetInitialFillAmount(Sound.BGM, _bgmVolumeImage);
+        SetInitialFillAmount(Sound.SFX, _sfxVolumeImage);
     }
 
-    void OnClickVolumeRightButton()
+    private void SetInitialFillAmount(Sound type, Image volumeImage)
     {
-        _masterVolumeImage.fillAmount += 0.1f;
-        SetMasterVolume(Remap(_masterVolumeImage.fillAmount));
+        _audioMixer.GetFloat(Enum.GetName(typeof(Sound), type), out float value);
+        volumeImage.fillAmount = ConvertDecibelToFillAmount(value);
     }
-    void OnClickVolumeLeftButton()
+    private float ConvertDecibelToFillAmount(float decibel)
     {
-        _masterVolumeImage.fillAmount -= 0.1f;
-        SetMasterVolume(Remap(_masterVolumeImage.fillAmount));
-    }
-    public void SetMasterVolume(float volume)
-    {
-        //0.0001 ~ 10 까지
-        _audioMixer.SetFloat("Master", 20 * Mathf.Log10(volume + 0.001f));
-        Debug.Log(20 * Mathf.Log10(volume));
-    }
+        float minDecibel = -40f;
+        float maxDecibel = 10f;
 
-    float Remap(float value, float minValue = 0.0001f, float maxValue = 10f)
+        if (decibel < minDecibel) return 0f;
+        if (decibel > maxDecibel) return 1f;
+        return (decibel - minDecibel) / (maxDecibel - minDecibel);
+    }
+    void OnClickRightButton(Sound type)
     {
-        return value * (1 - minValue) + minValue;
+        switch (type)
+        {
+            case Sound.Master:
+                _masterVolumeImage.fillAmount += 0.1f;
+                SetVolume(_masterVolumeImage.fillAmount, type);
+                break;
+            case Sound.BGM:
+                _bgmVolumeImage.fillAmount += 0.1f;
+                SetVolume(_bgmVolumeImage.fillAmount, type);
+                break;
+            case Sound.SFX:
+                _sfxVolumeImage.fillAmount += 0.1f;
+                SetVolume(_sfxVolumeImage.fillAmount, type);
+                break;
+        }
+
+    }
+    void OnClickVolumeLeftButton(Sound type)
+    {
+        switch (type)
+        {
+            case Sound.Master:
+                _masterVolumeImage.fillAmount -= 0.1f;
+                SetVolume(_masterVolumeImage.fillAmount, type);
+                break;
+            case Sound.BGM:
+                _bgmVolumeImage.fillAmount -= 0.1f;
+                SetVolume(_bgmVolumeImage.fillAmount, type);
+                break;
+            case Sound.SFX:
+                _sfxVolumeImage.fillAmount -= 0.1f;
+                SetVolume(_sfxVolumeImage.fillAmount, type);
+                break;
+        }
+    }
+    public void SetVolume(float volume, Sound type)
+    {
+
+        float newVolume = volume <= 0.0001f ? -80 : -40 + 50 * volume;
+        _audioMixer.SetFloat(Enum.GetName(typeof(Sound), type), newVolume);
     }
 }
