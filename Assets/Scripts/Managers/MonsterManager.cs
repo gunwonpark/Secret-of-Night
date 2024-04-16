@@ -18,8 +18,8 @@ public class MonsterManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            CreatMonsterSpot();
         }
+            CreatMonsterSpot();
     }
 
     public MonsterInfo GetMonsterInfoByKey(int MonsterID)

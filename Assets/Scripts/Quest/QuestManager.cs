@@ -23,6 +23,7 @@ public class QuestManager : MonoBehaviour
     public List<Quest> quests; // 퀘스트 리스트
     private int questIndex = 0; // 퀘스트 인덱스
     public Quest currentQuest; // 현재 퀘스트
+    public Dialogue currentDialogue;
 
     private void Start()
     {
@@ -156,18 +157,24 @@ public class QuestManager : MonoBehaviour
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
     public void CheckCount(int id)
     {
-        // 현재 퀘스트의 neededId와 id가 같다면
+        // 첫 번째 몬스터의 ID와 개수를 확인
         if (currentQuest.QuestItemID == id)
         {
             currentQuest.GoalCount--; // 필요한 개수 감소
+        }
+        // 두 번째 몬스터의 ID와 개수를 확인
+        else if (currentQuest.QuestItemID2 == id)
+        {
+            currentQuest.GoalCount2--; // 필요한 개수 감소
+        }
 
-            // 필요한 개수가 0이 됐으면
-            if (currentQuest.GoalCount <= 0)
-            {
-                QuestClear(); // 퀘스트 클리어
-            }
+        // 첫 번째 몬스터와 두 번째 몬스터 모두가 필요한 개수를 다 채웠는지 확인
+        if (currentQuest.GoalCount <= 0 && currentQuest.GoalCount2 <= 0)
+        {
+            QuestClear(); // 퀘스트 클리어
         }
     }
+
 
     // NPC 상호작용, 아이템 사용, TriggerEnter 등에서 호출
     public void CheckCurrentQuest(int id)
@@ -214,10 +221,12 @@ public class Quest
     public string Description; // 퀘스트 설명
     public string QuestGoal;
     public int GoalCount; // GoalCount 필요한 개수
+    public int GoalCount2;
     public int RewardID; // 보상 ID
     public string RewardItem;
     public int RewardCount; // 보상 개수
-    public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)    
+    public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
+    public int QuestItemID2;
 
     public RewardType rewardType; // 보상 타입
     public QuestStatus Queststatus; // 퀘스트 진행상태

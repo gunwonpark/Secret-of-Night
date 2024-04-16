@@ -213,12 +213,10 @@ public class QuestGenerator : MonoBehaviour
             {
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "아.. 안녕. 네가 어젯밤에 온 사람이었지." },
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "뭐 그건 관심 없고, 혼자서도 갔다 올 수 있지만 촌장님의 지시니까.." },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와." },
+                new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와."},
                 new Dialogue { TalkerKo = "주인공", Scripts = "(뭐야 저 무관심한 말투는..)" },                
-            },
-            isDirectClear = true,   // 정해진 위치 (퀘스트용 스컹크가 있는 위치) 에 도착하면 클리어되게 변경 필요
-            isContinue = true,
-            // 따라가는 연출 필요
+            },               
+            isContinue = true,                
         };
         tempQuests.Add(newQuest);
 
@@ -250,6 +248,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "역시나 스컹크가 공격을...? 촌장님에게 돌아가야겠어!" },                               
             },
             isContinue = true,
+            rewardType = RewardType.Item,
+            RewardID = 21,
+            RewardCount = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -270,8 +271,8 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             QuestType = 3,
-            QuestItemID = 13,
-            GoalCount = 10,
+            QuestItemID = 21,
+            GoalCount = 10,            
         };
         tempQuests.Add(newQuest);
 
@@ -287,7 +288,7 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             QuestItemID = 2,
-            GoalCount = 1,
+            GoalCount = 1,  // 추후 10으로 변경
         };
         tempQuests.Add(newQuest);
 
@@ -365,7 +366,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "가서 카멜레온이랑 놀아봐." },
             },            
             QuestItemID = 2,
-            GoalCount = 1,
+            GoalCount = 5,
         };
         tempQuests.Add(newQuest);
 
@@ -387,6 +388,8 @@ public class QuestGenerator : MonoBehaviour
             },            
             QuestItemID = 1,
             GoalCount = 7,
+            QuestItemID2 = 2,
+            GoalCount2 = 5,
         };
         tempQuests.Add(newQuest);
 
@@ -444,7 +447,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(대단한 게 뭐지...? 조금만 더 힘내보자)" },                
             },
             QuestItemID = 5,
-            GoalCount = 10,
+            GoalCount = 7,
         };
         tempQuests.Add(newQuest);
 
@@ -521,6 +524,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts =  "서리서리에게 가보겠나?" },                
             },
             isContinue = true,
+            rewardType = RewardType.Item,
+            RewardID = 24,
+            RewardCount = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -538,6 +544,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },                
             },
             isContinue = true,
+            QuestItemID = 24,
+            GoalCount = 10,
             // 케이크 10개와 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);
@@ -556,8 +564,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "방금 게로게로의 목소리가 들린 것 같아" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "근데 방향이..부끄부끄가 사라졌었던 곳이 잖아!?" },                
             },            
-            QuestItemID = 6,
+            QuestItemID = 5,
             GoalCount= 10,
+            QuestItemID2 = 6,
+            GoalCount2 = 10,
         };
         tempQuests.Add(newQuest);
 
