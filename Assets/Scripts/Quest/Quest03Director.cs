@@ -6,8 +6,7 @@ public class Quest03Director : MonoBehaviour
     public DayNightCycle dayNightCycle;
     public float blackoutDuration = 3.0f; // 어두워지는 시간
     public float delayBeforeFade = 2.0f; // 대화가 끝난 후 페이드 시작 전 딜레이 시간
-    public GameObject player;
-    public GameObject seoriseori;
+    public GameObject player;   
 
     public GameObject blackScreen; // 화면을 가리는 오브젝트
 

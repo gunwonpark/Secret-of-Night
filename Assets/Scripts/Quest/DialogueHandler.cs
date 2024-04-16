@@ -11,7 +11,14 @@ public class DialogueHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText; // 대화창 대사 Text
 
     private List<Dialogue> dialogues = new List<Dialogue>(); // 대화 리스트
-    private int dialogueIndex = 0; // 대화 인덱스
+    public int dialogueIndex = 0; // 대화 인덱스
+
+    public static DialogueHandler I;
+
+    private void Awake()
+    {
+        I = this;
+    }
 
     private void Update()
     {

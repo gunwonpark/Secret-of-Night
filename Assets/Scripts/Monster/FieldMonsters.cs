@@ -54,6 +54,16 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         stateMachine.ChangeState(stateMachine.IdleState);
     }
 
+    public void Init(MonsterInfo monsterInfo)
+    {
+        myInfo = monsterInfo;
+
+        HP = myInfo.HP;
+
+        stateMachine = new MonsterStateMachine(this);
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
     private void Update()
     {
         stateMachine?.HandleInput();

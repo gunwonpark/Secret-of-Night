@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ItemSlot
 {
@@ -816,11 +817,56 @@ public class Inventory : MonoBehaviour
             {
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
-                    QuestManager.I.QuestClear();
                     slots[i].count -= quantity;
                     slots[i].item = null;
+                    QuestManager.I.QuestClear();
                 }
             }
         }
     }
+
+    //public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)
+    //{
+    //    bool item1Processed = false;
+    //    bool item2Processed = false;
+
+    //    for (int i = 0; i < _uiSlots.Length; i++)
+    //    {
+    //        if (slots[i].item != null)
+    //        {
+    //            if (!item1Processed && itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
+    //            {
+    //                item1Processed = true;
+    //            }
+
+    //            if (!item2Processed && itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
+    //            {
+    //                item2Processed = true;
+    //            }
+    //        }
+    //    }
+
+    //    if (item1Processed && item2Processed)
+    //    {
+    //        for (int i = 0; i < _uiSlots.Length; i++)
+    //        {
+    //            if (slots[i].item != null)
+    //            {
+    //                if (itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
+    //                {
+    //                    slots[i].count -= quantity1;
+    //                    slots[i].item = null;
+    //                }
+
+    //                if (itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
+    //                {
+    //                    slots[i].count -= quantity2;
+    //                    slots[i].item = null;
+    //                }
+    //            }
+    //        }
+    //        QuestManager.I.QuestClear();
+    //    }
+    //    QuestItemCheck(itemID1, quantity1);
+    //}
 }

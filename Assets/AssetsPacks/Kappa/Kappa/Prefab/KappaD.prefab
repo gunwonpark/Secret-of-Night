@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: ed0300000d040000
+  questID: ed030000
   questionMark: {fileID: 378255213986910336}
 --- !u!1 &7641089560107826180
 GameObject:
