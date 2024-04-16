@@ -24,7 +24,7 @@ public class PlayerMovementTracker : MonoBehaviour
                 
             totalDistance += distanceThisFrame; // 이동 거리를 총 이동 거리에 더합니다.
 
-            // 이동 거리가 50 유닛 이상인지 확인합니다.
+            // 이동 거리가 30 유닛 이상인지 확인합니다.
             if (totalDistance >= 30f)
             {
                 QuestManager.I.CheckCurrentQuest(1002);
