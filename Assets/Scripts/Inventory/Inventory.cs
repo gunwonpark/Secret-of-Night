@@ -18,8 +18,10 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public bool npcInteraction = false; // npc와 대화 활성화
 
     private EquipController _equipController;
-    private PlayerCondition _playerCondition;
+    public PlayerCondition _playerCondition;
     [HideInInspector] public PlayerController _playerController;
+    private QuickSlotInventorySetting _quickInventory; // 퀵 슬롯 설정 창
+
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -88,6 +90,7 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
+        _quickInventory = GetComponent<QuickSlotInventorySetting>();
     }
 
     void Start()
@@ -110,9 +113,9 @@ public class Inventory : MonoBehaviour
 
         CashUpdate();
 
-        slots = new ItemSlot[_uiSlots.Length];
-
         _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
+
+        slots = new ItemSlot[_uiSlots.Length];
 
         for (int i = 0; i < slots.Length; i++)
         {
@@ -328,6 +331,7 @@ public class Inventory : MonoBehaviour
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
+        _quickInventory.AddItem(_item, _quantity);
     }
 
     // 아이템 수량 추가
@@ -513,7 +517,7 @@ public class Inventory : MonoBehaviour
             RemoveSelectedItem(1);
         }
 
-        else if (QuestManager.I.currentQuest.QuestType == 2 && _selectedItem.item.Type == "Etc")
+        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
         {
             QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
             RemoveSelectedItem(1);
@@ -702,7 +706,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
-    private void RemoveSelectedItem(int quantity)
+    public void RemoveSelectedItem(int quantity)
     {
         _selectedItem.count -= quantity;
 
@@ -719,6 +723,8 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
+
+
 
     // -------------------------------------------------------------------------------
 
