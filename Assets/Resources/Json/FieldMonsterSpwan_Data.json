@@ -103,6 +103,18 @@
 			"MonsterID": [
 				6
 			]
+		},
+		{
+			"SpotID": 9,
+			"MonsterSpot": [
+				-19.4,
+				2,
+				67.8
+			],
+			"Radius": 20,
+			"MonsterID": [
+				9
+			]
 		}
 	]
 }
