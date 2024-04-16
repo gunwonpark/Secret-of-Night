@@ -154,7 +154,7 @@ public class CameraTPP : MonoBehaviour
         Vector3 origin = player.position;
         Debug.DrawRay(origin, checkPos - origin, Color.red);
         Vector3 direction = checkPos - origin;
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, direction.magnitude, layerMask))
+        if (Physics.Raycast(origin + Vector3.up * 0.5f, direction, out RaycastHit hit, direction.magnitude, layerMask))
         {
             if (hit.transform != player && !hit.transform.GetComponent<Collider>().isTrigger)
             {

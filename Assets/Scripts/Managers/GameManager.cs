@@ -24,13 +24,14 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         InitializeManagers();
+        Debug.Log("Manager Setting Complete");
     }
 
     private void InitializeManagers()
     {
         if (dataManager == null) { dataManager = gameObject.AddComponent<DataManager>(); dataManager.Initialize(); }
         //if (resourceManager == null) { resourceManager = gameObject.AddComponent<ResourceManager>(); }
-        if (soundManager == null) { soundManager = gameObject.AddComponent<SoundManager>(); }
+        if (soundManager == null) { soundManager = gameObject.AddComponent<SoundManager>(); soundManager.Initialize(); }
         if (uiManager == null) { uiManager = gameObject.AddComponent<UIManager>(); }
         if (skillManager == null) { skillManager = gameObject.AddComponent<SkillManager>(); }
         if (playerManager == null) { playerManager = gameObject.AddComponent<PlayerManager>(); playerManager.Initialize(1); }
