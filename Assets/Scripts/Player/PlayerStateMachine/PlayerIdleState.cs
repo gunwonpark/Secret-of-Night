@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerBaseState
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = 0f;
 
-        //TODO SceneType¿¡ µû¶ó ¾î¶² Idle »óÅÂÀÎÁö °áÁ¤
+        //TODO SceneTypeì— ë”°ë¼ ì–´ë–¤ Idle ìƒíƒœì¸ì§€ ê²°ì •
 
         StartAnimation(stateMachine.Player.AnimationData.IdleParameter);
     }

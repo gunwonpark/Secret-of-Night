@@ -5,16 +5,16 @@ public class MakePeoplePopup : UIBase
 {
     [SerializeField] private Image _background;
     bool _isEnd = false;
-    private void Start()
+    private void Awake()
     {
-        _background.rectTransform.position = new Vector3(transform.position.x, -1920, transform.position.z);
+        _background.rectTransform.localPosition = new Vector3(0, -1920 + transform.position.y, 0);
     }
     void Update()
     {
         if (_isEnd == false)
         {
-            _background.rectTransform.position += new Vector3(0, 100 * Time.deltaTime, 0);
-            if (transform.localPosition.y >= 875f)
+            _background.rectTransform.localPosition += new Vector3(0, 1000 * Time.deltaTime, 0);
+            if (_background.transform.localPosition.y >= 850f + transform.position.y)
             {
                 // Stop scrolling or reset position
                 _isEnd = true;
