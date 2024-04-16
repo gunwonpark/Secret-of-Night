@@ -577,7 +577,7 @@ MonoBehaviour:
   interactionRange: 3
   interactionKey: 103
   questID: 1304000022040000
-  questionMark: {fileID: 0}
+  questionMark: {fileID: 1002582011430155885}
 --- !u!1 &7704801056696929347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2297,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
+--- !u!1 &1002582011430155885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 674660969351408529, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
+  m_PrefabInstance: {fileID: 339181284204961276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4084731905679070480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4331022010861471980, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
