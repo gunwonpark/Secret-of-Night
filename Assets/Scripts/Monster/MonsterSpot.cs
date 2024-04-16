@@ -80,11 +80,35 @@ public class MonsterSpot : MonoBehaviour
         float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * radius; // 랜덤한 거리 생성
         float x = center.x + distance * Mathf.Cos(angle); // x 좌표 계산
         float z = center.z + distance * Mathf.Sin(angle); // z 좌표 계산
-        return new Vector3(x, center.y, z); // 랜덤 지점 반환
+        Vector3 randomPoint = new Vector3(x, center.y, z); // 랜덤 지점 반환
+
+        return randomPoint;
+        //if (IsValidSpot(randomPoint))
+        //{
+        //    return randomPoint;
+        //}
+        //else//다른 오브젝트가 있으면 일단 센터에서 생성
+        //{
+        //    return center;
+        //}
     }
 
     public void Remove(FieldMonsters fieldMonsters)
     {
         monsterList.Remove(fieldMonsters);
+    }
+
+    private bool IsValidSpot(Vector3 point)
+    {
+        RaycastHit hit;
+        //레이로 쏜 곳에 다른 오브젝트가 있으면 false
+        if (Physics.Raycast(point, Vector3.down, out hit, Mathf.Infinity))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
