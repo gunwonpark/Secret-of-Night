@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
@@ -36,8 +34,8 @@ public class DayNightCycle : MonoBehaviour
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
 
-        UpdateLighting(sun, sunColor,sunIntensity);
-        UpdateLighting(moon, moonColor,moonIntensity);
+        UpdateLighting(sun, sunColor, sunIntensity);
+        UpdateLighting(moon, moonColor, moonIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
@@ -48,7 +46,7 @@ public class DayNightCycle : MonoBehaviour
             {
                 QuestManager.I.CheckCurrentQuest(1002);
             }
-        }       
+        }
     }
 
     // 퀘스트 03이 완료되면 호출될 메서드
@@ -60,7 +58,7 @@ public class DayNightCycle : MonoBehaviour
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
     {
-        float intensity = intensityCurve.Evaluate(time);       
+        float intensity = intensityCurve.Evaluate(time);
 
         lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * noon * 4.0f;
         lightSource.color = colorGradiant.Evaluate(time);
@@ -75,9 +73,9 @@ public class DayNightCycle : MonoBehaviour
         lightSource.intensity = intensity;
 
         GameObject go = lightSource.gameObject;
-        if(lightSource.intensity ==0&&go.activeInHierarchy)
+        if (lightSource.intensity == 0 && go.activeInHierarchy)
             go.SetActive(false);
-        else if( lightSource.intensity>0 &&!go.activeInHierarchy)
+        else if (lightSource.intensity > 0 && !go.activeInHierarchy)
             go.SetActive(true);
     }
 }

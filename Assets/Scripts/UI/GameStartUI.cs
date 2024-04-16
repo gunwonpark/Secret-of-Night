@@ -56,8 +56,21 @@ public class GameStartUI : UIBase
             _gameStartButton.onClick.AddListener(OnGameStartButtonClick);
         }
 
+        _makePeopleButton.onClick.AddListener(OnMakePeopleButtonClick);
         _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
+        _optionButton.onClick.AddListener(OnOptionButtonClick);
     }
+
+    private void OnMakePeopleButtonClick()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<MakePeoplePopup>();
+    }
+
+    private void OnOptionButtonClick()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<OptionPopup>();
+    }
+
     void OnGameStartButtonClick()
     {
         GameManager.Instance.playerManager.Initialize(1);

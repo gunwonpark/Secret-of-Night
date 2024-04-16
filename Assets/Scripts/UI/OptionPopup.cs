@@ -12,7 +12,7 @@ public enum Sound
     SFX
 }
 
-public class OptionPopup : MonoBehaviour
+public class OptionPopup : UIBase
 {
     [SerializeField] private AudioMixer _audioMixer;
 
