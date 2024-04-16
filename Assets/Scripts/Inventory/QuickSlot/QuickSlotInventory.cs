@@ -51,6 +51,7 @@ public class QuickSlotInventory : MonoBehaviour
     private void Update()
     {
         QuickSlotItemUse();
+        QuickSlotItemClear();
         MoveSlot();
     }
 
@@ -113,6 +114,20 @@ public class QuickSlotInventory : MonoBehaviour
 
     }
 
+    // 퀵슬롯에서 아이템 해제
+    public void QuickSlotItemClear()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (slots[_selectedItemIndex].item != null)
+            {
+                quickSlotInventorySetting.AddItem(slots[_selectedItemIndex].item, slots[_selectedItemIndex].count);
+                RemoveSelectedItem(slots[_selectedItemIndex].count);
+
+            }
+        }
+    }
+
     public void AddItem(Item _item, int _quantity)
     {
         if (_item.Type == "using")
@@ -155,7 +170,8 @@ public class QuickSlotInventory : MonoBehaviour
 
     public void OnUseButton()
     {
-        RemoveItemByID(_selectedItem.item.ItemID, 1);
+        Inventory.instance.RemoveItemByID(_selectedItem.item.ItemID, 1);
+        Inventory.instance.InventoryTrim();
 
         switch (_selectedItem.item.ItemID)
         {
@@ -189,27 +205,7 @@ public class QuickSlotInventory : MonoBehaviour
 
     }
 
-    // 퀵 슬롯에서 아이템 사용 시 인벤토리에서 일치하는 아이템도 같이 삭제
-    private void RemoveItemByID(int itemID, int quantity)
-    {
-        for (int i = 0; i < Inventory.instance._uiSlots.Length; i++)
-        {
-            if (Inventory.instance.slots[i].item != null && Inventory.instance.slots[i].item.ItemID == itemID)
-            {
-                Inventory.instance.slots[i].count -= quantity;
 
-                if (Inventory.instance.slots[i].count <= 0)
-                {
-                    Inventory.instance.slots[i].item = null;
-                    Inventory.instance.slots[i].count = 0;
-
-                }
-
-                Inventory.instance.UpdateUI();
-                break;
-            }
-        }
-    }
     public void UpdateQuickSlot()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -250,5 +246,27 @@ public class QuickSlotInventory : MonoBehaviour
         Debug.Log(_selectedItemIndex);
 
         UpdateQuickSlot();
+    }
+
+    // 퀵 슬롯에서 아이템 사용 시 인벤토리에서 일치하는 아이템도 같이 삭제
+    public void RemoveItemByID(int itemID, int quantity)
+    {
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (slots[i].item != null && slots[i].item.ItemID == itemID)
+            {
+                slots[i].count -= quantity;
+
+                if (slots[i].count <= 0)
+                {
+                    slots[i].item = null;
+                    slots[i].count = 0;
+
+                }
+
+                Inventory.instance.UpdateUI();
+                break;
+            }
+        }
     }
 }

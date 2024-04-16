@@ -487,7 +487,7 @@ public class Inventory : MonoBehaviour
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
     {
-        RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
+        _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
 
         if (_selectedItem.item.Type == "using")
         {
@@ -537,24 +537,23 @@ public class Inventory : MonoBehaviour
 
         InventoryTrim();
     }
-
-    //인벤토리에서 아이템 삭제 시 퀵슬롯에 저장되어 있는 아이템이 있다면 같이 삭제
-    private void RemoveItemByID(int itemID, int quantity)
+    // 퀵 슬롯에서 아이템 사용 시 인벤토리에서 일치하는 아이템도 같이 삭제
+    public void RemoveItemByID(int itemID, int quantity)
     {
-        for (int i = 0; i < _quickSlotInventory._uiSlots.Length; i++)
+        for (int i = 0; i < _uiSlots.Length; i++)
         {
-            if (_quickSlotInventory.slots[i].item != null && _quickSlotInventory.slots[i].item.ItemID == itemID)
+            if (slots[i].item != null && slots[i].item.ItemID == itemID)
             {
-                _quickSlotInventory.slots[i].count -= quantity;
+                slots[i].count -= quantity;
 
-                if (_quickSlotInventory.slots[i].count <= 0)
+                if (slots[i].count <= 0)
                 {
-                    _quickSlotInventory.slots[i].item = null;
-                    _quickSlotInventory.slots[i].count = 0;
+                    slots[i].item = null;
+                    slots[i].count = 0;
 
                 }
 
-                _quickSlotInventory.UpdateQuickSlot();
+                UpdateUI();
                 break;
             }
         }
