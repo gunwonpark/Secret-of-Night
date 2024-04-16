@@ -7,5 +7,6 @@ public class MainScene : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.soundManager.PlayBGM(_bgm);
+        GameManager.Instance.monsterManager.CreatMonsterSpot();
     }
 }
