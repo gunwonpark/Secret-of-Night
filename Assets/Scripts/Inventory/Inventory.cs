@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public bool npcInteraction = false; // npc와 대화 활성화
 
     private EquipController _equipController;
-    public PlayerCondition _playerCondition;
+    [HideInInspector] public PlayerCondition _playerCondition;
     [HideInInspector] public PlayerController _playerController;
     private QuickSlotInventorySetting _quickSlotInventorySetting; // 퀵 슬롯 설정 창
     private QuickSlotInventory _quickSlotInventory;
