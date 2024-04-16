@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MonsterManager : MonoBehaviour
 {
@@ -16,10 +15,6 @@ public class MonsterManager : MonoBehaviour
 
         spawnDatabase = dataManager.monsterSpawnDatabase;
 
-        if (SceneManager.GetActiveScene().name == "MainScene")
-        {
-        }
-            CreatMonsterSpot();
     }
 
     public MonsterInfo GetMonsterInfoByKey(int MonsterID)
