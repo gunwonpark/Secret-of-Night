@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -21,11 +23,17 @@ public class OptionPopup : MonoBehaviour
     [SerializeField] private Button _bgmVolumeRightButton;
     [SerializeField] private Button _sfxVolumeLeftButton;
     [SerializeField] private Button _sfxVolumeRightButton;
-
     [SerializeField] private Image _masterVolumeImage;
     [SerializeField] private Image _bgmVolumeImage;
     [SerializeField] private Image _sfxVolumeImage;
 
+    [Header("Resolution")]
+    [SerializeField] private TMP_Dropdown _resolutionDropdown;
+    [SerializeField] private List<Resolution> _resolutions = new List<Resolution>();
+    private int _resolutionNumber;
+
+    [Header("Quit")]
+    [SerializeField] private Button _cancelButton;
     private void Start()
     {
         _masterVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.Master));
@@ -38,8 +46,41 @@ public class OptionPopup : MonoBehaviour
         SetInitialFillAmount(Sound.Master, _masterVolumeImage);
         SetInitialFillAmount(Sound.BGM, _bgmVolumeImage);
         SetInitialFillAmount(Sound.SFX, _sfxVolumeImage);
+
+        ResolutionInitialize();
+
+        _cancelButton.onClick.AddListener(() => Destroy(gameObject));
     }
 
+    #region resolution
+    void ResolutionInitialize()
+    {
+        _resolutions.AddRange(Screen.resolutions);
+        _resolutionDropdown.options.Clear();
+
+        int optionNum = 0;
+        foreach (Resolution resolution in _resolutions)
+        {
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+            option.text = $"{resolution.width}X{resolution.height} {resolution.refreshRateRatio}hz";
+            _resolutionDropdown.options.Add(option);
+            if (resolution.width == Screen.width && resolution.height == Screen.height)
+            {
+                _resolutionDropdown.value = optionNum;
+            }
+            optionNum++;
+        }
+        _resolutionDropdown.RefreshShownValue();
+        _resolutionDropdown.onValueChanged.AddListener((x) =>
+        {
+            _resolutionNumber = x;
+            Debug.Log("OnValueChange" + _resolutions[_resolutionNumber].width);
+            Screen.SetResolution(_resolutions[_resolutionNumber].width, _resolutions[_resolutionNumber].height, true);
+        });
+    }
+    #endregion
+
+    #region Sound
     private void SetInitialFillAmount(Sound type, Image volumeImage)
     {
         _audioMixer.GetFloat(Enum.GetName(typeof(Sound), type), out float value);
@@ -91,10 +132,12 @@ public class OptionPopup : MonoBehaviour
                 break;
         }
     }
+
     public void SetVolume(float volume, Sound type)
     {
 
         float newVolume = volume <= 0.0001f ? -80 : -40 + 50 * volume;
         _audioMixer.SetFloat(Enum.GetName(typeof(Sound), type), newVolume);
     }
+    #endregion
 }
