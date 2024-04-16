@@ -389,6 +389,51 @@
 			"MaxAmount": 99,
 			"PrefabPath": "Prefabs/Items/Soda",
 			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 27,
+			"Name": "Bucket01",
+			"Type": "Etc",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "그릇",
+			"Description": "욕조만한 크기를 가진 그릇이다.",
+			"IconPath": "Images/Icons/Bucket01",
+			"MaxAmount": 99,
+			"PrefabPath": "Prefabs/Items/Bucket01",
+			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 28,
+			"Name": "MoneyBag",
+			"Type": "Etc",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "주머니",
+			"Description": "두둑하게 넣을 수 있는 주머니이다.",
+			"IconPath": "Images/Icons/MoneyBag",
+			"MaxAmount": 99,
+			"PrefabPath": "Prefabs/Items/MoneyBag",
+			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 29,
+			"Name": "Bag",
+			"Type": "Etc",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "가방",
+			"Description": "바닥에 있는 물건을 뽀려서 저장하기 좋은 주머니이다.",
+			"IconPath": "Images/Icons/Bag",
+			"MaxAmount": 99,
+			"PrefabPath": "Prefabs/Items/Bag",
+			"UnlockLevel": 1
 		}
 	]
 }

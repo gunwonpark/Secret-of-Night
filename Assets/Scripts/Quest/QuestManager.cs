@@ -141,13 +141,16 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.isContinue)
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
-            InitDialogues(); // 대화 목록 초기화            
+            InitDialogues(); // 대화 목록 초기화
+            currentQuest.Queststatus = QuestStatus.Complete;
         }
         else
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
-            HideQuestDescription(); // 퀘스트 설명 숨기기            
+            HideQuestDescription(); // 퀘스트 설명 숨기기
+            currentQuest.Queststatus = QuestStatus.Wait;
         }
+        
     }
 
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
@@ -217,6 +220,7 @@ public class Quest
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)    
 
     public RewardType rewardType; // 보상 타입
+    public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
     public List<Dialogue> dialogues; // 대화 리스트

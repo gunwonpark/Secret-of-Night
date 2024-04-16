@@ -428,7 +428,7 @@ public class Inventory : MonoBehaviour
                 return "SP + " + _selectedItem.item.Price;
             case 7:
                 return "Speed + " + _selectedItem.item.Price;
-            case int id when id >= 12 && id <= 26:
+            case int id when id >= 12 && id <= 29:
                 return "Quest";
 
             default:
