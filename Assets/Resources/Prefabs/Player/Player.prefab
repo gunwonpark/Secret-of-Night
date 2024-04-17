@@ -4692,6 +4692,8 @@ GameObject:
   - component: {fileID: 5028793102719922042}
   - component: {fileID: 4663946292481169512}
   - component: {fileID: 8232824247260104335}
+  - component: {fileID: 4093181141911967569}
+  - component: {fileID: 3422614818078579319}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4715,7 +4717,7 @@ Transform:
   - {fileID: 7040623446168937193}
   - {fileID: 7761943481518058002}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6916311193706112995
 CharacterController:
@@ -4893,6 +4895,7 @@ MonoBehaviour:
   activated: 0
   sale_Inventory: 0
   npcInteraction: 0
+  _playerCondition: {fileID: 0}
   _playerController: {fileID: 0}
   _inventoryUI: {fileID: 6894975582643007476}
   _slotGrid: {fileID: 1902343405426185232}
@@ -4996,6 +4999,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNightCycle: {fileID: 0}
+--- !u!114 &4093181141911967569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536643401501160818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b4dad8baa87f04aaa6c0ece80cd0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quickInventoryUI: {fileID: 0}
+  _slotGrid: {fileID: 0}
+  _uiSlots: []
+  exitButton: {fileID: 0}
+--- !u!114 &3422614818078579319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536643401501160818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaef881d58b5a747918aaced96dc076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quickSlotUI: {fileID: 0}
+  _slotGrid: {fileID: 0}
+  _itemGroup: {fileID: 0}
+  _uiSlots: []
+  _selectedItemIndex: 1
 --- !u!1 &1559138319227499400
 GameObject:
   m_ObjectHideFlags: 0
