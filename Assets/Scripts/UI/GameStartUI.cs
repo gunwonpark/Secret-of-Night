@@ -42,7 +42,7 @@ public class GameStartUI : UIBase
             }
         }
         // 데이터가 있는경우 이어하기 및 불러오기
-        if (GameManager.Instance.playerManager.playerDatas != null)
+        if (GameManager.Instance.playerManager.playerDatas.Count != 0)
         {
             _loadButton.gameObject.SetActive(true);
             _loadButton.onClick.AddListener(OnLoadButtonClick);
