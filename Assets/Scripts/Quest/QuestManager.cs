@@ -152,7 +152,7 @@ public class QuestManager : MonoBehaviour
         else
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
-            HideQuestDescription(); // 퀘스트 설명 숨기기
+            //HideQuestDescription(); // 퀘스트 설명 숨기기
             currentQuest.Queststatus = QuestStatus.Wait;
         }
         

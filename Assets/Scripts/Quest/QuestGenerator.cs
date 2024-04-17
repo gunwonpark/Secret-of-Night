@@ -549,9 +549,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "그냥 평소처럼 화를 조금 냈어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "게로게로는 원래 화를 내도 변함없이 날 놀리고 다녔는데(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },                
+                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },
             },
             isContinue = true,
+            QuestType = 3,
             QuestItemID = 28,
             GoalCount = 1,
             // 게로게로의 주머니1개 얻으면 클리어

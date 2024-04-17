@@ -334,7 +334,7 @@ public class Inventory : MonoBehaviour
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
-        _quickSlotInventorySetting.AddItem(_item, _quantity);
+        //_quickSlotInventorySetting.AddItem(_item, _quantity);
     }
 
     // 아이템 수량 추가
@@ -488,7 +488,7 @@ public class Inventory : MonoBehaviour
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
     {
-        _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
+        //_quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
 
         if (_selectedItem.item.Type == "using")
         {
