@@ -93,12 +93,20 @@ MonoBehaviour:
     AtkRange: 0
     TargetRange: 0
     RotationDamping: 0
+    DropItem: 
+    DropItemCount: 
+    Weigth: []
     PrefabPath: 
     prefab: {fileID: 0}
   HP: 0
   attackCollider: {fileID: 0}
   monsterAnimation: {fileID: 0}
+  itemDataBase:
+    items: []
+  monsterSpot: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
+  spawnSpot: {x: 0, y: 0, z: 0}
+  spawnSpotRadius: 0
 --- !u!114 &6752140659554721123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +146,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.04, z: 0.12}
+  m_Center: {x: 0, y: 1.04, z: 0}
 --- !u!114 &6851665692917739875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +175,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

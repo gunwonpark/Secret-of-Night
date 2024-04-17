@@ -20,7 +20,6 @@ public class ShopNPCInteraction : MonoBehaviour
     public TextMeshProUGUI talktext;
 
     private Shop _shop;
-    private PickupController _pickupcontroller;
 
     private bool isInRange = false; // 플레이어가 일정 범위 내에 있는지 여부
     private bool _GKeyActivate = true; // 대화, 구매, 판매시 G키 비활성화 시키게
@@ -28,7 +27,6 @@ public class ShopNPCInteraction : MonoBehaviour
     void Start()
     {
         _shop = GetComponent<Shop>();
-        _pickupcontroller = FindObjectOfType<PickupController>();
 
         Inventory.OnInventoryOpen += OnInventoryOpen;
         Inventory.OnInventoryClose += OnInventoryClosed;
@@ -40,15 +38,7 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(interactionKey) && isInRange && _GKeyActivate)
         {
-            if (_pickupcontroller.itemCheck == true)
-            {
-                _pickupcontroller.PickUp();
-            }
-            else
-            {
-                OpenInteractionPopup();
-            }
-
+            OpenInteractionPopup();
         }
 
         switch (QuestManager.I.currentQuest.Queststatus)
