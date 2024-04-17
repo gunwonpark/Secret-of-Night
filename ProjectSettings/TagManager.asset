@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BossMap
   - BossChackPoint
+  - NPC
   layers:
   - Default
   - TransparentFX

@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
         }
 
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성
+        QuestManager.OnQuestCleared += CloseInventory;
     }
 
 

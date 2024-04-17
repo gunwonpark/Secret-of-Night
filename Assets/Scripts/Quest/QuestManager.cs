@@ -7,13 +7,10 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
     private Quest03Director quest03Director;
-    public GameObject questPopup;    
+    public GameObject questPopup;
+    public delegate void QusestClearedEventHandler();
+    public static event QusestClearedEventHandler OnQuestCleared;
 
-    private void Awake()
-    {
-        I = this;
-        quest03Director = GetComponent<Quest03Director>();
-    }
 
     [SerializeField] private DialogueHandler dialogueHandler;
     [SerializeField] private QuestGenerator questGenerator;
@@ -24,6 +21,12 @@ public class QuestManager : MonoBehaviour
     private int questIndex = 0; // 퀘스트 인덱스
     public Quest currentQuest; // 현재 퀘스트
     public Dialogue currentDialogue;
+
+    private void Awake()
+    {
+        I = this;
+        quest03Director = GetComponent<Quest03Director>();
+    }
 
     private void Start()
     {
@@ -100,6 +103,7 @@ public class QuestManager : MonoBehaviour
         {
             NextQuest(); // 다음 퀘스트로
         }        
+        OnQuestCleared?.Invoke();
     }
 
     // 보상 처리

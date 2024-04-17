@@ -1265,7 +1265,7 @@ MonoBehaviour:
   interactionKey: 103
   questID: ee030000
   exclamationMark: {fileID: 4361701308160374548}
-  npcName: 
+  npcName: gerogero
 --- !u!114 &690713481610210054
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,11 +25,19 @@ public class MonsterDyingState : MonsterBaseState
     private void DeleteMonster()
     {
         Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
-        stateMachine.FieldMonsters.DropData();
 
-        stateMachine.FieldMonsters.monsterSpot.Remove(stateMachine.FieldMonsters);
+        if (stateMachine.FieldMonsters.myInfo.MonsterID != 10)
+        {
+            stateMachine.FieldMonsters.DropData();
+
+            stateMachine.FieldMonsters.monsterSpot.Remove(stateMachine.FieldMonsters);
+        }        
 
         Debug.Log("죽음");
-        QuestManager.I.CheckCount(stateMachine.FieldMonsters.myInfo.MonsterID);
+        if (QuestManager.I.currentQuest.QuestType == 1)
+        {
+            QuestManager.I.CheckCount(stateMachine.FieldMonsters.myInfo.MonsterID);
+        }
+        
     }
 }

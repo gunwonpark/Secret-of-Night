@@ -25,7 +25,10 @@ public class MonsterIdleState : MonsterBaseState
     public override void Update()
     {
         base.Update();
-        stateMachine.ChangeState(stateMachine.PatrolState);
+        if (stateMachine.FieldMonsters.myInfo.MonsterID != 10)
+        {
+            stateMachine.ChangeState(stateMachine.PatrolState);
+        }        
     }
 
     public override void PhysicsUpdate()
