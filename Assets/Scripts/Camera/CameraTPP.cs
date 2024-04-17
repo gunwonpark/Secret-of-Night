@@ -11,6 +11,7 @@ public class CameraTPP : MonoBehaviour
     public Vector3 pivotOffset = new Vector3(0.0f, 1.05f, -1.04f);
     public Vector3 camOffset = new Vector3(0.4f, 0.5f, -2.0f);
 
+    public static float mouseSmoothSpeed = 1f;
     private Vector2 mousePos;
     [Header("카메라 회전 관련")]
     public float smooth = 10f; // 카메라 반응속도
@@ -32,8 +33,6 @@ public class CameraTPP : MonoBehaviour
     private Transform cameraTransform; // 카메라 Transform 캐싱용
     private Camera myCamera; // FOV 수정용
 
-    private Vector3 relCameraPos; // 플레이어부터 카메라 까지의 벡터
-    private float relCameraPosMag; // 플레이어부터 카메라 사이의 거리
     private Vector3 smoothPivotOffset; // 카메라 피봇용 보간용 벡터
     private Vector3 smoothCamOffset; // 카메라 위치용 보간용 벡터
     private Vector3 targetPivotOffset; // 카메라 피봇용 보간용 벡터
@@ -56,10 +55,6 @@ public class CameraTPP : MonoBehaviour
         cameraTransform.position = player.position + pivotOffset + camOffset;
         cameraTransform.rotation = Quaternion.identity;
 
-        //카메라와 플레이어 간의 상태 벡터
-        relCameraPos = cameraTransform.position - player.position;
-        relCameraPosMag = relCameraPos.magnitude - 0.5f; // 플레이어가 raycast에 들어가지 않게 하기위해 0.5f 제거 -> 추후 layerMask로 변환도 고려
-
         //기본 세팅
         smoothPivotOffset = pivotOffset;
         smoothCamOffset = camOffset;
@@ -72,7 +67,7 @@ public class CameraTPP : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.inputManager.PlayerActions.Camera.performed += i => mousePos = i.ReadValue<Vector2>();
+        //GameManager.Instance.inputManager.PlayerActions.Camera.performed += i => mousePos = i.ReadValue<Vector2>();
     }
     public void ResetTargetOffsets()
     {
@@ -104,13 +99,15 @@ public class CameraTPP : MonoBehaviour
     {
         targetHorizontalAngle = 0;
     }
-    private void Update()
+    private void LateUpdate()
     {
         ResetTargetOffsets();
         //마우스 이동값
 
-        angleH += Mathf.Clamp(mousePos.x, -1f, 1f) * horizontalAimingSpeed;
-        angleV += Mathf.Clamp(mousePos.y, -1f, 1f) * verticalAimingSpeed;
+        mousePos = GameManager.Instance.inputManager.PlayerActions.Camera.ReadValue<Vector2>();
+
+        angleH += Mathf.Clamp(mousePos.x, -1f, 1f) * horizontalAimingSpeed * mouseSmoothSpeed;
+        angleV += Mathf.Clamp(mousePos.y, -1f, 1f) * verticalAimingSpeed * mouseSmoothSpeed;
 
         //수직 이동 제한
         angleV = Mathf.Clamp(angleV, minVerticalAngle, targetMaxVerticalAngle);
@@ -127,7 +124,7 @@ public class CameraTPP : MonoBehaviour
         cameraTransform.rotation = aimRotation;
 
         //setFOV
-        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime);
+        //myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, targetFOV, Time.deltaTime);
 
         //카메라 충돌처리
         Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
@@ -136,14 +133,12 @@ public class CameraTPP : MonoBehaviour
         ViewingPosCheck(baseTempPosition + aimRotation * noCollisionOffset,
              0.7f, ref noCollisionOffset);
 
-
-
         //Reposition Camera
-        //smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
-        //smoothCamOffset = Vector3.Lerp(smoothCamOffset, targetCamOffset,smooth * Time.deltaTime);
+        smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, targetPivotOffset, smooth * Time.deltaTime);
+        smoothCamOffset = Vector3.Lerp(smoothCamOffset, targetCamOffset, smooth * Time.deltaTime);
 
-        smoothPivotOffset = Vector3.SmoothDamp(smoothPivotOffset, targetPivotOffset, ref pivotOffsetVelocity, smoothTime);
-        smoothCamOffset = Vector3.SmoothDamp(smoothCamOffset, noCollisionOffset, ref camOffsetVelocity, smoothTime);
+        //smoothPivotOffset = Vector3.SmoothDamp(smoothPivotOffset, targetPivotOffset, ref pivotOffsetVelocity, smoothTime * Time.deltaTime);
+        //smoothCamOffset = Vector3.SmoothDamp(smoothCamOffset, noCollisionOffset, ref camOffsetVelocity, smoothTime * Time.deltaTime);
 
         cameraTransform.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
     }

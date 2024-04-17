@@ -40,6 +40,7 @@ public class PlayerGameData
     public float Def;
     public float MoveSpeed;
     public int Gold;
+
     // 여기 없어야 되는데 일단 넣어 둡니다
     public event Action OnDie;
     public event Action OnHPChange;

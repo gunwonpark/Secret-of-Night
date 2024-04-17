@@ -4715,7 +4715,7 @@ Transform:
   - {fileID: 7040623446168937193}
   - {fileID: 7761943481518058002}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6916311193706112995
 CharacterController:
@@ -4737,11 +4737,11 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.5
-  m_Radius: 0.09
-  m_SlopeLimit: 60
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0.001
+  m_Radius: 0.15
+  m_SlopeLimit: 45
+  m_StepOffset: 0.25
+  m_SkinWidth: 0.015
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &2821608941146717326
 MonoBehaviour:
@@ -4794,6 +4794,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 65
+  speed: 0
   walkSpeed: 2
   runSpeed: 4
   rotationDamping: 10
@@ -4975,7 +4976,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536643401501160818}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eadf9f939dee8694ebb0a3dfc109fc2a, type: 3}
   m_Name: 
