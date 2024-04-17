@@ -3,7 +3,7 @@
 		{
 			"BossID": 1,
 			"Name": "KappaBoss",
-			"HP": 400,
+			"HP": 10,
 			"Damage": 1,
 			"Def": 1,
 			"MoveSpeed": 1,

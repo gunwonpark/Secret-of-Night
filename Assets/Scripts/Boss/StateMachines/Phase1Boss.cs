@@ -152,6 +152,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
         if (bossMonsterData.HP <= 0)
         {
             Die();
+            bossMonsterData.HP = 0;
         }
         aic.Create(false);
 
