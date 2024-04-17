@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public LayerMask groundLayer;
     public int GroundLayerMask => groundLayer.value;
 
+    public float speed = 0;
     public float walkSpeed = 2.0f;
     public float runSpeed = 4.0f;
     public float rotationDamping = 10f;

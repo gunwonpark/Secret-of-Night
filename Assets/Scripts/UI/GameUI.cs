@@ -93,7 +93,11 @@ public class GameUI : UIBase
     {
         GameManager.Instance.playerManager.playerData.SaveData();
         Debug.Log("Hello!!");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
     private void UpdateHP()

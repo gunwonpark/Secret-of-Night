@@ -132,32 +132,41 @@ public class PlayerBaseState : IState
         stateMachine.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
 
+    Vector3 moveDirection;
+    private float SpeedChangeRate = 10f;
     private void Move()
     {
-        // 움직임이 없는 경우에는 지속적으로 중력값을 받는다
-        stateMachine.Player.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
+        if (stateMachine.MovementInput != Vector2.zero)
+            moveDirection = MoveDirection_Ver_Camera();
 
-        //윰직임이 있는 경우에는
-        if (CanMove())
+        float targetSpeed = GetMovementSpeed();
+
+        float currentHorizontalSpeed = new Vector3(stateMachine.Player.Controller.velocity.x, 0.0f, stateMachine.Player.Controller.velocity.z).magnitude;
+
+        float speedOffset = 0.1f;
+
+        if (currentHorizontalSpeed < targetSpeed - speedOffset ||
+                currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            Vector3 moveDirection = MoveDirection_Ver_Camera();
-            if (stateMachine.Player.IsGrounded)
-            {
-                float moveSpeed = GetMovementSpeed();
-                stateMachine.Player.Controller.Move(((moveDirection * moveSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
-            }
-            // test
-            //if (stateMachine.MovementInput.x != 0)
-            //{
-            //    float temp = stateMachine.MovementInput.y == 0 ? 1 : stateMachine.MovementInput.y;
-            //    stateMachine.cameraScript.SetAngleH(45 * stateMachine.MovementInput.x * temp);
-            //}
-            //else
-            //{
-            //    stateMachine.cameraScript.ResetAngleH();
-            //}
-            Rotate(moveDirection);
+            // creates curved result rather than a linear one giving a more organic speed change
+            // note T in Lerp is clamped, so we don't need to clamp our speed
+            stateMachine.Player.speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed,
+                Time.deltaTime * SpeedChangeRate);
+
+            // round speed to 3 decimal places
+            stateMachine.Player.speed = Mathf.Round(stateMachine.Player.speed * 1000f) / 1000f;
         }
+        else
+        {
+            stateMachine.Player.speed = targetSpeed;
+        }
+
+
+        stateMachine.Player.Controller.Move(((moveDirection * stateMachine.Player.speed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
+
+        if (stateMachine.MovementInput != Vector2.zero)
+            Rotate(moveDirection);
+
     }
     private bool CanMove()
     {
@@ -189,7 +198,7 @@ public class PlayerBaseState : IState
     private void GroundedCheck()
     {
         Vector3 spherePosition = stateMachine.Player.transform.position;
-        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition + Vector3.up * stateMachine.Player.Controller.bounds.extents.x * 0.5f, stateMachine.Player.Controller.bounds.extents.x + stateMachine.Player.Controller.bounds.extents.x + stateMachine.Player.Controller.skinWidth, stateMachine.Player.GroundLayerMask,
+        stateMachine.Player.IsGrounded = Physics.CheckSphere(spherePosition + Vector3.up * stateMachine.Player.Controller.bounds.extents.x * 0.5f, stateMachine.Player.Controller.bounds.extents.x + stateMachine.Player.Controller.bounds.extents.x, stateMachine.Player.GroundLayerMask,
                 QueryTriggerInteraction.Ignore);
     }
     protected float GetMovementSpeed()

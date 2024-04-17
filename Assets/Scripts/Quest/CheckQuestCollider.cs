@@ -16,5 +16,12 @@ public class CheckQuestCollider : MonoBehaviour
             }
             
         }
+        else if (other.CompareTag("NPC"))
+        {
+            foreach (int id in questID)
+            {
+                QuestManager.I.CheckCurrentQuest(id); // 현재 퀘스트 확인
+            }
+        }
     }
 }

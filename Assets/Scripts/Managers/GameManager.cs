@@ -34,7 +34,13 @@ public class GameManager : MonoBehaviour
         if (soundManager == null) { soundManager = gameObject.AddComponent<SoundManager>(); soundManager.Initialize(); }
         if (uiManager == null) { uiManager = gameObject.AddComponent<UIManager>(); }
         if (skillManager == null) { skillManager = gameObject.AddComponent<SkillManager>(); }
-        if (playerManager == null) { playerManager = gameObject.AddComponent<PlayerManager>(); playerManager.Initialize(1); }
+        if (playerManager == null)
+        {
+            playerManager = gameObject.AddComponent<PlayerManager>();
+#if UNITY_EDITOR
+            playerManager.Initialize(1);
+#endif
+        }
         if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }
         if (inputManager == null) { inputManager = gameObject.AddComponent<InputManager>(); inputManager.Initialize(); }
     }

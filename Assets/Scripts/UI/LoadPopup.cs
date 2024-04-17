@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadPopup : UIBase
 {
     [SerializeField] private Transform _slotRoot;
+    [SerializeField] private Button _cancelButton;
 
     private List<CharacterSlot> slots;
 
@@ -19,6 +21,7 @@ public class LoadPopup : UIBase
             CreateCharacterSlot(i);
         }
 
+        _cancelButton.onClick.AddListener(() => { Destroy(gameObject); });
 
     }
     void CreateCharacterSlot(int slotNumber)

@@ -234,6 +234,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "너! 보고만 있지 말고 어떻게 좀 해봐!" },                
             },            
             isContinue= true,
+            QuestType = 1,
             QuestItemID = 10,
             GoalCount = 1,
         };
@@ -265,14 +266,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "무슨 일이죠?" },
                 new Dialogue { TalkerKo = "촌장", Scripts = "부꾸부꾸가 마을 안에서 보이지 않아! 마을 밖으론 절대 나가지 않는 아이인데.." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "젊은이! 부탁을 계속해서 미안하네만 부꾸부꾸를 좀 찾아주지 않겠나?" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "순찰을 보내기 전에 부꾸부꾸의 애착 가방이 없어졌단 소리를 했던 것 같네." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "뜬금없이 카멜레온 이야기도 했던 것 같고.." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "부꾸부꾸는 오렌지를 좋아하니 한번 갖고 가보게나." },
+                new Dialogue { TalkerKo = "촌장", Scripts = "순찰을 보내기 전에 부꾸부꾸의 애착 단지가 없어졌단 소리를 했던 것 같네." },
+                new Dialogue { TalkerKo = "촌장", Scripts = "뜬금없이 카멜레온 이야기도 했던 것 같고.." },                
             },
             isContinue = true,
             QuestType = 3,
-            QuestItemID = 21,
-            GoalCount = 10,            
+            QuestItemID = 29,
+            GoalCount = 1,            
         };
         tempQuests.Add(newQuest);
 
@@ -288,7 +288,8 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             QuestItemID = 2,
-            GoalCount = 1,  // 추후 10으로 변경
+            GoalCount = 10,  
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -345,7 +346,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest
         {
             QuestID = 1020,
-            Description = "스승과의 수련<강화 수련 1>",
+            Description = "스승과의 수련<강화 수련 1>, <카멜레온 5마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "...뚜쉬뚜쉬님?" },
@@ -367,13 +368,14 @@ public class QuestGenerator : MonoBehaviour
             },            
             QuestItemID = 2,
             GoalCount = 5,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1021,
-            Description = "스승과의 수련<강화 수련 2>",
+            Description = "스승과의 수련<강화 수련 2>, <오리너구리 7마리, 카멜레온 5마리 처치",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "야레야레.. 느려." },
@@ -390,13 +392,14 @@ public class QuestGenerator : MonoBehaviour
             GoalCount = 7,
             QuestItemID2 = 2,
             GoalCount2 = 5,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1022,
-            Description = "스승과의 수련<강화 수련 3>",
+            Description = "스승과의 수련<강화 수련 3>, <미어캣 10마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님 다 잡아왔습니다!" },
@@ -409,13 +412,14 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 3,
             GoalCount = 10,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1023,
-            Description = "스승과의 수련<강화 수련 4>",
+            Description = "스승과의 수련<강화 수련 4>, <고슴도치 10마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "어이어이 오소이.(느려)" },
@@ -428,33 +432,35 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 4,
             GoalCount = 10,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1024,
-            Description = "스승과의 수련<강화 수련 5>",
+            Description = "스승과의 수련<강화 수련 5>, <스컹크 7마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님.. 저 왔습니다." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "자 다음은.." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님! 조금만 쉬었다가 하면 안되겠습니까?" },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "너. 강해졌다고 생각하면 착각이다." },
-                new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts =  " 앞으로 2번의 수련을 마치면 대단한 걸 알려주지." },
+                new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "앞으로 2번의 수련을 마치면 대단한 걸 알려주지." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "스컹크를 잡아오되 그 냄새는 좀 빼고 오도록." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "넵 알겠습니다." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(대단한 게 뭐지...? 조금만 더 힘내보자)" },                
             },
             QuestItemID = 5,
             GoalCount = 7,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1025,
-            Description = "스승과의 수련<강화 수련 6 : 스킬 획득>",
+            Description = "스승과의 수련<강화 수련 6 : 스킬 획득>, <늑대 5마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "오 왔군." },
@@ -469,13 +475,14 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 6,
             GoalCount = 5,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1026,
-            Description = "스승과의 수련<강화 수련 최종>",
+            Description = "스승과의 수련<강화 수련 최종>, <황소 3마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = " (얼레벌레 달려오며) 스승님..! 저 왔습니다." },
@@ -491,6 +498,7 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 7,
             GoalCount = 3,
+            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -533,7 +541,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest
         {
             QuestID = 1029,
-            Description = "사라진 게로게로<게로게로의 애장품>",
+            Description = "사라진 게로게로<게로게로의 애장품>, 마을 안을 뒤져보자<주머니 찾기>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "서리서리! 이게 무슨일이야?" },
@@ -541,19 +549,20 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "그냥 평소처럼 화를 조금 냈어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "게로게로는 원래 화를 내도 변함없이 날 놀리고 다녔는데(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },                
+                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },
             },
             isContinue = true,
-            QuestItemID = 24,
-            GoalCount = 10,
-            // 케이크 10개와 게로게로의 주머니1개 얻으면 클리어
+            QuestType = 3,
+            QuestItemID = 28,
+            GoalCount = 1,
+            // 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest
         {
             QuestID = 1030,
-            Description = "사라진 게로게로<게로게로를 찾아라>",
+            Description = "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(정말 마을안에는 게로게로가 없잖아?)" },
@@ -602,8 +611,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "아니 이런 해괴한일이 있나...아무튼 게로게로까지 찾아주다니, 고맙네 젊은이!" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다. (이 마을에서 이상한 일이 벌어지고 있는 것이 분명해)" },                
             },
-            isContinue = true,
-            isDirectClear = true,
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 

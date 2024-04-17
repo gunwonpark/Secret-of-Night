@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerJumpState : PlayerBaseState
 {
     public PlayerJumpState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -25,12 +27,20 @@ public class PlayerJumpState : PlayerBaseState
 
         if (stateMachine.Player.IsGrounded && stateMachine.Player.ForceReceiver.Movement.y < 0f)
         {
-            stateMachine.ChangeState(stateMachine.IdleState);
+            if (stateMachine.MovementInput == Vector2.zero)
+            {
+                stateMachine.ChangeState(stateMachine.IdleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(stateMachine.WalkState);
+            }
+
         }
     }
     private void AddJumpForce()
     {
         stateMachine.Player.ForceReceiver.Jump(stateMachine.Player.jumpForce);
-        stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * GetMovementSpeed());
+        //stateMachine.Player.ForceReceiver.AddForce(stateMachine.Player.transform.forward * GetMovementSpeed());
     }
 }
