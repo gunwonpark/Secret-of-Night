@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShopNPCInteraction : MonoBehaviour
 {
+
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private GameObject interactionPopup; // 팝업 창
     [SerializeField] private List<int> questID; // 퀘스트 ID
@@ -19,6 +20,7 @@ public class ShopNPCInteraction : MonoBehaviour
     public TextMeshProUGUI talktext;
 
     private Shop _shop;
+    private PickupController _pickupcontroller;
 
     private bool isInRange = false; // 플레이어가 일정 범위 내에 있는지 여부
     private bool _GKeyActivate = true; // 대화, 구매, 판매시 G키 비활성화 시키게
@@ -26,6 +28,8 @@ public class ShopNPCInteraction : MonoBehaviour
     void Start()
     {
         _shop = GetComponent<Shop>();
+        _pickupcontroller = FindObjectOfType<PickupController>();
+
         Inventory.OnInventoryOpen += OnInventoryOpen;
         Inventory.OnInventoryClose += OnInventoryClosed;
         Shop.OnShopClose += OnShopClose;
@@ -36,7 +40,14 @@ public class ShopNPCInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(interactionKey) && isInRange && _GKeyActivate)
         {
-            OpenInteractionPopup();
+            if (_pickupcontroller.itemCheck == true)
+            {
+                _pickupcontroller.PickUp();
+            }
+            else
+            {
+                OpenInteractionPopup();
+            }
 
         }
 
@@ -130,8 +141,8 @@ public class ShopNPCInteraction : MonoBehaviour
                 }
             }
         }
-    }       
-    
+    }
+
 
     private void ButtonEvent()
     {
