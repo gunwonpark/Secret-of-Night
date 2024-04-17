@@ -34,7 +34,7 @@ RectTransform:
   m_Children:
   - {fileID: 4376590774823043647}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -541,7 +541,7 @@ MonoBehaviour:
     \uCC28\uB3D9\uBBFC\n\uC778\uBCA4\uD1A0\uB9AC \uBC0F \uC0C1\uC810 :   \uC774\uC11C\uD604\n\uD50C\uB808\uC774\uC5B4
     :            \uBC15\uAC74\uC6D0\nUI :                   \uBC15\uAC74\uC6D0\n\n\n\n\nConsultant\n\uAE40\uD604\uC815
     \uD29C\uD130\n\n\n\n\n\n\n\n\n\n<size=100>The End.</size>\n\uC2A4\uD30C\uB974\uD0C0
-    \uCF54\uB529\uD074\n\n"
+    \uCF54\uB529\uD074\uB7FD\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547f3a5755bb07d419bd5ae7c11582b6, type: 2}
   m_sharedMaterial: {fileID: 9110465799078496784, guid: 547f3a5755bb07d419bd5ae7c11582b6, type: 2}
