@@ -16,6 +16,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private QuestGenerator questGenerator;
 
     [SerializeField] private TextMeshProUGUI questDescriptionText; // 퀘스트 설명 Text
+    [SerializeField] private TextMeshProUGUI nextQuestGuideText; // 다음 퀘스트 수락 안내
 
     public List<Quest> quests; // 퀘스트 리스트
     private int questIndex = 0; // 퀘스트 인덱스
@@ -52,9 +53,7 @@ public class QuestManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             InitDialogues(); // 대화 목록 초기화
-        }
-
-        //Inventory.instance.QuastItemCheck(currentQuest.QuestItemID, currentQuest.GoalCount);
+        }        
     }
 
     // 현재 퀘스트 설정
@@ -79,12 +78,14 @@ public class QuestManager : MonoBehaviour
     public void ShowQuestDescription()
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
+        nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
     }
 
     // 퀘스트 설명 숨기기
     public void HideQuestDescription()
     {
         questDescriptionText.text = ""; // 퀘스트 설명 숨기기
+        nextQuestGuideText.text = currentQuest.NextQuestGuide;
     }
 
     // 퀘스트 성공
@@ -223,6 +224,7 @@ public class Quest
     public int QuestType;
     public string QuestTitle;
     public string Description; // 퀘스트 설명
+    public string NextQuestGuide;
     public string QuestGoal;
     public int GoalCount; // GoalCount 필요한 개수
     public int GoalCount2;

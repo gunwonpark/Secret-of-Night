@@ -62,6 +62,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1004,
             Description = "마을 입구 NPC와 대화",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "NPC", Scripts = "어!? 거기 누구야!" },
@@ -80,6 +81,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1005,
             Description = "촌장에게<촌장에게 말 걸기>",
+            NextQuestGuide = "하이하이에게 말걸기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "여관 NPC(하이하이)", Scripts = "어머~~ 우리마을에 손님은 정말 오랜만이야!! 잘잤니?" },
@@ -147,6 +149,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1009,
             Description = "서리서리, 뽀롱뽀롱과 대화나누기",
+            NextQuestGuide = "부꾸부꾸에게 말걸기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
@@ -169,6 +172,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1010,
             Description = "촌장에게<촌장에게 말 걸기>",
+            NextQuestGuide = "부꾸부꾸에게 말걸기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(앗 저 개구리.. 아니 저 사람이 이 마을의 마지막 주민인 것 같아.)" },
@@ -376,6 +380,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1021,
             Description = "스승과의 수련<강화 수련 2>, <오리너구리 7마리, 카멜레온 5마리 처치",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "야레야레.. 느려." },
@@ -400,6 +405,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1022,
             Description = "스승과의 수련<강화 수련 3>, <미어캣 10마리 처치>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님 다 잡아왔습니다!" },
@@ -420,6 +426,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1023,
             Description = "스승과의 수련<강화 수련 4>, <고슴도치 10마리 처치>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "어이어이 오소이.(느려)" },
@@ -440,6 +447,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1024,
             Description = "스승과의 수련<강화 수련 5>, <스컹크 7마리 처치>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님.. 저 왔습니다." },
@@ -461,6 +469,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1025,
             Description = "스승과의 수련<강화 수련 6 : 스킬 획득>, <늑대 5마리 처치>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "오 왔군." },
@@ -483,6 +492,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1026,
             Description = "스승과의 수련<강화 수련 최종>, <황소 3마리 처치>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = " (얼레벌레 달려오며) 스승님..! 저 왔습니다." },
@@ -506,6 +516,7 @@ public class QuestGenerator : MonoBehaviour
         {
             QuestID = 1027,
             Description = "마을에서 생긴 일<촌장과 대화>",
+            NextQuestGuide = "스승에게 퀘스트 완료 보고하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "스승님! 다음은 뭐죠!? 확실히 강해진 것 같습니다" },
@@ -549,9 +560,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "그냥 평소처럼 화를 조금 냈어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "게로게로는 원래 화를 내도 변함없이 날 놀리고 다녔는데(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },                
+                new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },
             },
             isContinue = true,
+            QuestType = 3,
             QuestItemID = 28,
             GoalCount = 1,
             // 게로게로의 주머니1개 얻으면 클리어
