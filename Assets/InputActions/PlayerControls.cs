@@ -267,6 +267,60 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba45193d-d9f9-4550-9760-cf86ddcc7e5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftQuickButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad325795-dbee-4330-9bc2-24d97b72a3ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightQuickButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c901355-afb9-42d3-b0e9-4b7fbcb84452"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc94c90e-3c72-40e3-b104-d0bff42a6039"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""399fbf77-dd84-4988-b024-ce94cda9c745"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Talk"",
+                    ""type"": ""Button"",
+                    ""id"": ""bfba25c8-8fca-418f-b98d-6fdea878c921"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,6 +332,72 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Option"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76d0006e-2761-4d46-9981-6df753e9e2a9"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5224e79-500c-4c99-b711-efe4f561877e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftQuickButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4f047fa-ce43-4a58-b73c-480fd347969a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightQuickButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa00d2de-8e3a-49ea-a232-74ba6b9c5297"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cb9cc8a-9060-44f0-a168-b59d4baf610e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33181cc7-f52e-46ee-832e-134258747137"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Talk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -300,6 +420,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Option = m_UI.FindAction("Option", throwIfNotFound: true);
+        m_UI_Interaction = m_UI.FindAction("Interaction", throwIfNotFound: true);
+        m_UI_LeftQuickButton = m_UI.FindAction("LeftQuickButton", throwIfNotFound: true);
+        m_UI_RightQuickButton = m_UI.FindAction("RightQuickButton", throwIfNotFound: true);
+        m_UI_Skip = m_UI.FindAction("Skip", throwIfNotFound: true);
+        m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
+        m_UI_Talk = m_UI.FindAction("Talk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -472,11 +598,23 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Option;
+    private readonly InputAction m_UI_Interaction;
+    private readonly InputAction m_UI_LeftQuickButton;
+    private readonly InputAction m_UI_RightQuickButton;
+    private readonly InputAction m_UI_Skip;
+    private readonly InputAction m_UI_Inventory;
+    private readonly InputAction m_UI_Talk;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Option => m_Wrapper.m_UI_Option;
+        public InputAction @Interaction => m_Wrapper.m_UI_Interaction;
+        public InputAction @LeftQuickButton => m_Wrapper.m_UI_LeftQuickButton;
+        public InputAction @RightQuickButton => m_Wrapper.m_UI_RightQuickButton;
+        public InputAction @Skip => m_Wrapper.m_UI_Skip;
+        public InputAction @Inventory => m_Wrapper.m_UI_Inventory;
+        public InputAction @Talk => m_Wrapper.m_UI_Talk;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -489,6 +627,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Option.started += instance.OnOption;
             @Option.performed += instance.OnOption;
             @Option.canceled += instance.OnOption;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
+            @LeftQuickButton.started += instance.OnLeftQuickButton;
+            @LeftQuickButton.performed += instance.OnLeftQuickButton;
+            @LeftQuickButton.canceled += instance.OnLeftQuickButton;
+            @RightQuickButton.started += instance.OnRightQuickButton;
+            @RightQuickButton.performed += instance.OnRightQuickButton;
+            @RightQuickButton.canceled += instance.OnRightQuickButton;
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
+            @Talk.started += instance.OnTalk;
+            @Talk.performed += instance.OnTalk;
+            @Talk.canceled += instance.OnTalk;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -496,6 +652,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Option.started -= instance.OnOption;
             @Option.performed -= instance.OnOption;
             @Option.canceled -= instance.OnOption;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+            @LeftQuickButton.started -= instance.OnLeftQuickButton;
+            @LeftQuickButton.performed -= instance.OnLeftQuickButton;
+            @LeftQuickButton.canceled -= instance.OnLeftQuickButton;
+            @RightQuickButton.started -= instance.OnRightQuickButton;
+            @RightQuickButton.performed -= instance.OnRightQuickButton;
+            @RightQuickButton.canceled -= instance.OnRightQuickButton;
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
+            @Talk.started -= instance.OnTalk;
+            @Talk.performed -= instance.OnTalk;
+            @Talk.canceled -= instance.OnTalk;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -528,5 +702,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnOption(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnLeftQuickButton(InputAction.CallbackContext context);
+        void OnRightQuickButton(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
+        void OnTalk(InputAction.CallbackContext context);
     }
 }

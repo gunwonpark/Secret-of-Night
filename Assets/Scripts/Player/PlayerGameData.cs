@@ -34,12 +34,17 @@ public class PlayerGameData
     public float CurMP;
     public float MaxSP;
     public float CurSP;
-    public float Damage;
+    public float DefaultDamage;
     public float DamageSpeed;
     public float CriDamage;
     public float Def;
     public float MoveSpeed;
     public int Gold;
+
+    public float Damage => WeaponDamage + DefaultDamage;
+
+    [Header("무기")]
+    public float WeaponDamage;
 
     // 여기 없어야 되는데 일단 넣어 둡니다
     public event Action OnDie;
@@ -93,7 +98,7 @@ public class PlayerGameData
                 CurMP = MaxMP;
                 MaxSP = statData.SP;
                 CurSP = MaxSP;
-                Damage = statData.Damage;
+                DefaultDamage = statData.Damage;
                 DamageSpeed = statData.DamageSpeed;
                 CriDamage = statData.CriDamage;
                 Def = statData.Def;
@@ -156,7 +161,7 @@ public class PlayerGameData
             MaxHP += playerLevelData.HP;
             CurHP = MaxHP;
             CurMP = MaxMP;
-            Damage += playerLevelData.Damage;
+            DefaultDamage += playerLevelData.Damage;
             Def += playerLevelData.Def;
         }
 

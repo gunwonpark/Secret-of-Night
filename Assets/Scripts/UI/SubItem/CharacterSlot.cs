@@ -45,7 +45,7 @@ public class CharacterSlot : UIBase
         SceneManager.LoadScene("MainScene");
         GameManager.Instance.playerManager.Initialize(1);
         GameManager.Instance.playerManager.playerDatas.Add(_slotNumber, GameManager.Instance.playerManager.playerData);
-        GameManager.Instance.playerManager.Init(_slotNumber);
+        //GameManager.Instance.playerManager.Init(_slotNumber);
     }
 
     internal void SetSlotNumber(int slotNumber)
