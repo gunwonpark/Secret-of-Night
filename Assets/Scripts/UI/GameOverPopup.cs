@@ -1,9 +1,10 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverPopup : UIBase
 {
-    private Button _returnToMainButton;
+    [SerializeField] private Button _returnToMainButton;
 
     void Start()
     {

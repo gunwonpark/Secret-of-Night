@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,12 +12,12 @@ public class Quest13Director : MonoBehaviour
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();       
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        if(QuestManager.I.currentQuest.QuestID == 1012)
+        if (QuestManager.I.currentQuest.QuestID == 1012)
         {
             if (DialogueHandler.I.dialogueIndex == 2)
             {
@@ -32,11 +29,11 @@ public class Quest13Director : MonoBehaviour
                 }
 
             }
-        } 
-        else if(QuestManager.I.currentQuest.QuestID == 1014)
+        }
+        else if (QuestManager.I.currentQuest.QuestID == 1014)
         {
             agent.SetDestination(homePos.position);
-        }       
+        }
     }
 
     public void QuestSpawnMonster()
@@ -47,5 +44,5 @@ public class Quest13Director : MonoBehaviour
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
 
         fieldMonsters.Init(monsterInfo);
-    }    
+    }
 }

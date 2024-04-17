@@ -30,7 +30,6 @@ public class PickupController : MonoBehaviour
     // ������ ���̾��ũ �˻�
     private void CheckItem()
     {
-
         Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
 
         if (colliders.Length > 0)

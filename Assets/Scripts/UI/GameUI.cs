@@ -71,7 +71,7 @@ public class GameUI : UIBase
             return;
 
         _bossHPImage.fillAmount = _boss.bossMonsterData.HP / _boss.maxHP;
-        _bossHPText.text = $"{_boss.bossMonsterData.HP} / {_boss.maxHP}";
+        _bossHPText.text = $"{(int)_boss.bossMonsterData.HP} / {(int)_boss.maxHP}";
     }
     private void SetBossUI(Phase1Boss boss)
     {
@@ -81,7 +81,9 @@ public class GameUI : UIBase
 
     private void OnContinueButtonClick()
     {
-        ToggleUI();
+        _gamePlayUI.SetActive(true);
+        _gameEndUI.SetActive(false);
+        GameManager.Instance.inputManager.EnablePlayerAction();
         Debug.Log("Hello");
     }
     private void OnGameOutButtonClick()
@@ -113,21 +115,6 @@ public class GameUI : UIBase
         _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
     }
 
-    private void ToggleUI()
-    {
-        bool toggle = _gamePlayUI.activeInHierarchy;
-        _gamePlayUI.SetActive(!toggle);
-        _gameEndUI.SetActive(toggle);
-
-        if (!toggle)
-        {
-            GameManager.Instance.inputManager.EnablePlayerAction();
-        }
-        else
-        {
-            GameManager.Instance.inputManager.DisablePlayerAction();
-        }
-    }
     private void ToggleUI(InputAction.CallbackContext obj)
     {
         bool toggle = _gamePlayUI.activeInHierarchy;

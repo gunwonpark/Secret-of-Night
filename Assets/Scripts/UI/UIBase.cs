@@ -20,4 +20,5 @@ public abstract class UIBase : MonoBehaviour
                 break;
         }
     }
+    // F 대화, G 상호작용, tap inven, q, e 퀵슬롯, x 설정창
 }
