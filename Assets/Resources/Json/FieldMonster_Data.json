@@ -290,7 +290,7 @@
 			"Name": "Ostrich",
 			"Level": 3,
 			"Exp": 225,
-			"AtkStance": 0,
+			"AtkStance": 1,
 			"HP": 7,
 			"Damage": 1.5,
 			"Daf": 0,

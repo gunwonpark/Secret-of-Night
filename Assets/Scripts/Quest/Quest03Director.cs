@@ -12,6 +12,7 @@ public class Quest03Director : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.monsterManager.CreatMonsterSpot();
         blackScreen.SetActive(false); // 시작할 때는 화면 가리기 비활성화
     }
 

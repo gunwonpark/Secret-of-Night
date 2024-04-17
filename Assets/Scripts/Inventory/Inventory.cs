@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ItemSlot
 {
@@ -19,8 +18,11 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public bool npcInteraction = false; // npc와 대화 활성화
 
     private EquipController _equipController;
-    private PlayerCondition _playerCondition;
+    [HideInInspector] public PlayerCondition _playerCondition;
     [HideInInspector] public PlayerController _playerController;
+    private QuickSlotInventorySetting _quickSlotInventorySetting; // 퀵 슬롯 설정 창
+    private QuickSlotInventory _quickSlotInventory;
+
 
     [SerializeField] private GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
@@ -33,7 +35,7 @@ public class Inventory : MonoBehaviour
     //public Transform dropPosition; // 아이템 드랍 위치
 
     [Header("Selected Item")]
-    private ItemSlot _selectedItem;
+    public ItemSlot _selectedItem;
     private int _selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
@@ -89,6 +91,8 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
+        _quickSlotInventorySetting = GetComponent<QuickSlotInventorySetting>();
+        _quickSlotInventory = GetComponent<QuickSlotInventory>();
     }
 
     void Start()
@@ -111,9 +115,9 @@ public class Inventory : MonoBehaviour
 
         CashUpdate();
 
-        slots = new ItemSlot[_uiSlots.Length];
-
         _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
+
+        slots = new ItemSlot[_uiSlots.Length];
 
         for (int i = 0; i < slots.Length; i++)
         {
@@ -123,6 +127,7 @@ public class Inventory : MonoBehaviour
         }
 
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성
+        QuestManager.OnQuestCleared += CloseInventory;
     }
 
 
@@ -329,6 +334,7 @@ public class Inventory : MonoBehaviour
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
+        _quickSlotInventorySetting.AddItem(_item, _quantity);
     }
 
     // 아이템 수량 추가
@@ -466,7 +472,7 @@ public class Inventory : MonoBehaviour
         saleButton.SetActive(false);
     }
 
-    void UpdateUI() //UI 업데이트
+    public void UpdateUI() //UI 업데이트
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -482,6 +488,8 @@ public class Inventory : MonoBehaviour
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
     {
+        _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
+
         if (_selectedItem.item.Type == "using")
         {
             switch (_selectedItem.item.ItemID)
@@ -512,9 +520,9 @@ public class Inventory : MonoBehaviour
 
             }
             RemoveSelectedItem(1);
-        }
 
-        else if (QuestManager.I.currentQuest.QuestType == 2 && _selectedItem.item.Type == "Etc")
+        }
+        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
         {
             QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
             RemoveSelectedItem(1);
@@ -530,7 +538,27 @@ public class Inventory : MonoBehaviour
 
         InventoryTrim();
     }
+    // 퀵 슬롯에서 아이템 사용 시 인벤토리에서 일치하는 아이템도 같이 삭제
+    public void RemoveItemByID(int itemID, int quantity)
+    {
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (slots[i].item != null && slots[i].item.ItemID == itemID)
+            {
+                slots[i].count -= quantity;
 
+                if (slots[i].count <= 0)
+                {
+                    slots[i].item = null;
+                    slots[i].count = 0;
+
+                }
+
+                UpdateUI();
+                break;
+            }
+        }
+    }
 
     // -------------------------------------------------------------------------------
 
@@ -703,7 +731,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
-    private void RemoveSelectedItem(int quantity)
+    public void RemoveSelectedItem(int quantity)
     {
         _selectedItem.count -= quantity;
 
@@ -720,6 +748,7 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
+
 
     // -------------------------------------------------------------------------------
 

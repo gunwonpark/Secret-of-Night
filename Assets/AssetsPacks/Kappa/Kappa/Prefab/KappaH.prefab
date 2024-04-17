@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 8932588040181264937}
   - component: {fileID: 8932588040174362093}
   - component: {fileID: 6429067325146528263}
+  - component: {fileID: 7834702900318821719}
   m_Layer: 0
   m_Name: KappaH
   m_TagString: Untagged
@@ -710,6 +711,23 @@ MonoBehaviour:
   interactionKey: 103
   questID: f2030000
   questionMark: {fileID: 2679842260534321213}
+--- !u!114 &7834702900318821719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8932588040181755465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6aa9da8e9c3a6a4daea989a066338f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 3
+  interactionKey: 103
+  questID: 
+  exclamationMark: {fileID: 7097562971627252670}
+  npcName: buggubuggu
 --- !u!1 &8932588040181755467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,5 +2305,10 @@ Transform:
 --- !u!1 &2679842260534321213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 674660969351408529, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
+  m_PrefabInstance: {fileID: 3201028842872933292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7097562971627252670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626065960624873490, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
   m_PrefabInstance: {fileID: 3201028842872933292}
   m_PrefabAsset: {fileID: 0}
