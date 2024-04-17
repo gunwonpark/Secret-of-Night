@@ -11,7 +11,6 @@ public class PickupController : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
 
-    public bool itemCheck = false;
 
     private void Update()
     {
@@ -21,7 +20,7 @@ public class PickupController : MonoBehaviour
 
     private void TryAction()
     {
-        if (Input.GetKey(KeyCode.G))
+        if (Input.GetKey(KeyCode.E))
         {
             PickUp();
         }
@@ -35,13 +34,11 @@ public class PickupController : MonoBehaviour
 
         if (colliders.Length > 0)
         {
-            itemCheck = true;
             _collider = colliders[0];
             ItemInfoAppear();
         }
         else
         {
-            itemCheck = false;
             _collider = null;
             ItemInfoDisappear();
         }
@@ -52,7 +49,7 @@ public class PickupController : MonoBehaviour
     {
         _pickupActivated = true;
         _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " 획득하기" + " [G]";
+        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " 획득하기" + " [E]";
 
     }
 
