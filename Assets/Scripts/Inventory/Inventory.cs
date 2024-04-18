@@ -810,9 +810,11 @@ public class Inventory : MonoBehaviour
             salePopUpUI.SetActive(false);
             RemoveSelectedItem(_currentQuantity);
             InventoryTrim();
+            // 퀵슬롯설정창에만 있으면 퀵슬롯 설정창에서 삭제, 퀵슬롯에만 있으면 퀵슬롯에서 삭제, 둘다있으면 삭제갯수보다 많은 곳에서 삭제
 
-            _quickSlotInventorySetting.RemoveSelectedItem();
+
             _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
+            _quickSlotInventorySetting.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯
         }
         else
         {
