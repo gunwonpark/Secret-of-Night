@@ -35,7 +35,11 @@ public class MonsterAttackState : MonsterBaseState
         //선공몬스터가 아닐때
         if (stateMachine.FieldMonsters.myInfo.AtkStance == false)
         {
-            if (IsInChaseRange())
+            if (IsInAttackRange())
+            {
+                return;
+            }
+            else if (IsInChaseRange() && !IsInAttackRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
