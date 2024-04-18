@@ -90,6 +90,7 @@ public class PlayerGameData
             CurExp = 0;
 
             PlayerStatData statData = dataManager.playerStatDataBase.GetData(CharacterID);
+            PlayerLevelData playerLevelData = dataManager.playerLevelDataBase.GetData(Level);
 
             if (statData != null)
             {
@@ -101,7 +102,7 @@ public class PlayerGameData
                 CurMP = MaxMP;
                 MaxSP = statData.SP;
                 CurSP = MaxSP;
-                MaxExp = 100;
+                MaxExp = playerLevelData.Exp;
                 DefaultDamage = statData.Damage;
                 DamageSpeed = statData.DamageSpeed;
                 CriDamage = statData.CriDamage;
