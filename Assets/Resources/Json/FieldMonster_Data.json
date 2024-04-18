@@ -4,7 +4,7 @@
 			"MonsterID": 1,
 			"Name": "PlatypusA",
 			"Level": 1,
-			"Exp": 100,
+			"Exp": 10,
 			"AtkStance": 0,
 			"HP": 7,
 			"Damage": 1,
@@ -40,7 +40,7 @@
 			"MonsterID": 2,
 			"Name": "ChameleonA",
 			"Level": 1,
-			"Exp": 100,
+			"Exp": 10,
 			"AtkStance": 0,
 			"HP": 5,
 			"Damage": 1,
@@ -78,8 +78,107 @@
 		{
 			"MonsterID": 3,
 			"Name": "Meerkat",
+			"Level": 2,
+			"Exp": 15,
+			"AtkStance": 0,
+			"HP": 10,
+			"Damage": 1.25,
+			"Daf": 0.5,
+			"DmgSpeed": 1.1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/SquirrelA",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				16,
+				12,
+				13
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1
+			],
+			"Weigth": [
+				33,
+				33,
+				33
+			]
+		},
+		{
+			"MonsterID": 4,
+			"Name": "Porcupine",
+			"Level": 3,
+			"Exp": 15,
+			"AtkStance": 0,
+			"HP": 12,
+			"Damage": 1.5,
+			"Daf": 0.5,
+			"DmgSpeed": 1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Porcupine",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				12,
+				13,
+				17
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1
+			],
+			"Weigth": [
+				33,
+				33,
+				33
+			]
+		},
+		{
+			"MonsterID": 5,
+			"Name": "Skunk",
+			"Level": 3,
+			"Exp": 25,
+			"AtkStance": 0,
+			"HP": 12,
+			"Damage": 1.5,
+			"Daf": 0.5,
+			"DmgSpeed": 1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Porcupine",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				12,
+				13,
+				17
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1
+			],
+			"Weigth": [
+				33,
+				33,
+				33
+			]
+		},
+		{
+			"MonsterID": 6,
+			"Name": "WolfA",
 			"Level": 4,
-			"Exp": 150,
+			"Exp": 45,
 			"AtkStance": 0,
 			"HP": 14,
 			"Damage": 1.75,
@@ -115,43 +214,10 @@
 			]
 		},
 		{
-			"MonsterID": 4,
-			"Name": "Porcupine",
-			"Level": 3,
-			"Exp": 150,
-			"AtkStance": 0,
-			"HP": 12,
-			"Damage": 1.5,
-			"Daf": 0.5,
-			"DmgSpeed": 1,
-			"CriDamage": 0,
-			"MoveSpeed": 1,
-			"RunSpeed": 1.1,
-			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/Porcupine",
-			"TargetRange": 5,
-			"RotationDamping": 10,
-			"DropItem": [
-				12,
-				13,
-				17
-			],
-			"DropItemCount": [
-				1,
-				1,
-				1
-			],
-			"Weigth": [
-				33,
-				33,
-				33
-			]
-		},
-		{
-			"MonsterID": 5,
-			"Name": "Skunk",
+			"MonsterID": 7,
+			"Name": "BullA",
 			"Level": 5,
-			"Exp": 225,
+			"Exp": 90,
 			"AtkStance": 0,
 			"HP": 16,
 			"Damage": 2,
@@ -175,88 +241,10 @@
 			]
 		},
 		{
-			"MonsterID": 6,
-			"Name": "WolfA",
-			"Level": 7,
-			"Exp": 450,
-			"AtkStance": 1,
-			"HP": 20,
-			"Damage": 2.5,
-			"Daf": 0.75,
-			"DmgSpeed": 1.1,
-			"CriDamage": 0,
-			"MoveSpeed": 1,
-			"RunSpeed": 1.1,
-			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/WolfA",
-			"TargetRange": 5,
-			"RotationDamping": 10,
-			"DropItem": [
-				14,
-				15,
-				17,
-				1,
-				3
-			],
-			"DropItemCount": [
-				1,
-				1,
-				1,
-				1,
-				1
-			],
-			"Weigth": [
-				25,
-				25,
-				25,
-				7.5,
-				7.5
-			]
-		},
-		{
-			"MonsterID": 7,
-			"Name": "BullA",
-			"Level": 9,
-			"Exp": 900,
-			"AtkStance": 1,
-			"HP": 30,
-			"Damage": 3,
-			"Daf": 1,
-			"DmgSpeed": 1,
-			"CriDamage": 0,
-			"MoveSpeed": 1,
-			"RunSpeed": 1.1,
-			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/BullA",
-			"TargetRange": 5,
-			"RotationDamping": 10,
-			"DropItem": [
-				16,
-				1,
-				3,
-				5,
-				7
-			],
-			"DropItemCount": [
-				1,
-				1,
-				1,
-				1,
-				1
-			],
-			"Weigth": [
-				50,
-				10,
-				10,
-				10,
-				10
-			]
-		},
-		{
 			"MonsterID": 8,
 			"Name": "SquirrelA",
 			"Level": 2,
-			"Exp": 100,
+			"Exp": 10,
 			"AtkStance": 0,
 			"HP": 10,
 			"Damage": 1.25,
@@ -289,7 +277,7 @@
 			"MonsterID": 9,
 			"Name": "Ostrich",
 			"Level": 3,
-			"Exp": 225,
+			"Exp": 90,
 			"AtkStance": 1,
 			"HP": 7,
 			"Damage": 1.5,
@@ -322,10 +310,10 @@
 			"MonsterID": 10,
 			"Name": "QuestSkunk",
 			"Level": 1,
-			"Exp": 100,
+			"Exp": 10,
 			"AtkStance": 1,
-			"HP": 4,
-			"Damage": 1,
+			"HP": 7,
+			"Damage": 0.75,
 			"Daf": 0.5,
 			"DmgSpeed": 1,
 			"CriDamage": 0,
