@@ -2,73 +2,73 @@
 	"PlayerLevel": [
 		{
 			"Level": 1,
-			"Exp": 0,
+			"Exp": 1000,
 			"HP": 0,
 			"Damage": 0,
 			"Def": 0
 		},
 		{
 			"Level": 2,
-			"Exp": 1000,
+			"Exp": 1500,
 			"HP": 1,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
 			"Level": 3,
-			"Exp": 1500,
-			"HP": 2,
-			"Damage": 0.1,
-			"Def": 0
-		},
-		{
-			"Level": 4,
 			"Exp": 2250,
 			"HP": 2,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 5,
+			"Level": 4,
 			"Exp": 4500,
 			"HP": 2,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 6,
+			"Level": 5,
 			"Exp": 9000,
-			"HP": 3,
+			"HP": 2,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 7,
+			"Level": 6,
 			"Exp": 18000,
 			"HP": 3,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 8,
+			"Level": 7,
 			"Exp": 36000,
-			"HP": 4,
+			"HP": 3,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 9,
+			"Level": 8,
 			"Exp": 72000,
 			"HP": 4,
 			"Damage": 0.1,
 			"Def": 0
 		},
 		{
-			"Level": 10,
+			"Level": 9,
 			"Exp": 144000,
+			"HP": 4,
+			"Damage": 0.1,
+			"Def": 0
+		},
+		{
+			"Level": 10,
+			"Exp": 250000,
 			"HP": 5,
 			"Damage": 0.2,
-			"Def": 0
+			"Def": 1
 		}
 	]
 }
