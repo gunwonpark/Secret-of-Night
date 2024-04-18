@@ -110,6 +110,12 @@ public class MonsterBaseState : IState, IDamageable
         return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.TargetRange * stateMachine.FieldMonsters.myInfo.TargetRange;
     }
 
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.FieldMonsters.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= stateMachine.FieldMonsters.myInfo.AtkRange * stateMachine.FieldMonsters.myInfo.AtkRange;
+    }
+
     public void TakeDamage(float Damage)//Other의 공격력
     {
         stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
