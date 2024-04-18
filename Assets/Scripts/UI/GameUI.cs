@@ -94,7 +94,6 @@ public class GameUI : UIBase
     }
     private void OnGameEndButtonClick()
     {
-        GameManager.Instance.playerManager.playerData.SaveData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
