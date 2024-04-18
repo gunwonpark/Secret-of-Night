@@ -185,4 +185,27 @@ public class QuickSlotInventorySetting : MonoBehaviour
 
         UpdateQuickSlot();
     }
+
+    public void RemoveItemByID(int itemID, int quantity)
+    {
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (slots[i].item != null && slots[i].item.ItemID == itemID)
+            {
+                slots[i].count -= quantity;
+
+                if (slots[i].count <= 0)
+                {
+                    slots[i].item = null;
+                    slots[i].count = 0;
+
+                }
+
+                Inventory.instance.UpdateUI();
+                UpdateQuickSlot();
+                break;
+            }
+        }
+
+    }
 }

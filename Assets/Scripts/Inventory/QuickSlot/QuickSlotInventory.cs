@@ -96,8 +96,8 @@ public class QuickSlotInventory : MonoBehaviour
     // 퀵슬롯 아이템 사용
     public void QuickSlotItemUse()
     {
-        Inventory.instance.SelectItem(_selectedItemIndex);
-        SelectItem(_selectedItemIndex);
+        //Inventory.instance.SelectItem(_selectedItemIndex);
+        //SelectItem(_selectedItemIndex);
 
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -268,5 +268,6 @@ public class QuickSlotInventory : MonoBehaviour
                 break;
             }
         }
+        UpdateQuickSlot();
     }
 }
