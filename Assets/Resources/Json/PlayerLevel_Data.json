@@ -19,56 +19,56 @@
 			"Exp": 1500,
 			"HP": 2,
 			"Damage": 0.1,
-			"Def": 1
+			"Def": 0
 		},
 		{
 			"Level": 4,
 			"Exp": 2250,
 			"HP": 2,
 			"Damage": 0.1,
-			"Def": 1
+			"Def": 0
 		},
 		{
 			"Level": 5,
 			"Exp": 4500,
 			"HP": 2,
 			"Damage": 0.1,
-			"Def": 1
+			"Def": 0
 		},
 		{
 			"Level": 6,
 			"Exp": 9000,
 			"HP": 3,
 			"Damage": 0.1,
-			"Def": 1
+			"Def": 0
 		},
 		{
 			"Level": 7,
 			"Exp": 18000,
 			"HP": 3,
 			"Damage": 0.1,
-			"Def": 1
+			"Def": 0
 		},
 		{
 			"Level": 8,
 			"Exp": 36000,
 			"HP": 4,
 			"Damage": 0.1,
-			"Def": 2
+			"Def": 0
 		},
 		{
 			"Level": 9,
 			"Exp": 72000,
 			"HP": 4,
 			"Damage": 0.1,
-			"Def": 3
+			"Def": 0
 		},
 		{
 			"Level": 10,
 			"Exp": 144000,
 			"HP": 5,
 			"Damage": 0.2,
-			"Def": 4
+			"Def": 0
 		}
 	]
 }

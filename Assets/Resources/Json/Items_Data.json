@@ -110,7 +110,7 @@
 			"Name": "SwordDefault",
 			"Type": "Equip",
 			"Price": 0,
-			"Damage": 1,
+			"Damage": 0.5,
 			"Critical": 0,
 			"Money": 0,
 			"ItemName": "도토리의 낡은 검",
@@ -133,7 +133,7 @@
 			"IconPath": "Images/Icons/SwordF06",
 			"MaxAmount": 0,
 			"PrefabPath": "Prefabs/Weapons/SwordF06",
-			"UnlockLevel": 3
+			"UnlockLevel": 6
 		},
 		{
 			"ItemID": 10,
@@ -148,7 +148,7 @@
 			"IconPath": "Images/Icons/SwordDragon",
 			"MaxAmount": 0,
 			"PrefabPath": "Prefabs/Weapons/SwordDragon",
-			"UnlockLevel": 6
+			"UnlockLevel": 9
 		},
 		{
 			"ItemID": 11,
@@ -163,7 +163,7 @@
 			"IconPath": "Images/Icons/SwordM05",
 			"MaxAmount": 0,
 			"PrefabPath": "Prefabs/Weapons/SwordM05",
-			"UnlockLevel": 1
+			"UnlockLevel": 3
 		},
 		{
 			"ItemID": 12,
