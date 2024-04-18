@@ -19,12 +19,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100103)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             RewardID = 1,
             RewardCount = 10,
-            QuestType =2,
-            EXP =1,
+            QuestType =2,            
         };
         tempQuests.Add(newQuest);
 
@@ -36,15 +34,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100201)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100202)),
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             RewardID = 10,
-            RewardCount = 1,
-            EXP = 1,
+            RewardCount = 1,            
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1003))
         {
             QuestID = 1003,
             Description = "묵을 만한 곳을 찾아보자<마을 발견>",
@@ -53,15 +49,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(저 멀리 불빛이 보이는 것 같아!)" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(마을이면 좋을텐데.. 일단 가보자)" }
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             RewardID = 1,
-            RewardCount = 1,
-            EXP = 1,
+            RewardCount = 1,            
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1004))
         {
             QuestID = 1004,
             Description = "마을 입구 NPC와 대화",
@@ -75,13 +69,11 @@ public class QuestGenerator : MonoBehaviour
             },         
             
             isDirectClear = true,
-            EXP = 1,
-
         };
         tempQuests.Add(newQuest);
 
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1005))
         {
             QuestID = 1005,
             Description = "촌장에게<촌장에게 말 걸기>",
@@ -94,12 +86,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "여관 NPC", Scripts = "아니야아니야~ 새로운 사람은 늘 환영이란다!" },
                 new Dialogue { TalkerKo = "여관 NPC", Scripts = "아참! 우리 마을의 촌장님이 널 보고 싶어 하시는데 한번 가볼래?" }
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1006))
         {
             QuestID = 1006,
             Description = "게로게로에게<게로게로에게 말 걸기>",
@@ -111,12 +102,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "정말 오랜만에 마을에 손님이 찾아와 한번 보고 싶었네." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "다른 주민들도 보고 싶어 하는 것 같은데 게로게로와 이야기를 해보게." }
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1007))
         {
             QuestID = 1007,
             Description = "뽀롱뽀롱에게<뽀롱뽀롱에게 말 걸기>",
@@ -129,12 +119,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "게로게로", Scripts = "지금이 놀려먹을 시점이라고!!" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "어.. 음.. 앗! 나 갑자기 상점에 볼일이 있어서 가볼게!" }
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,           
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1008))
         {
             QuestID = 1008,
             Description = "서리서리에게<서리서리에게 말 걸기>",
@@ -148,12 +137,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
 
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,       
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1009))
         {
             QuestID = 1009,
             Description = "서리서리, 뽀롱뽀롱과 대화나누기",
@@ -171,12 +159,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "..." },
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "호호.. 늘 있는 일이니까 신경 쓰지 않아도 돼! 만나서 반가웠어." },
             },
-            isDirectClear = true,
-            EXP = 1,
+            isDirectClear = true,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1010))
         {
             QuestID = 1010,
             Description = "촌장에게<촌장에게 말 걸기>",
@@ -193,12 +180,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "응.. 안녕.. (여기 주민들 상태가 좀 이상해)" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(촌장님한테 돌아가야겠어)" },
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,          
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1011))
         {
             QuestID = 1011,
             Description = "띠리띠리에게<띠리띠리에게 말걸기>",
@@ -214,12 +200,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "그래서 첫 만남에 무리한 부탁인데.. 띠리띠리와 상황을 보고 와줄 수 있겠나?" },
                 new Dialogue { TalkerKo = "촌장", Scripts = "띠리띠리는 마을 입구에서 마을을 지키고 있을 걸세. 한 번 가보게나." },
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1012))
         {
             QuestID = 1012,
             Description = "띠리띠리와 마을 순찰하기",
@@ -230,12 +215,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와."},
                 new Dialogue { TalkerKo = "주인공", Scripts = "(뭐야 저 무관심한 말투는..)" },                
             },               
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,       
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1013))
         {
             QuestID = 1013,
             Description = "띠리띠리와 순찰<퀘스트용 포악해진 몬스터 처치>",
@@ -252,11 +236,10 @@ public class QuestGenerator : MonoBehaviour
             QuestType = 1,
             QuestItemID = 10,
             GoalCount = 1,
-            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1014))
         {
             QuestID = 1014,
             Description = "촌장에게<촌장에게 돌아가기>",
@@ -264,15 +247,13 @@ public class QuestGenerator : MonoBehaviour
             {
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "역시나 스컹크가 공격을...? 촌장님에게 돌아가야겠어!" },                               
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             RewardID = 21,
-            RewardCount = 1,
-            EXP = 1,
+            RewardCount = 1,   
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1015))
         {
             QuestID = 1015,
             Description = "사라진 부꾸부꾸<부꾸부꾸의 애장품 획득>",
@@ -289,12 +270,11 @@ public class QuestGenerator : MonoBehaviour
             isContinue = true,
             QuestType = 3,
             QuestItemID = 29,
-            GoalCount = 1,
-            EXP = 1,
+            GoalCount = 1,   
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1016))
         {
             QuestID = 1016,
             Description = "사라진 부꾸부꾸<부꾸부꾸를 찾아라> 카멜레온 10마리 처치",
@@ -307,12 +287,11 @@ public class QuestGenerator : MonoBehaviour
             isContinue = true,
             QuestItemID = 2,
             GoalCount = 10,  
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,  
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1017))
         {
             QuestID = 1017,
             Description = "사라진 부꾸부꾸<부꾸부꾸 마을로 데려오기>",
@@ -326,12 +305,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "촌장님! 부꾸부꾸를 찾아왔어요. 산속 근처인데 왜 그곳에 있었는지는.." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "오오.. 우리 부꾸부꾸를 찾아주어서 정말 고맙네 젊은이." },                
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,     
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1018))
         {
             QuestID = 1018,
             Description = "촌장의 이야기<촌장과 대화>",
@@ -343,15 +321,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "아 찾아갈 때 이것을 갖고 가게." },                
             },
             isContinue = true,
-            isDirectClear = true,
-            rewardType = RewardType.Item,
+            isDirectClear = true,            
             RewardID = 14,
-            RewardCount = 1,
-            EXP = 1,
+            RewardCount = 1,   
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1019))
         {
             QuestID = 1019,
             Description = "스승 찾아 삼만리<스승과 대화>",
@@ -363,11 +339,10 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "멋진데?" },                
             },
             isContinue = true,
-            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1020))
         {
             QuestID = 1020,
             Description = "스승과의 수련<강화 수련 1>, <카멜레온 5마리 처치>",
@@ -392,12 +367,11 @@ public class QuestGenerator : MonoBehaviour
             },            
             QuestItemID = 2,
             GoalCount = 5,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,     
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1021))
         {
             QuestID = 1021,
             Description = "스승과의 수련<강화 수련 2>, <오리너구리 7마리, 카멜레온 5마리 처치",
@@ -418,12 +392,11 @@ public class QuestGenerator : MonoBehaviour
             GoalCount = 7,
             QuestItemID2 = 2,
             GoalCount2 = 5,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,   
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1022))
         {
             QuestID = 1022,
             Description = "스승과의 수련<강화 수련 3>, <미어캣 10마리 처치>",
@@ -440,12 +413,11 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 3,
             GoalCount = 10,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,  
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1023))
         {
             QuestID = 1023,
             Description = "스승과의 수련<강화 수련 4>, <고슴도치 10마리 처치>",
@@ -462,12 +434,11 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 4,
             GoalCount = 10,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,  
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1024))
         {
             QuestID = 1024,
             Description = "스승과의 수련<강화 수련 5>, <스컹크 7마리 처치>",
@@ -485,12 +456,11 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 5,
             GoalCount = 7,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1025))
         {
             QuestID = 1025,
             Description = "스승과의 수련<강화 수련 6 : 스킬 획득>, <늑대 5마리 처치>",
@@ -509,12 +479,11 @@ public class QuestGenerator : MonoBehaviour
             },
             QuestItemID = 6,
             GoalCount = 5,
-            QuestType = 1,
-            EXP = 1,
+            QuestType = 1,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1026))
         {
             QuestID = 1026,
             Description = "스승과의 수련<강화 수련 최종>, <황소 3마리 처치>",
@@ -535,11 +504,10 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 7,
             GoalCount = 3,
             QuestType = 1,
-            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1027))
         {
             QuestID = 1027,
             Description = "마을에서 생긴 일<촌장과 대화>",
@@ -553,12 +521,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts =  "폭풍이..오려하는군." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "...네 (촌장님께 가봐야겠어)" },              
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,    
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1028))
         {
             QuestID = 1028,
             Description = "사라진 게로게로<서리서리와 대화>",
@@ -570,15 +537,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = " 서리서리를 놀리다가 혼이 났는데 그 후로 보이지가 않는다네.." },
                 new Dialogue { TalkerKo = "촌장", Scripts =  "서리서리에게 가보겠나?" },                
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             RewardID = 24,
-            RewardCount = 1,
-            EXP = 1,
+            RewardCount = 1,      
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1029))
         {
             QuestID = 1029,
             Description = "사라진 게로게로<게로게로의 애장품>, 마을 안을 뒤져보자<주머니 찾기>",
@@ -594,13 +559,12 @@ public class QuestGenerator : MonoBehaviour
             isContinue = true,
             QuestType = 3,
             QuestItemID = 28,
-            GoalCount = 1,
-            EXP = 1,
+            GoalCount = 1,    
             // 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1030))
         {
             QuestID = 1030,
             Description = "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치>",
@@ -618,11 +582,10 @@ public class QuestGenerator : MonoBehaviour
             GoalCount= 10,
             QuestItemID2 = 6,
             GoalCount2 = 10,
-            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1031))
         {
             QuestID = 1031,
             Description = "사라진 게로게로<게로게로를 마을로 데려가기>,<서리서리와 대화>",
@@ -635,12 +598,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(어서 마을로 데려가야겠어. 촌장님께 이상한 점을 말해야해)" },
               
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1032))
         {
             QuestID = 1032,
             Description = "사라진 게로게로<촌장에게 이상한 점 말하기>",
@@ -654,8 +616,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "아니 이런 해괴한일이 있나...아무튼 게로게로까지 찾아주다니, 고맙네 젊은이!" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다. (이 마을에서 이상한 일이 벌어지고 있는 것이 분명해)" },                
             },
-            isContinue = true,
-            EXP = 1,
+            isContinue = true,  
         };
         tempQuests.Add(newQuest);
 
@@ -674,8 +635,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "크으으으..내안에서 또다른 내가 살아난다!!!!" },
                 
             },
-            isContinue = true,
-            rewardType = RewardType.Item,
+            isContinue = true,            
             QuestType = 3,
             RewardID =  16,
             RewardCount = 10,

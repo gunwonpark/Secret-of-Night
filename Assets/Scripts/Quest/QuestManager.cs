@@ -11,6 +11,7 @@ public class QuestManager : MonoBehaviour
     public delegate void QusestClearedEventHandler();
     public static event QusestClearedEventHandler OnQuestCleared;
 
+    private const int EXP_REWARD_ID = 100;
 
     [SerializeField] private DialogueHandler dialogueHandler;
     [SerializeField] private QuestGenerator questGenerator;
@@ -53,7 +54,7 @@ public class QuestManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             InitDialogues(); // 대화 목록 초기화
-        }        
+        }
     }
 
     // 현재 퀘스트 설정
@@ -78,7 +79,7 @@ public class QuestManager : MonoBehaviour
     public void ShowQuestDescription()
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
-        nextQuestGuideText.text = currentQuest.NextQuestGuide = ""; 
+        nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
     }
 
     // 퀘스트 설명 숨기기
@@ -92,8 +93,15 @@ public class QuestManager : MonoBehaviour
     public void QuestClear()
     {
         // 퀘스트 보상이 있으면 보상 처리
-        if (currentQuest.rewardType != RewardType.None)
-            RewardProcess(); // 보상 처리
+
+        ItemReward(
+            currentQuest.RewardID2, currentQuest.RewardCount2,
+            currentQuest.RewardID3, currentQuest.RewardCount3,
+            currentQuest.RewardID4, currentQuest.RewardCount4,
+            currentQuest.RewardID5, currentQuest.RewardCount5); // 보상 처리
+
+        ExpReward(currentQuest.RewardID, currentQuest.RewardCount);
+
 
         // 연출 같은 특수 퀘스트 성공 처리
         if (currentQuest.QuestID == 1004)
@@ -103,45 +111,47 @@ public class QuestManager : MonoBehaviour
         else
         {
             NextQuest(); // 다음 퀘스트로
-        }        
+        }
         OnQuestCleared?.Invoke();
     }
 
-    // 보상 처리
-    private void RewardProcess()
+    private void ItemReward(
+                           int rewardID2, int rewardCount2,
+                           int rewardID3, int rewardCount3,
+                           int rewardID4, int rewardCount4,
+                           int rewardID5, int rewardCount5)
     {
-        switch (currentQuest.rewardType)
-        {
-            case RewardType.None:
-                // 아이템 보상 처리                
 
-                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
-
-
-                break;
-            case RewardType.Item:
-                // 아이템 보상 처리
-                var itemId = currentQuest.RewardID; // 보상 아이템 ID
-                var itemCount = currentQuest.RewardCount; // 보상 아이템 개수
-
-                Item item = GameManager.Instance.dataManager.itemDataBase.GetData(itemId);
-                Inventory.instance.AddItem(item, itemCount);
-
-                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
-
-
-                break;
-
-            case RewardType.Skill:
-                // 스킬 보상 처리
-                var skillId = currentQuest.RewardID; // 보상 스킬 ID
-                var skillName = GameManager.Instance.dataManager.playerSkillDataBase.GetData(skillId).Name;
-                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
-                Debug.LogWarning($"{skillName} 스킬 획득! (획득 처리 필요)");
-                break;
-        }
+        HandleReward(rewardID2, rewardCount2);
+        HandleReward(rewardID3, rewardCount3);
+        HandleReward(rewardID4, rewardCount4);
+        HandleReward(rewardID5, rewardCount5);
     }
 
+    private void ExpReward(int rewardID, float rewardCount)
+    {
+        if (rewardID == EXP_REWARD_ID)
+        {
+            // 경험치 보상 처리
+            GameManager.Instance.playerManager.playerData.ExpChange(rewardCount);
+            Debug.Log($"경험치 {rewardCount} 획득!");
+        }
+    }
+    private void HandleReward(int rewardID, int rewardCount)
+    {
+
+        if (rewardID >= 1 && rewardID <= 29)
+        {
+            // 아이템 보상 처리
+            Item item = GameManager.Instance.dataManager.itemDataBase.GetData(rewardID);
+            if (item != null)
+            {
+                Inventory.instance.AddItem(item, rewardCount);
+                Debug.Log($"{item.Name} {rewardCount}개 획득!");
+            }
+        }
+
+    }
     // 특수 퀘스트 성공
     private void SpecialQuestClear()
     {
@@ -168,7 +178,7 @@ public class QuestManager : MonoBehaviour
             HideQuestDescription(); // 퀘스트 설명 숨기기
             currentQuest.Queststatus = QuestStatus.Wait;
         }
-        
+
     }
 
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
@@ -207,12 +217,12 @@ public class QuestManager : MonoBehaviour
     {
         if (currentQuest.QuestID == id)
         {
-            if(currentQuest.Queststatus != QuestStatus.TalkActive)
+            if (currentQuest.Queststatus != QuestStatus.TalkActive)
             {
                 InitDialogues();
             }
         }
-            
+
     }
 
     // 바로 퀘스트 완료인지 확인
@@ -239,6 +249,7 @@ public class QuestManager : MonoBehaviour
 public class Quest
 {
     public int QuestID; // 퀘스트 ID (1ABB - A: 챕터 번호, BB: 퀘스트 번호)
+    public int QuestSubID;
     public int QuestType;
     public string QuestTitle;
     public string Description; // 퀘스트 설명
@@ -246,14 +257,26 @@ public class Quest
     public string QuestGoal;
     public int GoalCount; // GoalCount 필요한 개수
     public int GoalCount2;
+    public int GoalCount3;
     public int RewardID; // 보상 ID
+    public int RewardID2;
+    public int RewardID3;
+    public int RewardID4;
+    public int RewardID5;
     public string RewardItem;
-    public int RewardCount; // 보상 개수
+    public string RewardItem2;
+    public string RewardItem3;
+    public string RewardItem4;
+    public string RewardItem5;
+    public float RewardCount; // 보상 개수
+    public int RewardCount2;
+    public int RewardCount3;
+    public int RewardCount4;
+    public int RewardCount5;
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
     public int QuestItemID2;
-    public int EXP;
+    public int QuestItemID3;
 
-    public RewardType rewardType; // 보상 타입
     public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
@@ -262,15 +285,32 @@ public class Quest
     public Quest(QuestData quest)
     {
         QuestID = quest.QuestID;
+        QuestSubID = quest.QuestSubID;
         QuestType = quest.QuestType;
         QuestTitle = quest.QuestTitle;
         Description = quest.Description;
         QuestGoal = quest.QuestGoal;
-        GoalCount = quest.GoalCount;
-        RewardID = quest.RewardID;
-        RewardItem = quest.RewardItem;
-        RewardCount = quest.RewardCount;
         QuestItemID = quest.QuestItemID;
+        QuestItemID2 = quest.QuestItemID2;
+        QuestItemID3 = quest.QuestItemID3;
+        GoalCount = quest.GoalCount;
+        GoalCount2 = quest.GoalCount2;
+        GoalCount3 = quest.GoalCount3;
+        RewardID = quest.RewardID;
+        RewardID2 = quest.RewardID2;
+        RewardID3 = quest.RewardID3;
+        RewardID4 = quest.RewardID4;
+        RewardID5 = quest.RewardID5;
+        RewardItem = quest.RewardItem;
+        RewardItem2 = quest.RewardItem2;
+        RewardItem3 = quest.RewardItem3;
+        RewardItem4 = quest.RewardItem4;
+        RewardItem5 = quest.RewardItem5;
+        RewardCount = quest.RewardCount;
+        RewardCount2 = quest.RewardCount2;
+        RewardCount3 = quest.RewardCount3;
+        RewardCount4 = quest.RewardCount4;
+        RewardCount5 = quest.RewardCount5;
     }
 
     public Quest() { }
