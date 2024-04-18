@@ -10,9 +10,10 @@ public class LoadingUI : UIBase
     [SerializeField] string[] _tipTexts;
     [SerializeField] Image _loadingImage;
 
+    [SerializeField] private float _leastWaitTime = 1.5f;
+    [SerializeField] private float _rotationSpeed = 360f;  // Rotation speed in degrees per second
     private void Start()
     {
-        Debug.Log("LoadingUI");
         StartCoroutine(LoadScene());
         if (_tipTexts.Length != 0)
         {
@@ -24,7 +25,6 @@ public class LoadingUI : UIBase
             _tipText.text = "후에엥";
         }
     }
-
     IEnumerator LoadScene()
     {
         AsyncOperation op = SceneManager.LoadSceneAsync((int)GameManager.Instance.sceneManager.NextScene);
@@ -34,12 +34,11 @@ public class LoadingUI : UIBase
         {
             yield return null;
             timer += Time.deltaTime;
+            _loadingImage.transform.Rotate(new Vector3(0, 0, _rotationSpeed) * Time.deltaTime);
 
-
-            if (timer >= 1.0f)
+            if (timer >= _leastWaitTime)
             {
                 op.allowSceneActivation = true;
-                yield break;
             }
         }
     }

@@ -12,7 +12,6 @@ public class GameUI : UIBase
 
     [Header("GamePlayUI")]
     [SerializeField] private GameObject _gamePlayUI;
-    [SerializeField] private GameObject _timer;
 
     [Header("PlayerStatus")]
     [SerializeField] private Image _playerHPImage;
@@ -44,7 +43,6 @@ public class GameUI : UIBase
         if (SceneManager.GetActiveScene().name == "BossMap")
         {
             _bossInfo.SetActive(true);
-            _timer.SetActive(false);
             BossScene.OnBossSpawned.AddListener(SetBossUI);
         }
 
@@ -89,17 +87,14 @@ public class GameUI : UIBase
         _gamePlayUI.SetActive(true);
         _gameEndUI.SetActive(false);
         GameManager.Instance.inputManager.EnablePlayerAction();
-        Debug.Log("Hello");
     }
     private void OnGameOutButtonClick()
     {
         GameManager.Instance.sceneManager.LoadSceneAsync(Scene.GameStart);
-        Debug.Log("Hi");
     }
     private void OnGameEndButtonClick()
     {
         GameManager.Instance.playerManager.playerData.SaveData();
-        Debug.Log("Hello!!");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
