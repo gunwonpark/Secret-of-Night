@@ -13,14 +13,6 @@ public enum BossState
     Dying
 }
 
-public enum RewardType
-{
-    None,
-    Item,
-    Exp,
-    Skill
-}
-
 public enum UIEvent
 {
     Click,

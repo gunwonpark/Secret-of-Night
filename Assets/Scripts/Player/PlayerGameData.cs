@@ -26,8 +26,8 @@ public class PlayerGameData
 
     [Header("PlayerStat")]
     public int Level;
-    public int MaxExp;
-    public int CurExp;
+    public float MaxExp;
+    public float CurExp;
     public float MaxHP;
     public float CurHP;
     public float MaxMP;
@@ -204,7 +204,7 @@ public class PlayerGameData
         Utility.DeleteJson(JsonDataPath);
     }
 
-    public void ExpChange(int exp)
+    public void ExpChange(float exp)
     {
         CurExp += exp;
         if (CurExp >= MaxExp)

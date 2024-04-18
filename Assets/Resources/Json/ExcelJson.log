@@ -225,21 +225,55 @@ Found object mark: '#Quest[{}]'
 [Quest_Data.xlsx(Sheet1): ROW 1]
  Key: QuestID at 1
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: QuestType at 2
+ Key: QuestSubID at 2
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: QuestTitle at 3
+ Key: QuestType at 3
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: Description at 4
+ Key: QuestTitle at 4
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: QuestGoal at 5
+ Key: Description at 5
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: GoalCount at 6
+ Key: QuestGoal at 6
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: RewardID at 7
+ Key: QuestItemID at 7
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: RewardItem at 8
+ Key: GoalCount at 8
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: RewardCount at 9
+ Key: QuestItemID2 at 9
 [Quest_Data.xlsx(Sheet1): ROW 1]
- Key: QuestItemID at 10
+ Key: GoalCount2 at 10
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: QuestItemID3 at 11
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: GoalCount3 at 12
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardID at 13
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardItem at 14
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount at 15
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardID2 at 16
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardItem2 at 17
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount2 at 18
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardID3 at 19
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardItem3 at 20
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount3 at 21
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardID4 at 22
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardItem4 at 23
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount4 at 24
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardID5 at 25
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardItem5 at 26
+[Quest_Data.xlsx(Sheet1): ROW 1]
+ Key: RewardCount5 at 27
 Parsing Array Object Table...
