@@ -124,7 +124,7 @@ public class MonsterBaseState : IState, IDamageable
 
         if (stateMachine.FieldMonsters.HP <= 0)
         {
-            //stateMachine.FieldMonsters.OffCollider();
+            stateMachine.FieldMonsters.OffCollider();
             stateMachine.FieldMonsters.HP = 0;
             stateMachine.ChangeState(stateMachine.DyingState);
             return;
