@@ -59,6 +59,7 @@ public class DialogueHandler : MonoBehaviour
     {
         this.dialogues = dialogues; // 대화 리스트 할당
         dialogueIndex = 0; // 대화 인덱스 초기화
+        QuestManager.I.currentQuest.Queststatus = QuestStatus.TalkActive;
 
         ShowDialogue(); // 대화창 표시
 

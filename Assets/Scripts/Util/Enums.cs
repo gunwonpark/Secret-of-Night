@@ -29,6 +29,7 @@ public enum UIEvent
 public enum QuestStatus
 {
     Wait,
+    TalkActive,
     Progress,
     Complete,    
 }

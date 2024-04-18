@@ -78,7 +78,7 @@ public class QuestManager : MonoBehaviour
     public void ShowQuestDescription()
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
-        nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
+        nextQuestGuideText.text = currentQuest.NextQuestGuide = ""; 
     }
 
     // 퀘스트 설명 숨기기
@@ -194,7 +194,13 @@ public class QuestManager : MonoBehaviour
     public void AcceptQuest(int id)
     {
         if (currentQuest.QuestID == id)
-            InitDialogues();
+        {
+            if(currentQuest.Queststatus != QuestStatus.TalkActive)
+            {
+                InitDialogues();
+            }
+        }
+            
     }
 
     // 바로 퀘스트 완료인지 확인

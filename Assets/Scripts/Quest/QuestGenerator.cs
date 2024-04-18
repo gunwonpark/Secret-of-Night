@@ -321,14 +321,16 @@ public class QuestGenerator : MonoBehaviour
             Description = "촌장의 이야기<촌장과 대화>",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "저..촌장님. 마을과 마을밖의 분위기가 심상치 않은데 이유를 더 말씀해주실 수 있을까요?" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "" },
+                new Dialogue { TalkerKo = "주인공", Scripts = "저..촌장님. 마을과 마을밖의 분위기가 심상치 않은데 이유를 더 말씀해주실 수 있을까요?" },                
                 new Dialogue { TalkerKo = "촌장", Scripts = "더 강해질 수 있게 만들어 줄 사람이 있네." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "강가에 사는 뚜쉬뚜쉬를 찾아가보도록 하게나." },
                 new Dialogue { TalkerKo = "촌장", Scripts = "아 찾아갈 때 이것을 갖고 가게." },                
             },
             isContinue = true,
             isDirectClear = true,
+            rewardType = RewardType.Item,
+            RewardID = 14,
+            RewardCount = 1,
         };
         tempQuests.Add(newQuest);
 
