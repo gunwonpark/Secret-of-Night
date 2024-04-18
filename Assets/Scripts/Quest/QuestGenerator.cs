@@ -24,6 +24,7 @@ public class QuestGenerator : MonoBehaviour
             RewardID = 1,
             RewardCount = 10,
             QuestType =2,
+            EXP =1,
         };
         tempQuests.Add(newQuest);
 
@@ -39,6 +40,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 10,
             RewardCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -55,6 +57,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 1,
             RewardCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -72,7 +75,8 @@ public class QuestGenerator : MonoBehaviour
             },         
             
             isDirectClear = true,
-            
+            EXP = 1,
+
         };
         tempQuests.Add(newQuest);
 
@@ -91,6 +95,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "여관 NPC", Scripts = "아참! 우리 마을의 촌장님이 널 보고 싶어 하시는데 한번 가볼래?" }
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -107,6 +112,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "다른 주민들도 보고 싶어 하는 것 같은데 게로게로와 이야기를 해보게." }
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -124,6 +130,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "어.. 음.. 앗! 나 갑자기 상점에 볼일이 있어서 가볼게!" }
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -138,10 +145,11 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어제 오셨다던 용사님이시군요!" },
                 new Dialogue { TalkerKo = "주인공", Scripts =  "(응..? 내가 언제 용사가 된 거지)" },
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "저는 마을에서 여러 가지 물건을 사고팔고 있어요~ 많이 들러주세요!" },
-                
+                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
+
             },
             isContinue = true,
-            isDirectClear = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -151,8 +159,7 @@ public class QuestGenerator : MonoBehaviour
             Description = "서리서리, 뽀롱뽀롱과 대화나누기",
             NextQuestGuide = "부꾸부꾸에게 말걸기",
             dialogues = new List<Dialogue>
-            {
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
+            {                
                 new Dialogue { TalkerKo = "서리서리", Scripts = "씨익씨익 누가 내 버섯을 다 먹었어!!" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "뽀롱뽀롱은 알아??" },
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어머 누가 그런 짓을 했니? 버섯이라면 하나에 10원에 팔 수 있었을 텐데" },
@@ -165,6 +172,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "호호.. 늘 있는 일이니까 신경 쓰지 않아도 돼! 만나서 반가웠어." },
             },
             isDirectClear = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -186,6 +194,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(촌장님한테 돌아가야겠어)" },
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -206,6 +215,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "띠리띠리는 마을 입구에서 마을을 지키고 있을 걸세. 한 번 가보게나." },
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -220,7 +230,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와."},
                 new Dialogue { TalkerKo = "주인공", Scripts = "(뭐야 저 무관심한 말투는..)" },                
             },               
-            isContinue = true,                
+            isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -241,6 +252,7 @@ public class QuestGenerator : MonoBehaviour
             QuestType = 1,
             QuestItemID = 10,
             GoalCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -256,6 +268,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 21,
             RewardCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -276,7 +289,8 @@ public class QuestGenerator : MonoBehaviour
             isContinue = true,
             QuestType = 3,
             QuestItemID = 29,
-            GoalCount = 1,            
+            GoalCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -294,6 +308,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 2,
             GoalCount = 10,  
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -312,6 +327,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "오오.. 우리 부꾸부꾸를 찾아주어서 정말 고맙네 젊은이." },                
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -331,6 +347,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 14,
             RewardCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -346,6 +363,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "멋진데?" },                
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -375,6 +393,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 2,
             GoalCount = 5,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -400,6 +419,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID2 = 2,
             GoalCount2 = 5,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -421,6 +441,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 3,
             GoalCount = 10,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -442,6 +463,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 4,
             GoalCount = 10,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -464,6 +486,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 5,
             GoalCount = 7,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -487,6 +510,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 6,
             GoalCount = 5,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -511,6 +535,7 @@ public class QuestGenerator : MonoBehaviour
             QuestItemID = 7,
             GoalCount = 3,
             QuestType = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -529,6 +554,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "...네 (촌장님께 가봐야겠어)" },              
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -548,6 +574,7 @@ public class QuestGenerator : MonoBehaviour
             rewardType = RewardType.Item,
             RewardID = 24,
             RewardCount = 1,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -568,6 +595,7 @@ public class QuestGenerator : MonoBehaviour
             QuestType = 3,
             QuestItemID = 28,
             GoalCount = 1,
+            EXP = 1,
             // 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);
@@ -590,6 +618,7 @@ public class QuestGenerator : MonoBehaviour
             GoalCount= 10,
             QuestItemID2 = 6,
             GoalCount2 = 10,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -607,6 +636,7 @@ public class QuestGenerator : MonoBehaviour
               
             },
             isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -624,7 +654,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "아니 이런 해괴한일이 있나...아무튼 게로게로까지 찾아주다니, 고맙네 젊은이!" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다. (이 마을에서 이상한 일이 벌어지고 있는 것이 분명해)" },                
             },
-            isContinue = true,            
+            isContinue = true,
+            EXP = 1,
         };
         tempQuests.Add(newQuest);
 

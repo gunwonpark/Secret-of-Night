@@ -112,6 +112,13 @@ public class QuestManager : MonoBehaviour
     {
         switch (currentQuest.rewardType)
         {
+            case RewardType.None:
+                // 아이템 보상 처리                
+
+                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
+
+
+                break;
             case RewardType.Item:
                 // 아이템 보상 처리
                 var itemId = currentQuest.RewardID; // 보상 아이템 ID
@@ -119,12 +126,17 @@ public class QuestManager : MonoBehaviour
 
                 Item item = GameManager.Instance.dataManager.itemDataBase.GetData(itemId);
                 Inventory.instance.AddItem(item, itemCount);
+
+                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
+
+
                 break;
 
             case RewardType.Skill:
                 // 스킬 보상 처리
                 var skillId = currentQuest.RewardID; // 보상 스킬 ID
                 var skillName = GameManager.Instance.dataManager.playerSkillDataBase.GetData(skillId).Name;
+                GameManager.Instance.playerManager.playerData.ExpChange(currentQuest.EXP);
                 Debug.LogWarning($"{skillName} 스킬 획득! (획득 처리 필요)");
                 break;
         }
@@ -239,6 +251,7 @@ public class Quest
     public int RewardCount; // 보상 개수
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
     public int QuestItemID2;
+    public int EXP;
 
     public RewardType rewardType; // 보상 타입
     public QuestStatus Queststatus; // 퀘스트 진행상태

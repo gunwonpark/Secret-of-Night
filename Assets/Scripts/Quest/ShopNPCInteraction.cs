@@ -33,7 +33,10 @@ public class ShopNPCInteraction : MonoBehaviour
         Shop.OnShopClose += OnShopClose;
 
         ButtonEvent();
+
+        DialogueHandler.OnDialogeExited += () => { _GKeyActivate = true; };
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(interactionKey) && isInRange && _GKeyActivate)
@@ -102,8 +105,6 @@ public class ShopNPCInteraction : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Inventory.instance.npcInteraction = false;
         _GKeyActivate = true;
-
-
     }
 
     // 대화 버튼을 눌렀을때 호출되는 메서드
@@ -115,6 +116,7 @@ public class ShopNPCInteraction : MonoBehaviour
             {
                 QuestManager.I.CheckCurrentQuest(id);
                 interactionPopup.SetActive(false);
+                _GKeyActivate = false;
             }
 
             else

@@ -48,13 +48,19 @@ public class NPCInteraction : MonoBehaviour
 
     private void SetNpcposition()
     {
+        if (QuestManager.I.currentQuest.QuestID == 1008 && npcName == "seoriseori")
+        {
+            if (DialogueHandler.I.dialogueIndex == 5)
+            {
+                transform.position = new Vector3(-9.015747f, 0.5064697f, 131.2097f);
+            }            
+        }
         if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
         {
-            transform.position = new Vector3(-9.015747f, 0.5064697f, 131.2097f);
-        }
-        if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
-        {
-            transform.position = new Vector3(11.20499f, 0.8099976f, 137.0612f);
+            if (DialogueHandler.I.dialogueIndex == 7)
+            {
+                transform.position = new Vector3(11.20499f, 0.8099976f, 137.0612f);
+            }
         }
 
         if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")

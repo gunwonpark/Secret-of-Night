@@ -9,6 +9,8 @@ public class DialogueHandler : MonoBehaviour
     [SerializeField] private CanvasGroup dimedCanvasGroup; // 대화창 Dimed CanvasGroup
     [SerializeField] private TextMeshProUGUI nameText; // 대화창 이름 Text
     [SerializeField] private TextMeshProUGUI dialogueText; // 대화창 대사 Text
+    public delegate void HideDialogueUIEventHandler();
+    public static event HideDialogueUIEventHandler OnDialogeExited;
 
     private List<Dialogue> dialogues = new List<Dialogue>(); // 대화 리스트
     public int dialogueIndex = 0; // 대화 인덱스
@@ -64,6 +66,7 @@ public class DialogueHandler : MonoBehaviour
         ShowDialogue(); // 대화창 표시
 
         Debug.Log("캐릭터 조작 변경 필요");
+        GameManager.Instance.inputManager.DisablePlayerAction();
     }
 
     // 대화창 표시
@@ -98,9 +101,10 @@ public class DialogueHandler : MonoBehaviour
     public void HideDialogueUI()
     {
         DeactiveDialogue(); // 대화창 비활성화
-
+        OnDialogeExited?.Invoke();
         nameText.text = ""; // 이름 초기화
         dialogueText.text = ""; // 대사 초기화
+        GameManager.Instance.inputManager.EnablePlayerAction();
     }
 
     // 대화창 비활성화
