@@ -51,6 +51,7 @@ public class PlayerGameData
     public event Action OnHPChange;
     public event Action OnMPChange;
     public event Action OnSPChange;
+    public event Action OnExpChange;
     public event Action OnLevelUp;
     public PlayerGameData()
     {
@@ -85,9 +86,11 @@ public class PlayerGameData
             CharacterName = "Unknown";
 
             //stat 초기화
-            PlayerStatData statData = dataManager.playerStatDataBase.GetData(CharacterID);
             Level = 1;
             CurExp = 0;
+
+            PlayerStatData statData = dataManager.playerStatDataBase.GetData(CharacterID);
+
             if (statData != null)
             {
                 CharacterType = statData.CharacterType;
@@ -98,12 +101,14 @@ public class PlayerGameData
                 CurMP = MaxMP;
                 MaxSP = statData.SP;
                 CurSP = MaxSP;
+                MaxExp = 100;
                 DefaultDamage = statData.Damage;
                 DamageSpeed = statData.DamageSpeed;
                 CriDamage = statData.CriDamage;
                 Def = statData.Def;
                 MoveSpeed = statData.MoveSpeed;
                 Gold = statData.Gold;
+                Debug.Log("데이터 초기화");
             }
         }
     }
@@ -151,7 +156,6 @@ public class PlayerGameData
     public void LevelUp()
     {
         Level++;
-        CurExp = 0;
 
         PlayerLevelData playerLevelData = dataManager.playerLevelDataBase.GetData(Level);
 
@@ -164,15 +168,25 @@ public class PlayerGameData
             DefaultDamage += playerLevelData.Damage;
             Def += playerLevelData.Def;
         }
-
+        ResetStatus();
         OnLevelUp?.Invoke();
-        SaveData();
+
+        if (CurExp >= MaxExp)
+        {
+            Debug.Log("over");
+            ExpChange(0);
+        }
     }
+
     public void ResetStatus()
     {
         CurHP = MaxHP;
         CurMP = MaxMP;
         CurSP = MaxMP;
+
+        OnHPChange?.Invoke();
+        OnMPChange?.Invoke();
+        OnSPChange?.Invoke();
     }
     public void SaveData()
     {
@@ -187,6 +201,17 @@ public class PlayerGameData
     public void DeleteData()
     {
         Utility.DeleteJson(JsonDataPath);
+    }
+
+    public void ExpChange(int exp)
+    {
+        CurExp += exp;
+        if (CurExp >= MaxExp)
+        {
+            CurExp -= MaxExp;
+            LevelUp();
+        }
+        OnExpChange?.Invoke();
     }
 }
 

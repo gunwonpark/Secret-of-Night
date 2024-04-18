@@ -126,6 +126,7 @@ public class MonsterBaseState : IState, IDamageable
         {
             stateMachine.FieldMonsters.OffCollider();
             stateMachine.FieldMonsters.HP = 0;
+            GameManager.Instance.playerManager.playerData.ExpChange(stateMachine.FieldMonsters.myInfo.Exp);
             stateMachine.ChangeState(stateMachine.DyingState);
             return;
         }

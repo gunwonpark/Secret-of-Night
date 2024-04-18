@@ -8,7 +8,7 @@ public class MonsterInfo
     public int MonsterID;
     public string Name;
     public int Level;
-    public float Exp;
+    public int Exp;
     public bool AtkStance;
     public float HP;
     public float Damage;

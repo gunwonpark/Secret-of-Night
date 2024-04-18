@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stateMachine.ChangeState(stateMachine.IdleState);
         PlayerData = GameManager.Instance.playerManager.playerData;
+        PlayerData.ResetStatus();
         PlayerData.OnDie += OnPlayerDie;
     }
     private void Update()
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnPlayerDie()
     {
         Animator.SetTrigger(AnimationData.Die);
-        Debug.Log("PlayerDie");
+        PlayerData.OnDie -= OnPlayerDie;
         Input.enabled = false;
     }
 

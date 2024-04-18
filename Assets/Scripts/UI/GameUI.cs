@@ -17,6 +17,7 @@ public class GameUI : UIBase
     [Header("PlayerStatus")]
     [SerializeField] private Image _playerHPImage;
     [SerializeField] private Image _playerMPImage;
+    [SerializeField] private Image _playerExpImage;
 
     [Header("Stamina")]
     [SerializeField] private Image _staminaImage;
@@ -51,13 +52,17 @@ public class GameUI : UIBase
         playerData.OnHPChange += UpdateHP;
         playerData.OnMPChange += UpdateMP;
         playerData.OnSPChange += UpdateSP;
-
+        playerData.OnExpChange += UpdateExp;
         //GameEndUI
         _continueButton.onClick.AddListener(OnContinueButtonClick);
         _gameOutButton.onClick.AddListener(OnGameOutButtonClick);
         _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
         _gameEndUI.SetActive(false);
+
+        UpdateUI();
     }
+
+
 
     private void OpenGameOverPopup()
     {
@@ -114,7 +119,18 @@ public class GameUI : UIBase
     {
         _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
     }
-
+    private void UpdateExp()
+    {
+        _playerExpImage.fillAmount = (float)playerData.CurExp / playerData.MaxExp;
+        Debug.Log("EXP" + playerData.CurExp + " " + playerData.MaxExp);
+    }
+    void UpdateUI()
+    {
+        UpdateHP();
+        UpdateMP();
+        UpdateSP();
+        UpdateExp();
+    }
     private void ToggleUI(InputAction.CallbackContext obj)
     {
         bool toggle = _gamePlayUI.activeInHierarchy;
@@ -175,7 +191,7 @@ public class GameUI : UIBase
         playerData.OnHPChange -= UpdateHP;
         playerData.OnMPChange -= UpdateMP;
         playerData.OnSPChange -= UpdateSP;
-
+        playerData.OnExpChange -= UpdateExp;
         GameManager.Instance.inputManager.UIActions.Option.started -= ToggleUI;
         BossScene.OnBossSpawned.RemoveListener(SetBossUI);
     }
