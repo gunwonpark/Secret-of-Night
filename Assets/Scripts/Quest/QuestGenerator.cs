@@ -19,10 +19,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100103)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
-            isContinue = true,            
-            RewardID = 1,
-            RewardCount = 10,
-            QuestType =2,            
+            isContinue = true,           
         };
         tempQuests.Add(newQuest);
 
@@ -34,9 +31,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100201)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100202)),
             },
-            isContinue = true,            
-            RewardID = 10,
-            RewardCount = 1,            
+            isContinue = true,                  
         };
         tempQuests.Add(newQuest);
 
@@ -49,9 +44,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "(저 멀리 불빛이 보이는 것 같아!)" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(마을이면 좋을텐데.. 일단 가보자)" }
             },
-            isContinue = true,            
-            RewardID = 1,
-            RewardCount = 1,            
+            isContinue = true,                    
         };
         tempQuests.Add(newQuest);
 
@@ -232,10 +225,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "띠리띠리", Scripts =  "(스컹크가 갑자기 공격을 해온다) 앗! 아파! 왜 이러는 거야!" },
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "너! 보고만 있지 말고 어떻게 좀 해봐!" },                
             },            
-            isContinue= true,
-            QuestType = 1,
-            QuestItemID = 10,
-            GoalCount = 1,
+            isContinue= true,           
         };
         tempQuests.Add(newQuest);
 
@@ -247,9 +237,7 @@ public class QuestGenerator : MonoBehaviour
             {
                 new Dialogue { TalkerKo = "띠리띠리", Scripts = "역시나 스컹크가 공격을...? 촌장님에게 돌아가야겠어!" },                               
             },
-            isContinue = true,            
-            RewardID = 21,
-            RewardCount = 1,   
+            isContinue = true,           
         };
         tempQuests.Add(newQuest);
 
@@ -268,9 +256,6 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = "뜬금없이 카멜레온 이야기도 했던 것 같고.." },                
             },
             isContinue = true,
-            QuestType = 3,
-            QuestItemID = 29,
-            GoalCount = 1,   
         };
         tempQuests.Add(newQuest);
 
@@ -285,9 +270,6 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "부꾸부꾸", Scripts = "카멜레온이 너무 무서워!" },
             },
             isContinue = true,
-            QuestItemID = 2,
-            GoalCount = 10,  
-            QuestType = 1,  
         };
         tempQuests.Add(newQuest);
 
@@ -322,8 +304,6 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             isDirectClear = true,            
-            RewardID = 14,
-            RewardCount = 1,   
         };
         tempQuests.Add(newQuest);
 
@@ -364,10 +344,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "마을이 위험하다니 내 이번만은 들어주지." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "ㅋ..크흠. 스승이라고 해서 들어주는 건 절대 아니야." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "가서 카멜레온이랑 놀아봐." },
-            },            
-            QuestItemID = 2,
-            GoalCount = 5,
-            QuestType = 1,     
+            },           
         };
         tempQuests.Add(newQuest);
 
@@ -387,12 +364,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "그래? 그럼 카멜레온으로." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "아 그리고 오리너구리도 잡아와." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "네..?" },
-            },            
-            QuestItemID = 1,
-            GoalCount = 7,
-            QuestItemID2 = 2,
-            GoalCount2 = 5,
-            QuestType = 1,   
+            },           
         };
         tempQuests.Add(newQuest);
 
@@ -410,10 +382,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts =  "그래봤자 나한텐 한 주먹이지만 후후." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "미어캣을 잡아봐." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "네 스승님!" },                
-            },
-            QuestItemID = 3,
-            GoalCount = 10,
-            QuestType = 1,  
+            }, 
         };
         tempQuests.Add(newQuest);
 
@@ -432,9 +401,6 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "다음은 고슴도치다. 얼른 움직여." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "ㄴ..넵!" },                
             },
-            QuestItemID = 4,
-            GoalCount = 10,
-            QuestType = 1,  
         };
         tempQuests.Add(newQuest);
 
@@ -453,10 +419,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "스컹크를 잡아오되 그 냄새는 좀 빼고 오도록." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "넵 알겠습니다." },
                 new Dialogue { TalkerKo = "주인공", Scripts = "(대단한 게 뭐지...? 조금만 더 힘내보자)" },                
-            },
-            QuestItemID = 5,
-            GoalCount = 7,
-            QuestType = 1,        
+            },  
         };
         tempQuests.Add(newQuest);
 
@@ -476,10 +439,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "늑대라면.. 위험한 몬스터로 알고 있는데..." },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "뭐야? 이 몸처럼 강해지고 싶은게 아닌가?" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "ㅇ..아닙니다! 다녀 오겠습니다." },
-            },
-            QuestItemID = 6,
-            GoalCount = 5,
-            QuestType = 1,        
+            },       
         };
         tempQuests.Add(newQuest);
 
@@ -501,9 +461,6 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts = "아닙니다! 집을 부수는 황소는 제가 모조리 잡겠습니다!" },
                 new Dialogue { TalkerKo = "뚜쉬뚜쉬", Scripts = "그래 내 제자여. 다녀오도록." },      
             },
-            QuestItemID = 7,
-            GoalCount = 3,
-            QuestType = 1,
         };
         tempQuests.Add(newQuest);
 
@@ -537,9 +494,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "촌장", Scripts = " 서리서리를 놀리다가 혼이 났는데 그 후로 보이지가 않는다네.." },
                 new Dialogue { TalkerKo = "촌장", Scripts =  "서리서리에게 가보겠나?" },                
             },
-            isContinue = true,            
-            RewardID = 24,
-            RewardCount = 1,      
+            isContinue = true,                
         };
         tempQuests.Add(newQuest);
 
@@ -556,8 +511,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },
             },
-            isContinue = true,
-            QuestType = 3,
+            isContinue = true,            
             QuestItemID = 28,
             GoalCount = 1,    
             // 게로게로의 주머니1개 얻으면 클리어
@@ -577,11 +531,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts =  "!?" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "방금 게로게로의 목소리가 들린 것 같아" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "근데 방향이..부끄부끄가 사라졌었던 곳이 잖아!?" },                
-            },            
-            QuestItemID = 5,
-            GoalCount= 10,
-            QuestItemID2 = 6,
-            GoalCount2 = 10,
+            },           
         };
         tempQuests.Add(newQuest);
 
