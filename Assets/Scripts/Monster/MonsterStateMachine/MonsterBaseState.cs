@@ -31,10 +31,14 @@ public class MonsterBaseState : IState, IDamageable
         if (stateMachine.FieldMonsters.myInfo.AtkStance)
         {
             //선공0
-            if (IsInChaseRange())
+            if (IsInChaseRange() && !IsInAttackRange())
             {
                 stateMachine.ChangeState(stateMachine.ChasingState);
                 return;
+            }
+            else if (IsInAttackRange())
+            {
+                stateMachine.ChangeState(stateMachine.AttackState);
             }
             return;
         }
