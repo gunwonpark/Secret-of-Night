@@ -6,11 +6,17 @@ public class PickupController : MonoBehaviour
 {
     [SerializeField] private float _range;
     private bool _pickupActivated = false;
+    private bool _playerDie = false; // 플레이어가 죽었을 때 아이템 줍지 못하게
+
     private Collider _collider; //�浹ü ����
 
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private TextMeshProUGUI _pickupText;
 
+    private void Start()
+    {
+        GameManager.Instance.playerManager.playerData.OnDie += DontPickUp;
+    }
 
     private void Update()
     {
@@ -20,9 +26,13 @@ public class PickupController : MonoBehaviour
 
     private void TryAction()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (_playerDie == false && Input.GetKey(KeyCode.G))
         {
             PickUp();
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -46,9 +56,16 @@ public class PickupController : MonoBehaviour
 
     private void ItemInfoAppear()
     {
-        _pickupActivated = true;
-        _pickupText.gameObject.SetActive(true);
-        _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " 획득하기" + " [E]";
+        if (_playerDie == false)
+        {
+            _pickupActivated = true;
+            _pickupText.gameObject.SetActive(true);
+            _pickupText.text = _collider.transform.GetComponentInChildren<ItemObject>().item.ItemName + " 획득하기" + " [G]";
+        }
+        else
+        {
+            _pickupText.gameObject.SetActive(false);
+        }
 
     }
 
@@ -72,5 +89,10 @@ public class PickupController : MonoBehaviour
                 ItemInfoDisappear();
             }
         }
+    }
+
+    private void DontPickUp()
+    {
+        _playerDie = true;
     }
 }
