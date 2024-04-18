@@ -40,7 +40,7 @@ public class MonsterSpot : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);//120초 후 발동
+            yield return new WaitForSeconds(30);//30초 후 발동
 
             if (monsterList.Count < maxMonsterCount)
             {
@@ -75,7 +75,11 @@ public class MonsterSpot : MonoBehaviour
 
     public Vector3 GetRandomPointInCircle(Vector3 center, float radius)//랜덤한 스폰지점
     {
-        //[todo]랜덤지점에 뭐가 없을때만 반환
+        //int maxTries = 10;
+        ////[todo]랜덤지점에 뭐가 없을때만 반환
+        //for (int i = 0; i < maxTries; i++)
+        //{
+
         float angle = Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성
         float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * radius; // 랜덤한 거리 생성
         float x = center.x + distance * Mathf.Cos(angle); // x 좌표 계산
@@ -83,14 +87,16 @@ public class MonsterSpot : MonoBehaviour
         Vector3 randomPoint = new Vector3(x, center.y, z); // 랜덤 지점 반환
 
         return randomPoint;
-        //if (IsValidSpot(randomPoint))
-        //{
-        //    return randomPoint;
+        //    if (IsValidSpot(randomPoint))
+        //    {
+        //        return randomPoint;
+        //    }
+        //    //else//다른 오브젝트가 있으면 일단 센터포지션 반환
+        //    //{
+        //    //    return center;
+        //    //}
         //}
-        //else//다른 오브젝트가 있으면 일단 센터에서 생성
-        //{
-        //    return center;
-        //}
+        //return center;
     }
 
     public void Remove(FieldMonsters fieldMonsters)
@@ -101,8 +107,10 @@ public class MonsterSpot : MonoBehaviour
     private bool IsValidSpot(Vector3 point)
     {
         RaycastHit hit;
+        float maxdistance = 10f;
+
         //레이로 쏜 곳에 다른 오브젝트가 있으면 false
-        if (Physics.Raycast(point, Vector3.down, out hit, Mathf.Infinity))
+        if (Physics.Raycast(point, Vector3.down, out hit, maxdistance))
         {
             return false;
         }

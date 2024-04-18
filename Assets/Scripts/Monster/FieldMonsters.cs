@@ -9,7 +9,6 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
     public float HP = 0;
-    //public Dictionary<int, float> itemWeight = new();
 
     public Rigidbody Rigidbody { get; private set; }
     public Animator Animator { get; private set; }
@@ -37,12 +36,10 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         controller = GetComponent<CharacterController>();
         monsterAnimation = GetComponent<MonsterAnimation>();
         attackCollider = GetComponent<BoxCollider>();
-
     }
 
     public void Init(MonsterInfo monsterInfo, MonsterSpot monsterSpot)
     {
-
         myInfo = monsterInfo;
         this.monsterSpot = monsterSpot;
 
@@ -110,8 +107,14 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
-        //[todo]플레이어 콜라이더만
-        OnAttack?.Invoke(other.gameObject);
+        if (!other.CompareTag("Player"))//플레이어 외 다른 오브젝트에 닿았을 때
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+        else
+        {
+            OnAttack?.Invoke(other.gameObject);
+        }
     }
 
     public void dropItem(Item _item)
@@ -127,16 +130,6 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         float randomWeight;
         float accumulatedWeight = 0f;
         int selectItem;
-
-
-        //딕셔너리 추가
-        //for (int i = 0; i < myInfo.DropItem.Length; i++)
-        //{
-        //    int dropitem = myInfo.DropItem[i];
-        //    float weight = myInfo.Weigth[i];
-
-        //    itemWeight.Add(dropitem, weight);
-        //}
 
         //전체가중치 합 계산
         foreach (float weight in myInfo.Weigth)
