@@ -93,7 +93,7 @@ public class GameUI : UIBase
     }
     private void OnGameOutButtonClick()
     {
-        SceneManager.LoadScene("GameStartScene");
+        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.GameStart);
         Debug.Log("Hi");
     }
     private void OnGameEndButtonClick()

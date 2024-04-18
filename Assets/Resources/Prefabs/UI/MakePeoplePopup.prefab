@@ -118,7 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 4044907025388304667}
   _name: {fileID: 4262403032643713088}
-  time: 0
+  _time: 2
+  _speed: 300
 --- !u!1 &1780708743259651278
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +538,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uB9CC\uB4E0\uC0AC\uB78C\uB4E4\n\nGameDesigner\n\n\uAE30\uD68D \uCD1D\uAD04
-    :    \uC774\uC601\uC120\n\uD018\uC2A4\uD2B8 \uAE30\uD68D : \uD5C8\uC57C\uC601\n\n\nProgrammer\n\n\uAC1C\uBC1C
+    :    \uC774\uC601\uC120\n\uD018\uC2A4\uD2B8 \uAE30\uD68D : \uD5C8\uC544\uC601\n\n\nProgrammer\n\n\uAC1C\uBC1C
     \uCD1D\uAD04 :           \uBC15\uAC74\uC6D0\n\uD544\uB4DC \uBAAC\uC2A4\uD130
     :         \uD5C8\uC544\uC601\n\uBCF4\uC2A4 \uBAAC\uC2A4\uD130:          \uCC28\uB3D9\uBBFC\n\uD018\uC2A4\uD2B8:               
     \uCC28\uB3D9\uBBFC\n\uC778\uBCA4\uD1A0\uB9AC \uBC0F \uC0C1\uC810 :   \uC774\uC11C\uD604\n\uD50C\uB808\uC774\uC5B4

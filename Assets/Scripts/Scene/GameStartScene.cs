@@ -1,10 +1,18 @@
 using UnityEngine;
 
-public class GameStartScene : MonoBehaviour
+public class GameStartScene : BaseScene
 {
     [SerializeField] private AudioClip _bgm;
-    private void Start()
+
+    public override void Initizlize()
     {
+        base.Initizlize();
+        SceneType = Scene.GameStart;
+
         GameManager.Instance.soundManager.PlayBGM(_bgm);
+    }
+    public override void Clear()
+    {
+
     }
 }

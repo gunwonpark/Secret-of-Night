@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameStartUI : UIBase
@@ -74,7 +73,7 @@ public class GameStartUI : UIBase
     void OnGameStartButtonClick()
     {
         GameManager.Instance.playerManager.Initialize(1);
-        SceneManager.LoadScene("MainScene");
+        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
     }
     void OnLoadButtonClick()
     {
@@ -90,7 +89,7 @@ public class GameStartUI : UIBase
         }
 
         GameManager.Instance.playerManager.Init(lastestData);
-        SceneManager.LoadScene("MainScene");
+        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
     }
     int FindLastestData()
     {

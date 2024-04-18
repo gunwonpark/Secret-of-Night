@@ -1,0 +1,25 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SceneManagerEx : MonoBehaviour
+{
+    public BaseScene CurrentScene;
+
+    //비동기 씬전환 목적
+    public Scene NextScene;
+    public void LoadSceneAsync(Scene sceneType)
+    {
+        NextScene = sceneType;
+        SceneManager.LoadScene((int)Scene.Loading);
+
+    }
+    public void LoadScene()
+    {
+
+    }
+
+    public void Clear()
+    {
+        CurrentScene?.Clear();
+    }
+}

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverPopup : UIBase
@@ -8,6 +7,6 @@ public class GameOverPopup : UIBase
 
     void Start()
     {
-        _returnToMainButton.onClick.AddListener(() => SceneManager.LoadScene("GameStartScene"));
+        _returnToMainButton.onClick.AddListener(() => GameManager.Instance.sceneManager.LoadSceneAsync(Scene.GameStart));
     }
 }

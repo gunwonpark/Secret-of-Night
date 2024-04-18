@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MapObjectManager : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class MapObjectManager : MonoBehaviour
 
     public void BossScene()
     {
-        SceneManager.LoadScene("BossMap");
+        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Boss);
     }
 
 }

@@ -4786,16 +4786,17 @@ MonoBehaviour:
     CurMP: 0
     MaxSP: 0
     CurSP: 0
-    Damage: 0
+    DefaultDamage: 0
     DamageSpeed: 0
     CriDamage: 0
     Def: 0
     MoveSpeed: 2
     Gold: 0
+    WeaponDamage: 0
   <MovementSpeedModifier>k__BackingField: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 1089
   speed: 0
   walkSpeed: 2
   runSpeed: 4

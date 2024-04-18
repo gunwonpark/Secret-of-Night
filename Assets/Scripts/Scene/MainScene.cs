@@ -1,12 +1,20 @@
 using UnityEngine;
 
-public class MainScene : MonoBehaviour
+public class MainScene : BaseScene
 {
     [SerializeField] private AudioClip _bgm;
 
-    private void Start()
+    public override void Initizlize()
     {
+        base.Initizlize();
+
+        SceneType = Scene.Main;
+
         GameManager.Instance.soundManager.PlayBGM(_bgm);
         GameManager.Instance.monsterManager.CreatMonsterSpot();
+    }
+    public override void Clear()
+    {
+
     }
 }

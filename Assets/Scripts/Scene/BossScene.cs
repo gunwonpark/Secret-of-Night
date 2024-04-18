@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BossScene : MonoBehaviour
+public class BossScene : BaseScene
 {
     public static UnityEvent<Phase1Boss> OnBossSpawned = new();
 
     [SerializeField] private Phase1Boss _boss;
     [SerializeField] private Transform _bossSpot;
-    void Start()
+    public override void Initizlize()
     {
+        base.Initizlize();
+        SceneType = Scene.Boss;
+
         Invoke("SpawnBoss", 0.1f);
     }
 
@@ -16,5 +19,10 @@ public class BossScene : MonoBehaviour
     {
         var boss = Instantiate(_boss, _bossSpot.position, Quaternion.identity);
         OnBossSpawned?.Invoke(boss);
+    }
+
+    public override void Clear()
+    {
+
     }
 }

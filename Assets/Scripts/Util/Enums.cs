@@ -31,5 +31,15 @@ public enum QuestStatus
     Wait,
     TalkActive,
     Progress,
-    Complete,    
+    Complete,
+}
+
+public enum Scene
+{
+    GameStart,
+    Main,
+    Boss,
+    Loading,
+    None,
+
 }
