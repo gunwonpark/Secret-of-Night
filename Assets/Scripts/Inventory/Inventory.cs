@@ -209,6 +209,8 @@ public class Inventory : MonoBehaviour
     {
         _inventoryUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        playerLight.SetActive(false);
+        _playerController.Input.enabled = true;
         OnInventoryClose.Invoke();
     }
 
@@ -488,10 +490,10 @@ public class Inventory : MonoBehaviour
     //현재 선택한 아이템 사용하기
     public void OnUseButton()
     {
-        _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
-
         if (_selectedItem.item.Type == "using")
         {
+            _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제(사용한 갯수)
+            _quickSlotInventorySetting.RemoveItemByID(_selectedItem.item.ItemID, 1);
             switch (_selectedItem.item.ItemID)
             {
                 case 1:
@@ -519,7 +521,7 @@ public class Inventory : MonoBehaviour
                     break;
 
             }
-            RemoveSelectedItem(1);
+            RemoveSelectedItem(1); //인벤토리에서 아이템 삭제         
 
         }
         else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
@@ -535,6 +537,9 @@ public class Inventory : MonoBehaviour
 
             popUpText.text = "퀘스트에서만 \n 사용할 수 있습니다.";
         }
+
+
+
 
         InventoryTrim();
     }
@@ -805,6 +810,9 @@ public class Inventory : MonoBehaviour
             salePopUpUI.SetActive(false);
             RemoveSelectedItem(_currentQuantity);
             InventoryTrim();
+
+            _quickSlotInventorySetting.RemoveSelectedItem();
+            _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
         }
         else
         {
