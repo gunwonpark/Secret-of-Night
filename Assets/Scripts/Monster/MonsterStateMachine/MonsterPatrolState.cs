@@ -41,10 +41,25 @@ public class MonsterPatrolState : MonsterBaseState
         float distance = (currentPosition - newMovePosition).sqrMagnitude;
 
         //원래 포지션으로 가면 -> idle State로 바꿈
-        if (distance <= 0.5f)
+        if (distance <= 0.5f || IsObstacle(stateMachine.FieldMonsters.transform.position))
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
+    }
+
+    private bool IsObstacle(Vector3 point)
+    {
+        RaycastHit hit;
+
+        //레이로 쏜 곳에 다른 오브젝트가 있으면 true
+        if (Physics.Raycast(point, Vector3.forward, out hit, 0.5f))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 
