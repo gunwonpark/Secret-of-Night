@@ -80,7 +80,7 @@ public class MonsterBaseState : IState, IDamageable
         stateMachine.FieldMonsters.controller.Move(((direction * movementSpeed) + stateMachine.FieldMonsters.forceReceiver.Movement) * Time.deltaTime);
     }
 
-    private void Rotate(Vector3 direction)
+    protected void Rotate(Vector3 direction)
     {
         direction.y = 0;
         if (direction != Vector3.zero)
@@ -91,7 +91,7 @@ public class MonsterBaseState : IState, IDamageable
         }
     }
 
-    private Vector3 GetMovementDirection()//v
+    protected Vector3 GetMovementDirection()//v
     {
         if (stateMachine.patrolPosition != Vector3.zero)
         {

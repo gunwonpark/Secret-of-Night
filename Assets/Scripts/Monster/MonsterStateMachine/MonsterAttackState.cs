@@ -31,7 +31,7 @@ public class MonsterAttackState : MonsterBaseState
     public override void Update()
     {
         base.Update();
-
+        Rotate(GetMovementDirection());
         //선공몬스터가 아닐때
         if (stateMachine.FieldMonsters.myInfo.AtkStance == false)
         {
