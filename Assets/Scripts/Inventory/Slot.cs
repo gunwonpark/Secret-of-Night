@@ -86,6 +86,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                     Inventory.instance._quickSlotInventory.AddItem(curSlot.item, totalCount);
                     Inventory.instance.RemoveItemByID(curSlot.item.ItemID, curSlot.count);
                 }
+
+                Inventory.instance.ClearSeletecItemWindow();
+                Inventory.instance.InventoryTrim();
             }
             else
             {

@@ -328,7 +328,7 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             //item 배열의 길이를 넘지 않는 내에서 접근 가능하게
-            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level >= _items[i].UnlockLevel)
+            if (i < _items.Length && GameManager.Instance.playerManager.playerData.Level == _items[i].UnlockLevel)
             {
                 _uiSlots[i].LockImage(0);
                 _uiSlots[i].IsLocked = false;

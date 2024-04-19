@@ -464,7 +464,7 @@ public class Inventory : MonoBehaviour
     }
 
     //슬롯이 비워질 때
-    private void ClearSeletecItemWindow()
+    public void ClearSeletecItemWindow()
     {
         _selectedItem = null;
         selectedItemName.text = string.Empty;
@@ -653,6 +653,7 @@ public class Inventory : MonoBehaviour
 
                 _uiSlots[i].equipped = _uiSlots[i + 1].equipped; // 현재 슬롯의 장착 정보 <- 다음 슬롯 장착 정보 넣기
                 _uiSlots[i + 1].equipped = false; // 뒤에 슬롯은 장착 정보 해제
+                _uiSlots[i + 1]._outline.enabled = false;
                 if (i + 1 == curEquipIndex) // 뒤 슬롯이 현재 장착된 상태라면 인덱스 초기화
                 {
                     curEquipIndex = i;
