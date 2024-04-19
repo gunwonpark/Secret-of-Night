@@ -45,10 +45,10 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         // H키 누르면 퀘스트 클리어 (테스트용)
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            QuestClear(); // 퀘스트 클리어
-        }
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    QuestClear(); // 퀘스트 클리어
+        //}
 
         // H 누르면 다음 퀘스트 보이기 (테스트용)
         if (Input.GetKeyDown(KeyCode.J))
