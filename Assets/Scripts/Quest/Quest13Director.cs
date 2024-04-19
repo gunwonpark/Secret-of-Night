@@ -8,7 +8,9 @@ public class Quest13Director : MonoBehaviour
     public Transform homePos;
     private MonsterInfo monsterInfo;
     private int maxCount = 1;
-    private int CameleonMaxCount = 10;
+    private int danjiMaxCount = 1;
+    private int moneyBackCount = 1;
+    
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class Quest13Director : MonoBehaviour
         {
             agent.SetDestination(homePos.position);
         }
+        QuestItemSpawner();        
     }
 
     public void QuestSpawnMonster()
@@ -44,5 +47,26 @@ public class Quest13Director : MonoBehaviour
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
 
         fieldMonsters.Init(monsterInfo);
+    }
+
+    private void QuestItemSpawner()
+    {
+        if (QuestManager.I.currentQuest.QuestID == 1015)
+        {
+            for (int i = 0; i < danjiMaxCount; i++)
+            {
+                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(29).Prefab, new Vector3(0.088769f, 1.571416f, 65.8601f), Quaternion.Euler(0f, 167.323f, 0f));
+                danjiMaxCount--;
+            }            
+        }        
+
+        if (QuestManager.I.currentQuest.QuestID == 1029)
+        {
+            for (int i = 0; i < moneyBackCount; i++)
+            {
+                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(28).Prefab, new Vector3(4.59f, 0.71f, 118.44f), Quaternion.identity);
+                moneyBackCount--;
+            }            
+        }
     }
 }

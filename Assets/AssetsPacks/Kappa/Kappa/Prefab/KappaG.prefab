@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: 04040000070400001304000014040000
+  questID: f003000004040000070400001304000014040000
   exclamationMark: {fileID: 5121708969372709889}
   npcName: seoriseori
 --- !u!1 &7950093167585086779
