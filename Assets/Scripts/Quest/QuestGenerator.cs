@@ -511,9 +511,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "서리서리", Scripts = "아주 잠깐 눈을 돌린 사이에 사라져 버렸어(훌쩍)" },
                 new Dialogue { TalkerKo = "서리서리", Scripts = "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘(엉엉)" },
             },
-            isContinue = true,            
-            QuestItemID = 28,
-            GoalCount = 1,    
+            isContinue = true,           
             // 게로게로의 주머니1개 얻으면 클리어
         };
         tempQuests.Add(newQuest);

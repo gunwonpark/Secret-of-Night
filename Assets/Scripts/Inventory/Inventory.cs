@@ -77,6 +77,8 @@ public class Inventory : MonoBehaviour
     public GameObject saleCancleBtn;
     public TextMeshProUGUI ItemNameText;
 
+    public GameObject _playerStatIcon;
+
 
     //상점에서 판매하기 G키 활성화를 이벤트로 델리게이트 사용
     public delegate void InventoryEvent();
@@ -108,6 +110,9 @@ public class Inventory : MonoBehaviour
     public void Initialize()
     {
         _inventoryUI.SetActive(false);
+
+        _playerStatIcon.BindEvent(OnStatIconClick);
+
         _statIcon.SetActive(false);
         popUpUI.SetActive(false);
 
@@ -128,6 +133,10 @@ public class Inventory : MonoBehaviour
         QuestManager.OnQuestCleared += CloseInventory;
     }
 
+    private void OnStatIconClick()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<PlayerStatusPopup>(parent: _playerStatIcon.transform);
+    }
 
     private void ButtonEvent()
     {
