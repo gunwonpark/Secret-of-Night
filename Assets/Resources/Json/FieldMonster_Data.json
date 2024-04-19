@@ -89,7 +89,7 @@
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
 			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/SquirrelA",
+			"PrefabPath": "Prefabs/Monsters/Meerkat",
 			"TargetRange": 5,
 			"RotationDamping": 10,
 			"DropItem": [
@@ -155,7 +155,7 @@
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
 			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/Porcupine",
+			"PrefabPath": "Prefabs/Monsters/Skunk",
 			"TargetRange": 5,
 			"RotationDamping": 10,
 			"DropItem": [
@@ -188,7 +188,7 @@
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
 			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/Meerkat",
+			"PrefabPath": "Prefabs/Monsters/WolfA",
 			"TargetRange": 5,
 			"RotationDamping": 10,
 			"DropItem": [
@@ -227,7 +227,7 @@
 			"MoveSpeed": 1,
 			"RunSpeed": 1.1,
 			"AtkRange": 1.6,
-			"PrefabPath": "Prefabs/Monsters/Skunk",
+			"PrefabPath": "Prefabs/Monsters/BullA",
 			"TargetRange": 5,
 			"RotationDamping": 10,
 			"DropItem": [
