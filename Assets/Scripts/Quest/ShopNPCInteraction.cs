@@ -119,8 +119,8 @@ public class ShopNPCInteraction : MonoBehaviour
         {
             if (QuestManager.I.currentQuest.QuestID == id)
             {
-                QuestManager.I.CheckCurrentQuest(id);
                 interactionPopup.SetActive(false);
+                QuestManager.I.CheckCurrentQuest(id);
                 _GKeyActivate = false;
             }
 
