@@ -65,7 +65,7 @@ public class NPCInteraction : MonoBehaviour
 
         if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
         {
-            transform.position = new Vector3(124.5736f, 6.09848f, -16.91287f);
+            transform.position = new Vector3(2.73f, 2f, 51.72f);
         }
         if (QuestManager.I.currentQuest.QuestID == 1017 && npcName == "buggubuggu")
         {
