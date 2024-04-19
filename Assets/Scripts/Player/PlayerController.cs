@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float runSpeed = 4.0f;
     public float rotationDamping = 10f;
     public float jumpForce = 4f;
+    public float jumpDelayTime = 0.3f;
     public float dodgeHeihgt = 2.0f;
     public float dodgeForce = -4.0f;
     #endregion
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [field: SerializeField] public bool IsGrounded { get; set; }
     [field: SerializeField] public bool canRun { get; set; }
     [field: SerializeField] public bool IsTired { get; set; }
+    [field: SerializeField] public bool IsDie { get; set; }
     #endregion
 
     [field: Header("Animations")]
@@ -88,13 +90,22 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void OnPlayerDie()
     {
-        Animator.SetTrigger(AnimationData.Die);
-        PlayerData.OnDie -= OnPlayerDie;
-        Input.enabled = false;
+        if (!IsDie)
+        {
+            IsDie = true;
+            PlayerData.OnDie -= OnPlayerDie;
+            Animator.SetTrigger(AnimationData.Die);
+            Input.enabled = false;
+        }
+
     }
 
     public Type GetCurrentState()
     {
         return stateMachine?.GetCurrentState();
+    }
+    private void OnDestroy()
+    {
+        PlayerData.OnDie -= OnPlayerDie;
     }
 }
