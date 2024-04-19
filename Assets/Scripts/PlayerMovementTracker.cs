@@ -3,37 +3,45 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovementTracker : MonoBehaviour
 {
-    private Vector3 previousPosition; 
+    private Vector3 previousPosition;
     private float totalDistance;
+    private int maxcount = 1;
 
     public DayNightCycle dayNightCycle;
 
-    void Start()
-    {        
-        previousPosition = transform.position;
-    }
-
     void Update()
-    {            
+    {
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             if (QuestManager.I.currentQuest.QuestID == 1002)
             {
-                Vector3 currentPosition = transform.position;   // 현재 프레임에서 플레이어의 위치를 가져옵니다.
+                for (int i = 0; i < maxcount; i++)
+                {
+                    ResetPreviousPosition();
 
-                float distanceThisFrame = Vector3.Distance(currentPosition, previousPosition);  // 이전 위치와 현재 위치 간의 거리를 계산합니다.
+                    maxcount--;
+                }
 
-                previousPosition = currentPosition; // 현재 위치를 이전 위치로 설정합니다.
+                Vector3 currentPosition = transform.position;
 
-                totalDistance += distanceThisFrame; // 이동 거리를 총 이동 거리에 더합니다.
+                float distanceThisFrame = Vector3.Distance(currentPosition, previousPosition);
 
-                // 이동 거리가 30 유닛 이상인지 확인합니다.
+                previousPosition = currentPosition;
+
+                totalDistance += distanceThisFrame;
+
                 if (totalDistance >= 30f)
                 {
                     QuestManager.I.CheckCurrentQuest(1002);
                     dayNightCycle.time = 0.8f;
                 }
             }
-        }        
-    }   
+        }
+    }
+
+    // 이전 위치 초기화 함수
+    public void ResetPreviousPosition()
+    {
+        previousPosition = transform.position;
+    }
 }
