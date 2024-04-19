@@ -7,8 +7,6 @@ public class QuickInventoryItemSlot
 }
 public class QuickSlotInventory : MonoBehaviour
 {
-    private QuickSlotInventorySetting quickSlotInventorySetting;
-
     // 퀵 슬롯 설정 창
     [SerializeField] private GameObject _quickSlotUI;
     [SerializeField] private GameObject _slotGrid;
@@ -28,7 +26,6 @@ public class QuickSlotInventory : MonoBehaviour
     private void Start()
     {
         Initalize();
-        quickSlotInventorySetting = GetComponent<QuickSlotInventorySetting>();
     }
 
     private void Initalize()
@@ -96,19 +93,11 @@ public class QuickSlotInventory : MonoBehaviour
     // 퀵슬롯 아이템 사용
     public void QuickSlotItemUse()
     {
-        //Inventory.instance.SelectItem(_selectedItemIndex);
-        //SelectItem(_selectedItemIndex);
-
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (slots[_selectedItemIndex].item != null)
             {
                 OnUseButton();
-            }
-            else // 아이템이 없을 땐 설정 창
-            {
-                quickSlotInventorySetting.OpenQuickInventory();
-
             }
         }
 
@@ -121,7 +110,7 @@ public class QuickSlotInventory : MonoBehaviour
         {
             if (slots[_selectedItemIndex].item != null)
             {
-                quickSlotInventorySetting.AddItem(slots[_selectedItemIndex].item, slots[_selectedItemIndex].count);
+                Inventory.instance.AddItem(slots[_selectedItemIndex].item, slots[_selectedItemIndex].count);
                 RemoveSelectedItem(slots[_selectedItemIndex].count);
 
             }
@@ -170,9 +159,7 @@ public class QuickSlotInventory : MonoBehaviour
 
     public void OnUseButton()
     {
-        Inventory.instance.RemoveItemByID(_selectedItem.item.ItemID, 1);
-        Inventory.instance.InventoryTrim();
-
+        SelectItem(_selectedItemIndex);
         switch (_selectedItem.item.ItemID)
         {
             case 1:
@@ -220,7 +207,6 @@ public class QuickSlotInventory : MonoBehaviour
             }
         }
     }
-
 
     public void SelectItem(int _index)
     {

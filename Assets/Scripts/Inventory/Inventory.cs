@@ -20,8 +20,7 @@ public class Inventory : MonoBehaviour
     private EquipController _equipController;
     [HideInInspector] public PlayerCondition _playerCondition;
     [HideInInspector] public PlayerController _playerController;
-    private QuickSlotInventorySetting _quickSlotInventorySetting; // 퀵 슬롯 설정 창
-    private QuickSlotInventory _quickSlotInventory;
+    public QuickSlotInventory _quickSlotInventory;
 
 
     [SerializeField] private GameObject _inventoryUI;
@@ -91,8 +90,7 @@ public class Inventory : MonoBehaviour
         _equipController = GetComponent<EquipController>();
         _playerCondition = GetComponent<PlayerCondition>();
         _playerController = GetComponent<PlayerController>();
-        _quickSlotInventorySetting = GetComponent<QuickSlotInventorySetting>();
-        _quickSlotInventory = GetComponent<QuickSlotInventory>();
+        _quickSlotInventory = FindObjectOfType<QuickSlotInventory>();
     }
 
     void Start()
@@ -336,7 +334,6 @@ public class Inventory : MonoBehaviour
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
-        _quickSlotInventorySetting.AddItem(_item, _quantity);
     }
 
     // 아이템 수량 추가
@@ -493,7 +490,6 @@ public class Inventory : MonoBehaviour
         if (_selectedItem.item.Type == "using")
         {
             _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제(사용한 갯수)
-            _quickSlotInventorySetting.RemoveItemByID(_selectedItem.item.ItemID, 1);
             switch (_selectedItem.item.ItemID)
             {
                 case 1:
@@ -812,9 +808,7 @@ public class Inventory : MonoBehaviour
             InventoryTrim();
             // 퀵슬롯설정창에만 있으면 퀵슬롯 설정창에서 삭제, 퀵슬롯에만 있으면 퀵슬롯에서 삭제, 둘다있으면 삭제갯수보다 많은 곳에서 삭제
 
-
             _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
-            _quickSlotInventorySetting.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯
         }
         else
         {
