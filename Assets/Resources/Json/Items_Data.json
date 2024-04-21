@@ -110,7 +110,7 @@
 			"Name": "SwordDefault",
 			"Type": "Equip",
 			"Price": 0,
-			"Damage": 0.5,
+			"Damage": 1,
 			"Critical": 0,
 			"Money": 0,
 			"ItemName": "도토리의 낡은 검",
