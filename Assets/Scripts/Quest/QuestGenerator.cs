@@ -519,7 +519,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1030))
         {
             QuestID = 1030,
-            Description = "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치>",
+            // Description = "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치>",
             dialogues = new List<Dialogue>
             {
                 new Dialogue { TalkerKo = "주인공", Scripts = "(정말 마을안에는 게로게로가 없잖아?)" },
@@ -529,7 +529,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue { TalkerKo = "주인공", Scripts =  "!?" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "방금 게로게로의 목소리가 들린 것 같아" },
                 new Dialogue { TalkerKo = "주인공", Scripts = "근데 방향이..부끄부끄가 사라졌었던 곳이 잖아!?" },                
-            },           
+            },              
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 

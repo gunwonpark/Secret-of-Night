@@ -25,7 +25,7 @@ public class DialogueHandler : MonoBehaviour
     private void Update()
     {
         // F 누르면 CheckDialogue 호출
-        if (IsDialogueActive() && Input.GetKeyDown(KeyCode.F))
+        if (IsDialogueActive() && Input.GetKeyDown(KeyCode.G))
         {
             CheckDialogue();
         }
@@ -64,8 +64,7 @@ public class DialogueHandler : MonoBehaviour
         QuestManager.I.currentQuest.Queststatus = QuestStatus.TalkActive;
 
         ShowDialogue(); // 대화창 표시
-
-        Debug.Log("캐릭터 조작 변경 필요");
+        
         GameManager.Instance.inputManager.DisablePlayerAction();
     }
 

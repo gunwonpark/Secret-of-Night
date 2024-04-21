@@ -90,7 +90,7 @@
 		{
 			"QuestID": 1004,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "마을 입구 NPC와 대화",
 			"QuestGoal": "<띠리띠리와 대화>",
@@ -119,7 +119,7 @@
 		{
 			"QuestID": 1005,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "촌장에게<촌장에게 말 걸기>",
 			"QuestGoal": "<촌장에게 말걸기>",
@@ -148,7 +148,7 @@
 		{
 			"QuestID": 1006,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "게로게로에게<게로게로에게 말 걸기>",
 			"QuestGoal": "<게로게로에게 말걸기>",
@@ -177,7 +177,7 @@
 		{
 			"QuestID": 1007,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "뽀롱뽀롱에게<뽀롱뽀롱에게 말 걸기>",
 			"QuestGoal": "<뽀롱뽀롱에게 말걸기>",
@@ -206,7 +206,7 @@
 		{
 			"QuestID": 1008,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "서리서리에게<서리서리에게 말 걸기>",
 			"QuestGoal": "<서리서리에게 말걸기>",
@@ -238,7 +238,7 @@
 			"QuestType": 0,
 			"QuestTitle": 0,
 			"Description": "서리서리, 뽀롱뽀롱과 대화나누기",
-			"QuestGoal": "<Npc와 대화>",
+			"QuestGoal": "<Npc와 대화종료 후 자동완료>",
 			"QuestItemID": 0,
 			"GoalCount": 0,
 			"QuestItemID2": 0,
@@ -264,7 +264,7 @@
 		{
 			"QuestID": 1010,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "촌장에게<촌장에게 말 걸기>",
 			"QuestGoal": "<촌장에게 말걸기>",
@@ -293,7 +293,7 @@
 		{
 			"QuestID": 1011,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "띠리띠리에게<띠리띠리에게 말걸기>",
 			"QuestGoal": "<띠리띠리에게 말걸기>",
@@ -380,7 +380,7 @@
 		{
 			"QuestID": 1014,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "촌장에게<촌장에게 돌아가기>",
 			"QuestGoal": "<촌장에게 말걸기>",
@@ -467,7 +467,7 @@
 		{
 			"QuestID": 1017,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "위험에 처한 부꾸부꾸<부꾸부꾸 마을로 데려오기>",
 			"QuestGoal": "<촌장에게 말걸기>",
@@ -499,7 +499,7 @@
 			"QuestType": 0,
 			"QuestTitle": 0,
 			"Description": "촌장의 이야기<촌장과 대화>",
-			"QuestGoal": "<촌장과 대화>",
+			"QuestGoal": "<촌장과 대화종료 후 자동완료>",
 			"QuestItemID": 0,
 			"GoalCount": 0,
 			"QuestItemID2": 0,
@@ -525,7 +525,7 @@
 		{
 			"QuestID": 1019,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "스승 찾아 삼만리<스승과 대화>",
 			"QuestGoal": "<스승에게 말걸기>",
@@ -757,7 +757,7 @@
 		{
 			"QuestID": 1027,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "마을에서 생긴 일<촌장과 대화>",
 			"QuestGoal": "<촌장에게 말걸기>",
@@ -786,7 +786,7 @@
 		{
 			"QuestID": 1028,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "사라진 게로게로<서리서리와 대화>",
 			"QuestGoal": "<서리서리에게 말걸기>",
@@ -844,10 +844,10 @@
 		{
 			"QuestID": 1030,
 			"QuestSubID": 1,
-			"QuestType": 1,
+			"QuestType": 4,
 			"QuestTitle": 0,
-			"Description": "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치>",
-			"QuestGoal": "<스컹크,늑대 각각 10마리 처치>",
+			"Description": "사라진 게로게로<게로게로를 찾아라> <스컹크,늑대 각각 10마리 처치 후 게로게로 찾아서 상호작용>",
+			"QuestGoal": "<스컹크,늑대 각각 10마리 처치 후 게로게로 찾아서 상호작용>",
 			"QuestItemID": 5,
 			"GoalCount": 10,
 			"QuestItemID2": 6,
@@ -873,7 +873,7 @@
 		{
 			"QuestID": 1031,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "사라진 게로게로<게로게로를 마을로 데려가기>,<서리서리와 대화>",
 			"QuestGoal": "<서리서리에게 말걸기>",
@@ -902,7 +902,7 @@
 		{
 			"QuestID": 1032,
 			"QuestSubID": 1,
-			"QuestType": 0,
+			"QuestType": 4,
 			"QuestTitle": 0,
 			"Description": "사라진 게로게로<촌장에게 이상한 점 말하기>",
 			"QuestGoal": "<촌장에게 말걸기>",

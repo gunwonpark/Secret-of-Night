@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Quest03Director : MonoBehaviour
+public class SpecialQuest : MonoBehaviour
 {
     public DayNightCycle dayNightCycle;
     public float blackoutDuration = 3.0f; // 어두워지는 시간

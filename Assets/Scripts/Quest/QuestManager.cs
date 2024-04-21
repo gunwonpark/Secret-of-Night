@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
-    private Quest03Director quest03Director;
+    private SpecialQuest quest03Director;
     public GameObject questPopup;
     public delegate void QusestClearedEventHandler();
     public static event QusestClearedEventHandler OnQuestCleared;
@@ -21,13 +21,15 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests; // 퀘스트 리스트
     private int questIndex = 0; // 퀘스트 인덱스
-    public Quest currentQuest; // 현재 퀘스트
+    public Quest currentQuest; // 현재 퀘스트    
     public Dialogue currentDialogue;
+
+    public bool isKillMonsterClear;
 
     private void Awake()
     {
         I = this;
-        quest03Director = GetComponent<Quest03Director>();
+        quest03Director = GetComponent<SpecialQuest>();
     }
 
     private void Start()
@@ -45,16 +47,16 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         // H키 누르면 퀘스트 클리어 (테스트용)
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    QuestClear(); // 퀘스트 클리어
-        //}
-
-        // H 누르면 다음 퀘스트 보이기 (테스트용)
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            InitDialogues(); // 대화 목록 초기화
+            QuestClear(); // 퀘스트 클리어
         }
+
+        //// H 누르면 다음 퀘스트 보이기 (테스트용)
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    InitDialogues(); // 대화 목록 초기화
+        //}
     }
 
     // 현재 퀘스트 설정
@@ -113,6 +115,7 @@ public class QuestManager : MonoBehaviour
             NextQuest(); // 다음 퀘스트로
         }
         OnQuestCleared?.Invoke();
+        isKillMonsterClear = false;
     }
 
     private void ItemReward(
@@ -183,7 +186,7 @@ public class QuestManager : MonoBehaviour
 
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
     public void CheckCount(int id)
-    {
+    {        
         // 첫 번째 몬스터의 ID와 개수를 확인
         if (currentQuest.QuestItemID == id)
         {
@@ -198,8 +201,15 @@ public class QuestManager : MonoBehaviour
         // 첫 번째 몬스터와 두 번째 몬스터 모두가 필요한 개수를 다 채웠는지 확인
         if (currentQuest.GoalCount <= 0 && currentQuest.GoalCount2 <= 0)
         {
-            QuestClear(); // 퀘스트 클리어
-        }
+            if(currentQuest.QuestType == 1)
+            {
+                QuestClear(); // 퀘스트 클리어
+            }
+            else if(currentQuest.QuestType == 4)
+            {
+                isKillMonsterClear = true;
+            }          
+        }        
     }
 
 
