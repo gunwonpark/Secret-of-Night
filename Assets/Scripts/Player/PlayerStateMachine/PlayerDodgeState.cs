@@ -11,7 +11,7 @@ public class PlayerDodgeState : PlayerBaseState
     {
         base.Enter();
         AddDodgeForce();
-        StartAnimation(stateMachine.Player.AnimationData.DodgeParameter);
+        stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.DodgeParameter);
     }
 
     public override void Exit()
@@ -19,7 +19,7 @@ public class PlayerDodgeState : PlayerBaseState
         base.Exit();
         stateMachine.Player.IsDodgeing = false;
         stateMachine.Player.ForceReceiver.Reset();
-        StopAnimation(stateMachine.Player.AnimationData.DodgeParameter);
+
     }
     public override void Update()
     {
