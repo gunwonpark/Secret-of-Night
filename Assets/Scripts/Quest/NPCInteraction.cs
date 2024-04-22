@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    [SerializeField] private float interactionRange = 3f; // 상호작용 범위
+    [SerializeField] private float interactionRange = 2f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private List<int> questID; // 퀘스트 ID
     public GameObject exclamationMark;
@@ -52,7 +52,7 @@ public class NPCInteraction : MonoBehaviour
         {
             if (DialogueHandler.I.dialogueIndex == 5)
             {
-                transform.position = new Vector3(-9.015747f, 0.5064697f, 131.2097f);
+                transform.position = new Vector3(-9.03f, 0.4570007f, 133.7497f);
             }            
         }
         if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
