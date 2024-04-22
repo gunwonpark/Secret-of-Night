@@ -2,7 +2,7 @@
 	"Quest": [
 		{
 			"QuestID": 1001,
-			"QuestType": 0,
+			"QuestType": 2,
 			"QuestTitle": "여긴 어디지?",
 			"Description": "배를 채울만한 것을 찾아보기",
 			"QuestGoal": "버섯 $개 획득 ( * / $ )",
@@ -30,7 +30,7 @@
 		},
 		{
 			"QuestID": 1002,
-			"QuestType": 0,
+			"QuestType": 3,
 			"QuestTitle": "여긴 어디지?",
 			"Description": "주운 버섯을 사용하기",
 			"QuestGoal": "버섯 $개 사용 ( * / $ )",
@@ -142,7 +142,7 @@
 		},
 		{
 			"QuestID": 1006,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (1)",
 			"Description": "여관 주인에게 감사 인사를 표하기",
 			"QuestGoal": "여관 주인과 대화",
@@ -170,7 +170,7 @@
 		},
 		{
 			"QuestID": 1007,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (2)",
 			"Description": "마을의 촌장님에게 찾아가기",
 			"QuestGoal": "촌장과 대화",
@@ -198,7 +198,7 @@
 		},
 		{
 			"QuestID": 1008,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (3)",
 			"Description": "연두색 개구리 게로게로에게 인사하기",
 			"QuestGoal": "게로게로와 대화",
@@ -226,7 +226,7 @@
 		},
 		{
 			"QuestID": 1009,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (4)",
 			"Description": "마을 중심에 있는 뽀롱뽀롱에게 인사하기",
 			"QuestGoal": "뽀롱뽀롱과 대화",
@@ -254,7 +254,7 @@
 		},
 		{
 			"QuestID": 1010,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (5)",
 			"Description": "화가 난 서리서리와 대화하기",
 			"QuestGoal": "서리서리와 대화",
@@ -282,7 +282,7 @@
 		},
 		{
 			"QuestID": 1011,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 주민 (6)",
 			"Description": "노란색 개구리 부꾸부꾸에게 인사하기",
 			"QuestGoal": "부꾸부꾸와 대화",
@@ -310,7 +310,7 @@
 		},
 		{
 			"QuestID": 1012,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "이상한 마을",
 			"Description": "구리구리에게 돌아가기",
 			"QuestGoal": "구리구리와 대화",
@@ -338,7 +338,7 @@
 		},
 		{
 			"QuestID": 1013,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "이상한 마을",
 			"Description": "입구에 있는 띠리띠리와 대화하기",
 			"QuestGoal": "띠리띠리와 대화",
@@ -394,7 +394,7 @@
 		},
 		{
 			"QuestID": 1015,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "마을 순찰",
 			"Description": "띠리띠리를 공격하는 포악한 스컹크를 처치하기",
 			"QuestGoal": "포악한 스컹크 처치 ( * / $ )",
@@ -422,7 +422,7 @@
 		},
 		{
 			"QuestID": 1016,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "마을 순찰",
 			"Description": "마을 순찰에 대한 보고를 구리구리에게 하러가기",
 			"QuestGoal": "구리구리와 대화",
@@ -450,7 +450,7 @@
 		},
 		{
 			"QuestID": 1017,
-			"QuestType": 0,
+			"QuestType": 3,
 			"QuestTitle": "사라진 부꾸부꾸",
 			"Description": "카멜레온 주변에 있는 부꾸부꾸의 애착단지 찾기",
 			"QuestGoal": "부꾸부꾸의 애착단지 획득 ( * / $ )",
@@ -478,7 +478,7 @@
 		},
 		{
 			"QuestID": 1018,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "사라진 부꾸부꾸",
 			"Description": "카멜레온을 무서워하는 부꾸부꾸를 구하기",
 			"QuestGoal": "카멜레온 $마리 처치 ( * / $ )",
@@ -506,7 +506,7 @@
 		},
 		{
 			"QuestID": 1019,
-			"QuestType": 0,
+			"QuestType": 3,
 			"QuestTitle": "사라진 부꾸부꾸",
 			"Description": "쓰러진 부꾸부꾸를 데리고 마을로 복귀하기",
 			"QuestGoal": "쓰러진 부꾸부꾸 획득 ( * / $ )",
@@ -562,7 +562,7 @@
 		},
 		{
 			"QuestID": 1021,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "사라진 부꾸부꾸",
 			"Description": "부꾸부꾸의 복귀 사실을 구리구리에게 말하기",
 			"QuestGoal": "구리구리와 대화",
@@ -590,7 +590,7 @@
 		},
 		{
 			"QuestID": 1022,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "강화 수련 (1)",
 			"Description": "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
 			"QuestGoal": "뚜쉬뚜쉬와 대화",
@@ -618,7 +618,7 @@
 		},
 		{
 			"QuestID": 1023,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "강화 수련 (1)",
 			"Description": "수련을 위해 카멜레온을 처치하고 뚜쉬뚜쉬에게 돌아가기",
 			"QuestGoal": "카멜레온 $마리 처치 ( * / $ )",
@@ -646,7 +646,7 @@
 		},
 		{
 			"QuestID": 1024,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "강화 수련 (2)",
 			"Description": "수련을 위해 미어캣을 처치하고 뚜쉬뚜쉬에게 돌아가기",
 			"QuestGoal": "미어캣 $마리 처치 ( * / $ )",
@@ -674,7 +674,7 @@
 		},
 		{
 			"QuestID": 1025,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "강화 수련 (3)",
 			"Description": "수련을 위해 위험한 늑대를 처치하고 뚜쉬뚜쉬에게 돌아가기",
 			"QuestGoal": "늑대 $마리 처치 ( * / $ )",
@@ -702,7 +702,7 @@
 		},
 		{
 			"QuestID": 1026,
-			"QuestType": 0,
+			"QuestType": 1,
 			"QuestTitle": "강화 수련 (4)",
 			"Description": "최고 난이도의 황소를 처치하고 뚜쉬뚜쉬에게 돌아가기",
 			"QuestGoal": "황소 $마리 처치 ( * / $ )",
@@ -730,7 +730,7 @@
 		},
 		{
 			"QuestID": 1027,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "폭풍우",
 			"Description": "뚜쉬뚜쉬의 혼잣말 들어주기",
 			"QuestGoal": "뚜쉬뚜쉬와 대화",
@@ -758,7 +758,7 @@
 		},
 		{
 			"QuestID": 1028,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "폭풍우",
 			"Description": "어수선한 마을에서 무슨일이 있는지 구리구리에게 물어보기",
 			"QuestGoal": "구리구리와 대화",
@@ -786,7 +786,7 @@
 		},
 		{
 			"QuestID": 1029,
-			"QuestType": 0,
+			"QuestType": 5,
 			"QuestTitle": "폭풍우",
 			"Description": "게로게로의 마지막 흔적을 서리서리에게 물어보기",
 			"QuestGoal": "서리서리와 대화",
