@@ -110,14 +110,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
-        //if (!other.CompareTag("Player"))//플레이어 외 다른 오브젝트에 닿았을 때
-        //{
-        //    stateMachine.ChangeState(stateMachine.IdleState);
-        //}
-        //else
-        //{
         OnAttack?.Invoke(other.gameObject);
-        //}
     }
 
     public void dropItem(Item _item)

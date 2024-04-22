@@ -48,22 +48,18 @@ public class MonsterPatrolState : MonsterBaseState
         }
     }
 
+    public LayerMask obstacle;
+
     private bool IsObstacle(Vector3 point, Vector3 direction)
     {
         RaycastHit hit;
-        //Vector3 rayDirection = stateMachine.FieldMonsters.transform.forward;
         Debug.DrawRay(point, direction * 1.5f, Color.red);
 
         //레이로 쏜 곳에 다른 오브젝트가 있으면 true
-        if (Physics.Raycast(point, direction, out hit, 1.5f))
+        if (Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("obstacle")))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle") /*|| hit.collider.gameObject.layer == LayerMask.NameToLayer("Monster")*/)
-            {
-                return true;
-            }
+            return true;
         }
-
         return false;
-
     }
 }
