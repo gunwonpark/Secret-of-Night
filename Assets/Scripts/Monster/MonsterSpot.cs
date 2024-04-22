@@ -112,6 +112,10 @@ public class MonsterSpot : MonoBehaviour
             {
                 return true;
             }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
+            {
+                return false;
+            }
         }
         return false;
     }

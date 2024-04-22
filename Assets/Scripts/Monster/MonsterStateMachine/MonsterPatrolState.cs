@@ -13,7 +13,6 @@ public class MonsterPatrolState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0.5f;
         stateMachine.patrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
         stateMachine.FieldMonsters.monsterAnimation.StartWalkAnimation();
-        //Patrol();
     }
 
     public override void Exit()
@@ -41,7 +40,7 @@ public class MonsterPatrolState : MonsterBaseState
         float distance = (currentPosition - newMovePosition).sqrMagnitude;
 
         //원래 포지션으로 가면 -> idle State로 바꿈
-        if (distance <= 0.5f || IsObstacle(stateMachine.FieldMonsters.transform.position))
+        if (distance <= 0.5f /*|| IsObstacle(stateMachine.FieldMonsters.transform.position)*/)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
@@ -52,8 +51,9 @@ public class MonsterPatrolState : MonsterBaseState
         RaycastHit hit;
 
         //레이로 쏜 곳에 다른 오브젝트가 있으면 true
-        if (Physics.Raycast(point, Vector3.forward, out hit, 0.5f))
+        if (Physics.Raycast(point, Vector3.forward, out hit, 1f))
         {
+            Debug.DrawRay(point, hit.point, Color.red);
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
             {
                 return true;
@@ -61,16 +61,4 @@ public class MonsterPatrolState : MonsterBaseState
         }
         return false;
     }
-
-
-
-    //private void Patrol()
-    //{
-    //    Move();
-    //    Vector3 PatrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
-    //    Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
-
-    //    float distance = (currentPosition - PatrolPosition).sqrMagnitude;
-    //}
-
 }
