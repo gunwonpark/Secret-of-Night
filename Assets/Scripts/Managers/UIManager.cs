@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class UIManager : MonoBehaviour
 {
     private List<UIBase> _popup = new List<UIBase>();

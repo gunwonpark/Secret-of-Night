@@ -22,7 +22,7 @@ public class GameUI : UIBase
     [SerializeField] private Image _staminaImage;
 
     [Header("BossInfo")]
-    [SerializeField] private GameObject _bossInfo;
+    [SerializeField] private GameObject _monsterInfo;
     [SerializeField] private Image _bossHPImage;
     [SerializeField] private TextMeshProUGUI _bossHPText;
     [SerializeField] private TextMeshProUGUI _bossName;
@@ -42,7 +42,7 @@ public class GameUI : UIBase
         //BossSetting
         if (SceneManager.GetActiveScene().name == "BossMap")
         {
-            _bossInfo.SetActive(true);
+            _monsterInfo.SetActive(true);
             BossScene.OnBossSpawned.AddListener(SetBossUI);
         }
 
