@@ -33,6 +33,8 @@ public class MonsterPatrolState : MonsterBaseState
         Move();
         Vector3 newMovePosition = stateMachine.patrolPosition;
         Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
+        Vector3 moveDirection = (newMovePosition - currentPosition).normalized;
+        bool isObstacle = IsObstacle(currentPosition, moveDirection);
 
         newMovePosition.y = 0f;
         currentPosition.y = 0f;
@@ -40,25 +42,28 @@ public class MonsterPatrolState : MonsterBaseState
         float distance = (currentPosition - newMovePosition).sqrMagnitude;
 
         //원래 포지션으로 가면 -> idle State로 바꿈
-        if (distance <= 0.5f /*|| IsObstacle(stateMachine.FieldMonsters.transform.position)*/)
+        if (distance <= 0.5f || isObstacle)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
-    private bool IsObstacle(Vector3 point)
+    private bool IsObstacle(Vector3 point, Vector3 direction)
     {
         RaycastHit hit;
+        //Vector3 rayDirection = stateMachine.FieldMonsters.transform.forward;
+        Debug.DrawRay(point, direction * 1.5f, Color.red);
 
         //레이로 쏜 곳에 다른 오브젝트가 있으면 true
-        if (Physics.Raycast(point, Vector3.forward, out hit, 1f))
+        if (Physics.Raycast(point, direction, out hit, 1.5f))
         {
-            Debug.DrawRay(point, hit.point, Color.red);
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle") /*|| hit.collider.gameObject.layer == LayerMask.NameToLayer("Monster")*/)
             {
                 return true;
             }
         }
+
         return false;
+
     }
 }
