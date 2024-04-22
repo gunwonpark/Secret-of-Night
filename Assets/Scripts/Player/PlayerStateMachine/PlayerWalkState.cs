@@ -29,10 +29,16 @@ public class PlayerWalkState : PlayerBaseState
         if (stateMachine.MovementInput == Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
+            return;
         }
         else if (stateMachine.Player.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.RunState);
+            return;
+        }
+        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == true)
+        {
+            stateMachine.ChangeState(stateMachine.JumpState);
         }
     }
 }
