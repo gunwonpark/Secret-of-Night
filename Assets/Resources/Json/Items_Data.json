@@ -479,6 +479,21 @@
 			"MaxAmount": 1,
 			"PrefabPath": "Prefabs/Items/HiHi",
 			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 33,
+			"Name": "GoldCoin",
+			"Type": "using",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 1,
+			"ItemName": "골드",
+			"Description": "마을의 화폐로 쓰이고 있는 골드이다.",
+			"IconPath": "Images/Icons/GoldCoin",
+			"MaxAmount": 1,
+			"PrefabPath": "Prefabs/Items/GoldCoin",
+			"UnlockLevel": 1
 		}
 	]
 }
