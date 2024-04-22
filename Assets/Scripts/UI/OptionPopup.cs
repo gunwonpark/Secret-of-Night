@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public enum Sound
@@ -15,6 +16,7 @@ public enum Sound
 public class OptionPopup : UIBase
 {
     [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private Button _leftButton;
 
     [Header("Volume")]
     [SerializeField] private Button _masterVolumeLeftButton;
@@ -32,27 +34,50 @@ public class OptionPopup : UIBase
     [SerializeField] private List<Resolution> _resolutions = new List<Resolution>();
     private int _resolutionNumber;
 
+    [Header("MouseSensitive")]
+    [SerializeField] private Slider _mouseSensitive;
+    [SerializeField] private TextMeshProUGUI _sensitivePercentText;
+
     [Header("Quit")]
     [SerializeField] private Button _cancelButton;
     private void Start()
     {
+        _leftButton.onClick.AddListener(() =>
+        {
+            Inventory.instance.optionUI.SetActive(false);
+            Inventory.instance._inventoryUI.SetActive(true);
+        });
         _masterVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.Master));
         _masterVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.Master));
         _bgmVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.BGM));
         _bgmVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.BGM));
         _sfxVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.SFX));
         _sfxVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.SFX));
+        _mouseSensitive.onValueChanged.AddListener((value) =>
+        {
+            CameraTPP.mouseSmoothSpeed = value + 0.5f;
+            _sensitivePercentText.text = $"{(int)(value * 100) - 50}%";
+        });
 
+        Initialize();
+
+        _cancelButton.onClick.AddListener(() => { gameObject.SetActive(false); });
+    }
+
+    #region resolution
+    public override void Initialize()
+    {
+        //mouse init
+        _mouseSensitive.value = CameraTPP.mouseSmoothSpeed - 0.5f;
+
+        //sound init
         SetInitialFillAmount(Sound.Master, _masterVolumeImage);
         SetInitialFillAmount(Sound.BGM, _bgmVolumeImage);
         SetInitialFillAmount(Sound.SFX, _sfxVolumeImage);
 
+        //resolution init
         ResolutionInitialize();
-
-        _cancelButton.onClick.AddListener(() => Destroy(gameObject));
     }
-
-    #region resolution
     void ResolutionInitialize()
     {
         _resolutions.AddRange(Screen.resolutions);
@@ -140,4 +165,10 @@ public class OptionPopup : UIBase
         _audioMixer.SetFloat(Enum.GetName(typeof(Sound), type), newVolume);
     }
     #endregion
+
+    public void OverrideCancelButtonEvent(UnityAction evt)
+    {
+        _cancelButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.AddListener(evt);
+    }
 }
