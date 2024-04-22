@@ -332,6 +332,33 @@
 			"Weigth": [
 				0
 			]
+		},
+		{
+			"MonsterID": 11,
+			"Name": "QuestWolfA",
+			"Level": 4,
+			"Exp": 45,
+			"AtkStance": 0,
+			"HP": 14,
+			"Damage": 1.75,
+			"Daf": 0.5,
+			"DmgSpeed": 1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/WolfA",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				0
+			],
+			"DropItemCount": [
+				0
+			],
+			"Weigth": [
+				0
+			]
 		}
 	]
 }
