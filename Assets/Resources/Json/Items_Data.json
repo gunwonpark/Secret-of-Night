@@ -393,12 +393,12 @@
 		{
 			"ItemID": 27,
 			"Name": "Bucket01",
-			"Type": "Etc",
+			"Type": "Quest",
 			"Price": 0,
 			"Damage": 0,
 			"Critical": 0,
 			"Money": 6,
-			"ItemName": "그릇",
+			"ItemName": "하이하이의 그릇",
 			"Description": "욕조만한 크기를 가진 그릇이다.",
 			"IconPath": "Images/Icons/Bucket01",
 			"MaxAmount": 99,
@@ -448,6 +448,36 @@
 			"IconPath": "Images/Icons/BugguBuggu",
 			"MaxAmount": 1,
 			"PrefabPath": "Prefabs/Items/BugguBuggu",
+			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 31,
+			"Name": "GeroGero",
+			"Type": "Quest",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "쓰러진 게로게로",
+			"Description": "늑대에 의해 기절초풍한 게로게로의 몸뚱아리이다.",
+			"IconPath": "Images/Icons/GeroGero",
+			"MaxAmount": 1,
+			"PrefabPath": "Prefabs/Items/GeroGero",
+			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 32,
+			"Name": "HiHi",
+			"Type": "Quest",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "쓰러진 하이하이",
+			"Description": "알 수 없는 이유로 쓰러진 하이하이의 몸뚱아리이다.",
+			"IconPath": "Images/Icons/HiHi",
+			"MaxAmount": 1,
+			"PrefabPath": "Prefabs/Items/HiHi",
 			"UnlockLevel": 1
 		}
 	]
