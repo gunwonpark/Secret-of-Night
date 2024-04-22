@@ -20,7 +20,7 @@ public class GameStartUI : UIBase
 
     [Header("Option")]
     [SerializeField] private Button _optionButton;
-
+    [SerializeField] private GameObject _optionPopup;
     public void Start()
     {
         Initialize();
@@ -67,7 +67,7 @@ public class GameStartUI : UIBase
 
     private void OnOptionButtonClick()
     {
-        GameManager.Instance.uiManager.ShowPopupUI<OptionPopup>();
+        _optionPopup.SetActive(true);
     }
 
     void OnGameStartButtonClick()
