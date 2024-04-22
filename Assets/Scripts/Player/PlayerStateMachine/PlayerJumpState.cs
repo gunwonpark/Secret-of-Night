@@ -10,7 +10,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-
+        stateMachine.Player.IsJumping = true;
         AddJumpForce();
         StartAnimation(stateMachine.Player.AnimationData.JumpParameter);
     }

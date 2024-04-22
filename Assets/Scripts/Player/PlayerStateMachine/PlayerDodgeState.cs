@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerDodgeState : PlayerBaseState
 {
 
@@ -11,21 +13,20 @@ public class PlayerDodgeState : PlayerBaseState
     {
         base.Enter();
         AddDodgeForce();
-        StartAnimation(stateMachine.Player.AnimationData.DodgeParameter);
+        stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.DodgeParameter);
     }
-
     public override void Exit()
     {
         base.Exit();
         stateMachine.Player.IsDodgeing = false;
         stateMachine.Player.ForceReceiver.Reset();
-        StopAnimation(stateMachine.Player.AnimationData.DodgeParameter);
+
     }
     public override void Update()
     {
         base.Update();
-        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Dodge");
-        if (normalizedTime >= 0.5f)
+        AnimatorStateInfo info = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsTag("Dodge") && stateMachine.Player.Animator.IsInTransition(0))
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }

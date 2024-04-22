@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public StaminaSystem StaminaSystem { get; private set; }
     private PlayerStateMachine stateMachine;
 
+    private FieldMonsters _nearestMonster = null;
     private void Awake()
     {
         AnimationData = new PlayerAnimationData();
@@ -104,6 +105,24 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         return stateMachine?.GetCurrentState();
     }
+
+    public void FindNearestMonster()
+    {
+        Collider[] monsters = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer("Monster"));
+        if (monsters.Length > 0)
+        {
+            FieldMonsters monster = monsters[0].GetComponent<FieldMonsters>();
+            if (monster != null && _nearestMonster != monster)
+            {
+                _nearestMonster = monster;
+            }
+        }
+        else
+        {
+            _nearestMonster = null;
+        }
+    }
+
     private void OnDestroy()
     {
         PlayerData.OnDie -= OnPlayerDie;

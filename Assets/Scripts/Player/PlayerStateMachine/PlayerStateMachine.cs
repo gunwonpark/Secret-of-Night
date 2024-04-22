@@ -31,4 +31,5 @@ public class PlayerStateMachine : StateMachine
         MainCameraTransform = Camera.main.transform;
         cameraScript = MainCameraTransform.GetComponent<CameraTPP>();
     }
+
 }

@@ -12,5 +12,9 @@ public abstract class BaseScene : MonoBehaviour
     {
         GameManager.Instance.sceneManager.CurrentScene = this;
     }
+    private void OnDestroy()
+    {
+        GameManager.Instance.inputManager.Initialize();
+    }
     public abstract void Clear();
 }

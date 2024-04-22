@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public DataManager dataManager;
-    //private ResourceManager resourceManager;
     public SoundManager soundManager;
     public UIManager uiManager;
     public PlayerManager playerManager;

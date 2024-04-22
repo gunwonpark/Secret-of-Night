@@ -199,6 +199,13 @@ public class Phase1Boss : MonoBehaviour, IDamageable
             animator.SetTrigger("Die");
             agent.isStopped = true;
             currentState = BossState.Dying;
+            GameManager.Instance.uiManager.ShowPopupUI<MakePeoplePopup>();
+            StartCoroutine("GameEnd");
         }
+    }
+    IEnumerable GameEnd()
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
     }
 }

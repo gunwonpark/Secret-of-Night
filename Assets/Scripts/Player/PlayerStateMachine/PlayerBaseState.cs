@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
-    protected int skillKey = -1;
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         stateMachine = playerStateMachine;
@@ -46,6 +45,7 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Attack.canceled += OnAttackCanceled;
         stateMachine.Player.Input.PlayerActions.Skill1.started += OnSkill1Started;
         stateMachine.Player.Input.PlayerActions.Skill2.started += OnSkill2Started;
+        stateMachine.Player.Input.PlayerActions.Skill3.started += OnSkill3Started;
     }
 
 
@@ -63,6 +63,7 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Attack.canceled -= OnAttackCanceled;
         stateMachine.Player.Input.PlayerActions.Skill1.started -= OnSkill1Started;
         stateMachine.Player.Input.PlayerActions.Skill2.started -= OnSkill2Started;
+        stateMachine.Player.Input.PlayerActions.Skill3.started -= OnSkill3Started;
     }
     #region addevent
     private void OnSkill1Started(InputAction.CallbackContext obj)
@@ -70,7 +71,6 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.DoSkill == false)
         {
             stateMachine.Player.DoSkill = true;
-            skillKey = 1;
             stateMachine.ChangeState(stateMachine.SkillState);
         }
 
@@ -80,30 +80,30 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.DoSkill == false)
         {
             stateMachine.Player.DoSkill = true;
-            skillKey = 2;
+            stateMachine.ChangeState(stateMachine.SkillState);
+        }
+    }
+    private void OnSkill3Started(InputAction.CallbackContext obj)
+    {
+        if (stateMachine.Player.DoSkill == false)
+        {
+            stateMachine.Player.DoSkill = true;
             stateMachine.ChangeState(stateMachine.SkillState);
         }
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == false)
-        {
-            stateMachine.Player.IsJumping = true;
-            stateMachine.ChangeState(stateMachine.JumpState);
-        }
+        stateMachine.Player.IsJumping = true;
     }
 
     protected virtual void OnRunStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsTired)
-        {
-            stateMachine.Player.IsRunning = true;
-        }
+        stateMachine.Player.IsRunning = true;
     }
 
     private void OnDodgeStarted(InputAction.CallbackContext obj)
     {
-        if (stateMachine.Player.IsDodgeing == false && stateMachine.Player.IsJumping == false)
+        if (stateMachine.Player.IsDodgeing == false)
         {
             stateMachine.Player.IsDodgeing = true;
             stateMachine.ChangeState(stateMachine.DodgeState);
@@ -132,7 +132,7 @@ public class PlayerBaseState : IState
         stateMachine.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
     }
 
-    Vector3 moveDirection;
+    Vector3 moveDirection = Vector3.zero;
     private float SpeedChangeRate = 10f;
     private void Move()
     {
@@ -148,19 +148,15 @@ public class PlayerBaseState : IState
         if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
         {
-            // creates curved result rather than a linear one giving a more organic speed change
-            // note T in Lerp is clamped, so we don't need to clamp our speed
             stateMachine.Player.speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed,
                 Time.deltaTime * SpeedChangeRate);
 
-            // round speed to 3 decimal places
             stateMachine.Player.speed = Mathf.Round(stateMachine.Player.speed * 1000f) / 1000f;
         }
         else
         {
             stateMachine.Player.speed = targetSpeed;
         }
-
 
         stateMachine.Player.Controller.Move(((moveDirection * stateMachine.Player.speed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
 
@@ -207,11 +203,11 @@ public class PlayerBaseState : IState
     }
     protected void StartAnimation(int animationHash)
     {
-        stateMachine.Player.Animator.SetBool(animationHash, true);
+        stateMachine.Player.Animator?.SetBool(animationHash, true);
     }
     protected void StopAnimation(int animationHash)
     {
-        stateMachine.Player.Animator.SetBool(animationHash, false);
+        stateMachine.Player.Animator?.SetBool(animationHash, false);
     }
 
     protected float GetNormalizedTime(Animator animator, string tag)

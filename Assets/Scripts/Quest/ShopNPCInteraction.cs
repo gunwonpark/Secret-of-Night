@@ -44,6 +44,11 @@ public class ShopNPCInteraction : MonoBehaviour
             OpenInteractionPopup();
         }
 
+        if (QuestManager.I.currentQuest.QuestID == 1008)
+        {
+            _GKeyActivate = false;
+        }
+
         switch (QuestManager.I.currentQuest.Queststatus)
         {
             case QuestStatus.Progress:
@@ -114,8 +119,8 @@ public class ShopNPCInteraction : MonoBehaviour
         {
             if (QuestManager.I.currentQuest.QuestID == id)
             {
-                QuestManager.I.CheckCurrentQuest(id);
                 interactionPopup.SetActive(false);
+                QuestManager.I.CheckCurrentQuest(id);
                 _GKeyActivate = false;
             }
 
