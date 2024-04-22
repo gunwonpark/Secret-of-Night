@@ -49,7 +49,6 @@ public class GameUI : UIBase
         //Status Change
         playerData.OnHPChange += UpdateHP;
         playerData.OnMPChange += UpdateMP;
-        playerData.OnSPChange += UpdateSP;
         playerData.OnExpChange += UpdateExp;
         //GameEndUI
         _continueButton.onClick.AddListener(OnContinueButtonClick);
@@ -109,10 +108,7 @@ public class GameUI : UIBase
     {
         _playerMPImage.fillAmount = playerData.CurMP / playerData.MaxMP;
     }
-    private void UpdateSP()
-    {
-        _staminaImage.fillAmount = playerData.CurSP / playerData.MaxSP;
-    }
+
     private void UpdateExp()
     {
         _playerExpImage.fillAmount = (float)playerData.CurExp / playerData.MaxExp;
@@ -122,7 +118,6 @@ public class GameUI : UIBase
     {
         UpdateHP();
         UpdateMP();
-        UpdateSP();
         UpdateExp();
     }
     private void ToggleUI(InputAction.CallbackContext obj)
@@ -184,7 +179,6 @@ public class GameUI : UIBase
     {
         playerData.OnHPChange -= UpdateHP;
         playerData.OnMPChange -= UpdateMP;
-        playerData.OnSPChange -= UpdateSP;
         playerData.OnExpChange -= UpdateExp;
         GameManager.Instance.inputManager.UIActions.Option.started -= ToggleUI;
         BossScene.OnBossSpawned.RemoveListener(SetBossUI);
