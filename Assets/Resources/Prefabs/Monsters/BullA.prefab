@@ -217,7 +217,7 @@ Transform:
   - {fileID: 6737830261474877739}
   - {fileID: 4129231012144298394}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2833210658348095005
 Rigidbody:
@@ -323,12 +323,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 3.02
-  m_Radius: 1
+  m_Radius: 0.57
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.28, z: 0.31}
+  m_Center: {x: 0, y: 1.67, z: 0.34}
 --- !u!114 &732216834783469797
 MonoBehaviour:
   m_ObjectHideFlags: 0

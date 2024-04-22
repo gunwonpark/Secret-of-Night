@@ -76,8 +76,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
@@ -110,14 +110,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player"))//플레이어 외 다른 오브젝트에 닿았을 때
-        {
-            stateMachine.ChangeState(stateMachine.IdleState);
-        }
-        else
-        {
-            OnAttack?.Invoke(other.gameObject);
-        }
+        OnAttack?.Invoke(other.gameObject);
     }
 
     public void dropItem(Item _item)
