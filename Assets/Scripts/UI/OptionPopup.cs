@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public enum Sound
@@ -15,6 +16,7 @@ public enum Sound
 public class OptionPopup : UIBase
 {
     [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private Button _leftButton;
 
     [Header("Volume")]
     [SerializeField] private Button _masterVolumeLeftButton;
@@ -40,6 +42,11 @@ public class OptionPopup : UIBase
     [SerializeField] private Button _cancelButton;
     private void Start()
     {
+        _leftButton.onClick.AddListener(() =>
+        {
+            Inventory.instance.optionUI.SetActive(false);
+            Inventory.instance._inventoryUI.SetActive(true);
+        });
         _masterVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.Master));
         _masterVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.Master));
         _bgmVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.BGM));
@@ -54,7 +61,7 @@ public class OptionPopup : UIBase
 
         Initialize();
 
-        _cancelButton.onClick.AddListener(() => Destroy(gameObject));
+        _cancelButton.onClick.AddListener(() => { gameObject.SetActive(false); });
     }
 
     #region resolution
@@ -158,4 +165,10 @@ public class OptionPopup : UIBase
         _audioMixer.SetFloat(Enum.GetName(typeof(Sound), type), newVolume);
     }
     #endregion
+
+    public void OverrideCancelButtonEvent(UnityAction evt)
+    {
+        _cancelButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.AddListener(evt);
+    }
 }
