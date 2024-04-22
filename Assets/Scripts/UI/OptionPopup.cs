@@ -32,6 +32,10 @@ public class OptionPopup : UIBase
     [SerializeField] private List<Resolution> _resolutions = new List<Resolution>();
     private int _resolutionNumber;
 
+    [Header("MouseSensitive")]
+    [SerializeField] private Slider _mouseSensitive;
+    [SerializeField] private TextMeshProUGUI _sensitivePercentText;
+
     [Header("Quit")]
     [SerializeField] private Button _cancelButton;
     private void Start()
@@ -42,17 +46,31 @@ public class OptionPopup : UIBase
         _bgmVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.BGM));
         _sfxVolumeRightButton.onClick.AddListener(() => OnClickRightButton(Sound.SFX));
         _sfxVolumeLeftButton.onClick.AddListener(() => OnClickVolumeLeftButton(Sound.SFX));
+        _mouseSensitive.onValueChanged.AddListener((value) =>
+        {
+            CameraTPP.mouseSmoothSpeed = value + 0.5f;
+            _sensitivePercentText.text = $"{(int)(value * 100) - 50}%";
+        });
 
-        SetInitialFillAmount(Sound.Master, _masterVolumeImage);
-        SetInitialFillAmount(Sound.BGM, _bgmVolumeImage);
-        SetInitialFillAmount(Sound.SFX, _sfxVolumeImage);
-
-        ResolutionInitialize();
+        Initialize();
 
         _cancelButton.onClick.AddListener(() => Destroy(gameObject));
     }
 
     #region resolution
+    public override void Initialize()
+    {
+        //mouse init
+        _mouseSensitive.value = CameraTPP.mouseSmoothSpeed - 0.5f;
+
+        //sound init
+        SetInitialFillAmount(Sound.Master, _masterVolumeImage);
+        SetInitialFillAmount(Sound.BGM, _bgmVolumeImage);
+        SetInitialFillAmount(Sound.SFX, _sfxVolumeImage);
+
+        //resolution init
+        ResolutionInitialize();
+    }
     void ResolutionInitialize()
     {
         _resolutions.AddRange(Screen.resolutions);

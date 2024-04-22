@@ -37,5 +37,9 @@ public class PlayerIdleState : PlayerBaseState
             stateMachine.ChangeState(stateMachine.WalkState);
             return;
         }
+        if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == true)
+        {
+            stateMachine.ChangeState(stateMachine.JumpState);
+        }
     }
 }
