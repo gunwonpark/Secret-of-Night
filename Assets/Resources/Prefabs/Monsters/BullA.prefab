@@ -217,7 +217,7 @@ Transform:
   - {fileID: 6737830261474877739}
   - {fileID: 4129231012144298394}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2833210658348095005
 Rigidbody:
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHp: {fileID: 2921309010838996967}
+  isActive: 0
 --- !u!1001 &5324832859980187068
 PrefabInstance:
   m_ObjectHideFlags: 0
