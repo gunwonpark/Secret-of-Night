@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Selected Item")]
     public ItemSlot _selectedItem;
-    private int _selectedItemIndex;
+    public int _selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
     public TextMeshProUGUI selectedItemStatText;
@@ -297,7 +297,7 @@ public class Inventory : MonoBehaviour
     //아이템 추가
     public void AddItem(Item _item, int _quantity)
     {
-        if (_item.Type == "using" || _item.Type == "Etc") // 소모성 아이템은 수량 체크
+        if (_item.Type == "using" || _item.Type == "Etc" || _item.Type == "Quest") // 소모성 아이템은 수량 체크
         {
             for (int i = 0; i < _quantity; i++)
             {
@@ -343,6 +343,12 @@ public class Inventory : MonoBehaviour
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
         UpdateUI();
+        // 퀵슬롯에 자동 저장
+        if (_item.Type == "using")
+        {
+            Inventory.instance._quickSlotInventory.AddItem(_item, _quantity);
+        }
+
     }
 
     // 아이템 수량 추가
@@ -403,28 +409,33 @@ public class Inventory : MonoBehaviour
         selectedItemStatText.text = statText;
 
         // 예시: 사용 버튼은 항상 활성화, 장착 버튼은 장착 가능한 경우에만 활성화되도록 설정
-        useButton.SetActive(_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc");
+        useButton.SetActive(_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc" || _selectedItem.item.Type == "Quest");
         equipButton.SetActive(_selectedItem.item.Type == "Equip" && !_uiSlots[_index].equipped);
         unEquipButton.SetActive(_selectedItem.item.Type == "Equip" && _uiSlots[_index].equipped);
-
-        // 퀘스트 아이템은 판매, 버리기 비활성화
-        if (_selectedItem.item.Type != "Etc")
-        {
-            dropButton.SetActive(true);
-        }
-        else
-        {
-            dropButton.SetActive(false);
-        }
-
-        if (sale_Inventory == true && _selectedItem.item.Type != "Etc")
+        dropButton.SetActive(true);
+        if (sale_Inventory == true && _selectedItem.item.Type != "Quest")
         {
             saleButton.SetActive(true);
         }
-        else
-        {
-            saleButton.SetActive(false);
-        }
+
+        //// 퀘스트 아이템은 판매, 버리기 비활성화
+        //if (_selectedItem.item.Type != "Etc")
+        //{
+        //    dropButton.SetActive(true);
+        //}
+        //else
+        //{
+        //    dropButton.SetActive(false);
+        //}
+
+        //if (sale_Inventory == true && _selectedItem.item.Type != "Etc")
+        //{
+        //    saleButton.SetActive(true);
+        //}
+        //else
+        //{
+        //    saleButton.SetActive(false);
+        //}
 
     }
 
@@ -443,9 +454,10 @@ public class Inventory : MonoBehaviour
                 return "SP + " + _selectedItem.item.Price;
             case 7:
                 return "Speed + " + _selectedItem.item.Price;
-            case int id when id >= 12 && id <= 29:
+            case int id when id >= 12 && id <= 27:
+                return "Etc";
+            case int id when id >= 28 && id <= 30:
                 return "Quest";
-
             default:
                 return "";
         }
@@ -772,10 +784,10 @@ public class Inventory : MonoBehaviour
             _currentQuantity = int.Parse(quantityInput.text);
             int totalPrice = (_selectedItem.item.Money / 2) * _currentQuantity;
             ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice + "\n 50% 가격으로 판매";
-            if (_selectedItem.item.Type == "Etc")
-            {
-                ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
-            }
+            //if (_selectedItem.item.Type == "Etc")
+            //{
+            //    ItemNameText.text = _selectedItem.item.ItemName + " : $ " + totalPrice;
+            //}
         }
         else
         {
@@ -818,7 +830,11 @@ public class Inventory : MonoBehaviour
             InventoryTrim();
             // 퀵슬롯설정창에만 있으면 퀵슬롯 설정창에서 삭제, 퀵슬롯에만 있으면 퀵슬롯에서 삭제, 둘다있으면 삭제갯수보다 많은 곳에서 삭제
 
-            _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
+            if (_selectedItem.item.Type == "using")
+            {
+                _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
+            }
+
         }
         else
         {

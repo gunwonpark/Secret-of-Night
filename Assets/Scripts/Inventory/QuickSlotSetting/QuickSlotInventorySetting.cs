@@ -76,7 +76,7 @@ public class QuickSlotInventorySetting : MonoBehaviour
     {
         _quickInventoryUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Inventory.instance._playerController.Input.enabled = false;
 
     }
