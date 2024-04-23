@@ -2419,7 +2419,7 @@ RectTransform:
   - {fileID: 4637806403788249441}
   - {fileID: 6429079798103812098}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2506,7 +2506,7 @@ MonoBehaviour:
   _playerMPImage: {fileID: 6471727458732120699}
   _playerExpImage: {fileID: 7741031023512164135}
   _staminaImage: {fileID: 7685578052411924435}
-  _bossInfo: {fileID: 4268509952367435445}
+  _monsterInfo: {fileID: 0}
   _bossHPImage: {fileID: 8092889883728751627}
   _bossHPText: {fileID: 892677768963053684}
   _bossName: {fileID: 144142043525015516}
@@ -7234,7 +7234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6927101066304616742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7886,7 +7886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3750459986333630111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9771,7 +9771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2080297811120243830
 RectTransform:
   m_ObjectHideFlags: 0

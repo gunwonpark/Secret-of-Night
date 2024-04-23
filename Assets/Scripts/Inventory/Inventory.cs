@@ -410,6 +410,9 @@ public class Inventory : MonoBehaviour
             case "Etc":
                 statText = UsingAndEctItemStatText();
                 break;
+            case "Quest":
+                statText = UsingAndEctItemStatText();
+                break;
             case "Equip":
                 statText = EquipItemStatText();
                 break;
@@ -465,7 +468,7 @@ public class Inventory : MonoBehaviour
                 return "Speed + " + _selectedItem.item.Price;
             case int id when id >= 12 && id <= 27:
                 return "Etc";
-            case int id when id >= 28 && id <= 30:
+            case int id when id >= 28 && id <= 33:
                 return "Quest";
             default:
                 return "";
@@ -839,7 +842,7 @@ public class Inventory : MonoBehaviour
             InventoryTrim();
             // 퀵슬롯설정창에만 있으면 퀵슬롯 설정창에서 삭제, 퀵슬롯에만 있으면 퀵슬롯에서 삭제, 둘다있으면 삭제갯수보다 많은 곳에서 삭제
 
-            if (_selectedItem.item.Type == "using")
+            if (_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc")
             {
                 _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
             }
@@ -876,14 +879,14 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             if (slots[i].item != null)
-            {                
+            {
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
                     if (QuestManager.I.currentQuest.QuestID != 1001)
                     {
                         slots[i].count -= quantity;
                         slots[i].item = null;
-                    }                        
+                    }
                     QuestManager.I.QuestClear();
                 }
             }
