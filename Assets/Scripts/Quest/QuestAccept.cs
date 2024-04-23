@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class QuestAccept : MonoBehaviour
 {
-    [SerializeField] private float interactionRange = 3f; // 상호작용 범위
+    [SerializeField] private float interactionRange = 2f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     public List<int> questID; // 퀘스트 ID
     public GameObject questionMark;
 
+    public QuestStatus questStatus;
+
     private void Update()
-    {                   
+    {
+        questStatus = QuestManager.I.currentQuest.Queststatus;
         if (Input.GetKeyDown(interactionKey) && IsPlayerInRange())
         {
             foreach (int id in questID)

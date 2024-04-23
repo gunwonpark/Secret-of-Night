@@ -13,7 +13,6 @@ public class MonsterPatrolState : MonsterBaseState
         stateMachine.MovementSpeedModifier = 0.5f;
         stateMachine.patrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
         stateMachine.FieldMonsters.monsterAnimation.StartWalkAnimation();
-        //Patrol();
     }
 
     public override void Exit()
@@ -34,6 +33,8 @@ public class MonsterPatrolState : MonsterBaseState
         Move();
         Vector3 newMovePosition = stateMachine.patrolPosition;
         Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
+        Vector3 moveDirection = (newMovePosition - currentPosition).normalized;
+        bool isObstacle = IsObstacle(currentPosition, moveDirection);
 
         newMovePosition.y = 0f;
         currentPosition.y = 0f;
@@ -41,36 +42,24 @@ public class MonsterPatrolState : MonsterBaseState
         float distance = (currentPosition - newMovePosition).sqrMagnitude;
 
         //원래 포지션으로 가면 -> idle State로 바꿈
-        if (distance <= 0.5f || IsObstacle(stateMachine.FieldMonsters.transform.position))
+        if (distance <= 0.5f || isObstacle)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
-    private bool IsObstacle(Vector3 point)
+    public LayerMask obstacle;
+
+    private bool IsObstacle(Vector3 point, Vector3 direction)
     {
         RaycastHit hit;
+        Debug.DrawRay(point, direction * 1.5f, Color.red);
 
         //레이로 쏜 곳에 다른 오브젝트가 있으면 true
-        if (Physics.Raycast(point, Vector3.forward, out hit, 0.5f))
+        if (Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("obstacle")))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
-
-
-
-    //private void Patrol()
-    //{
-    //    Move();
-    //    Vector3 PatrolPosition = stateMachine.FieldMonsters.GetNewMovePoint();
-    //    Vector3 currentPosition = stateMachine.FieldMonsters.transform.position;
-
-    //    float distance = (currentPosition - PatrolPosition).sqrMagnitude;
-    //}
-
 }

@@ -24,7 +24,7 @@ public class PlayerSkillState : PlayerBaseState
         base.Update();
         float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Skill");
 
-        if (normalizedTime > 1f)
+        if (normalizedTime > 0.5f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }

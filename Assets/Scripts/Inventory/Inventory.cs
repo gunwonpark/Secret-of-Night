@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
     public QuickSlotInventory _quickSlotInventory;
 
 
-    [SerializeField] private GameObject _inventoryUI;
+    public GameObject _inventoryUI;
     [SerializeField] private GameObject _slotGrid;
     [SerializeField] private GameObject _statIcon; // 스탯 정보 
     public GameObject playerLight;
@@ -79,7 +79,9 @@ public class Inventory : MonoBehaviour
 
     public GameObject _playerStatIcon;
 
-
+    [Header("OptionUI")]
+    public GameObject optionUI;
+    public Button menuRButton;
     //상점에서 판매하기 G키 활성화를 이벤트로 델리게이트 사용
     public delegate void InventoryEvent();
     public static event InventoryEvent OnInventoryClose;
@@ -156,6 +158,12 @@ public class Inventory : MonoBehaviour
         B_checkBtn.onClick.AddListener(OnInventoryCheckButton);
         B_saleCheckBtn.onClick.AddListener(OnSaleCheckButton);
         B__saleCancleBtn.onClick.AddListener(OnSaleCancelButton);
+        menuRButton.onClick.AddListener(() =>
+        {
+            optionUI.SetActive(true);
+            _inventoryUI.SetActive(false);
+        });
+        optionUI.GetComponent<OptionPopup>().OverrideCancelButtonEvent(CloseInventory);
         rightBtn.onClick.AddListener(OnNext);
         leftBtn.onClick.AddListener(OnPrev);
         exitBtn.onClick.AddListener(OnExit);
@@ -215,6 +223,7 @@ public class Inventory : MonoBehaviour
     public void CloseInventory()
     {
         _inventoryUI.SetActive(false);
+        optionUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         playerLight.SetActive(false);
         _playerController.Input.enabled = true;
@@ -867,11 +876,14 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             if (slots[i].item != null)
-            {
+            {                
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
-                    slots[i].count -= quantity;
-                    slots[i].item = null;
+                    if (QuestManager.I.currentQuest.QuestID != 1001)
+                    {
+                        slots[i].count -= quantity;
+                        slots[i].item = null;
+                    }                        
                     QuestManager.I.QuestClear();
                 }
             }

@@ -20,14 +20,6 @@ public class CameraTPP : MonoBehaviour
     public float maxVerticalAngle = 30.0f; // 최대 수직각도
     public float minVerticalAngle = -60.0f;// 최소 수직각도
 
-    [Header("카메라 움직임 관련")]
-    //smoothDamp
-    [SerializeField] private float smoothTime = 0.3f;
-    float angleHVelocity = 0.0f;
-    Vector3 pivotOffsetVelocity = Vector3.zero;
-    Vector3 camOffsetVelocity = Vector3.zero;
-
-
     private float angleH = 0.0f; // 마우스 이동에 따른 카메라 수평이동 수치
     private float angleV = 0.0f; // 마우스 이동에 따른 카메라 수직이동 수치
     private Transform cameraTransform; // 카메라 Transform 캐싱용
@@ -64,10 +56,6 @@ public class CameraTPP : MonoBehaviour
         ResetTargetOffsets();
         ResetFOV();
         ResetMaxVerticalAngle();
-    }
-    private void Start()
-    {
-        //GameManager.Instance.inputManager.PlayerActions.Camera.performed += i => mousePos = i.ReadValue<Vector2>();
     }
     public void ResetTargetOffsets()
     {

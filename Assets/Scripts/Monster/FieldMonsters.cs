@@ -20,6 +20,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     private MonsterStateMachine stateMachine;
     public ItemDataBase itemDataBase;
     public MonsterSpot monsterSpot;
+    public HPBar hpBar;
 
     public Vector3 originalPosition;
     public Vector3 spawnSpot;
@@ -36,6 +37,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         controller = GetComponent<CharacterController>();
         monsterAnimation = GetComponent<MonsterAnimation>();
         attackCollider = GetComponent<BoxCollider>();
+        hpBar = GetComponent<HPBar>();
     }
 
     public void Init(MonsterInfo monsterInfo, MonsterSpot monsterSpot)
@@ -74,8 +76,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
@@ -103,18 +105,12 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public void TakeDamage(float Damage)
     {
         OnDamage?.Invoke(Damage);
+        hpBar.SetHP(HP / myInfo.HP);
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player"))//플레이어 외 다른 오브젝트에 닿았을 때
-        {
-            stateMachine.ChangeState(stateMachine.IdleState);
-        }
-        else
-        {
-            OnAttack?.Invoke(other.gameObject);
-        }
+        OnAttack?.Invoke(other.gameObject);
     }
 
     public void dropItem(Item _item)

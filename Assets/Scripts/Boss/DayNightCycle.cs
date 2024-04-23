@@ -77,5 +77,15 @@ public class DayNightCycle : MonoBehaviour
             go.SetActive(false);
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
             go.SetActive(true);
+
+        if (QuestManager.I.currentQuest.QuestID == 1004)
+        {
+            time = 0.8f;
+        }
+
+        //if (QuestManager.I.currentQuest.QuestID == 1007)
+        //{
+        //    time = startTime;
+        //}
     }
 }

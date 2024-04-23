@@ -8,6 +8,9 @@ public class InputManager : MonoBehaviour
 
     public void Initialize()
     {
+        if (InputActions != null)
+            InputActions.Dispose();
+
         InputActions = new PlayerControls();
         PlayerActions = InputActions.Player;
         UIActions = InputActions.UI;
@@ -20,6 +23,7 @@ public class InputManager : MonoBehaviour
         PlayerActions.Enable();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
     }
     public void DisablePlayerAction()
     {
