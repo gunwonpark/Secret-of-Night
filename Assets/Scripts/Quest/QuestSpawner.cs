@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Quest13Director : MonoBehaviour
+public class QuestSpawner : MonoBehaviour
 {
     NavMeshAgent agent;
     public Transform targetPos;
@@ -10,28 +10,34 @@ public class Quest13Director : MonoBehaviour
     private int maxCount = 1;
     private int danjiMaxCount = 1;
     private int moneyBackCount = 1;
+    private Animator animator;
     
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (QuestManager.I.currentQuest.QuestID == 1012)
+        if (QuestManager.I.currentQuest.QuestID == 1013)
         {
-            if (DialogueHandler.I.dialogueIndex == 2)
+            if (DialogueHandler.I.dialogueIndex == 3)
             {
                 agent.SetDestination(targetPos.position);
-                for (int i = 0; i < maxCount; i++)
-                {
-                    QuestSpawnMonster();
-                    maxCount--;
-                }
-
+                animator.SetBool("isWalk", true);
             }
         }
+        else if (QuestManager.I.currentQuest.QuestID == 1013)
+        {
+            for (int i = 0; i < maxCount; i++)
+            {
+                maxCount--;
+                QuestSpawnMonster();
+            }            
+        }
+
         else if (QuestManager.I.currentQuest.QuestID == 1014)
         {
             agent.SetDestination(homePos.position);

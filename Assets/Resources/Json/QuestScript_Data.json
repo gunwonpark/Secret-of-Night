@@ -25,19 +25,19 @@
 			"Scripts": "일단 배가 너무 고파.. 이 주변에 먹을 만한 것이 있을까?"
 		},
 		{
-			"DialogueID": 100201,
+			"DialogueID": 100301,
 			"Talker": "Player",
 			"TalkerKo": "플레이어",
 			"Scripts": "버섯이 꽤 맛있는걸!"
 		},
 		{
-			"DialogueID": 100202,
+			"DialogueID": 100302,
 			"Talker": "Player",
 			"TalkerKo": "플레이어",
 			"Scripts": "배도 채웠고.."
 		},
 		{
-			"DialogueID": 100301,
+			"DialogueID": 100303,
 			"Talker": "Player",
 			"TalkerKo": "플레이어",
 			"Scripts": "계속 여기 있을 수는 없으니 좀 둘러봐야겠어."
@@ -445,127 +445,127 @@
 			"Scripts": "(뭐야 저 무관심한 말투는..)"
 		},
 		{
-			"DialogueID": 101501,
+			"DialogueID": 101401,
 			"Talker": "DiriDiri",
 			"TalkerKo": "띠리띠리",
 			"Scripts": "저기 저 동물이 보여?"
 		},
 		{
-			"DialogueID": 101502,
+			"DialogueID": 101402,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "응?"
 		},
 		{
-			"DialogueID": 101503,
+			"DialogueID": 101403,
 			"Talker": "DiriDiri",
 			"TalkerKo": "띠리띠리",
 			"Scripts": "요즘 동물들이 포악해져서 쉽게 다가갈수가 없어."
 		},
 		{
-			"DialogueID": 101504,
+			"DialogueID": 101404,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "괜찮아 보이는데?"
 		},
 		{
-			"DialogueID": 101505,
+			"DialogueID": 101405,
 			"Talker": "DiriDiri",
 			"TalkerKo": "띠리띠리",
 			"Scripts": "(스컹크가 갑자기 공격을 해온다) 앗! 아파! 왜 이러는 거야!"
 		},
 		{
-			"DialogueID": 101506,
+			"DialogueID": 101406,
 			"Talker": "DiriDiri",
 			"TalkerKo": "띠리띠리",
 			"Scripts": "너! 보고만 있지 말고 어떻게 좀 해봐!"
 		},
 		{
-			"DialogueID": 101601,
+			"DialogueID": 101501,
 			"Talker": "DiriDiri",
 			"TalkerKo": "띠리띠리",
 			"Scripts": "역시나 스컹크가 공격을...? 촌장님에게 돌아가야겠어!"
 		},
 		{
-			"DialogueID": 101701,
+			"DialogueID": 101601,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "촌장님! 마을 밖에 동물들이.."
 		},
 		{
-			"DialogueID": 101702,
+			"DialogueID": 101602,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "자네 돌아왔구먼! 지금 큰일이 생겼네!"
 		},
 		{
-			"DialogueID": 101703,
+			"DialogueID": 101603,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "무슨 일이죠?"
 		},
 		{
-			"DialogueID": 101704,
+			"DialogueID": 101604,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "부꾸부꾸가 마을 안에서 보이지 않아! 마을 밖으론 절대 나가지 않는 아이인데.."
 		},
 		{
-			"DialogueID": 101705,
+			"DialogueID": 101605,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "젊은이! 부탁을 계속해서 미안하네만 부꾸부꾸를 좀 찾아주지 않겠나? "
 		},
 		{
-			"DialogueID": 101706,
+			"DialogueID": 101606,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "순찰을 보내기 전에 부꾸부꾸의 애착 단지가 없어졌단 소리를 했던 것 같네."
 		},
 		{
-			"DialogueID": 101707,
+			"DialogueID": 101607,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "뜬금없이 카멜레온 이야기도 했던 것 같고.."
 		},
 		{
-			"DialogueID": 101801,
+			"DialogueID": 101701,
 			"Talker": "BugguBuggu",
 			"TalkerKo": "부꾸부꾸",
 			"Scripts": "앗 저쪽에서 부꾸부꾸의 소리가 들리는 것 같아!"
 		},
 		{
-			"DialogueID": 101802,
+			"DialogueID": 101702,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "부꾸부꾸!!"
 		},
 		{
-			"DialogueID": 101803,
+			"DialogueID": 101703,
 			"Talker": "BugguBuggu",
 			"TalkerKo": "부꾸부꾸",
 			"Scripts": "카멜레온이 너무 무서워!"
 		},
 		{
-			"DialogueID": 101901,
+			"DialogueID": 101801,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "부꾸부꾸! 왜 여기 있는 거야?"
 		},
 		{
-			"DialogueID": 101902,
+			"DialogueID": 101802,
 			"Talker": "BugguBuggu",
 			"TalkerKo": "부꾸부꾸",
 			"Scripts": "부꾸부꾸는 몰라.. 카멜레온이 무서워"
 		},
 		{
-			"DialogueID": 101903,
+			"DialogueID": 101803,
 			"Talker": "BugguBuggu",
 			"TalkerKo": "부꾸부꾸",
 			"Scripts": "부꾸부꾸는 아무것도 몰라.."
 		},
 		{
-			"DialogueID": 101904,
+			"DialogueID": 101804,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "일단 마을로 데려가야겠어!"

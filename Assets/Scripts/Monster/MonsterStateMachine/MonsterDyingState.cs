@@ -34,7 +34,7 @@ public class MonsterDyingState : MonsterBaseState
         }        
 
         Debug.Log("죽음");
-        if (QuestManager.I.currentQuest.QuestType == 1)
+        if (QuestManager.I.currentQuest.QuestType == 1 || QuestManager.I.currentQuest.QuestType == 4)
         {
             QuestManager.I.CheckCount(stateMachine.FieldMonsters.myInfo.MonsterID);
         }
