@@ -99,6 +99,7 @@ MonoBehaviour:
   interactionRange: 3
   interactionKey: 103
   questID: fb030000
+  killMonsterQuestID: 
   exclamationMark: {fileID: 2367319547535872367}
   npcName: 
 --- !u!114 &217824336972057033
@@ -117,6 +118,7 @@ MonoBehaviour:
   interactionKey: 103
   questID: fd030000fe030000ff030000000400000104000002040000030400000b040000
   questionMark: {fileID: 7463947998142290668}
+  questStatus: 0
 --- !u!1001 &7983094037693378941
 PrefabInstance:
   m_ObjectHideFlags: 0

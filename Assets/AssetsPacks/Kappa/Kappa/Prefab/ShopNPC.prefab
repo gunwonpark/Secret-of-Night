@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionKey: 103
   interactionPopup: {fileID: 0}
-  questID: ef030000
+  questID: f0030000
   exclamationMark: {fileID: 6378336114024435484}
   talkBtn: {fileID: 0}
   tradeBtn: {fileID: 0}
