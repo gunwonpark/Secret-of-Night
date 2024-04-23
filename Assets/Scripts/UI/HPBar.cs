@@ -33,25 +33,25 @@ public class HPBar : MonoBehaviour
     Coroutine co;
     public void FadeOut(float time)
     {
-        co = StartCoroutine(FadeOutCoroutine(time)); // Start the fade out coroutine
+        co = StartCoroutine(FadeOutCoroutine(time));
     }
 
     private IEnumerator FadeOutCoroutine(float time)
     {
-        float startAlpha = _enemyHp.color.a; // Get the initial alpha value
-        float rate = 1.0f / time; // Determine the rate of fade based on the duration
+        float startAlpha = _enemyHp.color.a;
+        float rate = 1.0f / time;
         float progress = 0.0f;
 
         while (progress < 1.0f)
         {
-            progress += Time.deltaTime * rate; // Increment the progress over time
-            Color color = _enemyHp.color; // Get the current color
-            color.a = Mathf.Lerp(startAlpha, 0, progress); // Lerp the alpha from start to 0
-            _enemyHp.color = color; // Set the color back to the health bar image
-            yield return null; // Wait for the next frame
+            progress += Time.deltaTime * rate;
+            Color color = _enemyHp.color;
+            color.a = Mathf.Lerp(startAlpha, 0, progress);
+            _enemyHp.color = color;
+            yield return null;
         }
 
-        _enemyHp.color = new Color(_enemyHp.color.r, _enemyHp.color.g, _enemyHp.color.b, 0); // Ensure the alpha is set to 0 at the end
+        _enemyHp.color = new Color(_enemyHp.color.r, _enemyHp.color.g, _enemyHp.color.b, 0);
     }
     public void ResetAlpha()
     {

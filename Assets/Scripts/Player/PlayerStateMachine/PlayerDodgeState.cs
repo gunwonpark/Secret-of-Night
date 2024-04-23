@@ -13,11 +13,13 @@ public class PlayerDodgeState : PlayerBaseState
     {
         base.Enter();
         AddDodgeForce();
+        lockRotation = true;
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.DodgeParameter);
     }
     public override void Exit()
     {
         base.Exit();
+        lockRotation = false;
         stateMachine.Player.IsDodgeing = false;
         stateMachine.Player.ForceReceiver.Reset();
 
