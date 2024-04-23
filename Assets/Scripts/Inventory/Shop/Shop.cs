@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,10 +76,20 @@ public class Shop : MonoBehaviour
         _uiSlots = _slotGrid.GetComponentsInChildren<ShopSlot>();
 
         // 각 상점 슬롯에 아이템 불러오기
-        _items = GameManager.Instance.dataManager.itemDataBase.GetItems(1, 11).ToArray();
+        _items = GameManager.Instance.dataManager.itemDataBase.GetAllItems(1, 11).ToArray();
 
-        // 아이템 목록에서 8번째 아이템 제외 (기본아이템)
-        _items = RemoveItemIndex(_items, 7);
+
+        // 아이템 목록에서 3,4,8번, 아이템 제외 (기본아이템)
+        _items = RemoveItemIndex(_items, 2); // 3번 아이템 삭제
+        _items = RemoveItemIndex(_items, 2); // 4번 아이템 삭제, 앞에 인덱스 하나 삭제 됐으므로 2로
+        _items = RemoveItemIndex(_items, 5); // 8번 아이템 삭제, 앞에 인덱스 두개 삭제
+
+        //26번 아이템 추가
+        Item[] _items_2 = GameManager.Instance.dataManager.itemDataBase.GetItems(26).ToArray();
+        _items = _items.Concat(_items_2).ToArray();
+
+
+
 
         for (int i = 0; i < _uiSlots.Length; i++)
         {
@@ -143,7 +154,6 @@ public class Shop : MonoBehaviour
         }
         return newArray;
     }
-
 
     public void OpenShop()
     {
@@ -252,6 +262,9 @@ public class Shop : MonoBehaviour
             case "using":
                 statText = UsingItemStatText();
                 break;
+            case "Etc":
+                statText = UsingItemStatText();
+                break;
             case "Equip":
                 statText = EquipItemStatText();
                 break;
@@ -274,6 +287,8 @@ public class Shop : MonoBehaviour
                 return "SP + " + _selectedItem.item.Price;
             case 7:
                 return "Speed + " + _selectedItem.item.Price;
+            case 26:
+                return "Etc";
             default:
                 return "";
         }
