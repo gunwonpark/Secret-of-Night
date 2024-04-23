@@ -20,7 +20,7 @@ public class QuickSlotInventory : MonoBehaviour
     public QuickInventoryItemSlot[] slots; // 슬롯내의 데이터
 
     private QuickInventoryItemSlot _selectedItem;
-    public int _selectedItemIndex = 1;
+    public int _selectedItemIndex;
 
 
     private void Start()
@@ -47,88 +47,129 @@ public class QuickSlotInventory : MonoBehaviour
 
     private void Update()
     {
-        QuickSlotItemUse();
-        QuickSlotItemClear();
-        MoveSlot();
+        // QuickSlotItemUse();
+        //QuickSlotItemClear();
+        CursorView();
+        //MoveSlot();
+    }
+
+    // 마우스 커서 보이게
+    private void CursorView()
+    {
+        activate = !activate;
+        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            //Cursor.visible = true;
+            if (activate)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                GameManager.Instance.inputManager.PlayerActions.Camera.Disable();
+
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
+            }
+
+            Debug.Log(activate);
+        }
     }
 
     //------------------------------------------------------------------------
 
-    // 슬롯 이동
-    public void MoveSlot()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            // 왼쪽으로 슬롯 이동
-            if (_selectedItemIndex > 0)
-            {
-                _selectedItemIndex--;
-                MoveItemGroup(slotWidth); // ItemGroup을 왼쪽으로 이동
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            // 오른쪽으로 슬롯 이동
-            if (_selectedItemIndex < slots.Length - 1)
-            {
-                _selectedItemIndex++;
-                MoveItemGroup(-slotWidth); // ItemGroup을 오른쪽으로 이동
-            }
-        }
-    }
+    //// 슬롯 이동
+    //public void MoveSlot()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        // 왼쪽으로 슬롯 이동
+    //        if (_selectedItemIndex > 0)
+    //        {
+    //            _selectedItemIndex--;
+    //            MoveItemGroup(slotWidth); // ItemGroup을 왼쪽으로 이동
+    //        }
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        // 오른쪽으로 슬롯 이동
+    //        if (_selectedItemIndex < slots.Length - 1)
+    //        {
+    //            _selectedItemIndex++;
+    //            MoveItemGroup(-slotWidth); // ItemGroup을 오른쪽으로 이동
+    //        }
+    //    }
+    //}
 
-    // ItemGroup을 이동시키는 함수
-    private void MoveItemGroup(float xOffset)
-    {
-        Debug.Log(_selectedItemIndex);
-        Vector3 newPosition;
+    //// ItemGroup을 이동시키는 함수
+    //private void MoveItemGroup(float xOffset)
+    //{
+    //    Debug.Log(_selectedItemIndex);
+    //    Vector3 newPosition;
 
-        newPosition = _itemGroup.localPosition + new Vector3(xOffset, 0f, 0f);
+    //    newPosition = _itemGroup.localPosition + new Vector3(xOffset, 0f, 0f);
 
-        _itemGroup.localPosition = newPosition;
-    }
+    //    _itemGroup.localPosition = newPosition;
+    //}
 
     //---------------------------------------------------------------------------------
 
     // 퀵슬롯 아이템 사용
-    public void QuickSlotItemUse()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (slots[_selectedItemIndex].item != null)
-            {
-                OnUseButton();
-            }
-        }
+    //public void QuickSlotItemUse()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.X))
+    //    {
+    //        if (slots[_selectedItemIndex].item != null)
+    //        {
+    //            OnUseButton();
+    //        }
+    //    }
 
-    }
+    //}
 
-    // 퀵슬롯에서 아이템 해제
-    public void QuickSlotItemClear()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (slots[_selectedItemIndex].item != null)
-            {
-                Inventory.instance.AddItem(slots[_selectedItemIndex].item, slots[_selectedItemIndex].count);
-                RemoveSelectedItem(slots[_selectedItemIndex].count);
+    //// 퀵슬롯에서 아이템 해제
+    //public void QuickSlotItemClear()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.C))
+    //    {
+    //        if (slots[_selectedItemIndex].item != null)
+    //        {
+    //            Inventory.instance.AddItem(slots[_selectedItemIndex].item, slots[_selectedItemIndex].count);
+    //            RemoveSelectedItem(slots[_selectedItemIndex].count);
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
     public void AddItem(Item _item, int _quantity)
     {
         if (_item.Type == "using")
         {
-            QuickInventoryItemSlot slotStack = slots[_selectedItemIndex]; // 선택된 슬롯 가져오기
+            //QuickInventoryItemSlot slotStack = slots[_selectedItemIndex]; // 선택된 슬롯 가져오기
 
-            if (slotStack != null)
+            //if (slotStack != null)
+            //{
+            //    slotStack.item = _item; // 아이템 설정
+            //    slotStack.count = _quantity; // 수량 설정
+            //}
+            for (int i = 0; i < _quantity; i++)
             {
-                slotStack.item = _item; // 아이템 설정
-                slotStack.count = _quantity; // 수량 설정
+                QuickInventoryItemSlot slotStack = GetItemStack(_item);
+                if (slotStack != null)
+                {
+                    slotStack.count++;
+                }
+                else
+                {
+                    QuickInventoryItemSlot emptySlot = GetEmptySlot();
+                    if (emptySlot != null)
+                    {
+                        emptySlot.item = _item;
+                        emptySlot.count = 1;
+                    }
+                }
             }
-
             // 퀵 슬롯 업데이트
             UpdateQuickSlot();
         }

@@ -559,7 +559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: ed030000f2030000f6030000f903000003040000080400000b0400000c040000180400001e04000020040000
+  questID: ee030000f3030000f6030000f903000003040000080400000b0400000c040000180400001e04000020040000
+  killMonsterQuestID: 
   exclamationMark: {fileID: 5379214105054363118}
   npcName: 
 --- !u!114 &1208393050111088237
@@ -578,6 +579,7 @@ MonoBehaviour:
   interactionKey: 103
   questID: 1304000022040000
   questionMark: {fileID: 1002582011430155885}
+  questStatus: 0
 --- !u!1 &7704801056696929347
 GameObject:
   m_ObjectHideFlags: 0

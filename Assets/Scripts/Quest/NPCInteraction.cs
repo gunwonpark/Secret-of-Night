@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
@@ -6,16 +7,23 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private float interactionRange = 2f; // 상호작용 범위
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private List<int> questID; // 퀘스트 ID
+    [SerializeField] private List<int> killMonsterQuestID;
     public GameObject exclamationMark;
     public string npcName;
-
-
+    
     private void Update()
     {
         // 플레이어가 상호작용 키를 누르고 있고, NPC와 일정 범위 내에 있을 때
         if (Input.GetKeyDown(interactionKey) && IsPlayerInRange())
         {
             foreach (int ID in questID)
+            {
+                QuestManager.I.CheckCurrentQuest(ID);
+            }
+        }
+        if (Input.GetKeyDown(interactionKey) && IsPlayerInRange() && QuestManager.I.isKillMonsterClear == true)
+        {
+            foreach (int ID in killMonsterQuestID)
             {
                 QuestManager.I.CheckCurrentQuest(ID);
             }
@@ -37,8 +45,8 @@ public class NPCInteraction : MonoBehaviour
                 break;
         }
 
-        SetNpcposition();
-    }
+        SetNpcposition();        
+    }   
 
     // 플레이어가 일정 범위 내에 있는지 확인하는 메서드
     private bool IsPlayerInRange()

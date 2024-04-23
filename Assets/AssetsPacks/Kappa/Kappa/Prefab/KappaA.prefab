@@ -1261,9 +1261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6aa9da8e9c3a6a4daea989a066338f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 3
+  interactionRange: 2
   interactionKey: 103
-  questID: ee030000
+  questID: ef030000
+  killMonsterQuestID: 06040000
   exclamationMark: {fileID: 4361701308160374548}
   npcName: gerogero
 --- !u!114 &690713481610210054
@@ -1278,10 +1279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e4a38dbd746e646ba678805d7a3ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 3
+  interactionRange: 2
   interactionKey: 103
   questID: 0704000010040000
   questionMark: {fileID: 8919605039139781783}
+  questStatus: 0
 --- !u!1 &541376234480906476
 GameObject:
   m_ObjectHideFlags: 0

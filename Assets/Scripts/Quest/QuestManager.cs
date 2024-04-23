@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager I;
-    private Quest03Director quest03Director;
+    private SpecialQuest quest03Director;
     public GameObject questPopup;
     public delegate void QusestClearedEventHandler();
     public static event QusestClearedEventHandler OnQuestCleared;
@@ -21,13 +21,15 @@ public class QuestManager : MonoBehaviour
 
     public List<Quest> quests; // 퀘스트 리스트
     private int questIndex = 0; // 퀘스트 인덱스
-    public Quest currentQuest; // 현재 퀘스트
+    public Quest currentQuest; // 현재 퀘스트    
     public Dialogue currentDialogue;
+
+    public bool isKillMonsterClear;
 
     private void Awake()
     {
         I = this;
-        quest03Director = GetComponent<Quest03Director>();
+        quest03Director = GetComponent<SpecialQuest>();
     }
 
     private void Start()
@@ -45,16 +47,16 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         // H키 누르면 퀘스트 클리어 (테스트용)
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    QuestClear(); // 퀘스트 클리어
-        //}
-
-        // H 누르면 다음 퀘스트 보이기 (테스트용)
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            InitDialogues(); // 대화 목록 초기화
+            QuestClear(); // 퀘스트 클리어
         }
+
+        //// H 누르면 다음 퀘스트 보이기 (테스트용)
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    InitDialogues(); // 대화 목록 초기화
+        //}
     }
 
     // 현재 퀘스트 설정
@@ -67,6 +69,9 @@ public class QuestManager : MonoBehaviour
         }
 
         currentQuest = quests[questIndex]; // 현재 퀘스트 설정
+        if (currentQuest.QuestID == 1002)
+            ShowQuestDescription();
+        
     }
 
     // 대화 목록 초기화
@@ -91,7 +96,8 @@ public class QuestManager : MonoBehaviour
 
     // 퀘스트 성공
     public void QuestClear()
-    {
+    {        
+        
         // 퀘스트 보상이 있으면 보상 처리
 
         ItemReward(
@@ -104,7 +110,7 @@ public class QuestManager : MonoBehaviour
 
 
         // 연출 같은 특수 퀘스트 성공 처리
-        if (currentQuest.QuestID == 1004)
+        if (currentQuest.QuestID == 1005)
         {
             SpecialQuestClear(); // 특수 퀘스트 성공
         }
@@ -113,6 +119,7 @@ public class QuestManager : MonoBehaviour
             NextQuest(); // 다음 퀘스트로
         }
         OnQuestCleared?.Invoke();
+        isKillMonsterClear = false;
     }
 
     private void ItemReward(
@@ -168,7 +175,7 @@ public class QuestManager : MonoBehaviour
         // 현재 퀘스트의 isContinue가 true라면
         if (currentQuest.isContinue)
         {
-            SetCurrentQuest(); // 다음 퀘스트로 변경
+            SetCurrentQuest(); // 다음 퀘스트로 변경            
             InitDialogues(); // 대화 목록 초기화
             currentQuest.Queststatus = QuestStatus.Complete;
         }
@@ -183,7 +190,7 @@ public class QuestManager : MonoBehaviour
 
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
     public void CheckCount(int id)
-    {
+    {        
         // 첫 번째 몬스터의 ID와 개수를 확인
         if (currentQuest.QuestItemID == id)
         {
@@ -198,8 +205,15 @@ public class QuestManager : MonoBehaviour
         // 첫 번째 몬스터와 두 번째 몬스터 모두가 필요한 개수를 다 채웠는지 확인
         if (currentQuest.GoalCount <= 0 && currentQuest.GoalCount2 <= 0)
         {
-            QuestClear(); // 퀘스트 클리어
-        }
+            if(currentQuest.QuestType == 1)
+            {
+                QuestClear(); // 퀘스트 클리어
+            }
+            else if(currentQuest.QuestType == 4)
+            {
+                isKillMonsterClear = true;
+            }          
+        }        
     }
 
 
@@ -280,6 +294,7 @@ public class Quest
     public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
+    public bool isNoScript;
     public List<Dialogue> dialogues; // 대화 리스트
 
     public Quest(QuestData quest)

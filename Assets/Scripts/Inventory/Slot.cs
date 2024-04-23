@@ -56,7 +56,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         ItemImage(0);
     }
 
-    float clickTime = 0;
+    //float clickTime = 0;
 
     // 슬롯 클릭시 아이템 정보 보이게
     public void OnPointerClick(PointerEventData eventData)
@@ -66,38 +66,38 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             Inventory.instance.SelectItem(index);
         }
 
-        // 더블클릭 간주
-        if ((Time.time - clickTime) < 0.3f)
-        {
-            clickTime = -1;
-            Debug.Log("더블클릭");
+        //// 더블클릭 간주
+        //if ((Time.time - clickTime) < 0.3f)
+        //{
+        //    clickTime = -1;
+        //    Debug.Log("더블클릭");
 
-            // 퀵슬롯에 저장하는 코드 추가
-            if (curSlot != null && (Inventory.instance._selectedItem.item.Type == "using"))
-            {
-                if (Inventory.instance._quickSlotInventory.slots[Inventory.instance._quickSlotInventory._selectedItemIndex].item == null)
-                {
-                    Inventory.instance._quickSlotInventory.AddItem(curSlot.item, curSlot.count);
-                    Inventory.instance.RemoveItemByID(curSlot.item.ItemID, curSlot.count);
-                }
-                else if (Inventory.instance._quickSlotInventory.slots[Inventory.instance._quickSlotInventory._selectedItemIndex].item.ItemID == curSlot.item.ItemID)
-                {
-                    int totalCount = curSlot.count + Inventory.instance._selectedItem.count;
-                    Inventory.instance._quickSlotInventory.AddItem(curSlot.item, totalCount);
-                    Inventory.instance.RemoveItemByID(curSlot.item.ItemID, curSlot.count);
-                }
+        //    // 퀵슬롯에 저장하는 코드 추가
+        //    if (curSlot != null && (Inventory.instance._selectedItem.item.Type == "using"))
+        //    {
+        //        if (Inventory.instance._quickSlotInventory.slots[Inventory.instance._quickSlotInventory._selectedItemIndex].item == null)
+        //        {
+        //            Inventory.instance._quickSlotInventory.AddItem(curSlot.item, curSlot.count);
+        //            Inventory.instance.RemoveItemByID(curSlot.item.ItemID, curSlot.count);
+        //        }
+        //        else if (Inventory.instance._quickSlotInventory.slots[Inventory.instance._quickSlotInventory._selectedItemIndex].item.ItemID == curSlot.item.ItemID)
+        //        {
+        //            int totalCount = curSlot.count + Inventory.instance._selectedItem.count;
+        //            Inventory.instance._quickSlotInventory.AddItem(curSlot.item, totalCount);
+        //            Inventory.instance.RemoveItemByID(curSlot.item.ItemID, curSlot.count);
+        //        }
 
-                Inventory.instance.ClearSeletecItemWindow();
-                Inventory.instance.InventoryTrim();
-            }
-            else
-            {
-                return;
-            }
-        }
-        else
-        {
-            clickTime = Time.time;
-        }
+        //        Inventory.instance.ClearSeletecItemWindow();
+        //        Inventory.instance.InventoryTrim();
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }
+        //}
+        //else
+        //{
+        //    clickTime = Time.time;
+        //}
     }
 }

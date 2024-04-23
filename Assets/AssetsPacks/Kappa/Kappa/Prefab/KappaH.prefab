@@ -709,8 +709,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: f2030000
+  questID: 
   questionMark: {fileID: 2679842260534321213}
+  questStatus: 0
 --- !u!114 &7834702900318821719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: 
+  questID: f2030000
+  killMonsterQuestID: 
   exclamationMark: {fileID: 7097562971627252670}
   npcName: buggubuggu
 --- !u!1 &8932588040181755467
