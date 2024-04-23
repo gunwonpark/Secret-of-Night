@@ -96,8 +96,16 @@ public class QuestManager : MonoBehaviour
 
     // 퀘스트 성공
     public void QuestClear()
-    {        
-        
+    {                
+        // 연출 같은 특수 퀘스트 성공 처리
+        if (currentQuest.QuestID == 1005)
+        {
+            SpecialQuestClear(); // 특수 퀘스트 성공
+        }
+        else
+        {
+            NextQuest(); // 다음 퀘스트로
+        }
         // 퀘스트 보상이 있으면 보상 처리
 
         ItemReward(
@@ -109,17 +117,9 @@ public class QuestManager : MonoBehaviour
         ExpReward(currentQuest.RewardID, currentQuest.RewardCount);
 
 
-        // 연출 같은 특수 퀘스트 성공 처리
-        if (currentQuest.QuestID == 1005)
-        {
-            SpecialQuestClear(); // 특수 퀘스트 성공
-        }
-        else
-        {
-            NextQuest(); // 다음 퀘스트로
-        }
         OnQuestCleared?.Invoke();
         isKillMonsterClear = false;
+        Debug.Log("퀘스트 클리어");
     }
 
     private void ItemReward(

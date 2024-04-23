@@ -56,16 +56,16 @@ public class NPCInteraction : MonoBehaviour
 
     private void SetNpcposition()
     {
-        if (QuestManager.I.currentQuest.QuestID == 1008 && npcName == "seoriseori")
+        if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
         {
-            if (DialogueHandler.I.dialogueIndex == 5)
+            if (DialogueHandler.I.dialogueIndex == 6)
             {
                 transform.position = new Vector3(-9.03f, 0.4570007f, 133.7497f);
             }            
         }
-        if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
+        if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
         {
-            if (DialogueHandler.I.dialogueIndex == 7)
+            if (DialogueHandler.I.dialogueIndex == 9)
             {
                 transform.position = new Vector3(11.20499f, 0.8099976f, 137.0612f);
             }
@@ -73,14 +73,11 @@ public class NPCInteraction : MonoBehaviour
 
         if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
         {
-            transform.position = new Vector3(2.73f, 2f, 51.72f);
+            gameObject.SetActive(false);
         }
-        if (QuestManager.I.currentQuest.QuestID == 1017 && npcName == "buggubuggu")
+        if (QuestManager.I.currentQuest.QuestID == 1020 && npcName == "buggubuggu")
         {
-            if (DialogueHandler.I.dialogueIndex == 5)
-            {
-                transform.position = new Vector3(-2.631256f, 0.5870056f, 119.9609f);
-            }
+            gameObject.SetActive(true);
         }
         if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
         {

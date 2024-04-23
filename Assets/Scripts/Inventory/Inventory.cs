@@ -347,7 +347,7 @@ public class Inventory : MonoBehaviour
             }
 
         }
-        if (QuestManager.I.currentQuest.QuestType == 3)
+        if (QuestManager.I.currentQuest.QuestType == 3 || QuestManager.I.currentQuest.QuestType == 6)
         {
             QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
         }
@@ -873,18 +873,21 @@ public class Inventory : MonoBehaviour
 
     public void QuestItemCheck(int itemID, int quantity)
     {
+
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             if (slots[i].item != null)
             {                
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
-                    if (QuestManager.I.currentQuest.QuestID != 1001)
+                    if (QuestManager.I.currentQuest.QuestType != 6)
                     {
                         slots[i].count -= quantity;
+                        if (slots[i].count <= 0)
                         slots[i].item = null;
-                    }                        
+                    }                    
                     QuestManager.I.QuestClear();
+                    
                 }
             }
         }
