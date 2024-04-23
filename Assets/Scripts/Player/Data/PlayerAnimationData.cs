@@ -10,8 +10,8 @@ public class PlayerAnimationData
     [SerializeField] private string _jumpHash = "Jump";
     [SerializeField] private string _dodgeHash = "Dodge";
     [SerializeField] private string _attackHash = "Attack";
-    [SerializeField] private string _Skill1 = "Skill1";
-    [SerializeField] private string _Skill2 = "Skill2";
+    [SerializeField] private string _Skill1 = "SnowSlash";
+    [SerializeField] private string _Skill2 = "JumpAttack";
     [SerializeField] private string _Skill3 = "Skill3";
     [SerializeField] private string _combo = "Combo";
     [SerializeField] private string _die = "Die";

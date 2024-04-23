@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,26 +34,31 @@ public class AnimationListener : MonoBehaviour
     {
         if (name == "JumpAttack")
         {
-            JumpSlashEffect.Play();
+            ParticleSystem go = Instantiate(JumpSlashEffect, JumpSlashEffect.transform.position, JumpSlashEffect.transform.rotation);
+            go.Play();
+            StartCoroutine(DeacitveEffect(go, name));
         }
         else if (name == "StoneSlash")
         {
             StoneSlashEffect.Play();
         }
     }
+    IEnumerator DeacitveEffect(ParticleSystem trans, string name, float delaytime = 2.0f)
+    {
+        yield return new WaitForSeconds(2.0f);
+        trans.gameObject.SetActive(false);
+    }
     public void SkillDamage(string name)
     {
         if (name == "JumpAttack")
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, 2f, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
-                float distance = Vector3.Distance(hitCollider.transform.position, transform.position);
-                Debug.Log(distance);
-                if (angle < 45f && distance < 2f)
+                if (angle < 45f)
                 {
                     Debug.Log("JumpAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(10f);
@@ -61,15 +67,14 @@ public class AnimationListener : MonoBehaviour
         }
         else if (name == "StoneSlash")
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, 2.4f, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
-                float distance = Vector3.Distance(hitCollider.transform.position, transform.position);
-                Debug.Log(distance);
-                if (angle < 45f)
+
+                if (angle < 100f)
                 {
                     Debug.Log("JumpAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(10f);

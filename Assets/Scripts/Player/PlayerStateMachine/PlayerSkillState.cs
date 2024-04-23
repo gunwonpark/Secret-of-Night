@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerSkillState : PlayerBaseState
 {
     public PlayerSkillState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -9,23 +11,26 @@ public class PlayerSkillState : PlayerBaseState
         base.Enter();
         stateMachine.Player.MovementSpeedModifier = 0f;
         lockRotation = true;
-        StartAnimation(stateMachine.Player.AnimationData.Skill1);
+        StartAnimation(stateMachine.Player.AnimationData.Skill2);
     }
     public override void Exit()
     {
         base.Exit();
         stateMachine.Player.DoSkill = false;
         lockRotation = false;
-        StopAnimation(stateMachine.Player.AnimationData.Skill1);
+        StopAnimation(stateMachine.Player.AnimationData.Skill2);
     }
     public override void Update()
     {
         base.Update();
-        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Skill");
+        AnimatorStateInfo stateInfo = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (normalizedTime > 0.5f)
+        if (stateInfo.IsTag("Skill"))
         {
-            stateMachine.ChangeState(stateMachine.IdleState);
+            if (stateInfo.normalizedTime > 0.8f)
+            {
+                stateMachine.ChangeState(stateMachine.IdleState);
+            }
         }
     }
 }
