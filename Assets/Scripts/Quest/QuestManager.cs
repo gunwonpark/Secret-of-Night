@@ -69,6 +69,9 @@ public class QuestManager : MonoBehaviour
         }
 
         currentQuest = quests[questIndex]; // 현재 퀘스트 설정
+        if (currentQuest.QuestID == 1002)
+            ShowQuestDescription();
+        
     }
 
     // 대화 목록 초기화
@@ -93,7 +96,8 @@ public class QuestManager : MonoBehaviour
 
     // 퀘스트 성공
     public void QuestClear()
-    {
+    {        
+        
         // 퀘스트 보상이 있으면 보상 처리
 
         ItemReward(
@@ -106,7 +110,7 @@ public class QuestManager : MonoBehaviour
 
 
         // 연출 같은 특수 퀘스트 성공 처리
-        if (currentQuest.QuestID == 1004)
+        if (currentQuest.QuestID == 1005)
         {
             SpecialQuestClear(); // 특수 퀘스트 성공
         }
@@ -171,7 +175,7 @@ public class QuestManager : MonoBehaviour
         // 현재 퀘스트의 isContinue가 true라면
         if (currentQuest.isContinue)
         {
-            SetCurrentQuest(); // 다음 퀘스트로 변경
+            SetCurrentQuest(); // 다음 퀘스트로 변경            
             InitDialogues(); // 대화 목록 초기화
             currentQuest.Queststatus = QuestStatus.Complete;
         }
@@ -290,6 +294,7 @@ public class Quest
     public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
     public bool isDirectClear; // 바로 퀘스트 클리어 여부 (대화가 끝나는 시점에 해당)
+    public bool isNoScript;
     public List<Dialogue> dialogues; // 대화 리스트
 
     public Quest(QuestData quest)

@@ -2,16 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class QuestGenerator : MonoBehaviour
 {
-    public List<Quest> tempQuests = new List<Quest>();    
-
+    public List<Quest> tempQuests = new List<Quest>();   
     private void Start()
     {        
         var newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1001))
         {            
-            // "배를 채울만한 것을 찾아보자<버섯 1개 획득 및 사용>",
+            // "배를 채울만한 것을 찾아보기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100101)),
@@ -24,76 +22,65 @@ public class QuestGenerator : MonoBehaviour
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1002))
+        {
+            // "주운 버섯을 사용하기",           
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1003))
         {            
-            // Description = "주변을 둘러보자<이동>",
+            // Description = "주변을 둘러보기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100201)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100202)),
+                new Dialogue { TalkerKo = "주인공", Scripts = "버섯이 꽤 맛있는걸!" },
+                new Dialogue { TalkerKo = "주인공", Scripts = "배도 채웠고.." },
+                new Dialogue { TalkerKo = "주인공", Scripts = "계속 여기 있을 수는 없으니 좀 둘러봐야겠어." },
             },
             isContinue = true,                  
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1003))
-        {
-            QuestID = 1003,
-            Description = "묵을 만한 곳을 찾아보자<마을 발견>",
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1004))
+        {            
+            // Description = "묵을 만한 곳을 찾아보기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "(저 멀리 불빛이 보이는 것 같아!)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(마을이면 좋을텐데.. 일단 가보자)" }
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100401)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100402)),
             },
             isContinue = true,                    
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1004))
-        {
-            QuestID = 1004,
-            Description = "마을 입구 NPC와 대화",
-            
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue { TalkerKo = "NPC", Scripts = "어!? 거기 누구야!" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "아..안녕하세요 불빛이 보여서왔어요..길을 잃었습니다." },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(응..? 사람의 형상이 아닌 것 같은데..?)" },
-                new Dialogue { TalkerKo = "NPC", Scripts = "우리 마을은 길 잃은 나그네를 그냥 보내는 박한 마을이 아니야! 어서와~" }
-            },         
-            
-            isDirectClear = true,
-        };
-        tempQuests.Add(newQuest);
-
-
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1005))
         {
-            QuestID = 1005,
-            Description = "촌장에게<촌장에게 말 걸기>",
-            NextQuestGuide = "하이하이에게 말걸기",
+            // Description = "묵을 만한 곳을 찾아보기",
+            
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "여관 NPC(하이하이)", Scripts = "어머~~ 우리마을에 손님은 정말 오랜만이야!! 잘잤니?" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "아..안녕하세요. 어젯밤에 신세 많이 졌습니다." },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(여관 주인 분도 모습이 이상해..)" },
-                new Dialogue { TalkerKo = "여관 NPC", Scripts = "아니야아니야~ 새로운 사람은 늘 환영이란다!" },
-                new Dialogue { TalkerKo = "여관 NPC", Scripts = "아참! 우리 마을의 촌장님이 널 보고 싶어 하시는데 한번 가볼래?" }
-            },
-            isContinue = true,            
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100501)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100502)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100503)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100504)),                
+            },                     
+            isDirectClear = true,       
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1006))
         {
-            QuestID = 1006,
-            Description = "게로게로에게<게로게로에게 말 걸기>",
+            // Description = "여관 주인에게 감사 인사를 표하기",
+            //NextQuestGuide = "여관 주인에게 감사 인사를 표하기",
             dialogues = new List<Dialogue>
-            {
-                new Dialogue { TalkerKo = "주인공", Scripts = "안녕하세요 촌장님. 저를 보고 싶어 하신다고 해서 왔어요." },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(촌장도..? 확실히 이상해)" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "안녕하신가 젊으니 허허. 나는 이 마을의 촌장이네" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "정말 오랜만에 마을에 손님이 찾아와 한번 보고 싶었네." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "다른 주민들도 보고 싶어 하는 것 같은데 게로게로와 이야기를 해보게." }
+            {                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100601)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100602)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100603)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100604)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100605)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100606)),
             },
             isContinue = true,            
         };
@@ -101,129 +88,137 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1007))
         {
-            QuestID = 1007,
-            Description = "뽀롱뽀롱에게<뽀롱뽀롱에게 말 걸기>",
+            // Description = "마을의 촌장님에게 찾아가기",            
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "안녕! 게로게로..?" },
-                new Dialogue { TalkerKo = "게로게로", Scripts = "안녀어어엉~~~! 내가 바로 게로게로야!" },
-                new Dialogue { TalkerKo = "게로게로", Scripts = " 이렇게 만난 것도 인연인데 서리서리 놀리러 가지 않을래?" },
-                new Dialogue { TalkerKo = "게로게로", Scripts = "서리서리가 어제 버섯을 캐왔는데 내가 몰래 다 먹어서 지금쯤 엄청 씩씩대고 있을 거야" },
-                new Dialogue { TalkerKo = "게로게로", Scripts = "지금이 놀려먹을 시점이라고!!" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "어.. 음.. 앗! 나 갑자기 상점에 볼일이 있어서 가볼게!" }
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100701)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100702)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100703)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100704)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100705)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100706)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100707)),
+            },
+            isContinue = true,            
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1008))
+        {            
+            // Description = "연두색 개구리 게로게로에게 인사하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100801)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100802)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100803)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100804)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100805)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100806)),
             },
             isContinue = true,           
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1008))
-        {
-            QuestID = 1008,
-            Description = "서리서리에게<서리서리에게 말 걸기>",
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1009))
+        {            
+            // Description = "마을 중심에 있는 뽀롱뽀롱에게 인사하기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "휴.. 아! 안녕하세요! 여긴 상점인가 봐요?" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "안녕하세요~ 저는 상점 주인인 뽀롱뽀롱이에요!" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어제 오셨다던 용사님이시군요!" },
-                new Dialogue { TalkerKo = "주인공", Scripts =  "(응..? 내가 언제 용사가 된 거지)" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "저는 마을에서 여러 가지 물건을 사고팔고 있어요~ 많이 들러주세요!" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "앗 서리서리 안녕~?" },
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100901)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100902)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100903)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100904)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100905)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100906)),
 
             },
             isContinue = true,       
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1009))
-        {
-            QuestID = 1009,
-            Description = "서리서리, 뽀롱뽀롱과 대화나누기",
-            NextQuestGuide = "부꾸부꾸에게 말걸기",
-            dialogues = new List<Dialogue>
-            {                
-                new Dialogue { TalkerKo = "서리서리", Scripts = "씨익씨익 누가 내 버섯을 다 먹었어!!" },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "뽀롱뽀롱은 알아??" },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "어머 누가 그런 짓을 했니? 버섯이라면 하나에 10원에 팔 수 있었을 텐데" },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "내 버섯 가져간 놈 잡히기만 해봐! 어? 너는 못 보던 얼굴인데?" },
-                new Dialogue { TalkerKo = "주인공", Scripts =  "아.. 안녕? " },
-                new Dialogue { TalkerKo = "서리서리", Scripts = "설마 내 버섯에 손을 댄 사람이 너야!???" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "난 아니야! (화가 많이 났나 보다)" },
-                new Dialogue { TalkerKo = "", Scripts = "서리서리는 씩씩대며 사라졌다." },
-                new Dialogue { TalkerKo = "주인공", Scripts = "..." },
-                new Dialogue { TalkerKo = "뽀롱뽀롱", Scripts = "호호.. 늘 있는 일이니까 신경 쓰지 않아도 돼! 만나서 반가웠어." },
-            },
-            isDirectClear = true,        
-        };
-        tempQuests.Add(newQuest);
-
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1010))
-        {
-            QuestID = 1010,
-            Description = "촌장에게<촌장에게 말 걸기>",
-            NextQuestGuide = "부꾸부꾸에게 말걸기",
+        {            
+            // Description = "화가 난 서리서리와 대화하기",            
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "주인공", Scripts = "(앗 저 개구리.. 아니 저 사람이 이 마을의 마지막 주민인 것 같아.)" },
-                new Dialogue { TalkerKo = "부꾸부꾸", Scripts = "부꾸~부꾸~내 이름은 부꾸부꾸~" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "안녕! 부꾸부꾸?" },
-                new Dialogue { TalkerKo = "부꾸부꾸", Scripts = "안녕! 내 이름을 어떻게 알았어? 너는 음.. 게로게로구나!" },
-                new Dialogue { TalkerKo = "주인공", Scripts =  "엥 난 어제 왔는걸? 게로게로는 저쪽에 있잖아." },
-                new Dialogue { TalkerKo = "부꾸부꾸", Scripts = "아 맞다! 게로게로는 저기 있지!" },
-                new Dialogue { TalkerKo = "부꾸부꾸", Scripts = "안녕?" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "응.. 안녕.. (여기 주민들 상태가 좀 이상해)" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "(촌장님한테 돌아가야겠어)" },
-            },
-            isContinue = true,          
-        };
-        tempQuests.Add(newQuest);
-
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1011))
-        {
-            QuestID = 1011,
-            Description = "띠리띠리에게<띠리띠리에게 말걸기>",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue { TalkerKo = "촌장", Scripts = "주민들과 인사는 했는가?" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "혹시 괜찮다면 이 늙은이의 이야기를 들어줄 수 있겠나?" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "네. 말씀하세요." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "우리가 이런 모습인 것이 의아할 걸세" },
-                new Dialogue { TalkerKo = "주인공", Scripts =  "헉 표정관리가 안 됐나요..? 사실.. 네 의아합니다." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "우리도 자세한 이유는 모르겠지만 얼마 전부터 이렇게 됐네.." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "우리는 그 이유를 마을 밖 동물들이 난폭해진 것과 연관이 있다고 생각하네." },
-                new Dialogue { TalkerKo = "촌장", Scripts = "그래서 첫 만남에 무리한 부탁인데.. 띠리띠리와 상황을 보고 와줄 수 있겠나?" },
-                new Dialogue { TalkerKo = "촌장", Scripts = "띠리띠리는 마을 입구에서 마을을 지키고 있을 걸세. 한 번 가보게나." },
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101001)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101002)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101003)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101004)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101005)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101006)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101007)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101008)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101009)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101010)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101011)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101012)),
             },
             isContinue = true,        
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1012))
-        {
-            QuestID = 1012,
-            Description = "띠리띠리와 마을 순찰하기",
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1011))
+        {            
+            // Description = "노란색 개구리 부꾸부꾸에게 인사하기",            
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "아.. 안녕. 네가 어젯밤에 온 사람이었지." },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "뭐 그건 관심 없고, 혼자서도 갔다 올 수 있지만 촌장님의 지시니까.." },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "일단 가보자. 따라와."},
-                new Dialogue { TalkerKo = "주인공", Scripts = "(뭐야 저 무관심한 말투는..)" },                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101101)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101102)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101103)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101104)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101105)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101106)),
+            },
+            isContinue = true,          
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1012))
+        {            
+            // Description = "구리구리에게 돌아가기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101202)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101203)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101204)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101205)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101206)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101207)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101208)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101209)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101210)),
+            },
+            isContinue = true,        
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1013))
+        {           
+            // Description = "입구에 있는 띠리띠리와 대화하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101301)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101302)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101303)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101304)),
             },               
             isContinue = true,       
         };
         tempQuests.Add(newQuest);
 
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1013))
-        {
-            QuestID = 1013,
-            Description = "띠리띠리와 순찰<퀘스트용 포악해진 몬스터 처치>",
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1014))
+        {            
+            // Description = "띠리띠리를 공격하는 포악한 스컹크를 처치하기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "저기 저 동물이 보여?" },
-                new Dialogue { TalkerKo = "주인공", Scripts = "응?" },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "요즘 동물들이 포악해져서 쉽게 다가갈수가 없어." },
-                new Dialogue { TalkerKo = "주인공", Scripts = "괜찮아 보이는데?" },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts =  "(스컹크가 갑자기 공격을 해온다) 앗! 아파! 왜 이러는 거야!" },
-                new Dialogue { TalkerKo = "띠리띠리", Scripts = "너! 보고만 있지 말고 어떻게 좀 해봐!" },                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101401)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101402)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101403)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101404)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101405)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },            
             isContinue= true,           
         };

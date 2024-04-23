@@ -21,9 +21,9 @@ public class QuestSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (QuestManager.I.currentQuest.QuestID == 1012)
+        if (QuestManager.I.currentQuest.QuestID == 1013)
         {
-            if (DialogueHandler.I.dialogueIndex == 2)
+            if (DialogueHandler.I.dialogueIndex == 3)
             {
                 agent.SetDestination(targetPos.position);
                 animator.SetBool("isWalk", true);

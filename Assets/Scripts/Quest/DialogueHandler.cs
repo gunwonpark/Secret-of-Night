@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 public class DialogueHandler : MonoBehaviour
 {
     [SerializeField] private CanvasGroup dimedCanvasGroup; // 대화창 Dimed CanvasGroup
@@ -16,12 +15,10 @@ public class DialogueHandler : MonoBehaviour
     public int dialogueIndex = 0; // 대화 인덱스
 
     public static DialogueHandler I;
-
     private void Awake()
     {
         I = this;
     }
-
     private void Update()
     {
         // F 누르면 CheckDialogue 호출
@@ -40,7 +37,7 @@ public class DialogueHandler : MonoBehaviour
         if (dialogueIndex < dialogues.Count)
         {
             ShowDialogue(); // 대화창 표시
-        }
+        }        
         else
         {
             HideDialogueUI(); // 대화창 UI 숨기기
@@ -63,9 +60,11 @@ public class DialogueHandler : MonoBehaviour
         dialogueIndex = 0; // 대화 인덱스 초기화
         QuestManager.I.currentQuest.Queststatus = QuestStatus.TalkActive;
 
-        ShowDialogue(); // 대화창 표시
-        
-        GameManager.Instance.inputManager.DisablePlayerAction();
+        if (!QuestManager.I.currentQuest.isNoScript)
+        {
+            ShowDialogue(); // 대화창 표시
+            GameManager.Instance.inputManager.DisablePlayerAction();
+        }        
     }
 
     // 대화창 표시
@@ -131,7 +130,6 @@ public class Dialogue
     public string Talker;
     public string TalkerKo; // 이름
     public string Scripts; // 대사
-
     public Dialogue(DialogueData dialogue)
     {
         DialogueID = dialogue.DialogueID;
@@ -139,6 +137,5 @@ public class Dialogue
         TalkerKo = dialogue.TalkerKo;
         Scripts = dialogue.Scripts;
     }
-
     public Dialogue() { }
 }

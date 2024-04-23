@@ -14,7 +14,7 @@ public class PlayerMovementTracker : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            if (QuestManager.I.currentQuest.QuestID == 1002)
+            if (QuestManager.I.currentQuest.QuestID == 1003)
             {
                 for (int i = 0; i < maxcount; i++)
                 {
@@ -37,7 +37,7 @@ public class PlayerMovementTracker : MonoBehaviour
 
                 if (totalDistance >= 30f)
                 {
-                    QuestManager.I.CheckCurrentQuest(1002);
+                    QuestManager.I.CheckCurrentQuest(1003);
                     dayNightCycle.time = 0.8f;
                 }
             }

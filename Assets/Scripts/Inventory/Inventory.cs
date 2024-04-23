@@ -860,11 +860,14 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _uiSlots.Length; i++)
         {
             if (slots[i].item != null)
-            {
+            {                
                 if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
                 {
-                    slots[i].count -= quantity;
-                    slots[i].item = null;
+                    if (QuestManager.I.currentQuest.QuestID != 1001)
+                    {
+                        slots[i].count -= quantity;
+                        slots[i].item = null;
+                    }                        
                     QuestManager.I.QuestClear();
                 }
             }
