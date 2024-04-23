@@ -8,7 +8,7 @@ public class AnimationListener : MonoBehaviour
     public Dictionary<int, GameObject> playerSkillList = new Dictionary<int, GameObject>();
     public ParticleSystem JumpSlashEffect;
     public ParticleSystem StoneSlashEffect;
-    public float attackRange = 10f;
+    public float attackRange = 1.5f;
     public LayerMask enemyLayer;
     public void SlashEffect(int index)
     {

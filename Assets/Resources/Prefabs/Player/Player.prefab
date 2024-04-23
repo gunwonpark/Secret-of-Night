@@ -4718,7 +4718,7 @@ Transform:
   - {fileID: 7040623446168937193}
   - {fileID: 7761943481518058002}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6916311193706112995
 CharacterController:
@@ -7850,7 +7850,7 @@ MonoBehaviour:
   - {fileID: 7848933208521152496}
   JumpSlashEffect: {fileID: 8472120613605124147}
   StoneSlashEffect: {fileID: 2815221282734074385}
-  attackRange: 10
+  attackRange: 1.4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
