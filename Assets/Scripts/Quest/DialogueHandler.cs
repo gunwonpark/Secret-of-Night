@@ -22,7 +22,7 @@ public class DialogueHandler : MonoBehaviour
     private void Update()
     {
         // F 누르면 CheckDialogue 호출
-        if (IsDialogueActive() && Input.GetKeyDown(KeyCode.G))
+        if (IsDialogueActive() && Input.GetKeyDown(KeyCode.F))
         {
             CheckDialogue();
         }

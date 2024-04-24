@@ -319,7 +319,8 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1022))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "수련을 위해 카멜레온을 처치하고 뚜쉬뚜쉬에게 돌아가기",
+            NextQuestGuide = "뚜쉬뚜쉬에게 돌아가기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102201)),
@@ -337,14 +338,15 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102213)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102214)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102215)),
-            },
-            isContinue = true,
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102216)),
+            },            
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1023))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "수련을 위해 미어캣을 처치하고 뚜쉬뚜쉬에게 돌아가기",
+            NextQuestGuide = "뚜쉬뚜쉬에게 돌아가기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102301)),
@@ -355,14 +357,14 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102306)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102307)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102308)),
-            },
-            isContinue = true,
+            },            
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1024))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "수련을 위해 위험한 늑대를 처치하고 뚜쉬뚜쉬에게 돌아가기",
+            NextQuestGuide = "뚜쉬뚜쉬에게 돌아가기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102401)),
@@ -375,14 +377,14 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102408)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102409)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102410)),                
-            },
-            isContinue = true,
+            },            
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1025))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "최고 난이도의 황소를 처치하고 뚜쉬뚜쉬에게 돌아가기",
+            NextQuestGuide = "뚜쉬뚜쉬에게 돌아가기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102501)),
@@ -403,7 +405,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1026))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "뚜쉬뚜쉬의 혼잣말 들어주기",
             isNoScript = true,
             isContinue = true,
         };

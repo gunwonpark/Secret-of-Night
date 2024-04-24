@@ -96,7 +96,7 @@ public class QuestManager : MonoBehaviour
 
     // 퀘스트 성공
     public void QuestClear()
-    {                
+    {
         // 연출 같은 특수 퀘스트 성공 처리
         if (currentQuest.QuestID == 1005)
         {
@@ -106,8 +106,12 @@ public class QuestManager : MonoBehaviour
         {
             NextQuest(); // 다음 퀘스트로
         }
-        // 퀘스트 보상이 있으면 보상 처리
+        if(currentQuest.isNoScript)
+        {
+            ShowQuestDescription();
+        }        
 
+        // 퀘스트 보상이 있으면 보상 처리
         ItemReward(
             currentQuest.RewardID2, currentQuest.RewardCount2,
             currentQuest.RewardID3, currentQuest.RewardCount3,
@@ -212,6 +216,7 @@ public class QuestManager : MonoBehaviour
             else if(currentQuest.QuestType == 4)
             {
                 isKillMonsterClear = true;
+                currentQuest.Queststatus = QuestStatus.Progress;
             }          
         }        
     }
