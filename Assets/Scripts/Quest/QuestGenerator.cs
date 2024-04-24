@@ -413,7 +413,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1027))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "어수선한 마을에서 무슨일이 있는지 구리구리에게 물어보기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102701)),
@@ -429,7 +429,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1028))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "게로게로의 마지막 흔적을 서리서리에게 물어보기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102801)),
@@ -444,7 +444,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1029))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "마을 안에서 게로게로가 흘린 주머니를 발견하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102901)),
@@ -460,7 +460,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1030))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "게로게로를 찾아 마을 밖으로 이동하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103001)),
@@ -473,7 +473,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1031))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "늑대를 무서워하는 게로게로를 구하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103101)),
@@ -488,7 +488,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1032))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "쓰러진 게로게로를 데리고 마을로 복귀하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103101)),
@@ -502,6 +502,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1033))
         {
+            // Description = "쓰러진 게로게로를 데리고 마을로 복귀하기",
             isNoScript = true,
             isContinue = true,
         };
@@ -509,6 +510,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1034))
         {
+            // 게로게로를 찾은 것을 서리서리에게 말하기
             isNoScript = true,
             isContinue = true,
         };
@@ -516,7 +518,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1035))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "사라지는 주민들에 대한 이상한 점을 구리구리에게 말하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103501)),
@@ -528,7 +530,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1036))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "이상한 현상에 대해서 구리구리와 대화하기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103601)),
@@ -543,7 +545,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1037))
         {
-            // Description = "마을의 숨은 고수 뚜쉬뚜쉬 찾아가기",
+            // Description = "띠리띠리에게 무슨 일이 있는지 확인 해보기",
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103701)),
@@ -557,7 +559,89 @@ public class QuestGenerator : MonoBehaviour
         {
             isNoScript = true,
             isContinue = true,
+            
         };
         tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1039))
+        {
+            // Description = "이상한 현상에 대해서 구리구리와 대화하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103901)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103902)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103903)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103904)),
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1040))
+        {
+            // Description = "구리구리를 위해 땔감과 음료수를 구해오기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104001)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104002)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104003)),                
+            },
+            isContinue = true,
+            QuestType = 3,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1041))
+        {
+            // 구리구리에게 마을의 비밀 단서를 획득하기
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1042))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104202)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104203)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104204)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
+            },
+            isContinue = true,            
+        };
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1042))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104202)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104203)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104204)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
+            },
+            isContinue = true,            
+        };
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1043))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104202)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104203)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104204)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
+            },
+            isContinue = true,
+        };
     }
 }

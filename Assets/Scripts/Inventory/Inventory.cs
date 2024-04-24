@@ -896,6 +896,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        QuestManager.OnQuestCleared -= CloseInventory;
+    }
+
     //public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)
     //{
     //    bool item1Processed = false;
