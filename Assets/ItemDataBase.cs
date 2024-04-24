@@ -36,12 +36,25 @@ public class ItemDataBase : DataBase<int, Item>
     }
 
     //원하는 아이템 리스트만 불러올 수 있음
-    public List<Item> GetItems(int startID, int endID)
+    public List<Item> GetAllItems(int startID, int endID)
     {
         List<Item> list = new List<Item>();
         foreach (Item item in items)
         {
             if (item.ItemID >= startID && item.ItemID <= endID)
+            {
+                list.Add(item);
+            }
+        }
+        return list;
+    }
+
+    public List<Item> GetItems(int ID)
+    {
+        List<Item> list = new List<Item>();
+        foreach (Item item in items)
+        {
+            if (item.ItemID == ID)
             {
                 list.Add(item);
             }

@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHp: {fileID: 1087228165826600225}
+  isActive: 0
 --- !u!1 &6893252767948283982
 GameObject:
   m_ObjectHideFlags: 0

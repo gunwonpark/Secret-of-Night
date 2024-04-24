@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,6 +39,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         monsterAnimation = GetComponent<MonsterAnimation>();
         attackCollider = GetComponent<BoxCollider>();
         hpBar = GetComponent<HPBar>();
+        hpBar.DeActive();
     }
 
     public void Init(MonsterInfo monsterInfo, MonsterSpot monsterSpot)
@@ -76,8 +78,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
@@ -102,15 +104,54 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     }
 
     //base에 있는 takedamage구독
+    private Coroutine fadeOutCoroutine;
     public void TakeDamage(float Damage)
     {
         OnDamage?.Invoke(Damage);
+
+        if (!hpBar.isActiveAndEnabled)
+        {
+            ShowHP();
+        }
+        else
+        {
+            RestartFadeOut();
+        }
+
         hpBar.SetHP(HP / myInfo.HP);
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void ShowHP()
     {
-        OnAttack?.Invoke(other.gameObject);
+        hpBar.Active();
+        hpBar.ResetAlpha();
+
+        if (fadeOutCoroutine != null)
+        {
+            StopCoroutine(fadeOutCoroutine);
+        }
+
+        fadeOutCoroutine = StartCoroutine(FadeOutHPBar());
+    }
+
+    private void RestartFadeOut()
+    {
+        hpBar.ResetAlpha();
+
+        if (fadeOutCoroutine != null)
+        {
+            StopCoroutine(fadeOutCoroutine);
+        }
+
+        fadeOutCoroutine = StartCoroutine(FadeOutHPBar());
+    }
+
+    IEnumerator FadeOutHPBar()
+    {
+        yield return new WaitForSeconds(5f);
+        hpBar.FadeOut(2f);
+        yield return new WaitForSeconds(2f);
+        hpBar.DeActive();
     }
 
     public void dropItem(Item _item)

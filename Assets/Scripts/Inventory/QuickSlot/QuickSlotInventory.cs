@@ -45,36 +45,46 @@ public class QuickSlotInventory : MonoBehaviour
         _selectedItem = slots[_selectedItemIndex];
     }
 
+
+    private bool altKeyPressed = false;
+
     private void Update()
     {
-        // QuickSlotItemUse();
-        //QuickSlotItemClear();
-        CursorView();
-        //MoveSlot();
+        // Alt 키를 눌렀을 때 (두번 눌림 방지)
+        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            // 이미 Alt 키가 눌려있다면, 무시
+            if (altKeyPressed)
+                return;
+
+            altKeyPressed = true;
+            CursorView();
+        }
+        // Alt 키를 떼었을 때
+        else if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
+        {
+            altKeyPressed = false;
+        }
     }
 
-    // 마우스 커서 보이게
+    // 마우스 커서 및 카메라
     private void CursorView()
     {
         activate = !activate;
-        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+
+        if (activate)
         {
-            //Cursor.visible = true;
-            if (activate)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                GameManager.Instance.inputManager.PlayerActions.Camera.Disable();
-
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
-            }
-
-            Debug.Log(activate);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            GameManager.Instance.inputManager.PlayerActions.Camera.Disable();
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
+        }
+
+        Debug.Log(activate);
     }
 
     //------------------------------------------------------------------------

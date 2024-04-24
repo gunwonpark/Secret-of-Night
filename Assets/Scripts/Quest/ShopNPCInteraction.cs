@@ -44,10 +44,10 @@ public class ShopNPCInteraction : MonoBehaviour
             OpenInteractionPopup();
         }
 
-        if (QuestManager.I.currentQuest.QuestID == 1008)
-        {
-            _GKeyActivate = false;
-        }
+        //if (QuestManager.I.currentQuest.QuestID == 1008)
+        //{
+        //    _GKeyActivate = false;
+        //}
 
         switch (QuestManager.I.currentQuest.Queststatus)
         {

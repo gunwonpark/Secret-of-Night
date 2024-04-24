@@ -15,17 +15,21 @@ public class PlayerSkillTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Instantiate(effect[0], transform.position + Vector3.up, Quaternion.identity);
-            ani.SetTrigger("AroundSlash");
+            ani.SetTrigger("1");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Instantiate(effect[1], transform.position + Vector3.up, Quaternion.identity);
-            ani.SetTrigger("JumpSlash");
+            ani.SetTrigger("2");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Instantiate(effect[2], transform.position + Vector3.up, Quaternion.identity);
-            ani.SetTrigger("SnowSlash");
+            ani.SetTrigger("3");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ani.SetTrigger("Attack");
         }
     }
 }

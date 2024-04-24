@@ -162,8 +162,8 @@ public class PlayerBaseState : IState
 
         if (stateMachine.MovementInput != Vector2.zero)
             Rotate(moveDirection);
-
     }
+
     private bool CanMove()
     {
         return stateMachine.MovementInput != Vector2.zero && !stateMachine.Player.IsDodgeing && !stateMachine.Player.IsJumping;
@@ -183,8 +183,11 @@ public class PlayerBaseState : IState
         Vector3 moveDirection = new Vector3(stateMachine.MovementInput.x, 0, stateMachine.MovementInput.y);
         return moveDirection.normalized;
     }
-    private void Rotate(Vector3 lookDirection)
+    protected bool lockRotation = false;
+    protected void Rotate(Vector3 lookDirection)
     {
+        if (lockRotation)
+            return;
         lookDirection = new Vector3(lookDirection.x, lookDirection.y, lookDirection.z); // test
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         stateMachine.Player.transform.rotation = Quaternion.Slerp(stateMachine.Player.transform.rotation,

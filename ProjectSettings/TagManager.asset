@@ -7,6 +7,7 @@ TagManager:
   - BossMap
   - BossChackPoint
   - NPC
+  - CutScene
   layers:
   - Default
   - TransparentFX

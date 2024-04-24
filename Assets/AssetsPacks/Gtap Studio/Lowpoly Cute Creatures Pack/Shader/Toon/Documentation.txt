@@ -1,0 +1,7 @@
+1. Property "MainTex" - basic material texture
+2. Property "ColorOffset" - offset of additional shades obtained using the "ColorSteps" property
+3. Property "HighlightIntesity" - allows you to highlight the intensity of light areas by increasing the size of the area
+4. Property "ColorSteps" - affects the number of additional shades of the primary color
+5. Property "ShadedColor" - color  of shadow areas
+6. Property "LitColor" - color of illuminated places
+7. Property "HighlightColor" - color of highlight areas
