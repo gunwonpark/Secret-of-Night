@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void FindNearestMonster()
     {
-        Collider[] monsters = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer("Monster"));
+        Collider[] monsters = Physics.OverlapSphere(transform.position, 10f, 1 << LayerMask.NameToLayer("Monster"), QueryTriggerInteraction.Ignore);
         if (monsters.Length > 0)
         {
             FieldMonsters monster = monsters[0].GetComponent<FieldMonsters>();
