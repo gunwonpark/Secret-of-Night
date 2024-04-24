@@ -33,6 +33,9 @@ public class GameUI : UIBase
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _gameOutButton;
     [SerializeField] private Button _gameEndButton;
+
+    [Header("SkillSlot")]
+    [SerializeField] private SkillSlotUI _skillSlotUI;
     private void Start()
     {
         GameManager.Instance.inputManager.UIActions.Option.started += ToggleUI;
@@ -55,6 +58,8 @@ public class GameUI : UIBase
         _gameOutButton.onClick.AddListener(OnGameOutButtonClick);
         _gameEndButton.onClick.AddListener(OnGameEndButtonClick);
         _gameEndUI.SetActive(false);
+
+        _skillSlotUI.Initialize();
 
         UpdateUI();
     }
@@ -126,7 +131,6 @@ public class GameUI : UIBase
         _gamePlayUI.SetActive(!toggle);
         _gameEndUI.SetActive(toggle);
 
-        Debug.Log(!toggle);
         if (!toggle)
         {
             GameManager.Instance.inputManager.EnablePlayerAction();

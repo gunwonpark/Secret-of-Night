@@ -10,9 +10,6 @@ public class PlayerAnimationData
     [SerializeField] private string _jumpHash = "Jump";
     [SerializeField] private string _dodgeHash = "Dodge";
     [SerializeField] private string _attackHash = "Attack";
-    [SerializeField] private string _Skill1 = "SnowSlash";
-    [SerializeField] private string _Skill2 = "JumpAttack";
-    [SerializeField] private string _Skill3 = "Skill3";
     [SerializeField] private string _combo = "Combo";
     [SerializeField] private string _die = "Die";
 
@@ -35,9 +32,6 @@ public class PlayerAnimationData
         JumpParameter = Animator.StringToHash(_jumpHash);
         DodgeParameter = Animator.StringToHash(_dodgeHash);
         AttackParameter = Animator.StringToHash(_attackHash);
-        Skill1 = Animator.StringToHash(_Skill1);
-        Skill2 = Animator.StringToHash(_Skill2);
-        Skill3 = Animator.StringToHash(_Skill3);
         Combo = Animator.StringToHash(_combo);
         Die = Animator.StringToHash(_die);
     }

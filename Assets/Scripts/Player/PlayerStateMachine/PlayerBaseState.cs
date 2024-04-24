@@ -46,6 +46,7 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Skill1.started += OnSkill1Started;
         stateMachine.Player.Input.PlayerActions.Skill2.started += OnSkill2Started;
         stateMachine.Player.Input.PlayerActions.Skill3.started += OnSkill3Started;
+        stateMachine.Player.Input.PlayerActions.Skill4.started += OnSkill4Started;
     }
 
 
@@ -64,6 +65,7 @@ public class PlayerBaseState : IState
         stateMachine.Player.Input.PlayerActions.Skill1.started -= OnSkill1Started;
         stateMachine.Player.Input.PlayerActions.Skill2.started -= OnSkill2Started;
         stateMachine.Player.Input.PlayerActions.Skill3.started -= OnSkill3Started;
+        stateMachine.Player.Input.PlayerActions.Skill4.started -= OnSkill4Started;
     }
     #region addevent
     private void OnSkill1Started(InputAction.CallbackContext obj)
@@ -71,7 +73,7 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.DoSkill == false)
         {
             stateMachine.Player.DoSkill = true;
-            stateMachine.ChangeState(stateMachine.SkillState);
+            SkillTrigger(0);
         }
 
     }
@@ -80,7 +82,7 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.DoSkill == false)
         {
             stateMachine.Player.DoSkill = true;
-            stateMachine.ChangeState(stateMachine.SkillState);
+            SkillTrigger(1);
         }
     }
     private void OnSkill3Started(InputAction.CallbackContext obj)
@@ -88,7 +90,15 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.DoSkill == false)
         {
             stateMachine.Player.DoSkill = true;
-            stateMachine.ChangeState(stateMachine.SkillState);
+            SkillTrigger(2);
+        }
+    }
+    private void OnSkill4Started(InputAction.CallbackContext obj)
+    {
+        if (stateMachine.Player.DoSkill == false)
+        {
+            stateMachine.Player.DoSkill = true;
+            SkillTrigger(3);
         }
     }
     protected virtual void OnJumpStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -213,22 +223,17 @@ public class PlayerBaseState : IState
         stateMachine.Player.Animator?.SetBool(animationHash, false);
     }
 
-    protected float GetNormalizedTime(Animator animator, string tag)
+    protected void SkillTrigger(int number)
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
-        {
-            return nextInfo.normalizedTime;
-        }
-        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
-        }
+        //if (GameManager.Instance.playerManager.skillSlots[number].Update)
+        //{
+        //    stateMachine.Player.DoSkill = false;
+        //    return;
+        //}
+        int skillID = GameManager.Instance.playerManager.skillSlots[number].skillID;
+        string skillname = GameManager.Instance.playerManager.playerSkillList[skillID].playerSkillData.Name;
+        GameManager.Instance.playerManager.skillSlots[number].Execute();
+        stateMachine.Player.Animator.SetTrigger(skillname);
+        stateMachine.ChangeState(stateMachine.SkillState);
     }
 }

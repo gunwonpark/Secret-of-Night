@@ -2,30 +2,39 @@
 	"PlayerSkill": [
 		{
 			"SkillID": 101,
-			"Name": "Sword1Default",
-			"Description": "Test",
+			"Name": "JumpSkill",
+			"Description": "주변의 적에게 데미지를 준다",
 			"SkillType": "Attack",
-			"DelayTime": 1,
-			"Damage": 1,
-			"PrefabPath": "Explosion"
+			"DelayTime": 10,
+			"Damage": 5,
+			"PrefabPath": "JumpSkill"
 		},
 		{
 			"SkillID": 102,
-			"Name": "Sword1Skill1",
-			"Description": "Test",
+			"Name": "StoneSlash",
+			"Description": "전방의 적에게 데미지를 준다",
 			"SkillType": "Attack",
-			"DelayTime": 50,
-			"Damage": 2,
-			"PrefabPath": "Chargeslashblue"
+			"DelayTime": 12,
+			"Damage": 10,
+			"PrefabPath": "StoneSlash"
 		},
 		{
 			"SkillID": 103,
-			"Name": "Sword1Skill2",
-			"Description": "Test",
+			"Name": "AssassinAttack",
+			"Description": "어세신 데미지를 준다",
 			"SkillType": "Attack",
 			"DelayTime": 100,
-			"Damage": 3,
-			"PrefabPath": "AoEslashgreen"
+			"Damage": 15,
+			"PrefabPath": "AssassinAttack"
+		},
+		{
+			"SkillID": 104,
+			"Name": "StingAttack",
+			"Description": "데미지를 준다",
+			"SkillType": "Attack",
+			"DelayTime": 100,
+			"Damage": 20,
+			"PrefabPath": "StingAttack"
 		},
 		{
 			"SkillID": 201,
