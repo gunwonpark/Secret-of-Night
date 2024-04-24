@@ -12,7 +12,8 @@ public class PlayerAnimationData
     [SerializeField] private string _attackHash = "Attack";
     [SerializeField] private string _Skill1 = "Skill1";
     [SerializeField] private string _Skill2 = "Skill2";
-    [SerializeField] private string _Tired = "Tired";
+    [SerializeField] private string _Skill3 = "Skill3";
+    [SerializeField] private string _combo = "Combo";
     [SerializeField] private string _die = "Die";
 
     public int WalkParameter { get; private set; }
@@ -23,7 +24,8 @@ public class PlayerAnimationData
     public int AttackParameter { get; private set; }
     public int Skill1 { get; private set; }
     public int Skill2 { get; private set; }
-    public int Tired { get; private set; }
+    public int Skill3 { get; private set; }
+    public int Combo { get; private set; }
     public int Die { get; private set; }
     public PlayerAnimationData()
     {
@@ -35,7 +37,8 @@ public class PlayerAnimationData
         AttackParameter = Animator.StringToHash(_attackHash);
         Skill1 = Animator.StringToHash(_Skill1);
         Skill2 = Animator.StringToHash(_Skill2);
-        Tired = Animator.StringToHash(_Tired);
+        Skill3 = Animator.StringToHash(_Skill3);
+        Combo = Animator.StringToHash(_combo);
         Die = Animator.StringToHash(_die);
     }
 }

@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyHp: {fileID: 8074826064760554951}
+  isActive: 0
 --- !u!1001 &8634436979562939876
 PrefabInstance:
   m_ObjectHideFlags: 0
