@@ -211,25 +211,22 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         // 피해를 입었을 때의 색상으로 변경
         DamageColor();
 
-        // 효과가 지속되는 동안 대기
-        yield return new WaitForSeconds(0.5f); // 효과 지속 시간
+        yield return new WaitForSeconds(0.5f);
 
         // 원래의 색상으로 되돌리기
-        ReserColor();
+        ResetColor();
     }
 
     private void DamageColor()
     {
-        // 모든 SkinnedMeshRenderer에 피해를 입었을 때의 색상 적용
         foreach (SkinnedMeshRenderer renderer in meshRenderers)
         {
             renderer.material.SetColor("_BaseColor", damageColor);
         }
     }
 
-    private void ReserColor()
+    private void ResetColor()//원래 색상
     {
-        // 모든 SkinnedMeshRenderer에 원래 색상 복원
         for (int i = 0; i < meshRenderers.Length; i++)
         {
             meshRenderers[i].material.SetColor("_BaseColor", originalColor[i]);
