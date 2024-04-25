@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpecialQuest : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SpecialQuest : MonoBehaviour
 
     public GameObject blackScreen; // 화면을 가리는 오브젝트
     public GameObject timeLineObject;
+    private int playerstopcount = 1;
 
     private void Start()
     {
@@ -20,20 +22,18 @@ public class SpecialQuest : MonoBehaviour
     {
         if (QuestManager.I.currentQuest.QuestID == 1038)
         {
-            timeLineObject.SetActive(true);
-            //GameManager.Instance.inputManager.DisablePlayerAction();
-            //StartCoroutine("EndTimeLine");
+            
+            for (int i = 0; i < playerstopcount; i++)
+            {
+                timeLineObject.GetComponent<PlayableDirector>().enabled = true;
+                GameManager.Instance.inputManager.DisablePlayerAction();
+                playerstopcount--;
+            }          
         }
         //if (QuestManager.I.currentQuest.QuestID == 1039)
         //{
         //    timeLineObject.SetActive(false);
         //}
-    }
-
-    private IEnumerator EndTimeLine()
-    {
-        yield return new WaitForSeconds(23f);
-        GameManager.Instance.inputManager.EnablePlayerAction();
     }
 
     // 퀘스트 완료 후 연출을 시작하기 위한 메서드
