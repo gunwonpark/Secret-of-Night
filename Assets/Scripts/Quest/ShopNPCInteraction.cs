@@ -169,7 +169,6 @@ public class ShopNPCInteraction : MonoBehaviour
     public void OnBuyClick()
     {
         _shop.OpenShop();
-        Inventory.instance.playerLight.SetActive(true);
         Cursor.lockState = CursorLockMode.None;  //마우스 커서 표시
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
@@ -184,6 +183,7 @@ public class ShopNPCInteraction : MonoBehaviour
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
         Inventory.instance.activated = true;
+        Inventory.instance.playerLight.SetActive(true);
         Inventory.instance.sale_Inventory = true; //판매하는 인벤토리 활성화
         _GKeyActivate = false;
     }
