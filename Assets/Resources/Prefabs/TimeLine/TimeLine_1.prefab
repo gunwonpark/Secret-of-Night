@@ -1053,7 +1053,7 @@ Transform:
   - {fileID: 3150366294220190997}
   - {fileID: 5185915797439167881}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &5483014806374435518
 PlayableDirector:
@@ -1074,8 +1074,6 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -1725051602659719003, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 6954618691600784693, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 4064534823162215762, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
     value: {fileID: 7563860796239123884}
   - key: {fileID: -8037249880462538948, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
@@ -1090,6 +1088,8 @@ PlayableDirector:
     value: {fileID: 3101383102432276326}
   - key: {fileID: 8653582145417815230, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
     value: {fileID: 3631584629470722487}
+  - key: {fileID: 3593239520522433845, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
+    value: {fileID: 4108861940068224550}
   - key: {fileID: -7064009847373971685, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
     value: {fileID: 6774002305395666848}
   - key: {fileID: 2498035192914159155, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
@@ -1099,17 +1099,11 @@ PlayableDirector:
     - 14e69c7407a8a4148bbca23014cb41d2: {fileID: 8908203312849376639}
     - 2a6725bdea5b4914799840f00647e7ca: {fileID: 8908203312849376639}
     - fd9a944b19dc41e4ab4b88664c321c4a: {fileID: 3932796376727083623}
-    - b727e437ba3f19243bd3ef4e6f5ab8af: {fileID: 3932796376727083623}
-    - cf279eb9ef535a443b85d39473e6ea2d: {fileID: 3547668388845541973}
     - e02b2986c9b9d3f4dab864d5ad3aee5a: {fileID: 462659622044239871}
     - 155b1a62b2e2c48438c227130e08abcc: {fileID: 462659622044239871}
     - fcc13facb8ebbd44ea73115cf0bc98ff: {fileID: 462659622044239871}
-    - b03258c0392e3004f94940963722bae9: {fileID: 462659622044239871}
-    - 1a22c0541cfa14b4b9048473d31c0eb6: {fileID: 8908203312849376639}
     - 1707fd71fdb728c4bb7afb383bc3a06f: {fileID: 3547668388845541973}
-    - 38b852254431cc345b6e868d771cfdec: {fileID: 3932796376727083623}
     - 84adf95e046ed9e45aa4e07c18dc8fd8: {fileID: 7896959702423965370}
-    - f306b6021149ecb47bd72e54f5797ca1: {fileID: 462659622044239871}
 --- !u!1 &7988399096379812893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,7 +2222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1494926315206686664, guid: 6bf537455bb71884596808c9a00107ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -8.074324e-23
       objectReference: {fileID: 0}
     - target: {fileID: 1494926315206686666, guid: 6bf537455bb71884596808c9a00107ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2852,7 +2846,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1494926315215771722, guid: 6bf537455bb71884596808c9a00107ea, type: 3}
       propertyPath: m_WarningMessage
-      value: 
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
+        'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
+        'clavicle_l'\n\tTransform 'ring_02_l'\n\tTransform 'ball_l'\n\tTransform
+        'hand_l'\n\tand more ..."
       objectReference: {fileID: 0}
     - target: {fileID: 4862213383848213730, guid: 6bf537455bb71884596808c9a00107ea, type: 3}
       propertyPath: m_IsActive
@@ -3937,7 +3936,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1694820352297757126, guid: 5db9163c4a980594d96d783b9f539a29, type: 3}
       propertyPath: m_WarningMessage
-      value: 
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'index_03_l'\n\tTransform 'lowerarm_l'\n\tTransform
+        'root'\n\tTransform 'pinky_03_l'\n\tTransform 'neck_01'\n\tTransform 'pinky_03_r'\n\tTransform
+        'clavicle_l'\n\tTransform 'ring_02_l'\n\tTransform 'ball_l'\n\tTransform
+        'hand_l'\n\tand more ..."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
