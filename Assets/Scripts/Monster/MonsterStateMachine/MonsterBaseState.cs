@@ -129,6 +129,7 @@ public class MonsterBaseState : IState, IDamageable
 
         if (damage > 0)
         {
+            stateMachine.FieldMonsters.monsterAnimation.StartDamageAnimation();
             stateMachine.FieldMonsters.HP -= damage;
         }
 

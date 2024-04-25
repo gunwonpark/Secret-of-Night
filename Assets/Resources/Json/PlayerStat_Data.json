@@ -15,7 +15,8 @@
 			"Skills": [
 				101,
 				102,
-				103
+				103,
+				104
 			],
 			"PrefabPath": "Player/M05"
 		},
@@ -34,7 +35,8 @@
 			"Skills": [
 				101,
 				102,
-				103
+				103,
+				104
 			],
 			"PrefabPath": "Player/M06"
 		}

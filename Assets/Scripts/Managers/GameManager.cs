@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public PlayerManager playerManager;
     public MonsterManager monsterManager;
-    public SkillManager skillManager;
     public InputManager inputManager;
     public SceneManagerEx sceneManager;
     public ScriptManager scriptManager;
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
         //if (resourceManager == null) { resourceManager = gameObject.AddComponent<ResourceManager>(); }
         if (soundManager == null) { soundManager = gameObject.AddComponent<SoundManager>(); soundManager.Initialize(); }
         if (uiManager == null) { uiManager = gameObject.AddComponent<UIManager>(); }
-        if (skillManager == null) { skillManager = gameObject.AddComponent<SkillManager>(); }
         if (playerManager == null)
         {
             playerManager = gameObject.AddComponent<PlayerManager>();
