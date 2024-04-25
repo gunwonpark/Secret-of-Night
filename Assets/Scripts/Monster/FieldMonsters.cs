@@ -30,6 +30,10 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public event Action<float> OnDamage;
     public event Action<GameObject> OnAttack;
 
+    public Color damageColor = new Color(0.5f, 0f, 0f, 1f);
+    public Color[] originalColor;
+    private SkinnedMeshRenderer[] meshRenderers;
+
     private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
@@ -40,6 +44,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         attackCollider = GetComponent<BoxCollider>();
         hpBar = GetComponent<HPBar>();
         hpBar.DeActive();
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     public void Init(MonsterInfo monsterInfo, MonsterSpot monsterSpot)
@@ -53,6 +58,13 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        //원래 컬러 저장
+        originalColor = new Color[meshRenderers.Length];
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            originalColor[i] = meshRenderers[i].material.color;
+        }
     }
 
     public void Init(MonsterInfo monsterInfo)
@@ -108,6 +120,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public void TakeDamage(float Damage)
     {
         OnDamage?.Invoke(Damage);
+
+        DamageColorChange();
 
         if (!hpBar.isActiveAndEnabled)
         {
@@ -184,6 +198,41 @@ public class FieldMonsters : MonoBehaviour, IDamageable
                 dropItem(itemDataBase.GetData(selectItem));
                 break;
             }
+        }
+    }
+
+    public void DamageColorChange()
+    {
+        StartCoroutine(DamageColorCoroutine());
+    }
+
+    private IEnumerator DamageColorCoroutine()
+    {
+        // 피해를 입었을 때의 색상으로 변경
+        DamageColor();
+
+        // 효과가 지속되는 동안 대기
+        yield return new WaitForSeconds(0.5f); // 효과 지속 시간
+
+        // 원래의 색상으로 되돌리기
+        ReserColor();
+    }
+
+    private void DamageColor()
+    {
+        // 모든 SkinnedMeshRenderer에 피해를 입었을 때의 색상 적용
+        foreach (SkinnedMeshRenderer renderer in meshRenderers)
+        {
+            renderer.material.SetColor("_BaseColor", damageColor);
+        }
+    }
+
+    private void ReserColor()
+    {
+        // 모든 SkinnedMeshRenderer에 원래 색상 복원
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.SetColor("_BaseColor", originalColor[i]);
         }
     }
 }
