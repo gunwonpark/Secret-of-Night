@@ -40,7 +40,7 @@ public class MonsterSpot : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(30);//30초 후 발동
+            yield return new WaitForSeconds(10);//30초 후 발동
 
             if (monsterList.Count < maxMonsterCount)
             {
