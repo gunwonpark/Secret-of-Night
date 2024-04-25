@@ -6,6 +6,8 @@ using UnityEngine;
 /// PlayerGameData를 생성 한 다음 Initialize를 통해 데이터를 불러오거나 
 /// 기본 데이터로 초기화 해둘 수 있다.
 /// </summary>
+
+
 [System.Serializable]
 public class PlayerGameData
 {
