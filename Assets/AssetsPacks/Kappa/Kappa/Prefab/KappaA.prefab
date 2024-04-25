@@ -1264,7 +1264,7 @@ MonoBehaviour:
   interactionRange: 2
   interactionKey: 103
   questID: ef030000
-  killMonsterQuestID: 06040000
+  killMonsterQuestID: 
   exclamationMark: {fileID: 4361701308160374548}
   npcName: gerogero
 --- !u!114 &690713481610210054
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 2
   interactionKey: 103
-  questID: 0704000010040000
+  questID: 
   questionMark: {fileID: 8919605039139781783}
   questStatus: 0
 --- !u!1 &541376234480906476

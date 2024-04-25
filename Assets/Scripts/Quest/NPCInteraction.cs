@@ -87,5 +87,9 @@ public class NPCInteraction : MonoBehaviour
         {
             transform.position = new Vector3(11.13f, 0.8999939f, 119.57f);
         }
+        if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

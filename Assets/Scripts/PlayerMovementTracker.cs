@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovementTracker : MonoBehaviour
 {
@@ -12,36 +11,34 @@ public class PlayerMovementTracker : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainScene")
+        if (QuestManager.I.currentQuest.QuestID == 1003)
         {
-            if (QuestManager.I.currentQuest.QuestID == 1003)
+            for (int i = 0; i < maxcount; i++)
             {
-                for (int i = 0; i < maxcount; i++)
-                {
-                    ResetPreviousPosition();
+                ResetPreviousPosition();
 
-                    maxcount--;
-                }
+                maxcount--;
+            }
 
-                Vector3 currentPosition = transform.position;
+            Vector3 currentPosition = transform.position;
 
-                float distanceThisFrame = Vector3.Distance(currentPosition, previousPosition);
+            float distanceThisFrame = Vector3.Distance(currentPosition, previousPosition);
 
-                previousPosition = currentPosition;
+            previousPosition = currentPosition;
 
-                totalDistance += distanceThisFrame;
+            totalDistance += distanceThisFrame;
 
-                // 거리에 따라 해가 점진적으로 지도록 조정
-                float normalizedDistance = totalDistance / maxDistance; // maxDistance는 미리 정해진 최대 이동 거리
-                dayNightCycle.time = Mathf.Lerp(0.4f, 0.8f, normalizedDistance);
+            // 거리에 따라 해가 점진적으로 지도록 조정
+            float normalizedDistance = totalDistance / maxDistance; // maxDistance는 미리 정해진 최대 이동 거리
+            dayNightCycle.time = Mathf.Lerp(0.4f, 0.8f, normalizedDistance);
 
-                if (totalDistance >= 30f)
-                {
-                    QuestManager.I.CheckCurrentQuest(1003);
-                    dayNightCycle.time = 0.8f;
-                }
+            if (totalDistance >= 30f)
+            {
+                QuestManager.I.CheckCurrentQuest(1003);
+                dayNightCycle.time = 0.8f;
             }
         }
+
     }
 
     // 이전 위치 초기화 함수

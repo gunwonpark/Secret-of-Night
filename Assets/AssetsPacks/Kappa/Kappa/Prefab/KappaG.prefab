@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionRange: 3
   interactionKey: 103
-  questID: f103000004040000070400001304000014040000
+  questID: f1030000040400000a040000
   killMonsterQuestID: 
   exclamationMark: {fileID: 5121708969372709889}
   npcName: seoriseori
