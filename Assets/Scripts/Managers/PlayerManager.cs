@@ -1,6 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PlayerSkillCache
+{
+    public PlayerSkillData playerSkillData;
+    public GameObject skillEffect;
+    public GameObject skillImage;
+}
 public class PlayerManager : MonoBehaviour
 {
     public PlayerGameData playerData;
@@ -11,8 +17,8 @@ public class PlayerManager : MonoBehaviour
     private PlayerSkillDataBase _playerSkillDataBase;
     private PlayerStatDataBase _playerStatDataBase;
 
-    private Dictionary<int, Skill> _playerSkillList = new Dictionary<int, Skill>();
-    private int[] _skillSlots = new int[4];
+    public Dictionary<int, PlayerSkillCache> playerSkillList = new Dictionary<int, PlayerSkillCache>();
+    public List<SkillSlot> skillSlots = new List<SkillSlot>();
     public void Initialize(int CharacterID)
     {
         _playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
@@ -37,43 +43,97 @@ public class PlayerManager : MonoBehaviour
     //플레이어가 소지 할 수 있는 스킬 리스트를 받아온다
     private void InitSkillListByPlayerID(int id)
     {
-        if (_playerSkillList.Count != 0)
+        if (playerSkillList.Count != 0)
             return;
 
         var skillList = _playerStatDataBase.GetData(id).Skills;
         foreach (int skillID in skillList)
         {
-            Skill skill = new Skill();
-            skill.Initialize(_playerSkillDataBase.GetData(skillID));
-            _playerSkillList.Add(skillID, skill);
+            PlayerSkillCache cache = new PlayerSkillCache();
+            cache.playerSkillData = _playerSkillDataBase.GetData(skillID);
+            cache.skillEffect = Resources.Load<GameObject>($"Prefabs/Skills/{cache.playerSkillData.PrefabPath}");
+            cache.skillImage = Resources.Load<GameObject>($"Prefabs/Skills/Images/{cache.playerSkillData.PrefabPath}");
+            playerSkillList.Add(skillID, cache);
         }
     }
-    public void UnlockSkill(int id)
+    public GameObject GetSKillImage(int id)
     {
-        if (_playerSkillList.ContainsKey(id) == false)
-            return;
-
-        _playerSkillList[id].Active();
-    }
-    public bool IsActive(int id)
-    {
-        return _playerSkillList[id].IsActive;
-    }
-    public PlayerSkillData GetSkillData(int id)
-    {
-        if (_playerSkillList.ContainsKey(id) == false)
+        if (playerSkillList.ContainsKey(id) == false)
+        {
+            Debug.LogError("GetSkillImage Error : id is not exist");
             return null;
+        }
 
-        return _playerSkillList[id].PlayerSkillData;
+        return playerSkillList[id].skillImage;
     }
     public GameObject GetSkillEffect(int id)
     {
-        if (_playerSkillList.ContainsKey(id) == false)
+        if (playerSkillList.ContainsKey(id) == false)
+        {
+            Debug.LogError("GetSkillImage Error : id is not exist");
             return null;
+        }
+        return playerSkillList[id].skillEffect;
+    }
+    public float GetSkillDamage(string name)
+    {
+        foreach (var skill in playerSkillList.Values)
+        {
+            if (skill.playerSkillData.Name == name)
+            {
+                return skill.playerSkillData.Damage;
+            }
+        }
+        return 0;
+    }
+    //i want using skillslotid and get skillDamage
+    public float GetSkillDamage(int id)
+    {
+        if (playerSkillList.ContainsKey(id) == false)
+        {
+            Debug.LogError("GetSkillDamage Error : id is not exist");
+            return 0;
+        }
+        return playerSkillList[id].playerSkillData.Damage;
+    }
+    //추후 이를 통해서 스킬을 추가할 수 있도록 한다
+    private int FirstSkillIndex => _playerStatDataBase.GetData(playerData.CharacterID).Skills[0];
+    public void ActiveSkillSlot(int slotNumber)
+    {
+        if (slotNumber < 0 || slotNumber >= 4)
+        {
+            Debug.LogError("SetSkillSlot Error : slotNumber is out of range");
+            return;
+        }
+        skillSlots[slotNumber].SetSlot(slotNumber + FirstSkillIndex);
+    }
+    public bool CheckSkillIsDeActive(int slotNumber)
+    {
+        return skillSlots[slotNumber].Update || skillSlots[slotNumber].hasSKIll == false;
+    }
 
-        string path = _playerSkillDataBase.GetData(id).PrefabPath;
+    internal float GetSkillRange(string name)
+    {
+        foreach (var skill in playerSkillList.Values)
+        {
+            if (skill.playerSkillData.Name == name)
+            {
+                return skill.playerSkillData.AttackRange;
+            }
+        }
+        return 0;
+    }
 
-        return Resources.Load<GameObject>($"Prefabs/Skills/{path}");
+    internal float GetSkillAngle(string name)
+    {
+        foreach (var skill in playerSkillList.Values)
+        {
+            if (skill.playerSkillData.Name == name)
+            {
+                return skill.playerSkillData.AttackAngle;
+            }
+        }
+        return 0;
     }
     #endregion;
 }

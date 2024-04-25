@@ -2,30 +2,51 @@
 	"PlayerSkill": [
 		{
 			"SkillID": 101,
-			"Name": "Sword1Default",
-			"Description": "Test",
+			"Name": "JumpSkill",
+			"Description": "주변의 적에게 데미지를 준다",
 			"SkillType": "Attack",
-			"DelayTime": 1,
-			"Damage": 1,
-			"PrefabPath": "Explosion"
+			"DelayTime": 5,
+			"Damage": 5,
+			"PrefabPath": "JumpSkill",
+			"MP": 2,
+			"AttackRange": 2,
+			"AttackAngle": 45
 		},
 		{
 			"SkillID": 102,
-			"Name": "Sword1Skill1",
-			"Description": "Test",
+			"Name": "StoneSlash",
+			"Description": "전방의 적에게 데미지를 준다",
 			"SkillType": "Attack",
-			"DelayTime": 50,
-			"Damage": 2,
-			"PrefabPath": "Chargeslashblue"
+			"DelayTime": 6,
+			"Damage": 10,
+			"PrefabPath": "StoneSlash",
+			"MP": 3,
+			"AttackRange": 2.4,
+			"AttackAngle": 100
 		},
 		{
 			"SkillID": 103,
-			"Name": "Sword1Skill2",
-			"Description": "Test",
+			"Name": "AssassinAttack",
+			"Description": "어세신 데미지를 준다",
 			"SkillType": "Attack",
-			"DelayTime": 100,
-			"Damage": 3,
-			"PrefabPath": "AoEslashgreen"
+			"DelayTime": 8,
+			"Damage": 15,
+			"PrefabPath": "AssassinAttack",
+			"MP": 4,
+			"AttackRange": 5,
+			"AttackAngle": 90
+		},
+		{
+			"SkillID": 104,
+			"Name": "StingAttack",
+			"Description": "데미지를 준다",
+			"SkillType": "Attack",
+			"DelayTime": 10,
+			"Damage": 30,
+			"PrefabPath": "StingAttack",
+			"MP": 5,
+			"AttackRange": 2.5,
+			"AttackAngle": 90
 		},
 		{
 			"SkillID": 201,
@@ -34,7 +55,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 1,
 			"Damage": 1,
-			"PrefabPath": "snowhit"
+			"PrefabPath": "snowhit",
+			"MP": 3,
+			"AttackRange": 2,
+			"AttackAngle": 2
 		},
 		{
 			"SkillID": 202,
@@ -43,7 +67,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 50,
 			"Damage": 2,
-			"PrefabPath": "Chargeslashpurple"
+			"PrefabPath": "Chargeslashpurple",
+			"MP": 3,
+			"AttackRange": 2.4,
+			"AttackAngle": 2.4
 		},
 		{
 			"SkillID": 203,
@@ -52,7 +79,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 100,
 			"Damage": 3,
-			"PrefabPath": "AoEslashblue"
+			"PrefabPath": "AoEslashblue",
+			"MP": 3,
+			"AttackRange": 5,
+			"AttackAngle": 5
 		},
 		{
 			"SkillID": 301,
@@ -61,7 +91,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 1,
 			"Damage": 1,
-			"PrefabPath": "starhit"
+			"PrefabPath": "starhit",
+			"MP": 3,
+			"AttackRange": 2.5,
+			"AttackAngle": 2.5
 		},
 		{
 			"SkillID": 302,
@@ -70,7 +103,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 50,
 			"Damage": 2,
-			"PrefabPath": "Chargeslashred"
+			"PrefabPath": "Chargeslashred",
+			"MP": 3,
+			"AttackRange": 10,
+			"AttackAngle": 10
 		},
 		{
 			"SkillID": 303,
@@ -79,7 +115,10 @@
 			"SkillType": "Attack",
 			"DelayTime": 100,
 			"Damage": 3,
-			"PrefabPath": "AoEslashorange"
+			"PrefabPath": "AoEslashorange",
+			"MP": 3,
+			"AttackRange": 10,
+			"AttackAngle": 10
 		}
 	]
 }

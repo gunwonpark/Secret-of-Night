@@ -28,12 +28,12 @@ public class PlayerRunState : PlayerBaseState
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
-        if (stateMachine.MovementInput == Vector2.zero || stateMachine.Player.IsTired)
+        if (stateMachine.MovementInput == Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-        else if (!stateMachine.Player.IsRunning || stateMachine.Player.IsTired)
+        else if (!stateMachine.Player.IsRunning)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
             return;

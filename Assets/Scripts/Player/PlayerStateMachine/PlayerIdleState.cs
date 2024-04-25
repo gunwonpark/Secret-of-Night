@@ -34,7 +34,14 @@ public class PlayerIdleState : PlayerBaseState
         }
         if (stateMachine.MovementInput != Vector2.zero)
         {
-            stateMachine.ChangeState(stateMachine.WalkState);
+            if (stateMachine.Player.IsRunning)
+            {
+                stateMachine.ChangeState(stateMachine.RunState);
+            }
+            else
+            {
+                stateMachine.ChangeState(stateMachine.WalkState);
+            }
             return;
         }
         if (stateMachine.Player.IsGrounded && stateMachine.Player.IsJumping == true)
