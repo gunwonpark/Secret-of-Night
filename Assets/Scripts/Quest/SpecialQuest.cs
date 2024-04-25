@@ -9,10 +9,23 @@ public class SpecialQuest : MonoBehaviour
     public GameObject player;
 
     public GameObject blackScreen; // 화면을 가리는 오브젝트
+    public GameObject timeLineObject;
 
     private void Start()
     {
         blackScreen.SetActive(false); // 시작할 때는 화면 가리기 비활성화
+    }
+
+    private void Update()
+    {
+        if (QuestManager.I.currentQuest.QuestID == 1038)
+        {
+            timeLineObject.SetActive(true);
+        }
+        //if (QuestManager.I.currentQuest.QuestID == 1039)
+        //{
+        //    timeLineObject.SetActive(false);
+        //}
     }
 
     // 퀘스트 완료 후 연출을 시작하기 위한 메서드

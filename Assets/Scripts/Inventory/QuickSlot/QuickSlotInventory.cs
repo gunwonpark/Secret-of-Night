@@ -14,7 +14,7 @@ public class QuickSlotInventory : MonoBehaviour
 
     private int slotWidth = 110;
 
-    bool activate;
+    public bool activate;
 
     public QuickSlots[] _uiSlots; // UI 슬롯
     public QuickInventoryItemSlot[] slots; // 슬롯내의 데이터
@@ -45,35 +45,33 @@ public class QuickSlotInventory : MonoBehaviour
         _selectedItem = slots[_selectedItemIndex];
     }
 
+
+    public bool altKeyPressed = false;
+
     private void Update()
     {
-        // QuickSlotItemUse();
-        //QuickSlotItemClear();
-        CursorView();
-        //MoveSlot();
+        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            altKeyPressed = !altKeyPressed;
+            CursorView();
+
+        }
     }
 
-    // 마우스 커서 보이게
+    // 마우스 커서 및 카메라
     private void CursorView()
     {
         activate = !activate;
-        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        if (altKeyPressed)
         {
-            //Cursor.visible = true;
-            if (activate)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                GameManager.Instance.inputManager.PlayerActions.Camera.Disable();
-
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
-            }
-
-            Debug.Log(activate);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            GameManager.Instance.inputManager.PlayerActions.Camera.Disable();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
         }
     }
 

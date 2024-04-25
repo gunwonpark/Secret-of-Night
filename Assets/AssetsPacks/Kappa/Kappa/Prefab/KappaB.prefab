@@ -2000,7 +2000,7 @@ MonoBehaviour:
   questID: f4030000
   killMonsterQuestID: 
   exclamationMark: {fileID: 3384731699800948550}
-  npcName: 
+  npcName: diridiri
 --- !u!195 &6715479283452747937
 NavMeshAgent:
   m_ObjectHideFlags: 0

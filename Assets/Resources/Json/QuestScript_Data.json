@@ -587,6 +587,1062 @@
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "저..촌장님. 마을과 마을밖의 분위기가 심상치 않은데.."
+		},
+		{
+			"DialogueID": 102104,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "이유를 더 말씀해주실 수 있을까요?"
+		},
+		{
+			"DialogueID": 102105,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "더 강해질 수 있게 만들어 줄 사람이 있네."
+		},
+		{
+			"DialogueID": 102106,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "강가에 사는 뚜쉬뚜쉬를 찾아가보도록 하게나."
+		},
+		{
+			"DialogueID": 102107,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "아 찾아갈 때 이것을 갖고 가게."
+		},
+		{
+			"DialogueID": 102108,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "뚜쉬뚜쉬...? 특이한 이름을 가졌네. "
+		},
+		{
+			"DialogueID": 102109,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "그나저나 뚜쉬뚜쉬님은 대체 어디에 계시는거야??"
+		},
+		{
+			"DialogueID": 102110,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "뚜쉬뚜쉬님에게 배운다면 설마 나도 빠샤빠샤? 멋진데?"
+		},
+		{
+			"DialogueID": 102201,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "...뚜쉬뚜쉬님?"
+		},
+		{
+			"DialogueID": 102202,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "너 뭐야? 이몸을 어떻게 알지?"
+		},
+		{
+			"DialogueID": 102203,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저희 마을 촌장님이 뚜쉬뚜쉬님을 찾아가보라고 하셨습니다."
+		},
+		{
+			"DialogueID": 102204,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "더 강해지고 싶어 뚜쉬뚜쉬님을 찾아 왔습니다."
+		},
+		{
+			"DialogueID": 102205,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "강해져? 풉.. 안돼 돌아가."
+		},
+		{
+			"DialogueID": 102206,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저희 마을이 요즘 이상합니다.."
+		},
+		{
+			"DialogueID": 102207,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "마을을 지키기 위해 제가 강해져야 합니다!!"
+		},
+		{
+			"DialogueID": 102208,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "있잖아. 강해지는 건 쉬운 게 아니야."
+		},
+		{
+			"DialogueID": 102209,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "애. 송. 이."
+		},
+		{
+			"DialogueID": 102210,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "난 갈테니 알아서 가도록."
+		},
+		{
+			"DialogueID": 102211,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "뚜쉬뚜쉬.. 아니 스승님! "
+		},
+		{
+			"DialogueID": 102212,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "앞으로 스승님이라고 부르겠습니다. 부탁드립니다!!"
+		},
+		{
+			"DialogueID": 102213,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "....."
+		},
+		{
+			"DialogueID": 102214,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "마을이 위험하다니 내 이번만은 들어주지."
+		},
+		{
+			"DialogueID": 102215,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "ㅋ..크흠. 스승이라고 해서 들어주는 건 절대 아니야."
+		},
+		{
+			"DialogueID": 102216,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "가서 카멜레온이랑 놀아봐."
+		},
+		{
+			"DialogueID": 102301,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "야레야레.. 느려."
+		},
+		{
+			"DialogueID": 102302,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "...."
+		},
+		{
+			"DialogueID": 102303,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "대답."
+		},
+		{
+			"DialogueID": 102304,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "...."
+		},
+		{
+			"DialogueID": 102305,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "포기하겠다는건가? 잘가고."
+		},
+		{
+			"DialogueID": 102306,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아..아닙니다!! 잠시 숨 좀 돌리느라.."
+		},
+		{
+			"DialogueID": 102307,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그래? 그럼 다음으로 미어캣을 잡아와."
+		},
+		{
+			"DialogueID": 102308,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "네..?"
+		},
+		{
+			"DialogueID": 102401,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님 다 잡아왔습니다!"
+		},
+		{
+			"DialogueID": 102402,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그래. 잘 했군."
+		},
+		{
+			"DialogueID": 102403,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "지금까진 너의 실력을 테스트 했다."
+		},
+		{
+			"DialogueID": 102404,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "이번엔 난이도를 올려보지. "
+		},
+		{
+			"DialogueID": 102405,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그 중에서도 황소를 잡을 수 있다면 어느정도 강해졌다고 볼 수 있지."
+		},
+		{
+			"DialogueID": 102406,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "아직 너에게 황소는 무리겠지만 늑대 정도는 잡을 수 있겠지?"
+		},
+		{
+			"DialogueID": 102407,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "늑대라면.. 위험한 몬스터로 알고 있는데…"
+		},
+		{
+			"DialogueID": 102408,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "뭐야? 이 몸처럼 강해지고 싶은게 아닌가?"
+		},
+		{
+			"DialogueID": 102409,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "늑대를 잡아온다면 뚜쉬뚜쉬만의 기술을 알려 주겠다."
+		},
+		{
+			"DialogueID": 102410,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아..알겠습니다!"
+		},
+		{
+			"DialogueID": 102501,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님..! 저 왔습니다."
+		},
+		{
+			"DialogueID": 102502,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "오호. 이제 좀 내 제자 같군."
+		},
+		{
+			"DialogueID": 102503,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "이제 최종 수련이다."
+		},
+		{
+			"DialogueID": 102504,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "자, 내가 알려준 기술은 잘 기억하고 있지?"
+		},
+		{
+			"DialogueID": 102505,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "넵!"
+		},
+		{
+			"DialogueID": 102506,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그래. 황소가 많으면 말이야."
+		},
+		{
+			"DialogueID": 102507,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "내 집이 망가진다고.. 반드시 잡도록."
+		},
+		{
+			"DialogueID": 102508,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아.. 집이..."
+		},
+		{
+			"DialogueID": 102509,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그래. 불만 있나?"
+		},
+		{
+			"DialogueID": 102510,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아닙니다! 집을 부수는 황소는 제가 모조리 잡겠습니다!"
+		},
+		{
+			"DialogueID": 102511,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "그래 내 제자여. 다녀오도록."
+		},
+		{
+			"DialogueID": 102701,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님! 다음은 뭐죠!? 확실히 강해진 것 같습니다."
+		},
+		{
+			"DialogueID": 102702,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "훗..마을로 가보도록."
+		},
+		{
+			"DialogueID": 102703,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "네?"
+		},
+		{
+			"DialogueID": 102704,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "지금. 내 귀에 마을의 절규가 들린다. 넌 아무것도 안들리는가."
+		},
+		{
+			"DialogueID": 102705,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "폭풍이..오려하는군.."
+		},
+		{
+			"DialogueID": 102706,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "...네 (촌장님께 가봐야겠어)"
+		},
+		{
+			"DialogueID": 102801,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "자네! 어찌 이 타이밍에 돌아왔는가?"
+		},
+		{
+			"DialogueID": 102802,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님이 가보라고 해서.. 그건 그렇고 마을이 왜 이렇게 어수선하죠?"
+		},
+		{
+			"DialogueID": 102803,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "우리마을의 귀염둥이 게로게로가 사라졌다네!"
+		},
+		{
+			"DialogueID": 102804,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "서리서리를 놀리다가 혼이 났는데 그 후로 보이지가 않는다네.."
+		},
+		{
+			"DialogueID": 102805,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "서리서리에게 가보겠나?"
+		},
+		{
+			"DialogueID": 102901,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "서리서리! 이게 무슨일이야?"
+		},
+		{
+			"DialogueID": 102902,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "게로게로가 내 버섯을 훔쳐먹어서.. (훌쩍)"
+		},
+		{
+			"DialogueID": 102903,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "그냥 평소처럼 화를 조금 냈어 (훌쩍)"
+		},
+		{
+			"DialogueID": 102904,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "게로게로는 원래 화를 내도 변함없이 날 놀리고 다녔는데 (훌쩍)"
+		},
+		{
+			"DialogueID": 102905,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "아주 잠깐 눈을 돌린 사이에 사라져 버렸어 (훌쩍)"
+		},
+		{
+			"DialogueID": 102906,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "마을안을 모조리 찾아봤는데 보이지가 않아..제발 게로게로를 찾아줘 (엉엉)"
+		},
+		{
+			"DialogueID": 103001,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(마을 안에서 게로게로의 주머니는 발견했지만…)"
+		},
+		{
+			"DialogueID": 103002,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(정말 마을안에는 게로게로가 없잖아?)"
+		},
+		{
+			"DialogueID": 103003,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(마을 밖으로 나간게 분명해!)"
+		},
+		{
+			"DialogueID": 103101,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "게로게로!!!!!어딨어!!"
+		},
+		{
+			"DialogueID": 103102,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "늑대가 너무 무서워."
+		},
+		{
+			"DialogueID": 103103,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "!?"
+		},
+		{
+			"DialogueID": 103104,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "방금 게로게로의 목소리가 들린 것 같아."
+		},
+		{
+			"DialogueID": 103105,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "근데 방향이.. 부꾸부꾸가 사라졌었던 곳이잖아!?"
+		},
+		{
+			"DialogueID": 103201,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "이 장소는..부꾸부꾸를 발견했던 장소야."
+		},
+		{
+			"DialogueID": 103202,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "게로게로! 왜 여기 있는거야?"
+		},
+		{
+			"DialogueID": 103203,
+			"Talker": "GeroGero",
+			"TalkerKo": "게로게로",
+			"Scripts": "나..나는 서리서리를 놀리려고 했는데 으아앙~~몰라"
+		},
+		{
+			"DialogueID": 103204,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(어서 마을로 데려가야겠어. 촌장님께 이상한 점을 말해야해)"
+		},
+		{
+			"DialogueID": 103501,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "게로게로!! "
+		},
+		{
+			"DialogueID": 103502,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "게로게로를 찾아줘서 정말 고마워!"
+		},
+		{
+			"DialogueID": 103601,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님! 게로게로를 찾았는데 이상한 점이 있습니다."
+		},
+		{
+			"DialogueID": 103602,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "부꾸부꾸와 같은 장소에서 발견이 되었어요!"
+		},
+		{
+			"DialogueID": 103603,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "그런데 게로게로도 왜 거기 있는지는 모른다고 합니다."
+		},
+		{
+			"DialogueID": 103604,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "아니 이런 해괴한일이 있나...아무튼 게로게로까지 찾아주다니, 고맙네 젊은이!"
+		},
+		{
+			"DialogueID": 103605,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아닙니다. (이 마을에서 이상한 일이 벌어지고 있는 것이 분명해)"
+		},
+		{
+			"DialogueID": 103701,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "촌장님! 용사님! 띠리띠리가 이상해요!"
+		},
+		{
+			"DialogueID": 103702,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "이건 또 무슨일인가..!? 어서 가보세!"
+		},
+		{
+			"DialogueID": 103801,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "크크큭 고기!! 고기를 가져와!"
+		},
+		{
+			"DialogueID": 103802,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "나님에게 고기를 바쳐라. 어리석은 것들아! 내 흑염룡을 맛보고 싶은것이냐!"
+		},
+		{
+			"DialogueID": 103803,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "띠리띠리!? 왜 그러는거야!"
+		},
+		{
+			"DialogueID": 103804,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "왜라니 나에게 감히 왜라는 단어를 쓴거야?"
+		},
+		{
+			"DialogueID": 103805,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "크으으으..내안에서 또다른 내가 살아난다!!!!"
+		},
+		{
+			"DialogueID": 103806,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "비켜."
+		},
+		{
+			"DialogueID": 103807,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님?"
+		},
+		{
+			"DialogueID": 103808,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "크하핫 나에게 도전장을 내미는 놈은 살아돌아가지 못할 ㄱ.."
+		},
+		{
+			"DialogueID": 103809,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "오랜만에 용의 힘을 개방했더니 좀 피곤하군. "
+		},
+		{
+			"DialogueID": 103810,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "어떻게 된 일이죠?"
+		},
+		{
+			"DialogueID": 103811,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "녀석을 잠재웠다. 내 할일은 끝났으니 뒷일을 책임지도록."
+		},
+		{
+			"DialogueID": 103812,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(스승님이 뭔가를 알고 계신걸까?)"
+		},
+		{
+			"DialogueID": 103901,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님! 아까의 일에 대해 여쭤보러 왔습니다!"
+		},
+		{
+			"DialogueID": 103902,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "난 그저 기의 흐름을 읽어 응답했을 뿐."
+		},
+		{
+			"DialogueID": 103903,
+			"Talker": "DushiDushi",
+			"TalkerKo": "뚜쉬뚜쉬",
+			"Scripts": "마을에 답이 있다. 그 이상 내가 해줄 수 있는 말은 없다."
+		},
+		{
+			"DialogueID": 103904,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(마을..?)"
+		},
+		{
+			"DialogueID": 104001,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저..촌장님! 마을내에서 일어나는 사건들에 대해 아시는 것이 없습니까?"
+		},
+		{
+			"DialogueID": 104002,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "허허이 생각을 해보겠네. 음료수라도 마시면서 대화를 나누지 않겠는가?"
+		},
+		{
+			"DialogueID": 104003,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "조금 춥기도 하니 땔감도 좀 구해다 주게."
+		},
+		{
+			"DialogueID": 104201,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "사실 우리가 왜 이런 모습인지, 최근에 나타나는 기이한 일이 무엇인지는 모른다네."
+		},
+		{
+			"DialogueID": 104202,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "일주일 전 쯤인가..밤에 불빛이 번쩍 거린 적은 있었지만 아마도 번개였을테지."
+		},
+		{
+			"DialogueID": 104203,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(불빛..?)"
+		},
+		{
+			"DialogueID": 104204,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "어쩌면 자네가 우리 마을을 구원해줄 이가 아닌가 혼자 생각해본다네 껄껄"
+		},
+		{
+			"DialogueID": 104205,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "염치없지만.. 도와주게나.."
+		},
+		{
+			"DialogueID": 104206,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "그리고 여관으로 돌아가는 길이면 이것을 좀 전해주겠나?"
+		},
+		{
+			"DialogueID": 104301,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "어머~~이제 오니? 얼른 씻고 푹 쉬려무나! "
+		},
+		{
+			"DialogueID": 104302,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "안녕하세요! 촌장님이 이걸 전해드리라고 하셔서요!"
+		},
+		{
+			"DialogueID": 104303,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "우리 여관의 맥주컵! 깜박하고 있었구나~깔깔깔~~! 정말 고마워!"
+		},
+		{
+			"DialogueID": 104304,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "오늘은 참 기이한 하루이지 않았니? 어쩜 그런일들이 일어났을까?"
+		},
+		{
+			"DialogueID": 104305,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "항상 조심해요! 알았죠?"
+		},
+		{
+			"DialogueID": 104306,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(말이 너무 많다..) 네~! 그나저나 혹시 최근들어 이상한걸 보셨다거나..뭐 그런 적ㅇ.."
+		},
+		{
+			"DialogueID": 104307,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "글세 말하다 보면 있었을지도? 그나저나 배 안고프니? 특별히 맛있는 것을 해줄게!"
+		},
+		{
+			"DialogueID": 104308,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "준비하는 동안 생선을 몇마리 구해다 줄래?"
+		},
+		{
+			"DialogueID": 104501,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "어서 맛있게 먹자구~~ 특별소스를 넣어 조리했어!"
+		},
+		{
+			"DialogueID": 104502,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "잘먹겠습니다!"
+		},
+		{
+			"DialogueID": 104503,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "오늘은 정말 다이나믹한 하루였어~~그렇지 않니? "
+		},
+		{
+			"DialogueID": 104504,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "모두들 무사해서 정말정말 다행이야."
+		},
+		{
+			"DialogueID": 104505,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "그래서 내가 맥주한잔씩 돌린거란다~"
+		},
+		{
+			"DialogueID": 104506,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "어라? 근데 왜 이 맥주컵은 검정색으로 물들었지? 산지 얼마 안된건데?"
+		},
+		{
+			"DialogueID": 104507,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "불량품이 섞여있었다니!"
+		},
+		{
+			"DialogueID": 104508,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "....?"
+		},
+		{
+			"DialogueID": 104509,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "우리 마을에도 불량품이.. 아..아니! 많이 피곤할텐데 이만 들어가봐!"
+		},
+		{
+			"DialogueID": 104510,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "….? 네. 알겠습니다."
+		},
+		{
+			"DialogueID": 104601,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "신세 많이 졌습니다. 몸이 개운해 진 것 같아요."
+		},
+		{
+			"DialogueID": 104602,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "띠리띠리가 깨어난 것 같던데 한 번 들러서 확인해보도록 해~"
+		},
+		{
+			"DialogueID": 104603,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "아참! 갈 때 당근을 띠리띠리에게 전달해 줄래?"
+		},
+		{
+			"DialogueID": 104701,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "띠리띠리..? 몸은 좀 어때? 괜찮아?"
+		},
+		{
+			"DialogueID": 104702,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "어..안녕. 하이하이의 음식 덕분인가, 몸은 괜찮은데 아무것도 기억이 나지 않네."
+		},
+		{
+			"DialogueID": 104703,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "그럼 혹시 마지막 기억은 뭐였는지 물어봐도 돼?"
+		},
+		{
+			"DialogueID": 104704,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "나는 그냥 하이하이한테 가는 길이었는데..으음...."
+		},
+		{
+			"DialogueID": 104705,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "용을 별로 좋아하진 않는데 갑자기 머릿속에 용이 날아다녔어."
+		},
+		{
+			"DialogueID": 104706,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "뭐 그냥 뜬금없이 잡생각을 했었나봐. 그러고는 눈뜨니 집이었어."
+		},
+		{
+			"DialogueID": 104707,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(용..?)"
+		},
+		{
+			"DialogueID": 104801,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "젊은이 여기있었나? 또 일이 일어났네. 이번엔 하이하이가 사라졌어!"
+		},
+		{
+			"DialogueID": 104802,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "뭐!!!?? 안돼!! 하이하이!"
+		},
+		{
+			"DialogueID": 104803,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아침까지만 해도 여관에 계셨는데요..?"
+		},
+		{
+			"DialogueID": 104804,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "제가 찾아볼게요!"
+		},
+		{
+			"DialogueID": 104805,
+			"Talker": "DiriDiri",
+			"TalkerKo": "띠리띠리",
+			"Scripts": "꼭 찾아줘!! 하이하이가 없으면 안돼!"
+		},
+		{
+			"DialogueID": 104901,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "하이하이!"
+		},
+		{
+			"DialogueID": 104902,
+			"Talker": "HiHi",
+			"TalkerKo": "하이하이",
+			"Scripts": "어머어머 여긴 어디야..? 무서워.."
+		},
+		{
+			"DialogueID": 104903,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(이 장소에 확실히 뭔가 있어! 일단 하이하이를 마을로 데려가자)"
+		},
+		{
+			"DialogueID": 105101,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "이번에도 사라진 우리 주민을 찾아주어 고맙네! "
+		},
+		{
+			"DialogueID": 105102,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아닙니다! 촌장님. 연달아 이런 일이 일어나서.."
+		},
+		{
+			"DialogueID": 105103,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "아니! 하이하이가 왜이러고 있어?"
+		},
+		{
+			"DialogueID": 105104,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "...?"
+		},
+		{
+			"DialogueID": 105201,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "게로게로도 그렇고 왜이렇게 다들 정신이 나간거야! 어휴!"
+		},
+		{
+			"DialogueID": 105202,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(항상 화가 나있네..) 아 음! 하이하이처럼 마을에 이상한 일이 벌어지고 있어."
+		},
+		{
+			"DialogueID": 105203,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "혹시 기억에 남거나 특이한 어떤 것이 없었어?"
+		},
+		{
+			"DialogueID": 105204,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "흐음~? 그런 건 딱히 없었는데 신기한 건 본적이 있어!"
+		},
+		{
+			"DialogueID": 105205,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "언덕쪽에서 보랏빛의 오로라가 반짝이는 걸 보았어!"
+		},
+		{
+			"DialogueID": 105206,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "혹시 100년만에 나타났던 자연현상 같은거였을까?"
+		},
+		{
+			"DialogueID": 105207,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "(보랏빛의 오로라..?)"
+		},
+		{
+			"DialogueID": 105208,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "후후..왠지 웃음이 나지 않나? 보랏빛의 자연현상이라니..쿡"
+		},
+		{
+			"DialogueID": 105209,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "?"
+		},
+		{
+			"DialogueID": 105301,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "서리서리...?"
+		},
+		{
+			"DialogueID": 105302,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "내 이름을 함부로 부르지마라..애.송.이."
+		},
+		{
+			"DialogueID": 105303,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "내이름은 함부로 부른 자 중에 살아남은 자는 없다."
+		},
+		{
+			"DialogueID": 105304,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "특별히 나의 흑염의 파멸검으로 너의 마지막을 장식해주마."
+		},
+		{
+			"DialogueID": 105305,
+			"Talker": "SeoriSeori",
+			"TalkerKo": "서리서리",
+			"Scripts": "하앗!"
+		},
+		{
+			"DialogueID": 105401,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(거친 숨을 쉬며) 하아하아 서리서리.."
+		},
+		{
+			"DialogueID": 105402,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "응? 이게 뭐지?"
+		},
+		{
+			"DialogueID": 105501,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(띠리띠리가 이상해졌을 때와 너무도 흡사해!)"
+		},
+		{
+			"DialogueID": 105502,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(지금까지의 의문점과 단서들을 추리해봤을때...)"
+		},
+		{
+			"DialogueID": 105503,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(번쩍거렸던 불빛, 검정색으로 물든 맥주잔, 머릿속에 갑자기 떠오른 용, 보랏빛의 오로라)"
+		},
+		{
+			"DialogueID": 105504,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(그리고 실종되었던 사람들이 발견된 같은장소)"
+		},
+		{
+			"DialogueID": 105505,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(얼른 촌장님을 만나뵈어야겠어!)"
 		}
 	]
 }

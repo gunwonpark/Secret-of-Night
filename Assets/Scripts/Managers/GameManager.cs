@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public MonsterManager monsterManager;
     public InputManager inputManager;
     public SceneManagerEx sceneManager;
+    public ScriptManager scriptManager;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,5 +43,6 @@ public class GameManager : MonoBehaviour
         if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }
         if (inputManager == null) { inputManager = gameObject.AddComponent<InputManager>(); inputManager.Initialize(); }
         if (sceneManager == null) { sceneManager = gameObject.AddComponent<SceneManagerEx>(); }
+        if (scriptManager == null) { scriptManager = gameObject.AddComponent<ScriptManager>(); }
     }
 }
