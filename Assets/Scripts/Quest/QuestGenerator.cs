@@ -613,35 +613,187 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,            
         };
-
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1042))
-        {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104202)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104203)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104204)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
-            },
-            isContinue = true,            
-        };
+        tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1043))
         {
             // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104202)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104203)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104204)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104301)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104302)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104303)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104304)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104305)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104306)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104307)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104308)),
+            },
+            isContinue = true,            
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1044))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1045))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104501)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104502)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104503)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104504)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104505)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104506)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104507)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104508)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104509)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104510)),
             },
             isContinue = true,
         };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1046))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104601)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104602)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104603)),                
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1047))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104701)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104702)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104703)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104704)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104705)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104706)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104707)),               
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1048))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104801)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104802)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104803)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104804)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104805)),                
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1049))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104901)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104902)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104903)),                
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1050))
+        {
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1051))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105101)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105102)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105103)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105104)),
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1052))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105201)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105202)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105203)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105204)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105205)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105206)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105207)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105208)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105209)),
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1053))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105301)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105302)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105303)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105304)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105305)),                
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1054))
+        {           
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1055))
+        {
+            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105501)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105502)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105503)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105504)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105505)),
+            },
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
     }
 }

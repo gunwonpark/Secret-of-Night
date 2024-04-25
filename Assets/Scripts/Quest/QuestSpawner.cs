@@ -17,7 +17,7 @@ public class QuestSpawner : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();        
     }
 
     private void Update()
