@@ -21,11 +21,19 @@ public class SpecialQuest : MonoBehaviour
         if (QuestManager.I.currentQuest.QuestID == 1038)
         {
             timeLineObject.SetActive(true);
+            //GameManager.Instance.inputManager.DisablePlayerAction();
+            //StartCoroutine("EndTimeLine");
         }
         //if (QuestManager.I.currentQuest.QuestID == 1039)
         //{
         //    timeLineObject.SetActive(false);
         //}
+    }
+
+    private IEnumerator EndTimeLine()
+    {
+        yield return new WaitForSeconds(23f);
+        GameManager.Instance.inputManager.EnablePlayerAction();
     }
 
     // 퀘스트 완료 후 연출을 시작하기 위한 메서드
