@@ -18,9 +18,6 @@ public class GameUI : UIBase
     [SerializeField] private Image _playerMPImage;
     [SerializeField] private Image _playerExpImage;
 
-    [Header("Stamina")]
-    [SerializeField] private Image _staminaImage;
-
     [Header("BossInfo")]
     [SerializeField] private GameObject _monsterInfo;
     [SerializeField] private Image _bossHPImage;

@@ -34,7 +34,7 @@ public class AnimationListener : MonoBehaviour
             if (angle < 90f)
             {
                 Debug.Log("SlashAttack: " + hitCollider.name);
-                hitCollider.GetComponent<IDamageable>()?.TakeDamage(10f);
+                hitCollider.GetComponent<IDamageable>()?.TakeDamage(_playerController.PlayerData.Damage);
             }
         }
     }
@@ -60,17 +60,18 @@ public class AnimationListener : MonoBehaviour
     public void SkillDamage(string name)
     {
         float skillDamage = GameManager.Instance.playerManager.GetSkillDamage(name);
-
+        float skillRange = GameManager.Instance.playerManager.GetSkillRange(name);
+        float skillAngle = GameManager.Instance.playerManager.GetSkillAngle(name);
         // 추후 엑셀데이터로 스킬 범위와 스킬 각도를 추가함으로써 최적화 할 수 있겠다.
         if (name == "JumpAttack")
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, 2f, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, skillRange, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
-                if (angle < 45f)
+                if (angle < skillAngle)
                 {
                     Debug.Log("JumpAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);
@@ -79,14 +80,14 @@ public class AnimationListener : MonoBehaviour
         }
         else if (name == "StoneSlash")
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, 2.4f, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, skillRange, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
 
-                if (angle < 100f)
+                if (angle < skillAngle)
                 {
                     Debug.Log("JumpAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);
@@ -95,20 +96,19 @@ public class AnimationListener : MonoBehaviour
         }
         else if (name == "AssassinAttack")
         {
-            float attackRange = 5.0f;
-            if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, attackRange, ~(enemyLayer | gameObject.layer)))
+            if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, skillRange, ~(enemyLayer | gameObject.layer)))
             {
                 attackRange = hitInfo.distance - 0.2f;
             }
 
-            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * 2.5f, new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * (skillRange / 2), new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
 
-                if (angle < 90f)
+                if (angle < skillAngle)
                 {
                     Debug.Log("AssassinAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);
@@ -117,20 +117,14 @@ public class AnimationListener : MonoBehaviour
         }
         else if (name == "StingAttack")
         {
-            float attackRange = 2.4f;
-            if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, attackRange, ~(enemyLayer | gameObject.layer)))
-            {
-                attackRange = hitInfo.distance - 0.2f;
-            }
-
-            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * 2.5f, new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, skillRange, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
 
-                if (angle < 90f)
+                if (angle < skillAngle)
                 {
                     Debug.Log("StingAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);

@@ -2305,7 +2305,7 @@ RectTransform:
   - {fileID: 4637806403788249441}
   - {fileID: 6429079798103812098}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   _playerMPImage: {fileID: 6471727458732120699}
   _playerExpImage: {fileID: 7741031023512164135}
   _staminaImage: {fileID: 7685578052411924435}
-  _monsterInfo: {fileID: 0}
+  _monsterInfo: {fileID: 4268509952367435445}
   _bossHPImage: {fileID: 8092889883728751627}
   _bossHPText: {fileID: 892677768963053684}
   _bossName: {fileID: 144142043525015516}

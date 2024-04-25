@@ -111,5 +111,29 @@ public class PlayerManager : MonoBehaviour
     {
         return skillSlots[slotNumber].Update || skillSlots[slotNumber].hasSKIll == false;
     }
+
+    internal float GetSkillRange(string name)
+    {
+        foreach (var skill in playerSkillList.Values)
+        {
+            if (skill.playerSkillData.Name == name)
+            {
+                return skill.playerSkillData.AttackRange;
+            }
+        }
+        return 0;
+    }
+
+    internal float GetSkillAngle(string name)
+    {
+        foreach (var skill in playerSkillList.Values)
+        {
+            if (skill.playerSkillData.Name == name)
+            {
+                return skill.playerSkillData.AttackAngle;
+            }
+        }
+        return 0;
+    }
     #endregion;
 }

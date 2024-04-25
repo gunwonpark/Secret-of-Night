@@ -161,6 +161,12 @@ Found object mark: '#PlayerSkill[{}]'
  Key: Damage at 6
 [PlayerSkill_Data.xlsx(Sheet1): ROW 1]
  Key: PrefabPath at 7
+[PlayerSkill_Data.xlsx(Sheet1): ROW 1]
+ Key: MP at 8
+[PlayerSkill_Data.xlsx(Sheet1): ROW 1]
+ Key: AttackRange at 9
+[PlayerSkill_Data.xlsx(Sheet1): ROW 1]
+ Key: AttackAngle at 10
 Parsing Array Object Table...
 
 Loading: D:\unity\Project_P\excel2json-master\PlayerStat_Data.xlsx

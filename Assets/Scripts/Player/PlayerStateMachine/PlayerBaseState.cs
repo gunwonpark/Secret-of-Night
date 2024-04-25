@@ -231,9 +231,19 @@ public class PlayerBaseState : IState
             return;
         }
         int skillID = GameManager.Instance.playerManager.skillSlots[number].skillID;
+        float requireMP = GameManager.Instance.playerManager.playerSkillList[skillID].playerSkillData.MP;
+
+        if (stateMachine.Player.PlayerData.CurMP < requireMP)
+        {
+            stateMachine.Player.DoSkill = false;
+            return;
+        }
+
         string skillname = GameManager.Instance.playerManager.playerSkillList[skillID].playerSkillData.Name;
+
         GameManager.Instance.playerManager.skillSlots[number].Execute();
         stateMachine.Player.Animator.SetTrigger(skillname);
+        stateMachine.Player.PlayerData.MPChange(-GameManager.Instance.playerManager.playerSkillList[skillID].playerSkillData.MP);
         stateMachine.ChangeState(stateMachine.SkillState);
     }
 }
