@@ -14,7 +14,7 @@ public class QuickSlotInventory : MonoBehaviour
 
     private int slotWidth = 110;
 
-    bool activate;
+    public bool activate;
 
     public QuickSlots[] _uiSlots; // UI 슬롯
     public QuickInventoryItemSlot[] slots; // 슬롯내의 데이터
@@ -46,24 +46,15 @@ public class QuickSlotInventory : MonoBehaviour
     }
 
 
-    private bool altKeyPressed = false;
+    public bool altKeyPressed = false;
 
     private void Update()
     {
-        // Alt 키를 눌렀을 때 (두번 눌림 방지)
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
         {
-            // 이미 Alt 키가 눌려있다면, 무시
-            if (altKeyPressed)
-                return;
-
-            altKeyPressed = true;
+            altKeyPressed = !altKeyPressed;
             CursorView();
-        }
-        // Alt 키를 떼었을 때
-        else if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
-        {
-            altKeyPressed = false;
+
         }
     }
 
@@ -71,8 +62,7 @@ public class QuickSlotInventory : MonoBehaviour
     private void CursorView()
     {
         activate = !activate;
-
-        if (activate)
+        if (altKeyPressed)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -83,8 +73,6 @@ public class QuickSlotInventory : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             GameManager.Instance.inputManager.PlayerActions.Camera.Enable();
         }
-
-        Debug.Log(activate);
     }
 
     //------------------------------------------------------------------------

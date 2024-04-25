@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+        PlayerData.MPChange(1 * Time.deltaTime);
     }
     private void FixedUpdate()
     {

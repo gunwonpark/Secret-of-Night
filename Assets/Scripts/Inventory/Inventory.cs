@@ -1,3 +1,4 @@
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,6 +83,9 @@ public class Inventory : MonoBehaviour
     [Header("OptionUI")]
     public GameObject optionUI;
     public Button menuRButton;
+    public GameObject InvenUi;
+    public Button InvenIcon;
+
     //상점에서 판매하기 G키 활성화를 이벤트로 델리게이트 사용
     public delegate void InventoryEvent();
     public static event InventoryEvent OnInventoryClose;
@@ -101,6 +105,7 @@ public class Inventory : MonoBehaviour
     {
         Initialize();
         ButtonEvent();
+        InvenIcon.onClick.AddListener(OpenInventory);
     }
 
     void Update()
@@ -191,12 +196,16 @@ public class Inventory : MonoBehaviour
                     _playerController.Input.enabled = false; //플레이어 활동 비활성
                     playerLight.SetActive(true);
 
+                    _quickSlotInventory.altKeyPressed = true;
+
                 }
                 else
                 {
                     CloseInventory();
                     _playerController.Input.enabled = true;
                     playerLight.SetActive(false);
+
+                    _quickSlotInventory.altKeyPressed = false;
                 }
             }
         }
@@ -213,11 +222,14 @@ public class Inventory : MonoBehaviour
             _uiSlots[i].gameObject.SetActive(i >= startIndex && i < endIndex); // 0~11까지의 슬롯만 활성화
         }
 
-
         _inventoryUI.SetActive(true);
+        activated = true;
+
         ClearSeletecItemWindow();
-        Cursor.lockState = CursorLockMode.None; //마우스 커서 표시 
+        Cursor.lockState = CursorLockMode.None; //마우스 커서 표시
+
         OnInventoryOpen?.Invoke(); // NPC G키 비활성화
+
     }
 
     public void CloseInventory()
@@ -228,6 +240,7 @@ public class Inventory : MonoBehaviour
         playerLight.SetActive(false);
         _playerController.Input.enabled = true;
         OnInventoryClose.Invoke();
+
     }
 
     // 다음 슬롯 창
@@ -815,6 +828,7 @@ public class Inventory : MonoBehaviour
         if (!_uiSlots[_selectedItemIndex].equipped)
         {
             salePopUpUI.SetActive(true);
+
         }
         else
         {
@@ -887,13 +901,18 @@ public class Inventory : MonoBehaviour
                     {
                         slots[i].count -= quantity;
                         if (slots[i].count <= 0)
-                        slots[i].item = null;
-                    }                    
+                            slots[i].item = null;
+                    }
                     QuestManager.I.QuestClear();
-                    
+
                 }
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        QuestManager.OnQuestCleared -= CloseInventory;
     }
 
     //public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)

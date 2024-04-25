@@ -23,6 +23,8 @@ public class PlayerAttackState : PlayerBaseState
     {
         base.Exit();
         lockRotation = false;
+        aniComboCount = 0;
+        stateMachine.Player.Animator.SetInteger(stateMachine.Player.AnimationData.Combo, aniComboCount);
         StopAnimation(stateMachine.Player.AnimationData.AttackParameter);
     }
 

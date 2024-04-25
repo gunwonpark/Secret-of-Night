@@ -109,6 +109,7 @@ public class ShopNPCInteraction : MonoBehaviour
         Inventory.instance._playerController.Input.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Inventory.instance.npcInteraction = false;
+        Inventory.instance.playerLight.SetActive(false);
         _GKeyActivate = true;
     }
 
@@ -182,6 +183,7 @@ public class ShopNPCInteraction : MonoBehaviour
         interactionPopup.SetActive(false);
         Inventory.instance._playerController.Input.enabled = false; //플레이어 활동 비활성
         Inventory.instance.activated = true;
+        Inventory.instance.playerLight.SetActive(true);
         Inventory.instance.sale_Inventory = true; //판매하는 인벤토리 활성화
         _GKeyActivate = false;
     }

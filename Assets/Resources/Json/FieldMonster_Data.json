@@ -21,19 +21,22 @@
 				14,
 				15,
 				12,
-				13
+				13,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
 				1,
-				1
+				1,
+				3
 			],
 			"Weigth": [
-				25,
-				25,
-				25,
-				25
+				20,
+				20,
+				20,
+				20,
+				20
 			]
 		},
 		{
@@ -78,8 +81,8 @@
 		{
 			"MonsterID": 3,
 			"Name": "Meerkat",
-			"Level": 2,
-			"Exp": 15,
+			"Level": 4,
+			"Exp": 30,
 			"AtkStance": 0,
 			"HP": 10,
 			"Damage": 1.25,
@@ -95,24 +98,29 @@
 			"DropItem": [
 				16,
 				12,
-				13
+				13,
+				1,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
-				1
+				1,
+				7
 			],
 			"Weigth": [
-				33,
-				33,
-				33
+				20,
+				20,
+				20,
+				20,
+				20
 			]
 		},
 		{
 			"MonsterID": 4,
 			"Name": "Porcupine",
 			"Level": 3,
-			"Exp": 15,
+			"Exp": 25,
 			"AtkStance": 0,
 			"HP": 12,
 			"Damage": 1.5,
@@ -128,24 +136,29 @@
 			"DropItem": [
 				12,
 				13,
-				17
+				17,
+				1,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
-				1
+				1,
+				5
 			],
 			"Weigth": [
-				33,
-				33,
-				33
+				20,
+				20,
+				20,
+				20,
+				20
 			]
 		},
 		{
 			"MonsterID": 5,
 			"Name": "Skunk",
-			"Level": 3,
-			"Exp": 25,
+			"Level": 5,
+			"Exp": 35,
 			"AtkStance": 0,
 			"HP": 12,
 			"Damage": 1.5,
@@ -161,23 +174,28 @@
 			"DropItem": [
 				12,
 				13,
-				17
+				17,
+				3,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
-				1
+				1,
+				10
 			],
 			"Weigth": [
-				33,
-				33,
-				33
+				20,
+				20,
+				20,
+				20,
+				20
 			]
 		},
 		{
 			"MonsterID": 6,
 			"Name": "WolfA",
-			"Level": 4,
+			"Level": 6,
 			"Exp": 45,
 			"AtkStance": 1,
 			"HP": 14,
@@ -216,10 +234,10 @@
 		{
 			"MonsterID": 7,
 			"Name": "BullA",
-			"Level": 5,
-			"Exp": 90,
+			"Level": 7,
+			"Exp": 60,
 			"AtkStance": 1,
-			"HP": 160,
+			"HP": 16,
 			"Damage": 2,
 			"Daf": 0.5,
 			"DmgSpeed": 1,
@@ -231,20 +249,26 @@
 			"TargetRange": 5,
 			"RotationDamping": 10,
 			"DropItem": [
-				16
+				16,
+				1,
+				33
 			],
 			"DropItemCount": [
-				1
+				1,
+				1,
+				15
 			],
 			"Weigth": [
-				100
+				33,
+				33,
+				33
 			]
 		},
 		{
 			"MonsterID": 8,
 			"Name": "SquirrelA",
 			"Level": 2,
-			"Exp": 10,
+			"Exp": 15,
 			"AtkStance": 0,
 			"HP": 10,
 			"Damage": 1.25,
@@ -260,17 +284,20 @@
 			"DropItem": [
 				16,
 				12,
-				13
+				13,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
-				1
+				1,
+				4
 			],
 			"Weigth": [
-				33,
-				33,
-				33
+				25,
+				25,
+				25,
+				25
 			]
 		},
 		{
@@ -293,17 +320,20 @@
 			"DropItem": [
 				16,
 				12,
-				13
+				13,
+				33
 			],
 			"DropItemCount": [
 				1,
 				1,
-				1
+				1,
+				5
 			],
 			"Weigth": [
-				33,
-				33,
-				33
+				25,
+				25,
+				25,
+				25
 			]
 		},
 		{
@@ -358,6 +388,195 @@
 			],
 			"Weigth": [
 				0
+			]
+		},
+		{
+			"MonsterID": 12,
+			"Name": "CrabSphere",
+			"Level": 8,
+			"Exp": 70,
+			"AtkStance": 1,
+			"HP": 30,
+			"Damage": 3.25,
+			"Daf": 1.25,
+			"DmgSpeed": 1.1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Mon_05",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				17,
+				19,
+				1,
+				3,
+				33
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				20
+			],
+			"Weigth": [
+				20,
+				20,
+				20,
+				20,
+				20
+			]
+		},
+		{
+			"MonsterID": 13,
+			"Name": "PoisonMush",
+			"Level": 7,
+			"Exp": 60,
+			"AtkStance": 1,
+			"HP": 35,
+			"Damage": 3,
+			"Daf": 0.5,
+			"DmgSpeed": 1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Mon_01",
+			"TargetRange": 6,
+			"RotationDamping": 10,
+			"DropItem": [
+				24,
+				25,
+				7,
+				19,
+				33
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				15
+			],
+			"Weigth": [
+				20,
+				20,
+				20,
+				20,
+				20
+			]
+		},
+		{
+			"MonsterID": 14,
+			"Name": "Geistwood",
+			"Level": 9,
+			"Exp": 90,
+			"AtkStance": 1,
+			"HP": 40,
+			"Damage": 3.5,
+			"Daf": 1,
+			"DmgSpeed": 1.1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Mon_03",
+			"TargetRange": 10,
+			"RotationDamping": 10,
+			"DropItem": [
+				2,
+				4,
+				7,
+				33
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				30
+			],
+			"Weigth": [
+				25,
+				25,
+				25,
+				25
+			]
+		},
+		{
+			"MonsterID": 15,
+			"Name": "TrollicCrown",
+			"Level": 9,
+			"Exp": 90,
+			"AtkStance": 1,
+			"HP": 40,
+			"Damage": 3.5,
+			"Daf": 1.5,
+			"DmgSpeed": 1.1,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Mon_02",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				2,
+				4,
+				7,
+				33
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				30
+			],
+			"Weigth": [
+				25,
+				25,
+				25,
+				25
+			]
+		},
+		{
+			"MonsterID": 16,
+			"Name": "Gloomulcher",
+			"Level": 8,
+			"Exp": 70,
+			"AtkStance": 1,
+			"HP": 30,
+			"Damage": 3.25,
+			"Daf": 1,
+			"DmgSpeed": 1.2,
+			"CriDamage": 0,
+			"MoveSpeed": 1,
+			"RunSpeed": 1.1,
+			"AtkRange": 1.6,
+			"PrefabPath": "Prefabs/Monsters/Mon_04",
+			"TargetRange": 5,
+			"RotationDamping": 10,
+			"DropItem": [
+				16,
+				21,
+				22,
+				2,
+				33
+			],
+			"DropItemCount": [
+				1,
+				1,
+				1,
+				1,
+				20
+			],
+			"Weigth": [
+				20,
+				20,
+				20,
+				20,
+				20
 			]
 		}
 	]

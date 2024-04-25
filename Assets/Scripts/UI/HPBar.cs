@@ -28,7 +28,6 @@ public class HPBar : MonoBehaviour
     {
         _enemyHp.gameObject.SetActive(false);
         this.enabled = false;
-        Debug.Log("DeActive");
     }
     Coroutine co;
     public void FadeOut(float time)

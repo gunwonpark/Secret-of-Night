@@ -10,6 +10,7 @@ public class GameStartScene : BaseScene
         SceneType = Scene.GameStart;
 
         GameManager.Instance.soundManager.PlayBGM(_bgm);
+
     }
     public override void Clear()
     {

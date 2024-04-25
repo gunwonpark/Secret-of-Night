@@ -80,8 +80,8 @@ public class Shop : MonoBehaviour
 
 
         // 아이템 목록에서 3,4,8번, 아이템 제외 (기본아이템)
-        _items = RemoveItemIndex(_items, 2); // 3번 아이템 삭제
-        _items = RemoveItemIndex(_items, 2); // 4번 아이템 삭제, 앞에 인덱스 하나 삭제 됐으므로 2로
+        _items = RemoveItemIndex(_items, 4); // 3번 아이템 삭제
+        _items = RemoveItemIndex(_items, 4); // 4번 아이템 삭제, 앞에 인덱스 하나 삭제 됐으므로 2로
         _items = RemoveItemIndex(_items, 5); // 8번 아이템 삭제, 앞에 인덱스 두개 삭제
 
         //26번 아이템 추가

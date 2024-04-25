@@ -20,6 +20,9 @@ public class PlayerSkillData
     public int DelayTime;
     public int Damage;
     public string PrefabPath;
+    public float MP;
+    public float AttackRange;
+    public float AttackAngle;
 }
 [System.Serializable]
 public class PlayerStatData
