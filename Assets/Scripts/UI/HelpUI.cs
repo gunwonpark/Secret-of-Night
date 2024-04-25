@@ -8,22 +8,16 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
     public Button HelpIcon;
 
     public GameObject HelpUi;
-    public GameObject InvenUi;
-    public GameObject GameUi;
-
-    private QuickSlotInventory _quickInventory;
 
     void Start()
     {
         //InvenIcon.onClick.AddListener(Inven);
         HelpIcon.onClick.AddListener(Help);
-        _quickInventory = GameUi.GetComponentInChildren<QuickSlotInventory>();
     }
 
     void Help()
     {
         HelpUi.SetActive(true);
-        Debug.Log(_quickInventory.altKeyPressed);
     }
 
     //void Inven()
@@ -42,9 +36,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             HelpUi.SetActive(false);
-            //_quickInventory.altKeyPressed = false;
         }
 
-        Debug.Log(_quickInventory.altKeyPressed);
     }
 }
