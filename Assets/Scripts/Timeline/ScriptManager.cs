@@ -35,7 +35,7 @@ public class ScriptManager : MonoBehaviour
         AddSubtitle("Sub12", "녀석을 잠재웠다. 내 할일은 끝났으니 뒷일을 책임지도록.");
         AddSubtitle("Sub13", "(스승님이 뭔가를 알고 계신걸까?)");
 
-        
+
     }
 
     // 자막 키에 해당하는 자막 텍스트를 반환하는 함수
