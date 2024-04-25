@@ -4808,7 +4808,7 @@ MonoBehaviour:
   dodgeForce: -4
   <IsAttacking>k__BackingField: 0
   <IsRunning>k__BackingField: 0
-  <IsJumping>k__BackingField: 1
+  <IsJumping>k__BackingField: 0
   <IsDodgeing>k__BackingField: 0
   <DoSkill>k__BackingField: 0
   <IsGrounded>k__BackingField: 0
