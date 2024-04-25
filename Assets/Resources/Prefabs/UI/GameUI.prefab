@@ -2414,7 +2414,6 @@ MonoBehaviour:
   InvenIcon: {fileID: 1286436359008287192}
   HelpIcon: {fileID: 651906872968945850}
   HelpUi: {fileID: 6516175006281502514}
-  InvenUi: {fileID: 0}
 --- !u!1 &1458189826109554891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,8 +3399,10 @@ MonoBehaviour:
   _quickSlotUI: {fileID: 2133625407180907018}
   _slotGrid: {fileID: 7828884306901888785}
   _itemGroup: {fileID: 5008728608144189169}
+  activate: 0
   _uiSlots: []
   _selectedItemIndex: 1
+  altKeyPressed: 0
 --- !u!1 &2159098872898866814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,7 +3830,7 @@ RectTransform:
   - {fileID: 4637806403788249441}
   - {fileID: 6429079798103812098}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
