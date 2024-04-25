@@ -31,7 +31,7 @@ public class PlayerJumpState : PlayerBaseState
         AnimatorStateInfo info = stateMachine.Player.Animator.GetCurrentAnimatorStateInfo(0);
         if (info.IsTag("Jump"))
         {
-            if (info.normalizedTime > 0.8f)
+            if (info.normalizedTime > 0.5f && stateMachine.Player.IsGrounded)
             {
                 stateMachine.ChangeState(stateMachine.IdleState);
                 return;
