@@ -107,5 +107,9 @@ public class PlayerManager : MonoBehaviour
         }
         skillSlots[slotNumber].SetSlot(slotNumber + FirstSkillIndex);
     }
+    public bool CheckSkillIsDeActive(int slotNumber)
+    {
+        return skillSlots[slotNumber].Update || skillSlots[slotNumber].hasSKIll == false;
+    }
     #endregion;
 }

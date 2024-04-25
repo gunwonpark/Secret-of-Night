@@ -10,8 +10,11 @@ public class SkillSlotUI : UIBase
         for (int i = 0; i < skillSlots.Count; i++)
         {
             GameManager.Instance.playerManager.skillSlots.Add(skillSlots[i]);
-            GameManager.Instance.playerManager.ActiveSkillSlot(i);
+
         }
+        GameManager.Instance.playerManager.ActiveSkillSlot(0);
+        GameManager.Instance.playerManager.ActiveSkillSlot(2);
+        GameManager.Instance.playerManager.ActiveSkillSlot(3);
     }
 
 }

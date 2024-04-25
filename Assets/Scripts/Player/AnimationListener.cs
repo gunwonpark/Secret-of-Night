@@ -38,6 +38,13 @@ public class AnimationListener : MonoBehaviour
             }
         }
     }
+    public void ShowPlayerSkillEffect(string name)
+    {
+        if (name == "StingAttack")
+        {
+            Instantiate(Resources.Load<GameObject>("Prefabs/Skills/StingAttackEffect"), skillPos).GetComponent<ParticleSystem>().Play();
+        }
+    }
     public void ShowPlayerSkill(string name)
     {
         ParticleSystem go = Instantiate(playerSkillEffectDic[name], skillPos);
@@ -88,13 +95,13 @@ public class AnimationListener : MonoBehaviour
         }
         else if (name == "AssassinAttack")
         {
-            float attackRange = 3.0f;
+            float attackRange = 5.0f;
             if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, attackRange, ~(enemyLayer | gameObject.layer)))
             {
                 attackRange = hitInfo.distance - 0.2f;
             }
 
-            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * 1.5f, new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
+            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * 2.5f, new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
 
             foreach (var hitCollider in hitEnemies)
             {
@@ -108,18 +115,40 @@ public class AnimationListener : MonoBehaviour
                 }
             }
         }
+        else if (name == "StingAttack")
+        {
+            float attackRange = 2.4f;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, attackRange, ~(enemyLayer | gameObject.layer)))
+            {
+                attackRange = hitInfo.distance - 0.2f;
+            }
+
+            Collider[] hitEnemies = Physics.OverlapBox(transform.position + transform.rotation * Vector3.forward * 2.5f, new Vector3(1f, 1.0f, attackRange), transform.rotation, enemyLayer, QueryTriggerInteraction.Ignore);
+
+            foreach (var hitCollider in hitEnemies)
+            {
+                Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
+                float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+                if (angle < 90f)
+                {
+                    Debug.Log("StingAttack: " + hitCollider.name);
+                    hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);
+                }
+            }
+        }
     }
     public void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f); // Semi-transparent red
 
         // Draw a cube where the OverlapBox is going to be, with the same size and orientation
-        Gizmos.matrix = Matrix4x4.TRS(transform.position + transform.rotation * Vector3.forward * 1.5f, transform.rotation, new Vector3(1f, 1.0f, 3.0f));
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + transform.rotation * Vector3.forward * 2.5f, transform.rotation, new Vector3(1f, 1.0f, 5.0f));
         Gizmos.DrawCube(Vector3.zero, Vector3.one); // The cube is drawn at the origin of the Gizmos matrix
     }
     public void MoveDash()
     {
-        float moveDistance = 3.0f;
+        float moveDistance = 5.0f;
 
         if (Physics.Raycast(transform.position + Vector3.up * 0.3f, transform.forward, out RaycastHit hitInfo, moveDistance, ~(enemyLayer | gameObject.layer)))
         {
@@ -127,8 +156,8 @@ public class AnimationListener : MonoBehaviour
         }
 
         _playerController.gameObject.transform.position += transform.forward * moveDistance;
-        Debug.Log("MoveDash");
     }
+
     void OnDrawGizmosSelected()
     {
         // Draw the attack range arc for visual debugging

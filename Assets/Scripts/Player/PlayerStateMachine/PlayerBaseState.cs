@@ -225,11 +225,11 @@ public class PlayerBaseState : IState
 
     protected void SkillTrigger(int number)
     {
-        //if (GameManager.Instance.playerManager.skillSlots[number].Update)
-        //{
-        //    stateMachine.Player.DoSkill = false;
-        //    return;
-        //}
+        if (GameManager.Instance.playerManager.CheckSkillIsDeActive(number))
+        {
+            stateMachine.Player.DoSkill = false;
+            return;
+        }
         int skillID = GameManager.Instance.playerManager.skillSlots[number].skillID;
         string skillname = GameManager.Instance.playerManager.playerSkillList[skillID].playerSkillData.Name;
         GameManager.Instance.playerManager.skillSlots[number].Execute();

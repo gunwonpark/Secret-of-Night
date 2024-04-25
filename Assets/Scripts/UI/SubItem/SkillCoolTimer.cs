@@ -37,8 +37,6 @@ public class SkillCoolTimer : MonoBehaviour
             image.fillAmount = 1;
             update = false;
             gameObject.SetActive(false);
-            Debug.Log("CoolTimeEnd");
         }
-        Debug.Log("CoolTime");
     }
 }
