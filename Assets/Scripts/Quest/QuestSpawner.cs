@@ -11,6 +11,9 @@ public class QuestSpawner : MonoBehaviour
     private int danjiMaxCount = 1;
     private int moneyBackCount = 1;
     private int buggubugguBodyMaxCount = 1;
+    private int woodsMaxCount = 1;
+    private int healingCircleCount = 1;
+    private int hihiCircleCount = 1;
     private Animator animator;
     
 
@@ -62,27 +65,53 @@ public class QuestSpawner : MonoBehaviour
         {
             for (int i = 0; i < danjiMaxCount; i++)
             {
-                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(29).Prefab, new Vector3(0.088769f, 1.571416f, 65.8601f), Quaternion.Euler(0f, 167.323f, 0f));
+                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(29).Prefab, new Vector3(77.47961f, 3.13f, 92.70897f), Quaternion.identity);
                 danjiMaxCount--;
             }            
         }
 
-        if (QuestManager.I.currentQuest.QuestID == 1018)
+        else if (QuestManager.I.currentQuest.QuestID == 1017)
         {
             for (int i = 0; i < buggubugguBodyMaxCount; i++)
             {
-                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(30).Prefab, new Vector3(2.73f, 2f, 51.72f), Quaternion.Euler(0f, 167.323f, 0f));
+                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(30).Prefab, new Vector3(108.9168f, 14.5276f, 34.42586f), Quaternion.Euler(0f, 0f, 30.737f));
+                Instantiate(Resources.Load<GameObject>("Prefabs/effects/LaserAOE"), new Vector3(108.8186f, 2.581414f, 34.64442f), Quaternion.identity);
                 buggubugguBodyMaxCount--;
             }
         }
 
-        if (QuestManager.I.currentQuest.QuestID == 1029)
+        else if (QuestManager.I.currentQuest.QuestID == 1019)
+        {
+            for (int i = 0; i < healingCircleCount; i++)
+            {                
+                Instantiate(Resources.Load<GameObject>("Prefabs/effects/HealingCircle"), new Vector3(-5.54f, 0.6747813f, 119.67f), Quaternion.identity);
+                healingCircleCount--;
+            }
+        }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1029)
         {
             for (int i = 0; i < moneyBackCount; i++)
             {
                 Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(28).Prefab, new Vector3(4.59f, 0.71f, 118.44f), Quaternion.identity);
                 moneyBackCount--;
             }            
+        }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1040)
+        {
+            for(int i = 0;i < woodsMaxCount; i++)
+            {                
+                // Instantiate(prefab, new Vector3(0f,0f,0f), Quaternion.identity);
+            }
+        }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1050)
+        {
+            for (int i = 0; i < hihiCircleCount; i++)
+            {
+                Instantiate(Resources.Load<GameObject>("Prefabs/effects/HealingCircle"), new Vector3(-1.15f, 0.6747813f, 126.95f), Quaternion.identity);
+            }
         }
     }
 }
