@@ -3,19 +3,19 @@
 		{
 			"BossID": 1,
 			"Name": "KappaBoss",
-			"HP": 400,
-			"Damage": 1,
-			"Def": 1,
+			"HP": 150,
+			"Damage": 2,
+			"Def": 2,
 			"MoveSpeed": 1,
 			"Range": 1.5
 		},
 		{
 			"BossID": 2,
-			"Name": "HorseBoss",
-			"HP": 50,
-			"Damage": 3,
-			"Def": 2,
-			"MoveSpeed": 1.5,
+			"Name": "SeoriBoss",
+			"HP": 100,
+			"Damage": 2,
+			"Def": 1,
+			"MoveSpeed": 1,
 			"Range": 1.5
 		}
 	]

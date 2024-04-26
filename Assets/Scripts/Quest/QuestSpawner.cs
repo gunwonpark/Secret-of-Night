@@ -70,7 +70,7 @@ public class QuestSpawner : MonoBehaviour
             }            
         }
 
-        else if (QuestManager.I.currentQuest.QuestID == 1017)
+        else if (QuestManager.I.currentQuest.QuestID == 1018)
         {
             for (int i = 0; i < buggubugguBodyMaxCount; i++)
             {
@@ -111,6 +111,7 @@ public class QuestSpawner : MonoBehaviour
             for (int i = 0; i < hihiCircleCount; i++)
             {
                 Instantiate(Resources.Load<GameObject>("Prefabs/effects/HealingCircle"), new Vector3(-1.15f, 0.6747813f, 126.95f), Quaternion.identity);
+                hihiCircleCount--;
             }
         }
     }
