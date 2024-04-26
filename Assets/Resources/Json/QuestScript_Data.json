@@ -1643,6 +1643,312 @@
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "(얼른 촌장님을 만나뵈어야겠어!)"
+		},
+		{
+			"DialogueID": 105601,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님!"
+		},
+		{
+			"DialogueID": 105602,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "무슨 일인가?"
+		},
+		{
+			"DialogueID": 105603,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "마을사람들의 모습이 변하고, 사라지고, 이상행동을 하는 것은 고대 마왕의 저주와 비슷해요"
+		},
+		{
+			"DialogueID": 105604,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "제 오래된 기억에 의하면 저희 왕국이 마왕과 전쟁을 벌일 적이 있어요"
+		},
+		{
+			"DialogueID": 105605,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "전쟁 중 정신이 없었지만 이 마을에서 일어난 일과 비슷한 일들이 벌어졌어요."
+		},
+		{
+			"DialogueID": 105606,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "마을 주민들은 자각 못했지만 나눴던 말 중에 힌트가 있었어요."
+		},
+		{
+			"DialogueID": 105607,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "뭐?? 그럼 우리 마을이 마왕의 저주라도 받았다는 말인가?"
+		},
+		{
+			"DialogueID": 105608,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "그럴리는 없네! 무슨 말도 안되는 얘기인가!"
+		},
+		{
+			"DialogueID": 105609,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "내가 자네를 너무 믿었구만.. 그런 실없는 이야기일 줄이야.. 우리마을에서 나가주게!"
+		},
+		{
+			"DialogueID": 105701,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(왜 촌장님이 저렇게 적대적이신거지..?)"
+		},
+		{
+			"DialogueID": 105702,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(어쩌면 스승님은 알고 계실까?)"
+		},
+		{
+			"DialogueID": 105801,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님~!!!"
+		},
+		{
+			"DialogueID": 105802,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님!!!!! 스승님~~!!!!!?"
+		},
+		{
+			"DialogueID": 105803,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "이럴수가 이번엔 스승님이 사라지셨어!"
+		},
+		{
+			"DialogueID": 105804,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "어서 '그 장소'로 가봐야 겠어!"
+		},
+		{
+			"DialogueID": 105901,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "아니!? 어떻게 된거지? 왜 이번엔 아무 것도 없는 거지?"
+		},
+		{
+			"DialogueID": 105902,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "대체 스승님은 어디에 계신 걸까.."
+		},
+		{
+			"DialogueID": 105903,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(촌장님은 떠나라고 하셨지만..이 마을을 이대로 둘 순 없어)"
+		},
+		{
+			"DialogueID": 105904,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(스승님이 아예 사라지신 지금이 제일 위험할거야.)"
+		},
+		{
+			"DialogueID": 105905,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(어떻게든 마을에서 단서를 더 찾아봐야해!)"
+		},
+		{
+			"DialogueID": 106001,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님!"
+		},
+		{
+			"DialogueID": 106002,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "아니 자네 아직도 안떠났는가?"
+		},
+		{
+			"DialogueID": 106003,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저의 스승님이 사라지셨습니다. 부꾸부꾸나 게로게로를 찾은 장소에 가봐도 보이질 않아요!"
+		},
+		{
+			"DialogueID": 106004,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "이제 자네와 상관없는 일 일세! 우리가 알아서 할테니 신경쓰지말게!"
+		},
+		{
+			"DialogueID": 106005,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "스승님은 촌장님이 소개시켜 주셨잖아요. 그리고 마을의 이상한 일도.."
+		},
+		{
+			"DialogueID": 106006,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "또 마왕의 저주니 뭐니 그런 시덥잖은 이야기를 하는 겐가!? "
+		},
+		{
+			"DialogueID": 106007,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "생각해보니 자네가 온 이후로 이상해진 건 아닌가! 어서 마을을 떠나주게!"
+		},
+		{
+			"DialogueID": 106008,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "이제 자네와 이야기를 하지 않겠네!"
+		},
+		{
+			"DialogueID": 106101,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "... 촌장님이 뭔가 잘못 생각하고 계신것 같아."
+		},
+		{
+			"DialogueID": 106102,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님을 설득하기 위해 뭐라도 해야겠어!"
+		},
+		{
+			"DialogueID": 106201,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님.. 약소하지만 좋아하시는 것들 몇개 챙겨왔어요."
+		},
+		{
+			"DialogueID": 106202,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 106203,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "제 생각에는 마을이 정말 위험한 것같아요. 제가 도와드릴게요!"
+		},
+		{
+			"DialogueID": 106204,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 106205,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(부족한걸까..뭔가 마을을 위한 것을 해야겠어)"
+		},
+		{
+			"DialogueID": 106301,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(마을 주변 동물들이 난폭해졌다고 하셨었지)"
+		},
+		{
+			"DialogueID": 106302,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(마을의 안전을 위해 동물들을 진정시켜야겠어)"
+		},
+		{
+			"DialogueID": 106401,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님. 마을 주변에 있는 동물들을 많이 진정시켰어요."
+		},
+		{
+			"DialogueID": 106402,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 106403,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "더 위험한 동물들은 아직 남아있어요.. 마저 진정시키고 올게요!"
+		},
+		{
+			"DialogueID": 106404,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 106501,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "촌장님!"
+		},
+		{
+			"DialogueID": 106502,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "이 근처 위험했던 동물들이 대부분 진정이 됐어요!"
+		},
+		{
+			"DialogueID": 106503,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "이젠 당분간 큰 위험은 없을 것 같습니다."
+		},
+		{
+			"DialogueID": 106504,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "…"
+		},
+		{
+			"DialogueID": 106505,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "저는 마을에 도움이 되고 싶어요.."
+		},
+		{
+			"DialogueID": 106506,
+			"Talker": "GuriGuri",
+			"TalkerKo": "구리구리",
+			"Scripts": "자네 말귀를 참 못알아듣는구만! 혼나야 정신을 차릴게냐!"
+		},
+		{
+			"DialogueID": 106601,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "죄송합니다 촌장님.."
+		},
+		{
+			"DialogueID": 106602,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(촌장님한테도 아티펙트가 떨어졌잖아!?)"
+		},
+		{
+			"DialogueID": 106603,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(처음 내가 갖고있었던 것, 서리서리에게 떨어진 것, 촌장님한테 떨어진 것 총 세개야)"
+		},
+		{
+			"DialogueID": 106604,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(앗 희미하게 빛을 내고 있잖아?)"
 		}
 	]
 }
