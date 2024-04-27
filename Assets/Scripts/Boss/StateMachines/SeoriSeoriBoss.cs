@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,9 +8,9 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
     [Header("References")]
     public BossState currentState = BossState.Idle;
     public Transform playerTransform;
-    public Animator animator;
-    public Texture2D damageTexture;
-    public Texture2D originalTexture;
+    private Animator animator;
+    //public Texture2D damageTexture;
+    //public Texture2D originalTexture;
     private NavMeshAgent agent;
     private SkinnedMeshRenderer[] meshRenderers;
     SMRAfterImageCreator aic;
@@ -25,7 +26,7 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
     private float actualSlowMotionCharge = 0f;
     private float maxSlowMotionCharge = 100f;
 
-    private void Start()
+    private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
@@ -135,7 +136,7 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
 
     public void DamageFlash()
     {
-        meshRenderers[0].material.mainTexture = damageTexture;
+        //meshRenderers[0].material.mainTexture = damageTexture;
         Invoke("ResetTexture", 0.5f);
         if (canPlayDamageAnimation)
         {
@@ -156,7 +157,7 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
 
     public void ResetTexture()
     {
-        meshRenderers[0].material.mainTexture = originalTexture;
+        //meshRenderers[0].material.mainTexture = originalTexture;
     }
 
     void CreateAfterImages()
@@ -173,7 +174,15 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
             animator.SetTrigger("Die");
             agent.isStopped = true;
             currentState = BossState.Dying;
-            GameManager.Instance.uiManager.ShowPopupUI<MakePeoplePopup>();            
+            DropItem();
+            QuestManager.I.QuestClear();
         }
+    }
+
+    public void DropItem()
+    {
+        Vector3 throwPosition = transform.position;
+
+        Instantiate(Resources.Load<GameObject>("Prefabs/Quest/Gemstone"), throwPosition, Quaternion.identity);
     }
 }
