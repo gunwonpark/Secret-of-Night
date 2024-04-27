@@ -544,7 +544,7 @@ Transform:
   - {fileID: 3956619689218047153}
   - {fileID: 3239801819714296358}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &186430629418523090
 PlayableDirector:
@@ -553,7 +553,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2384674467618363085}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f2a0f9958bdd92a4296e53fe2856ab0d, type: 2}
   m_InitialState: 1
@@ -579,6 +579,8 @@ PlayableDirector:
     value: {fileID: 3956619689227883381}
   - key: {fileID: -87531700972611528, guid: f2a0f9958bdd92a4296e53fe2856ab0d, type: 2}
     value: {fileID: 7232639390732045483}
+  - key: {fileID: -3088334982295487122, guid: f2a0f9958bdd92a4296e53fe2856ab0d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 2b67ca782008e85419d13bbf52c8e929: {fileID: 408999662031960197}
@@ -716,7 +718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Sub16
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cb97c441e8b5714b9af443db6fb306e, type: 2}
   m_sharedMaterial: {fileID: 9110465799078496784, guid: 7cb97c441e8b5714b9af443db6fb306e, type: 2}
