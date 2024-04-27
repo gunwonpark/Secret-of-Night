@@ -3,119 +3,308 @@
 		{
 			"SpotID": 1,
 			"MonsterSpot": [
-				3.2,
+				-58.3,
 				3,
-				69
+				119.3
 			],
 			"Radius": 30,
 			"MonsterID": [
 				2,
 				8,
-				3
+				4
 			]
 		},
 		{
 			"SpotID": 2,
 			"MonsterSpot": [
-				-58.9,
+				50.8,
 				3,
-				121.8
+				115.6
 			],
 			"Radius": 30,
 			"MonsterID": [
 				2,
 				8,
-				3
+				4
 			]
 		},
 		{
 			"SpotID": 3,
 			"MonsterSpot": [
-				50.3,
+				26,
 				3,
-				118.1
+				68.8
 			],
 			"Radius": 15,
 			"MonsterID": [
 				1,
 				2,
-				4
+				3
 			]
 		},
 		{
 			"SpotID": 4,
 			"MonsterSpot": [
-				84.6,
-				5,
-				180.3
+				76.2,
+				3,
+				149.9
 			],
 			"Radius": 15,
 			"MonsterID": [
 				1,
-				3,
-				4
+				2,
+				3
 			]
 		},
 		{
 			"SpotID": 5,
 			"MonsterSpot": [
-				98.7,
-				12,
-				94.5
+				81.4,
+				11,
+				56.5
 			],
-			"Radius": 20,
+			"Radius": 15,
 			"MonsterID": [
-				7
+				2
 			]
 		},
 		{
 			"SpotID": 6,
 			"MonsterSpot": [
-				116.6,
-				12,
-				170.8
+				106.4,
+				17,
+				62.8
 			],
-			"Radius": 35,
-			"MonsterID": [
-				7
-			]
-		},
-		{
-			"SpotID": 7,
-			"MonsterSpot": [
-				66.8,
-				7,
-				247.5
-			],
-			"Radius": 20,
+			"Radius": 15,
 			"MonsterID": [
 				5
 			]
 		},
 		{
+			"SpotID": 7,
+			"MonsterSpot": [
+				117.2,
+				6,
+				133.2
+			],
+			"Radius": 20,
+			"MonsterID": [
+				5,
+				6
+			]
+		},
+		{
 			"SpotID": 8,
 			"MonsterSpot": [
-				31.7,
-				7,
-				292.1
+				85.2,
+				3,
+				177.8
 			],
-			"Radius": 30,
+			"Radius": 20,
 			"MonsterID": [
+				5,
 				6
 			]
 		},
 		{
 			"SpotID": 9,
 			"MonsterSpot": [
-				-19.4,
-				2,
-				67.8
+				67.3,
+				7,
+				245
 			],
 			"Radius": 20,
 			"MonsterID": [
+				6,
+				7
+			]
+		},
+		{
+			"SpotID": 10,
+			"MonsterSpot": [
+				83.4,
 				5,
+				295.3
+			],
+			"Radius": 15,
+			"MonsterID": [
+				7
+			]
+		},
+		{
+			"SpotID": 11,
+			"MonsterSpot": [
+				107.1,
+				12,
+				415.2
+			],
+			"Radius": 15,
+			"MonsterID": [
+				13
+			]
+		},
+		{
+			"SpotID": 12,
+			"MonsterSpot": [
+				120.4,
+				5,
+				478.7
+			],
+			"Radius": 15,
+			"MonsterID": [
+				13
+			]
+		},
+		{
+			"SpotID": 13,
+			"MonsterSpot": [
+				154.2,
+				3,
+				587.9
+			],
+			"Radius": 20,
+			"MonsterID": [
+				12,
+				13
+			]
+		},
+		{
+			"SpotID": 14,
+			"MonsterSpot": [
+				137.1,
 				4,
-				3
+				637.4
+			],
+			"Radius": 20,
+			"MonsterID": [
+				12,
+				16
+			]
+		},
+		{
+			"SpotID": 15,
+			"MonsterSpot": [
+				185.6,
+				4,
+				668
+			],
+			"Radius": 20,
+			"MonsterID": [
+				14,
+				16
+			]
+		},
+		{
+			"SpotID": 16,
+			"MonsterSpot": [
+				224.7,
+				2,
+				637.4
+			],
+			"Radius": 20,
+			"MonsterID": [
+				14,
+				15
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
+			]
+		},
+		{
+			"SpotID": 0,
+			"MonsterSpot": [
+				0
+			],
+			"Radius": 0,
+			"MonsterID": [
+				0
 			]
 		}
 	]
