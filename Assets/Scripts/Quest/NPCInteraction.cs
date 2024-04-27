@@ -105,5 +105,10 @@ public class NPCInteraction : MonoBehaviour
             meshRenderers[0].enabled = true;
             meshRenderers[1].enabled = true;
         }
+        else if (QuestManager.I.currentQuest.QuestID == 1048 && npcName == "hihi")
+        {
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
+        }     
     }
 }

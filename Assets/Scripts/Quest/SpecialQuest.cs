@@ -8,10 +8,13 @@ public class SpecialQuest : MonoBehaviour
     public float blackoutDuration = 3.0f; // 어두워지는 시간
     public float delayBeforeFade = 2.0f; // 대화가 끝난 후 페이드 시작 전 딜레이 시간
     public GameObject player;
+    public SeoriSeoriBoss seoriseoriBoss;
 
     public GameObject blackScreen; // 화면을 가리는 오브젝트
     public GameObject timeLineObject;
+    public GameObject timeLineObject2;
     private int playerstopcount = 1;
+    private int playerstopcount2 = 1;
 
     private void Start()
     {
@@ -25,15 +28,23 @@ public class SpecialQuest : MonoBehaviour
             
             for (int i = 0; i < playerstopcount; i++)
             {
-                timeLineObject.GetComponent<PlayableDirector>().enabled = true;
+                timeLineObject.SetActive(true);
                 GameManager.Instance.inputManager.DisablePlayerAction();
                 playerstopcount--;
             }          
         }
-        //if (QuestManager.I.currentQuest.QuestID == 1039)
-        //{
-        //    timeLineObject.SetActive(false);
-        //}
+
+        else if (QuestManager.I.currentQuest.QuestID == 1051)
+        {
+
+            for (int i = 0; i < playerstopcount2; i++)
+            {
+                timeLineObject2.SetActive(true);
+                //timeLineObject2.GetComponent<PlayableDirector>().enabled = true;
+                GameManager.Instance.inputManager.DisablePlayerAction();
+                playerstopcount2--;
+            }
+        }        
     }
 
     // 퀘스트 완료 후 연출을 시작하기 위한 메서드

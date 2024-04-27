@@ -730,13 +730,7 @@ public class QuestGenerator : MonoBehaviour
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1051))
         {
             // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105101)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105102)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105103)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105104)),
-            },
+            isNoScript = true,
             isContinue = true,
         };
         tempQuests.Add(newQuest);
