@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
@@ -10,7 +9,7 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private List<int> killMonsterQuestID;
     public GameObject exclamationMark;
     public string npcName;
-    
+
     private void Update()
     {
         // 플레이어가 상호작용 키를 누르고 있고, NPC와 일정 범위 내에 있을 때
@@ -45,8 +44,8 @@ public class NPCInteraction : MonoBehaviour
                 break;
         }
 
-        SetNpcposition();        
-    }   
+        SetNpcposition();
+    }
 
     // 플레이어가 일정 범위 내에 있는지 확인하는 메서드
     private bool IsPlayerInRange()
@@ -61,9 +60,9 @@ public class NPCInteraction : MonoBehaviour
             if (DialogueHandler.I.dialogueIndex == 6)
             {
                 transform.position = new Vector3(-9.03f, 0.4570007f, 133.7497f);
-            }            
+            }
         }
-        if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
+        else if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
         {
             if (DialogueHandler.I.dialogueIndex == 9)
             {
@@ -71,23 +70,23 @@ public class NPCInteraction : MonoBehaviour
             }
         }
 
-        if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
+        else if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
         {
             gameObject.SetActive(false);
         }
-        if (QuestManager.I.currentQuest.QuestID == 1020 && npcName == "buggubuggu")
+        else if (QuestManager.I.currentQuest.QuestID == 1020 && npcName == "buggubuggu")
         {
             gameObject.SetActive(true);
         }
-        if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
+        else if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
         {
             transform.position = new Vector3(124.5736f, 6.09848f, -16.91287f);
         }
-        if (QuestManager.I.currentQuest.QuestID == 1032 && npcName == "gerogero")
+        else if (QuestManager.I.currentQuest.QuestID == 1032 && npcName == "gerogero")
         {
             transform.position = new Vector3(11.13f, 0.8999939f, 119.57f);
         }
-        if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
+        else if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
         {
             gameObject.SetActive(false);
         }
