@@ -1825,43 +1825,43 @@
 			"Scripts": "촌장님을 설득하기 위해 뭐라도 해야겠어!"
 		},
 		{
-			"DialogueID": 106201,
+			"DialogueID": 106301,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "촌장님.. 약소하지만 좋아하시는 것들 몇개 챙겨왔어요."
 		},
 		{
-			"DialogueID": 106202,
+			"DialogueID": 106302,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "…"
 		},
 		{
-			"DialogueID": 106203,
+			"DialogueID": 106303,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "제 생각에는 마을이 정말 위험한 것같아요. 제가 도와드릴게요!"
 		},
 		{
-			"DialogueID": 106204,
+			"DialogueID": 106304,
 			"Talker": "GuriGuri",
 			"TalkerKo": "구리구리",
 			"Scripts": "…"
 		},
 		{
-			"DialogueID": 106205,
+			"DialogueID": 106305,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "(부족한걸까..뭔가 마을을 위한 것을 해야겠어)"
 		},
 		{
-			"DialogueID": 106301,
+			"DialogueID": 106306,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "(마을 주변 동물들이 난폭해졌다고 하셨었지)"
 		},
 		{
-			"DialogueID": 106302,
+			"DialogueID": 106307,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
 			"Scripts": "(마을의 안전을 위해 동물들을 진정시켜야겠어)"
