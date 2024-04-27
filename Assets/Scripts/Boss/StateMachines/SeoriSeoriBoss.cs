@@ -175,6 +175,7 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
             agent.isStopped = true;
             currentState = BossState.Dying;
             DropItem();
+            QuestManager.I.QuestClear();
         }
     }
 
