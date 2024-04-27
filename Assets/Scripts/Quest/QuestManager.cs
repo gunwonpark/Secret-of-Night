@@ -182,7 +182,6 @@ public class QuestManager : MonoBehaviour
                 Debug.Log($"{item.Name} {rewardCount}개 획득!");
             }
         }
-
     }
     // 특수 퀘스트 성공
     private void SpecialQuestClear()

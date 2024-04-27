@@ -16,7 +16,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
             isContinue = true,
-            QuestType = 6,
+            QuestType = 6,            
         };
         tempQuests.Add(newQuest);
 
@@ -399,7 +399,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102510)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102511)),
             },
-            isContinue = true,
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
@@ -491,12 +491,13 @@ public class QuestGenerator : MonoBehaviour
             // Description = "쓰러진 게로게로를 데리고 마을로 복귀하기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103101)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103102)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103103)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103104)),                
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(103101)),
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(103102)),
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(103103)),
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(103104)),
             },
             isContinue = true,
+            QuestType = 6
         };
         tempQuests.Add(newQuest);
 

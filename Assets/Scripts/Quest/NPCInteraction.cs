@@ -7,9 +7,14 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private List<int> questID; // 퀘스트 ID
     [SerializeField] private List<int> killMonsterQuestID;
+    private SkinnedMeshRenderer[] meshRenderers;
     public GameObject exclamationMark;
     public string npcName;
 
+    private void Start()
+    {
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+    }
     private void Update()
     {
         // 플레이어가 상호작용 키를 누르고 있고, NPC와 일정 범위 내에 있을 때
@@ -72,23 +77,33 @@ public class NPCInteraction : MonoBehaviour
 
         else if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
         {
-            gameObject.SetActive(false);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
         }
-        else if (QuestManager.I.currentQuest.QuestID == 1020 && npcName == "buggubuggu")
+        else if (QuestManager.I.currentQuest.QuestID == 1027 && npcName == "buggubuggu")
         {
-            gameObject.SetActive(true);
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
         }
         else if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
         {
-            transform.position = new Vector3(124.5736f, 6.09848f, -16.91287f);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
         }
-        else if (QuestManager.I.currentQuest.QuestID == 1032 && npcName == "gerogero")
+        else if (QuestManager.I.currentQuest.QuestID == 1035 && npcName == "gerogero")
         {
-            transform.position = new Vector3(11.13f, 0.8999939f, 119.57f);
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
         }
         else if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
         {
-            gameObject.SetActive(false);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
+        }
+        else if (QuestManager.I.currentQuest.QuestID == 1039 && npcName == "diridiri")
+        {
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
         }
     }
 }
