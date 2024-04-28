@@ -31,7 +31,8 @@ public class PlayerGameData
     [field: Header("PlayerInfo")]
     public string CharacterType;
     public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
-    public string CharacterName; // 플레이어 이름    
+    public string CharacterName; // 플레이어 이름
+    public int WeaponID; // 무기 
 
     [Header("PlayerStat")]
     public int Level;
@@ -102,7 +103,7 @@ public class PlayerGameData
             ChapterInfo = "튜토리얼";
 
             //캐릭터 정보 초기화
-            CharacterName = "Unknown";
+            CharacterName = "G.D.C.T";
 
             //stat 초기화
             Level = 1;
@@ -131,6 +132,12 @@ public class PlayerGameData
                 Debug.Log("데이터 최조 정보");
             }
         }
+        quest = null;
+        itemSlots = null;
+        questIndex = 0;
+        PlayerPosition = Vector3.zero;
+        WeaponDamage = 0;
+        WeaponID = 0;
     }
     public void HPChange(float change)
     {

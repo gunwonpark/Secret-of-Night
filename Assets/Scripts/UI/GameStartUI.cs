@@ -80,6 +80,8 @@ public class GameStartUI : UIBase
     void OnLoadButtonClick()
     {
         GameManager.Instance.uiManager.ShowPopupUI<LoadPopup>("LoadPopup");
+
+
     }
     void OnContinueButtonClick()
     {

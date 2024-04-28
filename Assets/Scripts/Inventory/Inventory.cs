@@ -757,6 +757,7 @@ public class Inventory : MonoBehaviour
         _equipController.PlayerNewEquip(_selectedItem.item);
 
         _equipController.EquipWeaponPower(_selectedItem.item.ItemID, _selectedItem.item.Damage); //공격력 증가
+        GameManager.Instance.playerManager.playerData.WeaponID = _selectedItem.item.ItemID;
         UpdateUI();
 
         SelectItem(_selectedItemIndex);

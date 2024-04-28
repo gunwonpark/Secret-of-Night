@@ -93,7 +93,9 @@ MonoBehaviour:
   _characterNameText: {fileID: 0}
   _chapterText: {fileID: 0}
   _saveDateText: {fileID: 0}
-  _characterImage: {fileID: 0}
+  _characterImage: {fileID: 4554418647925916242}
+  _backGroundImage: {fileID: 4554418647925916242}
+  isEmpty: 0
 --- !u!1 &1785384101285307648
 GameObject:
   m_ObjectHideFlags: 0
