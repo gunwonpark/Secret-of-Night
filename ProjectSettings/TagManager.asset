@@ -21,8 +21,8 @@ TagManager:
   - Monster
   - Ground
   - obstacle
-  - 
-  - 
+  - MainCamera
+  - MinimapCamera
   - 
   - 
   - 
