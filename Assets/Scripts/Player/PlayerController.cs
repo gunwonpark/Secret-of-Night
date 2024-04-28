@@ -127,5 +127,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         PlayerData.OnDie -= OnPlayerDie;
+
     }
 }

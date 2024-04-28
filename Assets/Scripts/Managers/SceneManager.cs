@@ -9,12 +9,14 @@ public class SceneManagerEx : MonoBehaviour
     public Scene NextScene;
     public void LoadSceneAsync(Scene sceneType)
     {
+        Clear();
         NextScene = sceneType;
         SceneManager.LoadScene((int)Scene.Loading);
 
     }
     public void LoadScene(Scene sceneType)
     {
+        Clear();
         NextScene = sceneType;
         SceneManager.LoadScene((int)sceneType);
     }

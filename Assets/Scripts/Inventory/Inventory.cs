@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[System.Serializable]
 public class ItemSlot
 {
     public Item item;
@@ -126,18 +128,46 @@ public class Inventory : MonoBehaviour
         CashUpdate();
 
         _uiSlots = _slotGrid.GetComponentsInChildren<Slot>();
-
         slots = new ItemSlot[_uiSlots.Length];
 
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i] = new ItemSlot(); // 슬롯의 요소들을 ItemSlot의 인스턴스로 초기화
             _uiSlots[i].index = i;
             _uiSlots[i].ClearSlot();
         }
 
+        _quickSlotInventory.Initalize();
+
+        if (GameManager.Instance.playerManager.playerData.itemSlots != null)
+        {
+            Debug.Log("Inventory Data Load");
+            slots = GameManager.Instance.playerManager.playerData.itemSlots;
+            UpdateUI();
+
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i].item != null)
+                {
+                    if (slots[i].item.Type == "using")
+                    {
+                        _quickSlotInventory.AddItem(slots[i].item, slots[i].count);
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Inventory Not");
+            for (int i = 0; i < slots.Length; i++)
+            {
+                slots[i] = new ItemSlot(); // 슬롯의 요소들을 ItemSlot의 인스턴스로 초기화
+            }
+        }
+
+
         ClearSeletecItemWindow(); //아이템 정보 보여주는 오브젝트 비활성
         QuestManager.OnQuestCleared += CloseInventory;
+
     }
 
     private void OnStatIconClick()
@@ -331,6 +361,7 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     ItemSlot emptySlot = GetEmptySlot();
+                    Debug.Log("emptySlot" + emptySlot);
                     if (emptySlot != null)
                     {
                         emptySlot.item = _item;
@@ -378,7 +409,9 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == _item && slots[i].count < _item.MaxAmount)
+            if (slots[i].item == null)
+                continue;
+            if (slots[i].item.ItemID == _item.ItemID && slots[i].count < _item.MaxAmount)
             {
                 return slots[i];
             }
@@ -390,7 +423,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == null)
+            if (slots[i].item == null || slots[i].item.ItemID == 0)
             {
                 return slots[i];
             }
@@ -524,7 +557,10 @@ public class Inventory : MonoBehaviour
             if (slots[i].item != null)
                 _uiSlots[i].Set(slots[i]);
             else
+            {
+                Debug.Log("EmtySlot");
                 _uiSlots[i].ClearSlot();
+            }
         }
     }
 
@@ -535,6 +571,7 @@ public class Inventory : MonoBehaviour
     {
         if (_selectedItem.item.Type == "using")
         {
+            Debug.Log("ItemUse");
             _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제(사용한 갯수)
             switch (_selectedItem.item.ItemID)
             {

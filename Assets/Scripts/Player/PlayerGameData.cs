@@ -19,8 +19,14 @@ public class PlayerGameData
     public int SlotNumber;
     public string SaveTime;
     public string ChapterInfo;
+    public Vector3 PlayerPosition;
+
+    [Header("QuestInfo")]
     public Quest quest;
     public int questIndex;
+
+    [Header("InventoryInfo")]
+    public ItemSlot[] itemSlots;
 
     [field: Header("PlayerInfo")]
     public string CharacterType;
@@ -73,6 +79,14 @@ public class PlayerGameData
         {
             string json = File.ReadAllText(JsonDataPath);
             JsonUtility.FromJsonOverwrite(json, this);
+            for (int i = 0; i < itemSlots.Length; i++)
+            {
+                if (itemSlots[i].count == 0)
+                {
+                    itemSlots[i].item = null;
+                }
+
+            }
             return;
         }
         // 파일이 없으면 기본 데이터 불러오기
@@ -198,6 +212,7 @@ public class PlayerGameData
         SaveTime = DateTime.Now.ToString();
         quest = QuestManager.I.currentQuest;
         questIndex = QuestManager.I.questIndex;
+        itemSlots = Inventory.instance.slots;
         Utility.SaveToJson(this, JsonDataPath);
     }
     public void LoadSavedData()

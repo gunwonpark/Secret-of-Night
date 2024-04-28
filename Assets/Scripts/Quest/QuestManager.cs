@@ -200,14 +200,12 @@ public class QuestManager : MonoBehaviour
             SetCurrentQuest(); // 다음 퀘스트로 변경            
             InitDialogues(); // 대화 목록 초기화
             currentQuest.Queststatus = QuestStatus.Complete;
-            Debug.Log("NextQuset");
         }
         else
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
             HideQuestDescription(); // 퀘스트 설명 숨기기
             currentQuest.Queststatus = QuestStatus.Wait;
-            Debug.Log("NextQuset_s");
         }
 
     }
