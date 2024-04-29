@@ -51,8 +51,8 @@ public class ScriptManager : MonoBehaviour
 
         AddSubtitle("Sub25", "죄송합니다 촌장님..");
         AddSubtitle("Sub26", "(촌장님한테도 아티펙트가 떨어졌잖아?!");
-        AddSubtitle("Sub27", "(처음 내가 갖고 있었던 것, 서리서에게 떨어진 것, 촌장님에게 떨어진 것 총 3개야.");
-        AddSubtitle("Sub28", "(앗 희미하게 빛을 내고 있잖아?)");
+        AddSubtitle("Sub27", "(처음 내가 갖고 있었던 것, 서리서에게 떨어진 것, 촌장님에게 떨어진 것 총 3개야).");
+        AddSubtitle("Sub28", "(앗 희미하게 빛이 나..!)");
     }
 
     // 자막 키에 해당하는 자막 텍스트를 반환하는 함수
