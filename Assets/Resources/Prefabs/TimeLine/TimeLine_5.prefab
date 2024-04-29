@@ -572,7 +572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1346838091775165995
 Transform:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ Transform:
   - {fileID: 334509033559134624}
   - {fileID: 1461020845716955407}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &4438333668926835458
 PlayableDirector:
@@ -645,9 +645,9 @@ PlayableDirector:
   - key: {fileID: 3744631486214293194, guid: ad5c8ff85a2f7e342a8b7b69109f94d1, type: 2}
     value: {fileID: 0}
   - key: {fileID: 74236378059091823, guid: ad5c8ff85a2f7e342a8b7b69109f94d1, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1462602645025774785}
   - key: {fileID: 5751868953887137860, guid: ad5c8ff85a2f7e342a8b7b69109f94d1, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1521205875967398739}
   - key: {fileID: 7803603926853151418, guid: ad5c8ff85a2f7e342a8b7b69109f94d1, type: 2}
     value: {fileID: 5034476182503012014}
   - key: {fileID: -4269530622877107477, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sub20
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7cb97c441e8b5714b9af443db6fb306e, type: 2}
   m_sharedMaterial: {fileID: 9110465799078496784, guid: 7cb97c441e8b5714b9af443db6fb306e, type: 2}
@@ -1303,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4109714994798658, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: -0.9000006
       objectReference: {fileID: 0}
     - target: {fileID: 4109714994798658, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1311,7 +1311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4109714994798658, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7
+      value: -1.699997
       objectReference: {fileID: 0}
     - target: {fileID: 4109714994798658, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2283,7 +2283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801109273896778, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00076007843
+      value: -0.00075912476
       objectReference: {fileID: 0}
     - target: {fileID: 4801109273896778, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2627,12 +2627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 95815683639923230, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Scapula_L'\n\tTransform 'ThumbFinger1_L'\n\tTransform
-        'Elbow_L'\n\tTransform 'ThumbFinger3_R'\n\tTransform 'ThumbFinger2_R'\n\tTransform
-        'Knee_R'\n\tTransform 'Cup_R'\n\tTransform 'ThumbFinger1_R'\n\tTransform
-        'Ankle_L'\n\tTransform 'RingFinger2_L'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2642,5 +2637,15 @@ PrefabInstance:
 --- !u!4 &1461020845716955407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4109714994798658, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
+  m_PrefabInstance: {fileID: 1461435071851577677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1462602645025774785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1189874255011212, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
+  m_PrefabInstance: {fileID: 1461435071851577677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1521205875967398739 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95815683639923230, guid: b4948206bd07d4b479dffd8a7055f492, type: 3}
   m_PrefabInstance: {fileID: 1461435071851577677}
   m_PrefabAsset: {fileID: 0}
