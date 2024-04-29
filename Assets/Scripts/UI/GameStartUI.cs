@@ -69,6 +69,7 @@ public class GameStartUI : UIBase
     private void OnOptionButtonClick()
     {
         _optionPopup.SetActive(true);
+        Debug.Log("ButtonClick");
     }
 
     void OnGameStartButtonClick()
