@@ -4,7 +4,7 @@ public class QuestGenerator : MonoBehaviour
 {
     public List<Quest> tempQuests = new List<Quest>();
     private void Start()
-    {
+    {        
         var newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1001))
         {
             // "배를 채울만한 것을 찾아보기",
@@ -17,6 +17,8 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,
             QuestType = 6,   
+            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 획득",
+            
         };
         tempQuests.Add(newQuest);
 
@@ -25,6 +27,7 @@ public class QuestGenerator : MonoBehaviour
             // "주운 버섯을 사용하기",           
             isNoScript = true,
             isContinue = true,
+            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 사용",
         };
         tempQuests.Add(newQuest);
 
@@ -115,6 +118,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100806)),
             },
             isContinue = true,
+            
         };
         tempQuests.Add(newQuest);
 
@@ -131,7 +135,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100906)),
 
             },
-            isContinue = true,
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
@@ -224,6 +228,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },
             isContinue = true,
+            QuestGoal = $"<포악한 스컹크 처치 0 / {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)} )>"
         };
         tempQuests.Add(newQuest);
 
