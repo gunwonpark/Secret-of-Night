@@ -179,10 +179,11 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
         }
     }
 
-    public void DropItem()
+    private IEnumerator DropItem()
     {
         Vector3 throwPosition = transform.position;
 
+        yield return new WaitForSecondsRealtime(3.5f);
         Instantiate(Resources.Load<GameObject>("Prefabs/Quest/Gemstone"), throwPosition, Quaternion.identity);
     }
 }

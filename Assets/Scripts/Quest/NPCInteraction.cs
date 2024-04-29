@@ -62,14 +62,14 @@ public class NPCInteraction : MonoBehaviour
     {
         if (QuestManager.I.currentQuest.QuestID == 1009 && npcName == "seoriseori")
         {
-            if (DialogueHandler.I.dialogueIndex == 6)
+            if (DialogueHandler.I.dialogueIndex == 5)
             {
                 transform.position = new Vector3(-9.03f, 0.4570007f, 133.7497f);
-            }
+            }            
         }
         else if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
         {
-            if (DialogueHandler.I.dialogueIndex == 9)
+            if (DialogueHandler.I.dialogueIndex == 7)
             {
                 transform.position = new Vector3(11.20499f, 0.8099976f, 137.0612f);
             }
