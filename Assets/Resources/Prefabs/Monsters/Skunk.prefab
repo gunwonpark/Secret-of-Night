@@ -245,6 +245,7 @@ MonoBehaviour:
     Name: 
     Level: 0
     Exp: 0
+    ShortDistance: 0
     AtkStance: 0
     HP: 0
     Damage: 0
@@ -354,7 +355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2927301705379973233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5e708fb58251da4593c7bdecb218ba3, type: 3}
   m_Name: 

@@ -6,6 +6,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
 {
     public Button InvenIcon;
     public Button HelpIcon;
+    public Button SaveIcon;
 
     public GameObject HelpUi;
 
@@ -13,6 +14,12 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
     {
         //InvenIcon.onClick.AddListener(Inven);
         HelpIcon.onClick.AddListener(Help);
+        SaveIcon.onClick.AddListener(Save);
+    }
+
+    private void Save()
+    {
+        GameManager.Instance.uiManager.ShowPopupUI<SavePopup>();
     }
 
     void Help()

@@ -19,13 +19,20 @@ public class PlayerGameData
     public int SlotNumber;
     public string SaveTime;
     public string ChapterInfo;
+    public Vector3 PlayerPosition;
+
+    [Header("QuestInfo")]
     public Quest quest;
     public int questIndex;
+
+    [Header("InventoryInfo")]
+    public ItemSlot[] itemSlots;
 
     [field: Header("PlayerInfo")]
     public string CharacterType;
     public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
-    public string CharacterName; // 플레이어 이름    
+    public string CharacterName; // 플레이어 이름
+    public int WeaponID; // 무기 
 
     [Header("PlayerStat")]
     public int Level;
@@ -73,6 +80,14 @@ public class PlayerGameData
         {
             string json = File.ReadAllText(JsonDataPath);
             JsonUtility.FromJsonOverwrite(json, this);
+            for (int i = 0; i < itemSlots.Length; i++)
+            {
+                if (itemSlots[i].count == 0)
+                {
+                    itemSlots[i].item = null;
+                }
+
+            }
             return;
         }
         // 파일이 없으면 기본 데이터 불러오기
@@ -88,7 +103,7 @@ public class PlayerGameData
             ChapterInfo = "튜토리얼";
 
             //캐릭터 정보 초기화
-            CharacterName = "Unknown";
+            CharacterName = "G.D.C.T";
 
             //stat 초기화
             Level = 1;
@@ -117,6 +132,12 @@ public class PlayerGameData
                 Debug.Log("데이터 최조 정보");
             }
         }
+        quest = null;
+        itemSlots = null;
+        questIndex = 0;
+        PlayerPosition = Vector3.zero;
+        WeaponDamage = 0;
+        WeaponID = 0;
     }
     public void HPChange(float change)
     {
@@ -198,6 +219,8 @@ public class PlayerGameData
         SaveTime = DateTime.Now.ToString();
         quest = QuestManager.I.currentQuest;
         questIndex = QuestManager.I.questIndex;
+        ChapterInfo = quest.ChapterName;
+        itemSlots = Inventory.instance.slots;
         Utility.SaveToJson(this, JsonDataPath);
     }
     public void LoadSavedData()

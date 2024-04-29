@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class QuickInventoryItemSlot
 {
     public Item item;
@@ -23,12 +24,7 @@ public class QuickSlotInventory : MonoBehaviour
     public int _selectedItemIndex;
 
 
-    private void Start()
-    {
-        Initalize();
-    }
-
-    private void Initalize()
+    public void Initalize()
     {
 
         _uiSlots = _slotGrid.GetComponentsInChildren<QuickSlots>();
@@ -176,7 +172,9 @@ public class QuickSlotInventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == _item && slots[i].count < _item.MaxAmount)
+            if (slots[i].item == null)
+                continue;
+            if (slots[i].item.ItemID == _item.ItemID && slots[i].count < _item.MaxAmount)
             {
                 return slots[i];
             }

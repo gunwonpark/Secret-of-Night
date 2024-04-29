@@ -99,6 +99,7 @@ public class GameUI : UIBase
         GameManager.Instance.playerManager.playerData.SaveData();
         UnityEditor.EditorApplication.isPlaying = false;
 #else
+        GameManager.Instance.playerManager.playerData.SaveData();
         Application.Quit();
 #endif
     }

@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private QuestGenerator questGenerator;
 
     [SerializeField] private TextMeshProUGUI questTitleText;
-    
+
     [SerializeField] private TextMeshProUGUI QuestGoalText;
     [SerializeField] private TextMeshProUGUI questDescriptionText; // 퀘스트 설명 Text
     [SerializeField] private TextMeshProUGUI nextQuestGuideText; // 다음 퀘스트 수락 안내
@@ -101,6 +101,8 @@ public class QuestManager : MonoBehaviour
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
         nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
+        if (currentQuest.QuestTitle == null)
+            Debug.Log("NULL");
         questTitleText.text = currentQuest.QuestTitle;
         QuestGoalText.text = currentQuest.QuestGoal;
     }
@@ -202,14 +204,12 @@ public class QuestManager : MonoBehaviour
             SetCurrentQuest(); // 다음 퀘스트로 변경            
             InitDialogues(); // 대화 목록 초기화
             currentQuest.Queststatus = QuestStatus.Complete;
-            Debug.Log("NextQuset");
         }
         else
         {
             SetCurrentQuest(); // 다음 퀘스트로 변경
             HideQuestDescription(); // 퀘스트 설명 숨기기
             currentQuest.Queststatus = QuestStatus.Wait;
-            Debug.Log("NextQuset_s");
         }
 
     }
@@ -317,6 +317,7 @@ public class Quest
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
     public int QuestItemID2;
     public int QuestItemID3;
+    public string ChapterName;
 
     public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
@@ -326,6 +327,11 @@ public class Quest
 
     public Quest(QuestData quest)
     {
+        if (quest == null)
+        {
+            Debug.Log("NULL");
+            return;
+        }
         QuestID = quest.QuestID;
         QuestSubID = quest.QuestSubID;
         QuestType = quest.QuestType;
@@ -353,6 +359,7 @@ public class Quest
         RewardCount3 = quest.RewardCount3;
         RewardCount4 = quest.RewardCount4;
         RewardCount5 = quest.RewardCount5;
+        ChapterName = quest.ChapterName;
     }
 
     public Quest() { }

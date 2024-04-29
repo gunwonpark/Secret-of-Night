@@ -9,7 +9,7 @@ public struct PlayerSkillCache
 }
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerGameData playerData;
+    public PlayerGameData playerData = new PlayerGameData();
 
     public int maxSlotDataNumber => 5;
     public Dictionary<int, PlayerGameData> playerDatas = new Dictionary<int, PlayerGameData>(); // 불러오기 데이터 캐싱용
@@ -24,11 +24,7 @@ public class PlayerManager : MonoBehaviour
         _playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
         _playerStatDataBase = GameManager.Instance.dataManager.playerStatDataBase;
 
-        if (playerData == null)
-        {
-            playerData = new PlayerGameData();
-            playerData.Initialize();
-        }
+        playerData.Initialize();
 
         InitSkillListByPlayerID(CharacterID);
     }

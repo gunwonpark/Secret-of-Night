@@ -12,7 +12,15 @@ public class EquipController : MonoBehaviour
     {
         _playerData = GameManager.Instance.playerManager.playerData;
         _defaultDamage = _playerData.Damage;
-        EquipDefaultWeapon();
+        if (GameManager.Instance.playerManager.playerData.WeaponID != 0)
+        {
+            Item weapon = GameManager.Instance.dataManager.itemDataBase.GetData(GameManager.Instance.playerManager.playerData.WeaponID);
+            PlayerNewEquip(weapon);
+        }
+        else
+        {
+            EquipDefaultWeapon();
+        }
     }
 
     //기본 무기의 정보를 가져와서 장착

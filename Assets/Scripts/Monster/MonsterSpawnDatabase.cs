@@ -10,8 +10,10 @@ public class SpawnData
     public float Radius;
     public int[] MonsterID;
 
+    [NonSerialized]
     public Vector3 spotVector;
 
+    [NonSerialized]
     public GameObject Prefab;
 
     public void init()
