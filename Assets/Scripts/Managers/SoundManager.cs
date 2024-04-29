@@ -10,11 +10,11 @@ public class SoundManager : MonoBehaviour
         _bgm = Instantiate(Resources.Load<AudioSource>("Prefabs/Sound/BGM"));
         _bgm.transform.parent = root.transform;
     }
-    public void PlayBGM(AudioClip bgm)
+    public void PlayBGM(AudioClip bgm, float volume = 1f)
     {
         _bgm.clip = bgm;
         _bgm.loop = true;
-        _bgm.volume = 1.0f;
+        _bgm.volume = volume;
         _bgm.Play();
     }
 }

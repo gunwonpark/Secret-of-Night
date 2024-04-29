@@ -138,7 +138,7 @@ public class Inventory : MonoBehaviour
 
         _quickSlotInventory.Initalize();
 
-        if (GameManager.Instance.playerManager.playerData.itemSlots != null)
+        if (GameManager.Instance.playerManager.playerData.itemSlots != null && GameManager.Instance.playerManager.playerData.itemSlots.Length > 0)
         {
             Debug.Log("Inventory Data Load");
             slots = GameManager.Instance.playerManager.playerData.itemSlots;

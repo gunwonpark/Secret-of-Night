@@ -1,12 +1,10 @@
 using System;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameStartUI : UIBase
 {
     // 나중에 통합해야됨
-    private string _jsonDataPath;
 
     [Header("GameButton")]
     [SerializeField] private Button _gameStartButton;
@@ -20,27 +18,12 @@ public class GameStartUI : UIBase
     [SerializeField] private GameObject _optionPopup;
     public void Start()
     {
-        _jsonDataPath = $"{Application.persistentDataPath}/Datas/PlayerData_";
         Initialize();
     }
     public override void Initialize()
     {
         base.Initialize();
 
-        // 초기 화면에서 하는것이 좋을거 같다
-        for (int slotNumber = 0; slotNumber < 5; slotNumber++)
-        {
-            if (File.Exists(_jsonDataPath + $"{slotNumber}"))
-            {
-                if (!GameManager.Instance.playerManager.playerDatas.ContainsKey(slotNumber))
-                {
-                    GameManager.Instance.playerManager.playerDatas.Add(slotNumber, new PlayerGameData());
-                    GameManager.Instance.playerManager.playerDatas[slotNumber].SlotNumber = slotNumber;
-                    GameManager.Instance.playerManager.playerDatas[slotNumber].Initialize();
-                }
-                Debug.Log($"데이터 존재 + {slotNumber}");
-            }
-        }
         // 데이터가 있는경우 이어하기 및 불러오기
         if (GameManager.Instance.playerManager.playerDatas.Count != 0)
         {
@@ -69,19 +52,16 @@ public class GameStartUI : UIBase
     private void OnOptionButtonClick()
     {
         _optionPopup.SetActive(true);
-        Debug.Log("ButtonClick");
     }
 
     void OnGameStartButtonClick()
     {
-        GameManager.Instance.playerManager.Initialize(1);
+        GameManager.Instance.playerManager.LoadPlayerData();
         GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
     }
     void OnLoadButtonClick()
     {
         GameManager.Instance.uiManager.ShowPopupUI<LoadPopup>("LoadPopup");
-
-
     }
     void OnContinueButtonClick()
     {
@@ -92,7 +72,7 @@ public class GameStartUI : UIBase
             return;
         }
 
-        GameManager.Instance.playerManager.Init(lastestData);
+        GameManager.Instance.playerManager.LoadPlayerData(lastestData);
         GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
     }
     int FindLastestData()
@@ -111,7 +91,6 @@ public class GameStartUI : UIBase
                 }
             }
         }
-
         return lastestData;
     }
     void OnGameEndButtonClick()

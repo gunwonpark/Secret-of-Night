@@ -13,7 +13,7 @@ public class MainScene : BaseScene
 
         LocatePlayer();
 
-        GameManager.Instance.soundManager.PlayBGM(_bgm);
+        GameManager.Instance.soundManager.PlayBGM(_bgm, 3.0f);
         GameManager.Instance.monsterManager.CreatMonsterSpot();
     }
     public override void Clear()

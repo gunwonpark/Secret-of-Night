@@ -216,6 +216,14 @@ public class PlayerGameData
     }
     public void SaveData()
     {
+        if (GameManager.Instance.playerManager.playerDatas.ContainsKey(SlotNumber))
+        {
+            GameManager.Instance.playerManager.playerDatas[SlotNumber] = GameManager.Instance.playerManager.playerData;
+        }
+        else
+        {
+            GameManager.Instance.playerManager.playerDatas.Add(SlotNumber, GameManager.Instance.playerManager.playerData);
+        }
         SaveTime = DateTime.Now.ToString();
         if (QuestManager.I != null)
         {

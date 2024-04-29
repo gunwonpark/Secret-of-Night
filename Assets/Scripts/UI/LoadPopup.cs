@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,20 +29,14 @@ public class LoadPopup : UIBase
         {
             if (selectedSlotNumber == -1)
                 return;
-            GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
+
+            GameManager.Instance.playerManager.LoadPlayerData(selectedSlotNumber);
             if (slots[selectedSlotNumber].isEmpty)
             {
-                GameManager.Instance.playerManager.Initialize(GameManager.Instance.playerManager.playerData.CharacterID);
+                GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
                 GameManager.Instance.playerManager.playerDatas.Add(selectedSlotNumber, GameManager.Instance.playerManager.playerData);
-                GameManager.Instance.playerManager.playerData.SaveTime = DateTime.Now.ToString();
-                GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
             }
-            else
-            {
-                GameManager.Instance.playerManager.Init(selectedSlotNumber);
-                GameManager.Instance.playerManager.playerData.SaveTime = DateTime.Now.ToString();
-                GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
-            }
+            GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
         });
         _cancelButton.onClick.AddListener(() => { Destroy(gameObject); });
         _deleteButton.onClick.AddListener(() =>
