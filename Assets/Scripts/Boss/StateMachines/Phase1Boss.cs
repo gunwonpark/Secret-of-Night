@@ -25,7 +25,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     private float actualSlowMotionCharge = 0f;
     private float maxSlowMotionCharge = 100f;
 
-    private void Awake()
+    private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();

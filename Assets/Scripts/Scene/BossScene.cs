@@ -5,7 +5,7 @@ public class BossScene : BaseScene
 {
     public static UnityEvent<Phase1Boss> OnBossSpawned = new();
 
-    [SerializeField] private Phase1Boss _boss;
+    public Phase1Boss _boss;
     [SerializeField] private Transform _bossSpot;
     public override void Initizlize()
     {
@@ -17,8 +17,8 @@ public class BossScene : BaseScene
 
     private void SpawnBoss()
     {
-        var boss = Instantiate(_boss, _bossSpot.position, Quaternion.identity);
-        OnBossSpawned?.Invoke(boss);
+        //var boss = Instantiate(_boss, _bossSpot.position, Quaternion.identity);
+        OnBossSpawned?.Invoke(_boss);
     }
 
     public override void Clear()
