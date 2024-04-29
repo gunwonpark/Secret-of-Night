@@ -10,16 +10,16 @@ public class NPCAnimatorController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        NPCAnimationHandler += DieAnimation;
+        //NPCAnimationHandler += DieAnimation;
     }
 
-    private void DieAnimation()
+    public void DieAnimation()
     {
         animator.SetBool("IsDie", true);
     }
 
-    private void OnDestroy()
-    {
-        NPCAnimationHandler -= DieAnimation;
-    }
+    //private void OnDestroy()
+    //{
+    //    NPCAnimationHandler -= DieAnimation;
+    //}
 }
