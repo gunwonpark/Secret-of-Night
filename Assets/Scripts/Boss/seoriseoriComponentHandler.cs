@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class seoriseoriComponetHandler : MonoBehaviour
+public class seoriseoriComponentHandler : MonoBehaviour
 {
-    public SeoriSeoriBoss seoriseoriBoss;
+    private SeoriSeoriBoss seoriseoriBoss;
     // Update is called once per frame
     void Update()
     {

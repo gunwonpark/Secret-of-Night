@@ -95,7 +95,7 @@ public class QuestSpawner : MonoBehaviour
             for (int i = 0; i < count[2]; i++)
             {
                 Destroy(laser);
-                buggubugguCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/HealingCircle"), new Vector3(-5.54f, 0.6747813f, 119.67f), Quaternion.identity);
+                buggubugguCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/FreezeCircle"), new Vector3(-5.54f, 0.6747813f, 119.67f), Quaternion.identity);
                 count[2]--;
             }
         }
@@ -175,7 +175,7 @@ public class QuestSpawner : MonoBehaviour
             for (int i = 0; i < count[10]; i++)
             {
                 Destroy(laser3);
-                hihiCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/HealingCircle"), new Vector3(-1.15f, 0.6747813f, 126.95f), Quaternion.identity);
+                hihiCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/FreezeCircle"), new Vector3(-1.15f, 0.6747813f, 126.95f), Quaternion.identity);
                 count[10]--;
             }
         }

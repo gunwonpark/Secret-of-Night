@@ -17,6 +17,10 @@ public class TimelineCallback : MonoBehaviour
     {
         Debug.Log("타임라인이 종료되었습니다.");
         GameManager.Instance.inputManager.EnablePlayerAction();
+        if (QuestManager.I.currentQuest.QuestID == 1054 )
+        {
+            QuestManager.I.QuestClear();
+        }
         // 타임라인 종료 시 필요한 작업 수행
     }
 }

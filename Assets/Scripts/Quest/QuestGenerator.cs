@@ -16,7 +16,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
             isContinue = true,
-            QuestType = 6,            
+            QuestType = 6,   
         };
         tempQuests.Add(newQuest);
 
@@ -712,11 +712,12 @@ public class QuestGenerator : MonoBehaviour
             // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
             dialogues = new List<Dialogue>
             {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104901)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104902)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104903)),                
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(104901)),
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(104902)),
+                new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(104903)),
             },
             isContinue = true,
+            QuestType = 6,
         };
         tempQuests.Add(newQuest);
 
@@ -820,20 +821,8 @@ public class QuestGenerator : MonoBehaviour
             },
             isContinue = true,            
         };
-        tempQuests.Add(newQuest);
-
-        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1057))
-        {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105701)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105702)),
-            },
-            isContinue = true,
-        };
-        tempQuests.Add(newQuest);
-
+        tempQuests.Add(newQuest);       
+  
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1058))
         {
             // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
@@ -875,6 +864,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106008)),
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 

@@ -109,6 +109,10 @@ public class NPCInteraction : MonoBehaviour
         {
             meshRenderers[0].enabled = false;
             meshRenderers[1].enabled = false;
-        }     
+        }
+        else if (QuestManager.I.currentQuest.QuestID == 1055 && npcName == "ddushiddushi")
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

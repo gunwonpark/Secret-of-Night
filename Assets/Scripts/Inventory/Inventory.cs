@@ -514,7 +514,7 @@ public class Inventory : MonoBehaviour
                 return "Speed + " + _selectedItem.item.Price;
             case int id when id >= 12 && id <= 27:
                 return "Etc";
-            case int id when id >= 28 && id <= 33:
+            case int id when id >= 28 && id <= 35:
                 return "Quest";
             default:
                 return "";
@@ -603,11 +603,19 @@ public class Inventory : MonoBehaviour
             RemoveSelectedItem(1); //인벤토리에서 아이템 삭제         
 
         }
-        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
+
+        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.ItemID == 16)
         {
             QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
             RemoveSelectedItem(1);
         }
+
+        //else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
+        //{
+        //    QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
+        //    RemoveSelectedItem(1);
+        //}
+
 
         else if (_selectedItem.item.Type == "Etc")
         {
@@ -814,6 +822,7 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
+        NPCAnimatorController.NPCAnimationHandler?.Invoke();
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
@@ -977,14 +986,14 @@ public class Inventory : MonoBehaviour
             {
                 if (slots[i].item != null && itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
                 {
-                    if(QuestManager.I.currentQuest.QuestType != 6)
+                    if (QuestManager.I.currentQuest.QuestType != 6)
                     {
                         slots[i].count -= quantity1;
                         if (slots[i].count <= 0)
                         {
                             slots[i].item = null;
                         }
-                    }                    
+                    }
                 }
 
                 if (slots[i].item != null && itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)

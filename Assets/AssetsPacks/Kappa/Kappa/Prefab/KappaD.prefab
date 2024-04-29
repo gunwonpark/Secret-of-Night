@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 7641089560107786338}
   - component: {fileID: 7641089560117333926}
   - component: {fileID: 1291867110880582826}
+  - component: {fileID: 3998285594252884609}
   m_Layer: 0
   m_Name: KappaD
   m_TagString: Untagged
@@ -214,6 +215,24 @@ MonoBehaviour:
   questID: ee030000
   questionMark: {fileID: 378255213986910336}
   questStatus: 0
+--- !u!114 &3998285594252884609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641089560107826178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6aa9da8e9c3a6a4daea989a066338f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 2
+  interactionKey: 103
+  questID: 120400001404000015040000
+  killMonsterQuestID: 
+  exclamationMark: {fileID: 4787599776815618819}
+  npcName: hihi
 --- !u!1 &7641089560107826180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,5 +2307,10 @@ GameObject:
 --- !u!4 &3493056207993189373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4331022010861471980, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
+  m_PrefabInstance: {fileID: 892616040757066513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4787599776815618819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626065960624873490, guid: 7afa0de8c1824764b9f4f8ed07e93450, type: 3}
   m_PrefabInstance: {fileID: 892616040757066513}
   m_PrefabAsset: {fileID: 0}

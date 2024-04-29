@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GemStone
+  m_Name: BlueStone
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -54,25 +54,25 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.33333334
-        value: {x: -0.63, y: 1.036, z: 0}
-        inSlope: {x: -2.3295, y: 0, z: 0}
-        outSlope: {x: -2.3295, y: 0, z: 0}
+        value: {x: -1.16, y: 2.01, z: 0}
+        inSlope: {x: -5.3549995, y: 0, z: 0}
+        outSlope: {x: -5.3549995, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6666667
-        value: {x: -1.553, y: 0, z: 0}
-        inSlope: {x: -2.1990001, y: 0, z: 0}
-        outSlope: {x: -2.1990001, y: 0, z: 0}
+        value: {x: -3.57, y: 0, z: 0}
+        inSlope: {x: -2.3400006, y: 0, z: 0}
+        outSlope: {x: -2.3400006, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -2.096, y: 0, z: 0}
+        value: {x: -3.96, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -148,25 +148,25 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -0.63
-        inSlope: -2.3295
-        outSlope: -2.3295
+        value: -1.16
+        inSlope: -5.3549995
+        outSlope: -5.3549995
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -1.553
-        inSlope: -2.1990001
-        outSlope: -2.1990001
+        value: -3.57
+        inSlope: -2.3400006
+        outSlope: -2.3400006
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -2.096
+        value: -3.96
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -196,7 +196,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 1.036
+        value: 2.01
         inSlope: 0
         outSlope: 0
         tangentMode: 136
