@@ -822,7 +822,7 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
-        NPCAnimatorController.NPCAnimationHandler?.Invoke();
+        thrownItem.GetComponent<NPCAnimatorController>().DieAnimation();
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제

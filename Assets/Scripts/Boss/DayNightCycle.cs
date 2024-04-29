@@ -24,6 +24,15 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve reflectionIntensityMultiplier;
     public float maxNightIntensity = 0.2f; // 밤에 최소한의 밝기
 
+    public Material sunriseSkybox;
+    public Material daySkybox;
+    public Material sunsetSkybox;
+    public Material nightSkybox;
+
+    private const float SUNRISE_TIME = 0.25f;
+    private const float SUNSET_TIME = 0.65f;
+    private const float SUNRISE_SET_DURATION = 0.05f;
+
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
@@ -47,6 +56,8 @@ public class DayNightCycle : MonoBehaviour
                 QuestManager.I.CheckCurrentQuest(1002);
             }
         }
+
+        UpdateSkybox();
     }
 
     // 퀘스트 03이 완료되면 호출될 메서드
@@ -87,5 +98,39 @@ public class DayNightCycle : MonoBehaviour
         //{
         //    time = startTime;
         //}
+    }
+
+    private void UpdateSkybox()
+    {
+        if (time < SUNRISE_TIME)
+        {
+            setSkybox(nightSkybox);
+        }
+        else if (time < SUNRISE_TIME + SUNRISE_SET_DURATION)
+        {
+            setSkybox(sunriseSkybox);
+        }
+        else if (time < SUNSET_TIME)
+        {
+            setSkybox(daySkybox);
+        }
+        else if (time < SUNSET_TIME + SUNRISE_SET_DURATION)
+        {
+            setSkybox(sunsetSkybox);
+        }
+        else
+        {
+            setSkybox(nightSkybox);
+        }
+    }
+
+    private void setSkybox(Material skybox)
+    {
+        if (RenderSettings.skybox != skybox)
+        {
+            RenderSettings.skybox = skybox;
+            // 스카이박스 변경 후 조명 환경 업데이트
+            DynamicGI.UpdateEnvironment();
+        }
     }
 }

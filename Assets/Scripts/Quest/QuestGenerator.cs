@@ -228,7 +228,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },
             isContinue = true,
-            QuestGoal = $"<포악한 스컹크 처치 0 / {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)} )>"
+            QuestGoal = $"<포악한 스컹크 처치 0 / {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)} >"
         };
         tempQuests.Add(newQuest);
 
