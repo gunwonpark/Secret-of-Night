@@ -19,11 +19,13 @@ public class PlayerManager : MonoBehaviour
 
     public Dictionary<int, PlayerSkillCache> playerSkillList = new Dictionary<int, PlayerSkillCache>();
     public List<SkillSlot> skillSlots = new List<SkillSlot>();
-    public void Initialize(int CharacterID)
+    public void In()
     {
         _playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
         _playerStatDataBase = GameManager.Instance.dataManager.playerStatDataBase;
-
+    }
+    public void Initialize(int CharacterID)
+    {
         playerData.Initialize();
 
         InitSkillListByPlayerID(CharacterID);
@@ -33,6 +35,7 @@ public class PlayerManager : MonoBehaviour
     public void Init(int slotNumber)
     {
         playerData = playerDatas[slotNumber];
+        InitSkillListByPlayerID(playerData.CharacterID);
     }
 
     #region Player Skill

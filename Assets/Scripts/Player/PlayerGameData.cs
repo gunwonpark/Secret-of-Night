@@ -217,10 +217,17 @@ public class PlayerGameData
     public void SaveData()
     {
         SaveTime = DateTime.Now.ToString();
-        quest = QuestManager.I.currentQuest;
-        questIndex = QuestManager.I.questIndex;
-        ChapterInfo = quest.ChapterName;
-        itemSlots = Inventory.instance.slots;
+        if (QuestManager.I != null)
+        {
+            quest = QuestManager.I.currentQuest;
+            questIndex = QuestManager.I.questIndex;
+            ChapterInfo = quest.ChapterName;
+        }
+        if (Inventory.instance != null)
+        {
+            itemSlots = Inventory.instance.slots;
+        }
+
         Utility.SaveToJson(this, JsonDataPath);
     }
     public void LoadSavedData()

@@ -15,6 +15,7 @@ public abstract class BaseScene : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.inputManager.Initialize();
+        GameManager.Instance.playerManager.playerData.SaveData();
     }
     public abstract void Clear();
 }

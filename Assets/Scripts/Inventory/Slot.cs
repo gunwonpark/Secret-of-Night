@@ -44,7 +44,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         }
 
         ItemImage(1); //아이템 표시하기 위해 투명도 1
-        Debug.Log("Item Set");
+
         if (_slot.item.ItemID == 0)
         {
             ItemImage(0);

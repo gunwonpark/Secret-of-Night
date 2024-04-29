@@ -33,14 +33,13 @@ public class LoadPopup : UIBase
             GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
             if (slots[selectedSlotNumber].isEmpty)
             {
-                GameManager.Instance.playerManager.Initialize(1);
+                GameManager.Instance.playerManager.Initialize(GameManager.Instance.playerManager.playerData.CharacterID);
                 GameManager.Instance.playerManager.playerDatas.Add(selectedSlotNumber, GameManager.Instance.playerManager.playerData);
                 GameManager.Instance.playerManager.playerData.SaveTime = DateTime.Now.ToString();
                 GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
             }
             else
             {
-                GameManager.Instance.playerManager.Initialize(1);
                 GameManager.Instance.playerManager.Init(selectedSlotNumber);
                 GameManager.Instance.playerManager.playerData.SaveTime = DateTime.Now.ToString();
                 GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
