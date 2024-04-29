@@ -393,7 +393,7 @@ public class Inventory : MonoBehaviour
         }
         if (QuestManager.I.currentQuest.QuestType == 3 || QuestManager.I.currentQuest.QuestType == 6)
         {
-            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.GoalCount);
+            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.QuestItemID2, QuestManager.I.currentQuest.GoalCount, QuestManager.I.currentQuest.GoalCount2);
         }
         UpdateUI();
         // 퀵슬롯에 자동 저장
@@ -926,75 +926,83 @@ public class Inventory : MonoBehaviour
 
     //---------------------------------------------------------------------------
 
-    public void QuestItemCheck(int itemID, int quantity)
-    {
+    //public void QuestItemCheck(int itemID, int quantity)
+    //{
 
-        for (int i = 0; i < _uiSlots.Length; i++)
-        {
-            if (slots[i].item != null)
-            {
-                if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
-                {
-                    if (QuestManager.I.currentQuest.QuestType != 6)
-                    {
-                        slots[i].count -= quantity;
-                        if (slots[i].count <= 0)
-                            slots[i].item = null;
-                    }
-                    QuestManager.I.QuestClear();
+    //    for (int i = 0; i < _uiSlots.Length; i++)
+    //    {
+    //        if (slots[i].item != null)
+    //        {
+    //            if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
+    //            {
+    //                if (QuestManager.I.currentQuest.QuestType != 6)
+    //                {
+    //                    slots[i].count -= quantity;
+    //                    if (slots[i].count <= 0)
+    //                        slots[i].item = null;
+    //                }
+    //                QuestManager.I.QuestClear();
 
-                }
-            }
-        }
-    }
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnDestroy()
     {
         QuestManager.OnQuestCleared -= CloseInventory;
     }
 
-    //public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)
-    //{
-    //    bool item1Processed = false;
-    //    bool item2Processed = false;
+    public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)
+    {
+        bool item1Processed = false;
+        bool item2Processed = false;
 
-    //    for (int i = 0; i < _uiSlots.Length; i++)
-    //    {
-    //        if (slots[i].item != null)
-    //        {
-    //            if (!item1Processed && itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
-    //            {
-    //                item1Processed = true;
-    //            }
+        for (int i = 0; i < _uiSlots.Length; i++)
+        {
+            if (!item1Processed && slots[i].item != null && itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
+            {
+                item1Processed = true;
+            }
 
-    //            if (!item2Processed && itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
-    //            {
-    //                item2Processed = true;
-    //            }
-    //        }
-    //    }
+            if (!item2Processed && slots[i].item != null && itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
+            {
+                item2Processed = true;
+            }
+        }
 
-    //    if (item1Processed && item2Processed)
-    //    {
-    //        for (int i = 0; i < _uiSlots.Length; i++)
-    //        {
-    //            if (slots[i].item != null)
-    //            {
-    //                if (itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
-    //                {
-    //                    slots[i].count -= quantity1;
-    //                    slots[i].item = null;
-    //                }
+        if (item1Processed && (item2Processed || itemID2 == 0 && quantity2 == 0))
+        {
+            for (int i = 0; i < _uiSlots.Length; i++)
+            {
+                if (slots[i].item != null && itemID1 == slots[i].item.ItemID && slots[i].count >= quantity1)
+                {
+                    if(QuestManager.I.currentQuest.QuestType != 6)
+                    {
+                        slots[i].count -= quantity1;
+                        if (slots[i].count <= 0)
+                        {
+                            slots[i].item = null;
+                        }
+                    }                    
+                }
 
-    //                if (itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
-    //                {
-    //                    slots[i].count -= quantity2;
-    //                    slots[i].item = null;
-    //                }
-    //            }
-    //        }
-    //        QuestManager.I.QuestClear();
-    //    }
-    //    QuestItemCheck(itemID1, quantity1);
-    //}
+                if (slots[i].item != null && itemID2 == slots[i].item.ItemID && slots[i].count >= quantity2)
+                {
+                    if (QuestManager.I.currentQuest.QuestType != 6)
+                    {
+                        slots[i].count -= quantity1;
+                        if (slots[i].count <= 0)
+                        {
+                            slots[i].item = null;
+                        }
+                    }
+                }
+            }
+            QuestManager.I.QuestClear();
+        }
+    }
+
+
 }
+

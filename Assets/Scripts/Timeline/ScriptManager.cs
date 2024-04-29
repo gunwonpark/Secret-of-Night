@@ -42,6 +42,14 @@ public class ScriptManager : MonoBehaviour
 
         AddSubtitle("Sub18", "(거친 숨을 쉬며)하아하아 서리서리...");
         AddSubtitle("Sub19", "응? 이게 뭐지?");
+
+        AddSubtitle("Sub20", "촌장님! 이 근처 위험했던 동물들이 대부분 진정이 됐어요!");
+        AddSubtitle("Sub21", "이젠 당분간 큰 위험은 없을 것 같습니다.");
+        AddSubtitle("Sub22", "....");
+        AddSubtitle("Sub23", "저는 마을에 도움이 되고 싶어요..");
+        AddSubtitle("Sub24", "자네 말귀를 참 못 알아 듣는구만! 혼나야 정신을 차릴게냐!");
+
+        AddSubtitle("Sub25", "");
     }
 
     // 자막 키에 해당하는 자막 텍스트를 반환하는 함수

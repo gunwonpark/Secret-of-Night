@@ -148,7 +148,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        bossMonsterData.HP -= damage;
+        bossMonsterData.HP -= (damage / bossMonsterData.Def);
         if (bossMonsterData.HP <= 0)
         {
             Die();
@@ -176,7 +176,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
 
     IEnumerator ResetDamageAnimation()
     {
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        yield return new WaitForSeconds(1f); // Wait for 2 seconds
         canPlayDamageAnimation = true; // Allow Damage animation to be played again
     }
 

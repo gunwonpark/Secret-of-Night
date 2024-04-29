@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
@@ -8,9 +7,14 @@ public class NPCInteraction : MonoBehaviour
     [SerializeField] private KeyCode interactionKey = KeyCode.G; // 상호작용 키
     [SerializeField] private List<int> questID; // 퀘스트 ID
     [SerializeField] private List<int> killMonsterQuestID;
+    private SkinnedMeshRenderer[] meshRenderers;
     public GameObject exclamationMark;
     public string npcName;
-    
+
+    private void Start()
+    {
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+    }
     private void Update()
     {
         // 플레이어가 상호작용 키를 누르고 있고, NPC와 일정 범위 내에 있을 때
@@ -45,8 +49,8 @@ public class NPCInteraction : MonoBehaviour
                 break;
         }
 
-        SetNpcposition();        
-    }   
+        SetNpcposition();
+    }
 
     // 플레이어가 일정 범위 내에 있는지 확인하는 메서드
     private bool IsPlayerInRange()
@@ -61,9 +65,9 @@ public class NPCInteraction : MonoBehaviour
             if (DialogueHandler.I.dialogueIndex == 6)
             {
                 transform.position = new Vector3(-9.03f, 0.4570007f, 133.7497f);
-            }            
+            }
         }
-        if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
+        else if (QuestManager.I.currentQuest.QuestID == 1010 && npcName == "seoriseori")
         {
             if (DialogueHandler.I.dialogueIndex == 9)
             {
@@ -71,25 +75,40 @@ public class NPCInteraction : MonoBehaviour
             }
         }
 
-        if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
+        else if (QuestManager.I.currentQuest.QuestID == 1015 && npcName == "buggubuggu")
         {
-            gameObject.SetActive(false);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
         }
-        if (QuestManager.I.currentQuest.QuestID == 1020 && npcName == "buggubuggu")
+        else if (QuestManager.I.currentQuest.QuestID == 1027 && npcName == "buggubuggu")
         {
-            gameObject.SetActive(true);
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
         }
-        if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
+        else if (QuestManager.I.currentQuest.QuestID == 1028 && npcName == "gerogero")
         {
-            transform.position = new Vector3(124.5736f, 6.09848f, -16.91287f);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
         }
-        if (QuestManager.I.currentQuest.QuestID == 1032 && npcName == "gerogero")
+        else if (QuestManager.I.currentQuest.QuestID == 1035 && npcName == "gerogero")
         {
-            transform.position = new Vector3(11.13f, 0.8999939f, 119.57f);
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
         }
-        if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
+        else if (QuestManager.I.currentQuest.QuestID == 1038 && npcName == "diridiri")
         {
-            gameObject.SetActive(false);
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
         }
+        else if (QuestManager.I.currentQuest.QuestID == 1039 && npcName == "diridiri")
+        {
+            meshRenderers[0].enabled = true;
+            meshRenderers[1].enabled = true;
+        }
+        else if (QuestManager.I.currentQuest.QuestID == 1048 && npcName == "hihi")
+        {
+            meshRenderers[0].enabled = false;
+            meshRenderers[1].enabled = false;
+        }     
     }
 }

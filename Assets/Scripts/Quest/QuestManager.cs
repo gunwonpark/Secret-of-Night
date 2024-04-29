@@ -16,6 +16,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private DialogueHandler dialogueHandler;
     [SerializeField] private QuestGenerator questGenerator;
 
+    [SerializeField] private TextMeshProUGUI questTitleText;
+    
+    [SerializeField] private TextMeshProUGUI QuestGoalText;
     [SerializeField] private TextMeshProUGUI questDescriptionText; // 퀘스트 설명 Text
     [SerializeField] private TextMeshProUGUI nextQuestGuideText; // 다음 퀘스트 수락 안내
 
@@ -51,10 +54,6 @@ public class QuestManager : MonoBehaviour
             ShowQuestDescription();
             InitDialogue();
         }
-
-
-
-
     }
 
     private void Update()
@@ -102,13 +101,17 @@ public class QuestManager : MonoBehaviour
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
         nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
+        questTitleText.text = currentQuest.QuestTitle;
+        QuestGoalText.text = currentQuest.QuestGoal;
     }
 
     // 퀘스트 설명 숨기기
     public void HideQuestDescription()
     {
         questDescriptionText.text = ""; // 퀘스트 설명 숨기기
+        questTitleText.text = "";
         nextQuestGuideText.text = currentQuest.NextQuestGuide;
+        QuestGoalText.text = "";
     }
 
     // 퀘스트 성공
@@ -179,7 +182,6 @@ public class QuestManager : MonoBehaviour
                 Debug.Log($"{item.Name} {rewardCount}개 획득!");
             }
         }
-
     }
     // 특수 퀘스트 성공
     private void SpecialQuestClear()
