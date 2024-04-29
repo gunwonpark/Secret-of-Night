@@ -947,7 +947,7 @@ Transform:
   - {fileID: 7563860796238825932}
   - {fileID: 5185915797439167881}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &5483014806374435518
 PlayableDirector:
@@ -956,7 +956,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7591300613128991971}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: db279a3d4df34fe4fb01ff8666501f94, type: 2}
   m_InitialState: 1

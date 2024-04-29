@@ -156,7 +156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6100936077801615456
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ Transform:
   - {fileID: 6178453146475810189}
   - {fileID: 9060075146852805440}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &3592067140428661300
 PlayableDirector:
@@ -189,10 +189,6 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -1463854942963779793, guid: 71405746796cbc948bd740f34cace65f, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5352115562001490886, guid: 71405746796cbc948bd740f34cace65f, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -3582664327501705479, guid: 71405746796cbc948bd740f34cace65f, type: 2}
     value: {fileID: 0}
   - key: {fileID: -710330248001771421, guid: 71405746796cbc948bd740f34cace65f, type: 2}
