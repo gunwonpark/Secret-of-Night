@@ -53,6 +53,24 @@ public class ScriptManager : MonoBehaviour
         AddSubtitle("Sub26", "(촌장님한테도 아티펙트가 떨어졌잖아?!");
         AddSubtitle("Sub27", "(처음 내가 갖고 있었던 것, 서리서에게 떨어진 것, 촌장님에게 떨어진 것 총 3개야).");
         AddSubtitle("Sub28", "(앗 희미하게 빛이 나..!)");
+
+        AddSubtitle("Sub29", "여긴 어디지?");
+        AddSubtitle("Sub30", "용케 여기까지 찾아왔군.");
+        AddSubtitle("Sub31", "스승님??");
+        AddSubtitle("Sub32", "후후.. 스승이라.. 듣기 좋은 말이지.");
+        AddSubtitle("Sub33", "하지만 난 다른 말을 더 좋아하지.");
+        AddSubtitle("Sub34", "스승님! 스승님이 사라지셔서 한참을 찾았습니다!");
+        AddSubtitle("Sub35", "그리고 마을에도 계속 이상한 일이 일어나는데.. 스승님의 조언이 필요합니다.");
+        AddSubtitle("Sub36", "마을의 일은 모두 나의 계획하에 진행된 일이다. 오늘 너의 방문도 내 계획의 일부다!");
+        AddSubtitle("Sub37", "???");
+        AddSubtitle("Sub38", "크하하 나는 마왕이다! 내 손 안에서 놀아나는 꼴들이 꽤 재밌더군!");
+        AddSubtitle("Sub39", "마왕...?");
+        AddSubtitle("Sub40", "어디, 나에게 맞설 준비가 되어 있는지 확인 해볼까?");
+
+        AddSubtitle("Sub41", "헉헉.. 끝난건가..?");
+        AddSubtitle("Sub42", "끝이라 생각하지 마라.. 아직 저주는 풀리지 않았으니..");
+        AddSubtitle("Sub43", "크하하하하하!!!");
+
     }
 
     // 자막 키에 해당하는 자막 텍스트를 반환하는 함수

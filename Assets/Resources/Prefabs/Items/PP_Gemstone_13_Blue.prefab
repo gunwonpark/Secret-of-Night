@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22755094, y: 0.08497612, z: 0.25601327}
-  m_Center: {x: -0.000005237758, y: -0.0010116473, z: -0.010675609}
+  m_Size: {x: 0.2614272, y: 0.20837961, z: 0.32361773}
+  m_Center: {x: 0.008040339, y: 0.0018937364, z: -0.0042390674}
 --- !u!54 &3307294360295731174
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,10 +144,6 @@ PrefabInstance:
     - target: {fileID: 3761745242275073796, guid: 305a388b6539d3041a283b76508de030, type: 3}
       propertyPath: m_Name
       value: PP_Gemstone_13_Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 3761745242275073797, guid: 305a388b6539d3041a283b76508de030, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3761745242275304228, guid: 305a388b6539d3041a283b76508de030, type: 3}
       propertyPath: m_RootOrder
