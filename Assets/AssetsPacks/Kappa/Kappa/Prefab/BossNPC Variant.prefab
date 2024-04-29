@@ -1338,7 +1338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.42
+      value: -15.419998
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1346,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1354,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2838322568845566201, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1473,7 +1473,7 @@ MonoBehaviour:
   questID: fd030000020400000e040000
   killMonsterQuestID: 
   exclamationMark: {fileID: 2367319547535872367}
-  npcName: 
+  npcName: ddushiddushi
 --- !u!114 &217824336972057033
 MonoBehaviour:
   m_ObjectHideFlags: 0

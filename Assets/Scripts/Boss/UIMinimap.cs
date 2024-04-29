@@ -7,8 +7,7 @@ public class UIMinimap : MonoBehaviour
     [SerializeField] private Camera minimapCamera;
     [SerializeField] private float zoomMin = 1;
     [SerializeField] private float zoomMax = 30;
-    [SerializeField] private float zoomOneStep = 1;
-    [SerializeField] private TextMeshProUGUI textMapName;
+    [SerializeField] private float zoomOneStep = 1;    
    
     public void ZoomIn()
     {

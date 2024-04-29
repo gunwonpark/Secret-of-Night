@@ -910,6 +910,23 @@ MonoBehaviour:
   itemImage: {fileID: 3861368763180075188}
   itemCount: 0
   _itemCountText: {fileID: 1206838444596227749}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -2094,6 +2111,23 @@ MonoBehaviour:
   itemImage: {fileID: 6384827696219456633}
   itemCount: 0
   _itemCountText: {fileID: 2998823607663832179}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -2854,6 +2888,23 @@ MonoBehaviour:
   itemImage: {fileID: 6199944148710163665}
   itemCount: 0
   _itemCountText: {fileID: 8628789808898791178}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -3260,6 +3311,23 @@ MonoBehaviour:
   itemImage: {fileID: 7136370105169425687}
   itemCount: 0
   _itemCountText: {fileID: 4297013006651575297}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -4251,6 +4319,23 @@ MonoBehaviour:
   itemImage: {fileID: 8705233933549724700}
   itemCount: 0
   _itemCountText: {fileID: 1451051284882136207}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -4716,8 +4801,9 @@ Transform:
   - {fileID: 3436826208137277638}
   - {fileID: 7040623446168937193}
   - {fileID: 7761943481518058002}
+  - {fileID: 1061712462627159255}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6916311193706112995
 CharacterController:
@@ -4773,6 +4859,7 @@ MonoBehaviour:
     SlotNumber: 0
     SaveTime: 
     ChapterInfo: 
+    PlayerPosition: {x: 0, y: 0, z: 0}
     quest:
       QuestID: 0
       QuestSubID: 0
@@ -4802,15 +4889,18 @@ MonoBehaviour:
       QuestItemID: 0
       QuestItemID2: 0
       QuestItemID3: 0
+      ChapterName: 
       Queststatus: 0
       isContinue: 0
       isDirectClear: 0
       isNoScript: 0
       dialogues: []
     questIndex: 0
+    itemSlots: []
     CharacterType: 
     CharacterID: 0
     CharacterName: 
+    WeaponID: 0
     Level: 0
     MaxExp: 0
     CurExp: 0
@@ -4975,6 +5065,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  slots: []
+  _selectedItem:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _selectedItemIndex: 0
   selectedItemName: {fileID: 931252828258047272}
   selectedItemDescription: {fileID: 6693602979492469177}
@@ -6186,6 +6294,23 @@ MonoBehaviour:
   itemImage: {fileID: 8322168217231093113}
   itemCount: 0
   _itemCountText: {fileID: 5245621649489479612}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -6540,6 +6665,23 @@ MonoBehaviour:
   itemImage: {fileID: 3563211271499399261}
   itemCount: 0
   _itemCountText: {fileID: 1388271445703481867}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -6698,6 +6840,23 @@ MonoBehaviour:
   itemImage: {fileID: 7567912379901789853}
   itemCount: 0
   _itemCountText: {fileID: 1098693556483156197}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -8061,6 +8220,23 @@ MonoBehaviour:
   itemImage: {fileID: 4931062926764605471}
   itemCount: 0
   _itemCountText: {fileID: 1760033756861034999}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -8669,6 +8845,23 @@ MonoBehaviour:
   itemImage: {fileID: 4772192195972101807}
   itemCount: 0
   _itemCountText: {fileID: 4623497671597322179}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -9161,6 +9354,23 @@ MonoBehaviour:
   itemImage: {fileID: 1094058135709912646}
   itemCount: 0
   _itemCountText: {fileID: 2257056750468825517}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -10394,6 +10604,23 @@ MonoBehaviour:
   itemImage: {fileID: 888769692737256525}
   itemCount: 0
   _itemCountText: {fileID: 813599151912079469}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -10620,6 +10847,23 @@ MonoBehaviour:
   itemImage: {fileID: 247051433357413002}
   itemCount: 0
   _itemCountText: {fileID: 6756724796149343895}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -10810,6 +11054,23 @@ MonoBehaviour:
   itemImage: {fileID: 4783767033588525527}
   itemCount: 0
   _itemCountText: {fileID: 2753002136535686501}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -12564,6 +12825,23 @@ MonoBehaviour:
   itemImage: {fileID: 3145311982314435159}
   itemCount: 0
   _itemCountText: {fileID: 7254872373581898342}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -12888,6 +13166,23 @@ MonoBehaviour:
   itemImage: {fileID: 5688584619419443200}
   itemCount: 0
   _itemCountText: {fileID: 5164638180320915606}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -13399,6 +13694,23 @@ MonoBehaviour:
   itemImage: {fileID: 5632560112863260803}
   itemCount: 0
   _itemCountText: {fileID: 10721393392015282}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -14186,6 +14498,23 @@ MonoBehaviour:
   itemImage: {fileID: 7903160968855851250}
   itemCount: 0
   _itemCountText: {fileID: 8457541143506971273}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -14478,6 +14807,90 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4417949617085785911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061712462627159255}
+  - component: {fileID: 5538944896597204666}
+  m_Layer: 13
+  m_Name: MinimapIcon_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1061712462627159255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4417949617085785911}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2216747638498501488}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &5538944896597204666
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4417949617085785911}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 77be5018a89745044b79c9b39a5f1264, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &4506601878666831722
 GameObject:
   m_ObjectHideFlags: 0
@@ -14650,6 +15063,23 @@ MonoBehaviour:
   itemImage: {fileID: 7881481813882502522}
   itemCount: 0
   _itemCountText: {fileID: 3155187619976393000}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -15621,6 +16051,23 @@ MonoBehaviour:
   itemImage: {fileID: 1929759100467403954}
   itemCount: 0
   _itemCountText: {fileID: 3357436953443852196}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -16021,6 +16468,23 @@ MonoBehaviour:
   itemImage: {fileID: 8161900267200666994}
   itemCount: 0
   _itemCountText: {fileID: 7095601471295121000}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -18030,6 +18494,23 @@ MonoBehaviour:
   itemImage: {fileID: 8069311588673584309}
   itemCount: 0
   _itemCountText: {fileID: 6475997801345260197}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -18251,6 +18732,23 @@ MonoBehaviour:
   itemImage: {fileID: 3090984511666915463}
   itemCount: 0
   _itemCountText: {fileID: 2329889588995454000}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -18648,6 +19146,23 @@ MonoBehaviour:
   itemImage: {fileID: 1404371215481590591}
   itemCount: 0
   _itemCountText: {fileID: 7159973700720295415}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -19771,6 +20286,23 @@ MonoBehaviour:
   itemImage: {fileID: 6625388873980309559}
   itemCount: 0
   _itemCountText: {fileID: 8183776737122038511}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -20481,6 +21013,23 @@ MonoBehaviour:
   itemImage: {fileID: 5474812652389476603}
   itemCount: 0
   _itemCountText: {fileID: 622641540296122782}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -20979,6 +21528,23 @@ MonoBehaviour:
   itemImage: {fileID: 2638002476096116461}
   itemCount: 0
   _itemCountText: {fileID: 4424667572818578149}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -21578,6 +22144,23 @@ MonoBehaviour:
   itemImage: {fileID: 5593454226137405992}
   itemCount: 0
   _itemCountText: {fileID: 5580971776417184340}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -23535,6 +24118,23 @@ MonoBehaviour:
   itemImage: {fileID: 7701400382838883157}
   itemCount: 0
   _itemCountText: {fileID: 3014809529748025781}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -23860,6 +24460,23 @@ MonoBehaviour:
   itemImage: {fileID: 8315850472519800403}
   itemCount: 0
   _itemCountText: {fileID: 2012755738615643225}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -24018,6 +24635,23 @@ MonoBehaviour:
   itemImage: {fileID: 2566950693298489993}
   itemCount: 0
   _itemCountText: {fileID: 7627044162413967239}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -25443,6 +26077,23 @@ MonoBehaviour:
   itemImage: {fileID: 405098863115573645}
   itemCount: 0
   _itemCountText: {fileID: 5106630794913324100}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -25923,6 +26574,23 @@ MonoBehaviour:
   itemImage: {fileID: 6780193822577436323}
   itemCount: 0
   _itemCountText: {fileID: 5144024483664107064}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -26464,6 +27132,23 @@ MonoBehaviour:
   itemImage: {fileID: 3465696459086099796}
   itemCount: 0
   _itemCountText: {fileID: 3213728767801417582}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -26852,6 +27537,23 @@ MonoBehaviour:
   itemImage: {fileID: 1906467297704321189}
   itemCount: 0
   _itemCountText: {fileID: 4817031222722192837}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
@@ -27381,6 +28083,23 @@ MonoBehaviour:
   itemImage: {fileID: 4494434173605362681}
   itemCount: 0
   _itemCountText: {fileID: 8743766430607427230}
+  curSlot:
+    item:
+      ItemID: 0
+      Name: 
+      Type: 
+      Price: 0
+      Damage: 0
+      Critical: 0
+      Money: 0
+      ItemName: 
+      Description: 
+      IconPath: 
+      MaxAmount: 0
+      PrefabPath: 
+      UnlockLevel: 0
+      Prefab: {fileID: 0}
+    count: 0
   _outline: {fileID: 0}
   index: 0
   equipped: 0
