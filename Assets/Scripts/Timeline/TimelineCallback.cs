@@ -5,6 +5,7 @@ using UnityEngine.Timeline;
 public class TimelineCallback : MonoBehaviour
 {
     private PlayableDirector playableDirector;
+    [SerializeField] private guriguriComponentHandler guriguriComponentHandler;
     private void Start()
     {
         playableDirector = GetComponent<PlayableDirector>();        
@@ -20,6 +21,13 @@ public class TimelineCallback : MonoBehaviour
         if (QuestManager.I.currentQuest.QuestID == 1054 )
         {
             QuestManager.I.QuestClear();
+        }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1065)
+        {
+            Inventory.instance.transform.position = new Vector3 (-17.7f, 0.2069961f, 120.8f);
+            Inventory.instance.transform.rotation = Quaternion.Euler(0f, -94.449f, 0f);
+            guriguriComponentHandler.GuriGuriAddComponent(); 
         }
         // 타임라인 종료 시 필요한 작업 수행
     }

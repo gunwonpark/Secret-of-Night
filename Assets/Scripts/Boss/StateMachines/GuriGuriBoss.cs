@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,12 +27,13 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        Debug.Log("Awake");
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
 
-        int monsterID = 2;
+        int monsterID = 3;
         bossMonsterData = new BossMonsterGameData(monsterID);
         maxHP = bossMonsterData.HP;
 
@@ -67,7 +67,7 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
                 break;
             case BossState.Moving:
                 MoveTowardsPlayer(distanceToPlayer);
-                break;            
+                break;
 
             case BossState.Attacking:
                 AttackPlayer(distanceToPlayer);
@@ -82,16 +82,15 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
     {
         if (distanceToPlayer > dashdistance)
         {
-            agent.SetDestination(playerTransform.position);            
+            agent.SetDestination(playerTransform.position);
             animator.SetBool("IsRunning", true);
         }
-        
+
         else if (distanceToPlayer <= bossMonsterData.Range)
         {
             currentState = BossState.Attacking;
         }
     }
-    
 
     public void AfterImageTrue()
     {
@@ -108,9 +107,9 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
         if (distanceToPlayer <= bossMonsterData.Range)
         {
             agent.speed = bossMonsterData.MoveSpeed;
-            animator.SetBool("IsRunning", false);            
+            animator.SetBool("IsRunning", false);
             animator.SetBool("IsAttack", true);
-            
+
         }
         else if (distanceToPlayer > bossMonsterData.Range)
         {
@@ -118,7 +117,6 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
             currentState = BossState.Moving;
         }
     }
-    
 
     public void TakeDamage(float damage)
     {
@@ -174,15 +172,17 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
             animator.SetTrigger("Die");
             agent.isStopped = true;
             currentState = BossState.Dying;
-            DropItem();
+            StartCoroutine("DropItem");
             QuestManager.I.QuestClear();
         }
     }
 
-    public void DropItem()
+    private IEnumerator DropItem()
     {
         Vector3 throwPosition = transform.position;
 
-        Instantiate(Resources.Load<GameObject>("Prefabs/Quest/Gemstone"), throwPosition, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(3f);
+        GameObject gemstone = Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(35).Prefab, throwPosition, Quaternion.identity);
+        gemstone.transform.parent = transform;
     }
 }
