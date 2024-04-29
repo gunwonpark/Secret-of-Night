@@ -61,6 +61,8 @@ public class MonsterSpot : MonoBehaviour
         monsterInfo = manager.monsterData.monsterDatabase.GetMonsterInfoByKey(ID);//몬스터 정보 불러오기
         Vector3 spawnPoint = GetRandomPointInCircle(spawnData.spotVector, spawnData.Radius);//랜덤 포지션 계산
         spawnPoint.y = spawnData.spotVector.y;//y값은 그대로
+        if (monsterInfo.prefab == null)
+            return;
         GameObject go = Instantiate(monsterInfo.prefab, spawnPoint, Quaternion.identity);//몬스터 생성
 
         FieldMonsters fieldMonster = go.GetComponent<FieldMonsters>();

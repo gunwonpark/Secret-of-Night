@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private QuestGenerator questGenerator;
 
     [SerializeField] private TextMeshProUGUI questTitleText;
-    
+
     [SerializeField] private TextMeshProUGUI QuestGoalText;
     [SerializeField] private TextMeshProUGUI questDescriptionText; // 퀘스트 설명 Text
     [SerializeField] private TextMeshProUGUI nextQuestGuideText; // 다음 퀘스트 수락 안내
@@ -101,6 +101,8 @@ public class QuestManager : MonoBehaviour
     {
         questDescriptionText.text = currentQuest.Description; // 퀘스트 설명 표시
         nextQuestGuideText.text = currentQuest.NextQuestGuide = "";
+        if (currentQuest.QuestTitle == null)
+            Debug.Log("NULL");
         questTitleText.text = currentQuest.QuestTitle;
         QuestGoalText.text = currentQuest.QuestGoal;
     }
@@ -325,6 +327,11 @@ public class Quest
 
     public Quest(QuestData quest)
     {
+        if (quest == null)
+        {
+            Debug.Log("NULL");
+            return;
+        }
         QuestID = quest.QuestID;
         QuestSubID = quest.QuestSubID;
         QuestType = quest.QuestType;

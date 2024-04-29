@@ -494,6 +494,36 @@
 			"MaxAmount": 1,
 			"PrefabPath": "Prefabs/Items/GoldCoin",
 			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 34,
+			"Name": "BlueStone",
+			"Type": "Quest",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "물의 아티펙트",
+			"Description": "알 수 없는 힘이 담겨있는 물의 아티펙트이다.",
+			"IconPath": "Images/Icons/BlueStone",
+			"MaxAmount": 1,
+			"PrefabPath": "Prefabs/Items/PP_Gemstone_13_Blue",
+			"UnlockLevel": 1
+		},
+		{
+			"ItemID": 35,
+			"Name": "RedStone",
+			"Type": "Quest",
+			"Price": 0,
+			"Damage": 0,
+			"Critical": 0,
+			"Money": 0,
+			"ItemName": "불꽃의 아티펙트",
+			"Description": "알 수 없는 힘이 담겨있는 불꽃의 아티펙트이다.",
+			"IconPath": "Images/Icons/RedStone",
+			"MaxAmount": 1,
+			"PrefabPath": "Prefabs/Items/PP_Gemstone_11_Red",
+			"UnlockLevel": 1
 		}
 	]
 }
