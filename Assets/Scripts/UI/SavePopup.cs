@@ -7,7 +7,7 @@ public class SavePopup : UIBase
     [SerializeField] private Transform _slotRoot;
     [SerializeField] private Button _confirmButton;
     [SerializeField] private Button _cancelButton;
-
+    [SerializeField] private Button _deleteButton;
     private List<CharacterSlot> slots;
 
     public int selectedSlotNumber;
@@ -15,6 +15,7 @@ public class SavePopup : UIBase
     private void Awake()
     {
         slots = new(GameManager.Instance.playerManager.maxSlotDataNumber);
+        selectedSlotNumber = -1;
     }
     private void Start()
     {
@@ -26,6 +27,8 @@ public class SavePopup : UIBase
 
         _confirmButton.onClick.AddListener(() =>
         {
+            if (selectedSlotNumber == -1)
+                return;
             GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
             GameManager.Instance.playerManager.playerData.SaveData();
             if (GameManager.Instance.playerManager.playerDatas.ContainsKey(selectedSlotNumber))
@@ -40,6 +43,14 @@ public class SavePopup : UIBase
             slots[selectedSlotNumber].ReFreshData();
         });
         _cancelButton.onClick.AddListener(() => { Destroy(gameObject); });
+        _deleteButton.onClick.AddListener(() =>
+        {
+            if (selectedSlotNumber == -1)
+                return;
+            GameManager.Instance.playerManager.playerDatas[selectedSlotNumber].DeleteData();
+            GameManager.Instance.playerManager.playerDatas.Remove(selectedSlotNumber);
+            slots[selectedSlotNumber].ReFreshData();
+        });
 
     }
     void CreateCharacterSlot(int slotNumber)

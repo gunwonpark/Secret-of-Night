@@ -8,9 +8,6 @@ public class GameStartUI : UIBase
     // 나중에 통합해야됨
     private string _jsonDataPath;
 
-    private bool[] savefile;
-
-
     [Header("GameButton")]
     [SerializeField] private Button _gameStartButton;
     [SerializeField] private Button _loadButton;
@@ -35,10 +32,12 @@ public class GameStartUI : UIBase
         {
             if (File.Exists(_jsonDataPath + $"{slotNumber}"))
             {
-
-                GameManager.Instance.playerManager.playerDatas.Add(slotNumber, new PlayerGameData());
-                GameManager.Instance.playerManager.playerDatas[slotNumber].SlotNumber = slotNumber;
-                GameManager.Instance.playerManager.playerDatas[slotNumber].Initialize();
+                if (!GameManager.Instance.playerManager.playerDatas.ContainsKey(slotNumber))
+                {
+                    GameManager.Instance.playerManager.playerDatas.Add(slotNumber, new PlayerGameData());
+                    GameManager.Instance.playerManager.playerDatas[slotNumber].SlotNumber = slotNumber;
+                    GameManager.Instance.playerManager.playerDatas[slotNumber].Initialize();
+                }
                 Debug.Log($"데이터 존재 + {slotNumber}");
             }
         }

@@ -754,7 +754,7 @@ RectTransform:
   m_Children:
   - {fileID: 7712439049520378563}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -839,6 +839,7 @@ MonoBehaviour:
   _slotRoot: {fileID: 3954302596168124933}
   _confirmButton: {fileID: 9033907150604413912}
   _cancelButton: {fileID: 91692013913700769}
+  _deleteButton: {fileID: 3501338429959993754}
   selectedSlotNumber: 0
   hasClickedSlot: 0
 --- !u!1 &5648370852569367771

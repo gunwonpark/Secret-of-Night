@@ -169,7 +169,7 @@ public class PlayerBaseState : IState
         }
 
         stateMachine.Player.Controller.Move(((moveDirection * stateMachine.Player.speed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
-
+        //Debug.Log(((moveDirection * stateMachine.Player.speed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
         if (stateMachine.MovementInput != Vector2.zero)
             Rotate(moveDirection);
     }

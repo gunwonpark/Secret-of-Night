@@ -15,8 +15,6 @@ public class MainScene : BaseScene
 
         GameManager.Instance.soundManager.PlayBGM(_bgm);
         GameManager.Instance.monsterManager.CreatMonsterSpot();
-
-
     }
     public override void Clear()
     {
@@ -24,7 +22,7 @@ public class MainScene : BaseScene
     }
     public void LocatePlayer()
     {
-
+        Debug.Log("LocatePlayer");
         if (GameManager.Instance.sceneManager.PrevScene == Scene.Boss)
         {
             _player.position = _playerSpawnPoints[2].position;

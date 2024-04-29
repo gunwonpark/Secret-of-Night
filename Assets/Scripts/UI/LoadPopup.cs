@@ -8,13 +8,14 @@ public class LoadPopup : UIBase
     [SerializeField] private Transform _slotRoot;
     [SerializeField] private Button _confirmButton;
     [SerializeField] private Button _cancelButton;
-
+    [SerializeField] private Button _deleteButton;
     private List<CharacterSlot> slots;
 
     public int selectedSlotNumber;
     public bool hasClickedSlot;
     private void Awake()
     {
+        selectedSlotNumber = -1;
         slots = new(GameManager.Instance.playerManager.maxSlotDataNumber);
     }
     private void Start()
@@ -27,6 +28,8 @@ public class LoadPopup : UIBase
 
         _confirmButton.onClick.AddListener(() =>
         {
+            if (selectedSlotNumber == -1)
+                return;
             GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
             if (slots[selectedSlotNumber].isEmpty)
             {
@@ -37,13 +40,21 @@ public class LoadPopup : UIBase
             }
             else
             {
+                GameManager.Instance.playerManager.Initialize(1);
                 GameManager.Instance.playerManager.Init(selectedSlotNumber);
                 GameManager.Instance.playerManager.playerData.SaveTime = DateTime.Now.ToString();
                 GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
             }
         });
         _cancelButton.onClick.AddListener(() => { Destroy(gameObject); });
-
+        _deleteButton.onClick.AddListener(() =>
+        {
+            if (selectedSlotNumber == -1)
+                return;
+            GameManager.Instance.playerManager.playerDatas[selectedSlotNumber].DeleteData();
+            GameManager.Instance.playerManager.playerDatas.Remove(selectedSlotNumber);
+            slots[selectedSlotNumber].ReFreshData();
+        });
     }
     void CreateCharacterSlot(int slotNumber)
     {
