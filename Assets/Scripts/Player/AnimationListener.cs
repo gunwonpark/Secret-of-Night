@@ -63,17 +63,16 @@ public class AnimationListener : MonoBehaviour
         float skillRange = GameManager.Instance.playerManager.GetSkillRange(name);
         float skillAngle = GameManager.Instance.playerManager.GetSkillAngle(name);
         // 추후 엑셀데이터로 스킬 범위와 스킬 각도를 추가함으로써 최적화 할 수 있겠다.
-        if (name == "JumpAttack")
+        if (name == "JumpSkill")
         {
             Collider[] hitEnemies = Physics.OverlapSphere(transform.position, skillRange, enemyLayer, QueryTriggerInteraction.Ignore);
-
+            Debug.DrawLine(transform.position, transform.position + transform.forward * skillRange, Color.red, 2.0f);
             foreach (var hitCollider in hitEnemies)
             {
                 Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
                 float angle = Vector3.Angle(transform.forward, directionToTarget);
                 if (angle < skillAngle)
                 {
-                    Debug.Log("JumpAttack: " + hitCollider.name);
                     hitCollider.GetComponent<IDamageable>()?.TakeDamage(skillDamage);
                 }
             }
