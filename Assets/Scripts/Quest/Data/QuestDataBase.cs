@@ -30,6 +30,7 @@ public class QuestData
     public int RewardCount3;
     public int RewardCount4;
     public int RewardCount5;
+    public string ChapterName;
 }
 
 [System.Serializable]

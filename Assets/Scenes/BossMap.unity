@@ -6259,6 +6259,7 @@ MonoBehaviour:
   monsterManager: {fileID: 0}
   inputManager: {fileID: 0}
   sceneManager: {fileID: 0}
+  scriptManager: {fileID: 0}
 --- !u!4 &1207777249
 Transform:
   m_ObjectHideFlags: 0
@@ -8329,6 +8330,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7811797014753996615, guid: 8b49e921fdd58c545ae9714d72c68d96, type: 3}
+      propertyPath: InvenIcon
+      value: 
+      objectReference: {fileID: 1388273622}
     - target: {fileID: 7849228613442651371, guid: 8b49e921fdd58c545ae9714d72c68d96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9144,6 +9149,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6670234744341657123, guid: c79d59d66358e0f45a098f4b8a82f8be, type: 3}
   m_PrefabInstance: {fileID: 1382068108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388273622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1286436359008287192, guid: 6302d0b85704d2e4385ab0949a8dd1f1, type: 3}
+  m_PrefabInstance: {fileID: 663136378}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1396505953
 PrefabInstance:
   m_ObjectHideFlags: 0

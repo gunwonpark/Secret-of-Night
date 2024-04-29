@@ -313,6 +313,7 @@ public class Quest
     public int QuestItemID; // QuestType 필요한 ID (고기 10개 가져오기, 스컹크 5마리 잡기 등)
     public int QuestItemID2;
     public int QuestItemID3;
+    public string ChapterName;
 
     public QuestStatus Queststatus; // 퀘스트 진행상태
     public bool isContinue; // 이어서 퀘스트 진행 여부
@@ -349,6 +350,7 @@ public class Quest
         RewardCount3 = quest.RewardCount3;
         RewardCount4 = quest.RewardCount4;
         RewardCount5 = quest.RewardCount5;
+        ChapterName = quest.ChapterName;
     }
 
     public Quest() { }
