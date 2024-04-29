@@ -603,7 +603,7 @@ public class Inventory : MonoBehaviour
             RemoveSelectedItem(1); //인벤토리에서 아이템 삭제         
 
         }
-        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.Type == "Etc")
+        else if (QuestManager.I.currentQuest.QuestItemID == 16 && _selectedItem.item.ItemID == 16)
         {
             QuestManager.I.CheckCurrentQuest(_selectedItem.item.ItemID);
             RemoveSelectedItem(1);
@@ -814,6 +814,7 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
+        NPCAnimatorController.NPCAnimationHandler?.Invoke();
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제

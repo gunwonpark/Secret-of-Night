@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2714618424521913629}
   - component: {fileID: 4209911614062601413}
   - component: {fileID: 2436392247010312640}
+  - component: {fileID: 1683897653217068584}
+  - component: {fileID: 4764306428039916818}
   m_Layer: 6
   m_Name: GeroGero
   m_TagString: NPC
@@ -111,6 +113,40 @@ MonoBehaviour:
     PrefabPath: 
     UnlockLevel: 0
     Prefab: {fileID: 0}
+--- !u!95 &1683897653217068584
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526284940745217883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 92b756a270832e24aaa73c040a190e74, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7051fce44c3f45f4dbd97df5ab8e6eb6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4764306428039916818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526284940745217883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f4d16cd6b34dd4db9d8cf9ad8e5284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcName: gerogero
 --- !u!1001 &6780288610701578800
 PrefabInstance:
   m_ObjectHideFlags: 0

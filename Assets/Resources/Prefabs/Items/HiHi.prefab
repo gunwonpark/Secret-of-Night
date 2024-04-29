@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2714618424521913629}
   - component: {fileID: 4209911614062601413}
   - component: {fileID: 2436392247010312640}
+  - component: {fileID: -3717441802540331805}
+  - component: {fileID: -8176364434829403994}
   m_Layer: 6
   m_Name: HiHi
   m_TagString: Untagged
@@ -81,7 +83,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!114 &2436392247010312640
 MonoBehaviour:
@@ -111,6 +113,40 @@ MonoBehaviour:
     PrefabPath: 
     UnlockLevel: 0
     Prefab: {fileID: 0}
+--- !u!95 &-3717441802540331805
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526284940745217883}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 92b756a270832e24aaa73c040a190e74, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7051fce44c3f45f4dbd97df5ab8e6eb6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8176364434829403994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526284940745217883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f4d16cd6b34dd4db9d8cf9ad8e5284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcName: hihi
 --- !u!1001 &7033894721228367528
 PrefabInstance:
   m_ObjectHideFlags: 0

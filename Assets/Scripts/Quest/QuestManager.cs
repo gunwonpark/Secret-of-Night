@@ -21,6 +21,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI QuestGoalText;
     [SerializeField] private TextMeshProUGUI questDescriptionText; // 퀘스트 설명 Text
     [SerializeField] private TextMeshProUGUI nextQuestGuideText; // 다음 퀘스트 수락 안내
+    public TextMeshProUGUI shopCash;
+    public TextMeshProUGUI inventoryCash;
 
     public List<Quest> quests; // 퀘스트 리스트
     public int questIndex = 0; // 퀘스트 인덱스
@@ -174,7 +176,23 @@ public class QuestManager : MonoBehaviour
     private void HandleReward(int rewardID, int rewardCount)
     {
 
-        if (rewardID >= 1 && rewardID <= 29)
+        if (rewardID >= 1 && rewardID <= 32)
+        {
+            // 아이템 보상 처리
+            Item item = GameManager.Instance.dataManager.itemDataBase.GetData(rewardID);
+            if (item != null)
+            {
+                Inventory.instance.AddItem(item, rewardCount);
+                Debug.Log($"{item.Name} {rewardCount}개 획득!");
+            }
+        }
+        else if (rewardID == 33)
+        {
+            GameManager.Instance.playerManager.playerData.Gold += rewardCount;
+            shopCash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
+            inventoryCash.text = GameManager.Instance.playerManager.playerData.Gold.ToString();
+        }
+        else if (rewardID >= 34 && rewardID <= 35)
         {
             // 아이템 보상 처리
             Item item = GameManager.Instance.dataManager.itemDataBase.GetData(rewardID);
