@@ -174,15 +174,17 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
             animator.SetTrigger("Die");
             agent.isStopped = true;
             currentState = BossState.Dying;
-            DropItem();
+            StartCoroutine("DropItem");
             QuestManager.I.QuestClear();
         }
     }
 
-    public void DropItem()
+    private IEnumerator DropItem()
     {
         Vector3 throwPosition = transform.position;
 
-        Instantiate(Resources.Load<GameObject>("Prefabs/Quest/Gemstone"), throwPosition, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(3.5f);
+        GameObject gemstone = Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(34).Prefab, throwPosition, Quaternion.identity);
+        gemstone.transform.parent = transform;
     }
 }

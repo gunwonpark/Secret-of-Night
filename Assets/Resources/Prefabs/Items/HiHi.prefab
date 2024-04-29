@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8176364434829403994}
   m_Layer: 6
   m_Name: HiHi
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 7051fce44c3f45f4dbd97df5ab8e6eb6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f4d16cd6b34dd4db9d8cf9ad8e5284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: hihi
 --- !u!1001 &7033894721228367528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,7 +202,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: KappaD_Quest
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7641089560117333926, guid: ce2fdc3228973e741b3f617885fa2fa5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class seoriseoriComponentHandler : MonoBehaviour
 {
     private SeoriSeoriBoss seoriseoriBoss;
+    private NavMeshAgent agent;
     // Update is called once per frame
     void Update()
     {
@@ -12,6 +14,7 @@ public class seoriseoriComponentHandler : MonoBehaviour
         {
             if (DialogueHandler.I.dialogueIndex == 4)
             {
+                if (agent == null ) { agent = gameObject.AddComponent<NavMeshAgent>();}
                 if (seoriseoriBoss == null) { seoriseoriBoss = gameObject.AddComponent<SeoriSeoriBoss>(); }
             }
         }
