@@ -822,7 +822,7 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
-        thrownItem.GetComponent<NPCAnimatorController>().DieAnimation();
+        thrownItem.GetComponent<NPCAnimatorController>()?.DieAnimation();
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
@@ -931,31 +931,7 @@ public class Inventory : MonoBehaviour
     {
         salePopUpUI.SetActive(false);
         popUpUI.SetActive(false);
-    }
-
-    //---------------------------------------------------------------------------
-
-    //public void QuestItemCheck(int itemID, int quantity)
-    //{
-
-    //    for (int i = 0; i < _uiSlots.Length; i++)
-    //    {
-    //        if (slots[i].item != null)
-    //        {
-    //            if (itemID == slots[i].item.ItemID && slots[i].count >= quantity)
-    //            {
-    //                if (QuestManager.I.currentQuest.QuestType != 6)
-    //                {
-    //                    slots[i].count -= quantity;
-    //                    if (slots[i].count <= 0)
-    //                        slots[i].item = null;
-    //                }
-    //                QuestManager.I.QuestClear();
-
-    //            }
-    //        }
-    //    }
-    //}
+    }          
 
     private void OnDestroy()
     {
@@ -1011,7 +987,5 @@ public class Inventory : MonoBehaviour
             QuestManager.I.QuestClear();
         }
     }
-
-
 }
 
