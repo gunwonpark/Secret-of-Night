@@ -87,7 +87,7 @@ public class OptionPopup : UIBase
         foreach (Resolution resolution in _resolutions)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
-            option.text = $"{resolution.width}X{resolution.height} {resolution.refreshRateRatio}hz";
+            option.text = $"{resolution.width}X{resolution.height} {resolution.refreshRateRatio.value}hz";
             _resolutionDropdown.options.Add(option);
             if (resolution.width == Screen.width && resolution.height == Screen.height)
             {

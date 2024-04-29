@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float walkSpeed = 2.0f;
     public float runSpeed = 4.0f;
     public float rotationDamping = 10f;
-    public float jumpForce = 4f;
+    public float jumpForce = 6f;
     public float jumpDelayTime = 0.3f;
     public float dodgeHeihgt = 2.0f;
-    public float dodgeForce = -4.0f;
+    public float dodgeForce = -6.0f;
     #endregion
 
     #region StateCheckcing
@@ -56,10 +56,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         ForceReceiver = GetComponent<ForceReceiver>();
         StaminaSystem = GetComponent<StaminaSystem>();
         stateMachine = new PlayerStateMachine(this);
-    }
-    private void OnEnable()
-    {
-        Debug.Log("PlayerController OnEnable");
     }
     private void Start()
     {

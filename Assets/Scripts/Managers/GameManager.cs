@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
         if (playerManager == null)
         {
             playerManager = gameObject.AddComponent<PlayerManager>();
+            playerManager.Initialize();
 #if UNITY_EDITOR
-            playerManager.Initialize(1);
+            //playerManager.Initialize(1);
 #endif
         }
         if (monsterManager == null) { monsterManager = gameObject.AddComponent<MonsterManager>(); monsterManager.Initialize(); }

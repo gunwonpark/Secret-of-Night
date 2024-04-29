@@ -10,7 +10,7 @@ public class ForceReceiver : MonoBehaviour
 
     public Vector3 Movement => impact + Vector3.up * verticalVelocity;
 
-    void Update()
+    void FixedUpdate()
     {
         if (verticalVelocity < 0 && controller.isGrounded)
         {

@@ -34,7 +34,7 @@ RectTransform:
   m_Children:
   - {fileID: 3972456923704207927}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -119,6 +119,9 @@ MonoBehaviour:
   _slotRoot: {fileID: 5673819022328291246}
   _confirmButton: {fileID: 8409329720063415313}
   _cancelButton: {fileID: 9212548851460005452}
+  _deleteButton: {fileID: 8496637671688118954}
+  selectedSlotNumber: 0
+  hasClickedSlot: 0
 --- !u!1 &2188130641648009732
 GameObject:
   m_ObjectHideFlags: 0

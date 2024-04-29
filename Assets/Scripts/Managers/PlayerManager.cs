@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public struct PlayerSkillCache
@@ -19,30 +20,59 @@ public class PlayerManager : MonoBehaviour
 
     public Dictionary<int, PlayerSkillCache> playerSkillList = new Dictionary<int, PlayerSkillCache>();
     public List<SkillSlot> skillSlots = new List<SkillSlot>();
-    public void Initialize(int CharacterID)
+
+    // 초기 데이터 초기화
+    public void Initialize()
     {
+        string _jsonDataPath = $"{Application.persistentDataPath}/Datas/PlayerData_";
+
         _playerSkillDataBase = GameManager.Instance.dataManager.playerSkillDataBase;
         _playerStatDataBase = GameManager.Instance.dataManager.playerStatDataBase;
 
-        playerData.Initialize();
-
-        InitSkillListByPlayerID(CharacterID);
+        for (int slotNumber = 0; slotNumber < 5; slotNumber++)
+        {
+            if (File.Exists(_jsonDataPath + $"{slotNumber}"))
+            {
+                if (!GameManager.Instance.playerManager.playerDatas.ContainsKey(slotNumber))
+                {
+                    GameManager.Instance.playerManager.playerDatas.Add(slotNumber, new PlayerGameData());
+                    GameManager.Instance.playerManager.playerDatas[slotNumber].SlotNumber = slotNumber;
+                    GameManager.Instance.playerManager.playerDatas[slotNumber].Initialize();
+                }
+                Debug.Log($"데이터 존재 + {slotNumber}");
+            }
+        }
     }
-
-    //test용
-    public void Init(int slotNumber)
+    public bool IsSlotHasPlayerData(int slotNumber)
     {
-        playerData = playerDatas[slotNumber];
+        return playerDatas.ContainsKey(slotNumber);
+    }
+    // 플레이어 데이터를 불러올대 사용한다
+    public void LoadPlayerData(int slotNumber = -1)
+    {
+        if (playerDatas.ContainsKey(slotNumber))
+        {
+            playerData = playerDatas[slotNumber];
+            InitSkillListByPlayerID(playerData.CharacterID);
+        }
+        else
+        {
+            LoadDefaultPlayerData();
+        }
+    }
+    private void LoadDefaultPlayerData()
+    {
+        playerData.Initialize();
+        InitSkillListByPlayerID(playerData.CharacterID);
     }
 
     #region Player Skill
     //플레이어가 소지 할 수 있는 스킬 리스트를 받아온다
-    private void InitSkillListByPlayerID(int id)
+    private void InitSkillListByPlayerID(int characterID)
     {
-        if (playerSkillList.Count != 0)
-            return;
+        playerSkillList.Clear();
 
-        var skillList = _playerStatDataBase.GetData(id).Skills;
+        var skillList = _playerStatDataBase.GetData(characterID).Skills;
         foreach (int skillID in skillList)
         {
             PlayerSkillCache cache = new PlayerSkillCache();
@@ -52,24 +82,24 @@ public class PlayerManager : MonoBehaviour
             playerSkillList.Add(skillID, cache);
         }
     }
-    public GameObject GetSKillImage(int id)
+    public GameObject GetSKillImage(int skillID)
     {
-        if (playerSkillList.ContainsKey(id) == false)
+        if (playerSkillList.ContainsKey(skillID) == false)
         {
             Debug.LogError("GetSkillImage Error : id is not exist");
             return null;
         }
 
-        return playerSkillList[id].skillImage;
+        return playerSkillList[skillID].skillImage;
     }
-    public GameObject GetSkillEffect(int id)
+    public GameObject GetSkillEffect(int skillID)
     {
-        if (playerSkillList.ContainsKey(id) == false)
+        if (playerSkillList.ContainsKey(skillID) == false)
         {
             Debug.LogError("GetSkillImage Error : id is not exist");
             return null;
         }
-        return playerSkillList[id].skillEffect;
+        return playerSkillList[skillID].skillEffect;
     }
     public float GetSkillDamage(string name)
     {
@@ -82,17 +112,15 @@ public class PlayerManager : MonoBehaviour
         }
         return 0;
     }
-    //i want using skillslotid and get skillDamage
-    public float GetSkillDamage(int id)
+    public float GetSkillDamage(int skillID)
     {
-        if (playerSkillList.ContainsKey(id) == false)
+        if (playerSkillList.ContainsKey(skillID) == false)
         {
             Debug.LogError("GetSkillDamage Error : id is not exist");
             return 0;
         }
-        return playerSkillList[id].playerSkillData.Damage;
+        return playerSkillList[skillID].playerSkillData.Damage;
     }
-    //추후 이를 통해서 스킬을 추가할 수 있도록 한다
     private int FirstSkillIndex => _playerStatDataBase.GetData(playerData.CharacterID).Skills[0];
     public void ActiveSkillSlot(int slotNumber)
     {
@@ -107,7 +135,18 @@ public class PlayerManager : MonoBehaviour
     {
         return skillSlots[slotNumber].Update || skillSlots[slotNumber].hasSKIll == false;
     }
-
+    public List<int> GetUnlockedSkillSlotNumber()
+    {
+        List<int> slots = new List<int>();
+        for (int i = 0; i < skillSlots.Count; i++)
+        {
+            if (skillSlots[i].hasSKIll)
+            {
+                slots.Add(i);
+            }
+        }
+        return slots;
+    }
     internal float GetSkillRange(string name)
     {
         foreach (var skill in playerSkillList.Values)
@@ -119,7 +158,6 @@ public class PlayerManager : MonoBehaviour
         }
         return 0;
     }
-
     internal float GetSkillAngle(string name)
     {
         foreach (var skill in playerSkillList.Values)
