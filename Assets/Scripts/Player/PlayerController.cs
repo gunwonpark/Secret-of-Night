@@ -57,10 +57,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         StaminaSystem = GetComponent<StaminaSystem>();
         stateMachine = new PlayerStateMachine(this);
     }
-    private void OnEnable()
-    {
-        Debug.Log("PlayerController OnEnable");
-    }
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
