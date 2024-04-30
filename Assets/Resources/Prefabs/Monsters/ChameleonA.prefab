@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6218bdc86e012e0489cac574cde40a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 4817899011813639679}
 --- !u!65 &6502576496792044212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -657,5 +657,10 @@ PrefabInstance:
 --- !u!4 &1458235317183471493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7782477302910636394, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
+  m_PrefabInstance: {fileID: 8663897179441663727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4817899011813639679 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4242607500789713680, guid: ac2f1b62afdf1f44fa001752b7957314, type: 3}
   m_PrefabInstance: {fileID: 8663897179441663727}
   m_PrefabAsset: {fileID: 0}

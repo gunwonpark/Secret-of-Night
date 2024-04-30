@@ -60,10 +60,17 @@ public class FieldMonsters : MonoBehaviour, IDamageable
         stateMachine.ChangeState(stateMachine.IdleState);
 
         //원래 컬러 저장
-        originalColor = new Color[meshRenderers.Length];
-        for (int i = 0; i < meshRenderers.Length; i++)
+        if (myInfo.MonsterID == 12 || myInfo.MonsterID == 13 || myInfo.MonsterID == 14 || myInfo.MonsterID == 15 || myInfo.MonsterID == 16)
         {
-            originalColor[i] = meshRenderers[i].material.color;
+            return;
+        }
+        else
+        {
+            originalColor = new Color[meshRenderers.Length];
+            for (int i = 0; i < meshRenderers.Length; i++)
+            {
+                originalColor[i] = meshRenderers[i].material.color;
+            }
         }
     }
 
@@ -90,8 +97,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
@@ -170,7 +177,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public void dropItem(Item _item)
     {
-        Vector3 throwPosition = transform.position + transform.forward * Random.Range(0.5f, 0.5f);
+        Vector3 throwPosition = transform.position + transform.up * Random.Range(1f, 1f);
 
         Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
     }
@@ -219,17 +226,40 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void DamageColor()
     {
+        //if (myInfo.MonsterID == 12 || myInfo.MonsterID == 13 || myInfo.MonsterID == 14 || myInfo.MonsterID == 15 || myInfo.MonsterID == 16)
+        //{
+        //    foreach (SkinnedMeshRenderer renderer in meshRenderers)
+        //    {
+        //        renderer.material.SetColor("_MainTex", damageColor);
+        //        //renderer.material.color = damageColor;
+        //    }
+        //}
+        //else
+        //{
+
         foreach (SkinnedMeshRenderer renderer in meshRenderers)
         {
             renderer.material.SetColor("_BaseColor", damageColor);
         }
+        //}
     }
 
     private void ResetColor()//원래 색상
     {
+        //if (myInfo.MonsterID == 12 || myInfo.MonsterID == 13 || myInfo.MonsterID == 14 || myInfo.MonsterID == 15 || myInfo.MonsterID == 16)
+        //{
+        //    for (int i = 0; i < meshRenderers.Length; i++)
+        //    {
+        //        meshRenderers[i].material.SetColor("_MainTex", originalColor[i]);
+        //    }
+        //}
+        //else
+        //{
+
         for (int i = 0; i < meshRenderers.Length; i++)
         {
             meshRenderers[i].material.SetColor("_BaseColor", originalColor[i]);
         }
+        //}
     }
 }

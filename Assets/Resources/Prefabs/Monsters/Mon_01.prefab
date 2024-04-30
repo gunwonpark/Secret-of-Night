@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8848608519870141915}
   - component: {fileID: -182492287649685279}
   - component: {fileID: -6475061439582307597}
+  - component: {fileID: 8058431740034141327}
   m_Layer: 9
   m_Name: Mon_01
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6218bdc86e012e0489cac574cde40a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 339067526888723268}
 --- !u!114 &-6475061439582307597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyHp: {fileID: 4487998393343675860}
   isActive: 0
+--- !u!65 &8058431740034141327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031777112107088242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 16119
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.98, z: 0.38}
+  m_Center: {x: 0, y: 0.61, z: 0.65}
 --- !u!1 &8480661478013289606
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.022, y: 0.66}
+  m_AnchoredPosition: {x: -0.026, y: 1.133}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3351049653219758671
@@ -416,15 +438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229017260248700, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 4229017260248700, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4229017260248700, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4229017260248700, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,6 +488,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4594890675271110, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594890675271110, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.28
+      objectReference: {fileID: 0}
     - target: {fileID: 95321712878142246, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -479,6 +509,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
+--- !u!95 &339067526888723268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95321712878142246, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
+  m_PrefabInstance: {fileID: 425091576065773666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &425938493276069406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229017260248700, guid: c2aa99e81d1df7847b9bee02769512aa, type: 3}
