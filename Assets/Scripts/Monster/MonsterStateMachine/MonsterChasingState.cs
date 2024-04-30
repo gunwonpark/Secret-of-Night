@@ -8,10 +8,10 @@ public class MonsterChasingState : MonsterBaseState
     public override void Enter()
     {
         base.Enter();
+
         stateMachine.MovementSpeedModifier = 1;
-
         stateMachine.FieldMonsters.monsterAnimation.StartRunAnimation();
-
+        stateMachine.FieldMonsters.OnCaution();
     }
 
     public override void Exit()
@@ -19,6 +19,7 @@ public class MonsterChasingState : MonsterBaseState
         base.Exit();
 
         stateMachine.FieldMonsters.monsterAnimation.StopRunAnimation();
+        stateMachine.FieldMonsters.OffCaution();
     }
 
     public override void Update()

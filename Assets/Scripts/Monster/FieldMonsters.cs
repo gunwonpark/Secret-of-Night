@@ -5,8 +5,6 @@ using Random = UnityEngine.Random;
 
 public class FieldMonsters : MonoBehaviour, IDamageable
 {
-
-
     [field: Header("Reference")]
     [field: SerializeField] public MonsterInfo myInfo;
     public float HP = 0;
@@ -33,6 +31,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public Color damageColor = new Color(0.5f, 0f, 0f, 1f);
     public Color[] originalColor;
     private SkinnedMeshRenderer[] meshRenderers;
+
+    public GameObject cautionGO;
 
     private void Awake()
     {
@@ -71,6 +71,12 @@ public class FieldMonsters : MonoBehaviour, IDamageable
             {
                 originalColor[i] = meshRenderers[i].material.color;
             }
+        }
+
+        if (myInfo.AtkStance)
+        {
+            Transform caution = transform.GetChild(0);
+            cautionGO = caution.gameObject;
         }
     }
 
@@ -263,5 +269,25 @@ public class FieldMonsters : MonoBehaviour, IDamageable
             meshRenderers[i].material.SetColor("_BaseColor", originalColor[i]);
         }
         //}
+    }
+
+    public void OnCaution()
+    {
+        if (myInfo.AtkStance)
+        {
+            cautionGO.SetActive(true);
+        }
+        else
+            return;
+    }
+
+    public void OffCaution()
+    {
+        if (myInfo.AtkStance)
+        {
+            cautionGO.SetActive(false);
+        }
+        else
+            return;
     }
 }
