@@ -56,7 +56,7 @@ public class MonsterPatrolState : MonsterBaseState
         Debug.DrawRay(point, direction * 1.5f, Color.red);
 
         //레이로 쏜 곳에 다른 오브젝트가 있으면 true
-        if (Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("obstacle")) || Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("Monster")))
+        if (Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("obstacle"))/* || Physics.Raycast(point, direction, 1.5f, LayerMask.GetMask("Monster"))*/)
         {
             return true;
         }
