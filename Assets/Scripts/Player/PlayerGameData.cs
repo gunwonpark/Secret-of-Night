@@ -180,9 +180,11 @@ public class PlayerGameData
         }
         OnSPChange?.Invoke();
     }
+
     public void LevelUp()
     {
         Level++;
+
 
         PlayerLevelData playerLevelData = dataManager.playerLevelDataBase.GetData(Level);
 

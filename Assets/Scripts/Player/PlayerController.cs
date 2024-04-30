@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         PlayerData = GameManager.Instance.playerManager.playerData;
         PlayerData.ResetStatus();
         PlayerData.OnDie += OnPlayerDie;
+        PlayerData.OnLevelUp += LvUpBuffEffect;
     }
     private void Update()
     {
@@ -126,6 +127,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         PlayerData.OnDie -= OnPlayerDie;
+        PlayerData.OnLevelUp -= LvUpBuffEffect;
+    }
+
+    public void LvUpBuffEffect()
+    {
+        GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/Effects/Buff"), transform.position, Quaternion.identity);
+        Destroy(go, 1f);
 
     }
+
 }
