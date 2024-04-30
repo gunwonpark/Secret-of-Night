@@ -4,6 +4,7 @@ public class MonsterAttackState : MonsterBaseState
 {
     private bool alreadyAppliedForce;
     private bool _attack = false;
+    GameObject player;
 
     public MonsterAttackState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
@@ -12,11 +13,12 @@ public class MonsterAttackState : MonsterBaseState
     public override void Enter()
     {
         base.Enter();
+        player = GameObject.FindGameObjectWithTag("Player");
         stateMachine.MovementSpeedModifier = 0;
 
         stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
 
-        stateMachine.FieldMonsters.OnAttack += NomalAttack;
+        //stateMachine.FieldMonsters.OnAttack += NomalAttack;
     }
 
     public override void Exit()
@@ -25,7 +27,7 @@ public class MonsterAttackState : MonsterBaseState
 
         stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
 
-        stateMachine.FieldMonsters.OnAttack -= NomalAttack;
+        //stateMachine.FieldMonsters.OnAttack -= NomalAttack;
     }
 
     public override void Update()
@@ -62,6 +64,8 @@ public class MonsterAttackState : MonsterBaseState
         {
             _attack = true;
             stateMachine.FieldMonsters.attackCollider.enabled = true;
+            NomalAttack(player);
+            Debug.Log("공격");
         }
 
 

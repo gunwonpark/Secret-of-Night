@@ -97,8 +97,8 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, myInfo.TargetRange);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, myInfo.AtkRange);
