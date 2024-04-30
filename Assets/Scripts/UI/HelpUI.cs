@@ -26,7 +26,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
 
     void Help()
     {
-        HelpUi.SetActive(true);
+        HelpUi?.SetActive(true);
     }
 
     //void StartHelp()

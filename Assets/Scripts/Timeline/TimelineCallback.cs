@@ -6,6 +6,7 @@ public class TimelineCallback : MonoBehaviour
 {
     private PlayableDirector playableDirector;
     [SerializeField] private guriguriComponentHandler guriguriComponentHandler;
+    [SerializeField] private GameObject Boss;
     private void Start()
     {
         playableDirector = GetComponent<PlayableDirector>();        
@@ -17,6 +18,7 @@ public class TimelineCallback : MonoBehaviour
     private void OnTimelineStopped(PlayableDirector director)
     {
         Debug.Log("타임라인이 종료되었습니다.");
+        Boss?.SetActive(true);
         GameManager.Instance.inputManager.EnablePlayerAction();
         if (QuestManager.I.currentQuest.QuestID == 1054 )
         {

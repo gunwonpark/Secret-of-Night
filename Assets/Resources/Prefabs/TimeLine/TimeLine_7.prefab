@@ -251,8 +251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 462331099302319093}
   - component: {fileID: 8248837905891076234}
-  - component: {fileID: 7333177540027074864}
-  - component: {fileID: 466170344558839678}
   m_Layer: 0
   m_Name: BossNPC Variant_TimeLine
   m_TagString: Untagged
@@ -300,41 +298,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7333177540027074864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151538244327003473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6aa9da8e9c3a6a4daea989a066338f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionRange: 3
-  interactionKey: 103
-  questID: fb030000
-  killMonsterQuestID: 
-  exclamationMark: {fileID: 2877853202118315917}
-  npcName: 
---- !u!114 &466170344558839678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151538244327003473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e4a38dbd746e646ba678805d7a3ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionRange: 3
-  interactionKey: 103
-  questID: fd030000fe030000ff030000000400000104000002040000030400000b040000
-  questionMark: {fileID: 1780017592095602754}
-  questStatus: 0
 --- !u!1 &184421118693780040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,7 +4114,7 @@ Transform:
   - {fileID: 7104947240640807670}
   - {fileID: 462331099302319093}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &3146309959242944301
 PlayableDirector:
