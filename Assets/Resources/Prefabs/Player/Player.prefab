@@ -4803,7 +4803,7 @@ Transform:
   - {fileID: 7761943481518058002}
   - {fileID: 1061712462627159255}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6916311193706112995
 CharacterController:
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c694bb2b50dec6c4aa3e713ea43cd2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.7
+  _range: 0.5
   _layerMask:
     serializedVersion: 2
     m_Bits: 192
