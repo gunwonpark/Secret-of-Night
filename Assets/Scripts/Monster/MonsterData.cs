@@ -9,7 +9,7 @@ public class MonsterInfo
     public string Name;
     public int Level;
     public int Exp;
-    public int ShortDistance;
+    public bool ShortDistance;
     public bool AtkStance;
     public float HP;
     public float Damage;
