@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossNPC Variant_TimeLine
       objectReference: {fileID: 0}
+    - target: {fileID: 2838322568859267583, guid: 99966e62501e8994c8a805bb2f7526b8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 636320af5ea04184098199e5ca912db5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
