@@ -80,39 +80,25 @@ public class QuestSpawner : MonoBehaviour
     public void QuestSpawnWolf()
     {
         monsterInfo = GameManager.Instance.monsterManager.monsterData.monsterDatabase.GetMonsterInfoByKey(6);
+        Vector3 startPosition = new Vector3(136.4694f, 12.38f, -25.9951f);        
         
-        int numberOfWolves = 10;
-       
-        Vector3 startPosition = new Vector3(136.4694f, 12.38f, -25.9951f);
+        int numberOfWolves = 10;       
         
         for (int i = 0; i < numberOfWolves; i++)
-        {            
-            float xOffset = i * 2.0f; 
-            Vector3 spawnPosition = startPosition + new Vector3(xOffset, 0f, 0f); // X 축으로만 이동합니다.
-            
-            GameObject go = Instantiate(monsterInfo.prefab, spawnPosition, Quaternion.identity);
-            FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
-            fieldMonsters.Init(monsterInfo);
-        }
-    }
-
-    public Vector3 GetRandomPointInCircle(Vector3 center, float radius)//랜덤한 스폰지점
-    {
-        int maxTries = 10;
-        //[todo]랜덤지점에 뭐가 없을때만 반환
-        for (int i = 0; i < maxTries; i++)
         {
+            Vector3 spawnPoint = Utility.GetRandomPointInCircle(startPosition, 10f);//랜덤 포지션 계산
+            spawnPoint.y = startPosition.y;
+            GameObject go = Instantiate(monsterInfo.prefab, spawnPoint, Quaternion.identity);
+            FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
+            fieldMonsters.SetPosition(spawnPoint);//포지션 전달
+            fieldMonsters.Init(monsterInfo);
 
-            float angle = Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성
-            float distance = Mathf.Sqrt(Random.Range(0f, 1f)) * radius; // 랜덤한 거리 생성
-            float x = center.x + distance * Mathf.Cos(angle); // x 좌표 계산
-            float z = center.z + distance * Mathf.Sin(angle); // z 좌표 계산
-            Vector3 randomPoint = new Vector3(x, center.y, z); // 랜덤 지점 반환
-            
+            fieldMonsters.spawnSpot = new Vector3(136.4694f, 12.38f, -25.9951f);
+            fieldMonsters.spawnSpotRadius = 10f;
         }
-        //다른 오브젝트가 있으면 일단 센터포지션 반환
-        return center;
     }
+
+  
 
     private void QuestItemSpawner()
     {

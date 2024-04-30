@@ -23,14 +23,19 @@ public class MonsterDyingState : MonsterBaseState
     }
 
     private void DeleteMonster()
-    {
+    {        
         Object.Destroy(this.stateMachine.FieldMonsters.gameObject, 2f);
 
         if (stateMachine.FieldMonsters.myInfo.MonsterID != 10)
         {
             stateMachine.FieldMonsters.DropData();
-
-            stateMachine.FieldMonsters.monsterSpot.Remove(stateMachine.FieldMonsters);
+            Debug.Log(stateMachine.FieldMonsters.monsterSpot);
+            if (stateMachine.FieldMonsters.monsterSpot != null ) 
+            {
+                stateMachine.FieldMonsters.monsterSpot.Remove(stateMachine.FieldMonsters);
+            }
+            // Debug.Log(stateMachine.FieldMonsters);
+            
         }        
 
         Debug.Log("죽음");

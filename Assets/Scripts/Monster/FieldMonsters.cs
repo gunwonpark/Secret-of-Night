@@ -178,8 +178,10 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public void dropItem(Item _item)
     {
         Vector3 throwPosition = transform.position + transform.up * Random.Range(1f, 1f);
-
-        Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
+        if(_item != null)
+        {
+            Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
+        }        
     }
 
     public void DropData()
