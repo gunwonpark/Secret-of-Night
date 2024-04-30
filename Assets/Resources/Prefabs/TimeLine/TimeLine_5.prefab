@@ -566,13 +566,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1346838091775165995}
   - component: {fileID: 4438333668926835458}
+  - component: {fileID: 2194498928436011801}
   m_Layer: 0
   m_Name: TimeLine_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1346838091775165995
 Transform:
   m_ObjectHideFlags: 0
@@ -723,6 +724,19 @@ PlayableDirector:
     - 8f3b32c3d05392e43a51d98e5d96a8b1: {fileID: 5324153525544780349}
     - edbed8ee4b7321247a1cd2e2c4870034: {fileID: 8590464716892849635}
     - dc5214711bb5f2140b0e2d37f94e4c40: {fileID: 1558023552489737807}
+--- !u!114 &2194498928436011801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709268555747599081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dc9ad9bee2d0f4e8655ad4b2b61b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guriguriComponentHandler: {fileID: 0}
 --- !u!1 &6775018469160550129
 GameObject:
   m_ObjectHideFlags: 0
