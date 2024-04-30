@@ -42,6 +42,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            Debug.Log("클릭");
             HelpUi.SetActive(false);
         }
 

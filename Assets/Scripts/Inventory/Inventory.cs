@@ -223,18 +223,12 @@ public class Inventory : MonoBehaviour
                 if (activated)
                 {
                     OpenInventory();
-                    _playerController.Input.enabled = false; //플레이어 활동 비활성
-                    playerLight.SetActive(true);
-
                     _quickSlotInventory.altKeyPressed = true;
 
                 }
                 else
                 {
                     CloseInventory();
-                    _playerController.Input.enabled = true;
-                    playerLight.SetActive(false);
-
                     _quickSlotInventory.altKeyPressed = false;
                 }
             }
@@ -257,6 +251,9 @@ public class Inventory : MonoBehaviour
 
         ClearSeletecItemWindow();
         Cursor.lockState = CursorLockMode.None; //마우스 커서 표시
+
+        _playerController.Input.enabled = false; //플레이어 활동 비활성
+        playerLight.SetActive(true);
 
         OnInventoryOpen?.Invoke(); // NPC G키 비활성화
 
@@ -337,6 +334,8 @@ public class Inventory : MonoBehaviour
     public void OnExit()
     {
         _inventoryUI.SetActive(false);
+        activated = false;
+        _quickSlotInventory.altKeyPressed = false;
         Cursor.lockState = CursorLockMode.None;
         _playerController.Input.enabled = true;
         playerLight.SetActive(false);
@@ -625,9 +624,6 @@ public class Inventory : MonoBehaviour
             popUpText.text = "퀘스트에서만 \n 사용할 수 있습니다.";
         }
 
-
-
-
         InventoryTrim();
     }
     // 퀵 슬롯에서 아이템 사용 시 인벤토리에서 일치하는 아이템도 같이 삭제
@@ -798,6 +794,19 @@ public class Inventory : MonoBehaviour
     public void OnDropButton()
     {
         ThrowItem(_selectedItem.item);
+
+        if (_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc")
+        {
+            for (int i = 0; i < _quickSlotInventory._uiSlots.Length; i++)
+            {
+                if (_selectedItem.item.ItemID == _quickSlotInventory.slots[i].item.ItemID)
+                {
+                    _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, 1); // 퀵슬롯 아이템 삭제
+                    break;
+                }
+            }
+
+        }
         RemoveSelectedItem(1);
         InventoryTrim();
     }
@@ -822,7 +831,11 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
-        thrownItem.GetComponent<NPCAnimatorController>().DieAnimation();
+
+        thrownItem.GetComponent<NPCAnimatorController>()?.DieAnimation();
+        thrownItem.GetComponent<BoxCollider>().enabled = false;
+
+        InventoryTrim();
     }
 
     // 현재 아이템 사용시 수량 감소 및 장착 된 무기는 해제
@@ -905,7 +918,16 @@ public class Inventory : MonoBehaviour
 
             if (_selectedItem.item.Type == "using" || _selectedItem.item.Type == "Etc")
             {
-                _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
+                for (int i = 0; i < _quickSlotInventory._uiSlots.Length; i++)
+                {
+                    if (_selectedItem.item.ItemID == _quickSlotInventory.slots[i].item.ItemID)
+                    {
+                        _quickSlotInventory.RemoveItemByID(_selectedItem.item.ItemID, _currentQuantity); // 퀵슬롯 아이템 삭제
+                        break;
+                    }
+                }
+
+
             }
 
         }
