@@ -24,6 +24,9 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve reflectionIntensityMultiplier;
     public float maxNightIntensity = 0.2f; // 밤에 최소한의 밝기
 
+    [Header("Game Object")]
+    public GameObject bossPotal;
+
     public Material sunriseSkybox;
     public Material daySkybox;
     public Material sunsetSkybox;
@@ -89,7 +92,45 @@ public class DayNightCycle : MonoBehaviour
         else if (QuestManager.I.currentQuest.QuestID == 1004)
         {
             time = 0.8f;
-        }        
+        }
+
+        UpdatePortalState();
+    }
+
+    private void UpdatePortalState()
+    {
+        if (QuestManager.I.currentQuest.QuestID >= 1067)
+        {
+            // 퀘스트 1067 이상일 때
+            if (IsDaytime())
+            {
+                ClosePortal();
+            }
+            else
+            {
+                OpenPortal();
+            }
+        }
+        else
+        {
+            // 퀘스트 1066 이하일 때는 항상 포탈을 닫습니다.
+            ClosePortal();
+        }
+    }
+
+    private bool IsDaytime()
+    {
+        return time > SUNRISE_TIME && time < SUNSET_TIME;
+    }
+
+    private void OpenPortal()
+    {
+        bossPotal?.SetActive(true);
+    }
+
+    private void ClosePortal()
+    {
+        bossPotal?.SetActive(false);
     }
 
     private void UpdateSkybox()
