@@ -33,6 +33,7 @@ public class PlayerGameData
     public int CharacterID; // 캐릭터 ID -> 어떤 종류의 캐릭터인지 결정
     public string CharacterName; // 플레이어 이름
     public int WeaponID; // 무기 
+    public bool[] skillSlots = new bool[4];
 
     [Header("PlayerStat")]
     public int Level;

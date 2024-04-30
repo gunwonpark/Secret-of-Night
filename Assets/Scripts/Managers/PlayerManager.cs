@@ -129,23 +129,13 @@ public class PlayerManager : MonoBehaviour
             Debug.LogError("SetSkillSlot Error : slotNumber is out of range");
             return;
         }
+
+        playerData.skillSlots[slotNumber] = true;
         skillSlots[slotNumber].SetSlot(slotNumber + FirstSkillIndex);
     }
     public bool CheckSkillIsDeActive(int slotNumber)
     {
         return skillSlots[slotNumber].Update || skillSlots[slotNumber].hasSKIll == false;
-    }
-    public List<int> GetUnlockedSkillSlotNumber()
-    {
-        List<int> slots = new List<int>();
-        for (int i = 0; i < skillSlots.Count; i++)
-        {
-            if (skillSlots[i].hasSKIll)
-            {
-                slots.Add(i);
-            }
-        }
-        return slots;
     }
     internal float GetSkillRange(string name)
     {
