@@ -35,9 +35,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1125541331727840948}
   - {fileID: 425938493276069406}
   - {fileID: 1316417350768533972}
-  - {fileID: 1125541331727840948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   spawnSpotRadius: 0
   damageColor: {r: 0.5, g: 0, b: 0, a: 1}
   originalColor: []
+  cautionGO: {fileID: 0}
 --- !u!114 &703595311560613967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +532,10 @@ PrefabInstance:
     - target: {fileID: 2489976912745518422, guid: 12eac036eaa44a043a4f521999bca3b0, type: 3}
       propertyPath: m_Name
       value: Caution
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489976912745518422, guid: 12eac036eaa44a043a4f521999bca3b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8153156860324447611, guid: 12eac036eaa44a043a4f521999bca3b0, type: 3}
       propertyPath: m_RootOrder

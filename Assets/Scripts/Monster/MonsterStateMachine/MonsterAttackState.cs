@@ -18,6 +18,8 @@ public class MonsterAttackState : MonsterBaseState
 
         stateMachine.FieldMonsters.monsterAnimation.StartAttackAnimation();
 
+        stateMachine.FieldMonsters.OnCaution();
+
         //stateMachine.FieldMonsters.OnAttack += NomalAttack;
     }
 
@@ -26,6 +28,7 @@ public class MonsterAttackState : MonsterBaseState
         base.Exit();
 
         stateMachine.FieldMonsters.monsterAnimation.StopAttackAnimation();
+        stateMachine.FieldMonsters.OffCaution();
 
         //stateMachine.FieldMonsters.OnAttack -= NomalAttack;
     }
