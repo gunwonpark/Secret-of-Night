@@ -100,4 +100,45 @@ public static class Utility
     {
         UIBase.BindEvent(go, action, type);
     }
+
+    public static Vector3 GetRandomPointInCircle(Vector3 center, float radius)//랜덤한 스폰지점
+    {
+        int maxTries = 10;
+        //[todo]랜덤지점에 뭐가 없을때만 반환
+        for (int i = 0; i < maxTries; i++)
+        {
+
+            float angle = UnityEngine.Random.Range(0f, Mathf.PI * 2f); // 랜덤한 각도 생성
+            float distance = Mathf.Sqrt(UnityEngine.Random.Range(0f, 1f)) * radius; // 랜덤한 거리 생성
+            float x = center.x + distance * Mathf.Cos(angle); // x 좌표 계산
+            float z = center.z + distance * Mathf.Sin(angle); // z 좌표 계산
+            Vector3 randomPoint = new Vector3(x, center.y, z); // 랜덤 지점 반환
+
+            //return randomPoint;
+            if (IsValidSpot(randomPoint))
+            {
+                return randomPoint;
+            }
+        }
+        //다른 오브젝트가 있으면 일단 센터포지션 반환
+        return center;
+    }
+    private static bool IsValidSpot(Vector3 point)
+    {
+        RaycastHit hit;
+
+        //레이로 쏜 곳에 다른 오브젝트가 있으면 false
+        if (Physics.Raycast(point, Vector3.down, out hit))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                return true;
+            }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("obstacle"))
+            {
+                return false;
+            }
+        }
+        return false;
+    }
 }
