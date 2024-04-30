@@ -71,6 +71,7 @@ public class QuestManager : MonoBehaviour
         //{
         //    InitDialogues(); // 대화 목록 초기화
         //}
+        UpdateMonsterCountUI();
     }
 
     // 현재 퀘스트 설정
@@ -232,6 +233,7 @@ public class QuestManager : MonoBehaviour
 
     }
 
+
     // 특정 몬스터를 죽였을 때 or 특정 아이템을 획득했을 때
     public void CheckCount(int id)
     {
@@ -258,9 +260,19 @@ public class QuestManager : MonoBehaviour
                 isKillMonsterClear = true;
                 currentQuest.Queststatus = QuestStatus.Progress;
             }
-        }
+        }    
+        
+        UpdateMonsterCountUI();
     }
 
+    private void UpdateMonsterCountUI()
+    {
+        if(QuestManager.I.currentQuest.QuestID == 1023)
+        {
+            QuestGoalText.text = $"미어캣 {(GameManager.Instance.dataManager.questDataBase.GetData(1023).GoalCount) - currentQuest.GoalCount} / {(GameManager.Instance.dataManager.questDataBase.GetData(1023).GoalCount)} 처치";
+        }
+        
+    }
 
     // NPC 상호작용, 아이템 사용, TriggerEnter 등에서 호출
     public void CheckCurrentQuest(int id)
