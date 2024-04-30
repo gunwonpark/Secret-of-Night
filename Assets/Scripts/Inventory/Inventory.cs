@@ -831,14 +831,9 @@ public class Inventory : MonoBehaviour
             // y 축 방향으로도 던지기 (포물선)
             itemRigidbody.AddForce(Vector3.up * 2.5f, ForceMode.VelocityChange);
         }
-
-
         thrownItem.GetComponent<NPCAnimatorController>()?.DieAnimation();
-        thrownItem.GetComponent<BoxCollider>().enabled = false;
 
         InventoryTrim();
-
-        thrownItem.GetComponent<NPCAnimatorController>()?.DieAnimation();
 
     }
 
