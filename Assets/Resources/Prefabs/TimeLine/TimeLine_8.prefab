@@ -625,7 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1884888072463970187}
   - component: {fileID: 9211126398321843704}
-  - component: {fileID: 6478606749848673414}
+  - component: {fileID: 1526698287834076430}
   m_Layer: 0
   m_Name: TimeLine_8
   m_TagString: Untagged
@@ -648,7 +648,7 @@ Transform:
   - {fileID: 3205545586391098392}
   - {fileID: 6162202791819207370}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &9211126398321843704
 PlayableDirector:
@@ -685,7 +685,7 @@ PlayableDirector:
     - 620231f6432427d42baa5f3d3ab0f228: {fileID: 1956189438284518509}
     - 1726b00da55be3a4a936f06cb0e6655b: {fileID: 746579136142495145}
     - b09a8177aa1e34e42bab0a8838ac13a4: {fileID: 2174286087408905328}
---- !u!114 &6478606749848673414
+--- !u!114 &1526698287834076430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2746299519878812700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226e0079873e4b548a31d28640ef5268, type: 3}
+  m_Script: {fileID: 11500000, guid: 0459dce6dcfce174a9c7e2a4f2a10d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4493320542339482373

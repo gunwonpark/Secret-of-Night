@@ -4091,6 +4091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8206525709860988113}
   - component: {fileID: 3146309959242944301}
+  - component: {fileID: 97663475582376425}
   m_Layer: 0
   m_Name: TimeLine_7
   m_TagString: Untagged
@@ -4154,6 +4155,19 @@ PlayableDirector:
     - 100ddeec07da04446a2206ec3f4fb736: {fileID: 5263982344299464355}
     - 3bfd839e2835ec8428147a401c66a67a: {fileID: 2649329713947797360}
     - 65288088ed4f2794ca783e37cd0b33ae: {fileID: 5367267621577268797}
+--- !u!114 &97663475582376425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693112127499802134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226e0079873e4b548a31d28640ef5268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boss: {fileID: 0}
 --- !u!1 &7710188924162822496
 GameObject:
   m_ObjectHideFlags: 0
