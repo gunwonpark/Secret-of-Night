@@ -216,11 +216,26 @@ public class PlayerGameData
     }
     public void SaveData()
     {
+        if (GameManager.Instance.playerManager.playerDatas.ContainsKey(SlotNumber))
+        {
+            GameManager.Instance.playerManager.playerDatas[SlotNumber] = GameManager.Instance.playerManager.playerData;
+        }
+        else
+        {
+            GameManager.Instance.playerManager.playerDatas.Add(SlotNumber, GameManager.Instance.playerManager.playerData);
+        }
         SaveTime = DateTime.Now.ToString();
-        quest = QuestManager.I.currentQuest;
-        questIndex = QuestManager.I.questIndex;
-        ChapterInfo = quest.ChapterName;
-        itemSlots = Inventory.instance.slots;
+        if (QuestManager.I != null)
+        {
+            quest = QuestManager.I.currentQuest;
+            questIndex = QuestManager.I.questIndex;
+            ChapterInfo = quest.ChapterName;
+        }
+        if (Inventory.instance != null)
+        {
+            itemSlots = Inventory.instance.slots;
+        }
+
         Utility.SaveToJson(this, JsonDataPath);
     }
     public void LoadSavedData()

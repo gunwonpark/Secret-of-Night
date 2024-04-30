@@ -12,9 +12,18 @@
 		{
 			"BossID": 2,
 			"Name": "SeoriBoss",
-			"HP": 100,
+			"HP": 65,
 			"Damage": 2,
 			"Def": 1,
+			"MoveSpeed": 1,
+			"Range": 1.5
+		},
+		{
+			"BossID": 3,
+			"Name": "GuriBoss",
+			"HP": 90,
+			"Damage": 2,
+			"Def": 1.5,
 			"MoveSpeed": 1,
 			"Range": 1.5
 		}

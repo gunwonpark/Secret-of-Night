@@ -4,4 +4,8 @@ public class LoadingScene : BaseScene
     {
 
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 }

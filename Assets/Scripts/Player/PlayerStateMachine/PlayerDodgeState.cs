@@ -12,8 +12,8 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        AddDodgeForce();
         lockRotation = true;
+        AddDodgeForce();
         stateMachine.Player.Animator.SetTrigger(stateMachine.Player.AnimationData.DodgeParameter);
     }
     public override void Exit()

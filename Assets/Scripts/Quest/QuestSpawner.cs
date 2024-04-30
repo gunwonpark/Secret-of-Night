@@ -13,6 +13,7 @@ public class QuestSpawner : MonoBehaviour
     private Animator animator;
     private GameObject laser;
     private GameObject buggubugguCircle;
+    private GameObject gerogeroCircle;
     private GameObject hihiCircle;
     private GameObject laser2;
     private GameObject laser3;
@@ -108,7 +109,7 @@ public class QuestSpawner : MonoBehaviour
                 Destroy(buggubugguCircle);
                 count[3]--;
             }
-        }
+        }        
 
         else if (QuestManager.I.currentQuest.QuestID == 1029)
         {
@@ -134,58 +135,67 @@ public class QuestSpawner : MonoBehaviour
             for (int i = 0; i < count[6]; i++)
             {
                 Destroy(laser2);
-
+                gerogeroCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/FreezeCircle"), new Vector3(12.73145f, 0.5186768f, 138.0172f), Quaternion.identity);
                 count[6]--;
+            }
+        }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1034)
+        {
+            for (int i = 0; i < count[7]; i++)
+            {
+                Destroy(gerogeroCircle);                
+                count[7]--;
             }
         }
 
         else if (QuestManager.I.currentQuest.QuestID == 1040)
         {
 
-            for (int i = 0; i < count[7]; i++)
+            for (int i = 0; i < count[8]; i++)
             {
                 Instantiate(Resources.Load<GameObject>("Prefabs/Quest/woods"), new Vector3(0f, 0f, 0f), Quaternion.identity);
-                count[7]--;
+                count[8]--;
             }
         }
 
         else if (QuestManager.I.currentQuest.QuestID == 1048)
         {
 
-            for (int i = 0; i < count[8]; i++)
+            for (int i = 0; i < count[9]; i++)
             {
-                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(27).Prefab, new Vector3(4.59f, 0.71f, 118.44f), Quaternion.identity);
-                count[8]--;
+                Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(27).Prefab, new Vector3(100.1562f, 13.66024f, 71.65464f), Quaternion.identity);
+                count[9]--;
             }
         }
 
         else if (QuestManager.I.currentQuest.QuestID == 1049)
         {
 
-            for (int i = 0; i < count[9]; i++)
+            for (int i = 0; i < count[10]; i++)
             {
                 Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(32).Prefab, new Vector3(134.5635f, 3.719132f, -35.13649f), Quaternion.identity);
                 laser3 = Instantiate(Resources.Load<GameObject>("Prefabs/effects/LaserAOE"), new Vector3(134.5635f, 3.719132f, -35.13649f), Quaternion.identity);
-                count[9]--;
+                count[10]--;
             }
         }
 
         else if (QuestManager.I.currentQuest.QuestID == 1050)
         {            
-            for (int i = 0; i < count[10]; i++)
+            for (int i = 0; i < count[11]; i++)
             {
                 Destroy(laser3);
                 hihiCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/FreezeCircle"), new Vector3(-1.15f, 0.6747813f, 126.95f), Quaternion.identity);
-                count[10]--;
+                count[11]--;
             }
         }
         else if (QuestManager.I.currentQuest.QuestID == 1051)
         {
 
-            for (int i = 0; i < count[11]; i++)
+            for (int i = 0; i < count[12]; i++)
             {
                 Destroy(hihiCircle);
-                count[11]--;
+                count[12]--;
             }
         }
     }

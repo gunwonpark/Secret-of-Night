@@ -168,8 +168,9 @@ public class PlayerBaseState : IState
             stateMachine.Player.speed = targetSpeed;
         }
 
+        if (stateMachine.Player.IsDodgeing)
+            stateMachine.Player.speed = 0;
         stateMachine.Player.Controller.Move(((moveDirection * stateMachine.Player.speed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime);
-
         if (stateMachine.MovementInput != Vector2.zero)
             Rotate(moveDirection);
     }
@@ -225,7 +226,7 @@ public class PlayerBaseState : IState
 
     protected void SkillTrigger(int number)
     {
-        if (GameManager.Instance.playerManager.CheckSkillIsDeActive(number))
+        if (GameManager.Instance.playerManager.CheckSkillIsDeActive(number) || stateMachine.Player.IsDodgeing)
         {
             stateMachine.Player.DoSkill = false;
             return;

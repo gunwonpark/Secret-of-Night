@@ -4925,10 +4925,10 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 4
   rotationDamping: 10
-  jumpForce: 4
+  jumpForce: 5
   jumpDelayTime: 0.3
   dodgeHeihgt: 2
-  dodgeForce: -4
+  dodgeForce: -5
   <IsAttacking>k__BackingField: 0
   <IsRunning>k__BackingField: 0
   <IsJumping>k__BackingField: 0

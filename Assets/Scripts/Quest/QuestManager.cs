@@ -42,7 +42,7 @@ public class QuestManager : MonoBehaviour
         quests = questGenerator.tempQuests; // 전체 퀘스트 리스트 설정 (임시)
         quests.Sort((x, y) => x.QuestID.CompareTo(y.QuestID)); // 퀘스트 ID 순으로 정렬
 
-        if (GameManager.Instance.playerManager.playerData.quest == null)
+        if (GameManager.Instance.playerManager.playerData.quest == null || GameManager.Instance.playerManager.playerData.quest.QuestID == 0)
         {
             questIndex = 0; // 퀘스트 인덱스 초기화
             SetCurrentQuest(); // 현재 퀘스트 설정

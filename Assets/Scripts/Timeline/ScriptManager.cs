@@ -29,7 +29,7 @@ public class ScriptManager : MonoBehaviour
         AddSubtitle("Sub6", "비켜.");
         AddSubtitle("Sub7", "스승님?");
         AddSubtitle("Sub8", "크하핫 나에게 도전장을 내미는 놈은 살아돌아가지 못할 ㄱ..");
-        AddSubtitle("Sub9", "뚜쉬뚜쉬의 한방에 띠리띠리는 기절했다.");
+        AddSubtitle("Sub9", "뚜쉬뚜쉬의 제압에 띠리띠리는 기절했다.");
         AddSubtitle("Sub10", "오랜만에 용의 힘을 개방했더니 좀 피곤하군. ");
         AddSubtitle("Sub11", "어떻게 된 일이죠?");
         AddSubtitle("Sub12", "녀석을 잠재웠다. 내 할일은 끝났으니 뒷일을 책임지도록.");

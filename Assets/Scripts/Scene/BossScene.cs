@@ -25,4 +25,8 @@ public class BossScene : BaseScene
     {
 
     }
+    protected override void OnDestroy()
+    {
+        GameManager.Instance.playerManager.playerData.SaveData();
+    }
 }

@@ -24,6 +24,15 @@ public class DayNightCycle : MonoBehaviour
     public AnimationCurve reflectionIntensityMultiplier;
     public float maxNightIntensity = 0.2f; // 밤에 최소한의 밝기
 
+    public Material sunriseSkybox;
+    public Material daySkybox;
+    public Material sunsetSkybox;
+    public Material nightSkybox;
+
+    private const float SUNRISE_TIME = 0.25f;
+    private const float SUNSET_TIME = 0.65f;
+    private const float SUNRISE_SET_DURATION = 0.05f;
+
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
@@ -38,20 +47,15 @@ public class DayNightCycle : MonoBehaviour
         UpdateLighting(moon, moonColor, moonIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
-        RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
+        RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);        
 
-        if (QuestManager.I.currentQuest.QuestID == 1002)
-        {
-            if (time > 0.8f)
-            {
-                QuestManager.I.CheckCurrentQuest(1002);
-            }
-        }
+        UpdateSkybox();
     }
 
     // 퀘스트 03이 완료되면 호출될 메서드
     public void OnQuest03Complete()
     {
+        Debug.Log("낮으로 바뀜");
         // 한낮으로 시간을 조정
         time = startTime;
     }
@@ -78,14 +82,47 @@ public class DayNightCycle : MonoBehaviour
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
             go.SetActive(true);
 
-        if (QuestManager.I.currentQuest.QuestID == 1004)
+        if (QuestManager.I.currentQuest.QuestID == 1001 || QuestManager.I.currentQuest.QuestID == 1002)
+        {
+            time = startTime;
+        }
+        else if (QuestManager.I.currentQuest.QuestID == 1004)
         {
             time = 0.8f;
-        }
+        }        
+    }
 
-        //if (QuestManager.I.currentQuest.QuestID == 1007)
-        //{
-        //    time = startTime;
-        //}
+    private void UpdateSkybox()
+    {
+        if (time < SUNRISE_TIME)
+        {
+            setSkybox(nightSkybox);
+        }
+        else if (time < SUNRISE_TIME + SUNRISE_SET_DURATION)
+        {
+            setSkybox(sunriseSkybox);
+        }
+        else if (time < SUNSET_TIME)
+        {
+            setSkybox(daySkybox);
+        }
+        else if (time < SUNSET_TIME + SUNRISE_SET_DURATION)
+        {
+            setSkybox(sunsetSkybox);
+        }
+        else
+        {
+            setSkybox(nightSkybox);
+        }
+    }
+
+    private void setSkybox(Material skybox)
+    {
+        if (RenderSettings.skybox != skybox)
+        {
+            RenderSettings.skybox = skybox;
+            // 스카이박스 변경 후 조명 환경 업데이트
+            DynamicGI.UpdateEnvironment();
+        }
     }
 }
