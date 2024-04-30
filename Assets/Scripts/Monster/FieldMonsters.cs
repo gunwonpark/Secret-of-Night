@@ -111,7 +111,7 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
     public Vector3 GetNewMovePoint()//랜덤한 무브지점
     {
-        Vector3 movePoint = monsterSpot.GetRandomPointInCircle(spawnSpot, spawnSpotRadius);
+        Vector3 movePoint = Utility.GetRandomPointInCircle(spawnSpot, spawnSpotRadius);
 
         return movePoint;
     }

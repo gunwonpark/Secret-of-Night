@@ -146,6 +146,23 @@ public class QuestManager : MonoBehaviour
 
         ExpReward(currentQuest.RewardID, currentQuest.RewardCount);
 
+        //1004, 1024, 1036, 1055
+        if (currentQuest.QuestID == 1004)
+        {
+            GameManager.Instance.playerManager.ActiveSkillSlot(0);
+        }
+        else if (currentQuest.QuestID == 1024)
+        {
+            GameManager.Instance.playerManager.ActiveSkillSlot(1);
+        }
+        else if (currentQuest.QuestID == 1036)
+        {
+            GameManager.Instance.playerManager.ActiveSkillSlot(2);
+        }
+        else if (currentQuest.QuestID == 1055)
+        {
+            GameManager.Instance.playerManager.ActiveSkillSlot(3);
+        }
 
         OnQuestCleared?.Invoke();
         isKillMonsterClear = false;
@@ -260,18 +277,18 @@ public class QuestManager : MonoBehaviour
                 isKillMonsterClear = true;
                 currentQuest.Queststatus = QuestStatus.Progress;
             }
-        }    
-        
+        }
+
         UpdateMonsterCountUI();
     }
 
     private void UpdateMonsterCountUI()
     {
-        if(QuestManager.I.currentQuest.QuestID == 1023)
+        if (QuestManager.I.currentQuest.QuestID == 1023)
         {
             QuestGoalText.text = $"미어캣 {(GameManager.Instance.dataManager.questDataBase.GetData(1023).GoalCount) - currentQuest.GoalCount} / {(GameManager.Instance.dataManager.questDataBase.GetData(1023).GoalCount)} 처치";
         }
-        
+
     }
 
     // NPC 상호작용, 아이템 사용, TriggerEnter 등에서 호출
