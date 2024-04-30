@@ -4,7 +4,7 @@ public class QuestGenerator : MonoBehaviour
 {
     public List<Quest> tempQuests = new List<Quest>();
     private void Start()
-    {        
+    {
         var newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1001))
         {
             // "배를 채울만한 것을 찾아보기",
@@ -16,9 +16,9 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
             isContinue = true,
-            QuestType = 6,   
+            QuestType = 6,
             QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 획득",
-            
+
         };
         tempQuests.Add(newQuest);
 
@@ -118,7 +118,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100806)),
             },
             isContinue = true,
-            
+
         };
         tempQuests.Add(newQuest);
 
@@ -135,7 +135,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100906)),
 
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
@@ -227,7 +227,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101405)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
@@ -299,7 +299,7 @@ public class QuestGenerator : MonoBehaviour
         {
             // Description = "부꾸부꾸의 복귀 사실을 구리구리에게 말하기",
             isNoScript = true,
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
@@ -317,7 +317,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102107)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102108)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
@@ -343,7 +343,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102214)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102215)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102216)),
-            },            
+            },
         };
         tempQuests.Add(newQuest);
 
@@ -361,7 +361,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102306)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102307)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102308)),
-            },            
+            },
         };
         tempQuests.Add(newQuest);
 
@@ -380,8 +380,8 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102407)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102408)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102409)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102410)),                
-            },            
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102410)),
+            },
         };
         tempQuests.Add(newQuest);
 
@@ -403,7 +403,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102510)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102511)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
@@ -425,7 +425,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102703)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102704)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102705)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102706)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102706)),
             },
             isContinue = true,
         };
@@ -440,7 +440,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102802)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102803)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102804)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102805)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(102805)),
             },
             isContinue = true,
         };
@@ -469,7 +469,7 @@ public class QuestGenerator : MonoBehaviour
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103001)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103002)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103003)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103003)),
             },
             isContinue = true,
         };
@@ -527,7 +527,7 @@ public class QuestGenerator : MonoBehaviour
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103501)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103502)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103502)),
             },
             isContinue = true,
         };
@@ -554,7 +554,7 @@ public class QuestGenerator : MonoBehaviour
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103701)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103702)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(103702)),
             },
             isContinue = true,
         };
@@ -564,7 +564,7 @@ public class QuestGenerator : MonoBehaviour
         {
             isNoScript = true,
             isContinue = true,
-            
+
         };
         tempQuests.Add(newQuest);
 
@@ -589,7 +589,7 @@ public class QuestGenerator : MonoBehaviour
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104001)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104002)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104003)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104003)),
             },
             isContinue = true,
             QuestType = 3,
@@ -606,7 +606,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1042))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
@@ -616,13 +616,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104205)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104206)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1043))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104301)),
@@ -634,13 +634,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104307)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104308)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1044))
         {
-            
+
             isNoScript = true,
             isContinue = true,
         };
@@ -648,7 +648,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1045))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104501)),
@@ -668,12 +668,12 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1046))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104601)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104602)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104603)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104603)),
             },
             isContinue = true,
         };
@@ -681,7 +681,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1047))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104701)),
@@ -690,7 +690,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104704)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104705)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104706)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104707)),               
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104707)),
             },
             isContinue = true,
         };
@@ -698,14 +698,14 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1048))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104801)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104802)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104803)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104804)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104805)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104805)),
             },
             isContinue = true,
         };
@@ -713,7 +713,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1049))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(104901)),
@@ -734,7 +734,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1051))
         {
-            
+
             isNoScript = true,
             isContinue = true,
         };
@@ -742,7 +742,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1052))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105201)),
@@ -762,21 +762,21 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1053))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105301)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105302)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105303)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105304)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105305)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105305)),
             },
             isContinue = true,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1054))
-        {           
+        {
             isNoScript = true,
             isContinue = true,
         };
@@ -784,7 +784,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1055))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105501)),
@@ -799,7 +799,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1056))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105601)),
@@ -809,7 +809,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105606)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105607)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105608)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105609)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105609)),
             },
             isContinue = true,
             isDirectClear = true,
@@ -818,19 +818,19 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1057))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105701)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105702)),               
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105702)),
             },
-            isContinue = true,            
+            isContinue = true,
         };
-        tempQuests.Add(newQuest);       
-  
+        tempQuests.Add(newQuest);
+
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1058))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105801)),
@@ -842,7 +842,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1059))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105901)),
@@ -856,7 +856,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1060))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106001)),
@@ -875,11 +875,11 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1061))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106101)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106102)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106102)),
             },
             isContinue = true,
         };
@@ -894,7 +894,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1063))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106301)),
@@ -911,13 +911,13 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1064))
         {
-            
+
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106401)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106402)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106403)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106404)),                
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106404)),
             },
             isContinue = true,
         };
@@ -939,7 +939,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1067))
         {
-            
+
             isNoScript = true,
             isContinue = true,
         };
@@ -947,8 +947,11 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1068))
         {
-            
-            isNoScript = true,
+            dialogues = new List<Dialogue>
+            {
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106701)),
+                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106702)),
+            },
             isContinue = true,
         };
         tempQuests.Add(newQuest);
