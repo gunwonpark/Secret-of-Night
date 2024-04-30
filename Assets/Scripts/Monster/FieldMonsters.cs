@@ -88,6 +88,26 @@ public class FieldMonsters : MonoBehaviour, IDamageable
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        //원래 컬러 저장
+        if (myInfo.MonsterID == 12 || myInfo.MonsterID == 13 || myInfo.MonsterID == 14 || myInfo.MonsterID == 15 || myInfo.MonsterID == 16)
+        {
+            return;
+        }
+        else
+        {
+            originalColor = new Color[meshRenderers.Length];
+            for (int i = 0; i < meshRenderers.Length; i++)
+            {
+                originalColor[i] = meshRenderers[i].material.color;
+            }
+        }
+
+        if (myInfo.AtkStance)
+        {
+            Transform caution = transform.GetChild(0);
+            cautionGO = caution.gameObject;
+        }
     }
 
     private void Update()
@@ -184,10 +204,12 @@ public class FieldMonsters : MonoBehaviour, IDamageable
     public void dropItem(Item _item)
     {
         Vector3 throwPosition = transform.position + transform.up * Random.Range(1f, 1f);
-        if(_item != null)
+
+        if (_item != null)
         {
             Instantiate(_item.Prefab, throwPosition, Quaternion.identity);
-        }        
+        }         
+
     }
 
     public void DropData()
