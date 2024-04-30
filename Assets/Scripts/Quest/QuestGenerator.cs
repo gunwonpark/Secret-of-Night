@@ -27,7 +27,7 @@ public class QuestGenerator : MonoBehaviour
             // "주운 버섯을 사용하기",           
             isNoScript = true,
             isContinue = true,
-            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 사용",
+            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1002).GoalCount)}개 사용",
         };
         tempQuests.Add(newQuest);
 
@@ -227,8 +227,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101405)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },
-            isContinue = true,
-            QuestGoal = $"<포악한 스컹크 처치 0 / {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)} >"
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 

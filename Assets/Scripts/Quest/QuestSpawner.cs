@@ -9,7 +9,8 @@ public class QuestSpawner : MonoBehaviour
     public Transform homePos;
     private MonsterInfo monsterInfo;
     private int maxCount = 1;
-    
+    private int maxCount2 = 1;
+
     private Animator animator;
     private GameObject laser;
     private GameObject buggubugguCircle;
@@ -46,7 +47,7 @@ public class QuestSpawner : MonoBehaviour
             for (int i = 0; i < maxCount; i++)
             {
                 maxCount--;
-                QuestSpawnMonster();
+                QuestSpawnSkunk();
             }
         }
 
@@ -54,10 +55,19 @@ public class QuestSpawner : MonoBehaviour
         {
             agent.SetDestination(homePos.position);
         }
+
+        else if (QuestManager.I.currentQuest.QuestID == 1031)
+        {
+            for (int i = 0; i < maxCount2; i++)
+            {
+                maxCount2--;
+                QuestSpawnWolf();
+            }
+        }
         QuestItemSpawner();
     }
 
-    public void QuestSpawnMonster()
+    public void QuestSpawnSkunk()
     {
         monsterInfo = GameManager.Instance.monsterManager.monsterData.monsterDatabase.GetMonsterInfoByKey(10);
         GameObject go = Instantiate(monsterInfo.prefab, new Vector3(-61.29049f, 1.010074f, 81.39434f), Quaternion.identity);
@@ -65,6 +75,25 @@ public class QuestSpawner : MonoBehaviour
         FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
 
         fieldMonsters.Init(monsterInfo);
+    }
+
+    public void QuestSpawnWolf()
+    {
+        monsterInfo = GameManager.Instance.monsterManager.monsterData.monsterDatabase.GetMonsterInfoByKey(6);
+        
+        int numberOfWolves = 10;
+       
+        Vector3 startPosition = new Vector3(136.4694f, 12.38f, -25.9951f);
+        
+        for (int i = 0; i < numberOfWolves; i++)
+        {            
+            float xOffset = i * 2.0f; 
+            Vector3 spawnPosition = startPosition + new Vector3(xOffset, 0f, 0f); // X 축으로만 이동합니다.
+            
+            GameObject go = Instantiate(monsterInfo.prefab, spawnPosition, Quaternion.identity);
+            FieldMonsters fieldMonsters = go.GetComponent<FieldMonsters>();
+            fieldMonsters.Init(monsterInfo);
+        }
     }
 
     private void QuestItemSpawner()
