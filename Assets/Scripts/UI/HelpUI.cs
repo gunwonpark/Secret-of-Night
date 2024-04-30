@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
     public Button SaveIcon;
 
     public GameObject HelpUi;
+    private int maxCount = 1;
 
     void Start()
     {
@@ -27,6 +29,31 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
         HelpUi.SetActive(true);
     }
 
+    //void StartHelp()
+    //{
+    //    HelpUi.SetActive(true);
+    //    StartCoroutine("CloseUI");
+    //}
+
+    private void Update()
+    {
+        if (QuestManager.I.currentQuest.QuestID == 1001 && DialogueHandler.I.dialogueIndex == 4)
+        {
+            for (int i = 0; i < maxCount; i++)
+            {
+                maxCount--;
+                Help();
+            }          
+        }
+    }
+
+    //IEnumerator CloseUI()
+    //{
+    //    yield return new WaitForSecondsRealtime(3f);
+    //    HelpUi.SetActive(false);
+    //}
+
+
     //void Inven()
     //{
     //    Inventory.instance.OpenInventory();
@@ -42,6 +69,7 @@ public class HelpUI : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            Debug.Log("클릭");
             HelpUi.SetActive(false);
         }
 

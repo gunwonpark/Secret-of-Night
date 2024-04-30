@@ -27,7 +27,7 @@ public class QuestGenerator : MonoBehaviour
             // "주운 버섯을 사용하기",           
             isNoScript = true,
             isContinue = true,
-            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 사용",
+            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1002).GoalCount)}개 사용",
         };
         tempQuests.Add(newQuest);
 
@@ -227,8 +227,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101405)),
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(101406)),
             },
-            isContinue = true,
-            QuestGoal = $"<포악한 스컹크 처치 0 / {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)} >"
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
@@ -607,7 +606,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1042))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104201)),
@@ -623,7 +622,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1043))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104301)),
@@ -641,7 +640,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1044))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             isNoScript = true,
             isContinue = true,
         };
@@ -649,7 +648,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1045))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104501)),
@@ -669,7 +668,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1046))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104601)),
@@ -682,7 +681,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1047))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104701)),
@@ -699,7 +698,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1048))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(104801)),
@@ -714,7 +713,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1049))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue(GameManager.Instance.dataManager.dialogueDataBase.GetData(104901)),
@@ -735,7 +734,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1051))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             isNoScript = true,
             isContinue = true,
         };
@@ -743,7 +742,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1052))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105201)),
@@ -757,12 +756,13 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105209)),
             },
             isContinue = true,
+            isDirectClear = true,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1053))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105301)),
@@ -784,7 +784,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1055))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105501)),
@@ -799,7 +799,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1056))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105601)),
@@ -818,7 +818,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1057))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105701)),
@@ -830,7 +830,7 @@ public class QuestGenerator : MonoBehaviour
   
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1058))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105801)),
@@ -842,7 +842,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1059))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(105901)),
@@ -856,7 +856,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1060))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106001)),
@@ -875,7 +875,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1061))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106101)),
@@ -894,7 +894,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1063))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106301)),
@@ -911,7 +911,7 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1064))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
+            
             dialogues = new List<Dialogue>
             {
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106401)),
@@ -925,30 +925,30 @@ public class QuestGenerator : MonoBehaviour
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1065))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106501)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106502)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106503)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106504)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106505)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106506)),
-            },
+            isNoScript = true,
             isContinue = true,
         };
         tempQuests.Add(newQuest);
 
         newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1066))
         {
-            // Description = "하이하이에게 마을의 비밀 단서를 획득하기",
-            dialogues = new List<Dialogue>
-            {
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106601)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106602)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106603)),
-                new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(106604)),                
-            },
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1067))
+        {
+            
+            isNoScript = true,
+            isContinue = true,
+        };
+        tempQuests.Add(newQuest);
+
+        newQuest = new Quest(GameManager.Instance.dataManager.questDataBase.GetData(1068))
+        {
+            
+            isNoScript = true,
             isContinue = true,
         };
         tempQuests.Add(newQuest);

@@ -12,8 +12,5 @@ public class guriguriComponentHandler : MonoBehaviour
         if (agent == null) { agent = gameObject.AddComponent<NavMeshAgent>(); }
         if (guriguriBoss == null) { guriguriBoss = gameObject.AddComponent<GuriGuriBoss>(); }       
         gameObject.GetComponent<GuriGuriBoss>().enabled = true;
-
-    }
-
-   
+    }   
 }

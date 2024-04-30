@@ -31,7 +31,6 @@ public class SpecialQuest : MonoBehaviour
     {
         if (QuestManager.I.currentQuest.QuestID == 1038)
         {
-
             for (int i = 0; i < playerstopcount; i++)
             {
                 timeLineObject.SetActive(true);
@@ -42,7 +41,6 @@ public class SpecialQuest : MonoBehaviour
 
         else if (QuestManager.I.currentQuest.QuestID == 1051)
         {
-
             for (int i = 0; i < playerstopcount2; i++)
             {
                 timeLineObject2.SetActive(true);
@@ -77,26 +75,22 @@ public class SpecialQuest : MonoBehaviour
 
         else if (QuestManager.I.currentQuest.QuestID == 1065)
         {
-
             for (int i = 0; i < playerstopcount5; i++)
             {
                 timeLineObject5.SetActive(true);
                 GameManager.Instance.inputManager.DisablePlayerAction();
                 playerstopcount5--;
             }
-
         }
 
         else if (QuestManager.I.currentQuest.QuestID == 1066)
         {
-
             for (int i = 0; i < playerstopcount6; i++)
             {
-                timeLineObject5.SetActive(true);
+                timeLineObject6.SetActive(true);
                 GameManager.Instance.inputManager.DisablePlayerAction();
                 playerstopcount6--;
             }
-
         }
     }
 

@@ -20,7 +20,7 @@ public class QuickSlotInventory : MonoBehaviour
     public QuickSlots[] _uiSlots; // UI 슬롯
     public QuickInventoryItemSlot[] slots; // 슬롯내의 데이터
 
-    private QuickInventoryItemSlot _selectedItem;
+    public QuickInventoryItemSlot _selectedItem;
     public int _selectedItemIndex;
 
 
