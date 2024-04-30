@@ -12,6 +12,7 @@ public class Phase1Boss : MonoBehaviour, IDamageable
     public Texture2D originalTexture;
     private NavMeshAgent agent;
     private SkinnedMeshRenderer[] meshRenderers;
+    public GameObject timeLine8;
     SMRAfterImageCreator aic;
 
     [field: Header("MonsterData")]
@@ -200,27 +201,22 @@ public class Phase1Boss : MonoBehaviour, IDamageable
             agent.isStopped = true;
             currentState = BossState.Dying;           
             
-            StartCoroutine("Die00");
-            //GameManager.Instance.uiManager.ShowPopupUI<MakePeoplePopup>();
-            //StartCoroutine("GameEnd");
+            StartCoroutine("Die00");            
         }
     }
 
     IEnumerator Die00()
     {
-        yield return new WaitForSecondsRealtime(3f);
-        GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/effects/MagicCircle"), transform.position, Quaternion.identity);
+        timeLine8.SetActive(true);
         yield return new WaitForSecondsRealtime(3.5f);
+        GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/effects/MagicCircle"), transform.position, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(2.5f);
         Destroy(go);
         GameObject summonsCircle = Instantiate(Resources.Load<GameObject>("Prefabs/effects/Healing_Nature"),transform.position, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(3f);
+        Destroy (summonsCircle);
         meshRenderers[0].enabled = false;
         meshRenderers[1].enabled = false;
-        Instantiate(Resources.Load<GameObject>("Prefabs/Boss/KnightBoss"), transform.position, Quaternion.identity);
-    }
-
-    IEnumerable GameEnd()
-    {
-        yield return new WaitForSeconds(2f);
-        GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
+        Instantiate(Resources.Load<GameObject>("Prefabs/Boss/KnightBoss"), transform.position, Quaternion.identity); 
     }
 }
