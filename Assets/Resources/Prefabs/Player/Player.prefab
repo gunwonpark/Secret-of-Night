@@ -4777,6 +4777,7 @@ GameObject:
   - component: {fileID: 5028793102719922042}
   - component: {fileID: 4663946292481169512}
   - component: {fileID: 8232824247260104335}
+  - component: {fileID: -6224755377328811217}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4901,6 +4902,7 @@ MonoBehaviour:
     CharacterID: 0
     CharacterName: 
     WeaponID: 0
+    skillSlots: 00000000
     Level: 0
     MaxExp: 0
     CurExp: 0
@@ -5005,6 +5007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2956aa8886e5cee4d82174c6e4cf9a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
   speedItemInUse: 0
 --- !u!114 &7811797014753996615
 MonoBehaviour:
@@ -5150,6 +5153,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNightCycle: {fileID: 0}
+--- !u!114 &-6224755377328811217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536643401501160818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e65f179a105b74dbf801a786e04df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move_StarAura: {fileID: 4428204946375495183, guid: 545e6a09289feb34e8a9d9db58c816ea, type: 3}
+  LvUpBuff: {fileID: 1532336282614055027, guid: 06619cacf9c6e6b45bdd0aba5178df7b, type: 3}
+  manna: {fileID: 8262915973053153715, guid: 42d775433f1bca642b6607940ecfc9fd, type: 3}
+  healing: {fileID: 3579320948141664875, guid: 8e57c0bb3ecefa6419d6e5b7ccf628a7, type: 3}
 --- !u!1 &1559138319227499400
 GameObject:
   m_ObjectHideFlags: 0
