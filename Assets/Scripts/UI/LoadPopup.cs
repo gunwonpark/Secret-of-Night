@@ -29,11 +29,10 @@ public class LoadPopup : UIBase
         {
             if (selectedSlotNumber == -1)
                 return;
-
+            GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
             GameManager.Instance.playerManager.LoadPlayerData(selectedSlotNumber);
             if (slots[selectedSlotNumber].isEmpty)
             {
-                GameManager.Instance.playerManager.playerData.SlotNumber = selectedSlotNumber;
                 GameManager.Instance.playerManager.playerDatas.Add(selectedSlotNumber, GameManager.Instance.playerManager.playerData);
             }
             GameManager.Instance.sceneManager.LoadSceneAsync(Scene.Main);
