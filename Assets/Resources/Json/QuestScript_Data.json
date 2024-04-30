@@ -1951,6 +1951,18 @@
 			"Scripts": "(앗 희미하게 빛을 내고 있잖아?)"
 		},
 		{
+			"DialogueID": 106701,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(..!! 아티펙트가 포탈에 공명하고 있어!)"
+		},
+		{
+			"DialogueID": 106702,
+			"Talker": "PlayerID",
+			"TalkerKo": "도토리",
+			"Scripts": "(이 포탈은 뭐지..? 마을의 비밀과 관련이 있는 걸까?)"
+		},
+		{
 			"DialogueID": 106801,
 			"Talker": "PlayerID",
 			"TalkerKo": "도토리",
