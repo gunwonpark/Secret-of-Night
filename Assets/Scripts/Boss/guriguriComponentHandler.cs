@@ -5,12 +5,20 @@ using UnityEngine.AI;
 public class guriguriComponentHandler : MonoBehaviour
 {
     private GuriGuriBoss guriguriBoss;
-    private NavMeshAgent agent;      
+    private NavMeshAgent agent;
+    [SerializeField] private GameObject sword;
 
     public void GuriGuriAddComponent()
     {
         if (agent == null) { agent = gameObject.AddComponent<NavMeshAgent>(); }
         if (guriguriBoss == null) { guriguriBoss = gameObject.AddComponent<GuriGuriBoss>(); }       
         gameObject.GetComponent<GuriGuriBoss>().enabled = true;
-    }   
+    }
+    private void Update()
+    {
+        if ( QuestManager.I.currentQuest.QuestID == 1065)
+        {
+            sword.SetActive(true);
+        }
+    }
 }

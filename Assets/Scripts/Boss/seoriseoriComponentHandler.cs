@@ -7,6 +7,7 @@ public class seoriseoriComponentHandler : MonoBehaviour
 {
     private SeoriSeoriBoss seoriseoriBoss;
     private NavMeshAgent agent;
+    [SerializeField] private GameObject sword;
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +17,7 @@ public class seoriseoriComponentHandler : MonoBehaviour
             {
                 if (agent == null ) { agent = gameObject.AddComponent<NavMeshAgent>();}
                 if (seoriseoriBoss == null) { seoriseoriBoss = gameObject.AddComponent<SeoriSeoriBoss>(); }
+                sword.SetActive(true);
             }
         }
     }
