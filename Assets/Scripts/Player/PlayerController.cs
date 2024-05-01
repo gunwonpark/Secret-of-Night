@@ -64,7 +64,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         PlayerData.ResetStatus();
         PlayerData.OnDie += OnPlayerDie;
         PlayerData.OnLevelUp += LvUpBuffEffect;
+        PlayerData.OnLevelUp += LevelUpSound;
     }
+
+    private void LevelUpSound()
+    {
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.levelUp);
+    }
+
     private void Update()
     {
         stateMachine.HandleInput();
@@ -128,6 +135,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         PlayerData.OnDie -= OnPlayerDie;
         PlayerData.OnLevelUp -= LvUpBuffEffect;
+        PlayerData.OnLevelUp -= LevelUpSound;
     }
 
     public void LvUpBuffEffect()

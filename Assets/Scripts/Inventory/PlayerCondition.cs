@@ -18,6 +18,7 @@ public class PlayerCondition : MonoBehaviour
     public void SmallHpPotion(float _amount)
     {
         effect.HealingEffect();
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         _playerData.CurHP = Mathf.Min(_playerData.CurHP + _amount, _playerData.MaxHP);
         GameManager.Instance.playerManager.playerData.HPChange(_amount);
     }
@@ -25,6 +26,7 @@ public class PlayerCondition : MonoBehaviour
     public void BigHpPotion(float _amount)
     {
         effect.HealingEffect();
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         _playerData.CurHP = Mathf.Min(_playerData.CurHP + _amount, _playerData.MaxHP);
         GameManager.Instance.playerManager.playerData.HPChange(_amount);
     }
@@ -33,6 +35,7 @@ public class PlayerCondition : MonoBehaviour
     public void SmallMpPotion(float _amount)
     {
         effect.MannaEffect();
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         _playerData.CurMP = Mathf.Min(_playerData.CurMP + _amount, _playerData.MaxMP);
         GameManager.Instance.playerManager.playerData.MPChange(_amount);
     }
@@ -40,6 +43,7 @@ public class PlayerCondition : MonoBehaviour
     public void BigMpPotion(float _amount)
     {
         effect.MannaEffect();
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         _playerData.CurMP = Mathf.Min(_playerData.CurMP + _amount, _playerData.MaxMP);
         GameManager.Instance.playerManager.playerData.MPChange(_amount);
     }
@@ -48,22 +52,25 @@ public class PlayerCondition : MonoBehaviour
     public void SmallSpPotion(float _amount)
     {
         _playerData.CurSP = Mathf.Min(_playerData.CurSP + _amount, _playerData.MaxSP);
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         GameManager.Instance.playerManager.playerData.SPChange(_amount);
     }
 
     public void BigSpPotion(float _amount)
     {
         _playerData.CurSP = Mathf.Min(_playerData.CurSP + _amount, _playerData.MaxSP);
+        GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
         GameManager.Instance.playerManager.playerData.SPChange(_amount);
     }
 
     // 이동속도 아이템
     public void SpeedPotion(float _amount)
     {
-        effect.SpeedUpEffect();
         if (!speedItemInUse)
         {
             _playerData.MoveSpeed += _amount;
+            effect.SpeedUpEffect();
+            GameManager.Instance.soundManager.PlayEffectSound(SoundList.postionSound, transform.position);
             StartCoroutine(SpeedCoroutine(_amount));
             speedItemInUse = true;
         }

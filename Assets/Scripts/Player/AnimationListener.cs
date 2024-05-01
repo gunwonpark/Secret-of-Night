@@ -34,6 +34,7 @@ public class AnimationListener : MonoBehaviour
             if (angle < 90f)
             {
                 Debug.Log("SlashAttack: " + hitCollider.name);
+                PlaySound("defaultHit");
                 hitCollider.GetComponent<IDamageable>()?.TakeDamage(_playerController.PlayerData.Damage);
             }
         }
@@ -70,6 +71,7 @@ public class AnimationListener : MonoBehaviour
         // 추후 엑셀데이터로 스킬 범위와 스킬 각도를 추가함으로써 최적화 할 수 있겠다.
         if (name == "JumpSkill")
         {
+            PlaySound("jumpSkill");
             Collider[] hitEnemies = Physics.OverlapSphere(transform.position, skillRange, enemyLayer, QueryTriggerInteraction.Ignore);
             Debug.DrawLine(transform.position, transform.position + transform.forward * skillRange, Color.red, 2.0f);
             foreach (var hitCollider in hitEnemies)

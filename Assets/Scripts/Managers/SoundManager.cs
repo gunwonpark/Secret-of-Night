@@ -146,7 +146,6 @@ public class SoundManager : MonoBehaviour
         source.minDistance = clip.minDistance;
         source.maxDistance = clip.maxDistance;
         source.spatialBlend = clip.sparialBlend;
-        Debug.Log("Play");
         source.Play();
     }
 
@@ -200,7 +199,10 @@ public class SoundManager : MonoBehaviour
         SoundClip clip = GameManager.Instance.dataManager.soundData.GetCopy(index);
         PlayBGM(clip);
     }
-
+    public void PlayEffectSound(SoundList sound)
+    {
+        PlayEffectSound(soundDic[sound]);
+    }
     public void PlayEffectSound(SoundClip clip)
     {
         bool isPlaySuccess = false;
@@ -239,10 +241,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayEffectSound(SoundClip clip, Vector3 position, float volume)
+    public void PlayEffectSound(SoundClip clip, Vector3 position, float volume = 1.0f)
     {
         PlayAudioSourceAtPoint(clip, position, volume);
     }
+    public void PlayEffectSound(SoundList sound, Vector3 position, float volume = 1.0f)
+    {
+        PlayAudioSourceAtPoint(soundDic[sound], position, volume);
+    }
+
 
     public void PlayOneShotEffect(int index, Vector3 position, float volume)
     {
