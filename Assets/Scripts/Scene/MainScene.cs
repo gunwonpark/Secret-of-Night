@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MainScene : BaseScene
 {
-    [SerializeField] private AudioClip _bgm;
     [SerializeField] private Transform[] _playerSpawnPoints;
     private Transform _player;
     public override void Initizlize()
