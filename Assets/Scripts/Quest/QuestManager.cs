@@ -147,19 +147,19 @@ public class QuestManager : MonoBehaviour
         ExpReward(currentQuest.RewardID, currentQuest.RewardCount);
 
         //1004, 1024, 1036, 1055
-        if (currentQuest.QuestID == 1004)
+        if (currentQuest.QuestID == 1001)
         {
             GameManager.Instance.playerManager.ActiveSkillSlot(0);
         }
-        else if (currentQuest.QuestID == 1024)
+        else if (currentQuest.QuestID == 1023)
         {
             GameManager.Instance.playerManager.ActiveSkillSlot(1);
         }
-        else if (currentQuest.QuestID == 1036)
+        else if (currentQuest.QuestID == 1024)
         {
             GameManager.Instance.playerManager.ActiveSkillSlot(2);
         }
-        else if (currentQuest.QuestID == 1055)
+        else if (currentQuest.QuestID == 1034)
         {
             GameManager.Instance.playerManager.ActiveSkillSlot(3);
         }

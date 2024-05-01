@@ -962,8 +962,8 @@ public class Inventory : MonoBehaviour
     public void QuestItemCheck(int itemID1, int itemID2, int itemID3, int quantity1, int quantity2, int quantity3)
     {
         bool item1Processed = false;
-        bool item2Processed = false;
-        bool item3Processed = false;
+        bool item2Processed = itemID2 == 0 || quantity2 == 0; // 두 번째 아이템의 ID가 0이거나 수량이 0이면 처리된 것으로 간주
+        bool item3Processed = itemID3 == 0 || quantity3 == 0; // 세 번째 아이템의 ID가 0이거나 수량이 0이면 처리된 것으로 간주
 
         for (int i = 0; i < _uiSlots.Length; i++)
         {
