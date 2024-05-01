@@ -392,7 +392,7 @@ public class Inventory : MonoBehaviour
         }
         if (QuestManager.I.currentQuest.QuestType == 3 || QuestManager.I.currentQuest.QuestType == 6)
         {
-            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.QuestItemID2, QuestManager.I.currentQuest.GoalCount, QuestManager.I.currentQuest.GoalCount2);
+            QuestItemCheck(QuestManager.I.currentQuest.QuestItemID, QuestManager.I.currentQuest.QuestItemID2, QuestManager.I.currentQuest.QuestItemID3, QuestManager.I.currentQuest.GoalCount, QuestManager.I.currentQuest.GoalCount2, QuestManager.I.currentQuest.GoalCount3);
         }
         UpdateUI();
         // 퀵슬롯에 자동 저장
@@ -959,10 +959,11 @@ public class Inventory : MonoBehaviour
         QuestManager.OnQuestCleared -= CloseInventory;
     }
 
-    public void QuestItemCheck(int itemID1, int itemID2, int quantity1, int quantity2)
+    public void QuestItemCheck(int itemID1, int itemID2, int itemID3, int quantity1, int quantity2, int quantity3)
     {
         bool item1Processed = false;
         bool item2Processed = false;
+        bool item3Processed = false;
 
         for (int i = 0; i < _uiSlots.Length; i++)
         {
@@ -975,9 +976,14 @@ public class Inventory : MonoBehaviour
             {
                 item2Processed = true;
             }
+
+            if (!item3Processed && slots[i].item != null && itemID3 == slots[i].item.ItemID && slots[i].count >= quantity3)
+            {
+                item3Processed = true;
+            }
         }
 
-        if (item1Processed && (item2Processed || itemID2 == 0 && quantity2 == 0))
+        if (item1Processed && item2Processed && item3Processed)
         {
             for (int i = 0; i < _uiSlots.Length; i++)
             {
@@ -997,7 +1003,19 @@ public class Inventory : MonoBehaviour
                 {
                     if (QuestManager.I.currentQuest.QuestType != 6)
                     {
-                        slots[i].count -= quantity1;
+                        slots[i].count -= quantity2;
+                        if (slots[i].count <= 0)
+                        {
+                            slots[i].item = null;
+                        }
+                    }
+                }
+
+                if (slots[i].item != null && itemID3 == slots[i].item.ItemID && slots[i].count >= quantity3)
+                {
+                    if (QuestManager.I.currentQuest.QuestType != 6)
+                    {
+                        slots[i].count -= quantity3;
                         if (slots[i].count <= 0)
                         {
                             slots[i].item = null;

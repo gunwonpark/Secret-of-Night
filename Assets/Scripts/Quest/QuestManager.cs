@@ -265,8 +265,14 @@ public class QuestManager : MonoBehaviour
             currentQuest.GoalCount2--; // 필요한 개수 감소
         }
 
+        // 세 번째 몬스터의 ID와 개수를 확인
+        else if (currentQuest.QuestItemID3 == id)
+        {
+            currentQuest.GoalCount3--; // 필요한 개수 감소
+        }
+
         // 첫 번째 몬스터와 두 번째 몬스터 모두가 필요한 개수를 다 채웠는지 확인
-        if (currentQuest.GoalCount <= 0 && currentQuest.GoalCount2 <= 0)
+        if (currentQuest.GoalCount <= 0 && currentQuest.GoalCount2 <= 0 && currentQuest.GoalCount3 <= 0)
         {
             if (currentQuest.QuestType == 1)
             {
