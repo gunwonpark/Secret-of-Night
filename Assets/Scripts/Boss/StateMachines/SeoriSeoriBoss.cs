@@ -186,5 +186,6 @@ public class SeoriSeoriBoss : MonoBehaviour, IDamageable
         yield return new WaitForSecondsRealtime(3.5f);
         GameObject gemstone = Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(34).Prefab, throwPosition, Quaternion.identity);
         gemstone.transform.parent = transform;
+        gemstone.GetComponent<Animator>().enabled = true;
     }
 }

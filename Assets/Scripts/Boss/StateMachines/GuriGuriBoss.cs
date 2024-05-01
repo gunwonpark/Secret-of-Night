@@ -184,5 +184,6 @@ public class GuriGuriBoss : MonoBehaviour, IDamageable
         yield return new WaitForSecondsRealtime(3f);
         GameObject gemstone = Instantiate(GameManager.Instance.dataManager.itemDataBase.GetData(35).Prefab, throwPosition, Quaternion.identity);
         gemstone.transform.parent = transform;
+        gemstone.GetComponent<Animator>().enabled = true;
     }
 }
