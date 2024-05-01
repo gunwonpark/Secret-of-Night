@@ -16,7 +16,7 @@ public class guriguriComponentHandler : MonoBehaviour
     }
     private void Update()
     {
-        if ( QuestManager.I.currentQuest.QuestID == 1065)
+        if ( QuestManager.I.currentQuest.QuestID == 1064)
         {
             sword.SetActive(true);
         }
