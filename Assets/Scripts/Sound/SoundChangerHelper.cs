@@ -12,9 +12,10 @@ public class SoundChangerHelper : MonoBehaviour
     {
         if (QuestManager.I.currentQuest.QuestID > 1032)
         {
-            _soundChanger._enterBgm = SoundList.fieldBGMAfter;
-            GameManager.Instance.soundManager.PlayBGM(GameManager.Instance.soundManager.GetSoundClip(_soundChanger._enterBgm));
+            _soundChanger._exitBgm = SoundList.fieldBGMAfter;
+            GameManager.Instance.soundManager.PlayBGM(GameManager.Instance.soundManager.GetSoundClip(_soundChanger._exitBgm));
+            this.enabled = false;
         }
-        this.enabled = false;
+
     }
 }
