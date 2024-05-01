@@ -16,8 +16,7 @@ public class QuestGenerator : MonoBehaviour
                 new Dialogue (GameManager.Instance.dataManager.dialogueDataBase.GetData(100104)),
             },
             isContinue = true,
-            QuestType = 6,
-            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1001).GoalCount)}개 획득",
+            QuestType = 6,            
 
         };
         tempQuests.Add(newQuest);
@@ -26,8 +25,7 @@ public class QuestGenerator : MonoBehaviour
         {
             // "주운 버섯을 사용하기",           
             isNoScript = true,
-            isContinue = true,
-            QuestGoal = $"버섯 {(GameManager.Instance.dataManager.questDataBase.GetData(1002).GoalCount)}개 사용",
+            isContinue = true,            
         };
         tempQuests.Add(newQuest);
 
