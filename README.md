@@ -4,9 +4,12 @@ https://www.youtube.com/watch?v=qop2KnrpkrA
 ## 핵심구현 
 - 카메라 : 구조물로 인한 시야방해 해결
 - 플레이어 이동 : FSM패턴을 통한 이동 및 공격
-- 플레이어 스킬 : 내장된 stateMachine 기능을 통한 스킬 타이밍 제어
+- 플레이어 스킬 : AnimatorStateInfo와 Animation Event를 통한 스킬 타이밍 제어
 - 데이터 : excel을 통한 데이터 관리
-- LOD와 GPU instancing을 통한 batch연산 감소
+- 메모리 :
+  - LOD와 GPU instancing을 통한 batch연산 감소
+  - Animation Key 해싱을 통한 string 최적화
+  - 오브젝트 풀링을 통한 메모리 최적화
 - 연출 : 타임라인과 시네마틱 카메라를 이용한 자연스러운 연출
 - 사운드 : 자체제작 사운드 툴을 이용한 사운드 관리 및 적용
 - UI :
